@@ -21,11 +21,8 @@ func main() {
 		fmt.Println(err)
 		return
 	}
-	//re, _ := syntax.Parse(".*yadda(mon)?: (a|bc|def|❤) ([0-9a-f]{16}|[0-9A-F]{16}) .* OK", syntax.POSIX)
-	//re, _ := syntax.Parse("(.*)(ya([dz]+)a+)", syntax.POSIX)
 	re = re.Simplify()
 	p, _ := syntax.Compile(re)
-	// fmt.Println(p)
 
 	numSt := 0
 	for _, inst := range p.Inst {
@@ -48,9 +45,12 @@ func main() {
 		import "fmt"
 		import "os"
 		func main() {
-			m, _ := Match([]rune(os.Args[1]))
-			for _, c := range m {
-				fmt.Println(string(c))
+			m, found := Match([]rune(os.Args[1]))
+			if !found {
+				return
+			}
+			for i, c := range m {
+				fmt.Printf("%%d: %%q\n", i, string(c))
 			}
 		}
 	`)
@@ -67,26 +67,70 @@ func main() {
 
 	for pc, inst := range p.Inst {
 		out("\n goto inst%d \n inst%d: // %s \n", pc, pc, inst.String())
-		//out("fmt.Printf(\"%%5d %%5d\\n\", %d, i) \n", pc)
-		if inst.Op != syntax.InstMatch && inst.Op != syntax.InstAlt && inst.Op != syntax.InstCapture {
+		if inst.Op != syntax.InstMatch && inst.Op != syntax.InstAlt && inst.Op != syntax.InstCapture && inst.Op != syntax.InstFail {
 			out("if i < 0 || i >= len(r) { goto fail }\n")
 		}
 		switch inst.Op {
 		case syntax.InstAlt:
-			out(
-				`if n := len(bt)-1; len(bt) > 0 && bt[n].c == c && bt[n].i == i && bt[n].pc == %d {
-					bt[n].cnt++
-				} else {
+			if steps := isSimpleLoop(p, uint32(pc)); steps > 0 {
+				out(
+					`if len(bt) > 0 {
+						ps := &bt[len(bt)-1]
+						if ps.pc == %d && i-ps.i == %d {
+							ps.i = i
+							ps.cnt++
+							goto inst%d
+						}
+					}
 					bt = append(bt, state{c, i, %d, 0})
-				}
-				goto inst%d`,
-				inst.Arg,
-				inst.Arg,
-				inst.Out,
-			)
-			tgt = append(tgt, inst.Arg)
-			//out("if !alt { bt = append(bt, state{c, i, %d}) \n goto inst%d }", pc, inst.Out)
-			//out("else { alt = false \n goto inst%d }\n", inst.Arg)
+					goto inst%d
+					`,
+					pc, steps,
+					inst.Out,
+					pc,
+					inst.Out,
+				)
+				out(
+					`inst%d_alt:
+					{
+						n := len(bt)-1
+						ps := &bt[n]
+						c, i = ps.c, ps.i
+						if ps.cnt > 0 {
+							ps.i -= %d
+							ps.cnt--
+						} else {
+							bt = bt[:n]
+						}
+						goto inst%d
+					}
+					`,
+					pc,
+					steps,
+					inst.Arg,
+				)
+			} else {
+				out(
+					`bt = append(bt, state{c, i, %d, 0})
+					goto inst%d
+					`,
+					pc,
+					inst.Out,
+				)
+				out(
+					`inst%d_alt:
+					{
+						n := len(bt)-1
+						c, i = bt[n].c, bt[n].i
+						bt = bt[:n]
+						goto inst%d
+					}
+					`,
+					pc,
+					inst.Arg,
+				)
+			}
+			tgt = append(tgt, uint32(pc))
 		case syntax.InstAltMatch:
 			panic("not implemented InstAltMatch")
 		case syntax.InstCapture:
@@ -159,24 +203,17 @@ func main() {
 		`,
 	)
 	for _, pc := range tgt {
-		out("case %d: goto inst%d \n", pc, pc)
+		out("case %d: goto inst%d_alt \n", pc, pc)
 	}
 	out("}\n")
 
 	out(`
 		goto unreachable
 		backtrack: { 
-			n := len(bt)-1
-			c, i, pc = bt[n].c, bt[n].i, bt[n].pc
-			if bt[n].cnt > 0 {
-				bt[n].cnt--
-			} else {
-				bt = bt[:n]
-			}
+			pc = bt[len(bt)-1].pc
 			goto again
 		}`,
 	)
-	//out("\n goto backtrack \n backtrack: { alt = true \n s := bt[len(bt)-1] \n c, i, pc = s.c, s.i, s.pc \n bt = bt[:len(bt)-1] \n goto again }\n")
 
 	out(`
 		goto unreachable
@@ -226,17 +263,22 @@ func main() {
 	}
 }
 
-func isSimpleLoop(p *syntax.Prog, pc int) bool {
+func isSimpleLoop(p *syntax.Prog, pc uint32) int {
 	if p.Inst[pc].Op != syntax.InstAlt {
 		panic("not alt")
 	}
-	for npc := p.Inst[pc].Out; npc != pc; {
+	npc := p.Inst[pc].Out
+	steps := 0
+	for npc != pc {
 		switch p.Inst[npc].Op {
-		case syntax.InstNop, syntax.InstRune, syntax.InstRune1, syntax.InstRuneAny, syntax.InstRuneAnyNonNL:
-			npc = p.Inst[pc].Out
+		case syntax.InstRune, syntax.InstRune1, syntax.InstRuneAny, syntax.InstRuneAnyNotNL:
+			npc = p.Inst[npc].Out
+			steps++
+		case syntax.InstNop:
+			npc = p.Inst[npc].Out
 		default:
-			return false
+			return 0
 		}
 	}
-	return true
+	return steps
 }
