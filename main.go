@@ -57,10 +57,11 @@ func main() {
 	out("type state struct { c [%d]int; i int; pc int; cnt int }\n", p.NumCap)
 	out("// %v\n", re)
 	out("func Match(r []rune) ([%d][]rune, bool) {\n", p.NumCap/2)
+	out("  si := 0\n")
 	out("restart:\n")
 	out("  var _bt [%d]state\n  bt := _bt[:0]\n", numSt)
 	out("  var c [%d]int\n", p.NumCap)
-	out("  i := 0\n")
+	out("  i := si\n")
 	out("  pc := 0\n")
 	out("  c[0] = i\n")
 	out("  goto inst%d\n", p.Start)
@@ -222,8 +223,8 @@ func main() {
 			if i <= len(r) && len(bt) > 0 { 
 				goto backtrack 
 			}
-			if len(r) != 0 {
-				r = r[1:]
+			if len(r[si:]) != 0 {
+				si++
 				goto restart
 			}
 			var m [%d][]rune
