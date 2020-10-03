@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"go/format"
 	"regexp/syntax"
+	"strings"
 	"unicode"
 )
 
@@ -151,36 +152,50 @@ func main() {
 			if len(inst.Rune) == 0 {
 				panic("empty rune")
 			}
+			runes := inst.Rune
 			foldCase := syntax.Flags(inst.Arg)&syntax.FoldCase != 0
 			if len(inst.Rune) == 1 {
 				r := inst.Rune[0]
-				out("if cr := r[i]; cr == %d", r)
+				runes = []rune{r, r}
 				if foldCase {
 					for {
 						r = unicode.SimpleFold(r)
 						if r == inst.Rune[0] {
 							break
 						}
-						out(" || cr == %d", r)
+						runes = append(runes, r, r)
 					}
 				}
-				out(" { i++ \n goto inst%d }\n", inst.Out)
 			} else if foldCase {
 				panic("foldCase with multiple runes")
-			} else if len(inst.Rune)%2 == 1 {
+			}
+
+			if len(runes)%2 == 1 {
 				panic("odd runes")
 			} else {
-				out("if cr := r[i]; ")
-				for i := 0; i < len(inst.Rune); i += 2 {
+				runeMask := runeMask(runes, 128)
+				if runeMask != strings.Repeat("\000", len(runeMask)) {
+					out(`if cr := r[i]; cr < %d { 
+						runeMask := %q
+						if runeMask[cr/8] & (1<<(cr%%8)) != 0 { 
+							i++
+							goto inst%d 
+						} 
+						goto fail 
+					} else if `, 128, runeMask, inst.Out)
+				} else {
+					out("if cr := r[i]; ")
+				}
+				for i := 0; i < len(runes); i += 2 {
 					if i > 0 {
 						out("||")
 					}
-					if inst.Rune[i] == inst.Rune[i+1] {
-						out("cr == %d", inst.Rune[i])
-					} else if inst.Rune[i] == inst.Rune[i+1]-1 {
-						out("cr == %d || cr == %d", inst.Rune[i], inst.Rune[i+1])
+					if runes[i] == runes[i+1] {
+						out("cr == %d", runes[i])
+					} else if runes[i] == runes[i+1]-1 {
+						out("cr == %d || cr == %d", runes[i], runes[i+1])
 					} else {
-						out("(cr >= %d && cr <= %d)", inst.Rune[i], inst.Rune[i+1])
+						out("(cr >= %d && cr <= %d)", runes[i], runes[i+1])
 					}
 				}
 				out(" { i++ \n goto inst%d }\n", inst.Out)
@@ -282,4 +297,18 @@ func isSimpleLoop(p *syntax.Prog, pc uint32) int {
 		}
 	}
 	return steps
+}
+
+func runeMask(runes []rune, max rune) string {
+	if len(runes)%2 == 1 {
+		panic("odd runes")
+	}
+	mask := make([]byte, (max+7)/8)
+	for i := 0; i < len(runes); i += 2 {
+		sr, er := runes[i], runes[i+1]
+		for r := sr; r <= er && r < max; r++ {
+			mask[r/8] = mask[r/8] | (1 << (r % 8))
+		}
+	}
+	return string(mask)
 }
