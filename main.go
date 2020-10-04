@@ -24,7 +24,11 @@ func main() {
 		return
 	}
 	re = re.Simplify()
-	p, _ := syntax.Compile(re)
+	p, err := syntax.Compile(re)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
 
 	numSt := 0
 	for _, inst := range p.Inst {
