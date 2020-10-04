@@ -1,8 +1,13 @@
 # regexp2go
 
-regexp2go is an alternate backend for the `regexp` package that allows to compile regular expressions to Go code ahead-of-time.
+regexp2go is an alternate backend for the `regexp` package that allows to
+compile regular expressions to Go code ahead-of-time.
 
-This is an experimental PoC. Do not use for anything serious.
+This is an experimental PoC that currently implements only a subset of the
+functionalities and optimizations present in the full `regexp` package.
+Rather importantly it does not yet offer the "run in time linear in the 
+size of the input" guarantee that is offered by the `regexp` package.
+Do not use for anything serious.
 
 ## Usage
 
