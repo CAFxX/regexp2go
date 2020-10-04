@@ -30,6 +30,8 @@ func main() {
 		return
 	}
 
+	prefix, _ := p.Prefix()
+
 	numSt := 0
 	for _, inst := range p.Inst {
 		if inst.Op == syntax.InstAlt {
@@ -70,6 +72,18 @@ func main() {
 	out("  var _bt [%d]state\n  bt := _bt[:0]\n", numSt)
 	out("  var c [%d]int\n", p.NumCap)
 	out("  i := si\n")
+	if len(prefix) > 0 {
+		out(`
+		for j, cr := range c[si:] {
+			if cr == %d {
+				i += j
+				goto prefix_found
+			}
+		}
+		i += len(c[si:])
+		prefix_found:
+		`, []rune(prefix)[0])
+	}
 	out("  pc := 0\n")
 	out("  c[0] = i\n")
 	out("  goto inst%d\n", p.Start)
