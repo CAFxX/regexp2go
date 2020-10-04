@@ -13,6 +13,7 @@ import (
 var (
 	flags = flag.Uint("flags", 212, "Flags to apply for regex compilation")
 	pkg   = flag.String("pkg", "main", "The name of the package to use for the generated code")
+	fn    = flag.String("fn", "Match", "The name of the function to use for the generated code")
 )
 
 func main() {
@@ -57,7 +58,7 @@ func main() {
 			import "fmt"
 			import "os"
 			func main() {
-				m, found := Match([]rune(os.Args[1]))
+				m, found := %s([]rune(os.Args[1]))
 				if !found {
 					return
 				}
@@ -65,11 +66,11 @@ func main() {
 					fmt.Printf("%%d: %%q\n", i, string(c))
 				}
 			}
-		`)
+		`, *fn)
 	}
 	out("type state struct { c [%d]int; i int; pc int; cnt int }\n", p.NumCap)
-	out("// Match implements the regular expression\n// %v\n// with flags %d\n", regex, *flags)
-	out("func Match(r []rune) ([%d][]rune, bool) {\n", p.NumCap/2)
+	out("// %s implements the regular expression\n// %v\n// with flags %d\n", *fn, regex, *flags)
+	out("func %s(r []rune) ([%d][]rune, bool) {\n", *fn, p.NumCap/2)
 	out("  si := 0\n")
 	out("restart:\n")
 	out("  var _bt [%d]state\n  bt := _bt[:0]\n", numSt)
