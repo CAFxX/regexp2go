@@ -63,7 +63,7 @@ func main() {
 		`)
 	}
 	out("type state struct { c [%d]int; i int; pc int; cnt int }\n", p.NumCap)
-	out("// Match implements the regular expression\n// %v\n// with flags %d\n", re, *flags)
+	out("// Match implements the regular expression\n// %v\n// with flags %d\n", *regex, *flags)
 	out("func Match(r []rune) ([%d][]rune, bool) {\n", p.NumCap/2)
 	out("  si := 0\n")
 	out("restart:\n")
@@ -179,35 +179,40 @@ func main() {
 
 			if len(runes)%2 == 1 {
 				panic("odd runes")
-			} else {
-				runeMask := runeMask(runes, 128)
-				if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
-					out(`if cr := r[i]; cr < %d { 
+			}
+			out("{\n")
+			out("cr := r[i]\n")
+			out("_ = cr\n")
+			const max = 128
+			runeMask := runeMask(runes, max)
+			useRuneMask := false
+			if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
+				useRuneMask = true
+				out(`if cr < %d { 
 						runeMask := %q
 						if runeMask[cr/8] & (1<<(cr%%8)) != 0 { 
 							i++
 							goto inst%d 
 						} 
 						goto fail 
-					} else if `, 128, runeMask, inst.Out)
-				} else {
-					out("if cr := r[i]; ")
-				}
-				for i := 0; i < len(runes); i += 2 {
-					if i > 0 {
-						out("||")
-					}
-					if runes[i] == runes[i+1] {
-						out("cr == %d", runes[i])
-					} else if runes[i] == runes[i+1]-1 {
-						out("cr == %d || cr == %d", runes[i], runes[i+1])
-					} else {
-						out("(cr >= %d && cr <= %d)", runes[i], runes[i+1])
-					}
-				}
-				out(" { i++ \n goto inst%d }\n", inst.Out)
+					} else `, max, runeMask, inst.Out)
 			}
+			out("if false ")
+			for i := 0; i < len(runes); i += 2 {
+				if useRuneMask && runes[i+1] < max {
+					continue
+				}
+				if runes[i] == runes[i+1] {
+					out("|| cr == %d", runes[i])
+				} else if runes[i] == runes[i+1]-1 {
+					out("|| cr == %d || cr == %d", runes[i], runes[i+1])
+				} else {
+					out("|| (cr >= %d && cr <= %d)", runes[i], runes[i+1])
+				}
+			}
+			out(" { i++ \n goto inst%d }\n", inst.Out)
 			out("goto fail\n")
+			out("}\n")
 		case syntax.InstRuneAny:
 			out("i++ \n goto inst%d", inst.Out)
 		case syntax.InstRuneAnyNotNL:
