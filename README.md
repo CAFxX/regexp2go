@@ -7,8 +7,11 @@ This is an experimental PoC. Do not use for anything serious.
 ## Usage
 
 ```sh
+$ go get github.com/CAFxX/regexp2go
+
 # Compile the regex "regexp" using the default Go regexp flags (212)
 # and save the result in gen/main.go.
+# This requires regexp2go to be on your PATH.
 $ regexp2go -regex "INFO res=([0-9]+) msg=(.*)" > gen/main.go
 
 # The generated file contains a main function that simply calls
