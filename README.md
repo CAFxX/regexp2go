@@ -18,7 +18,7 @@ $ go get github.com/CAFxX/regexp2go
 # Compile the provided regular expression using the default Go regexp 
 # flags (212) and save the result in gen/main.go.
 # This requires regexp2go to be on your PATH.
-$ regexp2go 'INFO res=([0-9]+) msg=(.*)' > gen/main.go
+$ regexp2go '(?m)^INFO res=([0-9]+) msg=(.*)' > gen/main.go
 
 # The generated file contains a main function that simply calls
 # the Match function, that actually implements the regular expression,
