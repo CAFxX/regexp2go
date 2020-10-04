@@ -174,7 +174,7 @@ func main() {
 				panic("odd runes")
 			} else {
 				runeMask := runeMask(runes, 128)
-				if runeMask != strings.Repeat("\000", len(runeMask)) {
+				if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
 					out(`if cr := r[i]; cr < %d { 
 						runeMask := %q
 						if runeMask[cr/8] & (1<<(cr%%8)) != 0 { 
