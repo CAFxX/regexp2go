@@ -9,7 +9,7 @@ This is an experimental PoC. Do not use for anything serious.
 ```sh
 # Compile the regex "regexp" using the default Go regexp flags (212)
 # and save the result in gen/main.go.
-$ regexp2go -regex "INFO res=([0-9]+) msg=(.*)" -flags 212 > gen/main.go
+$ regexp2go -regex "INFO res=([0-9]+) msg=(.*)" > gen/main.go
 
 # The generated file contains a main function that simply calls
 # the Match function, that actually implements the regular expression,
