@@ -37,7 +37,6 @@ restart:
 	bt := _bt[:0]
 	var c [4]int
 	i := si
-	pc := 0
 	c[0] = i
 	goto inst1
 
@@ -147,21 +146,15 @@ inst8: // match
 	goto match
 
 	goto unreachable
-	goto again
-again:
-	switch pc {
+	goto backtrack
+backtrack:
+	switch bt[len(bt)-1].pc {
 	default:
-		panic(pc)
+		panic(bt[len(bt)-1].pc)
 	case 5:
 		goto inst5_alt
 	}
 
-	goto unreachable
-backtrack:
-	{
-		pc = bt[len(bt)-1].pc
-		goto again
-	}
 	goto unreachable
 	goto fail
 fail:

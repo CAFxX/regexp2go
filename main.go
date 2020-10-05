@@ -90,7 +90,6 @@ func main() {
 		prefix_found:
 		`, []rune(prefix)[0])
 	}
-	out("  pc := 0\n")
 	out("  c[0] = i\n")
 	out("  goto inst%d\n", p.Start)
 
@@ -269,24 +268,16 @@ func main() {
 
 	out(`
 		goto unreachable
-		goto again
-		again:
-			switch pc {
-			default: panic(pc)
+		goto backtrack
+		backtrack:
+			switch bt[len(bt)-1].pc {
+			default: panic(bt[len(bt)-1].pc)
 		`,
 	)
 	for _, pc := range tgt {
 		out("case %d: goto inst%d_alt \n", pc, pc)
 	}
 	out("}\n")
-
-	out(`
-		goto unreachable
-		backtrack: { 
-			pc = bt[len(bt)-1].pc
-			goto again
-		}`,
-	)
 
 	out(`
 		goto unreachable

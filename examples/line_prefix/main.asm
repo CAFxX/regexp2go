@@ -22,7 +22,7 @@ restart:
   0x49c008		0f8fcf020000		JG 0x49c2dd		
   0x49c00e		4885ff			TESTQ DI, DI		
   0x49c011		0f8ec9010000		JLE 0x49c1e0		
-		pc = bt[len(bt)-1].pc
+	switch bt[len(bt)-1].pc {
   0x49c017		4c6bc738		IMULQ $0x38, DI, R8		
   0x49c01b		4d8b4c10f0		MOVQ -0x10(R8)(DX*1), R9	
 	case 5:
@@ -90,8 +90,8 @@ restart:
   0x49c0fe		4989c0			MOVQ AX, R8		
   0x49c101		48c1e002		SHLQ $0x2, AX		
   0x49c105		48c1fa3f		SARQ $0x3f, DX		
-  0x49c109		4821c2			ANDQ AX, DX		
-  0x49c10c		4c8d0c13		LEAQ 0(BX)(DX*1), R9	
+  0x49c109		4821d0			ANDQ DX, AX		
+  0x49c10c		4c8d0c03		LEAQ 0(BX)(AX*1), R9	
   0x49c110		4c898c2418010000	MOVQ R9, 0x118(SP)	
   0x49c118		4c29c1			SUBQ R8, CX		
   0x49c11b		48898c2420010000	MOVQ CX, 0x120(SP)	
@@ -130,7 +130,7 @@ restart:
   0x49c1c7		41b8ffffffff		MOVL $-0x1, R8		
 		if i < len(r) {
   0x49c1cd		e9cefeffff		JMP 0x49c0a0		
-		pc = bt[len(bt)-1].pc
+	switch bt[len(bt)-1].pc {
   0x49c1d2		48ffcf			DECQ DI			
 			bt = bt[:n]
   0x49c1d5		e98ffeffff		JMP 0x49c069		
@@ -284,8 +284,8 @@ restart:
   0x49c3d4		48c78424d800000005000000	MOVQ $0x5, 0xd8(SP)	
   0x49c3e0		48c78424e000000000000000	MOVQ $0x0, 0xe0(SP)	
   0x49c3ec		488d7901			LEAQ 0x1(CX), DI	
-  0x49c3f0		4939f8				CMPQ DI, R8		
-  0x49c3f3		7250				JB 0x49c445		
+  0x49c3f0		4c39c7				CMPQ R8, DI		
+  0x49c3f3		7750				JA 0x49c445		
   0x49c3f5		4c8b8c24b0000000		MOVQ 0xb0(SP), R9	
   0x49c3fd		4c6bd138			IMULQ $0x38, CX, R10	
   0x49c401		4e890c12			MOVQ R9, 0(DX)(R10*1)	
@@ -376,7 +376,7 @@ func Match(r []rune) ([2][]rune, bool) {
   0x49c50a		4889c8			MOVQ CX, AX			
   0x49c50d		4889f1			MOVQ SI, CX			
   0x49c510		e82b70fcff		CALL runtime.panicSliceB(SB)	
-		panic(pc)
+		panic(bt[len(bt)-1].pc)
   0x49c515		4c890c24		MOVQ R9, 0(SP)			
   0x49c519		e882dbf6ff		CALL runtime.convT64(SB)	
   0x49c51e		488d053baf0000		LEAQ 0xaf3b(IP), AX		
