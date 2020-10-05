@@ -7,7 +7,9 @@ perform ahead-of-time compilation of regular expressions to Go code.
 subset of the functionalities and optimizations present in the full 
 `regexp` package.
 Rather importantly it does not yet offer the "run in time linear in the 
-size of the input" guarantee that is offered by the `regexp` package.
+size of the input" guarantee that is offered by the `regexp` package,
+and it is extremely likely to contain correctness bugs since it's currently
+lacking any proper test. 
 Do not use for anything serious.
 
 ## Usage
@@ -28,3 +30,10 @@ $ go run gen/main.go 'INFO res=42 msg=ok'
 1: "42"
 2: "ok"
 ```
+
+## Examples
+
+Examples of generated code are in [`examples/`](./examples).
+
+Each example contains the generated Go code, and the disassembly of the
+function that implements the regular expression.
