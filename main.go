@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"go/format"
+	"os"
 	"regexp/syntax"
 	"strings"
 	"unicode"
@@ -17,21 +18,29 @@ var (
 )
 
 func main() {
+	defer func() {
+		if r := recover(); r != nil {
+			fmt.Fprintf(os.Stderr, "panic: %v\n", r)
+			os.Exit(-1)
+		}
+	}()
+
 	flag.Parse()
 	if nargs := len(flag.Args()); nargs != 1 {
-		fmt.Printf("expected 1 argument, got %d", nargs)
+		fmt.Fprintf(os.Stderr, "expected 1 argument, got %d\n", nargs)
+		os.Exit(-1)
 	}
 	regex := flag.Arg(0)
 	re, err := syntax.Parse(regex, syntax.Flags(*flags))
 	if err != nil {
-		fmt.Println(err)
-		return
+		fmt.Fprintf(os.Stderr, "parsing regex: %v\n", err)
+		os.Exit(-1)
 	}
 	re = re.Simplify()
 	p, err := syntax.Compile(re)
 	if err != nil {
-		fmt.Println(err)
-		return
+		fmt.Fprintf(os.Stderr, "compiling regex: %v\n", err)
+		os.Exit(-1)
 	}
 
 	prefix, _ := p.Prefix()
@@ -326,11 +335,11 @@ func main() {
 
 	gen, err := format.Source(b.Bytes())
 	if err != nil {
-		fmt.Println(b.String())
-		fmt.Println("\nerror: " + err.Error())
-	} else {
-		fmt.Println(string(gen))
+		os.Stdout.Write(b.Bytes())
+		fmt.Fprintf(os.Stderr, "formatting generated code: %v\n", err)
+		os.Exit(-1)
 	}
+	os.Stdout.Write(gen)
 }
 
 func isSimpleLoop(p *syntax.Prog, pc uint32) int {
