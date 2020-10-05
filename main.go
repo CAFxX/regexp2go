@@ -166,8 +166,8 @@ func main() {
 			out("c[%d] = i \n goto inst%d \n", inst.Arg, inst.Out)
 		case syntax.InstEmptyWidth:
 			out("{\n")
-			before := "before := rune(-1) \n if j := i-1; j > 0 && j < len(r) { before = r[j] } \n"
-			after := "after  := rune(-1) \n if j := i;   j > 0 && j < len(r) { after = r[j]  } \n"
+			before := "before := rune(-1) \n if j := i-1; j >= 0 && j < len(r) { before = r[j] } \n"
+			after := " after  := rune(-1) \n if j := i;   j >= 0 && j < len(r) { after = r[j]  } \n"
 			switch syntax.EmptyOp(inst.Arg) {
 			case syntax.EmptyBeginLine:
 				out(before)

@@ -51,9 +51,9 @@ restart:
 	c[3] = i
   0x49c133		4c894c2470		MOVQ R9, 0x70(SP)	
   0x49c138		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if j := i; j > 0 && j < len(r) {
+		if j := i; j >= 0 && j < len(r) {
   0x49c140		4d85c9			TESTQ R9, R9		
-  0x49c143		0f8e3e010000		JLE 0x49c287		
+  0x49c143		0f8c3e010000		JL 0x49c287		
   0x49c149		4939f1			CMPQ SI, R9		
   0x49c14c		0f8d35010000		JGE 0x49c287		
 			after = r[j]
@@ -124,7 +124,7 @@ restart:
   0x49c27f		4881c450010000		ADDQ $0x150, SP		
   0x49c286		c3			RET			
   0x49c287		41b8ffffffff		MOVL $-0x1, R8		
-		if j := i; j > 0 && j < len(r) {
+		if j := i; j >= 0 && j < len(r) {
   0x49c28d		e9c4feffff		JMP 0x49c156		
 	switch bt[len(bt)-1].pc {
   0x49c292		48ffcf			DECQ DI			
@@ -140,7 +140,7 @@ restart:
   0x49c2b2		7476			JE 0x49c32a		
 			si++
   0x49c2b4		488d4101		LEAQ 0x1(CX), AX	
-		if j := i - 1; j > 0 && j < len(r) {
+		if j := i - 1; j >= 0 && j < len(r) {
   0x49c2b8		4889fe			MOVQ DI, SI		
 	var _bt [1]state
   0x49c2bb		48c744247800000000	MOVQ $0x0, 0x78(SP)	
@@ -152,10 +152,10 @@ restart:
   0x49c2e1		0f11442468		MOVUPS X0, 0x68(SP)	
 	c[0] = i
   0x49c2e6		4889442458		MOVQ AX, 0x58(SP)	
-		if j := i - 1; j > 0 && j < len(r) {
+		if j := i - 1; j >= 0 && j < len(r) {
   0x49c2eb		488d78ff		LEAQ -0x1(AX), DI	
   0x49c2ef		4885ff			TESTQ DI, DI		
-  0x49c2f2		0f8e8d020000		JLE 0x49c585		
+  0x49c2f2		0f8c8d020000		JL 0x49c585		
   0x49c2f8		0f1f840000000000	NOPL 0(AX)(AX*1)	
   0x49c300		4839f7			CMPQ SI, DI		
   0x49c303		0f8d7c020000		JGE 0x49c585		
@@ -342,7 +342,7 @@ func Match(r []rune) ([2][]rune, bool) {
 		goto fail
   0x49c580		e943fbffff		JMP 0x49c0c8		
   0x49c585		bfffffffff		MOVL $-0x1, DI		
-		if j := i - 1; j > 0 && j < len(r) {
+		if j := i - 1; j >= 0 && j < len(r) {
   0x49c58a		e97efdffff		JMP 0x49c30d		
 		m[1] = r[c[2]:c[3]]
   0x49c58f		e80c70fcff		CALL runtime.panicSliceB(SB)	

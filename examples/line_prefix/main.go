@@ -48,7 +48,7 @@ inst0: // fail
 inst1: // empty 1 -> 2
 	{
 		before := rune(-1)
-		if j := i - 1; j > 0 && j < len(r) {
+		if j := i - 1; j >= 0 && j < len(r) {
 			before = r[j]
 		}
 		if before == '\n' || before == -1 {
@@ -123,7 +123,7 @@ inst6: // cap 3 -> 7
 inst7: // empty 2 -> 8
 	{
 		after := rune(-1)
-		if j := i; j > 0 && j < len(r) {
+		if j := i; j >= 0 && j < len(r) {
 			after = r[j]
 		}
 		if after == '\n' || after == -1 {
