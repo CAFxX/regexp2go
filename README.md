@@ -14,6 +14,8 @@ Do not use for anything serious.
 
 ## Usage
 
+For a quick demo:
+
 ```sh
 $ go get github.com/CAFxX/regexp2go
 
@@ -22,13 +24,24 @@ $ go get github.com/CAFxX/regexp2go
 # This requires regexp2go to be on your PATH.
 $ regexp2go '(?m)^INFO res=([0-9]+) msg=(.*)' > gen/main.go
 
-# The generated file contains a main function that simply calls
-# the Match function, that actually implements the regular expression,
+# The generated file contains a main function that simply calls the
+# generated `Match` function (the one that implements the regular expression)
 # passing the input text provided as argument.
 $ go run gen/main.go 'INFO res=42 msg=ok'
 0: "INFO res=42 msg=ok"
 1: "42"
 2: "ok"
+```
+
+To generate a Match function that can be called from your program:
+
+```sh
+# Compile the provided regular expression using the default Go regexp 
+# flags (212) and save the result in re/info_line.go.
+# The pkg flag specifies the package name. The fn flag specifies the
+# name of the generated function.
+# This requires regexp2go to be on your PATH.
+$ regexp2go -pkg re -fn MatchInfoLine '(?m)^INFO res=([0-9]+) msg=(.*)' > re/info_line.go
 ```
 
 ## Examples
