@@ -61,7 +61,7 @@ func main() {
 			func main() {
 				m, found := %s([]rune(os.Args[1]))
 				if !found {
-					return
+					os.Exit(-1)
 				}
 				for i, c := range m {
 					fmt.Printf("%%d: %%q\n", i, string(c))
@@ -166,24 +166,31 @@ func main() {
 			out("c[%d] = i \n goto inst%d \n", inst.Arg, inst.Out)
 		case syntax.InstEmptyWidth:
 			out("{\n")
-			out("before, after := rune(-1), rune(-1)\n")
-			out("if i > 0 { before = r[i-1] }\n")
-			out("if i < len(r) { after = r[i] }\n")
-			out("_, _ = before, after\n")
-			out("if ")
+			before := "before := rune(-1) \n if j := i-1; j > 0 && j < len(r) { before = r[j] } \n"
+			after := "after  := rune(-1) \n if j := i;   j > 0 && j < len(r) { after = r[j]  } \n"
 			switch syntax.EmptyOp(inst.Arg) {
 			case syntax.EmptyBeginLine:
-				out(`before == '\n' || before == -1`)
+				out(before)
+				out(`if before == '\n' || before == -1`)
 			case syntax.EmptyEndLine:
-				out(`after == '\n' || after == -1`)
+				out(after)
+				out(`if after == '\n' || after == -1`)
 			case syntax.EmptyBeginText:
-				out("before == -1")
+				//out(before)
+				//out("if before == -1")
+				out("if i <= 0")
 			case syntax.EmptyEndText:
-				out("after == -1")
+				//out(after)
+				//out("if after == -1")
+				out("if i >= len(r)")
 			case syntax.EmptyWordBoundary:
-				out("syntax.IsWordChar(before) != syntax.IsWordChar(after)")
+				out(before)
+				out(after)
+				out("if syntax.IsWordChar(before) != syntax.IsWordChar(after)")
 			case syntax.EmptyNoWordBoundary:
-				out("syntax.IsWordChar(before) == syntax.IsWordChar(after)")
+				out(before)
+				out(after)
+				out("if syntax.IsWordChar(before) == syntax.IsWordChar(after)")
 			default:
 				panic("not implemented InstEmptyWidth")
 			}
@@ -193,13 +200,12 @@ func main() {
 		case syntax.InstMatch:
 			out("c[1] = i \n goto match\n")
 		case syntax.InstFail:
-			out("goto fail\n")
+			out("goto fail \n")
 		case syntax.InstNop:
-			out("goto inst%d", inst.Out)
+			out("goto inst%d \n", inst.Out)
 		case syntax.InstRune1:
 			fallthrough
 		case syntax.InstRune:
-			// TODO: switch to a LUT-based approach when matching against many runes or rune ranges
 			if len(inst.Rune) == 0 {
 				panic("empty rune")
 			}

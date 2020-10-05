@@ -11,7 +11,7 @@ import "os"
 func main() {
 	m, found := Match([]rune(os.Args[1]))
 	if !found {
-		return
+		os.Exit(-1)
 	}
 	for i, c := range m {
 		fmt.Printf("%d: %q\n", i, string(c))
@@ -47,14 +47,10 @@ inst0: // fail
 	goto inst1
 inst1: // empty 1 -> 2
 	{
-		before, after := rune(-1), rune(-1)
-		if i > 0 {
-			before = r[i-1]
+		before := rune(-1)
+		if j := i - 1; j > 0 && j < len(r) {
+			before = r[j]
 		}
-		if i < len(r) {
-			after = r[i]
-		}
-		_, _ = before, after
 		if before == '\n' || before == -1 {
 			goto inst2
 		}
@@ -126,14 +122,10 @@ inst6: // cap 3 -> 7
 	goto inst7
 inst7: // empty 2 -> 8
 	{
-		before, after := rune(-1), rune(-1)
-		if i > 0 {
-			before = r[i-1]
+		after := rune(-1)
+		if j := i; j > 0 && j < len(r) {
+			after = r[j]
 		}
-		if i < len(r) {
-			after = r[i]
-		}
-		_, _ = before, after
 		if after == '\n' || after == -1 {
 			goto inst8
 		}
