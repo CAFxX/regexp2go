@@ -90,6 +90,7 @@ func main() {
 	out("func %s(r []rune) ([%d][]rune, bool) {\n", *fn, p.NumCap/2)
 	out("  si := 0\n")
 	out("restart:\n")
+	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  var _bt [%d]state\n  bt := _bt[:0]\n", numSt)
 	out("  var c [%d]int\n", p.NumCap)
 	out("  i := si\n")
