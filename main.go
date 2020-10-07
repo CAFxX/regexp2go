@@ -91,6 +91,7 @@ func main() {
 	out("func %s(r []rune) ([%d][]rune, bool) {\n", *fn, p.NumCap/2)
 	out("  si := 0 // starting rune index \n")
 	out("restart:\n")
+	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  var _bt [%d]state // static storage for backtracking state \n bt := _bt[:0] // backtracking state \n", numSt)
 	out("  var c [%d]int // captures \n", p.NumCap)
 	out("  i := si // current rune index \n")
