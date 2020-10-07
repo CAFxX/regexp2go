@@ -274,7 +274,7 @@ inst21: // rune "ccggtt" -> 22
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst22
@@ -461,7 +461,7 @@ inst36: // rune "aaccgg" -> 38
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst38
@@ -530,7 +530,7 @@ inst42: // rune "aacctt" -> 43
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst43
@@ -693,7 +693,7 @@ inst55: // rune "aaggtt" -> 56
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst56
@@ -786,7 +786,7 @@ inst63: // rune "aacctt" -> 64
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst64
@@ -925,7 +925,7 @@ inst74: // rune "aaggtt" -> 75
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst75
@@ -1042,7 +1042,7 @@ inst84: // rune "aacctt" -> 85
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst85
@@ -1157,7 +1157,7 @@ inst93: // rune "aaggtt" -> 94
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst94
@@ -1298,7 +1298,7 @@ inst105: // rune "aaccgg" -> 106
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst106
@@ -1389,7 +1389,7 @@ inst112: // rune "ccggtt" -> 113
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst113
@@ -1554,7 +1554,7 @@ inst126: // rune "ccggtt" -> 127
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst127
@@ -1621,7 +1621,7 @@ inst131: // rune "aaccgg" -> 132
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst132
@@ -1810,7 +1810,7 @@ inst147: // rune "ccggtt" -> 148
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst148
@@ -1853,7 +1853,7 @@ inst150: // rune "aaccgg" -> 151
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst151
@@ -2066,7 +2066,7 @@ inst168: // rune "ccggtt" -> 178
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst178
@@ -2085,7 +2085,7 @@ inst169: // rune "aaccgg" -> 170
 	if i >= 0 && i < len(r) {
 		cr := r[i]
 		if cr < 128 {
-			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
 				i++
 				goto inst170

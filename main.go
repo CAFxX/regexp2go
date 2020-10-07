@@ -257,7 +257,7 @@ func main() {
 			if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
 				useRuneMask = true
 				out(`if cr < %d { 
-						runeMask := %q
+						const runeMask = %q
 						if runeMask[cr/8] & (1<<(cr%%8)) != 0 { 
 							i++
 							goto inst%d 
