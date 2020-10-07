@@ -114,9 +114,6 @@ func main() {
 	for pc, inst := range p.Inst {
 		out("\n goto inst%d \n inst%d: // %s \n", pc, pc, inst.String())
 		// out("fmt.Println(i, %d, %q)\n", pc, inst.String())
-		if inst.Op != syntax.InstMatch && inst.Op != syntax.InstAlt && inst.Op != syntax.InstCapture && inst.Op != syntax.InstFail && inst.Op != syntax.InstEmptyWidth {
-			out("if i < 0 || i >= len(r) { goto fail }\n")
-		}
 		switch inst.Op {
 		case syntax.InstAlt:
 			// TODO: use a pool of state segments to avoid copying (by linking the segments into a stack)
@@ -251,6 +248,7 @@ func main() {
 			if len(runes)%2 == 1 {
 				panic("odd runes")
 			}
+			out("if i < 0 || i >= len(r) { goto fail }\n")
 			out("{\n")
 			out("cr := r[i]\n")
 			out("_ = cr\n")
@@ -287,8 +285,10 @@ func main() {
 			out("goto fail\n")
 			out("}\n")
 		case syntax.InstRuneAny:
+			out("if i < 0 || i >= len(r) { goto fail }\n")
 			out("i++ \n goto inst%d", inst.Out)
 		case syntax.InstRuneAnyNotNL:
+			out("if i < 0 || i >= len(r) { goto fail }\n")
 			out("if r[i] != rune('\\n') { i++ \n goto inst%d }\n goto fail \n", inst.Out)
 		default:
 			panic("unknown op")
