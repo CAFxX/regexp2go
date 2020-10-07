@@ -40,10 +40,12 @@ restart:
 	c[0] = i
 	goto inst1
 
+	goto unreachable
 	goto inst0
 inst0: // fail
 	goto fail
 
+	goto unreachable
 	goto inst1
 inst1: // empty 1 -> 2
 	{
@@ -57,6 +59,7 @@ inst1: // empty 1 -> 2
 		goto fail
 	}
 
+	goto unreachable
 	goto inst2
 inst2: // rune1 ">" -> 3
 	if i >= 0 && i < len(r) {
@@ -68,11 +71,13 @@ inst2: // rune1 ">" -> 3
 	}
 	goto fail
 
+	goto unreachable
 	goto inst3
 inst3: // cap 2 -> 5
 	c[2] = i
 	goto inst5
 
+	goto unreachable
 	goto inst4
 inst4: // anynotnl -> 5
 	if i < 0 || i >= len(r) || r[i] == rune('\n') {
@@ -80,6 +85,7 @@ inst4: // anynotnl -> 5
 	}
 	i++
 	goto inst5
+	goto unreachable
 	goto inst5
 inst5: // alt -> 4, 6
 	if len(bt) > 0 {
@@ -106,11 +112,13 @@ inst5_alt:
 		goto inst6
 	}
 
+	goto unreachable
 	goto inst6
 inst6: // cap 3 -> 7
 	c[3] = i
 	goto inst7
 
+	goto unreachable
 	goto inst7
 inst7: // empty 2 -> 8
 	{
@@ -124,6 +132,7 @@ inst7: // empty 2 -> 8
 		goto fail
 	}
 
+	goto unreachable
 	goto inst8
 inst8: // match
 	c[1] = i

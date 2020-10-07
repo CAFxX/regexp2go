@@ -112,7 +112,7 @@ func main() {
 	out("  goto inst%d\n", p.Start)
 
 	for pc, inst := range p.Inst {
-		out("\n goto inst%d \n inst%d: // %s \n", pc, pc, inst.String())
+		out("\n goto unreachable \n goto inst%d \n inst%d: // %s \n", pc, pc, inst.String())
 		// out("fmt.Println(i, %d, %q)\n", pc, inst.String())
 		switch inst.Op {
 		case syntax.InstAlt:
