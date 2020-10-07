@@ -89,6 +89,8 @@ func main() {
 				}
 			}
 		`, *fn)
+	} else {
+		out(`const %sRegexp = %q`, *fn, regex)
 	}
 	out("var _ = syntax.IsWordChar")
 	out("type state struct { c [%d]int; i int; pc int; cnt int }", p.NumCap)
