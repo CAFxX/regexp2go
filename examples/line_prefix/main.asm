@@ -3,7 +3,7 @@ func Match(r []rune) ([2][]rune, bool) {
   0x49c060		64488b0c25f8ffffff	MOVQ FS:0xfffffff8, CX	
   0x49c069		488d842430ffffff	LEAQ 0xffffff30(SP), AX	
   0x49c071		483b4110		CMPQ 0x10(CX), AX	
-  0x49c075		0f8654050000		JBE 0x49c5cf		
+  0x49c075		0f864b050000		JBE 0x49c5c6		
   0x49c07b		4881ec50010000		SUBQ $0x150, SP		
   0x49c082		4889ac2448010000	MOVQ BP, 0x148(SP)	
   0x49c08a		488dac2448010000	LEAQ 0x148(SP), BP	
@@ -28,7 +28,7 @@ restart:
   0x49c0de		4d8b4c10f0		MOVQ -0x10(R8)(DX*1), R9	
 	case 5:
   0x49c0e3		4983f905		CMPQ $0x5, R9		
-  0x49c0e7		0f85c8040000		JNE 0x49c5b5		
+  0x49c0e7		0f85ba040000		JNE 0x49c5a7		
 		c, i = ps.c, ps.i
   0x49c0ed		4e8b4c02e8		MOVQ -0x18(DX)(R8*1), R9	
   0x49c0f2		4d8d1410		LEAQ 0(R8)(DX*1), R10		
@@ -76,9 +76,9 @@ restart:
   0x49c191		488b942468010000	MOVQ 0x168(SP), DX	
   0x49c199		0f1f8000000000		NOPL 0(AX)		
   0x49c1a0		4839d1			CMPQ DX, CX		
-  0x49c1a3		0f87fc030000		JA 0x49c5a5		
+  0x49c1a3		0f87ee030000		JA 0x49c597		
   0x49c1a9		4839c8			CMPQ CX, AX		
-  0x49c1ac		0f87ee030000		JA 0x49c5a0		
+  0x49c1ac		0f87e0030000		JA 0x49c592		
   0x49c1b2		4889d6			MOVQ DX, SI		
   0x49c1b5		4829c2			SUBQ AX, DX		
   0x49c1b8		4889d7			MOVQ DX, DI		
@@ -96,10 +96,10 @@ restart:
   0x49c1eb		488b442468		MOVQ 0x68(SP), AX	
   0x49c1f0		488b4c2470		MOVQ 0x70(SP), CX	
   0x49c1f5		4839f1			CMPQ SI, CX		
-  0x49c1f8		0f8796030000		JA 0x49c594		
+  0x49c1f8		0f878c030000		JA 0x49c58a		
   0x49c1fe		6690			NOPW			
   0x49c200		4839c8			CMPQ CX, AX		
-  0x49c203		0f8786030000		JA 0x49c58f		
+  0x49c203		0f877c030000		JA 0x49c585		
   0x49c209		4829c6			SUBQ AX, SI		
   0x49c20c		4889f2			MOVQ SI, DX		
   0x49c20f		48f7de			NEGQ SI			
@@ -133,7 +133,7 @@ restart:
   0x49c29a		660f1f440000		NOPW 0(AX)(AX*1)	
 		if len(r[si:]) != 0 {
   0x49c2a0		4839ce			CMPQ CX, SI		
-  0x49c2a3		0f8201030000		JB 0x49c5aa		
+  0x49c2a3		0f82f3020000		JB 0x49c59c		
   0x49c2a9		4889f7			MOVQ SI, DI		
   0x49c2ac		4829ce			SUBQ CX, SI		
   0x49c2af		4885f6			TESTQ SI, SI		
@@ -155,15 +155,15 @@ restart:
 		if j := i - 1; j >= 0 && j < len(r) {
   0x49c2eb		488d78ff		LEAQ -0x1(AX), DI	
   0x49c2ef		4885ff			TESTQ DI, DI		
-  0x49c2f2		0f8c8d020000		JL 0x49c585		
+  0x49c2f2		0f8c80020000		JL 0x49c578		
   0x49c2f8		0f1f840000000000	NOPL 0(AX)(AX*1)	
   0x49c300		4839f7			CMPQ SI, DI		
-  0x49c303		0f8d7c020000		JGE 0x49c585		
+  0x49c303		0f8d6f020000		JGE 0x49c578		
 			before = r[j]
   0x49c309		8b7c83fc		MOVL -0x4(BX)(AX*4), DI	
 		if before == '\n' || before == -1 {
   0x49c30d		83ff0a			CMPL $0xa, DI		
-  0x49c310		0f8556020000		JNE 0x49c56c		
+  0x49c310		0f854a020000		JNE 0x49c560		
 	if i < 0 || i >= len(r) {
   0x49c316		4885c0			TESTQ AX, AX		
   0x49c319		7d6f			JGE 0x49c38a		
@@ -196,7 +196,7 @@ restart:
   0x49c38f		8b3c83			MOVL 0(BX)(AX*4), DI	
   0x49c392		83ff3e			CMPL $0x3e, DI		
 		if false || cr == 62 {
-  0x49c395		0f85c2010000		JNE 0x49c55d		
+  0x49c395		0f85b4010000		JNE 0x49c54f		
 	i := si
   0x49c39b		4889442440		MOVQ AX, 0x40(SP)	
 			i++
@@ -209,34 +209,33 @@ restart:
   0x49c3b0		41b801000000		MOVL $0x1, R8		
 	goto inst5
   0x49c3b6		eb08			JMP 0x49c3c0		
-		i++
+	i++
   0x49c3b8		498d7b01		LEAQ 0x1(R11), DI	
   0x49c3bc		0f1f4000		NOPL 0(AX)		
 	if len(bt) > 0 {
   0x49c3c0		4885c9			TESTQ CX, CX		
-  0x49c3c3		0f8e8c010000		JLE 0x49c555		
+  0x49c3c3		0f8e7e010000		JLE 0x49c547		
 		ps := &bt[len(bt)-1]
   0x49c3c9		4c6bc938		IMULQ $0x38, CX, R9	
 		if ps.pc == 5 && i-ps.i == 1 {
   0x49c3cd		4d8b5411f0		MOVQ -0x10(R9)(DX*1), R10	
   0x49c3d2		4983fa05		CMPQ $0x5, R10			
-  0x49c3d6		0f8571010000		JNE 0x49c54d			
+  0x49c3d6		0f8563010000		JNE 0x49c53f			
   0x49c3dc		4e8b540ae8		MOVQ -0x18(DX)(R9*1), R10	
   0x49c3e1		4989fb			MOVQ DI, R11			
   0x49c3e4		4c29d7			SUBQ R10, DI			
   0x49c3e7		4883ff01		CMPQ $0x1, DI			
-  0x49c3eb		7541			JNE 0x49c42e			
+  0x49c3eb		7531			JNE 0x49c41e			
 			ps.i = i
   0x49c3ed		4d895c11e8		MOVQ R11, -0x18(R9)(DX*1)	
 			ps.cnt++
   0x49c3f2		49ff4411f8		INCQ -0x8(R9)(DX*1)	
-	if i < 0 || i >= len(r) {
+	if i < 0 || i >= len(r) || r[i] == rune('\n') {
   0x49c3f7		4d85db			TESTQ R11, R11		
-  0x49c3fa		7c22			JL 0x49c41e		
+  0x49c3fa		7c12			JL 0x49c40e		
   0x49c3fc		0f1f4000		NOPL 0(AX)		
   0x49c400		4c39de			CMPQ R11, SI		
-  0x49c403		7e19			JLE 0x49c41e		
-	if r[i] != rune('\n') {
+  0x49c403		7e09			JLE 0x49c40e		
   0x49c405		428b3c9b		MOVL 0(BX)(R11*4), DI	
   0x49c409		83ff0a			CMPL $0xa, DI		
   0x49c40c		75aa			JNE 0x49c3b8		
@@ -245,124 +244,117 @@ restart:
   0x49c411		4889cf			MOVQ CX, DI		
 		if len(r[si:]) != 0 {
   0x49c414		488b4c2440		MOVQ 0x40(SP), CX	
-	goto fail
+		goto fail
   0x49c419		e9aafcffff		JMP 0x49c0c8		
-		if i <= len(r) && len(bt) > 0 {
-  0x49c41e		4c89d8			MOVQ R11, AX		
-  0x49c421		4889cf			MOVQ CX, DI		
-		if len(r[si:]) != 0 {
-  0x49c424		488b4c2440		MOVQ 0x40(SP), CX	
-		goto fail
-  0x49c429		e99afcffff		JMP 0x49c0c8		
 	bt = append(bt, state{c, i, 5, 0})
-  0x49c42e		48c78424b000000000000000	MOVQ $0x0, 0xb0(SP)	
-  0x49c43a		0f118424b8000000		MOVUPS X0, 0xb8(SP)	
-  0x49c442		0f118424c8000000		MOVUPS X0, 0xc8(SP)	
-  0x49c44a		0f118424d8000000		MOVUPS X0, 0xd8(SP)	
-  0x49c452		0f104c2458			MOVUPS 0x58(SP), X1	
-  0x49c457		0f118c24b0000000		MOVUPS X1, 0xb0(SP)	
-  0x49c45f		0f104c2468			MOVUPS 0x68(SP), X1	
-  0x49c464		0f118c24c0000000		MOVUPS X1, 0xc0(SP)	
-  0x49c46c		4c899c24d0000000		MOVQ R11, 0xd0(SP)	
-  0x49c474		48c78424d800000005000000	MOVQ $0x5, 0xd8(SP)	
-  0x49c480		48c78424e000000000000000	MOVQ $0x0, 0xe0(SP)	
-  0x49c48c		488d7901			LEAQ 0x1(CX), DI	
-  0x49c490		4c39c7				CMPQ R8, DI		
-  0x49c493		7750				JA 0x49c4e5		
-  0x49c495		4c8b8c24b0000000		MOVQ 0xb0(SP), R9	
-  0x49c49d		4c6bd138			IMULQ $0x38, CX, R10	
-  0x49c4a1		4e890c12			MOVQ R9, 0(DX)(R10*1)	
-  0x49c4a5		4e8d0c12			LEAQ 0(DX)(R10*1), R9	
-  0x49c4a9		4d8d4908			LEAQ 0x8(R9), R9	
-  0x49c4ad		0f108c24b8000000		MOVUPS 0xb8(SP), X1	
-  0x49c4b5		410f1109			MOVUPS X1, 0(R9)	
-  0x49c4b9		4e8d0c12			LEAQ 0(DX)(R10*1), R9	
-  0x49c4bd		4d8d4918			LEAQ 0x18(R9), R9	
-  0x49c4c1		0f108c24c8000000		MOVUPS 0xc8(SP), X1	
-  0x49c4c9		410f1109			MOVUPS X1, 0(R9)	
-  0x49c4cd		0f108c24d8000000		MOVUPS 0xd8(SP), X1	
-  0x49c4d5		410f114910			MOVUPS X1, 0x10(R9)	
+  0x49c41e		48c78424b000000000000000	MOVQ $0x0, 0xb0(SP)	
+  0x49c42a		0f118424b8000000		MOVUPS X0, 0xb8(SP)	
+  0x49c432		0f118424c8000000		MOVUPS X0, 0xc8(SP)	
+  0x49c43a		0f118424d8000000		MOVUPS X0, 0xd8(SP)	
+  0x49c442		0f104c2458			MOVUPS 0x58(SP), X1	
+  0x49c447		0f118c24b0000000		MOVUPS X1, 0xb0(SP)	
+  0x49c44f		0f104c2468			MOVUPS 0x68(SP), X1	
+  0x49c454		0f118c24c0000000		MOVUPS X1, 0xc0(SP)	
+  0x49c45c		4c899c24d0000000		MOVQ R11, 0xd0(SP)	
+  0x49c464		48c78424d800000005000000	MOVQ $0x5, 0xd8(SP)	
+  0x49c470		48c78424e000000000000000	MOVQ $0x0, 0xe0(SP)	
+  0x49c47c		488d7901			LEAQ 0x1(CX), DI	
+  0x49c480		4c39c7				CMPQ R8, DI		
+  0x49c483		774d				JA 0x49c4d2		
+  0x49c485		4c8b8c24b0000000		MOVQ 0xb0(SP), R9	
+  0x49c48d		4c6bd138			IMULQ $0x38, CX, R10	
+  0x49c491		4e890c12			MOVQ R9, 0(DX)(R10*1)	
+  0x49c495		4e8d0c12			LEAQ 0(DX)(R10*1), R9	
+  0x49c499		4d8d4908			LEAQ 0x8(R9), R9	
+  0x49c49d		0f108c24b8000000		MOVUPS 0xb8(SP), X1	
+  0x49c4a5		410f1109			MOVUPS X1, 0(R9)	
+  0x49c4a9		4e8d0c12			LEAQ 0(DX)(R10*1), R9	
+  0x49c4ad		4d8d4918			LEAQ 0x18(R9), R9	
+  0x49c4b1		0f108c24c8000000		MOVUPS 0xc8(SP), X1	
+  0x49c4b9		410f1109			MOVUPS X1, 0(R9)	
+  0x49c4bd		0f108c24d8000000		MOVUPS 0xd8(SP), X1	
+  0x49c4c5		410f114910			MOVUPS X1, 0x10(R9)	
 		if i <= len(r) && len(bt) > 0 {
-  0x49c4da		4889f9			MOVQ DI, CX		
-  0x49c4dd		0f1f00			NOPL 0(AX)		
+  0x49c4ca		4889f9			MOVQ DI, CX		
 	goto inst4
-  0x49c4e0		e912ffffff		JMP 0x49c3f7		
+  0x49c4cd		e925ffffff		JMP 0x49c3f7		
 	if len(bt) > 0 {
-  0x49c4e5		48894c2448		MOVQ CX, 0x48(SP)	
+  0x49c4d2		48894c2448		MOVQ CX, 0x48(SP)	
 			ps.i = i
-  0x49c4ea		4c895c2450		MOVQ R11, 0x50(SP)	
+  0x49c4d7		4c895c2450		MOVQ R11, 0x50(SP)	
 	bt = append(bt, state{c, i, 5, 0})
-  0x49c4ef		488d056a850100		LEAQ 0x1856a(IP), AX		
-  0x49c4f6		48890424		MOVQ AX, 0(SP)			
-  0x49c4fa		4889542408		MOVQ DX, 0x8(SP)		
-  0x49c4ff		48894c2410		MOVQ CX, 0x10(SP)		
-  0x49c504		4c89442418		MOVQ R8, 0x18(SP)		
-  0x49c509		48897c2420		MOVQ DI, 0x20(SP)		
-  0x49c50e		e82dacfaff		CALL runtime.growslice(SB)	
-  0x49c513		488b542428		MOVQ 0x28(SP), DX		
-  0x49c518		488b442430		MOVQ 0x30(SP), AX		
-  0x49c51d		4c8b442438		MOVQ 0x38(SP), R8		
-  0x49c522		488d7801		LEAQ 0x1(AX), DI		
+  0x49c4dc		488d057d850100		LEAQ 0x1857d(IP), AX		
+  0x49c4e3		48890424		MOVQ AX, 0(SP)			
+  0x49c4e7		4889542408		MOVQ DX, 0x8(SP)		
+  0x49c4ec		48894c2410		MOVQ CX, 0x10(SP)		
+  0x49c4f1		4c89442418		MOVQ R8, 0x18(SP)		
+  0x49c4f6		48897c2420		MOVQ DI, 0x20(SP)		
+  0x49c4fb		0f1f440000		NOPL 0(AX)(AX*1)		
+  0x49c500		e83bacfaff		CALL runtime.growslice(SB)	
+  0x49c505		488b542428		MOVQ 0x28(SP), DX		
+  0x49c50a		488b442430		MOVQ 0x30(SP), AX		
+  0x49c50f		4c8b442438		MOVQ 0x38(SP), R8		
+  0x49c514		488d7801		LEAQ 0x1(AX), DI		
 		if len(r[si:]) != 0 {
-  0x49c526		488b442440		MOVQ 0x40(SP), AX	
+  0x49c518		488b442440		MOVQ 0x40(SP), AX	
 	bt = append(bt, state{c, i, 5, 0})
-  0x49c52b		488b4c2448		MOVQ 0x48(SP), CX	
-	if r[i] != rune('\n') {
-  0x49c530		488b9c2458010000	MOVQ 0x158(SP), BX	
-	if i < 0 || i >= len(r) {
-  0x49c538		488bb42460010000	MOVQ 0x160(SP), SI	
-  0x49c540		4c8b5c2450		MOVQ 0x50(SP), R11	
+  0x49c51d		488b4c2448		MOVQ 0x48(SP), CX	
+	if i < 0 || i >= len(r) || r[i] == rune('\n') {
+  0x49c522		488b9c2458010000	MOVQ 0x158(SP), BX	
+  0x49c52a		488bb42460010000	MOVQ 0x160(SP), SI	
+  0x49c532		4c8b5c2450		MOVQ 0x50(SP), R11	
 func Match(r []rune) ([2][]rune, bool) {
-  0x49c545		0f57c0			XORPS X0, X0		
+  0x49c537		0f57c0			XORPS X0, X0		
 	bt = append(bt, state{c, i, 5, 0})
-  0x49c548		e948ffffff		JMP 0x49c495		
-  0x49c54d		4989fb			MOVQ DI, R11		
+  0x49c53a		e946ffffff		JMP 0x49c485		
+  0x49c53f		4989fb			MOVQ DI, R11		
 		if ps.pc == 5 && i-ps.i == 1 {
-  0x49c550		e9d9feffff		JMP 0x49c42e		
+  0x49c542		e9d7feffff		JMP 0x49c41e		
 	bt = append(bt, state{c, i, 5, 0})
-  0x49c555		4989fb			MOVQ DI, R11		
+  0x49c547		4989fb			MOVQ DI, R11		
 	if len(bt) > 0 {
-  0x49c558		e9d1feffff		JMP 0x49c42e		
+  0x49c54a		e9cffeffff		JMP 0x49c41e		
 		if len(r[si:]) != 0 {
-  0x49c55d		4889c1			MOVQ AX, CX		
+  0x49c54f		4889c1			MOVQ AX, CX		
 	bt := _bt[:0]
-  0x49c560		488d542478		LEAQ 0x78(SP), DX	
-  0x49c565		31ff			XORL DI, DI		
+  0x49c552		488d542478		LEAQ 0x78(SP), DX	
+  0x49c557		31ff			XORL DI, DI		
 		goto fail
-  0x49c567		e95cfbffff		JMP 0x49c0c8		
+  0x49c559		e96afbffff		JMP 0x49c0c8		
+  0x49c55e		6690			NOPW			
 		if before == '\n' || before == -1 {
-  0x49c56c		83ffff			CMPL $-0x1, DI		
-  0x49c56f		0f84a1fdffff		JE 0x49c316		
+  0x49c560		83ffff			CMPL $-0x1, DI		
+  0x49c563		0f84adfdffff		JE 0x49c316		
 		if len(r[si:]) != 0 {
-  0x49c575		4889c1			MOVQ AX, CX		
+  0x49c569		4889c1			MOVQ AX, CX		
 	bt := _bt[:0]
-  0x49c578		488d542478		LEAQ 0x78(SP), DX	
-  0x49c57d		31ff			XORL DI, DI		
-  0x49c57f		90			NOPL			
+  0x49c56c		488d542478		LEAQ 0x78(SP), DX	
+  0x49c571		31ff			XORL DI, DI		
 		goto fail
-  0x49c580		e943fbffff		JMP 0x49c0c8		
-  0x49c585		bfffffffff		MOVL $-0x1, DI		
+  0x49c573		e950fbffff		JMP 0x49c0c8		
+  0x49c578		bfffffffff		MOVL $-0x1, DI		
+  0x49c57d		0f1f00			NOPL 0(AX)		
 		if j := i - 1; j >= 0 && j < len(r) {
-  0x49c58a		e97efdffff		JMP 0x49c30d		
+  0x49c580		e988fdffff		JMP 0x49c30d		
 		m[1] = r[c[2]:c[3]]
-  0x49c58f		e80c70fcff		CALL runtime.panicSliceB(SB)	
-  0x49c594		4889f2			MOVQ SI, DX			
-  0x49c597		e8c46ffcff		CALL runtime.panicSliceAcap(SB)	
-  0x49c59c		0f1f4000		NOPL 0(AX)			
+  0x49c585		e81670fcff		CALL runtime.panicSliceB(SB)	
+  0x49c58a		4889f2			MOVQ SI, DX			
+  0x49c58d		e8ce6ffcff		CALL runtime.panicSliceAcap(SB)	
 		m[0] = r[c[0]:c[1]]
-  0x49c5a0		e8fb6ffcff		CALL runtime.panicSliceB(SB)	
-  0x49c5a5		e8b66ffcff		CALL runtime.panicSliceAcap(SB)	
+  0x49c592		e80970fcff		CALL runtime.panicSliceB(SB)	
+  0x49c597		e8c46ffcff		CALL runtime.panicSliceAcap(SB)	
 		if len(r[si:]) != 0 {
-  0x49c5aa		4889c8			MOVQ CX, AX			
-  0x49c5ad		4889f1			MOVQ SI, CX			
-  0x49c5b0		e8eb6ffcff		CALL runtime.panicSliceB(SB)	
+  0x49c59c		4889c8			MOVQ CX, AX			
+  0x49c59f		4889f1			MOVQ SI, CX			
+  0x49c5a2		e8f96ffcff		CALL runtime.panicSliceB(SB)	
 		panic(bt[len(bt)-1].pc)
-  0x49c5b5		4c890c24		MOVQ R9, 0(SP)			
-  0x49c5b9		e8e2daf6ff		CALL runtime.convT64(SB)	
-  0x49c5be		488d059bae0000		LEAQ 0xae9b(IP), AX		
-  0x49c5c5		48890424		MOVQ AX, 0(SP)			
-  0x49c5c9		e8f252f9ff		CALL runtime.gopanic(SB)	
-  0x49c5ce		90			NOPL				
+  0x49c5a7		4c890c24		MOVQ R9, 0(SP)			
+  0x49c5ab		e8f0daf6ff		CALL runtime.convT64(SB)	
+  0x49c5b0		488d05a9ae0000		LEAQ 0xaea9(IP), AX		
+  0x49c5b7		48890424		MOVQ AX, 0(SP)			
+  0x49c5bb		0f1f440000		NOPL 0(AX)(AX*1)		
+  0x49c5c0		e8fb52f9ff		CALL runtime.gopanic(SB)	
+  0x49c5c5		90			NOPL				
 func Match(r []rune) ([2][]rune, bool) {
-  0x49c5cf		e88c4ffcff		CALL runtime.morestack_noctxt(SB)	
-  0x49c5d4		e987faffff		JMP main.Match(SB)			
+  0x49c5c6		e8954ffcff		CALL runtime.morestack_noctxt(SB)	
+  0x49c5cb		e990faffff		JMP main.Match(SB)			

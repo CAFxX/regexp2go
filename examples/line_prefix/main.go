@@ -79,15 +79,11 @@ inst3: // cap 2 -> 5
 
 	goto inst4
 inst4: // anynotnl -> 5
-	if i < 0 || i >= len(r) {
+	if i < 0 || i >= len(r) || r[i] == rune('\n') {
 		goto fail
 	}
-	if r[i] != rune('\n') {
-		i++
-		goto inst5
-	}
-	goto fail
-
+	i++
+	goto inst5
 	goto inst5
 inst5: // alt -> 4, 6
 	if len(bt) > 0 {

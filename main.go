@@ -288,8 +288,8 @@ func main() {
 			out("if i < 0 || i >= len(r) { goto fail }\n")
 			out("i++ \n goto inst%d", inst.Out)
 		case syntax.InstRuneAnyNotNL:
-			out("if i < 0 || i >= len(r) { goto fail }\n")
-			out("if r[i] != rune('\\n') { i++ \n goto inst%d }\n goto fail \n", inst.Out)
+			out("if i < 0 || i >= len(r) || r[i] == rune('\\n') { goto fail }\n")
+			out("i++ \n goto inst%d", inst.Out)
 		default:
 			panic("unknown op")
 		}
