@@ -96,6 +96,7 @@ func main() {
 	out("  i := si // current rune index \n")
 	if len(prefix) > 0 {
 		// TODO: search for the whole prefix, not just the first rune (but avoid n^2 behavior)
+		// TODO: jump directly into the instruction at the end of the prefix
 		out(`
 		// fast prefix search %q
 		for j, cr := range r[si:] {
