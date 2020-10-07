@@ -1,4 +1,4 @@
-git loTEXT main.Match(SB) /home/codespace/workspace/regexp2go/examples/prefix/main.go
+TEXT main.Match(SB) /home/codespace/workspace/regexp2go/examples/prefix/main.go
 func Match(r []rune) ([2][]rune, bool) {
   0x49c060		64488b0c25f8ffffff	MOVQ FS:0xfffffff8, CX	
   0x49c069		488d842428ffffff	LEAQ 0xffffff28(SP), AX	

@@ -2276,6 +2276,7 @@ fail:
 		var m [10][]rune
 		return m, false
 	}
+
 	goto unreachable
 	goto match
 match:

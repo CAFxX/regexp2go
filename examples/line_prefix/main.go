@@ -85,6 +85,7 @@ inst4: // anynotnl -> 5
 	}
 	i++
 	goto inst5
+
 	goto unreachable
 	goto inst5
 inst5: // alt -> 4, 6
@@ -162,6 +163,7 @@ fail:
 		var m [2][]rune
 		return m, false
 	}
+
 	goto unreachable
 	goto match
 match:
