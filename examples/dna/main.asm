@@ -26,7 +26,7 @@ restart:
   0x49c0da		4883c308		ADDQ $0x8, BX		
 	c[3] = i
   0x49c0de		48899c24b0000000	MOVQ BX, 0xb0(SP)	
-	c[1] = i
+	c[1] = i // end of match
   0x49c0e6		48899c24a0000000	MOVQ BX, 0xa0(SP)	
 		var m [10][]rune
   0x49c0ee		488dbc24a8190000	LEAQ 0x19a8(SP), DI	
@@ -4016,16 +4016,16 @@ restart:
   0x49f64a		488d4201		LEAQ 0x1(DX), AX	
 func Match(r []rune) ([10][]rune, bool) {
   0x49f64e		0f57c0			XORPS X0, X0		
-	var _bt [17]state
+	var _bt [17]state // static storage for backtracking state
   0x49f651		48c78424700d000000000000	MOVQ $0x0, 0xd70(SP)	
   0x49f65d		488dbc24780d0000		LEAQ 0xd78(SP), DI	
   0x49f665		b986010000			MOVL $0x186, CX		
 			goto restart
   0x49f66a		4889c2			MOVQ AX, DX		
-	var _bt [17]state
+	var _bt [17]state // static storage for backtracking state
   0x49f66d		31c0			XORL AX, AX		
   0x49f66f		f348ab			REP; STOSQ AX, ES:0(DI)	
-	var c [20]int
+	var c [20]int     // captures
   0x49f672		488dbc2498000000	LEAQ 0x98(SP), DI	
   0x49f67a		488d7fe0		LEAQ -0x20(DI), DI	
   0x49f67e		6690			NOPW			
@@ -4033,7 +4033,7 @@ func Match(r []rune) ([10][]rune, bool) {
   0x49f685		488d6c24f0		LEAQ -0x10(SP), BP	
   0x49f68a		e8af40fcff		CALL 0x46373e		
   0x49f68f		488b6d00		MOVQ 0(BP), BP		
-	c[0] = i
+	c[0] = i          // start of match
   0x49f693		4889942498000000	MOVQ DX, 0x98(SP)	
 	bt = append(bt, state{c, i, 179, 0})
   0x49f69b		48c784243801000000000000	MOVQ $0x0, 0x138(SP)	
@@ -4152,7 +4152,7 @@ func Match(r []rune) ([10][]rune, bool) {
   0x49f95f		41ba11000000			MOVL $0x11, R10		
   0x49f965		4d39d1				CMPQ R10, R9		
   0x49f968		0f87ce070000			JA 0x4a013c		
-	bt := _bt[:0]
+	bt := _bt[:0]     // backtracking state
   0x49f96e		488d8424700d0000	LEAQ 0xd70(SP), AX	
   0x49f976		b911000000		MOVL $0x11, CX		
 	bt = append(bt, state{c, i, 119, 0})

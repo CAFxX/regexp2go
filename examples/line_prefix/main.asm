@@ -93,7 +93,7 @@ restart:
   0x49c1b0		7409			JE 0x49c1bb		
   0x49c1b2		83ffff			CMPL $-0x1, DI		
   0x49c1b5		0f8563ffffff		JNE 0x49c11e		
-	c[1] = i
+	c[1] = i // end of match
   0x49c1bb		4c89442460		MOVQ R8, 0x60(SP)	
 		var m [2][]rune
   0x49c1c0		0f11842418010000	MOVUPS X0, 0x118(SP)	
@@ -170,15 +170,15 @@ restart:
   0x49c2fd		48ffc0			INCQ AX			
 		if j := i - 1; j >= 0 && j < len(r) {
   0x49c300		4889ce			MOVQ CX, SI		
-	var _bt [1]state
+	var _bt [1]state // static storage for backtracking state
   0x49c303		48c744247800000000	MOVQ $0x0, 0x78(SP)	
   0x49c30c		0f11842480000000	MOVUPS X0, 0x80(SP)	
   0x49c314		0f11842490000000	MOVUPS X0, 0x90(SP)	
   0x49c31c		0f118424a0000000	MOVUPS X0, 0xa0(SP)	
-	var c [4]int
+	var c [4]int     // captures
   0x49c324		0f11442458		MOVUPS X0, 0x58(SP)	
   0x49c329		0f11442468		MOVUPS X0, 0x68(SP)	
-	c[0] = i
+	c[0] = i         // start of match
   0x49c32e		4889442458		MOVQ AX, 0x58(SP)	
 		if j := i - 1; j >= 0 && j < len(r) {
   0x49c333		488d78ff		LEAQ -0x1(AX), DI	
@@ -203,14 +203,14 @@ restart:
   0x49c375		83ff3e			CMPL $0x3e, DI		
 		if false || cr == 62 {
   0x49c378		0f85b1010000		JNE 0x49c52f		
-	i := si
+	i := si          // current rune index
   0x49c37e		4889442440		MOVQ AX, 0x40(SP)	
 			i++
   0x49c383		488d7801		LEAQ 0x1(AX), DI	
 	c[2] = i
   0x49c387		48897c2468		MOVQ DI, 0x68(SP)	
   0x49c38c		31c9			XORL CX, CX		
-	bt := _bt[:0]
+	bt := _bt[:0]    // backtracking state
   0x49c38e		488d542478		LEAQ 0x78(SP), DX	
   0x49c393		41b801000000		MOVL $0x1, R8		
 	goto inst5
@@ -300,7 +300,7 @@ func Match(r []rune) ([2][]rune, bool) {
   0x49c52a		e9cffeffff		JMP 0x49c3fe		
 		if i <= len(r) && len(bt) > 0 {
   0x49c52f		4989c3			MOVQ AX, R11		
-	bt := _bt[:0]
+	bt := _bt[:0]    // backtracking state
   0x49c532		488d542478		LEAQ 0x78(SP), DX	
   0x49c537		31c9			XORL CX, CX		
 	goto fail
@@ -311,7 +311,7 @@ func Match(r []rune) ([2][]rune, bool) {
   0x49c543		0f8417feffff		JE 0x49c360		
 		if i <= len(r) && len(bt) > 0 {
   0x49c549		4989c3			MOVQ AX, R11		
-	bt := _bt[:0]
+	bt := _bt[:0]    // backtracking state
   0x49c54c		488d542478		LEAQ 0x78(SP), DX	
   0x49c551		31c9			XORL CX, CX		
 		goto fail

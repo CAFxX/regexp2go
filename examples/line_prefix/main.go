@@ -31,13 +31,13 @@ type state struct {
 // (?m)^>(.*)$
 // with flags 212
 func Match(r []rune) ([2][]rune, bool) {
-	si := 0
+	si := 0 // starting rune index
 restart:
-	var _bt [1]state
-	bt := _bt[:0]
-	var c [4]int
-	i := si
-	c[0] = i
+	var _bt [1]state // static storage for backtracking state
+	bt := _bt[:0]    // backtracking state
+	var c [4]int     // captures
+	i := si          // current rune index
+	c[0] = i         // start of match
 	goto inst1
 
 	goto unreachable
@@ -135,7 +135,7 @@ inst7: // empty 2 -> 8
 	goto unreachable
 	goto inst8
 inst8: // match
-	c[1] = i
+	c[1] = i // end of match
 	goto match
 
 	goto unreachable
