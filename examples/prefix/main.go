@@ -34,11 +34,11 @@ restart:
 			goto prefix_found
 		}
 	}
-	i += len(c[si:]) // no prefix found, skip to the end of the rune slice
+	i += len(r[si:]) // no prefix found, skip to the end of the rune slice
 prefix_found:
 
 	c[0] = i // start of match
-	goto inst1
+	goto inst1 // initial instruction
 
 	goto unreachable
 	goto inst0
@@ -141,6 +141,7 @@ inst9: // alt -> 8, 10
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 9 && i-ps.i == 1 {
+			// simple loop
 			ps.i = i
 			ps.cnt++
 			goto inst8
@@ -154,6 +155,7 @@ inst9_alt:
 		ps := &bt[n]
 		c, i = ps.c, ps.i
 		if ps.cnt > 0 {
+			// simple loop
 			ps.i -= 1
 			ps.cnt--
 		} else {

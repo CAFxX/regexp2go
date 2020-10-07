@@ -27,7 +27,7 @@ restart:
 	var c [4]int     // captures
 	i := si          // current rune index
 	c[0] = i         // start of match
-	goto inst1
+	goto inst1       // initial instruction
 
 	goto unreachable
 	goto inst0
@@ -81,6 +81,7 @@ inst5: // alt -> 4, 6
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 5 && i-ps.i == 1 {
+			// simple loop
 			ps.i = i
 			ps.cnt++
 			goto inst4
@@ -94,6 +95,7 @@ inst5_alt:
 		ps := &bt[n]
 		c, i = ps.c, ps.i
 		if ps.cnt > 0 {
+			// simple loop
 			ps.i -= 1
 			ps.cnt--
 		} else {

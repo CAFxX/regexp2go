@@ -27,7 +27,7 @@ restart:
 	var c [6]int     // captures
 	i := si          // current rune index
 	c[0] = i         // start of match
-	goto inst1
+	goto inst1       // initial instruction
 
 	goto unreachable
 	goto inst0
@@ -83,6 +83,7 @@ inst4: // alt -> 3, 5
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 4 && i-ps.i == 1 {
+			// simple loop
 			ps.i = i
 			ps.cnt++
 			goto inst3
@@ -96,6 +97,7 @@ inst4_alt:
 		ps := &bt[n]
 		c, i = ps.c, ps.i
 		if ps.cnt > 0 {
+			// simple loop
 			ps.i -= 1
 			ps.cnt--
 		} else {
@@ -153,6 +155,7 @@ inst9: // alt -> 8, 10
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 9 && i-ps.i == 1 {
+			// simple loop
 			ps.i = i
 			ps.cnt++
 			goto inst8
@@ -166,6 +169,7 @@ inst9_alt:
 		ps := &bt[n]
 		c, i = ps.c, ps.i
 		if ps.cnt > 0 {
+			// simple loop
 			ps.i -= 1
 			ps.cnt--
 		} else {
@@ -230,6 +234,7 @@ inst13: // alt -> 12, 14
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 13 && i-ps.i == 1 {
+			// simple loop
 			ps.i = i
 			ps.cnt++
 			goto inst12
@@ -243,6 +248,7 @@ inst13_alt:
 		ps := &bt[n]
 		c, i = ps.c, ps.i
 		if ps.cnt > 0 {
+			// simple loop
 			ps.i -= 1
 			ps.cnt--
 		} else {

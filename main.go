@@ -114,7 +114,7 @@ func main() {
 				goto prefix_found
 			}
 		}
-		i += len(c[si:]) // no prefix found, skip to the end of the rune slice
+		i += len(r[si:]) // no prefix found, skip to the end of the rune slice
 		prefix_found:	
 		`, prefix, []rune(prefix)[0])
 	}
@@ -122,7 +122,7 @@ func main() {
 	// TODO: extend the fast search above to look for suffix or infix strings, if we have a bound on the maximum length of the variable part before the suffix/infix
 	// TODO: extend the fast search above to look for multiple alternate runes, e.g. by `cr & mask == %d`, even just as an approximation
 	out("  c[0] = i // start of match ")
-	out("  goto inst%d", p.Start)
+	out("  goto inst%d // initial instruction", p.Start)
 
 	// TODO: sort instructions to maximize instruction locality
 	for pc, inst := range p.Inst {
@@ -136,6 +136,7 @@ func main() {
 					`if len(bt) > 0 {
 						ps := &bt[len(bt)-1]
 						if ps.pc == %d && i-ps.i == %d {
+							// simple loop
 							ps.i = i
 							ps.cnt++
 							goto inst%d
@@ -155,6 +156,7 @@ func main() {
 						ps := &bt[n]
 						c, i = ps.c, ps.i
 						if ps.cnt > 0 {
+							// simple loop
 							ps.i -= %d
 							ps.cnt--
 						} else {
@@ -219,6 +221,7 @@ func main() {
 				out(after)
 				outn("if syntax.IsWordChar(before) == syntax.IsWordChar(after)")
 			default:
+				// TODO: handle mixed EmptyOp
 				panic("not implemented InstEmptyWidth")
 			}
 			out(" { goto inst%d }", inst.Out)

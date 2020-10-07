@@ -27,7 +27,7 @@ restart:
 	var c [20]int     // captures
 	i := si           // current rune index
 	c[0] = i          // start of match
-	goto inst179
+	goto inst179      // initial instruction
 
 	goto unreachable
 	goto inst0
