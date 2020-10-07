@@ -59,18 +59,14 @@ inst1: // empty 1 -> 2
 
 	goto inst2
 inst2: // rune1 ">" -> 3
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 62 {
 			i++
 			goto inst3
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst3
 inst3: // cap 2 -> 5

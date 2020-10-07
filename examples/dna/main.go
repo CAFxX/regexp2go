@@ -51,243 +51,179 @@ inst1: // cap 2 -> 18
 
 	goto inst2
 inst2: // rune1 "a" -> 3
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst3
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst3
 inst3: // rune1 "g" -> 4
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst4
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst4
 inst4: // rune1 "g" -> 5
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst5
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst5
 inst5: // rune1 "g" -> 6
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst6
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst6
 inst6: // rune1 "t" -> 7
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst7
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst7
 inst7: // rune1 "a" -> 8
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst8
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst8
 inst8: // rune1 "a" -> 9
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst9
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst9
 inst9: // rune1 "a" -> 19
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst19
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst10
 inst10: // rune1 "t" -> 11
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst11
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst11
 inst11: // rune1 "t" -> 12
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst12
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst12
 inst12: // rune1 "t" -> 13
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst13
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst13
 inst13: // rune1 "a" -> 14
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst14
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst14
 inst14: // rune1 "c" -> 15
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst15
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst15
 inst15: // rune1 "c" -> 16
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst16
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst16
 inst16: // rune1 "c" -> 17
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst17
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst17
 inst17: // rune1 "t" -> 19
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst19
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst18
 inst18: // alt -> 2, 10
@@ -313,12 +249,8 @@ inst20: // cap 4 -> 37
 
 	goto inst21
 inst21: // rune "ccggtt" -> 22
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -330,227 +262,167 @@ inst21: // rune "ccggtt" -> 22
 			i++
 			goto inst22
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst22
 inst22: // rune1 "g" -> 23
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst23
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst23
 inst23: // rune1 "g" -> 24
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst24
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst24
 inst24: // rune1 "g" -> 25
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst25
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst25
 inst25: // rune1 "t" -> 26
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst26
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst26
 inst26: // rune1 "a" -> 27
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst27
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst27
 inst27: // rune1 "a" -> 28
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst28
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst28
 inst28: // rune1 "a" -> 38
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst38
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst29
 inst29: // rune1 "t" -> 30
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst30
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst30
 inst30: // rune1 "t" -> 31
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst31
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst31
 inst31: // rune1 "t" -> 32
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst32
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst32
 inst32: // rune1 "a" -> 33
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst33
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst33
 inst33: // rune1 "c" -> 34
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst34
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst34
 inst34: // rune1 "c" -> 35
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst35
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst35
 inst35: // rune1 "c" -> 36
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst36
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst36
 inst36: // rune "aaccgg" -> 38
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -562,8 +434,8 @@ inst36: // rune "aaccgg" -> 38
 			i++
 			goto inst38
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst37
 inst37: // alt -> 21, 29
@@ -601,27 +473,19 @@ inst40: // cap 6 -> 57
 
 	goto inst41
 inst41: // rune1 "a" -> 42
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst42
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst42
 inst42: // rune "aacctt" -> 43
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -633,197 +497,145 @@ inst42: // rune "aacctt" -> 43
 			i++
 			goto inst43
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst43
 inst43: // rune1 "g" -> 44
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst44
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst44
 inst44: // rune1 "g" -> 45
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst45
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst45
 inst45: // rune1 "t" -> 46
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst46
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst46
 inst46: // rune1 "a" -> 47
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst47
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst47
 inst47: // rune1 "a" -> 48
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst48
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst48
 inst48: // rune1 "a" -> 58
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst58
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst49
 inst49: // rune1 "t" -> 50
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst50
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst50
 inst50: // rune1 "t" -> 51
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst51
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst51
 inst51: // rune1 "t" -> 52
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst52
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst52
 inst52: // rune1 "a" -> 53
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst53
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst53
 inst53: // rune1 "c" -> 54
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst54
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst54
 inst54: // rune1 "c" -> 55
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst55
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst55
 inst55: // rune "aaggtt" -> 56
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -835,23 +647,19 @@ inst55: // rune "aaggtt" -> 56
 			i++
 			goto inst56
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst56
 inst56: // rune1 "t" -> 58
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst58
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst57
 inst57: // alt -> 41, 49
@@ -889,42 +697,30 @@ inst60: // cap 8 -> 77
 
 	goto inst61
 inst61: // rune1 "a" -> 62
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst62
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst62
 inst62: // rune1 "g" -> 63
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst63
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst63
 inst63: // rune "aacctt" -> 64
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -936,167 +732,123 @@ inst63: // rune "aacctt" -> 64
 			i++
 			goto inst64
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst64
 inst64: // rune1 "g" -> 65
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst65
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst65
 inst65: // rune1 "t" -> 66
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst66
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst66
 inst66: // rune1 "a" -> 67
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst67
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst67
 inst67: // rune1 "a" -> 68
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst68
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst68
 inst68: // rune1 "a" -> 78
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst78
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst69
 inst69: // rune1 "t" -> 70
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst70
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst70
 inst70: // rune1 "t" -> 71
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst71
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst71
 inst71: // rune1 "t" -> 72
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst72
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst72
 inst72: // rune1 "a" -> 73
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst73
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst73
 inst73: // rune1 "c" -> 74
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst74
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst74
 inst74: // rune "aaggtt" -> 75
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -1108,38 +860,30 @@ inst74: // rune "aaggtt" -> 75
 			i++
 			goto inst75
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst75
 inst75: // rune1 "c" -> 76
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst76
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst76
 inst76: // rune1 "t" -> 78
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst78
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst77
 inst77: // alt -> 61, 69
@@ -1177,57 +921,41 @@ inst80: // cap 10 -> 97
 
 	goto inst81
 inst81: // rune1 "a" -> 82
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst82
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst82
 inst82: // rune1 "g" -> 83
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst83
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst83
 inst83: // rune1 "g" -> 84
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst84
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst84
 inst84: // rune "aacctt" -> 85
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -1239,137 +967,101 @@ inst84: // rune "aacctt" -> 85
 			i++
 			goto inst85
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst85
 inst85: // rune1 "t" -> 86
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst86
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst86
 inst86: // rune1 "a" -> 87
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst87
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst87
 inst87: // rune1 "a" -> 88
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst88
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst88
 inst88: // rune1 "a" -> 98
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst98
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst89
 inst89: // rune1 "t" -> 90
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst90
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst90
 inst90: // rune1 "t" -> 91
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst91
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst91
 inst91: // rune1 "t" -> 92
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst92
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst92
 inst92: // rune1 "a" -> 93
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst93
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst93
 inst93: // rune "aaggtt" -> 94
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -1381,53 +1073,41 @@ inst93: // rune "aaggtt" -> 94
 			i++
 			goto inst94
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst94
 inst94: // rune1 "c" -> 95
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst95
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst95
 inst95: // rune1 "c" -> 96
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst96
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst96
 inst96: // rune1 "t" -> 98
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst98
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst97
 inst97: // alt -> 81, 89
@@ -1465,72 +1145,52 @@ inst100: // cap 12 -> 117
 
 	goto inst101
 inst101: // rune1 "a" -> 102
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst102
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst102
 inst102: // rune1 "g" -> 103
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst103
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst103
 inst103: // rune1 "g" -> 104
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst104
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst104
 inst104: // rune1 "g" -> 105
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst105
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst105
 inst105: // rune "aaccgg" -> 106
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -1542,107 +1202,79 @@ inst105: // rune "aaccgg" -> 106
 			i++
 			goto inst106
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst106
 inst106: // rune1 "a" -> 107
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst107
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst107
 inst107: // rune1 "a" -> 108
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst108
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst108
 inst108: // rune1 "a" -> 118
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst118
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst109
 inst109: // rune1 "t" -> 110
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst110
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst110
 inst110: // rune1 "t" -> 111
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst111
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst111
 inst111: // rune1 "t" -> 112
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst112
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst112
 inst112: // rune "ccggtt" -> 113
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -1654,68 +1286,52 @@ inst112: // rune "ccggtt" -> 113
 			i++
 			goto inst113
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst113
 inst113: // rune1 "c" -> 114
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst114
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst114
 inst114: // rune1 "c" -> 115
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst115
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst115
 inst115: // rune1 "c" -> 116
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst116
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst116
 inst116: // rune1 "t" -> 118
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst118
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst117
 inst117: // alt -> 101, 109
@@ -1753,87 +1369,63 @@ inst120: // cap 14 -> 137
 
 	goto inst121
 inst121: // rune1 "a" -> 122
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst122
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst122
 inst122: // rune1 "g" -> 123
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst123
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst123
 inst123: // rune1 "g" -> 124
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst124
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst124
 inst124: // rune1 "g" -> 125
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst125
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst125
 inst125: // rune1 "t" -> 126
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst126
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst126
 inst126: // rune "ccggtt" -> 127
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -1845,77 +1437,57 @@ inst126: // rune "ccggtt" -> 127
 			i++
 			goto inst127
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst127
 inst127: // rune1 "a" -> 128
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst128
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst128
 inst128: // rune1 "a" -> 138
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst138
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst129
 inst129: // rune1 "t" -> 130
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst130
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst130
 inst130: // rune1 "t" -> 131
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst131
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst131
 inst131: // rune "aaccgg" -> 132
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -1927,83 +1499,63 @@ inst131: // rune "aaccgg" -> 132
 			i++
 			goto inst132
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst132
 inst132: // rune1 "a" -> 133
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst133
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst133
 inst133: // rune1 "c" -> 134
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst134
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst134
 inst134: // rune1 "c" -> 135
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst135
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst135
 inst135: // rune1 "c" -> 136
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst136
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst136
 inst136: // rune1 "t" -> 138
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst138
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst137
 inst137: // alt -> 121, 129
@@ -2041,102 +1593,74 @@ inst140: // cap 16 -> 157
 
 	goto inst141
 inst141: // rune1 "a" -> 142
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst142
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst142
 inst142: // rune1 "g" -> 143
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst143
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst143
 inst143: // rune1 "g" -> 144
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst144
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst144
 inst144: // rune1 "g" -> 145
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst145
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst145
 inst145: // rune1 "t" -> 146
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst146
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst146
 inst146: // rune1 "a" -> 147
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst147
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst147
 inst147: // rune "ccggtt" -> 148
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -2148,47 +1672,35 @@ inst147: // rune "ccggtt" -> 148
 			i++
 			goto inst148
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst148
 inst148: // rune1 "a" -> 158
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst158
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst149
 inst149: // rune1 "t" -> 150
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst150
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst150
 inst150: // rune "aaccgg" -> 151
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -2200,98 +1712,74 @@ inst150: // rune "aaccgg" -> 151
 			i++
 			goto inst151
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst151
 inst151: // rune1 "t" -> 152
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst152
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst152
 inst152: // rune1 "a" -> 153
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst153
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst153
 inst153: // rune1 "c" -> 154
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst154
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst154
 inst154: // rune1 "c" -> 155
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst155
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst155
 inst155: // rune1 "c" -> 156
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst156
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst156
 inst156: // rune1 "t" -> 158
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst158
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst157
 inst157: // alt -> 141, 149
@@ -2329,117 +1817,85 @@ inst160: // cap 18 -> 177
 
 	goto inst161
 inst161: // rune1 "a" -> 162
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst162
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst162
 inst162: // rune1 "g" -> 163
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst163
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst163
 inst163: // rune1 "g" -> 164
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst164
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst164
 inst164: // rune1 "g" -> 165
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 103 {
 			i++
 			goto inst165
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst165
 inst165: // rune1 "t" -> 166
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst166
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst166
 inst166: // rune1 "a" -> 167
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst167
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst167
 inst167: // rune1 "a" -> 168
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst168
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst168
 inst168: // rune "ccggtt" -> 178
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -2451,17 +1907,13 @@ inst168: // rune "ccggtt" -> 178
 			i++
 			goto inst178
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst169
 inst169: // rune "aaccgg" -> 170
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if cr < 128 {
 			runeMask := "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
@@ -2473,113 +1925,85 @@ inst169: // rune "aaccgg" -> 170
 			i++
 			goto inst170
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst170
 inst170: // rune1 "t" -> 171
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst171
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst171
 inst171: // rune1 "t" -> 172
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst172
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst172
 inst172: // rune1 "a" -> 173
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 97 {
 			i++
 			goto inst173
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst173
 inst173: // rune1 "c" -> 174
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst174
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst174
 inst174: // rune1 "c" -> 175
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst175
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst175
 inst175: // rune1 "c" -> 176
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 99 {
 			i++
 			goto inst176
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst176
 inst176: // rune1 "t" -> 178
-	if i < 0 || i >= len(r) {
-		goto fail
-	}
-	{
+	if i >= 0 && i < len(r) {
 		cr := r[i]
-		_ = cr
 		if false || cr == 116 {
 			i++
 			goto inst178
 		}
-		goto fail
 	}
+	goto fail
 
 	goto inst177
 inst177: // alt -> 161, 169

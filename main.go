@@ -248,10 +248,8 @@ func main() {
 			if len(runes)%2 == 1 {
 				panic("odd runes")
 			}
-			out("if i < 0 || i >= len(r) { goto fail }\n")
-			out("{\n")
+			out("if i >= 0 && i < len(r) { \n")
 			out("cr := r[i]\n")
-			out("_ = cr\n")
 			const max = 128
 			runeMask := runeMask(runes, max)
 			useRuneMask := false
@@ -282,8 +280,8 @@ func main() {
 				}
 			}
 			out(" { i++ \n goto inst%d }\n", inst.Out)
-			out("goto fail\n")
 			out("}\n")
+			out("goto fail\n")
 		case syntax.InstRuneAny:
 			out("if i < 0 || i >= len(r) { goto fail }\n")
 			out("i++ \n goto inst%d", inst.Out)
