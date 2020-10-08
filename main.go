@@ -240,6 +240,17 @@ func main() {
 			if len(inst.Rune) == 0 {
 				panic("empty rune")
 			}
+
+			if runeSeq, pc := isRuneSeq(p, uint32(pc)); len(runeSeq) > 1 {
+				outn(`if i >= 0 && i+%d < len(r)`, len(runeSeq)-1)
+				for o, r := range runeSeq {
+					outn(` && r[i+%d] == %d`, o, r)
+				}
+				out(" { i += %d \n goto inst%d }", len(runeSeq), pc)
+				out(`goto fail`)
+				break
+			}
+
 			runes := inst.Rune
 			foldCase := syntax.Flags(inst.Arg)&syntax.FoldCase != 0
 			if len(inst.Rune) == 1 {
@@ -395,4 +406,26 @@ func runeMask(runes []rune, max rune) string {
 		}
 	}
 	return string(mask)
+}
+
+func isRuneSeq(p *syntax.Prog, pc uint32) ([]rune, uint32) {
+	var r []rune
+	for {
+		if len(r) > len(p.Inst) {
+			panic("infinte loop")
+		}
+		if p.Inst[pc].Op != syntax.InstRune1 {
+			break
+		}
+		foldCase := syntax.Flags(p.Inst[pc].Arg)&syntax.FoldCase != 0
+		if foldCase {
+			break
+		}
+		r = append(r, p.Inst[pc].Rune[0])
+		pc = p.Inst[pc].Out
+	}
+	if len(r) <= 1 {
+		return nil, 0
+	}
+	return r, pc
 }
