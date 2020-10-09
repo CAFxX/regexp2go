@@ -62,6 +62,12 @@ func main() {
 		outn(s, args...)
 		fmt.Fprintln(b, "")
 	}
+	outcr := `
+		cr, sz := rune(r[i]), 1 
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+		`
 
 	// TODO: implement a version that operates directly on UTF-8 (without decoding the runes beforehand)
 	// TODO: implement a version that operates directly on []byte, string, io.Reader, ... (ideally using generics)
@@ -75,17 +81,18 @@ func main() {
 	out("")
 	out("package %s", *pkg)
 	out(`import "regexp/syntax"`)
+	out(`import "unicode/utf8"`)
 	if *pkg == "main" {
 		out(`
 			import "fmt"
 			import "os"
 			func main() {
-				m, found := %s([]rune(os.Args[1]))
+				m, found := %s(os.Args[1])
 				if !found {
 					os.Exit(-1)
 				}
 				for i, c := range m {
-					fmt.Printf("%%d: %%q\n", i, string(c))
+					fmt.Printf("%%d: %%q\n", i, c)
 				}
 			}
 		`, *fn)
@@ -96,13 +103,13 @@ func main() {
 	out("type state struct { c [%d]int; i int; pc int; cnt int }", p.NumCap)
 	out("// %s implements the regular expression\n// %v\n// with flags %d", *fn, regex, *flags)
 	// TODO: return also si
-	out("func %s(r []rune) ([%d][]rune, bool) {", *fn, p.NumCap/2)
-	out("  si := 0 // starting rune index ")
+	out("func %s(r string) ([%d]string, bool) {", *fn, p.NumCap/2)
+	out("  si := 0 // starting byte index ")
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  var _bt [%d]state // static storage for backtracking state \n bt := _bt[:0] // backtracking state ", numSt)
 	out("  var c [%d]int // captures ", p.NumCap)
-	out("  i := si // current rune index ")
+	out("  i := si // current byte index ")
 	if len(prefix) > 0 {
 		// TODO: search for the whole prefix, not just the first rune (but avoid n^2 behavior)
 		// TODO: jump directly into the instruction at the end of the prefix
@@ -195,8 +202,8 @@ func main() {
 			out("c[%d] = i \n goto inst%d ", inst.Arg, inst.Out)
 		case syntax.InstEmptyWidth:
 			out("{")
-			before := "before := rune(-1) \n if j := i-1; j >= 0 && j < len(r) { before = r[j] } "
-			after := " after  := rune(-1) \n if j := i;   j >= 0 && j < len(r) { after = r[j]  } "
+			before := "before := rune(-1) \n if i := i-1; i >= 0 && i < len(r) { " + outcr + " before, _ = cr, sz } "
+			after := " after  := rune(-1) \n if i := i;   i >= 0 && i < len(r) { " + outcr + " after, _ = cr, sz  } "
 			switch syntax.EmptyOp(inst.Arg) {
 			case syntax.EmptyBeginLine:
 				out(before)
@@ -262,7 +269,7 @@ func main() {
 				panic("odd runes")
 			}
 			out("if i >= 0 && i < len(r) { ")
-			out("cr := r[i]")
+			out(outcr)
 			const max = 128
 			runeMask := runeMask(runes, max)
 			useRuneMask := false
@@ -272,7 +279,7 @@ func main() {
 				outn(`if cr < %d { 
 						const runeMask = %q
 						if runeMask[cr/8] & (1<<(cr%%8)) != 0 { 
-							i++
+							i+=sz
 							goto inst%d 
 						} 
 						goto fail 
@@ -292,15 +299,22 @@ func main() {
 					outn("|| (cr >= %d && cr <= %d)", runes[i], runes[i+1])
 				}
 			}
-			out(" { i++ \n goto inst%d }", inst.Out)
+			out(" { i+=sz \n goto inst%d }", inst.Out)
 			out("}")
 			out("goto fail")
 		case syntax.InstRuneAny:
 			out("if i < 0 || i >= len(r) { goto fail }")
-			out("i++ \n goto inst%d", inst.Out)
+			out(`{`)
+			out(outcr)
+			out("i+=sz \n _ = cr \n goto inst%d", inst.Out)
+			out(`}`)
 		case syntax.InstRuneAnyNotNL:
-			out("if i < 0 || i >= len(r) || r[i] == rune('\\n') { goto fail }")
-			out("i++ \n goto inst%d", inst.Out)
+			out("if i < 0 || i >= len(r) { goto fail }")
+			out(`{`)
+			out(outcr)
+			out("if cr == rune('\\n') { goto fail }")
+			out("i+=sz \n goto inst%d", inst.Out)
+			out(`}`)
 		default:
 			panic("unknown op")
 		}
@@ -325,10 +339,13 @@ func main() {
 				goto backtrack 
 			}
 			if len(r[si:]) != 0 {
-				si++
+				i = si
+				`+outcr+`
+				si+=sz
+				_ = cr
 				goto restart
 			}
-			var m [%d][]rune
+			var m [%d]string
 			return m, false
 		}`,
 		p.NumCap/2,
@@ -339,7 +356,7 @@ func main() {
 		goto unreachable
 		goto match
 		match: { 
-			var m [%d][]rune`,
+			var m [%d]string`,
 		p.NumCap/2,
 	)
 	for i := 0; i < p.NumCap/2; i++ {

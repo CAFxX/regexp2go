@@ -4,6 +4,7 @@
 package mail_crawler
 
 import "regexp/syntax"
+import "unicode/utf8"
 
 const MatchRegexp = "(?i)\\b([a-z0-9._%+-]+)@([a-z0-9.-]+\\.[a-z]{2,})\\b"
 
@@ -19,13 +20,13 @@ type state struct {
 // Match implements the regular expression
 // (?i)\b([a-z0-9._%+-]+)@([a-z0-9.-]+\.[a-z]{2,})\b
 // with flags 212
-func Match(r []rune) ([3][]rune, bool) {
-	si := 0 // starting rune index
+func Match(r string) ([3]string, bool) {
+	si := 0 // starting byte index
 restart:
 	var _bt [3]state // static storage for backtracking state
 	bt := _bt[:0]    // backtracking state
 	var c [6]int     // captures
-	i := si          // current rune index
+	i := si          // current byte index
 	c[0] = i         // start of match
 	goto inst1       // initial instruction
 
@@ -39,12 +40,20 @@ inst0: // fail
 inst1: // empty 16 -> 2
 	{
 		before := rune(-1)
-		if j := i - 1; j >= 0 && j < len(r) {
-			before = r[j]
+		if i := i - 1; i >= 0 && i < len(r) {
+			cr, sz := rune(r[i]), 1
+			if cr >= utf8.RuneSelf {
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+			}
+			before, _ = cr, sz
 		}
 		after := rune(-1)
-		if j := i; j >= 0 && j < len(r) {
-			after = r[j]
+		if i := i; i >= 0 && i < len(r) {
+			cr, sz := rune(r[i]), 1
+			if cr >= utf8.RuneSelf {
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+			}
+			after, _ = cr, sz
 		}
 		if syntax.IsWordChar(before) != syntax.IsWordChar(after) {
 			goto inst2
@@ -62,16 +71,21 @@ inst2: // cap 2 -> 3
 	goto inst3
 inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if cr < 128 {
 			const runeMask = "\x00\x00\x00\x00 h\xff\x03\xfe\xff\xff\x87\xfe\xff\xff\a"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-				i++
+				i += sz
 				goto inst4
 			}
 			goto fail
 		} else if false || cr == 383 || cr == 8490 {
-			i++
+			i += sz
 			goto inst4
 		}
 	}
@@ -116,9 +130,14 @@ inst5: // cap 3 -> 6
 	goto inst6
 inst6: // rune1 "@" -> 7
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 64 {
-			i++
+			i += sz
 			goto inst7
 		}
 	}
@@ -134,16 +153,21 @@ inst7: // cap 4 -> 8
 	goto inst8
 inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if cr < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00`\xff\x03\xfe\xff\xff\a\xfe\xff\xff\a"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-				i++
+				i += sz
 				goto inst9
 			}
 			goto fail
 		} else if false || cr == 383 || cr == 8490 {
-			i++
+			i += sz
 			goto inst9
 		}
 	}
@@ -182,9 +206,14 @@ inst9_alt:
 	goto inst10
 inst10: // rune1 "." -> 11
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 46 {
-			i++
+			i += sz
 			goto inst11
 		}
 	}
@@ -194,16 +223,21 @@ inst10: // rune1 "." -> 11
 	goto inst11
 inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if cr < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\a\xfe\xff\xff\a"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-				i++
+				i += sz
 				goto inst12
 			}
 			goto fail
 		} else if false || cr == 383 || cr == 8490 {
-			i++
+			i += sz
 			goto inst12
 		}
 	}
@@ -213,16 +247,21 @@ inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 	goto inst12
 inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if cr < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\a\xfe\xff\xff\a"
 			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-				i++
+				i += sz
 				goto inst13
 			}
 			goto fail
 		} else if false || cr == 383 || cr == 8490 {
-			i++
+			i += sz
 			goto inst13
 		}
 	}
@@ -268,12 +307,20 @@ inst14: // cap 5 -> 15
 inst15: // empty 16 -> 16
 	{
 		before := rune(-1)
-		if j := i - 1; j >= 0 && j < len(r) {
-			before = r[j]
+		if i := i - 1; i >= 0 && i < len(r) {
+			cr, sz := rune(r[i]), 1
+			if cr >= utf8.RuneSelf {
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+			}
+			before, _ = cr, sz
 		}
 		after := rune(-1)
-		if j := i; j >= 0 && j < len(r) {
-			after = r[j]
+		if i := i; i >= 0 && i < len(r) {
+			cr, sz := rune(r[i]), 1
+			if cr >= utf8.RuneSelf {
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+			}
+			after, _ = cr, sz
 		}
 		if syntax.IsWordChar(before) != syntax.IsWordChar(after) {
 			goto inst16
@@ -309,10 +356,18 @@ fail:
 			goto backtrack
 		}
 		if len(r[si:]) != 0 {
-			si++
+			i = si
+
+			cr, sz := rune(r[i]), 1
+			if cr >= utf8.RuneSelf {
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+			}
+
+			si += sz
+			_ = cr
 			goto restart
 		}
-		var m [3][]rune
+		var m [3]string
 		return m, false
 	}
 
@@ -320,7 +375,7 @@ fail:
 	goto match
 match:
 	{
-		var m [3][]rune
+		var m [3]string
 		m[0] = r[c[0]:c[1]]
 		m[1] = r[c[2]:c[3]]
 		m[2] = r[c[4]:c[5]]

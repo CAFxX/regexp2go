@@ -4,6 +4,7 @@
 package prefix
 
 import "regexp/syntax"
+import "unicode/utf8"
 
 const MatchRegexp = "Hello ([^!]+)!"
 
@@ -19,13 +20,13 @@ type state struct {
 // Match implements the regular expression
 // Hello ([^!]+)!
 // with flags 212
-func Match(r []rune) ([2][]rune, bool) {
-	si := 0 // starting rune index
+func Match(r string) ([2]string, bool) {
+	si := 0 // starting byte index
 restart:
 	var _bt [1]state // static storage for backtracking state
 	bt := _bt[:0]    // backtracking state
 	var c [4]int     // captures
-	i := si          // current rune index
+	i := si          // current byte index
 
 	// fast prefix search "Hello "
 	for j, cr := range r[si:] {
@@ -49,9 +50,14 @@ inst0: // fail
 	goto inst1
 inst1: // rune1 "H" -> 2
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 72 {
-			i++
+			i += sz
 			goto inst2
 		}
 	}
@@ -61,9 +67,14 @@ inst1: // rune1 "H" -> 2
 	goto inst2
 inst2: // rune1 "e" -> 3
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 101 {
-			i++
+			i += sz
 			goto inst3
 		}
 	}
@@ -73,9 +84,14 @@ inst2: // rune1 "e" -> 3
 	goto inst3
 inst3: // rune1 "l" -> 4
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 108 {
-			i++
+			i += sz
 			goto inst4
 		}
 	}
@@ -85,9 +101,14 @@ inst3: // rune1 "l" -> 4
 	goto inst4
 inst4: // rune1 "l" -> 5
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 108 {
-			i++
+			i += sz
 			goto inst5
 		}
 	}
@@ -97,9 +118,14 @@ inst4: // rune1 "l" -> 5
 	goto inst5
 inst5: // rune1 "o" -> 6
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 111 {
-			i++
+			i += sz
 			goto inst6
 		}
 	}
@@ -109,9 +135,14 @@ inst5: // rune1 "o" -> 6
 	goto inst6
 inst6: // rune1 " " -> 7
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 32 {
-			i++
+			i += sz
 			goto inst7
 		}
 	}
@@ -127,9 +158,14 @@ inst7: // cap 2 -> 8
 	goto inst8
 inst8: // rune "\x00 \"\U0010ffff" -> 9
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || (cr >= 0 && cr <= 32) || (cr >= 34 && cr <= 1114111) {
-			i++
+			i += sz
 			goto inst9
 		}
 	}
@@ -174,9 +210,14 @@ inst10: // cap 3 -> 11
 	goto inst11
 inst11: // rune1 "!" -> 12
 	if i >= 0 && i < len(r) {
-		cr := r[i]
+
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
 		if false || cr == 33 {
-			i++
+			i += sz
 			goto inst12
 		}
 	}
@@ -206,10 +247,18 @@ fail:
 			goto backtrack
 		}
 		if len(r[si:]) != 0 {
-			si++
+			i = si
+
+			cr, sz := rune(r[i]), 1
+			if cr >= utf8.RuneSelf {
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+			}
+
+			si += sz
+			_ = cr
 			goto restart
 		}
-		var m [2][]rune
+		var m [2]string
 		return m, false
 	}
 
@@ -217,7 +266,7 @@ fail:
 	goto match
 match:
 	{
-		var m [2][]rune
+		var m [2]string
 		m[0] = r[c[0]:c[1]]
 		m[1] = r[c[2]:c[3]]
 		return m, true
