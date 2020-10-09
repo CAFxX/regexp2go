@@ -5,10 +5,12 @@ package prefix
 
 import "regexp/syntax"
 import "unicode/utf8"
+import "strings"
 
 const MatchRegexp = "Hello ([^!]+)!"
 
 var _ = syntax.IsWordChar
+var _ = strings.Index
 
 type state struct {
 	c   [4]int
@@ -29,16 +31,13 @@ restart:
 	i := si          // current byte index
 
 	// fast prefix search "Hello "
-	for j, cr := range r[si:] {
-		if cr == 72 {
-			i += j // prefix found, skip to it
-			goto prefix_found
-		}
+	if idx := strings.Index(r[si:], "Hello "); idx > 0 {
+		i += idx // prefix found, skip to it
+	} else if idx < 0 {
+		i += len(r[si:]) // no prefix found, skip to the end of the rune slice
 	}
-	i += len(r[si:]) // no prefix found, skip to the end of the rune slice
-prefix_found:
 
-	c[0] = i // start of match
+	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
 	goto unreachable

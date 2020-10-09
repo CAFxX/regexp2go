@@ -5,10 +5,12 @@ package mail_crawler
 
 import "regexp/syntax"
 import "unicode/utf8"
+import "strings"
 
 const MatchRegexp = "(?i)\\b([a-z0-9._%+-]+)@([a-z0-9.-]+\\.[a-z]{2,})\\b"
 
 var _ = syntax.IsWordChar
+var _ = strings.Index
 
 type state struct {
 	c   [6]int

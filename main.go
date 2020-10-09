@@ -82,6 +82,7 @@ func main() {
 	out("package %s", *pkg)
 	out(`import "regexp/syntax"`)
 	out(`import "unicode/utf8"`)
+	out(`import "strings"`)
 	if *pkg == "main" {
 		out(`
 			import "fmt"
@@ -100,6 +101,7 @@ func main() {
 		out(`const %sRegexp = %q`, *fn, regex)
 	}
 	out("var _ = syntax.IsWordChar")
+	out("var _ = strings.Index")
 	out("type state struct { c [%d]int; i int; pc int; cnt int }", p.NumCap)
 	out("// %s implements the regular expression\n// %v\n// with flags %d", *fn, regex, *flags)
 	// TODO: return also si
@@ -111,19 +113,15 @@ func main() {
 	out("  var c [%d]int // captures ", p.NumCap)
 	out("  i := si // current byte index ")
 	if len(prefix) > 0 {
-		// TODO: search for the whole prefix, not just the first rune (but avoid n^2 behavior)
 		// TODO: jump directly into the instruction at the end of the prefix
 		out(`
 		// fast prefix search %q
-		for j, cr := range r[si:] {
-			if cr == %d {
-				i += j // prefix found, skip to it
-				goto prefix_found
-			}
+		if idx := strings.Index(r[si:], %q); idx > 0 {
+			i += idx // prefix found, skip to it
+		} else if idx < 0 {
+			i+=len(r[si:]) // no prefix found, skip to the end of the rune slice
 		}
-		i += len(r[si:]) // no prefix found, skip to the end of the rune slice
-		prefix_found:	
-		`, prefix, []rune(prefix)[0])
+		`, prefix, prefix)
 	}
 	// TODO: extend the fast search above to zero-width assertions (e.g. find newlines for the case (?m)^...)
 	// TODO: extend the fast search above to look for suffix or infix strings, if we have a bound on the maximum length of the variable part before the suffix/infix

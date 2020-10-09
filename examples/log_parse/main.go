@@ -5,10 +5,12 @@ package log_parse
 
 import "regexp/syntax"
 import "unicode/utf8"
+import "strings"
 
 const MatchRegexp = "(?m)^INFO res=([0-9]+) msg=(.*)$"
 
 var _ = syntax.IsWordChar
+var _ = strings.Index
 
 type state struct {
 	c   [6]int

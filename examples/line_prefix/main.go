@@ -5,10 +5,12 @@ package line_prefix
 
 import "regexp/syntax"
 import "unicode/utf8"
+import "strings"
 
 const MatchRegexp = "(?m)^>(.*)$"
 
 var _ = syntax.IsWordChar
+var _ = strings.Index
 
 type state struct {
 	c   [4]int
