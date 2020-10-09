@@ -48,45 +48,60 @@ inst0: // fail
 	goto unreachable
 	goto inst1
 inst1: // rune1 "H" -> 2
-	if i >= 0 && i+5 < len(r) && r[i+0] == 72 && r[i+1] == 101 && r[i+2] == 108 && r[i+3] == 108 && r[i+4] == 111 && r[i+5] == 32 {
-		i += 6
-		goto inst7
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 72 && s[1] == 101 && s[2] == 108 && s[3] == 108 && s[4] == 111 && s[5] == 32 {
+			i += 6
+			goto inst7
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst2
 inst2: // rune1 "e" -> 3
-	if i >= 0 && i+4 < len(r) && r[i+0] == 101 && r[i+1] == 108 && r[i+2] == 108 && r[i+3] == 111 && r[i+4] == 32 {
-		i += 5
-		goto inst7
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 101 && s[1] == 108 && s[2] == 108 && s[3] == 111 && s[4] == 32 {
+			i += 5
+			goto inst7
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst3
 inst3: // rune1 "l" -> 4
-	if i >= 0 && i+3 < len(r) && r[i+0] == 108 && r[i+1] == 108 && r[i+2] == 111 && r[i+3] == 32 {
-		i += 4
-		goto inst7
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 108 && s[1] == 108 && s[2] == 111 && s[3] == 32 {
+			i += 4
+			goto inst7
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst4
 inst4: // rune1 "l" -> 5
-	if i >= 0 && i+2 < len(r) && r[i+0] == 108 && r[i+1] == 111 && r[i+2] == 32 {
-		i += 3
-		goto inst7
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 108 && s[1] == 111 && s[2] == 32 {
+			i += 3
+			goto inst7
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst5
 inst5: // rune1 "o" -> 6
-	if i >= 0 && i+1 < len(r) && r[i+0] == 111 && r[i+1] == 32 {
-		i += 2
-		goto inst7
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 111 && s[1] == 32 {
+			i += 2
+			goto inst7
+		}
 	}
 	goto fail
 

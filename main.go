@@ -236,17 +236,19 @@ func main() {
 		case syntax.InstRune1:
 			fallthrough
 		case syntax.InstRune:
-			// TODO: turn sequences of InstRune* into an optimized substring search, when possible
 			if len(inst.Rune) == 0 {
 				panic("empty rune")
 			}
 
 			if runeSeq, pc := isRuneSeq(p, uint32(pc)); len(runeSeq) > 1 {
-				outn(`if i >= 0 && i+%d < len(r)`, len(runeSeq)-1)
+				out(`if i >= 0 && i+%d <= len(r) {`, len(runeSeq))
+				out(`s := r[i:i+%d]`, len(runeSeq))
+				outn(`if true`)
 				for o, r := range runeSeq {
-					outn(` && r[i+%d] == %d`, o, r)
+					outn(` && s[%d] == %d`, o, r)
 				}
 				out(" { i += %d \n goto inst%d }", len(runeSeq), pc)
+				out(`}`)
 				out(`goto fail`)
 				break
 			}

@@ -43,63 +43,84 @@ inst1: // cap 2 -> 18
 	goto unreachable
 	goto inst2
 inst2: // rune1 "a" -> 3
-	if i >= 0 && i+7 < len(r) && r[i+0] == 97 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 103 && r[i+4] == 116 && r[i+5] == 97 && r[i+6] == 97 && r[i+7] == 97 {
-		i += 8
-		goto inst19
+	if i >= 0 && i+8 <= len(r) {
+		s := r[i : i+8]
+		if true && s[0] == 97 && s[1] == 103 && s[2] == 103 && s[3] == 103 && s[4] == 116 && s[5] == 97 && s[6] == 97 && s[7] == 97 {
+			i += 8
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst3
 inst3: // rune1 "g" -> 4
-	if i >= 0 && i+6 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 116 && r[i+4] == 97 && r[i+5] == 97 && r[i+6] == 97 {
-		i += 7
-		goto inst19
+	if i >= 0 && i+7 <= len(r) {
+		s := r[i : i+7]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 103 && s[3] == 116 && s[4] == 97 && s[5] == 97 && s[6] == 97 {
+			i += 7
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst4
 inst4: // rune1 "g" -> 5
-	if i >= 0 && i+5 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 97 && r[i+5] == 97 {
-		i += 6
-		goto inst19
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 116 && s[3] == 97 && s[4] == 97 && s[5] == 97 {
+			i += 6
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst5
 inst5: // rune1 "g" -> 6
-	if i >= 0 && i+4 < len(r) && r[i+0] == 103 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 97 && r[i+4] == 97 {
-		i += 5
-		goto inst19
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 103 && s[1] == 116 && s[2] == 97 && s[3] == 97 && s[4] == 97 {
+			i += 5
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst6
 inst6: // rune1 "t" -> 7
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 97 && r[i+3] == 97 {
-		i += 4
-		goto inst19
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 97 && s[3] == 97 {
+			i += 4
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst7
 inst7: // rune1 "a" -> 8
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 97 && r[i+2] == 97 {
-		i += 3
-		goto inst19
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 97 && s[2] == 97 {
+			i += 3
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst8
 inst8: // rune1 "a" -> 9
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst19
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst19
+		}
 	}
 	goto fail
 
@@ -118,63 +139,84 @@ inst9: // rune1 "a" -> 19
 	goto unreachable
 	goto inst10
 inst10: // rune1 "t" -> 11
-	if i >= 0 && i+7 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 99 && r[i+5] == 99 && r[i+6] == 99 && r[i+7] == 116 {
-		i += 8
-		goto inst19
+	if i >= 0 && i+8 <= len(r) {
+		s := r[i : i+8]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 116 && s[3] == 97 && s[4] == 99 && s[5] == 99 && s[6] == 99 && s[7] == 116 {
+			i += 8
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst11
 inst11: // rune1 "t" -> 12
-	if i >= 0 && i+6 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 99 && r[i+4] == 99 && r[i+5] == 99 && r[i+6] == 116 {
-		i += 7
-		goto inst19
+	if i >= 0 && i+7 <= len(r) {
+		s := r[i : i+7]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 97 && s[3] == 99 && s[4] == 99 && s[5] == 99 && s[6] == 116 {
+			i += 7
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst12
 inst12: // rune1 "t" -> 13
-	if i >= 0 && i+5 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 99 && r[i+5] == 116 {
-		i += 6
-		goto inst19
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 99 && s[3] == 99 && s[4] == 99 && s[5] == 116 {
+			i += 6
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst13
 inst13: // rune1 "a" -> 14
-	if i >= 0 && i+4 < len(r) && r[i+0] == 97 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 116 {
-		i += 5
-		goto inst19
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 97 && s[1] == 99 && s[2] == 99 && s[3] == 99 && s[4] == 116 {
+			i += 5
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst14
 inst14: // rune1 "c" -> 15
-	if i >= 0 && i+3 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 116 {
-		i += 4
-		goto inst19
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 99 && s[3] == 116 {
+			i += 4
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst15
 inst15: // rune1 "c" -> 16
-	if i >= 0 && i+2 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 116 {
-		i += 3
-		goto inst19
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 116 {
+			i += 3
+			goto inst19
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst16
 inst16: // rune1 "c" -> 17
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 116 {
-		i += 2
-		goto inst19
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 116 {
+			i += 2
+			goto inst19
+		}
 	}
 	goto fail
 
@@ -237,54 +279,72 @@ inst21: // rune "ccggtt" -> 22
 	goto unreachable
 	goto inst22
 inst22: // rune1 "g" -> 23
-	if i >= 0 && i+6 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 116 && r[i+4] == 97 && r[i+5] == 97 && r[i+6] == 97 {
-		i += 7
-		goto inst38
+	if i >= 0 && i+7 <= len(r) {
+		s := r[i : i+7]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 103 && s[3] == 116 && s[4] == 97 && s[5] == 97 && s[6] == 97 {
+			i += 7
+			goto inst38
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst23
 inst23: // rune1 "g" -> 24
-	if i >= 0 && i+5 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 97 && r[i+5] == 97 {
-		i += 6
-		goto inst38
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 116 && s[3] == 97 && s[4] == 97 && s[5] == 97 {
+			i += 6
+			goto inst38
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst24
 inst24: // rune1 "g" -> 25
-	if i >= 0 && i+4 < len(r) && r[i+0] == 103 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 97 && r[i+4] == 97 {
-		i += 5
-		goto inst38
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 103 && s[1] == 116 && s[2] == 97 && s[3] == 97 && s[4] == 97 {
+			i += 5
+			goto inst38
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst25
 inst25: // rune1 "t" -> 26
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 97 && r[i+3] == 97 {
-		i += 4
-		goto inst38
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 97 && s[3] == 97 {
+			i += 4
+			goto inst38
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst26
 inst26: // rune1 "a" -> 27
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 97 && r[i+2] == 97 {
-		i += 3
-		goto inst38
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 97 && s[2] == 97 {
+			i += 3
+			goto inst38
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst27
 inst27: // rune1 "a" -> 28
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst38
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst38
+		}
 	}
 	goto fail
 
@@ -303,54 +363,72 @@ inst28: // rune1 "a" -> 38
 	goto unreachable
 	goto inst29
 inst29: // rune1 "t" -> 30
-	if i >= 0 && i+6 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 99 && r[i+5] == 99 && r[i+6] == 99 {
-		i += 7
-		goto inst36
+	if i >= 0 && i+7 <= len(r) {
+		s := r[i : i+7]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 116 && s[3] == 97 && s[4] == 99 && s[5] == 99 && s[6] == 99 {
+			i += 7
+			goto inst36
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst30
 inst30: // rune1 "t" -> 31
-	if i >= 0 && i+5 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 99 && r[i+4] == 99 && r[i+5] == 99 {
-		i += 6
-		goto inst36
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 97 && s[3] == 99 && s[4] == 99 && s[5] == 99 {
+			i += 6
+			goto inst36
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst31
 inst31: // rune1 "t" -> 32
-	if i >= 0 && i+4 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 99 {
-		i += 5
-		goto inst36
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 99 && s[3] == 99 && s[4] == 99 {
+			i += 5
+			goto inst36
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst32
 inst32: // rune1 "a" -> 33
-	if i >= 0 && i+3 < len(r) && r[i+0] == 97 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 99 {
-		i += 4
-		goto inst36
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 97 && s[1] == 99 && s[2] == 99 && s[3] == 99 {
+			i += 4
+			goto inst36
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst33
 inst33: // rune1 "c" -> 34
-	if i >= 0 && i+2 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 99 {
-		i += 3
-		goto inst36
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 99 {
+			i += 3
+			goto inst36
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst34
 inst34: // rune1 "c" -> 35
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 99 {
-		i += 2
-		goto inst36
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 99 {
+			i += 2
+			goto inst36
+		}
 	}
 	goto fail
 
@@ -457,45 +535,60 @@ inst42: // rune "aacctt" -> 43
 	goto unreachable
 	goto inst43
 inst43: // rune1 "g" -> 44
-	if i >= 0 && i+5 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 97 && r[i+5] == 97 {
-		i += 6
-		goto inst58
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 116 && s[3] == 97 && s[4] == 97 && s[5] == 97 {
+			i += 6
+			goto inst58
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst44
 inst44: // rune1 "g" -> 45
-	if i >= 0 && i+4 < len(r) && r[i+0] == 103 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 97 && r[i+4] == 97 {
-		i += 5
-		goto inst58
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 103 && s[1] == 116 && s[2] == 97 && s[3] == 97 && s[4] == 97 {
+			i += 5
+			goto inst58
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst45
 inst45: // rune1 "t" -> 46
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 97 && r[i+3] == 97 {
-		i += 4
-		goto inst58
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 97 && s[3] == 97 {
+			i += 4
+			goto inst58
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst46
 inst46: // rune1 "a" -> 47
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 97 && r[i+2] == 97 {
-		i += 3
-		goto inst58
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 97 && s[2] == 97 {
+			i += 3
+			goto inst58
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst47
 inst47: // rune1 "a" -> 48
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst58
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst58
+		}
 	}
 	goto fail
 
@@ -514,45 +607,60 @@ inst48: // rune1 "a" -> 58
 	goto unreachable
 	goto inst49
 inst49: // rune1 "t" -> 50
-	if i >= 0 && i+5 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 99 && r[i+5] == 99 {
-		i += 6
-		goto inst55
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 116 && s[3] == 97 && s[4] == 99 && s[5] == 99 {
+			i += 6
+			goto inst55
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst50
 inst50: // rune1 "t" -> 51
-	if i >= 0 && i+4 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 99 && r[i+4] == 99 {
-		i += 5
-		goto inst55
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 97 && s[3] == 99 && s[4] == 99 {
+			i += 5
+			goto inst55
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst51
 inst51: // rune1 "t" -> 52
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 99 && r[i+3] == 99 {
-		i += 4
-		goto inst55
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 99 && s[3] == 99 {
+			i += 4
+			goto inst55
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst52
 inst52: // rune1 "a" -> 53
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 99 && r[i+2] == 99 {
-		i += 3
-		goto inst55
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 99 && s[2] == 99 {
+			i += 3
+			goto inst55
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst53
 inst53: // rune1 "c" -> 54
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 99 {
-		i += 2
-		goto inst55
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 99 {
+			i += 2
+			goto inst55
+		}
 	}
 	goto fail
 
@@ -640,9 +748,12 @@ inst60: // cap 8 -> 77
 	goto unreachable
 	goto inst61
 inst61: // rune1 "a" -> 62
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 103 {
-		i += 2
-		goto inst63
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 103 {
+			i += 2
+			goto inst63
+		}
 	}
 	goto fail
 
@@ -680,36 +791,48 @@ inst63: // rune "aacctt" -> 64
 	goto unreachable
 	goto inst64
 inst64: // rune1 "g" -> 65
-	if i >= 0 && i+4 < len(r) && r[i+0] == 103 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 97 && r[i+4] == 97 {
-		i += 5
-		goto inst78
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 103 && s[1] == 116 && s[2] == 97 && s[3] == 97 && s[4] == 97 {
+			i += 5
+			goto inst78
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst65
 inst65: // rune1 "t" -> 66
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 97 && r[i+3] == 97 {
-		i += 4
-		goto inst78
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 97 && s[3] == 97 {
+			i += 4
+			goto inst78
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst66
 inst66: // rune1 "a" -> 67
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 97 && r[i+2] == 97 {
-		i += 3
-		goto inst78
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 97 && s[2] == 97 {
+			i += 3
+			goto inst78
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst67
 inst67: // rune1 "a" -> 68
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst78
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst78
+		}
 	}
 	goto fail
 
@@ -728,36 +851,48 @@ inst68: // rune1 "a" -> 78
 	goto unreachable
 	goto inst69
 inst69: // rune1 "t" -> 70
-	if i >= 0 && i+4 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 99 {
-		i += 5
-		goto inst74
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 116 && s[3] == 97 && s[4] == 99 {
+			i += 5
+			goto inst74
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst70
 inst70: // rune1 "t" -> 71
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 99 {
-		i += 4
-		goto inst74
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 97 && s[3] == 99 {
+			i += 4
+			goto inst74
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst71
 inst71: // rune1 "t" -> 72
-	if i >= 0 && i+2 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 99 {
-		i += 3
-		goto inst74
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 99 {
+			i += 3
+			goto inst74
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst72
 inst72: // rune1 "a" -> 73
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 99 {
-		i += 2
-		goto inst74
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 99 {
+			i += 2
+			goto inst74
+		}
 	}
 	goto fail
 
@@ -795,9 +930,12 @@ inst74: // rune "aaggtt" -> 75
 	goto unreachable
 	goto inst75
 inst75: // rune1 "c" -> 76
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 116 {
-		i += 2
-		goto inst78
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 116 {
+			i += 2
+			goto inst78
+		}
 	}
 	goto fail
 
@@ -854,18 +992,24 @@ inst80: // cap 10 -> 97
 	goto unreachable
 	goto inst81
 inst81: // rune1 "a" -> 82
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 103 && r[i+2] == 103 {
-		i += 3
-		goto inst84
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 103 && s[2] == 103 {
+			i += 3
+			goto inst84
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst82
 inst82: // rune1 "g" -> 83
-	if i >= 0 && i+1 < len(r) && r[i+0] == 103 && r[i+1] == 103 {
-		i += 2
-		goto inst84
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 103 && s[1] == 103 {
+			i += 2
+			goto inst84
+		}
 	}
 	goto fail
 
@@ -903,27 +1047,36 @@ inst84: // rune "aacctt" -> 85
 	goto unreachable
 	goto inst85
 inst85: // rune1 "t" -> 86
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 97 && r[i+3] == 97 {
-		i += 4
-		goto inst98
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 97 && s[3] == 97 {
+			i += 4
+			goto inst98
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst86
 inst86: // rune1 "a" -> 87
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 97 && r[i+2] == 97 {
-		i += 3
-		goto inst98
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 97 && s[2] == 97 {
+			i += 3
+			goto inst98
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst87
 inst87: // rune1 "a" -> 88
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst98
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst98
+		}
 	}
 	goto fail
 
@@ -942,27 +1095,36 @@ inst88: // rune1 "a" -> 98
 	goto unreachable
 	goto inst89
 inst89: // rune1 "t" -> 90
-	if i >= 0 && i+3 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 116 && r[i+3] == 97 {
-		i += 4
-		goto inst93
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 116 && s[3] == 97 {
+			i += 4
+			goto inst93
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst90
 inst90: // rune1 "t" -> 91
-	if i >= 0 && i+2 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 97 {
-		i += 3
-		goto inst93
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 97 {
+			i += 3
+			goto inst93
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst91
 inst91: // rune1 "t" -> 92
-	if i >= 0 && i+1 < len(r) && r[i+0] == 116 && r[i+1] == 97 {
-		i += 2
-		goto inst93
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 116 && s[1] == 97 {
+			i += 2
+			goto inst93
+		}
 	}
 	goto fail
 
@@ -1000,18 +1162,24 @@ inst93: // rune "aaggtt" -> 94
 	goto unreachable
 	goto inst94
 inst94: // rune1 "c" -> 95
-	if i >= 0 && i+2 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 116 {
-		i += 3
-		goto inst98
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 116 {
+			i += 3
+			goto inst98
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst95
 inst95: // rune1 "c" -> 96
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 116 {
-		i += 2
-		goto inst98
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 116 {
+			i += 2
+			goto inst98
+		}
 	}
 	goto fail
 
@@ -1068,27 +1236,36 @@ inst100: // cap 12 -> 117
 	goto unreachable
 	goto inst101
 inst101: // rune1 "a" -> 102
-	if i >= 0 && i+3 < len(r) && r[i+0] == 97 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 103 {
-		i += 4
-		goto inst105
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 97 && s[1] == 103 && s[2] == 103 && s[3] == 103 {
+			i += 4
+			goto inst105
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst102
 inst102: // rune1 "g" -> 103
-	if i >= 0 && i+2 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 103 {
-		i += 3
-		goto inst105
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 103 {
+			i += 3
+			goto inst105
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst103
 inst103: // rune1 "g" -> 104
-	if i >= 0 && i+1 < len(r) && r[i+0] == 103 && r[i+1] == 103 {
-		i += 2
-		goto inst105
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 103 && s[1] == 103 {
+			i += 2
+			goto inst105
+		}
 	}
 	goto fail
 
@@ -1126,18 +1303,24 @@ inst105: // rune "aaccgg" -> 106
 	goto unreachable
 	goto inst106
 inst106: // rune1 "a" -> 107
-	if i >= 0 && i+2 < len(r) && r[i+0] == 97 && r[i+1] == 97 && r[i+2] == 97 {
-		i += 3
-		goto inst118
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 97 && s[1] == 97 && s[2] == 97 {
+			i += 3
+			goto inst118
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst107
 inst107: // rune1 "a" -> 108
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst118
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst118
+		}
 	}
 	goto fail
 
@@ -1156,18 +1339,24 @@ inst108: // rune1 "a" -> 118
 	goto unreachable
 	goto inst109
 inst109: // rune1 "t" -> 110
-	if i >= 0 && i+2 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 116 {
-		i += 3
-		goto inst112
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 116 {
+			i += 3
+			goto inst112
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst110
 inst110: // rune1 "t" -> 111
-	if i >= 0 && i+1 < len(r) && r[i+0] == 116 && r[i+1] == 116 {
-		i += 2
-		goto inst112
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 116 && s[1] == 116 {
+			i += 2
+			goto inst112
+		}
 	}
 	goto fail
 
@@ -1205,27 +1394,36 @@ inst112: // rune "ccggtt" -> 113
 	goto unreachable
 	goto inst113
 inst113: // rune1 "c" -> 114
-	if i >= 0 && i+3 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 116 {
-		i += 4
-		goto inst118
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 99 && s[3] == 116 {
+			i += 4
+			goto inst118
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst114
 inst114: // rune1 "c" -> 115
-	if i >= 0 && i+2 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 116 {
-		i += 3
-		goto inst118
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 116 {
+			i += 3
+			goto inst118
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst115
 inst115: // rune1 "c" -> 116
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 116 {
-		i += 2
-		goto inst118
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 116 {
+			i += 2
+			goto inst118
+		}
 	}
 	goto fail
 
@@ -1282,36 +1480,48 @@ inst120: // cap 14 -> 137
 	goto unreachable
 	goto inst121
 inst121: // rune1 "a" -> 122
-	if i >= 0 && i+4 < len(r) && r[i+0] == 97 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 103 && r[i+4] == 116 {
-		i += 5
-		goto inst126
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 97 && s[1] == 103 && s[2] == 103 && s[3] == 103 && s[4] == 116 {
+			i += 5
+			goto inst126
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst122
 inst122: // rune1 "g" -> 123
-	if i >= 0 && i+3 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 116 {
-		i += 4
-		goto inst126
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 103 && s[3] == 116 {
+			i += 4
+			goto inst126
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst123
 inst123: // rune1 "g" -> 124
-	if i >= 0 && i+2 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 116 {
-		i += 3
-		goto inst126
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 116 {
+			i += 3
+			goto inst126
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst124
 inst124: // rune1 "g" -> 125
-	if i >= 0 && i+1 < len(r) && r[i+0] == 103 && r[i+1] == 116 {
-		i += 2
-		goto inst126
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 103 && s[1] == 116 {
+			i += 2
+			goto inst126
+		}
 	}
 	goto fail
 
@@ -1349,9 +1559,12 @@ inst126: // rune "ccggtt" -> 127
 	goto unreachable
 	goto inst127
 inst127: // rune1 "a" -> 128
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst138
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst138
+		}
 	}
 	goto fail
 
@@ -1370,9 +1583,12 @@ inst128: // rune1 "a" -> 138
 	goto unreachable
 	goto inst129
 inst129: // rune1 "t" -> 130
-	if i >= 0 && i+1 < len(r) && r[i+0] == 116 && r[i+1] == 116 {
-		i += 2
-		goto inst131
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 116 && s[1] == 116 {
+			i += 2
+			goto inst131
+		}
 	}
 	goto fail
 
@@ -1410,36 +1626,48 @@ inst131: // rune "aaccgg" -> 132
 	goto unreachable
 	goto inst132
 inst132: // rune1 "a" -> 133
-	if i >= 0 && i+4 < len(r) && r[i+0] == 97 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 116 {
-		i += 5
-		goto inst138
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 97 && s[1] == 99 && s[2] == 99 && s[3] == 99 && s[4] == 116 {
+			i += 5
+			goto inst138
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst133
 inst133: // rune1 "c" -> 134
-	if i >= 0 && i+3 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 116 {
-		i += 4
-		goto inst138
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 99 && s[3] == 116 {
+			i += 4
+			goto inst138
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst134
 inst134: // rune1 "c" -> 135
-	if i >= 0 && i+2 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 116 {
-		i += 3
-		goto inst138
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 116 {
+			i += 3
+			goto inst138
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst135
 inst135: // rune1 "c" -> 136
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 116 {
-		i += 2
-		goto inst138
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 116 {
+			i += 2
+			goto inst138
+		}
 	}
 	goto fail
 
@@ -1496,45 +1724,60 @@ inst140: // cap 16 -> 157
 	goto unreachable
 	goto inst141
 inst141: // rune1 "a" -> 142
-	if i >= 0 && i+5 < len(r) && r[i+0] == 97 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 103 && r[i+4] == 116 && r[i+5] == 97 {
-		i += 6
-		goto inst147
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 97 && s[1] == 103 && s[2] == 103 && s[3] == 103 && s[4] == 116 && s[5] == 97 {
+			i += 6
+			goto inst147
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst142
 inst142: // rune1 "g" -> 143
-	if i >= 0 && i+4 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 116 && r[i+4] == 97 {
-		i += 5
-		goto inst147
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 103 && s[3] == 116 && s[4] == 97 {
+			i += 5
+			goto inst147
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst143
 inst143: // rune1 "g" -> 144
-	if i >= 0 && i+3 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 116 && r[i+3] == 97 {
-		i += 4
-		goto inst147
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 116 && s[3] == 97 {
+			i += 4
+			goto inst147
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst144
 inst144: // rune1 "g" -> 145
-	if i >= 0 && i+2 < len(r) && r[i+0] == 103 && r[i+1] == 116 && r[i+2] == 97 {
-		i += 3
-		goto inst147
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 103 && s[1] == 116 && s[2] == 97 {
+			i += 3
+			goto inst147
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst145
 inst145: // rune1 "t" -> 146
-	if i >= 0 && i+1 < len(r) && r[i+0] == 116 && r[i+1] == 97 {
-		i += 2
-		goto inst147
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 116 && s[1] == 97 {
+			i += 2
+			goto inst147
+		}
 	}
 	goto fail
 
@@ -1615,45 +1858,60 @@ inst150: // rune "aaccgg" -> 151
 	goto unreachable
 	goto inst151
 inst151: // rune1 "t" -> 152
-	if i >= 0 && i+5 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 99 && r[i+5] == 116 {
-		i += 6
-		goto inst158
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 99 && s[3] == 99 && s[4] == 99 && s[5] == 116 {
+			i += 6
+			goto inst158
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst152
 inst152: // rune1 "a" -> 153
-	if i >= 0 && i+4 < len(r) && r[i+0] == 97 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 116 {
-		i += 5
-		goto inst158
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 97 && s[1] == 99 && s[2] == 99 && s[3] == 99 && s[4] == 116 {
+			i += 5
+			goto inst158
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst153
 inst153: // rune1 "c" -> 154
-	if i >= 0 && i+3 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 116 {
-		i += 4
-		goto inst158
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 99 && s[3] == 116 {
+			i += 4
+			goto inst158
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst154
 inst154: // rune1 "c" -> 155
-	if i >= 0 && i+2 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 116 {
-		i += 3
-		goto inst158
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 116 {
+			i += 3
+			goto inst158
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst155
 inst155: // rune1 "c" -> 156
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 116 {
-		i += 2
-		goto inst158
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 116 {
+			i += 2
+			goto inst158
+		}
 	}
 	goto fail
 
@@ -1710,54 +1968,72 @@ inst160: // cap 18 -> 177
 	goto unreachable
 	goto inst161
 inst161: // rune1 "a" -> 162
-	if i >= 0 && i+6 < len(r) && r[i+0] == 97 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 103 && r[i+4] == 116 && r[i+5] == 97 && r[i+6] == 97 {
-		i += 7
-		goto inst168
+	if i >= 0 && i+7 <= len(r) {
+		s := r[i : i+7]
+		if true && s[0] == 97 && s[1] == 103 && s[2] == 103 && s[3] == 103 && s[4] == 116 && s[5] == 97 && s[6] == 97 {
+			i += 7
+			goto inst168
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst162
 inst162: // rune1 "g" -> 163
-	if i >= 0 && i+5 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 103 && r[i+3] == 116 && r[i+4] == 97 && r[i+5] == 97 {
-		i += 6
-		goto inst168
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 103 && s[3] == 116 && s[4] == 97 && s[5] == 97 {
+			i += 6
+			goto inst168
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst163
 inst163: // rune1 "g" -> 164
-	if i >= 0 && i+4 < len(r) && r[i+0] == 103 && r[i+1] == 103 && r[i+2] == 116 && r[i+3] == 97 && r[i+4] == 97 {
-		i += 5
-		goto inst168
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 103 && s[1] == 103 && s[2] == 116 && s[3] == 97 && s[4] == 97 {
+			i += 5
+			goto inst168
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst164
 inst164: // rune1 "g" -> 165
-	if i >= 0 && i+3 < len(r) && r[i+0] == 103 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 97 {
-		i += 4
-		goto inst168
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 103 && s[1] == 116 && s[2] == 97 && s[3] == 97 {
+			i += 4
+			goto inst168
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst165
 inst165: // rune1 "t" -> 166
-	if i >= 0 && i+2 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 97 {
-		i += 3
-		goto inst168
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 97 {
+			i += 3
+			goto inst168
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst166
 inst166: // rune1 "a" -> 167
-	if i >= 0 && i+1 < len(r) && r[i+0] == 97 && r[i+1] == 97 {
-		i += 2
-		goto inst168
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 97 && s[1] == 97 {
+			i += 2
+			goto inst168
+		}
 	}
 	goto fail
 
@@ -1814,54 +2090,72 @@ inst169: // rune "aaccgg" -> 170
 	goto unreachable
 	goto inst170
 inst170: // rune1 "t" -> 171
-	if i >= 0 && i+6 < len(r) && r[i+0] == 116 && r[i+1] == 116 && r[i+2] == 97 && r[i+3] == 99 && r[i+4] == 99 && r[i+5] == 99 && r[i+6] == 116 {
-		i += 7
-		goto inst178
+	if i >= 0 && i+7 <= len(r) {
+		s := r[i : i+7]
+		if true && s[0] == 116 && s[1] == 116 && s[2] == 97 && s[3] == 99 && s[4] == 99 && s[5] == 99 && s[6] == 116 {
+			i += 7
+			goto inst178
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst171
 inst171: // rune1 "t" -> 172
-	if i >= 0 && i+5 < len(r) && r[i+0] == 116 && r[i+1] == 97 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 99 && r[i+5] == 116 {
-		i += 6
-		goto inst178
+	if i >= 0 && i+6 <= len(r) {
+		s := r[i : i+6]
+		if true && s[0] == 116 && s[1] == 97 && s[2] == 99 && s[3] == 99 && s[4] == 99 && s[5] == 116 {
+			i += 6
+			goto inst178
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst172
 inst172: // rune1 "a" -> 173
-	if i >= 0 && i+4 < len(r) && r[i+0] == 97 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 99 && r[i+4] == 116 {
-		i += 5
-		goto inst178
+	if i >= 0 && i+5 <= len(r) {
+		s := r[i : i+5]
+		if true && s[0] == 97 && s[1] == 99 && s[2] == 99 && s[3] == 99 && s[4] == 116 {
+			i += 5
+			goto inst178
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst173
 inst173: // rune1 "c" -> 174
-	if i >= 0 && i+3 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 99 && r[i+3] == 116 {
-		i += 4
-		goto inst178
+	if i >= 0 && i+4 <= len(r) {
+		s := r[i : i+4]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 99 && s[3] == 116 {
+			i += 4
+			goto inst178
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst174
 inst174: // rune1 "c" -> 175
-	if i >= 0 && i+2 < len(r) && r[i+0] == 99 && r[i+1] == 99 && r[i+2] == 116 {
-		i += 3
-		goto inst178
+	if i >= 0 && i+3 <= len(r) {
+		s := r[i : i+3]
+		if true && s[0] == 99 && s[1] == 99 && s[2] == 116 {
+			i += 3
+			goto inst178
+		}
 	}
 	goto fail
 
 	goto unreachable
 	goto inst175
 inst175: // rune1 "c" -> 176
-	if i >= 0 && i+1 < len(r) && r[i+0] == 99 && r[i+1] == 116 {
-		i += 2
-		goto inst178
+	if i >= 0 && i+2 <= len(r) {
+		s := r[i : i+2]
+		if true && s[0] == 99 && s[1] == 116 {
+			i += 2
+			goto inst178
+		}
 	}
 	goto fail
 
