@@ -305,12 +305,14 @@ func main() {
 		case syntax.InstRuneAny:
 			out("if i < 0 || i >= len(r) { goto fail }")
 			out(`{`)
+			// TODO: we don't need the parsed rune here, just the length
 			out(outcr)
 			out("i+=sz \n _ = cr \n goto inst%d", inst.Out)
 			out(`}`)
 		case syntax.InstRuneAnyNotNL:
 			out("if i < 0 || i >= len(r) { goto fail }")
 			out(`{`)
+			// TODO: we don't need the parsed rune here, just the length (\n is a single byte)
 			out(outcr)
 			out("if cr == rune('\\n') { goto fail }")
 			out("i+=sz \n goto inst%d", inst.Out)
