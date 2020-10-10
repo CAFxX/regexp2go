@@ -3,6 +3,9 @@
 regexp2go is an alternate backend for the `regexp` package that allows to
 perform ahead-of-time compilation of regular expressions to Go code.
 
+This is similar in spirit to [re2go](https://re2c.org/manual/manual_go.html),
+but aiming for compatibility with the Go `regexp` package.
+
 :warning: This is an experimental PoC that currently implements only a 
 subset of the functionalities and optimizations present in the full 
 `regexp` package.
