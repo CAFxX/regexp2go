@@ -385,6 +385,7 @@ func isSimpleLoop(p *syntax.Prog, pc uint32) int {
 	npc := p.Inst[pc].Out
 	steps := 0
 	for npc != pc {
+		// TODO: should we count the number of bytes, instead of the number of runes?
 		switch p.Inst[npc].Op {
 		case syntax.InstRune, syntax.InstRune1, syntax.InstRuneAny, syntax.InstRuneAnyNotNL:
 			npc = p.Inst[npc].Out
