@@ -37,4 +37,4 @@ build dna '(?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|ttta
 build prefix 'Hello ([^!]+)!' '> Hello world!'
 
 echo "Running benchmarks"
-benchstat <(go test -bench=. -cpuprofile=cpu.prof -benchtime=0.1s -count=5 -cpu=1 ./benchmark/)
+benchstat <(go test -bench=. -cpuprofile=cpu.prof -benchtime=0.1s -benchmem -count=5 -cpu=1 ./benchmark/)
