@@ -11,9 +11,11 @@ import (
 	"github.com/CAFxX/regexp2go/examples/prefix"
 )
 
+var ballast = strings.Repeat("#", 1<<24)
+
 func BenchmarkPrefix(b *testing.B) {
 	re := regexp.MustCompile(prefix.MatchRegexp)
-	s := strings.Repeat("xxx", 1024) + "Hello world!"
+	s := strings.Repeat("Help", 1024) + "Hello world!"
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			prefix.Match(s)
