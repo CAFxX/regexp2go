@@ -1,9861 +1,10921 @@
 TEXT github.com/CAFxX/regexp2go/examples/dna.Match(SB) gofile../home/codespace/workspace/regexp2go/examples/dna/main.go
 func Match(r string) ([10]string, bool) {
-  0xa2c6		64488b0c2500000000	MOVQ FS:0, CX		[5:9]R_TLS_LE		
-  0xa2cf		488b7110		MOVQ 0x10(CX), SI	
-  0xa2d3		4881fedefaffff		CMPQ $-0x522, SI	
-  0xa2da		0f84e6900000		JE 0x133c6		
-  0xa2e0		488d8424a0030000	LEAQ 0x3a0(SP), AX	
-  0xa2e8		4829f0			SUBQ SI, AX		
-  0xa2eb		483df0220000		CMPQ $0x22f0, AX	
-  0xa2f1		0f86cf900000		JBE 0x133c6		
-  0xa2f7		4881ecd01f0000		SUBQ $0x1fd0, SP	
-  0xa2fe		4889ac24c81f0000	MOVQ BP, 0x1fc8(SP)	
-  0xa306		488dac24c81f0000	LEAQ 0x1fc8(SP), BP	
-  0xa30e		488dbc24e81f0000	LEAQ 0x1fe8(SP), DI	
-  0xa316		0f57c0			XORPS X0, X0		
-  0xa319		488d7fe0		LEAQ -0x20(DI), DI	
-  0xa31d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xa326		48896c24f0		MOVQ BP, -0x10(SP)	
-  0xa32b		488d6c24f0		LEAQ -0x10(SP), BP	
-  0xa330		e800000000		CALL 0xa335		[1:5]R_CALL:runtime.duffzero+254	
-  0xa335		488b6d00		MOVQ 0(BP), BP		
-  0xa339		31c0			XORL AX, AX		
-restart:
-  0xa33b		e9027f0000		JMP 0x12242		
-			i += sz
-  0xa340		4801f3			ADDQ SI, BX		
-	c[3] = i
-  0xa343		48899c2440050000	MOVQ BX, 0x540(SP)	
-	c[1] = i // end of match
-  0xa34b		48899c2430050000	MOVQ BX, 0x530(SP)	
-		var m [10]string
-  0xa353		488dbc24881e0000	LEAQ 0x1e88(SP), DI	
-  0xa35b		0f57c0			XORPS X0, X0		
-  0xa35e		488d7fe0		LEAQ -0x20(DI), DI	
-  0xa362		0f1f4000		NOPL 0(AX)		
-  0xa366		48896c24f0		MOVQ BP, -0x10(SP)	
-  0xa36b		488d6c24f0		LEAQ -0x10(SP), BP	
-  0xa370		e800000000		CALL 0xa375		[1:5]R_CALL:runtime.duffzero+254	
-  0xa375		488b6d00		MOVQ 0(BP), BP		
-		m[0] = r[c[0]:c[1]]
-  0xa379		488b842428050000	MOVQ 0x528(SP), AX	
-  0xa381		488b8c2430050000	MOVQ 0x530(SP), CX	
-  0xa389		4c39c1			CMPQ R8, CX		
-  0xa38c		0f87cb8e0000		JA 0x1325d		
-  0xa392		4839c8			CMPQ CX, AX		
-  0xa395		0f87bd8e0000		JA 0x13258		
-  0xa39b		4829c1			SUBQ AX, CX		
-  0xa39e		4889cb			MOVQ CX, BX		
-  0xa3a1		48f7d9			NEGQ CX			
-  0xa3a4		48c1f93f		SARQ $0x3f, CX		
-  0xa3a8		4821c8			ANDQ CX, AX		
-  0xa3ab		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa3af		4c899424881e0000	MOVQ R10, 0x1e88(SP)	
-  0xa3b7		48899c24901e0000	MOVQ BX, 0x1e90(SP)	
-		m[1] = r[c[2]:c[3]]
-  0xa3bf		488b842438050000	MOVQ 0x538(SP), AX	
-  0xa3c7		488b8c2440050000	MOVQ 0x540(SP), CX	
-  0xa3cf		4c39c1			CMPQ R8, CX		
-  0xa3d2		0f87788e0000		JA 0x13250		
-  0xa3d8		4839c8			CMPQ CX, AX		
-  0xa3db		0f876a8e0000		JA 0x1324b		
-  0xa3e1		4829c1			SUBQ AX, CX		
-  0xa3e4		4889cb			MOVQ CX, BX		
-  0xa3e7		48f7d9			NEGQ CX			
-  0xa3ea		48c1f93f		SARQ $0x3f, CX		
-  0xa3ee		4821c8			ANDQ CX, AX		
-  0xa3f1		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa3f5		4c899424981e0000	MOVQ R10, 0x1e98(SP)	
-  0xa3fd		48899c24a01e0000	MOVQ BX, 0x1ea0(SP)	
-		m[2] = r[c[4]:c[5]]
-  0xa405		488b842448050000	MOVQ 0x548(SP), AX	
-  0xa40d		488b8c2450050000	MOVQ 0x550(SP), CX	
-  0xa415		4c39c1			CMPQ R8, CX		
-  0xa418		0f87218e0000		JA 0x1323f		
-  0xa41e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-  0xa426		4839c8			CMPQ CX, AX		
-  0xa429		0f870b8e0000		JA 0x1323a		
-  0xa42f		4829c1			SUBQ AX, CX		
-  0xa432		4889cb			MOVQ CX, BX		
-  0xa435		48f7d9			NEGQ CX			
-  0xa438		48c1f93f		SARQ $0x3f, CX		
-  0xa43c		4821c8			ANDQ CX, AX		
-  0xa43f		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa443		4c899424a81e0000	MOVQ R10, 0x1ea8(SP)	
-  0xa44b		48899c24b01e0000	MOVQ BX, 0x1eb0(SP)	
-		m[3] = r[c[6]:c[7]]
-  0xa453		488b842458050000	MOVQ 0x558(SP), AX	
-  0xa45b		488b8c2460050000	MOVQ 0x560(SP), CX	
-  0xa463		0f1f00			NOPL 0(AX)		
-  0xa466		4c39c1			CMPQ R8, CX		
-  0xa469		0f87c38d0000		JA 0x13232		
-  0xa46f		4839c8			CMPQ CX, AX		
-  0xa472		0f87b58d0000		JA 0x1322d		
-  0xa478		4829c1			SUBQ AX, CX		
-  0xa47b		4889cb			MOVQ CX, BX		
-  0xa47e		48f7d9			NEGQ CX			
-  0xa481		48c1f93f		SARQ $0x3f, CX		
-  0xa485		4821c8			ANDQ CX, AX		
-  0xa488		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa48c		4c899424b81e0000	MOVQ R10, 0x1eb8(SP)	
-  0xa494		48899c24c01e0000	MOVQ BX, 0x1ec0(SP)	
-		m[4] = r[c[8]:c[9]]
-  0xa49c		488b842468050000	MOVQ 0x568(SP), AX	
-  0xa4a4		488b8c2470050000	MOVQ 0x570(SP), CX	
-  0xa4ac		4c39c1			CMPQ R8, CX		
-  0xa4af		0f87708d0000		JA 0x13225		
-  0xa4b5		4839c8			CMPQ CX, AX		
-  0xa4b8		0f87628d0000		JA 0x13220		
-  0xa4be		4829c1			SUBQ AX, CX		
-  0xa4c1		4889cb			MOVQ CX, BX		
-  0xa4c4		48f7d9			NEGQ CX			
-  0xa4c7		48c1f93f		SARQ $0x3f, CX		
-  0xa4cb		4821c8			ANDQ CX, AX		
-  0xa4ce		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa4d2		4c899424c81e0000	MOVQ R10, 0x1ec8(SP)	
-  0xa4da		48899c24d01e0000	MOVQ BX, 0x1ed0(SP)	
-		m[5] = r[c[10]:c[11]]
-  0xa4e2		488b842478050000	MOVQ 0x578(SP), AX	
-  0xa4ea		488b8c2480050000	MOVQ 0x580(SP), CX	
-  0xa4f2		4c39c1			CMPQ R8, CX		
-  0xa4f5		0f871d8d0000		JA 0x13218		
-  0xa4fb		4839c8			CMPQ CX, AX		
-  0xa4fe		0f870f8d0000		JA 0x13213		
-  0xa504		4829c1			SUBQ AX, CX		
-  0xa507		4889cb			MOVQ CX, BX		
-  0xa50a		48f7d9			NEGQ CX			
-  0xa50d		48c1f93f		SARQ $0x3f, CX		
-  0xa511		4821c8			ANDQ CX, AX		
-  0xa514		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa518		4c899424d81e0000	MOVQ R10, 0x1ed8(SP)	
-  0xa520		48899c24e01e0000	MOVQ BX, 0x1ee0(SP)	
-		m[6] = r[c[12]:c[13]]
-  0xa528		488b842488050000	MOVQ 0x588(SP), AX	
-  0xa530		488b8c2490050000	MOVQ 0x590(SP), CX	
-  0xa538		4c39c1			CMPQ R8, CX		
-  0xa53b		0f87ca8c0000		JA 0x1320b		
-  0xa541		0f1f440000		NOPL 0(AX)(AX*1)	
-  0xa546		4839c8			CMPQ CX, AX		
-  0xa549		0f87b78c0000		JA 0x13206		
-  0xa54f		4829c1			SUBQ AX, CX		
-  0xa552		4889cb			MOVQ CX, BX		
-  0xa555		48f7d9			NEGQ CX			
-  0xa558		48c1f93f		SARQ $0x3f, CX		
-  0xa55c		4821c8			ANDQ CX, AX		
-  0xa55f		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa563		4c899424e81e0000	MOVQ R10, 0x1ee8(SP)	
-  0xa56b		48899c24f01e0000	MOVQ BX, 0x1ef0(SP)	
-		m[7] = r[c[14]:c[15]]
-  0xa573		488b842498050000	MOVQ 0x598(SP), AX	
-  0xa57b		488b8c24a0050000	MOVQ 0x5a0(SP), CX	
-  0xa583		0f1f00			NOPL 0(AX)		
-  0xa586		4c39c1			CMPQ R8, CX		
-  0xa589		0f876e8c0000		JA 0x131fd		
-  0xa58f		4839c8			CMPQ CX, AX		
-  0xa592		0f87608c0000		JA 0x131f8		
-  0xa598		4829c1			SUBQ AX, CX		
-  0xa59b		4889cb			MOVQ CX, BX		
-  0xa59e		48f7d9			NEGQ CX			
-  0xa5a1		48c1f93f		SARQ $0x3f, CX		
-  0xa5a5		4821c8			ANDQ CX, AX		
-  0xa5a8		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa5ac		4c899424f81e0000	MOVQ R10, 0x1ef8(SP)	
-  0xa5b4		48899c24001f0000	MOVQ BX, 0x1f00(SP)	
-		m[8] = r[c[16]:c[17]]
-  0xa5bc		488b8424a8050000	MOVQ 0x5a8(SP), AX	
-  0xa5c4		488b8c24b0050000	MOVQ 0x5b0(SP), CX	
-  0xa5cc		4c39c1			CMPQ R8, CX		
-  0xa5cf		0f871b8c0000		JA 0x131f0		
-  0xa5d5		4839c8			CMPQ CX, AX		
-  0xa5d8		0f870d8c0000		JA 0x131eb		
-  0xa5de		4829c1			SUBQ AX, CX		
-  0xa5e1		4889cb			MOVQ CX, BX		
-  0xa5e4		48f7d9			NEGQ CX			
-  0xa5e7		48c1f93f		SARQ $0x3f, CX		
-  0xa5eb		4821c8			ANDQ CX, AX		
-  0xa5ee		4d8d1401		LEAQ 0(R9)(AX*1), R10	
-  0xa5f2		4c899424081f0000	MOVQ R10, 0x1f08(SP)	
-  0xa5fa		48899c24101f0000	MOVQ BX, 0x1f10(SP)	
-		m[9] = r[c[18]:c[19]]
-  0xa602		488b8424b8050000	MOVQ 0x5b8(SP), AX	
-  0xa60a		488b8c24c0050000	MOVQ 0x5c0(SP), CX	
-  0xa612		4c39c1			CMPQ R8, CX		
-  0xa615		0f87c78b0000		JA 0x131e2		
-  0xa61b		4839c8			CMPQ CX, AX		
-  0xa61e		0f87b98b0000		JA 0x131dd		
-  0xa624		4829c1			SUBQ AX, CX		
-  0xa627		4889ca			MOVQ CX, DX		
-  0xa62a		48f7d9			NEGQ CX			
-  0xa62d		48c1f93f		SARQ $0x3f, CX		
-  0xa631		4821c8			ANDQ CX, AX		
-  0xa634		4c01c8			ADDQ R9, AX		
-  0xa637		48898424181f0000	MOVQ AX, 0x1f18(SP)	
-  0xa63f		48899424201f0000	MOVQ DX, 0x1f20(SP)	
-		return m, true
-  0xa647		488dbc24e81f0000	LEAQ 0x1fe8(SP), DI	
-  0xa64f		488db424881e0000	LEAQ 0x1e88(SP), SI	
-  0xa657		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xa660		660f1f440000		NOPW 0(AX)(AX*1)	
-  0xa666		48896c24f0		MOVQ BP, -0x10(SP)	
-  0xa66b		488d6c24f0		LEAQ -0x10(SP), BP	
-  0xa670		e800000000		CALL 0xa675		[1:5]R_CALL:runtime.duffcopy+756	
-  0xa675		488b6d00		MOVQ 0(BP), BP		
-  0xa679		c684248820000001	MOVB $0x1, 0x2088(SP)	
-  0xa681		488bac24c81f0000	MOVQ 0x1fc8(SP), BP	
-  0xa689		4881c4d01f0000		ADDQ $0x1fd0, SP	
-  0xa690		c3			RET			
-			i += sz
-  0xa691		48895c2440		MOVQ BX, 0x40(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa696		4929d8			SUBQ BX, R8		
-  0xa699		4c89c1			MOVQ R8, CX		
-  0xa69c		49f7d8			NEGQ R8			
-  0xa69f		49c1f83f		SARQ $0x3f, R8		
-  0xa6a3		4921d8			ANDQ BX, R8		
-  0xa6a6		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xa6aa		48891424		MOVQ DX, 0(SP)		
-  0xa6ae		48894c2408		MOVQ CX, 0x8(SP)	
-  0xa6b3		e800000000		CALL 0xa6b8		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xa6b8		448b5c2410		MOVL 0x10(SP), R11	
-  0xa6bd		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xa6c2		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xa6ca		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xa6d2		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xa6da		488b5c2440		MOVQ 0x40(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xa6df		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xa6e7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xa6ef		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xa6f5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa6fd		e9656f0000		JMP 0x11667		
-				goto inst148
-  0xa702		4989db			MOVQ BX, R11		
-	goto inst161
-  0xa705		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xa708		e9de6c0000		JMP 0x113eb		
-			i += sz
-  0xa70d		48899c2400050000	MOVQ BX, 0x500(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa715		4929d8			SUBQ BX, R8		
-  0xa718		4c89c1			MOVQ R8, CX		
-  0xa71b		49f7d8			NEGQ R8			
-  0xa71e		49c1f83f		SARQ $0x3f, R8		
-  0xa722		4921d8			ANDQ BX, R8		
-  0xa725		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xa729		48891424		MOVQ DX, 0(SP)		
-  0xa72d		48894c2408		MOVQ CX, 0x8(SP)	
-  0xa732		e800000000		CALL 0xa737		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xa737		448b5c2410		MOVL 0x10(SP), R11	
-  0xa73c		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xa741		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xa749		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xa751		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xa759		488b9c2400050000	MOVQ 0x500(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xa761		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xa769		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xa771		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xa777		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa77f		e9b46e0000		JMP 0x11638		
-				goto inst148
-  0xa784		4989db			MOVQ BX, R11		
-	goto inst161
-  0xa787		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xa78a		e95c6c0000		JMP 0x113eb		
-			i += sz
-  0xa78f		48899c24f8040000	MOVQ BX, 0x4f8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa797		4929d8			SUBQ BX, R8		
-  0xa79a		4c89c1			MOVQ R8, CX		
-  0xa79d		49f7d8			NEGQ R8			
-  0xa7a0		49c1f83f		SARQ $0x3f, R8		
-  0xa7a4		4921d8			ANDQ BX, R8		
-  0xa7a7		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xa7ab		48891424		MOVQ DX, 0(SP)		
-  0xa7af		48894c2408		MOVQ CX, 0x8(SP)	
-  0xa7b4		e800000000		CALL 0xa7b9		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xa7b9		448b5c2410		MOVL 0x10(SP), R11	
-  0xa7be		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xa7c3		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xa7cb		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xa7d3		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xa7db		488b9c24f8040000	MOVQ 0x4f8(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xa7e3		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xa7eb		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xa7f3		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xa7f9		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xa801		0f1f440000		NOPL 0(AX)(AX*1)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa806		e9ed6d0000		JMP 0x115f8		
-				goto inst148
-  0xa80b		4989db			MOVQ BX, R11		
-	goto inst161
-  0xa80e		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xa811		e9d56b0000		JMP 0x113eb		
-			i += sz
-  0xa816		48899c24f0040000	MOVQ BX, 0x4f0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa81e		4929d8			SUBQ BX, R8		
-  0xa821		4c89c1			MOVQ R8, CX		
-  0xa824		49f7d8			NEGQ R8			
-  0xa827		49c1f83f		SARQ $0x3f, R8		
-  0xa82b		4921d8			ANDQ BX, R8		
-  0xa82e		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xa832		48891424		MOVQ DX, 0(SP)		
-  0xa836		48894c2408		MOVQ CX, 0x8(SP)	
-  0xa83b		e800000000		CALL 0xa840		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xa840		448b5c2410		MOVL 0x10(SP), R11	
-  0xa845		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xa84a		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xa852		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xa85a		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xa862		488b9c24f0040000	MOVQ 0x4f0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xa86a		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xa872		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xa87a		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xa880		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa888		e92b6d0000		JMP 0x115b8		
-				goto inst148
-  0xa88d		4989db			MOVQ BX, R11		
-	goto inst161
-  0xa890		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xa893		e9536b0000		JMP 0x113eb		
-			i += sz
-  0xa898		48899c24e8040000	MOVQ BX, 0x4e8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa8a0		4929d8			SUBQ BX, R8		
-  0xa8a3		4c89c1			MOVQ R8, CX		
-  0xa8a6		49f7d8			NEGQ R8			
-  0xa8a9		49c1f83f		SARQ $0x3f, R8		
-  0xa8ad		4921d8			ANDQ BX, R8		
-  0xa8b0		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xa8b4		48891424		MOVQ DX, 0(SP)		
-  0xa8b8		48894c2408		MOVQ CX, 0x8(SP)	
-  0xa8bd		e800000000		CALL 0xa8c2		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xa8c2		448b5c2410		MOVL 0x10(SP), R11	
-  0xa8c7		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xa8cc		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xa8d4		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xa8dc		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xa8e4		488b9c24e8040000	MOVQ 0x4e8(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xa8ec		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xa8f4		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xa8fc		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xa902		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa90a		e9696c0000		JMP 0x11578		
-				goto inst148
-  0xa90f		4989db			MOVQ BX, R11		
-	goto inst161
-  0xa912		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xa915		e9d16a0000		JMP 0x113eb		
-			i += sz
-  0xa91a		48899c24e0040000	MOVQ BX, 0x4e0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa922		4929d8			SUBQ BX, R8		
-  0xa925		4c89c1			MOVQ R8, CX		
-  0xa928		49f7d8			NEGQ R8			
-  0xa92b		49c1f83f		SARQ $0x3f, R8		
-  0xa92f		4921d8			ANDQ BX, R8		
-  0xa932		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xa936		48891424		MOVQ DX, 0(SP)		
-  0xa93a		48894c2408		MOVQ CX, 0x8(SP)	
-  0xa93f		e800000000		CALL 0xa944		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xa944		448b5c2410		MOVL 0x10(SP), R11	
-  0xa949		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xa94e		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xa956		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xa95e		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xa966		488b9c24e0040000	MOVQ 0x4e0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xa96e		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xa976		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xa97e		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xa984		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa98c		e9a76b0000		JMP 0x11538		
-				goto inst148
-  0xa991		4989db			MOVQ BX, R11		
-	goto inst161
-  0xa994		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xa997		e94f6a0000		JMP 0x113eb		
-			i += sz
-  0xa99c		48899c24d8040000	MOVQ BX, 0x4d8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xa9a4		4929d8			SUBQ BX, R8		
-  0xa9a7		4c89c1			MOVQ R8, CX		
-  0xa9aa		49f7d8			NEGQ R8			
-  0xa9ad		49c1f83f		SARQ $0x3f, R8		
-  0xa9b1		4921d8			ANDQ BX, R8		
-  0xa9b4		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xa9b8		48891424		MOVQ DX, 0(SP)		
-  0xa9bc		48894c2408		MOVQ CX, 0x8(SP)	
-  0xa9c1		0f1f440000		NOPL 0(AX)(AX*1)	
-  0xa9c6		e800000000		CALL 0xa9cb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xa9cb		448b5c2410		MOVL 0x10(SP), R11	
-  0xa9d0		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xa9d5		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xa9dd		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xa9e5		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xa9ed		488b9c24d8040000	MOVQ 0x4d8(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xa9f5		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xa9fd		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xaa05		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xaa0b		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xaa13		e9e06a0000		JMP 0x114f8		
-				goto inst148
-  0xaa18		4989db			MOVQ BX, R11		
-	goto inst161
-  0xaa1b		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xaa1e		e9c8690000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0xaa23		48899c24d0040000	MOVQ BX, 0x4d0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xaa2b		4929d8			SUBQ BX, R8		
-  0xaa2e		4c89c1			MOVQ R8, CX		
-  0xaa31		49f7d8			NEGQ R8			
-  0xaa34		49c1f83f		SARQ $0x3f, R8		
-  0xaa38		4921d8			ANDQ BX, R8		
-  0xaa3b		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xaa3f		48891424		MOVQ DX, 0(SP)		
-  0xaa43		48894c2408		MOVQ CX, 0x8(SP)	
-  0xaa48		e800000000		CALL 0xaa4d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xaa4d		448b5c2410		MOVL 0x10(SP), R11	
-  0xaa52		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xaa57		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xaa5f		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xaa67		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xaa6f		488b9c24d0040000	MOVQ 0x4d0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xaa77		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xaa7f		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xaa87		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xaa8d		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xaa95		e91e6a0000		JMP 0x114b8		
-	switch bt[len(bt)-1].pc {
-  0xaa9a		4983fd25		CMPQ $0x25, R13		
-	case 37:
-  0xaa9e		0f85d4870000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0xaaa4		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0xaaa9		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xaaad		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xaab4		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xaabc		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0xaac5		90			NOPL				
-  0xaac6		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xaacb		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xaad0		e800000000		CALL 0xaad5			[1:5]R_CALL:runtime.duffcopy+756	
-  0xaad5		488b6d00		MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xaad9		4885db			TESTQ BX, BX		
-  0xaadc		0f8cf6050000		JL 0xb0d8		
-  0xaae2		0f1f4000		NOPL 0(AX)		
-  0xaae6		4c39c3			CMPQ R8, BX		
-  0xaae9		0f8de9050000		JGE 0xb0d8		
-		cr, sz := rune(r[i]), 1
-  0xaaef		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xaaf4		4181fb80000000		CMPL $0x80, R11		
-  0xaafb		0f8de2050000		JGE 0xb0e3		
-  0xab01		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xab06		4183fb74		CMPL $0x74, R11		
-  0xab0a		0f85c8050000		JNE 0xb0d8		
-			i += sz
-  0xab10		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xab13		4885db			TESTQ BX, BX		
-  0xab16		0f8c35050000		JL 0xb051		
-  0xab1c		4c39c3			CMPQ R8, BX		
-  0xab1f		0f8d2c050000		JGE 0xb051		
-		cr, sz := rune(r[i]), 1
-  0xab25		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xab2a		4181fb80000000		CMPL $0x80, R11		
-  0xab31		0f8d25050000		JGE 0xb05c		
-  0xab37		be01000000		MOVL $0x1, SI		
-  0xab3c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xab45		90			NOPL			
-		if false || cr == 116 {
-  0xab46		4183fb74		CMPL $0x74, R11		
-  0xab4a		0f8501050000		JNE 0xb051		
-			i += sz
-  0xab50		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xab53		4885db			TESTQ BX, BX		
-  0xab56		0f8c73040000		JL 0xafcf		
-  0xab5c		4c39c3			CMPQ R8, BX		
-  0xab5f		0f8d6a040000		JGE 0xafcf		
-		cr, sz := rune(r[i]), 1
-  0xab65		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xab6a		4181fb80000000		CMPL $0x80, R11		
-  0xab71		0f8d63040000		JGE 0xafda		
-  0xab77		be01000000		MOVL $0x1, SI		
-  0xab7c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xab85		90			NOPL			
-		if false || cr == 116 {
-  0xab86		4183fb74		CMPL $0x74, R11		
-  0xab8a		0f853f040000		JNE 0xafcf		
-			i += sz
-  0xab90		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xab93		4885db			TESTQ BX, BX		
-  0xab96		0f8cb1030000		JL 0xaf4d		
-  0xab9c		4c39c3			CMPQ R8, BX		
-  0xab9f		0f8da8030000		JGE 0xaf4d		
-		cr, sz := rune(r[i]), 1
-  0xaba5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xabaa		4181fb80000000		CMPL $0x80, R11		
-  0xabb1		0f8da1030000		JGE 0xaf58		
-  0xabb7		be01000000		MOVL $0x1, SI		
-  0xabbc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xabc5		90			NOPL			
-		if false || cr == 97 {
-  0xabc6		4183fb61		CMPL $0x61, R11		
-  0xabca		0f857d030000		JNE 0xaf4d		
-			i += sz
-  0xabd0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xabd3		4885db			TESTQ BX, BX		
-  0xabd6		0f8cef020000		JL 0xaecb		
-  0xabdc		4c39c3			CMPQ R8, BX		
-  0xabdf		0f8de6020000		JGE 0xaecb		
-		cr, sz := rune(r[i]), 1
-  0xabe5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xabea		4181fb80000000		CMPL $0x80, R11		
-  0xabf1		0f8ddf020000		JGE 0xaed6		
-  0xabf7		be01000000		MOVL $0x1, SI		
-  0xabfc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xac05		90			NOPL			
-		if false || cr == 99 {
-  0xac06		4183fb63		CMPL $0x63, R11		
-  0xac0a		0f85bb020000		JNE 0xaecb		
-			i += sz
-  0xac10		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xac13		4885db			TESTQ BX, BX		
-  0xac16		0f8c28020000		JL 0xae44		
-  0xac1c		4c39c3			CMPQ R8, BX		
-  0xac1f		0f8d1f020000		JGE 0xae44		
-		cr, sz := rune(r[i]), 1
-  0xac25		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xac2a		4181fb80000000		CMPL $0x80, R11		
-  0xac31		0f8d18020000		JGE 0xae4f		
-  0xac37		be01000000		MOVL $0x1, SI		
-  0xac3c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xac45		90			NOPL			
-		if false || cr == 99 {
-  0xac46		4183fb63		CMPL $0x63, R11		
-  0xac4a		0f85f4010000		JNE 0xae44		
-			i += sz
-  0xac50		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xac53		4885db			TESTQ BX, BX		
-  0xac56		0f8c66010000		JL 0xadc2		
-  0xac5c		4c39c3			CMPQ R8, BX		
-  0xac5f		0f8d5d010000		JGE 0xadc2		
-		cr, sz := rune(r[i]), 1
-  0xac65		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xac6a		4181fb80000000		CMPL $0x80, R11		
-  0xac71		0f8d56010000		JGE 0xadcd		
-  0xac77		be01000000		MOVL $0x1, SI		
-  0xac7c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xac85		90			NOPL			
-		if false || cr == 99 {
-  0xac86		4183fb63		CMPL $0x63, R11		
-  0xac8a		0f8532010000		JNE 0xadc2		
-			i += sz
-  0xac90		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xac93		4885db			TESTQ BX, BX		
-  0xac96		0f8ca0000000		JL 0xad3c		
-  0xac9c		4c39c3			CMPQ R8, BX		
-  0xac9f		0f8d97000000		JGE 0xad3c		
-		cr, sz := rune(r[i]), 1
-  0xaca5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xacaa		4181fb80000000		CMPL $0x80, R11		
-  0xacb1		0f8d94000000		JGE 0xad4b		
-  0xacb7		be01000000		MOVL $0x1, SI		
-		if cr < 128 {
-  0xacbc		4181fb80000000		CMPL $0x80, R11		
-  0xacc3		7d77			JGE 0xad3c		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xacc5		4589dd			MOVL R11, R13			
-  0xacc8		41c1fb1f		SARL $0x1f, R11			
-  0xaccc		41c1eb1d		SHRL $0x1d, R11			
-  0xacd0		4501eb			ADDL R13, R11			
-  0xacd3		41c1fb03		SARL $0x3, R11			
-  0xacd7		4d63f3			MOVSXD R11, R14			
-  0xacda		4983fe10		CMPQ $0x10, R14			
-  0xacde		0f83be860000		JAE 0x133a2			
-  0xace4		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
-  0xaceb		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xacf0		41c1e303		SHLL $0x3, R11			
-  0xacf4		4529dd			SUBL R11, R13			
-  0xacf7		4585ed			TESTL R13, R13			
-  0xacfa		0f8c9d860000		JL 0x1339d			
-  0xad00		4183fd20		CMPL $0x20, R13			
-  0xad04		4519db			SBBL R11, R11			
-	goto inst161
-  0xad07		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xad0a		4489e9			MOVL R13, CX		
-  0xad0d		41bf01000000		MOVL $0x1, R15		
-  0xad13		41d3e7			SHLL CL, R15		
-  0xad16		4521df			ANDL R11, R15		
-  0xad19		4584f7			TESTL R14, R15		
-  0xad1c		750e			JNE 0xad2c		
-				goto inst148
-  0xad1e		4989db			MOVQ BX, R11		
-	goto inst161
-  0xad21		4889f9			MOVQ DI, CX		
-  0xad24		4c89e3			MOVQ R12, BX		
-			goto fail
-  0xad27		e9bf660000		JMP 0x113eb		
-				i += sz
-  0xad2c		4801f3			ADDQ SI, BX		
-	c[5] = i
-  0xad2f		48899c2450050000	MOVQ BX, 0x550(SP)	
-	goto inst180
-  0xad37		e90ff6ffff		JMP 0xa34b		
-				goto inst148
-  0xad3c		4989db			MOVQ BX, R11		
-	goto inst161
-  0xad3f		4c89e3			MOVQ R12, BX		
-  0xad42		0f1f4000		NOPL 0(AX)		
-	goto fail
-  0xad46		e9a0660000		JMP 0x113eb		
-			i += sz
-  0xad4b		48899c24c8040000	MOVQ BX, 0x4c8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xad53		4929d8			SUBQ BX, R8		
-  0xad56		4c89c1			MOVQ R8, CX		
-  0xad59		49f7d8			NEGQ R8			
-  0xad5c		49c1f83f		SARQ $0x3f, R8		
-  0xad60		4921d8			ANDQ BX, R8		
-  0xad63		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xad67		48891424		MOVQ DX, 0(SP)		
-  0xad6b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xad70		e800000000		CALL 0xad75		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xad75		448b5c2410		MOVL 0x10(SP), R11	
-  0xad7a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xad7f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xad87		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xad8f		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xad97		488b9c24c8040000	MOVQ 0x4c8(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xad9f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xada7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xadaf		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xadb5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xadbd		e9fafeffff		JMP 0xacbc		
-				goto inst148
-  0xadc2		4989db			MOVQ BX, R11		
-	goto inst161
-  0xadc5		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xadc8		e91e660000		JMP 0x113eb		
-			i += sz
-  0xadcd		48899c24c0040000	MOVQ BX, 0x4c0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xadd5		4929d8			SUBQ BX, R8		
-  0xadd8		4c89c1			MOVQ R8, CX		
-  0xaddb		49f7d8			NEGQ R8			
-  0xadde		49c1f83f		SARQ $0x3f, R8		
-  0xade2		4921d8			ANDQ BX, R8		
-  0xade5		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xade9		48891424		MOVQ DX, 0(SP)		
-  0xaded		48894c2408		MOVQ CX, 0x8(SP)	
-  0xadf2		e800000000		CALL 0xadf7		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xadf7		448b5c2410		MOVL 0x10(SP), R11	
-  0xadfc		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xae01		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xae09		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xae11		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xae19		488b9c24c0040000	MOVQ 0x4c0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xae21		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xae29		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xae31		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xae37		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xae3f		e942feffff		JMP 0xac86		
-				goto inst148
-  0xae44		4989db			MOVQ BX, R11		
-	goto inst161
-  0xae47		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xae4a		e99c650000		JMP 0x113eb		
-			i += sz
-  0xae4f		48899c24b8040000	MOVQ BX, 0x4b8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xae57		4929d8			SUBQ BX, R8		
-  0xae5a		4c89c1			MOVQ R8, CX		
-  0xae5d		49f7d8			NEGQ R8			
-  0xae60		49c1f83f		SARQ $0x3f, R8		
-  0xae64		4921d8			ANDQ BX, R8		
-  0xae67		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xae6b		48891424		MOVQ DX, 0(SP)		
-  0xae6f		48894c2408		MOVQ CX, 0x8(SP)	
-  0xae74		e800000000		CALL 0xae79		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xae79		448b5c2410		MOVL 0x10(SP), R11	
-  0xae7e		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xae83		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xae8b		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xae93		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xae9b		488b9c24b8040000	MOVQ 0x4b8(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xaea3		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xaeab		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xaeb3		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xaeb9		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xaec1		0f1f440000		NOPL 0(AX)(AX*1)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xaec6		e97bfdffff		JMP 0xac46		
-				goto inst148
-  0xaecb		4989db			MOVQ BX, R11		
-	goto inst161
-  0xaece		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xaed1		e915650000		JMP 0x113eb		
-			i += sz
-  0xaed6		48899c24b0040000	MOVQ BX, 0x4b0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xaede		4929d8			SUBQ BX, R8		
-  0xaee1		4c89c1			MOVQ R8, CX		
-  0xaee4		49f7d8			NEGQ R8			
-  0xaee7		49c1f83f		SARQ $0x3f, R8		
-  0xaeeb		4921d8			ANDQ BX, R8		
-  0xaeee		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xaef2		48891424		MOVQ DX, 0(SP)		
-  0xaef6		48894c2408		MOVQ CX, 0x8(SP)	
-  0xaefb		e800000000		CALL 0xaf00		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xaf00		448b5c2410		MOVL 0x10(SP), R11	
-  0xaf05		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xaf0a		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xaf12		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xaf1a		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xaf22		488b9c24b0040000	MOVQ 0x4b0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xaf2a		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xaf32		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xaf3a		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xaf40		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xaf48		e9b9fcffff		JMP 0xac06		
-				goto inst148
-  0xaf4d		4989db			MOVQ BX, R11		
-	goto inst161
-  0xaf50		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xaf53		e993640000		JMP 0x113eb		
-			i += sz
-  0xaf58		48899c24a8040000	MOVQ BX, 0x4a8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xaf60		4929d8			SUBQ BX, R8		
-  0xaf63		4c89c1			MOVQ R8, CX		
-  0xaf66		49f7d8			NEGQ R8			
-  0xaf69		49c1f83f		SARQ $0x3f, R8		
-  0xaf6d		4921d8			ANDQ BX, R8		
-  0xaf70		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xaf74		48891424		MOVQ DX, 0(SP)		
-  0xaf78		48894c2408		MOVQ CX, 0x8(SP)	
-  0xaf7d		e800000000		CALL 0xaf82		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xaf82		448b5c2410		MOVL 0x10(SP), R11	
-  0xaf87		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xaf8c		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xaf94		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xaf9c		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xafa4		488b9c24a8040000	MOVQ 0x4a8(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xafac		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xafb4		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xafbc		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xafc2		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xafca		e9f7fbffff		JMP 0xabc6		
-				goto inst148
-  0xafcf		4989db			MOVQ BX, R11		
-	goto inst161
-  0xafd2		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xafd5		e911640000		JMP 0x113eb		
-			i += sz
-  0xafda		48899c24a0040000	MOVQ BX, 0x4a0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xafe2		4929d8			SUBQ BX, R8		
-  0xafe5		4c89c1			MOVQ R8, CX		
-  0xafe8		49f7d8			NEGQ R8			
-  0xafeb		49c1f83f		SARQ $0x3f, R8		
-  0xafef		4921d8			ANDQ BX, R8		
-  0xaff2		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xaff6		48891424		MOVQ DX, 0(SP)		
-  0xaffa		48894c2408		MOVQ CX, 0x8(SP)	
-  0xafff		e800000000		CALL 0xb004		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb004		448b5c2410		MOVL 0x10(SP), R11	
-  0xb009		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xb00e		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xb016		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xb01e		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xb026		488b9c24a0040000	MOVQ 0x4a0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xb02e		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb036		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb03e		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xb044		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb04c		e935fbffff		JMP 0xab86		
-				goto inst148
-  0xb051		4989db			MOVQ BX, R11		
-	goto inst161
-  0xb054		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xb057		e98f630000		JMP 0x113eb		
-			i += sz
-  0xb05c		48899c2498040000	MOVQ BX, 0x498(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb064		4929d8			SUBQ BX, R8		
-  0xb067		4c89c1			MOVQ R8, CX		
-  0xb06a		49f7d8			NEGQ R8			
-  0xb06d		49c1f83f		SARQ $0x3f, R8		
-  0xb071		4921d8			ANDQ BX, R8		
-  0xb074		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb078		48891424		MOVQ DX, 0(SP)		
-  0xb07c		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb081		0f1f440000		NOPL 0(AX)(AX*1)	
-  0xb086		e800000000		CALL 0xb08b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb08b		448b5c2410		MOVL 0x10(SP), R11	
-  0xb090		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xb095		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xb09d		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xb0a5		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xb0ad		488b9c2498040000	MOVQ 0x498(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xb0b5		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb0bd		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb0c5		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xb0cb		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb0d3		e96efaffff		JMP 0xab46		
-				goto inst148
-  0xb0d8		4989db			MOVQ BX, R11		
-	goto inst161
-  0xb0db		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xb0de		e908630000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0xb0e3		48899c2490040000	MOVQ BX, 0x490(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb0eb		4929d8			SUBQ BX, R8		
-  0xb0ee		4c89c1			MOVQ R8, CX		
-  0xb0f1		49f7d8			NEGQ R8			
-  0xb0f4		49c1f83f		SARQ $0x3f, R8		
-  0xb0f8		4921d8			ANDQ BX, R8		
-  0xb0fb		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb0ff		48891424		MOVQ DX, 0(SP)		
-  0xb103		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb108		e800000000		CALL 0xb10d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb10d		448b5c2410		MOVL 0x10(SP), R11	
-  0xb112		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xb117		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xb11f		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xb127		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xb12f		488b9c2490040000	MOVQ 0x490(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xb137		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb13f		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb147		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xb14d		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb155		e9acf9ffff		JMP 0xab06		
-	case 39:
-  0xb15a		4983fd27		CMPQ $0x27, R13		
-  0xb15e		0f85d0070000		JNE 0xb934		
-		c, i = bt[n].c, bt[n].i
-  0xb164		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0xb169		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0xb171		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xb175		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xb17c		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xb184		6690			NOPW				
-  0xb186		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xb18b		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xb190		e800000000		CALL 0xb195			[1:5]R_CALL:runtime.duffcopy+756	
-  0xb195		488b6d00		MOVQ 0(BP), BP			
-	c[4] = i
-  0xb199		4c89ac2448050000	MOVQ R13, 0x548(SP)	
-	bt = append(bt, state{c, i, 37, 0})
-  0xb1a1		48c784249010000000000000	MOVQ $0x0, 0x1090(SP)		
-  0xb1ad		488dbc2498100000		LEAQ 0x1098(SP), DI		
-  0xb1b5		0f57c0				XORPS X0, X0			
-  0xb1b8		488d7ff0			LEAQ -0x10(DI), DI		
-  0xb1bc		660f1f840000000000		NOPW 0(AX)(AX*1)		
-  0xb1c5		90				NOPL				
-  0xb1c6		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xb1cb		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xb1d0		e800000000			CALL 0xb1d5			[1:5]R_CALL:runtime.duffzero+250	
-  0xb1d5		488b6d00			MOVQ 0(BP), BP			
-  0xb1d9		488dbc2490100000		LEAQ 0x1090(SP), DI		
-  0xb1e1		488db42428050000		LEAQ 0x528(SP), SI		
-  0xb1e9		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xb1ee		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xb1f3		e800000000			CALL 0xb1f8			[1:5]R_CALL:runtime.duffcopy+756	
-  0xb1f8		488b6d00			MOVQ 0(BP), BP			
-  0xb1fc		4c89ac2430110000		MOVQ R13, 0x1130(SP)		
-  0xb204		48c784243811000025000000	MOVQ $0x25, 0x1138(SP)		
-  0xb210		48c784244011000000000000	MOVQ $0x0, 0x1140(SP)		
-  0xb21c		4839d9				CMPQ BX, CX			
-  0xb21f		0f829f060000			JB 0xb8c4			
-  0xb225		4c8ba42490100000		MOVQ 0x1090(SP), R12		
-  0xb22d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0xb235		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0xb239		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0xb240		488db42498100000		LEAQ 0x1098(SP), SI		
-  0xb248		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xb24d		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xb252		e800000000			CALL 0xb257			[1:5]R_CALL:runtime.duffcopy+742	
-  0xb257		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xb25b		4d85ed			TESTQ R13, R13		
-  0xb25e		0f8ce9050000		JL 0xb84d		
-  0xb264		6690			NOPW			
-  0xb266		4d39c5			CMPQ R8, R13		
-  0xb269		0f8dde050000		JGE 0xb84d		
-	bt = append(bt, state{c, i, 37, 0})
-  0xb26f		48898424781e0000	MOVQ AX, 0x1e78(SP)	
-  0xb277		48899c2488040000	MOVQ BX, 0x488(SP)	
-  0xb27f		48898c2480040000	MOVQ CX, 0x480(SP)	
-		cr, sz := rune(r[i]), 1
-  0xb287		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xb28c		4181fb80000000		CMPL $0x80, R11		
-  0xb293		0f8dbc050000		JGE 0xb855		
-  0xb299		be01000000		MOVL $0x1, SI		
-  0xb29e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if cr < 128 {
-  0xb2a6		4181fb80000000		CMPL $0x80, R11		
-  0xb2ad		0f8d9a050000		JGE 0xb84d		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xb2b3		4589dc			MOVL R11, R12			
-  0xb2b6		41c1fb1f		SARL $0x1f, R11			
-  0xb2ba		41c1eb1d		SHRL $0x1d, R11			
-  0xb2be		4501e3			ADDL R12, R11			
-  0xb2c1		41c1fb03		SARL $0x3, R11			
-  0xb2c5		4d63f3			MOVSXD R11, R14			
-  0xb2c8		4983fe10		CMPQ $0x10, R14			
-  0xb2cc		0f83e2800000		JAE 0x133b4			
-  0xb2d2		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
-  0xb2d9		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xb2de		41c1e303		SHLL $0x3, R11			
-  0xb2e2		4529dc			SUBL R11, R12			
-  0xb2e5		90			NOPL				
-  0xb2e6		4585e4			TESTL R12, R12			
-  0xb2e9		0f8cc0800000		JL 0x133af			
-  0xb2ef		4183fc20		CMPL $0x20, R12			
-  0xb2f3		4519db			SBBL R11, R11			
-	bt = append(bt, state{c, i, 37, 0})
-  0xb2f6		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xb2f9		4489e1			MOVL R12, CX		
-  0xb2fc		41bf01000000		MOVL $0x1, R15		
-  0xb302		41d3e7			SHLL CL, R15		
-  0xb305		4521df			ANDL R11, R15		
-  0xb308		4584f7			TESTL R14, R15		
-  0xb30b		0f8431050000		JE 0xb842		
-				i += sz
-  0xb311		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0xb315		4d85db			TESTQ R11, R11		
-  0xb318		0f8ca4040000		JL 0xb7c2		
-  0xb31e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-  0xb326		4d39c3			CMPQ R8, R11		
-  0xb329		0f8d93040000		JGE 0xb7c2		
-		cr, sz := rune(r[i]), 1
-  0xb32f		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xb334		4181fc80000000		CMPL $0x80, R12		
-  0xb33b		0f8d8a040000		JGE 0xb7cb		
-  0xb341		b901000000		MOVL $0x1, CX		
-		if false || cr == 103 {
-  0xb346		4183fc67		CMPL $0x67, R12		
-  0xb34a		0f8572040000		JNE 0xb7c2		
-			i += sz
-  0xb350		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xb353		4d85db			TESTQ R11, R11		
-  0xb356		0f8ce6030000		JL 0xb742		
-  0xb35c		4d39c3			CMPQ R8, R11		
-  0xb35f		0f8ddd030000		JGE 0xb742		
-		cr, sz := rune(r[i]), 1
-  0xb365		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xb36a		4181fc80000000		CMPL $0x80, R12		
-  0xb371		0f8dd4030000		JGE 0xb74b		
-  0xb377		b901000000		MOVL $0x1, CX		
-  0xb37c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xb385		90			NOPL			
-		if false || cr == 103 {
-  0xb386		4183fc67		CMPL $0x67, R12		
-  0xb38a		0f85b2030000		JNE 0xb742		
-			i += sz
-  0xb390		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xb393		4d85db			TESTQ R11, R11		
-  0xb396		0f8c26030000		JL 0xb6c2		
-  0xb39c		4d39c3			CMPQ R8, R11		
-  0xb39f		0f8d1d030000		JGE 0xb6c2		
-		cr, sz := rune(r[i]), 1
-  0xb3a5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xb3aa		4181fc80000000		CMPL $0x80, R12		
-  0xb3b1		0f8d14030000		JGE 0xb6cb		
-  0xb3b7		b901000000		MOVL $0x1, CX		
-  0xb3bc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xb3c5		90			NOPL			
-		if false || cr == 103 {
-  0xb3c6		4183fc67		CMPL $0x67, R12		
-  0xb3ca		0f85f2020000		JNE 0xb6c2		
-			i += sz
-  0xb3d0		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xb3d3		4d85db			TESTQ R11, R11		
-  0xb3d6		0f8c66020000		JL 0xb642		
-  0xb3dc		4d39c3			CMPQ R8, R11		
-  0xb3df		0f8d5d020000		JGE 0xb642		
-		cr, sz := rune(r[i]), 1
-  0xb3e5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xb3ea		4181fc80000000		CMPL $0x80, R12		
-  0xb3f1		0f8d54020000		JGE 0xb64b		
-  0xb3f7		b901000000		MOVL $0x1, CX		
-  0xb3fc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xb405		90			NOPL			
-		if false || cr == 116 {
-  0xb406		4183fc74		CMPL $0x74, R12		
-  0xb40a		0f8532020000		JNE 0xb642		
-			i += sz
-  0xb410		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xb413		4d85db			TESTQ R11, R11		
-  0xb416		0f8ca6010000		JL 0xb5c2		
-  0xb41c		4d39c3			CMPQ R8, R11		
-  0xb41f		0f8d9d010000		JGE 0xb5c2		
-		cr, sz := rune(r[i]), 1
-  0xb425		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xb42a		4181fc80000000		CMPL $0x80, R12		
-  0xb431		0f8d94010000		JGE 0xb5cb		
-  0xb437		b901000000		MOVL $0x1, CX		
-  0xb43c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xb445		90			NOPL			
-		if false || cr == 97 {
-  0xb446		4183fc61		CMPL $0x61, R12		
-  0xb44a		0f8572010000		JNE 0xb5c2		
-			i += sz
-  0xb450		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xb453		4d85db			TESTQ R11, R11		
-  0xb456		0f8ce6000000		JL 0xb542		
-  0xb45c		4d39c3			CMPQ R8, R11		
-  0xb45f		0f8ddd000000		JGE 0xb542		
-		cr, sz := rune(r[i]), 1
-  0xb465		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xb46a		4181fc80000000		CMPL $0x80, R12		
-  0xb471		0f8dd4000000		JGE 0xb54b		
-  0xb477		b901000000		MOVL $0x1, CX		
-  0xb47c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xb485		90			NOPL			
-		if false || cr == 97 {
-  0xb486		4183fc61		CMPL $0x61, R12		
-  0xb48a		0f85b2000000		JNE 0xb542		
-			i += sz
-  0xb490		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xb493		4d85db			TESTQ R11, R11		
-  0xb496		7c22			JL 0xb4ba		
-  0xb498		4d39c3			CMPQ R8, R11		
-  0xb49b		7d1d			JGE 0xb4ba		
-		cr, sz := rune(r[i]), 1
-  0xb49d		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0xb4a2		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xb4a6		4181fc80000000		CMPL $0x80, R12		
-  0xb4ad		7d1c			JGE 0xb4cb		
-  0xb4af		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xb4b4		4183fc61		CMPL $0x61, R12		
-  0xb4b8		7408			JE 0xb4c2		
-	goto inst161
-  0xb4ba		4889f9			MOVQ DI, CX		
-	goto fail
-  0xb4bd		e9295f0000		JMP 0x113eb		
-			i += sz
-  0xb4c2		4a8d1c19		LEAQ 0(CX)(R11*1), BX	
-			goto inst38
-  0xb4c6		e964f8ffff		JMP 0xad2f		
-			i += sz
-  0xb4cb		4c899c2478040000	MOVQ R11, 0x478(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb4d3		4d29d8			SUBQ R11, R8		
-  0xb4d6		4c89c1			MOVQ R8, CX		
-  0xb4d9		49f7d8			NEGQ R8			
-  0xb4dc		49c1f83f		SARQ $0x3f, R8		
-  0xb4e0		4d21d8			ANDQ R11, R8		
-  0xb4e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb4e7		48891424		MOVQ DX, 0(SP)		
-  0xb4eb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb4f0		e800000000		CALL 0xb4f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb4f5		448b642410		MOVL 0x10(SP), R12	
-  0xb4fa		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xb4ff		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-		if len(r[si:]) != 0 {
-  0xb507		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb50f		488b9c2488040000	MOVQ 0x488(SP), BX	
-  0xb517		488bbc2480040000	MOVQ 0x480(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xb51f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb527		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb52f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xb535		4c8b9c2478040000	MOVQ 0x478(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb53d		e972ffffff		JMP 0xb4b4		
-	goto inst161
-  0xb542		4889f9			MOVQ DI, CX		
-  0xb545		90			NOPL			
-	goto fail
-  0xb546		e9a05e0000		JMP 0x113eb		
-			i += sz
-  0xb54b		4c899c2470040000	MOVQ R11, 0x470(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb553		4d29d8			SUBQ R11, R8		
-  0xb556		4c89c1			MOVQ R8, CX		
-  0xb559		49f7d8			NEGQ R8			
-  0xb55c		49c1f83f		SARQ $0x3f, R8		
-  0xb560		4d21d8			ANDQ R11, R8		
-  0xb563		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb567		48891424		MOVQ DX, 0(SP)		
-  0xb56b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb570		e800000000		CALL 0xb575		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb575		448b642410		MOVL 0x10(SP), R12	
-  0xb57a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xb57f		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-		if len(r[si:]) != 0 {
-  0xb587		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb58f		488b9c2488040000	MOVQ 0x488(SP), BX	
-  0xb597		488bbc2480040000	MOVQ 0x480(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xb59f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb5a7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb5af		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xb5b5		4c8b9c2470040000	MOVQ 0x470(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb5bd		e9c4feffff		JMP 0xb486		
-	goto inst161
-  0xb5c2		4889f9			MOVQ DI, CX		
-  0xb5c5		90			NOPL			
-	goto fail
-  0xb5c6		e9205e0000		JMP 0x113eb		
-			i += sz
-  0xb5cb		4c899c2468040000	MOVQ R11, 0x468(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb5d3		4d29d8			SUBQ R11, R8		
-  0xb5d6		4c89c1			MOVQ R8, CX		
-  0xb5d9		49f7d8			NEGQ R8			
-  0xb5dc		49c1f83f		SARQ $0x3f, R8		
-  0xb5e0		4d21d8			ANDQ R11, R8		
-  0xb5e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb5e7		48891424		MOVQ DX, 0(SP)		
-  0xb5eb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb5f0		e800000000		CALL 0xb5f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb5f5		448b642410		MOVL 0x10(SP), R12	
-  0xb5fa		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xb5ff		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-		if len(r[si:]) != 0 {
-  0xb607		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb60f		488b9c2488040000	MOVQ 0x488(SP), BX	
-  0xb617		488bbc2480040000	MOVQ 0x480(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xb61f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb627		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb62f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xb635		4c8b9c2468040000	MOVQ 0x468(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb63d		e904feffff		JMP 0xb446		
-	goto inst161
-  0xb642		4889f9			MOVQ DI, CX		
-  0xb645		90			NOPL			
-	goto fail
-  0xb646		e9a05d0000		JMP 0x113eb		
-			i += sz
-  0xb64b		4c899c2460040000	MOVQ R11, 0x460(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb653		4d29d8			SUBQ R11, R8		
-  0xb656		4c89c1			MOVQ R8, CX		
-  0xb659		49f7d8			NEGQ R8			
-  0xb65c		49c1f83f		SARQ $0x3f, R8		
-  0xb660		4d21d8			ANDQ R11, R8		
-  0xb663		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb667		48891424		MOVQ DX, 0(SP)		
-  0xb66b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb670		e800000000		CALL 0xb675		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb675		448b642410		MOVL 0x10(SP), R12	
-  0xb67a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xb67f		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-		if len(r[si:]) != 0 {
-  0xb687		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb68f		488b9c2488040000	MOVQ 0x488(SP), BX	
-  0xb697		488bbc2480040000	MOVQ 0x480(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xb69f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb6a7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb6af		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xb6b5		4c8b9c2460040000	MOVQ 0x460(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb6bd		e944fdffff		JMP 0xb406		
-	goto inst161
-  0xb6c2		4889f9			MOVQ DI, CX		
-  0xb6c5		90			NOPL			
-	goto fail
-  0xb6c6		e9205d0000		JMP 0x113eb		
-			i += sz
-  0xb6cb		4c899c2458040000	MOVQ R11, 0x458(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb6d3		4d29d8			SUBQ R11, R8		
-  0xb6d6		4c89c1			MOVQ R8, CX		
-  0xb6d9		49f7d8			NEGQ R8			
-  0xb6dc		49c1f83f		SARQ $0x3f, R8		
-  0xb6e0		4d21d8			ANDQ R11, R8		
-  0xb6e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb6e7		48891424		MOVQ DX, 0(SP)		
-  0xb6eb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb6f0		e800000000		CALL 0xb6f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb6f5		448b642410		MOVL 0x10(SP), R12	
-  0xb6fa		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xb6ff		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-		if len(r[si:]) != 0 {
-  0xb707		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb70f		488b9c2488040000	MOVQ 0x488(SP), BX	
-  0xb717		488bbc2480040000	MOVQ 0x480(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xb71f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb727		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb72f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xb735		4c8b9c2458040000	MOVQ 0x458(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb73d		e984fcffff		JMP 0xb3c6		
-	goto inst161
-  0xb742		4889f9			MOVQ DI, CX		
-  0xb745		90			NOPL			
-	goto fail
-  0xb746		e9a05c0000		JMP 0x113eb		
-			i += sz
-  0xb74b		4c899c2450040000	MOVQ R11, 0x450(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb753		4d29d8			SUBQ R11, R8		
-  0xb756		4c89c1			MOVQ R8, CX		
-  0xb759		49f7d8			NEGQ R8			
-  0xb75c		49c1f83f		SARQ $0x3f, R8		
-  0xb760		4d21d8			ANDQ R11, R8		
-  0xb763		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb767		48891424		MOVQ DX, 0(SP)		
-  0xb76b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb770		e800000000		CALL 0xb775		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb775		448b642410		MOVL 0x10(SP), R12	
-  0xb77a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xb77f		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-		if len(r[si:]) != 0 {
-  0xb787		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb78f		488b9c2488040000	MOVQ 0x488(SP), BX	
-  0xb797		488bbc2480040000	MOVQ 0x480(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xb79f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb7a7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb7af		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xb7b5		4c8b9c2450040000	MOVQ 0x450(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb7bd		e9c4fbffff		JMP 0xb386		
-	goto inst161
-  0xb7c2		4889f9			MOVQ DI, CX		
-  0xb7c5		90			NOPL			
-	goto fail
-  0xb7c6		e9205c0000		JMP 0x113eb		
-				i += sz
-  0xb7cb		4c899c2448040000	MOVQ R11, 0x448(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb7d3		4d29d8			SUBQ R11, R8		
-  0xb7d6		4c89c1			MOVQ R8, CX		
-  0xb7d9		49f7d8			NEGQ R8			
-  0xb7dc		49c1f83f		SARQ $0x3f, R8		
-  0xb7e0		4d21d8			ANDQ R11, R8		
-  0xb7e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb7e7		48891424		MOVQ DX, 0(SP)		
-  0xb7eb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb7f0		e800000000		CALL 0xb7f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb7f5		448b642410		MOVL 0x10(SP), R12	
-  0xb7fa		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xb7ff		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-		if len(r[si:]) != 0 {
-  0xb807		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb80f		488b9c2488040000	MOVQ 0x488(SP), BX	
-  0xb817		488bbc2480040000	MOVQ 0x480(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xb81f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb827		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb82f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xb835		4c8b9c2448040000	MOVQ 0x448(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb83d		e904fbffff		JMP 0xb346		
-				goto inst148
-  0xb842		4d89eb			MOVQ R13, R11		
-	goto inst161
-  0xb845		4889f9			MOVQ DI, CX		
-			goto fail
-  0xb848		e99e5b0000		JMP 0x113eb		
-				goto inst148
-  0xb84d		4d89eb			MOVQ R13, R11		
-	goto fail
-  0xb850		e9965b0000		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb855		4d29e8			SUBQ R13, R8		
-  0xb858		4c89c1			MOVQ R8, CX		
-  0xb85b		49f7d8			NEGQ R8			
-  0xb85e		49c1f83f		SARQ $0x3f, R8		
-  0xb862		4d21e8			ANDQ R13, R8		
-  0xb865		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xb869		48891424		MOVQ DX, 0(SP)		
-  0xb86d		48894c2408		MOVQ CX, 0x8(SP)	
-  0xb872		e800000000		CALL 0xb877		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xb877		448b5c2410		MOVL 0x10(SP), R11	
-  0xb87c		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xb881		488b8424781e0000	MOVQ 0x1e78(SP), AX	
-  0xb889		488b8c2480040000	MOVQ 0x480(SP), CX	
-		if len(r[si:]) != 0 {
-  0xb891		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xb899		488b9c2488040000	MOVQ 0x488(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xb8a1		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb8a9		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb8b1		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xb8b7		4c8bac2408050000	MOVQ 0x508(SP), R13	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xb8bf		e9e2f9ffff		JMP 0xb2a6		
-	bt = append(bt, state{c, i, 37, 0})
-  0xb8c4		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0xb8cb		48891424		MOVQ DX, 0(SP)		
-  0xb8cf		4889442408		MOVQ AX, 0x8(SP)	
-  0xb8d4		4c89642410		MOVQ R12, 0x10(SP)	
-  0xb8d9		48894c2418		MOVQ CX, 0x18(SP)	
-  0xb8de		48895c2420		MOVQ BX, 0x20(SP)	
-  0xb8e3		0f1f00			NOPL 0(AX)		
-  0xb8e6		e800000000		CALL 0xb8eb		[1:5]R_CALL:runtime.growslice	
-  0xb8eb		488b442428		MOVQ 0x28(SP), AX	
-  0xb8f0		488b4c2430		MOVQ 0x30(SP), CX	
-  0xb8f5		488b542438		MOVQ 0x38(SP), DX	
-  0xb8fa		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0xb8fe		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xb906		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xb90e		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 37, 0})
-  0xb914		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0xb91c		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 37, 0})
-  0xb924		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0xb927		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 37, 0})
-  0xb92f		e9f1f8ffff		JMP 0xb225		
-	switch bt[len(bt)-1].pc {
-  0xb934		4983fd39		CMPQ $0x39, R13		
-	case 57:
-  0xb938		0f853a790000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0xb93e		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0xb943		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xb947		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xb94e		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xb956		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0xb95f		0f1f8000000000		NOPL 0(AX)			
-  0xb966		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xb96b		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xb970		e800000000		CALL 0xb975			[1:5]R_CALL:runtime.duffcopy+756	
-  0xb975		488b6d00		MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xb979		4885db			TESTQ BX, BX		
-  0xb97c		0f8cef050000		JL 0xbf71		
-  0xb982		0f1f4000		NOPL 0(AX)		
-  0xb986		4c39c3			CMPQ R8, BX		
-  0xb989		0f8de2050000		JGE 0xbf71		
-		cr, sz := rune(r[i]), 1
-  0xb98f		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xb994		4181fb80000000		CMPL $0x80, R11		
-  0xb99b		0f8ddb050000		JGE 0xbf7c		
-  0xb9a1		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xb9a6		4183fb74		CMPL $0x74, R11		
-  0xb9aa		0f85c1050000		JNE 0xbf71		
-			i += sz
-  0xb9b0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xb9b3		4885db			TESTQ BX, BX		
-  0xb9b6		0f8c33050000		JL 0xbeef		
-  0xb9bc		4c39c3			CMPQ R8, BX		
-  0xb9bf		0f8d2a050000		JGE 0xbeef		
-		cr, sz := rune(r[i]), 1
-  0xb9c5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xb9ca		4181fb80000000		CMPL $0x80, R11		
-  0xb9d1		0f8d23050000		JGE 0xbefa		
-  0xb9d7		be01000000		MOVL $0x1, SI		
-  0xb9dc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xb9e5		90			NOPL			
-		if false || cr == 116 {
-  0xb9e6		4183fb74		CMPL $0x74, R11		
-  0xb9ea		0f85ff040000		JNE 0xbeef		
-			i += sz
-  0xb9f0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xb9f3		4885db			TESTQ BX, BX		
-  0xb9f6		0f8c71040000		JL 0xbe6d		
-  0xb9fc		4c39c3			CMPQ R8, BX		
-  0xb9ff		0f8d68040000		JGE 0xbe6d		
-		cr, sz := rune(r[i]), 1
-  0xba05		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xba0a		4181fb80000000		CMPL $0x80, R11		
-  0xba11		0f8d61040000		JGE 0xbe78		
-  0xba17		be01000000		MOVL $0x1, SI		
-  0xba1c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xba25		90			NOPL			
-		if false || cr == 116 {
-  0xba26		4183fb74		CMPL $0x74, R11		
-  0xba2a		0f853d040000		JNE 0xbe6d		
-			i += sz
-  0xba30		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xba33		4885db			TESTQ BX, BX		
-  0xba36		0f8caf030000		JL 0xbdeb		
-  0xba3c		4c39c3			CMPQ R8, BX		
-  0xba3f		0f8da6030000		JGE 0xbdeb		
-		cr, sz := rune(r[i]), 1
-  0xba45		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xba4a		4181fb80000000		CMPL $0x80, R11		
-  0xba51		0f8d9f030000		JGE 0xbdf6		
-  0xba57		be01000000		MOVL $0x1, SI		
-  0xba5c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xba65		90			NOPL			
-		if false || cr == 97 {
-  0xba66		4183fb61		CMPL $0x61, R11		
-  0xba6a		0f857b030000		JNE 0xbdeb		
-			i += sz
-  0xba70		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xba73		4885db			TESTQ BX, BX		
-  0xba76		0f8ce8020000		JL 0xbd64		
-  0xba7c		4c39c3			CMPQ R8, BX		
-  0xba7f		0f8ddf020000		JGE 0xbd64		
-		cr, sz := rune(r[i]), 1
-  0xba85		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xba8a		4181fb80000000		CMPL $0x80, R11		
-  0xba91		0f8dd8020000		JGE 0xbd6f		
-  0xba97		be01000000		MOVL $0x1, SI		
-  0xba9c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xbaa5		90			NOPL			
-		if false || cr == 99 {
-  0xbaa6		4183fb63		CMPL $0x63, R11		
-  0xbaaa		0f85b4020000		JNE 0xbd64		
-			i += sz
-  0xbab0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xbab3		4885db			TESTQ BX, BX		
-  0xbab6		0f8c26020000		JL 0xbce2		
-  0xbabc		4c39c3			CMPQ R8, BX		
-  0xbabf		0f8d1d020000		JGE 0xbce2		
-		cr, sz := rune(r[i]), 1
-  0xbac5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xbaca		4181fb80000000		CMPL $0x80, R11		
-  0xbad1		0f8d16020000		JGE 0xbced		
-  0xbad7		be01000000		MOVL $0x1, SI		
-  0xbadc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xbae5		90			NOPL			
-		if false || cr == 99 {
-  0xbae6		4183fb63		CMPL $0x63, R11		
-  0xbaea		0f85f2010000		JNE 0xbce2		
-			i += sz
-  0xbaf0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xbaf3		4885db			TESTQ BX, BX		
-  0xbaf6		0f8c64010000		JL 0xbc60		
-  0xbafc		4c39c3			CMPQ R8, BX		
-  0xbaff		0f8d5b010000		JGE 0xbc60		
-		cr, sz := rune(r[i]), 1
-  0xbb05		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xbb0a		4181fb80000000		CMPL $0x80, R11		
-  0xbb11		0f8d54010000		JGE 0xbc6b		
-  0xbb17		be01000000		MOVL $0x1, SI		
-  0xbb1c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xbb25		90			NOPL			
-		if cr < 128 {
-  0xbb26		4181fb80000000		CMPL $0x80, R11		
-  0xbb2d		0f8d2d010000		JGE 0xbc60		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xbb33		4589dd			MOVL R11, R13			
-  0xbb36		41c1fb1f		SARL $0x1f, R11			
-  0xbb3a		41c1eb1d		SHRL $0x1d, R11			
-  0xbb3e		4501eb			ADDL R13, R11			
-  0xbb41		41c1fb03		SARL $0x3, R11			
-  0xbb45		4d63f3			MOVSXD R11, R14			
-  0xbb48		4983fe10		CMPQ $0x10, R14			
-  0xbb4c		0f832b780000		JAE 0x1337d			
-  0xbb52		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"	
-  0xbb59		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xbb5e		41c1e303		SHLL $0x3, R11			
-  0xbb62		4529dd			SUBL R11, R13			
-  0xbb65		90			NOPL				
-  0xbb66		4585ed			TESTL R13, R13			
-  0xbb69		0f8c09780000		JL 0x13378			
-  0xbb6f		4183fd20		CMPL $0x20, R13			
-  0xbb73		4519db			SBBL R11, R11			
-	goto inst161
-  0xbb76		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xbb79		4489e9			MOVL R13, CX		
-  0xbb7c		41bf01000000		MOVL $0x1, R15		
-  0xbb82		41d3e7			SHLL CL, R15		
-  0xbb85		4521fb			ANDL R15, R11		
-  0xbb88		4584f3			TESTL R14, R11		
-  0xbb8b		0f84c1000000		JE 0xbc52		
-				i += sz
-  0xbb91		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xbb94		4885db			TESTQ BX, BX		
-  0xbb97		7c21			JL 0xbbba		
-  0xbb99		4c39c3			CMPQ R8, BX		
-  0xbb9c		7d1c			JGE 0xbbba		
-		cr, sz := rune(r[i]), 1
-  0xbb9e		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xbba3		0f1f00			NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xbba6		4181fb80000000		CMPL $0x80, R11		
-  0xbbad		7d2c			JGE 0xbbdb		
-  0xbbaf		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0xbbb4		4183fb74		CMPL $0x74, R11		
-  0xbbb8		7411			JE 0xbbcb		
-				goto inst148
-  0xbbba		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbbbd		4889f9			MOVQ DI, CX		
-  0xbbc0		4c89e3			MOVQ R12, BX		
-  0xbbc3		0f1f00			NOPL 0(AX)		
-	goto fail
-  0xbbc6		e920580000		JMP 0x113eb		
-			i += sz
-  0xbbcb		4801cb			ADDQ CX, BX		
-	c[7] = i
-  0xbbce		48899c2460050000	MOVQ BX, 0x560(SP)	
-	goto inst180
-  0xbbd6		e970e7ffff		JMP 0xa34b		
-				i += sz
-  0xbbdb		48899c2440040000	MOVQ BX, 0x440(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbbe3		4929d8			SUBQ BX, R8		
-  0xbbe6		4c89c1			MOVQ R8, CX		
-  0xbbe9		49f7d8			NEGQ R8			
-  0xbbec		49c1f83f		SARQ $0x3f, R8		
-  0xbbf0		4921d8			ANDQ BX, R8		
-  0xbbf3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbbf7		48891424		MOVQ DX, 0(SP)		
-  0xbbfb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbc00		e800000000		CALL 0xbc05		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbc05		448b5c2410		MOVL 0x10(SP), R11	
-  0xbc0a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xbc0f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xbc17		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xbc1f		488b9c2440040000	MOVQ 0x440(SP), BX	
-	goto inst161
-  0xbc27		488bbc2418050000	MOVQ 0x518(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xbc2f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbc37		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbc3f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbc45		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbc4d		e962ffffff		JMP 0xbbb4		
-				goto inst148
-  0xbc52		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbc55		4889f9			MOVQ DI, CX		
-  0xbc58		4c89e3			MOVQ R12, BX		
-			goto fail
-  0xbc5b		e98b570000		JMP 0x113eb		
-				goto inst148
-  0xbc60		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbc63		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xbc66		e980570000		JMP 0x113eb		
-			i += sz
-  0xbc6b		48899c2438040000	MOVQ BX, 0x438(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbc73		4929d8			SUBQ BX, R8		
-  0xbc76		4c89c1			MOVQ R8, CX		
-  0xbc79		49f7d8			NEGQ R8			
-  0xbc7c		49c1f83f		SARQ $0x3f, R8		
-  0xbc80		4921d8			ANDQ BX, R8		
-  0xbc83		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbc87		48891424		MOVQ DX, 0(SP)		
-  0xbc8b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbc90		e800000000		CALL 0xbc95		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbc95		448b5c2410		MOVL 0x10(SP), R11	
-  0xbc9a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xbc9f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xbca7		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xbcaf		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xbcb7		488b9c2438040000	MOVQ 0x438(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xbcbf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbcc7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbccf		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbcd5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbcdd		e944feffff		JMP 0xbb26		
-				goto inst148
-  0xbce2		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbce5		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xbce8		e9fe560000		JMP 0x113eb		
-			i += sz
-  0xbced		48899c2430040000	MOVQ BX, 0x430(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbcf5		4929d8			SUBQ BX, R8		
-  0xbcf8		4c89c1			MOVQ R8, CX		
-  0xbcfb		49f7d8			NEGQ R8			
-  0xbcfe		49c1f83f		SARQ $0x3f, R8		
-  0xbd02		4921d8			ANDQ BX, R8		
-  0xbd05		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbd09		48891424		MOVQ DX, 0(SP)		
-  0xbd0d		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbd12		e800000000		CALL 0xbd17		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbd17		448b5c2410		MOVL 0x10(SP), R11	
-  0xbd1c		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xbd21		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xbd29		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xbd31		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xbd39		488b9c2430040000	MOVQ 0x430(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xbd41		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbd49		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbd51		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbd57		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbd5f		e982fdffff		JMP 0xbae6		
-				goto inst148
-  0xbd64		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbd67		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xbd6a		e97c560000		JMP 0x113eb		
-			i += sz
-  0xbd6f		48899c2428040000	MOVQ BX, 0x428(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbd77		4929d8			SUBQ BX, R8		
-  0xbd7a		4c89c1			MOVQ R8, CX		
-  0xbd7d		49f7d8			NEGQ R8			
-  0xbd80		49c1f83f		SARQ $0x3f, R8		
-  0xbd84		4921d8			ANDQ BX, R8		
-  0xbd87		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbd8b		48891424		MOVQ DX, 0(SP)		
-  0xbd8f		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbd94		e800000000		CALL 0xbd99		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbd99		448b5c2410		MOVL 0x10(SP), R11	
-  0xbd9e		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xbda3		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xbdab		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xbdb3		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xbdbb		488b9c2428040000	MOVQ 0x428(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xbdc3		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbdcb		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbdd3		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbdd9		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xbde1		0f1f440000		NOPL 0(AX)(AX*1)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbde6		e9bbfcffff		JMP 0xbaa6		
-				goto inst148
-  0xbdeb		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbdee		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xbdf1		e9f5550000		JMP 0x113eb		
-			i += sz
-  0xbdf6		48899c2420040000	MOVQ BX, 0x420(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbdfe		4929d8			SUBQ BX, R8		
-  0xbe01		4c89c1			MOVQ R8, CX		
-  0xbe04		49f7d8			NEGQ R8			
-  0xbe07		49c1f83f		SARQ $0x3f, R8		
-  0xbe0b		4921d8			ANDQ BX, R8		
-  0xbe0e		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbe12		48891424		MOVQ DX, 0(SP)		
-  0xbe16		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbe1b		e800000000		CALL 0xbe20		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbe20		448b5c2410		MOVL 0x10(SP), R11	
-  0xbe25		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xbe2a		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xbe32		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xbe3a		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xbe42		488b9c2420040000	MOVQ 0x420(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xbe4a		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbe52		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbe5a		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbe60		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbe68		e9f9fbffff		JMP 0xba66		
-				goto inst148
-  0xbe6d		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbe70		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xbe73		e973550000		JMP 0x113eb		
-			i += sz
-  0xbe78		48899c2418040000	MOVQ BX, 0x418(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbe80		4929d8			SUBQ BX, R8		
-  0xbe83		4c89c1			MOVQ R8, CX		
-  0xbe86		49f7d8			NEGQ R8			
-  0xbe89		49c1f83f		SARQ $0x3f, R8		
-  0xbe8d		4921d8			ANDQ BX, R8		
-  0xbe90		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbe94		48891424		MOVQ DX, 0(SP)		
-  0xbe98		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbe9d		e800000000		CALL 0xbea2		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbea2		448b5c2410		MOVL 0x10(SP), R11	
-  0xbea7		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xbeac		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xbeb4		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xbebc		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xbec4		488b9c2418040000	MOVQ 0x418(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xbecc		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbed4		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbedc		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbee2		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbeea		e937fbffff		JMP 0xba26		
-				goto inst148
-  0xbeef		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbef2		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xbef5		e9f1540000		JMP 0x113eb		
-			i += sz
-  0xbefa		48899c2410040000	MOVQ BX, 0x410(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbf02		4929d8			SUBQ BX, R8		
-  0xbf05		4c89c1			MOVQ R8, CX		
-  0xbf08		49f7d8			NEGQ R8			
-  0xbf0b		49c1f83f		SARQ $0x3f, R8		
-  0xbf0f		4921d8			ANDQ BX, R8		
-  0xbf12		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbf16		48891424		MOVQ DX, 0(SP)		
-  0xbf1a		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbf1f		e800000000		CALL 0xbf24		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbf24		448b5c2410		MOVL 0x10(SP), R11	
-  0xbf29		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xbf2e		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xbf36		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xbf3e		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xbf46		488b9c2410040000	MOVQ 0x410(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xbf4e		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbf56		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbf5e		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbf64		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbf6c		e975faffff		JMP 0xb9e6		
-				goto inst148
-  0xbf71		4989db			MOVQ BX, R11		
-	goto inst161
-  0xbf74		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xbf77		e96f540000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0xbf7c		48899c2408040000	MOVQ BX, 0x408(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbf84		4929d8			SUBQ BX, R8		
-  0xbf87		4c89c1			MOVQ R8, CX		
-  0xbf8a		49f7d8			NEGQ R8			
-  0xbf8d		49c1f83f		SARQ $0x3f, R8		
-  0xbf91		4921d8			ANDQ BX, R8		
-  0xbf94		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xbf98		48891424		MOVQ DX, 0(SP)		
-  0xbf9c		48894c2408		MOVQ CX, 0x8(SP)	
-  0xbfa1		0f1f440000		NOPL 0(AX)(AX*1)	
-  0xbfa6		e800000000		CALL 0xbfab		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xbfab		448b5c2410		MOVL 0x10(SP), R11	
-  0xbfb0		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xbfb5		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xbfbd		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xbfc5		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xbfcd		488b9c2408040000	MOVQ 0x408(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xbfd5		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xbfdd		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xbfe5		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xbfeb		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xbff3		e9aef9ffff		JMP 0xb9a6		
-	switch bt[len(bt)-1].pc {
-  0xbff8		4983fd4d		CMPQ $0x4d, R13		
-	case 77:
-  0xbffc		0f8f8d0e0000		JG 0xce8f		
-  0xc002		0f1f4000		NOPL 0(AX)		
-	case 59:
-  0xc006		4983fd3b		CMPQ $0x3b, R13		
-  0xc00a		0f85bb070000		JNE 0xc7cb		
-		c, i = bt[n].c, bt[n].i
-  0xc010		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0xc015		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0xc01d		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xc021		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xc028		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xc030		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xc035		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xc03a		e800000000		CALL 0xc03f			[1:5]R_CALL:runtime.duffcopy+756	
-  0xc03f		488b6d00		MOVQ 0(BP), BP			
-	c[6] = i
-  0xc043		4c89ac2458050000	MOVQ R13, 0x558(SP)	
-	bt = append(bt, state{c, i, 57, 0})
-  0xc04b		48c78424200f000000000000	MOVQ $0x0, 0xf20(SP)		
-  0xc057		488dbc24280f0000		LEAQ 0xf28(SP), DI		
-  0xc05f		0f57c0				XORPS X0, X0			
-  0xc062		488d7ff0			LEAQ -0x10(DI), DI		
-  0xc066		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xc06b		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xc070		e800000000			CALL 0xc075			[1:5]R_CALL:runtime.duffzero+250	
-  0xc075		488b6d00			MOVQ 0(BP), BP			
-  0xc079		488dbc24200f0000		LEAQ 0xf20(SP), DI		
-  0xc081		488db42428050000		LEAQ 0x528(SP), SI		
-  0xc089		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xc08e		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xc093		e800000000			CALL 0xc098			[1:5]R_CALL:runtime.duffcopy+756	
-  0xc098		488b6d00			MOVQ 0(BP), BP			
-  0xc09c		4c89ac24c00f0000		MOVQ R13, 0xfc0(SP)		
-  0xc0a4		48c78424c80f000039000000	MOVQ $0x39, 0xfc8(SP)		
-  0xc0b0		48c78424d00f000000000000	MOVQ $0x0, 0xfd0(SP)		
-  0xc0bc		4839d9				CMPQ BX, CX			
-  0xc0bf		0f8295060000			JB 0xc75a			
-  0xc0c5		4c8ba424200f0000		MOVQ 0xf20(SP), R12		
-  0xc0cd		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0xc0d5		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0xc0d9		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0xc0e0		488db424280f0000		LEAQ 0xf28(SP), SI		
-  0xc0e8		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xc0ed		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xc0f2		e800000000			CALL 0xc0f7			[1:5]R_CALL:runtime.duffcopy+742	
-  0xc0f7		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xc0fb		4d85ed			TESTQ R13, R13		
-  0xc0fe		0f8cde050000		JL 0xc6e2		
-  0xc104		6690			NOPW			
-  0xc106		4d39c5			CMPQ R8, R13		
-  0xc109		0f8dd3050000		JGE 0xc6e2		
-	bt = append(bt, state{c, i, 57, 0})
-  0xc10f		48898424701e0000	MOVQ AX, 0x1e70(SP)	
-  0xc117		48899c2400040000	MOVQ BX, 0x400(SP)	
-  0xc11f		48898c24f8030000	MOVQ CX, 0x3f8(SP)	
-		cr, sz := rune(r[i]), 1
-  0xc127		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xc12c		4181fb80000000		CMPL $0x80, R11		
-  0xc133		0f8db2050000		JGE 0xc6eb		
-  0xc139		be01000000		MOVL $0x1, SI		
-  0xc13e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if false || cr == 97 {
-  0xc146		4183fb61		CMPL $0x61, R11		
-  0xc14a		0f8592050000		JNE 0xc6e2		
-			i += sz
-  0xc150		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0xc154		4d85db			TESTQ R11, R11		
-  0xc157		0f8c8e520000		JL 0x113eb		
-  0xc15d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xc166		4d39c3			CMPQ R8, R11		
-  0xc169		0f8d7c520000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xc16f		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xc174		4181fc80000000		CMPL $0x80, R12		
-  0xc17b		0f8dea040000		JGE 0xc66b		
-  0xc181		be01000000		MOVL $0x1, SI		
-		if cr < 128 {
-  0xc186		4181fc80000000		CMPL $0x80, R12		
-  0xc18d		0f8d58520000		JGE 0x113eb		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xc193		4589e5			MOVL R12, R13			
-  0xc196		41c1fc1f		SARL $0x1f, R12			
-  0xc19a		41c1ec1d		SHRL $0x1d, R12			
-  0xc19e		4501ec			ADDL R13, R12			
-  0xc1a1		41c1fc03		SARL $0x3, R12			
-  0xc1a5		4d63f4			MOVSXD R12, R14			
-  0xc1a8		4983fe10		CMPQ $0x10, R14			
-  0xc1ac		0f83de710000		JAE 0x13390			
-  0xc1b2		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"	
-  0xc1b9		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xc1be		41c1e403		SHLL $0x3, R12			
-  0xc1c2		4529e5			SUBL R12, R13			
-  0xc1c5		90			NOPL				
-  0xc1c6		4585ed			TESTL R13, R13			
-  0xc1c9		0f8cbc710000		JL 0x1338b			
-  0xc1cf		4183fd20		CMPL $0x20, R13			
-  0xc1d3		4519e4			SBBL R12, R12			
-	bt = append(bt, state{c, i, 57, 0})
-  0xc1d6		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xc1d9		4489e9			MOVL R13, CX		
-  0xc1dc		41bf01000000		MOVL $0x1, R15		
-  0xc1e2		41d3e7			SHLL CL, R15		
-  0xc1e5		4521e7			ANDL R12, R15		
-  0xc1e8		4584f7			TESTL R14, R15		
-  0xc1eb		0f8471040000		JE 0xc662		
-				i += sz
-  0xc1f1		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xc1f4		4d85db			TESTQ R11, R11		
-  0xc1f7		0f8ce5030000		JL 0xc5e2		
-  0xc1fd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xc206		4d39c3			CMPQ R8, R11		
-  0xc209		0f8dd3030000		JGE 0xc5e2		
-		cr, sz := rune(r[i]), 1
-  0xc20f		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xc214		4181fc80000000		CMPL $0x80, R12		
-  0xc21b		0f8dca030000		JGE 0xc5eb		
-  0xc221		b901000000		MOVL $0x1, CX		
-		if false || cr == 103 {
-  0xc226		4183fc67		CMPL $0x67, R12		
-  0xc22a		0f85b2030000		JNE 0xc5e2		
-			i += sz
-  0xc230		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xc233		4d85db			TESTQ R11, R11		
-  0xc236		0f8c26030000		JL 0xc562		
-  0xc23c		4d39c3			CMPQ R8, R11		
-  0xc23f		0f8d1d030000		JGE 0xc562		
-		cr, sz := rune(r[i]), 1
-  0xc245		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xc24a		4181fc80000000		CMPL $0x80, R12		
-  0xc251		0f8d14030000		JGE 0xc56b		
-  0xc257		b901000000		MOVL $0x1, CX		
-  0xc25c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xc265		90			NOPL			
-		if false || cr == 103 {
-  0xc266		4183fc67		CMPL $0x67, R12		
-  0xc26a		0f85f2020000		JNE 0xc562		
-			i += sz
-  0xc270		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xc273		4d85db			TESTQ R11, R11		
-  0xc276		0f8c66020000		JL 0xc4e2		
-  0xc27c		4d39c3			CMPQ R8, R11		
-  0xc27f		0f8d5d020000		JGE 0xc4e2		
-		cr, sz := rune(r[i]), 1
-  0xc285		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xc28a		4181fc80000000		CMPL $0x80, R12		
-  0xc291		0f8d54020000		JGE 0xc4eb		
-  0xc297		b901000000		MOVL $0x1, CX		
-  0xc29c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xc2a5		90			NOPL			
-		if false || cr == 116 {
-  0xc2a6		4183fc74		CMPL $0x74, R12		
-  0xc2aa		0f8532020000		JNE 0xc4e2		
-			i += sz
-  0xc2b0		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xc2b3		4d85db			TESTQ R11, R11		
-  0xc2b6		0f8ca6010000		JL 0xc462		
-  0xc2bc		4d39c3			CMPQ R8, R11		
-  0xc2bf		0f8d9d010000		JGE 0xc462		
-		cr, sz := rune(r[i]), 1
-  0xc2c5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xc2ca		4181fc80000000		CMPL $0x80, R12		
-  0xc2d1		0f8d94010000		JGE 0xc46b		
-  0xc2d7		b901000000		MOVL $0x1, CX		
-  0xc2dc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xc2e5		90			NOPL			
-		if false || cr == 97 {
-  0xc2e6		4183fc61		CMPL $0x61, R12		
-  0xc2ea		0f8572010000		JNE 0xc462		
-			i += sz
-  0xc2f0		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xc2f3		4d85db			TESTQ R11, R11		
-  0xc2f6		0f8ce6000000		JL 0xc3e2		
-  0xc2fc		4d39c3			CMPQ R8, R11		
-  0xc2ff		0f8ddd000000		JGE 0xc3e2		
-		cr, sz := rune(r[i]), 1
-  0xc305		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xc30a		4181fc80000000		CMPL $0x80, R12		
-  0xc311		0f8dd4000000		JGE 0xc3eb		
-  0xc317		b901000000		MOVL $0x1, CX		
-  0xc31c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xc325		90			NOPL			
-		if false || cr == 97 {
-  0xc326		4183fc61		CMPL $0x61, R12		
-  0xc32a		0f85b2000000		JNE 0xc3e2		
-			i += sz
-  0xc330		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xc333		4d85db			TESTQ R11, R11		
-  0xc336		7c22			JL 0xc35a		
-  0xc338		4d39c3			CMPQ R8, R11		
-  0xc33b		7d1d			JGE 0xc35a		
-		cr, sz := rune(r[i]), 1
-  0xc33d		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0xc342		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xc346		4181fc80000000		CMPL $0x80, R12		
-  0xc34d		7d1c			JGE 0xc36b		
-  0xc34f		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xc354		4183fc61		CMPL $0x61, R12		
-  0xc358		7408			JE 0xc362		
-	goto inst161
-  0xc35a		4889f9			MOVQ DI, CX		
-	goto fail
-  0xc35d		e989500000		JMP 0x113eb		
-			i += sz
-  0xc362		4a8d1c19		LEAQ 0(CX)(R11*1), BX	
-			goto inst58
-  0xc366		e963f8ffff		JMP 0xbbce		
-			i += sz
-  0xc36b		4c899c24f0030000	MOVQ R11, 0x3f0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc373		4d29d8			SUBQ R11, R8		
-  0xc376		4c89c1			MOVQ R8, CX		
-  0xc379		49f7d8			NEGQ R8			
-  0xc37c		49c1f83f		SARQ $0x3f, R8		
-  0xc380		4d21d8			ANDQ R11, R8		
-  0xc383		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc387		48891424		MOVQ DX, 0(SP)		
-  0xc38b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc390		e800000000		CALL 0xc395		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc395		448b642410		MOVL 0x10(SP), R12	
-  0xc39a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xc39f		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-		if len(r[si:]) != 0 {
-  0xc3a7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc3af		488b9c2400040000	MOVQ 0x400(SP), BX	
-  0xc3b7		488bbc24f8030000	MOVQ 0x3f8(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xc3bf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc3c7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc3cf		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xc3d5		4c8b9c24f0030000	MOVQ 0x3f0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc3dd		e972ffffff		JMP 0xc354		
-	goto inst161
-  0xc3e2		4889f9			MOVQ DI, CX		
-  0xc3e5		90			NOPL			
-	goto fail
-  0xc3e6		e900500000		JMP 0x113eb		
-			i += sz
-  0xc3eb		4c899c24e8030000	MOVQ R11, 0x3e8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc3f3		4d29d8			SUBQ R11, R8		
-  0xc3f6		4c89c1			MOVQ R8, CX		
-  0xc3f9		49f7d8			NEGQ R8			
-  0xc3fc		49c1f83f		SARQ $0x3f, R8		
-  0xc400		4d21d8			ANDQ R11, R8		
-  0xc403		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc407		48891424		MOVQ DX, 0(SP)		
-  0xc40b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc410		e800000000		CALL 0xc415		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc415		448b642410		MOVL 0x10(SP), R12	
-  0xc41a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xc41f		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-		if len(r[si:]) != 0 {
-  0xc427		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc42f		488b9c2400040000	MOVQ 0x400(SP), BX	
-  0xc437		488bbc24f8030000	MOVQ 0x3f8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xc43f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc447		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc44f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xc455		4c8b9c24e8030000	MOVQ 0x3e8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc45d		e9c4feffff		JMP 0xc326		
-	goto inst161
-  0xc462		4889f9			MOVQ DI, CX		
-  0xc465		90			NOPL			
-	goto fail
-  0xc466		e9804f0000		JMP 0x113eb		
-			i += sz
-  0xc46b		4c899c24e0030000	MOVQ R11, 0x3e0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc473		4d29d8			SUBQ R11, R8		
-  0xc476		4c89c1			MOVQ R8, CX		
-  0xc479		49f7d8			NEGQ R8			
-  0xc47c		49c1f83f		SARQ $0x3f, R8		
-  0xc480		4d21d8			ANDQ R11, R8		
-  0xc483		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc487		48891424		MOVQ DX, 0(SP)		
-  0xc48b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc490		e800000000		CALL 0xc495		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc495		448b642410		MOVL 0x10(SP), R12	
-  0xc49a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xc49f		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-		if len(r[si:]) != 0 {
-  0xc4a7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc4af		488b9c2400040000	MOVQ 0x400(SP), BX	
-  0xc4b7		488bbc24f8030000	MOVQ 0x3f8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xc4bf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc4c7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc4cf		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xc4d5		4c8b9c24e0030000	MOVQ 0x3e0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc4dd		e904feffff		JMP 0xc2e6		
-	goto inst161
-  0xc4e2		4889f9			MOVQ DI, CX		
-  0xc4e5		90			NOPL			
-	goto fail
-  0xc4e6		e9004f0000		JMP 0x113eb		
-			i += sz
-  0xc4eb		4c899c24d8030000	MOVQ R11, 0x3d8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc4f3		4d29d8			SUBQ R11, R8		
-  0xc4f6		4c89c1			MOVQ R8, CX		
-  0xc4f9		49f7d8			NEGQ R8			
-  0xc4fc		49c1f83f		SARQ $0x3f, R8		
-  0xc500		4d21d8			ANDQ R11, R8		
-  0xc503		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc507		48891424		MOVQ DX, 0(SP)		
-  0xc50b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc510		e800000000		CALL 0xc515		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc515		448b642410		MOVL 0x10(SP), R12	
-  0xc51a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xc51f		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-		if len(r[si:]) != 0 {
-  0xc527		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc52f		488b9c2400040000	MOVQ 0x400(SP), BX	
-  0xc537		488bbc24f8030000	MOVQ 0x3f8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xc53f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc547		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc54f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xc555		4c8b9c24d8030000	MOVQ 0x3d8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc55d		e944fdffff		JMP 0xc2a6		
-	goto inst161
-  0xc562		4889f9			MOVQ DI, CX		
-  0xc565		90			NOPL			
-	goto fail
-  0xc566		e9804e0000		JMP 0x113eb		
-			i += sz
-  0xc56b		4c899c24d0030000	MOVQ R11, 0x3d0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc573		4d29d8			SUBQ R11, R8		
-  0xc576		4c89c1			MOVQ R8, CX		
-  0xc579		49f7d8			NEGQ R8			
-  0xc57c		49c1f83f		SARQ $0x3f, R8		
-  0xc580		4d21d8			ANDQ R11, R8		
-  0xc583		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc587		48891424		MOVQ DX, 0(SP)		
-  0xc58b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc590		e800000000		CALL 0xc595		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc595		448b642410		MOVL 0x10(SP), R12	
-  0xc59a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xc59f		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-		if len(r[si:]) != 0 {
-  0xc5a7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc5af		488b9c2400040000	MOVQ 0x400(SP), BX	
-  0xc5b7		488bbc24f8030000	MOVQ 0x3f8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xc5bf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc5c7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc5cf		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xc5d5		4c8b9c24d0030000	MOVQ 0x3d0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc5dd		e984fcffff		JMP 0xc266		
-	goto inst161
-  0xc5e2		4889f9			MOVQ DI, CX		
-  0xc5e5		90			NOPL			
-	goto fail
-  0xc5e6		e9004e0000		JMP 0x113eb		
-				i += sz
-  0xc5eb		4c899c24c8030000	MOVQ R11, 0x3c8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc5f3		4d29d8			SUBQ R11, R8		
-  0xc5f6		4c89c1			MOVQ R8, CX		
-  0xc5f9		49f7d8			NEGQ R8			
-  0xc5fc		49c1f83f		SARQ $0x3f, R8		
-  0xc600		4d21d8			ANDQ R11, R8		
-  0xc603		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc607		48891424		MOVQ DX, 0(SP)		
-  0xc60b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc610		e800000000		CALL 0xc615		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc615		448b642410		MOVL 0x10(SP), R12	
-  0xc61a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xc61f		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-		if len(r[si:]) != 0 {
-  0xc627		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc62f		488b9c2400040000	MOVQ 0x400(SP), BX	
-  0xc637		488bbc24f8030000	MOVQ 0x3f8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xc63f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc647		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc64f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xc655		4c8b9c24c8030000	MOVQ 0x3c8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc65d		e9c4fbffff		JMP 0xc226		
-	goto inst161
-  0xc662		4889f9			MOVQ DI, CX		
-  0xc665		90			NOPL			
-			goto fail
-  0xc666		e9804d0000		JMP 0x113eb		
-			i += sz
-  0xc66b		4c899c24c0030000	MOVQ R11, 0x3c0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc673		4d29d8			SUBQ R11, R8		
-  0xc676		4c89c1			MOVQ R8, CX		
-  0xc679		49f7d8			NEGQ R8			
-  0xc67c		49c1f83f		SARQ $0x3f, R8		
-  0xc680		4d21d8			ANDQ R11, R8		
-  0xc683		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc687		48891424		MOVQ DX, 0(SP)		
-  0xc68b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc690		e800000000		CALL 0xc695		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc695		448b642410		MOVL 0x10(SP), R12	
-  0xc69a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xc69f		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-  0xc6a7		488b8c24f8030000	MOVQ 0x3f8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xc6af		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc6b7		488b9c2400040000	MOVQ 0x400(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xc6bf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc6c7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc6cf		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xc6d5		4c8b9c24c0030000	MOVQ 0x3c0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc6dd		e9a4faffff		JMP 0xc186		
-				goto inst148
-  0xc6e2		4d89eb			MOVQ R13, R11		
-  0xc6e5		90			NOPL			
-	goto fail
-  0xc6e6		e9004d0000		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc6eb		4d29e8			SUBQ R13, R8		
-  0xc6ee		4c89c1			MOVQ R8, CX		
-  0xc6f1		49f7d8			NEGQ R8			
-  0xc6f4		49c1f83f		SARQ $0x3f, R8		
-  0xc6f8		4d21e8			ANDQ R13, R8		
-  0xc6fb		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xc6ff		48891424		MOVQ DX, 0(SP)		
-  0xc703		48894c2408		MOVQ CX, 0x8(SP)	
-  0xc708		e800000000		CALL 0xc70d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xc70d		448b5c2410		MOVL 0x10(SP), R11	
-  0xc712		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xc717		488b8424701e0000	MOVQ 0x1e70(SP), AX	
-  0xc71f		488b8c24f8030000	MOVQ 0x3f8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xc727		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xc72f		488b9c2400040000	MOVQ 0x400(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xc737		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc73f		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc747		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xc74d		4c8bac2408050000	MOVQ 0x508(SP), R13	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xc755		e9ecf9ffff		JMP 0xc146		
-	bt = append(bt, state{c, i, 57, 0})
-  0xc75a		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0xc761		48891424		MOVQ DX, 0(SP)		
-  0xc765		4889442408		MOVQ AX, 0x8(SP)	
-  0xc76a		4c89642410		MOVQ R12, 0x10(SP)	
-  0xc76f		48894c2418		MOVQ CX, 0x18(SP)	
-  0xc774		48895c2420		MOVQ BX, 0x20(SP)	
-  0xc779		e800000000		CALL 0xc77e		[1:5]R_CALL:runtime.growslice	
-  0xc77e		488b442428		MOVQ 0x28(SP), AX	
-  0xc783		488b4c2430		MOVQ 0x30(SP), CX	
-  0xc788		488b542438		MOVQ 0x38(SP), DX	
-  0xc78d		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0xc791		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xc799		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xc7a1		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 57, 0})
-  0xc7a7		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0xc7af		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 57, 0})
-  0xc7b7		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0xc7ba		488b942420050000	MOVQ 0x520(SP), DX	
-  0xc7c2		0f1f4000		NOPL 0(AX)		
-	bt = append(bt, state{c, i, 57, 0})
-  0xc7c6		e9faf8ffff		JMP 0xc0c5		
-	switch bt[len(bt)-1].pc {
-  0xc7cb		4983fd4d		CMPQ $0x4d, R13		
-	case 77:
-  0xc7cf		0f85a36a0000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0xc7d5		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0xc7da		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xc7de		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xc7e5		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xc7ed		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xc7f2		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xc7f7		e800000000		CALL 0xc7fc			[1:5]R_CALL:runtime.duffcopy+756	
-  0xc7fc		488b6d00		MOVQ 0(BP), BP			
-  0xc800		660f1f440000		NOPW 0(AX)(AX*1)		
-	if i >= 0 && i < len(r) {
-  0xc806		4885db			TESTQ BX, BX		
-  0xc809		0f8cfe050000		JL 0xce0d		
-  0xc80f		4c39c3			CMPQ R8, BX		
-  0xc812		0f8df5050000		JGE 0xce0d		
-		cr, sz := rune(r[i]), 1
-  0xc818		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xc81d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0xc826		4181fb80000000		CMPL $0x80, R11		
-  0xc82d		0f8de5050000		JGE 0xce18		
-  0xc833		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xc838		4183fb74		CMPL $0x74, R11		
-  0xc83c		0f85cb050000		JNE 0xce0d		
-			i += sz
-  0xc842		4801f3			ADDQ SI, BX		
-  0xc845		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0xc846		4885db			TESTQ BX, BX		
-  0xc849		0f8c3c050000		JL 0xcd8b		
-  0xc84f		4c39c3			CMPQ R8, BX		
-  0xc852		0f8d33050000		JGE 0xcd8b		
-		cr, sz := rune(r[i]), 1
-  0xc858		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xc85d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0xc866		4181fb80000000		CMPL $0x80, R11		
-  0xc86d		0f8d23050000		JGE 0xcd96		
-  0xc873		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xc878		4183fb74		CMPL $0x74, R11		
-  0xc87c		0f8509050000		JNE 0xcd8b		
-			i += sz
-  0xc882		4801f3			ADDQ SI, BX		
-  0xc885		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0xc886		4885db			TESTQ BX, BX		
-  0xc889		0f8c75040000		JL 0xcd04		
-  0xc88f		4c39c3			CMPQ R8, BX		
-  0xc892		0f8d6c040000		JGE 0xcd04		
-		cr, sz := rune(r[i]), 1
-  0xc898		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xc89d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0xc8a6		4181fb80000000		CMPL $0x80, R11		
-  0xc8ad		0f8d5c040000		JGE 0xcd0f		
-  0xc8b3		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xc8b8		4183fb74		CMPL $0x74, R11		
-  0xc8bc		0f8542040000		JNE 0xcd04		
-			i += sz
-  0xc8c2		4801f3			ADDQ SI, BX		
-  0xc8c5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0xc8c6		4885db			TESTQ BX, BX		
-  0xc8c9		0f8cb3030000		JL 0xcc82		
-  0xc8cf		4c39c3			CMPQ R8, BX		
-  0xc8d2		0f8daa030000		JGE 0xcc82		
-		cr, sz := rune(r[i]), 1
-  0xc8d8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xc8dd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0xc8e6		4181fb80000000		CMPL $0x80, R11		
-  0xc8ed		0f8d9a030000		JGE 0xcc8d		
-  0xc8f3		be01000000		MOVL $0x1, SI		
-		if false || cr == 97 {
-  0xc8f8		4183fb61		CMPL $0x61, R11		
-  0xc8fc		0f8580030000		JNE 0xcc82		
-			i += sz
-  0xc902		4801f3			ADDQ SI, BX		
-  0xc905		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0xc906		4885db			TESTQ BX, BX		
-  0xc909		0f8cec020000		JL 0xcbfb		
-  0xc90f		4c39c3			CMPQ R8, BX		
-  0xc912		0f8de3020000		JGE 0xcbfb		
-		cr, sz := rune(r[i]), 1
-  0xc918		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xc91d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0xc926		4181fb80000000		CMPL $0x80, R11		
-  0xc92d		0f8dd8020000		JGE 0xcc0b		
-  0xc933		be01000000		MOVL $0x1, SI		
-		if false || cr == 99 {
-  0xc938		4183fb63		CMPL $0x63, R11		
-  0xc93c		0f85b9020000		JNE 0xcbfb		
-			i += sz
-  0xc942		4801f3			ADDQ SI, BX		
-  0xc945		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0xc946		4885db			TESTQ BX, BX		
-  0xc949		0f8c2a020000		JL 0xcb79		
-  0xc94f		4c39c3			CMPQ R8, BX		
-  0xc952		0f8d21020000		JGE 0xcb79		
-		cr, sz := rune(r[i]), 1
-  0xc958		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xc95d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0xc966		4181fb80000000		CMPL $0x80, R11		
-  0xc96d		0f8d11020000		JGE 0xcb84		
-  0xc973		be01000000		MOVL $0x1, SI		
-		if cr < 128 {
-  0xc978		4181fb80000000		CMPL $0x80, R11		
-  0xc97f		0f8df4010000		JGE 0xcb79		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xc985		4589dd			MOVL R11, R13			
-  0xc988		41c1fb1f		SARL $0x1f, R11			
-  0xc98c		41c1eb1d		SHRL $0x1d, R11			
-  0xc990		4501eb			ADDL R13, R11			
-  0xc993		41c1fb03		SARL $0x3, R11			
-  0xc997		4d63f3			MOVSXD R11, R14			
-  0xc99a		4983fe10		CMPQ $0x10, R14			
-  0xc99e		0f83b0690000		JAE 0x13354			
-  0xc9a4		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"	
-  0xc9ab		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xc9b0		41c1e303		SHLL $0x3, R11			
-  0xc9b4		4529dd			SUBL R11, R13			
-  0xc9b7		4585ed			TESTL R13, R13			
-  0xc9ba		0f8c8f690000		JL 0x1334f			
-  0xc9c0		4183fd20		CMPL $0x20, R13			
-  0xc9c4		4519db			SBBL R11, R11			
-	goto inst161
-  0xc9c7		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xc9ca		4489e9			MOVL R13, CX		
-  0xc9cd		41bf01000000		MOVL $0x1, R15		
-  0xc9d3		41d3e7			SHLL CL, R15		
-  0xc9d6		4521df			ANDL R11, R15		
-  0xc9d9		4584f7			TESTL R14, R15		
-  0xc9dc		0f8489010000		JE 0xcb6b		
-				i += sz
-  0xc9e2		4801f3			ADDQ SI, BX		
-  0xc9e5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0xc9e6		4885db			TESTQ BX, BX		
-  0xc9e9		0f8cf3000000		JL 0xcae2		
-  0xc9ef		4c39c3			CMPQ R8, BX		
-  0xc9f2		0f8dea000000		JGE 0xcae2		
-		cr, sz := rune(r[i]), 1
-  0xc9f8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xc9fd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0xca06		4181fb80000000		CMPL $0x80, R11		
-  0xca0d		0f8ddd000000		JGE 0xcaf0		
-  0xca13		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0xca18		4183fb63		CMPL $0x63, R11		
-  0xca1c		0f85c0000000		JNE 0xcae2		
-			i += sz
-  0xca22		4801cb			ADDQ CX, BX		
-  0xca25		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0xca26		4885db			TESTQ BX, BX		
-  0xca29		7c21			JL 0xca4c		
-  0xca2b		4c39c3			CMPQ R8, BX		
-  0xca2e		7d1c			JGE 0xca4c		
-		cr, sz := rune(r[i]), 1
-  0xca30		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xca35		4181fb80000000		CMPL $0x80, R11		
-  0xca3c		7d2d			JGE 0xca6b		
-  0xca3e		b901000000		MOVL $0x1, CX		
-  0xca43		0f1f00			NOPL 0(AX)		
-		if false || cr == 116 {
-  0xca46		4183fb74		CMPL $0x74, R11		
-  0xca4a		740e			JE 0xca5a		
-				goto inst148
-  0xca4c		4989db			MOVQ BX, R11		
-	goto inst161
-  0xca4f		4889f9			MOVQ DI, CX		
-  0xca52		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xca55		e991490000		JMP 0x113eb		
-			i += sz
-  0xca5a		4801cb			ADDQ CX, BX		
-	c[9] = i
-  0xca5d		48899c2470050000	MOVQ BX, 0x570(SP)	
-  0xca65		90			NOPL			
-	goto inst180
-  0xca66		e9e0d8ffff		JMP 0xa34b		
-			i += sz
-  0xca6b		48899c24b8030000	MOVQ BX, 0x3b8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xca73		4929d8			SUBQ BX, R8		
-  0xca76		4c89c1			MOVQ R8, CX		
-  0xca79		49f7d8			NEGQ R8			
-  0xca7c		49c1f83f		SARQ $0x3f, R8		
-  0xca80		4921d8			ANDQ BX, R8		
-  0xca83		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xca87		48891424		MOVQ DX, 0(SP)		
-  0xca8b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xca90		e800000000		CALL 0xca95		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xca95		448b5c2410		MOVL 0x10(SP), R11	
-  0xca9a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xca9f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xcaa7		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xcaaf		488b9c24b8030000	MOVQ 0x3b8(SP), BX	
-	goto inst161
-  0xcab7		488bbc2418050000	MOVQ 0x518(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xcabf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xcac7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xcacf		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xcad5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcadd		e964ffffff		JMP 0xca46		
-				goto inst148
-  0xcae2		4989db			MOVQ BX, R11		
-	goto inst161
-  0xcae5		4889f9			MOVQ DI, CX		
-  0xcae8		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xcaeb		e9fb480000		JMP 0x113eb		
-				i += sz
-  0xcaf0		48899c24b0030000	MOVQ BX, 0x3b0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcaf8		4929d8			SUBQ BX, R8		
-  0xcafb		4c89c1			MOVQ R8, CX		
-  0xcafe		49f7d8			NEGQ R8			
-  0xcb01		49c1f83f		SARQ $0x3f, R8		
-  0xcb05		4921d8			ANDQ BX, R8		
-  0xcb08		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xcb0c		48891424		MOVQ DX, 0(SP)		
-  0xcb10		48894c2408		MOVQ CX, 0x8(SP)	
-  0xcb15		e800000000		CALL 0xcb1a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xcb1a		448b5c2410		MOVL 0x10(SP), R11	
-  0xcb1f		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xcb24		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xcb2c		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xcb34		488b9c24b0030000	MOVQ 0x3b0(SP), BX	
-	goto inst161
-  0xcb3c		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xcb44		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xcb4c		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xcb54		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xcb5a		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xcb62		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcb66		e9adfeffff		JMP 0xca18		
-				goto inst148
-  0xcb6b		4989db			MOVQ BX, R11		
-	goto inst161
-  0xcb6e		4889f9			MOVQ DI, CX		
-  0xcb71		4c89e3			MOVQ R12, BX		
-			goto fail
-  0xcb74		e972480000		JMP 0x113eb		
-				goto inst148
-  0xcb79		4989db			MOVQ BX, R11		
-	goto inst161
-  0xcb7c		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xcb7f		e967480000		JMP 0x113eb		
-			i += sz
-  0xcb84		48899c24a8030000	MOVQ BX, 0x3a8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcb8c		4929d8			SUBQ BX, R8		
-  0xcb8f		4c89c1			MOVQ R8, CX		
-  0xcb92		49f7d8			NEGQ R8			
-  0xcb95		49c1f83f		SARQ $0x3f, R8		
-  0xcb99		4921d8			ANDQ BX, R8		
-  0xcb9c		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xcba0		48891424		MOVQ DX, 0(SP)		
-  0xcba4		48894c2408		MOVQ CX, 0x8(SP)	
-  0xcba9		e800000000		CALL 0xcbae		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xcbae		448b5c2410		MOVL 0x10(SP), R11	
-  0xcbb3		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xcbb8		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xcbc0		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xcbc8		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xcbd0		488b9c24a8030000	MOVQ 0x3a8(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xcbd8		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xcbe0		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xcbe8		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xcbee		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcbf6		e97dfdffff		JMP 0xc978		
-				goto inst148
-  0xcbfb		4989db			MOVQ BX, R11		
-	goto inst161
-  0xcbfe		4c89e3			MOVQ R12, BX		
-  0xcc01		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0xcc06		e9e0470000		JMP 0x113eb		
-			i += sz
-  0xcc0b		48899c24a0030000	MOVQ BX, 0x3a0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcc13		4929d8			SUBQ BX, R8		
-  0xcc16		4c89c1			MOVQ R8, CX		
-  0xcc19		49f7d8			NEGQ R8			
-  0xcc1c		49c1f83f		SARQ $0x3f, R8		
-  0xcc20		4921d8			ANDQ BX, R8		
-  0xcc23		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xcc27		48891424		MOVQ DX, 0(SP)		
-  0xcc2b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xcc30		e800000000		CALL 0xcc35		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xcc35		448b5c2410		MOVL 0x10(SP), R11	
-  0xcc3a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xcc3f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xcc47		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xcc4f		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xcc57		488b9c24a0030000	MOVQ 0x3a0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xcc5f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xcc67		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xcc6f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xcc75		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcc7d		e9b6fcffff		JMP 0xc938		
-				goto inst148
-  0xcc82		4989db			MOVQ BX, R11		
-	goto inst161
-  0xcc85		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xcc88		e95e470000		JMP 0x113eb		
-			i += sz
-  0xcc8d		48899c2498030000	MOVQ BX, 0x398(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcc95		4929d8			SUBQ BX, R8		
-  0xcc98		4c89c1			MOVQ R8, CX		
-  0xcc9b		49f7d8			NEGQ R8			
-  0xcc9e		49c1f83f		SARQ $0x3f, R8		
-  0xcca2		4921d8			ANDQ BX, R8		
-  0xcca5		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xcca9		48891424		MOVQ DX, 0(SP)		
-  0xccad		48894c2408		MOVQ CX, 0x8(SP)	
-  0xccb2		e800000000		CALL 0xccb7		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xccb7		448b5c2410		MOVL 0x10(SP), R11	
-  0xccbc		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xccc1		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xccc9		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xccd1		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xccd9		488b9c2498030000	MOVQ 0x398(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xcce1		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xcce9		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xccf1		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xccf7		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xccff		e9f4fbffff		JMP 0xc8f8		
-				goto inst148
-  0xcd04		4989db			MOVQ BX, R11		
-	goto inst161
-  0xcd07		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xcd0a		e9dc460000		JMP 0x113eb		
-			i += sz
-  0xcd0f		48899c2490030000	MOVQ BX, 0x390(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcd17		4929d8			SUBQ BX, R8		
-  0xcd1a		4c89c1			MOVQ R8, CX		
-  0xcd1d		49f7d8			NEGQ R8			
-  0xcd20		49c1f83f		SARQ $0x3f, R8		
-  0xcd24		4921d8			ANDQ BX, R8		
-  0xcd27		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xcd2b		48891424		MOVQ DX, 0(SP)		
-  0xcd2f		48894c2408		MOVQ CX, 0x8(SP)	
-  0xcd34		e800000000		CALL 0xcd39		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xcd39		448b5c2410		MOVL 0x10(SP), R11	
-  0xcd3e		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xcd43		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xcd4b		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xcd53		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xcd5b		488b9c2490030000	MOVQ 0x390(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xcd63		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xcd6b		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xcd73		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xcd79		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xcd81		0f1f440000		NOPL 0(AX)(AX*1)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcd86		e92dfbffff		JMP 0xc8b8		
-				goto inst148
-  0xcd8b		4989db			MOVQ BX, R11		
-	goto inst161
-  0xcd8e		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xcd91		e955460000		JMP 0x113eb		
-			i += sz
-  0xcd96		48899c2488030000	MOVQ BX, 0x388(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xcd9e		4929d8			SUBQ BX, R8		
-  0xcda1		4c89c1			MOVQ R8, CX		
-  0xcda4		49f7d8			NEGQ R8			
-  0xcda7		49c1f83f		SARQ $0x3f, R8		
-  0xcdab		4921d8			ANDQ BX, R8		
-  0xcdae		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xcdb2		48891424		MOVQ DX, 0(SP)		
-  0xcdb6		48894c2408		MOVQ CX, 0x8(SP)	
-  0xcdbb		e800000000		CALL 0xcdc0		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xcdc0		448b5c2410		MOVL 0x10(SP), R11	
-  0xcdc5		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xcdca		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xcdd2		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xcdda		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xcde2		488b9c2488030000	MOVQ 0x388(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xcdea		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xcdf2		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xcdfa		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xce00		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xce08		e96bfaffff		JMP 0xc878		
-				goto inst148
-  0xce0d		4989db			MOVQ BX, R11		
-	goto inst161
-  0xce10		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xce13		e9d3450000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0xce18		48899c2480030000	MOVQ BX, 0x380(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xce20		4929d8			SUBQ BX, R8		
-  0xce23		4c89c1			MOVQ R8, CX		
-  0xce26		49f7d8			NEGQ R8			
-  0xce29		49c1f83f		SARQ $0x3f, R8		
-  0xce2d		4921d8			ANDQ BX, R8		
-  0xce30		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xce34		48891424		MOVQ DX, 0(SP)		
-  0xce38		48894c2408		MOVQ CX, 0x8(SP)	
-  0xce3d		e800000000		CALL 0xce42		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xce42		448b5c2410		MOVL 0x10(SP), R11	
-  0xce47		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xce4c		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xce54		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xce5c		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xce64		488b9c2480030000	MOVQ 0x380(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xce6c		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xce74		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xce7c		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xce82		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xce8a		e9a9f9ffff		JMP 0xc838		
-	case 79:
-  0xce8f		4983fd4f		CMPQ $0x4f, R13		
-  0xce93		0f85cd070000		JNE 0xd666		
-		c, i = bt[n].c, bt[n].i
-  0xce99		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0xce9e		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0xcea6		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xceaa		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xceb1		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xceb9		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0xcec2		0f1f4000		NOPL 0(AX)			
-  0xcec6		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xcecb		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xced0		e800000000		CALL 0xced5			[1:5]R_CALL:runtime.duffcopy+756	
-  0xced5		488b6d00		MOVQ 0(BP), BP			
-	c[8] = i
-  0xced9		4c89ac2468050000	MOVQ R13, 0x568(SP)	
-	bt = append(bt, state{c, i, 77, 0})
-  0xcee1		48c78424b00d000000000000	MOVQ $0x0, 0xdb0(SP)		
-  0xceed		488dbc24b80d0000		LEAQ 0xdb8(SP), DI		
-  0xcef5		0f57c0				XORPS X0, X0			
-  0xcef8		488d7ff0			LEAQ -0x10(DI), DI		
-  0xcefc		660f1f840000000000		NOPW 0(AX)(AX*1)		
-  0xcf05		90				NOPL				
-  0xcf06		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xcf0b		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xcf10		e800000000			CALL 0xcf15			[1:5]R_CALL:runtime.duffzero+250	
-  0xcf15		488b6d00			MOVQ 0(BP), BP			
-  0xcf19		488dbc24b00d0000		LEAQ 0xdb0(SP), DI		
-  0xcf21		488db42428050000		LEAQ 0x528(SP), SI		
-  0xcf29		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xcf2e		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xcf33		e800000000			CALL 0xcf38			[1:5]R_CALL:runtime.duffcopy+756	
-  0xcf38		488b6d00			MOVQ 0(BP), BP			
-  0xcf3c		4c89ac24500e0000		MOVQ R13, 0xe50(SP)		
-  0xcf44		48c78424580e00004d000000	MOVQ $0x4d, 0xe58(SP)		
-  0xcf50		48c78424600e000000000000	MOVQ $0x0, 0xe60(SP)		
-  0xcf5c		4839d9				CMPQ BX, CX			
-  0xcf5f		0f828b060000			JB 0xd5f0			
-  0xcf65		4c8ba424b00d0000		MOVQ 0xdb0(SP), R12		
-  0xcf6d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0xcf75		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0xcf79		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0xcf80		488db424b80d0000		LEAQ 0xdb8(SP), SI		
-  0xcf88		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xcf8d		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xcf92		e800000000			CALL 0xcf97			[1:5]R_CALL:runtime.duffcopy+742	
-  0xcf97		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xcf9b		4d85ed			TESTQ R13, R13		
-  0xcf9e		0f8cd5050000		JL 0xd579		
-  0xcfa4		6690			NOPW			
-  0xcfa6		4d39c5			CMPQ R8, R13		
-  0xcfa9		0f8dca050000		JGE 0xd579		
-	bt = append(bt, state{c, i, 77, 0})
-  0xcfaf		48898424681e0000	MOVQ AX, 0x1e68(SP)	
-  0xcfb7		48899c2478030000	MOVQ BX, 0x378(SP)	
-  0xcfbf		48898c2470030000	MOVQ CX, 0x370(SP)	
-		cr, sz := rune(r[i]), 1
-  0xcfc7		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xcfcc		4181fb80000000		CMPL $0x80, R11		
-  0xcfd3		0f8da8050000		JGE 0xd581		
-  0xcfd9		be01000000		MOVL $0x1, SI		
-  0xcfde		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if false || cr == 97 {
-  0xcfe6		4183fb61		CMPL $0x61, R11		
-  0xcfea		0f8589050000		JNE 0xd579		
-			i += sz
-  0xcff0		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0xcff4		4d85db			TESTQ R11, R11		
-  0xcff7		0f8cee430000		JL 0x113eb		
-  0xcffd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd006		4d39c3			CMPQ R8, R11		
-  0xd009		0f8ddc430000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xd00f		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xd014		4181fc80000000		CMPL $0x80, R12		
-  0xd01b		0f8de1040000		JGE 0xd502		
-  0xd021		be01000000		MOVL $0x1, SI		
-		if false || cr == 103 {
-  0xd026		4183fc67		CMPL $0x67, R12		
-  0xd02a		0f85bb430000		JNE 0x113eb		
-			i += sz
-  0xd030		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xd033		4d85db			TESTQ R11, R11		
-  0xd036		0f8caf430000		JL 0x113eb		
-  0xd03c		4d39c3			CMPQ R8, R11		
-  0xd03f		0f8da6430000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xd045		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xd04a		4181fc80000000		CMPL $0x80, R12		
-  0xd051		0f8d34040000		JGE 0xd48b		
-  0xd057		be01000000		MOVL $0x1, SI		
-  0xd05c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd065		90			NOPL			
-		if cr < 128 {
-  0xd066		4181fc80000000		CMPL $0x80, R12		
-  0xd06d		0f8d78430000		JGE 0x113eb		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xd073		4589e5			MOVL R12, R13			
-  0xd076		41c1fc1f		SARL $0x1f, R12			
-  0xd07a		41c1ec1d		SHRL $0x1d, R12			
-  0xd07e		4501ec			ADDL R13, R12			
-  0xd081		41c1fc03		SARL $0x3, R12			
-  0xd085		4d63f4			MOVSXD R12, R14			
-  0xd088		4983fe10		CMPQ $0x10, R14			
-  0xd08c		0f83d9620000		JAE 0x1336b			
-  0xd092		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"	
-  0xd099		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xd09e		41c1e403		SHLL $0x3, R12			
-  0xd0a2		4529e5			SUBL R12, R13			
-  0xd0a5		90			NOPL				
-  0xd0a6		4585ed			TESTL R13, R13			
-  0xd0a9		0f8cb7620000		JL 0x13366			
-  0xd0af		4183fd20		CMPL $0x20, R13			
-  0xd0b3		4519e4			SBBL R12, R12			
-	bt = append(bt, state{c, i, 77, 0})
-  0xd0b6		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xd0b9		4489e9			MOVL R13, CX		
-  0xd0bc		41bf01000000		MOVL $0x1, R15		
-  0xd0c2		41d3e7			SHLL CL, R15		
-  0xd0c5		4521fc			ANDL R15, R12		
-  0xd0c8		4584f4			TESTL R14, R12		
-  0xd0cb		0f84b1030000		JE 0xd482		
-				i += sz
-  0xd0d1		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xd0d4		4d85db			TESTQ R11, R11		
-  0xd0d7		0f8c25030000		JL 0xd402		
-  0xd0dd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd0e6		4d39c3			CMPQ R8, R11		
-  0xd0e9		0f8d13030000		JGE 0xd402		
-		cr, sz := rune(r[i]), 1
-  0xd0ef		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xd0f4		4181fc80000000		CMPL $0x80, R12		
-  0xd0fb		0f8d0a030000		JGE 0xd40b		
-  0xd101		b901000000		MOVL $0x1, CX		
-		if false || cr == 103 {
-  0xd106		4183fc67		CMPL $0x67, R12		
-  0xd10a		0f85f2020000		JNE 0xd402		
-			i += sz
-  0xd110		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xd113		4d85db			TESTQ R11, R11		
-  0xd116		0f8c66020000		JL 0xd382		
-  0xd11c		4d39c3			CMPQ R8, R11		
-  0xd11f		0f8d5d020000		JGE 0xd382		
-		cr, sz := rune(r[i]), 1
-  0xd125		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xd12a		4181fc80000000		CMPL $0x80, R12		
-  0xd131		0f8d54020000		JGE 0xd38b		
-  0xd137		b901000000		MOVL $0x1, CX		
-  0xd13c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd145		90			NOPL			
-		if false || cr == 116 {
-  0xd146		4183fc74		CMPL $0x74, R12		
-  0xd14a		0f8532020000		JNE 0xd382		
-			i += sz
-  0xd150		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xd153		4d85db			TESTQ R11, R11		
-  0xd156		0f8ca6010000		JL 0xd302		
-  0xd15c		4d39c3			CMPQ R8, R11		
-  0xd15f		0f8d9d010000		JGE 0xd302		
-		cr, sz := rune(r[i]), 1
-  0xd165		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xd16a		4181fc80000000		CMPL $0x80, R12		
-  0xd171		0f8d94010000		JGE 0xd30b		
-  0xd177		b901000000		MOVL $0x1, CX		
-  0xd17c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd185		90			NOPL			
-		if false || cr == 97 {
-  0xd186		4183fc61		CMPL $0x61, R12		
-  0xd18a		0f8572010000		JNE 0xd302		
-			i += sz
-  0xd190		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xd193		4d85db			TESTQ R11, R11		
-  0xd196		0f8ce6000000		JL 0xd282		
-  0xd19c		4d39c3			CMPQ R8, R11		
-  0xd19f		0f8ddd000000		JGE 0xd282		
-		cr, sz := rune(r[i]), 1
-  0xd1a5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xd1aa		4181fc80000000		CMPL $0x80, R12		
-  0xd1b1		0f8dd4000000		JGE 0xd28b		
-  0xd1b7		b901000000		MOVL $0x1, CX		
-  0xd1bc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd1c5		90			NOPL			
-		if false || cr == 97 {
-  0xd1c6		4183fc61		CMPL $0x61, R12		
-  0xd1ca		0f85b2000000		JNE 0xd282		
-			i += sz
-  0xd1d0		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xd1d3		4d85db			TESTQ R11, R11		
-  0xd1d6		7c22			JL 0xd1fa		
-  0xd1d8		4d39c3			CMPQ R8, R11		
-  0xd1db		7d1d			JGE 0xd1fa		
-		cr, sz := rune(r[i]), 1
-  0xd1dd		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0xd1e2		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xd1e6		4181fc80000000		CMPL $0x80, R12		
-  0xd1ed		7d1c			JGE 0xd20b		
-  0xd1ef		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xd1f4		4183fc61		CMPL $0x61, R12		
-  0xd1f8		7408			JE 0xd202		
-	goto inst161
-  0xd1fa		4889f9			MOVQ DI, CX		
-	goto fail
-  0xd1fd		e9e9410000		JMP 0x113eb		
-			i += sz
-  0xd202		4a8d1c19		LEAQ 0(CX)(R11*1), BX	
-			goto inst78
-  0xd206		e952f8ffff		JMP 0xca5d		
-			i += sz
-  0xd20b		4c899c2468030000	MOVQ R11, 0x368(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd213		4d29d8			SUBQ R11, R8		
-  0xd216		4c89c1			MOVQ R8, CX		
-  0xd219		49f7d8			NEGQ R8			
-  0xd21c		49c1f83f		SARQ $0x3f, R8		
-  0xd220		4d21d8			ANDQ R11, R8		
-  0xd223		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd227		48891424		MOVQ DX, 0(SP)		
-  0xd22b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd230		e800000000		CALL 0xd235		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd235		448b642410		MOVL 0x10(SP), R12	
-  0xd23a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xd23f		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-		if len(r[si:]) != 0 {
-  0xd247		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd24f		488b9c2478030000	MOVQ 0x378(SP), BX	
-  0xd257		488bbc2470030000	MOVQ 0x370(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xd25f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd267		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd26f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xd275		4c8b9c2468030000	MOVQ 0x368(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd27d		e972ffffff		JMP 0xd1f4		
-	goto inst161
-  0xd282		4889f9			MOVQ DI, CX		
-  0xd285		90			NOPL			
-	goto fail
-  0xd286		e960410000		JMP 0x113eb		
-			i += sz
-  0xd28b		4c899c2460030000	MOVQ R11, 0x360(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd293		4d29d8			SUBQ R11, R8		
-  0xd296		4c89c1			MOVQ R8, CX		
-  0xd299		49f7d8			NEGQ R8			
-  0xd29c		49c1f83f		SARQ $0x3f, R8		
-  0xd2a0		4d21d8			ANDQ R11, R8		
-  0xd2a3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd2a7		48891424		MOVQ DX, 0(SP)		
-  0xd2ab		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd2b0		e800000000		CALL 0xd2b5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd2b5		448b642410		MOVL 0x10(SP), R12	
-  0xd2ba		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xd2bf		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-		if len(r[si:]) != 0 {
-  0xd2c7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd2cf		488b9c2478030000	MOVQ 0x378(SP), BX	
-  0xd2d7		488bbc2470030000	MOVQ 0x370(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xd2df		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd2e7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd2ef		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xd2f5		4c8b9c2460030000	MOVQ 0x360(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd2fd		e9c4feffff		JMP 0xd1c6		
-	goto inst161
-  0xd302		4889f9			MOVQ DI, CX		
-  0xd305		90			NOPL			
-	goto fail
-  0xd306		e9e0400000		JMP 0x113eb		
-			i += sz
-  0xd30b		4c899c2458030000	MOVQ R11, 0x358(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd313		4d29d8			SUBQ R11, R8		
-  0xd316		4c89c1			MOVQ R8, CX		
-  0xd319		49f7d8			NEGQ R8			
-  0xd31c		49c1f83f		SARQ $0x3f, R8		
-  0xd320		4d21d8			ANDQ R11, R8		
-  0xd323		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd327		48891424		MOVQ DX, 0(SP)		
-  0xd32b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd330		e800000000		CALL 0xd335		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd335		448b642410		MOVL 0x10(SP), R12	
-  0xd33a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xd33f		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-		if len(r[si:]) != 0 {
-  0xd347		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd34f		488b9c2478030000	MOVQ 0x378(SP), BX	
-  0xd357		488bbc2470030000	MOVQ 0x370(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xd35f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd367		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd36f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xd375		4c8b9c2458030000	MOVQ 0x358(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd37d		e904feffff		JMP 0xd186		
-	goto inst161
-  0xd382		4889f9			MOVQ DI, CX		
-  0xd385		90			NOPL			
-	goto fail
-  0xd386		e960400000		JMP 0x113eb		
-			i += sz
-  0xd38b		4c899c2450030000	MOVQ R11, 0x350(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd393		4d29d8			SUBQ R11, R8		
-  0xd396		4c89c1			MOVQ R8, CX		
-  0xd399		49f7d8			NEGQ R8			
-  0xd39c		49c1f83f		SARQ $0x3f, R8		
-  0xd3a0		4d21d8			ANDQ R11, R8		
-  0xd3a3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd3a7		48891424		MOVQ DX, 0(SP)		
-  0xd3ab		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd3b0		e800000000		CALL 0xd3b5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd3b5		448b642410		MOVL 0x10(SP), R12	
-  0xd3ba		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xd3bf		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-		if len(r[si:]) != 0 {
-  0xd3c7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd3cf		488b9c2478030000	MOVQ 0x378(SP), BX	
-  0xd3d7		488bbc2470030000	MOVQ 0x370(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xd3df		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd3e7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd3ef		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xd3f5		4c8b9c2450030000	MOVQ 0x350(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd3fd		e944fdffff		JMP 0xd146		
-	goto inst161
-  0xd402		4889f9			MOVQ DI, CX		
-  0xd405		90			NOPL			
-	goto fail
-  0xd406		e9e03f0000		JMP 0x113eb		
-				i += sz
-  0xd40b		4c899c2448030000	MOVQ R11, 0x348(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd413		4d29d8			SUBQ R11, R8		
-  0xd416		4c89c1			MOVQ R8, CX		
-  0xd419		49f7d8			NEGQ R8			
-  0xd41c		49c1f83f		SARQ $0x3f, R8		
-  0xd420		4d21d8			ANDQ R11, R8		
-  0xd423		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd427		48891424		MOVQ DX, 0(SP)		
-  0xd42b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd430		e800000000		CALL 0xd435		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd435		448b642410		MOVL 0x10(SP), R12	
-  0xd43a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xd43f		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-		if len(r[si:]) != 0 {
-  0xd447		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd44f		488b9c2478030000	MOVQ 0x378(SP), BX	
-  0xd457		488bbc2470030000	MOVQ 0x370(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xd45f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd467		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd46f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xd475		4c8b9c2448030000	MOVQ 0x348(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd47d		e984fcffff		JMP 0xd106		
-	goto inst161
-  0xd482		4889f9			MOVQ DI, CX		
-  0xd485		90			NOPL			
-			goto fail
-  0xd486		e9603f0000		JMP 0x113eb		
-			i += sz
-  0xd48b		4c899c2440030000	MOVQ R11, 0x340(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd493		4d29d8			SUBQ R11, R8		
-  0xd496		4c89c1			MOVQ R8, CX		
-  0xd499		49f7d8			NEGQ R8			
-  0xd49c		49c1f83f		SARQ $0x3f, R8		
-  0xd4a0		4d21d8			ANDQ R11, R8		
-  0xd4a3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd4a7		48891424		MOVQ DX, 0(SP)		
-  0xd4ab		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd4b0		e800000000		CALL 0xd4b5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd4b5		448b642410		MOVL 0x10(SP), R12	
-  0xd4ba		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xd4bf		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-  0xd4c7		488b8c2470030000	MOVQ 0x370(SP), CX	
-		if len(r[si:]) != 0 {
-  0xd4cf		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd4d7		488b9c2478030000	MOVQ 0x378(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xd4df		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd4e7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd4ef		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xd4f5		4c8b9c2440030000	MOVQ 0x340(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd4fd		e964fbffff		JMP 0xd066		
-			i += sz
-  0xd502		4c899c2438030000	MOVQ R11, 0x338(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd50a		4d29d8			SUBQ R11, R8		
-  0xd50d		4c89c1			MOVQ R8, CX		
-  0xd510		49f7d8			NEGQ R8			
-  0xd513		49c1f83f		SARQ $0x3f, R8		
-  0xd517		4d21d8			ANDQ R11, R8		
-  0xd51a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd51e		48891424		MOVQ DX, 0(SP)		
-  0xd522		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd527		e800000000		CALL 0xd52c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd52c		448b642410		MOVL 0x10(SP), R12	
-  0xd531		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xd536		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-  0xd53e		488b8c2470030000	MOVQ 0x370(SP), CX	
-		if len(r[si:]) != 0 {
-  0xd546		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd54e		488b9c2478030000	MOVQ 0x378(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xd556		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd55e		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd566		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xd56c		4c8b9c2438030000	MOVQ 0x338(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd574		e9adfaffff		JMP 0xd026		
-				goto inst148
-  0xd579		4d89eb			MOVQ R13, R11		
-	goto fail
-  0xd57c		e96a3e0000		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd581		4d29e8			SUBQ R13, R8		
-  0xd584		4c89c1			MOVQ R8, CX		
-  0xd587		49f7d8			NEGQ R8			
-  0xd58a		49c1f83f		SARQ $0x3f, R8		
-  0xd58e		4d21e8			ANDQ R13, R8		
-  0xd591		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd595		48891424		MOVQ DX, 0(SP)		
-  0xd599		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd59e		e800000000		CALL 0xd5a3		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd5a3		448b5c2410		MOVL 0x10(SP), R11	
-  0xd5a8		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xd5ad		488b8424681e0000	MOVQ 0x1e68(SP), AX	
-  0xd5b5		488b8c2470030000	MOVQ 0x370(SP), CX	
-		if len(r[si:]) != 0 {
-  0xd5bd		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xd5c5		488b9c2478030000	MOVQ 0x378(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xd5cd		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd5d5		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd5dd		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xd5e3		4c8bac2408050000	MOVQ 0x508(SP), R13	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd5eb		e9f6f9ffff		JMP 0xcfe6		
-	bt = append(bt, state{c, i, 77, 0})
-  0xd5f0		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0xd5f7		48891424		MOVQ DX, 0(SP)		
-  0xd5fb		4889442408		MOVQ AX, 0x8(SP)	
-  0xd600		4c89642410		MOVQ R12, 0x10(SP)	
-  0xd605		48894c2418		MOVQ CX, 0x18(SP)	
-  0xd60a		48895c2420		MOVQ BX, 0x20(SP)	
-  0xd60f		e800000000		CALL 0xd614		[1:5]R_CALL:runtime.growslice	
-  0xd614		488b442428		MOVQ 0x28(SP), AX	
-  0xd619		488b4c2430		MOVQ 0x30(SP), CX	
-  0xd61e		488b542438		MOVQ 0x38(SP), DX	
-  0xd623		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0xd627		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd62f		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd637		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 77, 0})
-  0xd63d		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0xd645		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 77, 0})
-  0xd64d		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0xd650		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 77, 0})
-  0xd658		e908f9ffff		JMP 0xcf65		
-  0xd65d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-	switch bt[len(bt)-1].pc {
-  0xd666		4983fd61		CMPQ $0x61, R13		
-	case 97:
-  0xd66a		0f85085c0000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0xd670		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0xd675		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xd679		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xd680		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xd688		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xd68d		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xd692		e800000000		CALL 0xd697			[1:5]R_CALL:runtime.duffcopy+756	
-  0xd697		488b6d00		MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xd69b		4885db			TESTQ BX, BX		
-  0xd69e		0f8cf8050000		JL 0xdc9c		
-  0xd6a4		6690			NOPW			
-  0xd6a6		4c39c3			CMPQ R8, BX		
-  0xd6a9		0f8ded050000		JGE 0xdc9c		
-		cr, sz := rune(r[i]), 1
-  0xd6af		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xd6b4		4181fb80000000		CMPL $0x80, R11		
-  0xd6bb		0f8dea050000		JGE 0xdcab		
-  0xd6c1		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xd6c6		4183fb74		CMPL $0x74, R11		
-  0xd6ca		0f85cc050000		JNE 0xdc9c		
-			i += sz
-  0xd6d0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xd6d3		4885db			TESTQ BX, BX		
-  0xd6d6		0f8c3e050000		JL 0xdc1a		
-  0xd6dc		4c39c3			CMPQ R8, BX		
-  0xd6df		0f8d35050000		JGE 0xdc1a		
-		cr, sz := rune(r[i]), 1
-  0xd6e5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xd6ea		4181fb80000000		CMPL $0x80, R11		
-  0xd6f1		0f8d2e050000		JGE 0xdc25		
-  0xd6f7		be01000000		MOVL $0x1, SI		
-  0xd6fc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd705		90			NOPL			
-		if false || cr == 116 {
-  0xd706		4183fb74		CMPL $0x74, R11		
-  0xd70a		0f850a050000		JNE 0xdc1a		
-			i += sz
-  0xd710		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xd713		4885db			TESTQ BX, BX		
-  0xd716		0f8c7c040000		JL 0xdb98		
-  0xd71c		4c39c3			CMPQ R8, BX		
-  0xd71f		0f8d73040000		JGE 0xdb98		
-		cr, sz := rune(r[i]), 1
-  0xd725		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xd72a		4181fb80000000		CMPL $0x80, R11		
-  0xd731		0f8d6c040000		JGE 0xdba3		
-  0xd737		be01000000		MOVL $0x1, SI		
-  0xd73c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd745		90			NOPL			
-		if false || cr == 116 {
-  0xd746		4183fb74		CMPL $0x74, R11		
-  0xd74a		0f8548040000		JNE 0xdb98		
-			i += sz
-  0xd750		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xd753		4885db			TESTQ BX, BX		
-  0xd756		0f8cb6030000		JL 0xdb12		
-  0xd75c		4c39c3			CMPQ R8, BX		
-  0xd75f		0f8dad030000		JGE 0xdb12		
-		cr, sz := rune(r[i]), 1
-  0xd765		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xd76a		4181fb80000000		CMPL $0x80, R11		
-  0xd771		0f8da6030000		JGE 0xdb1d		
-  0xd777		be01000000		MOVL $0x1, SI		
-  0xd77c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd785		90			NOPL			
-		if false || cr == 97 {
-  0xd786		4183fb61		CMPL $0x61, R11		
-  0xd78a		0f8582030000		JNE 0xdb12		
-			i += sz
-  0xd790		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xd793		4885db			TESTQ BX, BX		
-  0xd796		0f8cf4020000		JL 0xda90		
-  0xd79c		4c39c3			CMPQ R8, BX		
-  0xd79f		0f8deb020000		JGE 0xda90		
-		cr, sz := rune(r[i]), 1
-  0xd7a5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xd7aa		4181fb80000000		CMPL $0x80, R11		
-  0xd7b1		0f8de4020000		JGE 0xda9b		
-  0xd7b7		be01000000		MOVL $0x1, SI		
-  0xd7bc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd7c5		90			NOPL			
-		if cr < 128 {
-  0xd7c6		4181fb80000000		CMPL $0x80, R11		
-  0xd7cd		0f8dbd020000		JGE 0xda90		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xd7d3		4589dd			MOVL R11, R13			
-  0xd7d6		41c1fb1f		SARL $0x1f, R11			
-  0xd7da		41c1eb1d		SHRL $0x1d, R11			
-  0xd7de		4501eb			ADDL R13, R11			
-  0xd7e1		41c1fb03		SARL $0x3, R11			
-  0xd7e5		4d63f3			MOVSXD R11, R14			
-  0xd7e8		4983fe10		CMPQ $0x10, R14			
-  0xd7ec		0f833e5b0000		JAE 0x13330			
-  0xd7f2		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"	
-  0xd7f9		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xd7fe		41c1e303		SHLL $0x3, R11			
-  0xd802		4529dd			SUBL R11, R13			
-  0xd805		90			NOPL				
-  0xd806		4585ed			TESTL R13, R13			
-  0xd809		0f8c1c5b0000		JL 0x1332b			
-  0xd80f		4183fd20		CMPL $0x20, R13			
-  0xd813		4519db			SBBL R11, R11			
-	goto inst161
-  0xd816		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xd819		4489e9			MOVL R13, CX		
-  0xd81c		41bf01000000		MOVL $0x1, R15		
-  0xd822		41d3e7			SHLL CL, R15		
-  0xd825		4521fb			ANDL R15, R11		
-  0xd828		4584f3			TESTL R14, R11		
-  0xd82b		0f8451020000		JE 0xda82		
-				i += sz
-  0xd831		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xd834		4885db			TESTQ BX, BX		
-  0xd837		0f8cbb010000		JL 0xd9f8		
-  0xd83d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd846		4c39c3			CMPQ R8, BX		
-  0xd849		0f8da9010000		JGE 0xd9f8		
-		cr, sz := rune(r[i]), 1
-  0xd84f		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xd854		4181fb80000000		CMPL $0x80, R11		
-  0xd85b		0f8daa010000		JGE 0xda0b		
-  0xd861		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0xd866		4183fb63		CMPL $0x63, R11		
-  0xd86a		0f8588010000		JNE 0xd9f8		
-			i += sz
-  0xd870		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xd873		4885db			TESTQ BX, BX		
-  0xd876		0f8cf6000000		JL 0xd972		
-  0xd87c		4c39c3			CMPQ R8, BX		
-  0xd87f		0f8ded000000		JGE 0xd972		
-		cr, sz := rune(r[i]), 1
-  0xd885		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xd88a		4181fb80000000		CMPL $0x80, R11		
-  0xd891		0f8de9000000		JGE 0xd980		
-  0xd897		b901000000		MOVL $0x1, CX		
-  0xd89c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xd8a5		90			NOPL			
-		if false || cr == 99 {
-  0xd8a6		4183fb63		CMPL $0x63, R11		
-  0xd8aa		0f85c2000000		JNE 0xd972		
-			i += sz
-  0xd8b0		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xd8b3		4885db			TESTQ BX, BX		
-  0xd8b6		7c22			JL 0xd8da		
-  0xd8b8		4c39c3			CMPQ R8, BX		
-  0xd8bb		7d1d			JGE 0xd8da		
-		cr, sz := rune(r[i]), 1
-  0xd8bd		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xd8c2		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xd8c6		4181fb80000000		CMPL $0x80, R11		
-  0xd8cd		7d2c			JGE 0xd8fb		
-  0xd8cf		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0xd8d4		4183fb74		CMPL $0x74, R11		
-  0xd8d8		7411			JE 0xd8eb		
-				goto inst148
-  0xd8da		4989db			MOVQ BX, R11		
-	goto inst161
-  0xd8dd		4889f9			MOVQ DI, CX		
-  0xd8e0		4c89e3			MOVQ R12, BX		
-  0xd8e3		0f1f00			NOPL 0(AX)		
-	goto fail
-  0xd8e6		e9003b0000		JMP 0x113eb		
-			i += sz
-  0xd8eb		4801cb			ADDQ CX, BX		
-	c[11] = i
-  0xd8ee		48899c2480050000	MOVQ BX, 0x580(SP)	
-	goto inst180
-  0xd8f6		e950caffff		JMP 0xa34b		
-			i += sz
-  0xd8fb		48899c2430030000	MOVQ BX, 0x330(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd903		4929d8			SUBQ BX, R8		
-  0xd906		4c89c1			MOVQ R8, CX		
-  0xd909		49f7d8			NEGQ R8			
-  0xd90c		49c1f83f		SARQ $0x3f, R8		
-  0xd910		4921d8			ANDQ BX, R8		
-  0xd913		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd917		48891424		MOVQ DX, 0(SP)		
-  0xd91b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd920		e800000000		CALL 0xd925		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd925		448b5c2410		MOVL 0x10(SP), R11	
-  0xd92a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xd92f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xd937		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xd93f		488b9c2430030000	MOVQ 0x330(SP), BX	
-	goto inst161
-  0xd947		488bbc2418050000	MOVQ 0x518(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xd94f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd957		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd95f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xd965		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd96d		e962ffffff		JMP 0xd8d4		
-				goto inst148
-  0xd972		4989db			MOVQ BX, R11		
-	goto inst161
-  0xd975		4889f9			MOVQ DI, CX		
-  0xd978		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xd97b		e96b3a0000		JMP 0x113eb		
-			i += sz
-  0xd980		48899c2428030000	MOVQ BX, 0x328(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd988		4929d8			SUBQ BX, R8		
-  0xd98b		4c89c1			MOVQ R8, CX		
-  0xd98e		49f7d8			NEGQ R8			
-  0xd991		49c1f83f		SARQ $0x3f, R8		
-  0xd995		4921d8			ANDQ BX, R8		
-  0xd998		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xd99c		48891424		MOVQ DX, 0(SP)		
-  0xd9a0		48894c2408		MOVQ CX, 0x8(SP)	
-  0xd9a5		90			NOPL			
-  0xd9a6		e800000000		CALL 0xd9ab		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xd9ab		448b5c2410		MOVL 0x10(SP), R11	
-  0xd9b0		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xd9b5		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xd9bd		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xd9c5		488b9c2428030000	MOVQ 0x328(SP), BX	
-	goto inst161
-  0xd9cd		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xd9d5		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xd9dd		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xd9e5		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xd9eb		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xd9f3		e9aefeffff		JMP 0xd8a6		
-				goto inst148
-  0xd9f8		4989db			MOVQ BX, R11		
-	goto inst161
-  0xd9fb		4889f9			MOVQ DI, CX		
-  0xd9fe		4c89e3			MOVQ R12, BX		
-  0xda01		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0xda06		e9e0390000		JMP 0x113eb		
-				i += sz
-  0xda0b		48899c2420030000	MOVQ BX, 0x320(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xda13		4929d8			SUBQ BX, R8		
-  0xda16		4c89c1			MOVQ R8, CX		
-  0xda19		49f7d8			NEGQ R8			
-  0xda1c		49c1f83f		SARQ $0x3f, R8		
-  0xda20		4921d8			ANDQ BX, R8		
-  0xda23		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xda27		48891424		MOVQ DX, 0(SP)		
-  0xda2b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xda30		e800000000		CALL 0xda35		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xda35		448b5c2410		MOVL 0x10(SP), R11	
-  0xda3a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xda3f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xda47		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xda4f		488b9c2420030000	MOVQ 0x320(SP), BX	
-	goto inst161
-  0xda57		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xda5f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xda67		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xda6f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xda75		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xda7d		e9e4fdffff		JMP 0xd866		
-				goto inst148
-  0xda82		4989db			MOVQ BX, R11		
-	goto inst161
-  0xda85		4889f9			MOVQ DI, CX		
-  0xda88		4c89e3			MOVQ R12, BX		
-			goto fail
-  0xda8b		e95b390000		JMP 0x113eb		
-				goto inst148
-  0xda90		4989db			MOVQ BX, R11		
-	goto inst161
-  0xda93		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xda96		e950390000		JMP 0x113eb		
-			i += sz
-  0xda9b		48899c2418030000	MOVQ BX, 0x318(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdaa3		4929d8			SUBQ BX, R8		
-  0xdaa6		4c89c1			MOVQ R8, CX		
-  0xdaa9		49f7d8			NEGQ R8			
-  0xdaac		49c1f83f		SARQ $0x3f, R8		
-  0xdab0		4921d8			ANDQ BX, R8		
-  0xdab3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xdab7		48891424		MOVQ DX, 0(SP)		
-  0xdabb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xdac0		e800000000		CALL 0xdac5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xdac5		448b5c2410		MOVL 0x10(SP), R11	
-  0xdaca		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xdacf		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xdad7		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xdadf		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xdae7		488b9c2418030000	MOVQ 0x318(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xdaef		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xdaf7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xdaff		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xdb05		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdb0d		e9b4fcffff		JMP 0xd7c6		
-				goto inst148
-  0xdb12		4989db			MOVQ BX, R11		
-	goto inst161
-  0xdb15		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xdb18		e9ce380000		JMP 0x113eb		
-			i += sz
-  0xdb1d		48899c2410030000	MOVQ BX, 0x310(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdb25		4929d8			SUBQ BX, R8		
-  0xdb28		4c89c1			MOVQ R8, CX		
-  0xdb2b		49f7d8			NEGQ R8			
-  0xdb2e		49c1f83f		SARQ $0x3f, R8		
-  0xdb32		4921d8			ANDQ BX, R8		
-  0xdb35		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xdb39		48891424		MOVQ DX, 0(SP)		
-  0xdb3d		48894c2408		MOVQ CX, 0x8(SP)	
-  0xdb42		0f1f4000		NOPL 0(AX)		
-  0xdb46		e800000000		CALL 0xdb4b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xdb4b		448b5c2410		MOVL 0x10(SP), R11	
-  0xdb50		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xdb55		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xdb5d		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xdb65		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xdb6d		488b9c2410030000	MOVQ 0x310(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xdb75		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xdb7d		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xdb85		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xdb8b		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdb93		e9eefbffff		JMP 0xd786		
-				goto inst148
-  0xdb98		4989db			MOVQ BX, R11		
-	goto inst161
-  0xdb9b		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xdb9e		e948380000		JMP 0x113eb		
-			i += sz
-  0xdba3		48899c2408030000	MOVQ BX, 0x308(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdbab		4929d8			SUBQ BX, R8		
-  0xdbae		4c89c1			MOVQ R8, CX		
-  0xdbb1		49f7d8			NEGQ R8			
-  0xdbb4		49c1f83f		SARQ $0x3f, R8		
-  0xdbb8		4921d8			ANDQ BX, R8		
-  0xdbbb		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xdbbf		48891424		MOVQ DX, 0(SP)		
-  0xdbc3		48894c2408		MOVQ CX, 0x8(SP)	
-  0xdbc8		e800000000		CALL 0xdbcd		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xdbcd		448b5c2410		MOVL 0x10(SP), R11	
-  0xdbd2		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xdbd7		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xdbdf		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xdbe7		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xdbef		488b9c2408030000	MOVQ 0x308(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xdbf7		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xdbff		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xdc07		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xdc0d		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdc15		e92cfbffff		JMP 0xd746		
-				goto inst148
-  0xdc1a		4989db			MOVQ BX, R11		
-	goto inst161
-  0xdc1d		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xdc20		e9c6370000		JMP 0x113eb		
-			i += sz
-  0xdc25		48899c2400030000	MOVQ BX, 0x300(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdc2d		4929d8			SUBQ BX, R8		
-  0xdc30		4c89c1			MOVQ R8, CX		
-  0xdc33		49f7d8			NEGQ R8			
-  0xdc36		49c1f83f		SARQ $0x3f, R8		
-  0xdc3a		4921d8			ANDQ BX, R8		
-  0xdc3d		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xdc41		48891424		MOVQ DX, 0(SP)		
-  0xdc45		48894c2408		MOVQ CX, 0x8(SP)	
-  0xdc4a		e800000000		CALL 0xdc4f		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xdc4f		448b5c2410		MOVL 0x10(SP), R11	
-  0xdc54		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xdc59		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xdc61		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xdc69		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xdc71		488b9c2400030000	MOVQ 0x300(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xdc79		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xdc81		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xdc89		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xdc8f		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdc97		e96afaffff		JMP 0xd706		
-				goto inst148
-  0xdc9c		4989db			MOVQ BX, R11		
-	goto inst161
-  0xdc9f		4c89e3			MOVQ R12, BX		
-  0xdca2		0f1f4000		NOPL 0(AX)		
-	goto fail
-  0xdca6		e940370000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0xdcab		48899c24f8020000	MOVQ BX, 0x2f8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdcb3		4929d8			SUBQ BX, R8		
-  0xdcb6		4c89c1			MOVQ R8, CX		
-  0xdcb9		49f7d8			NEGQ R8			
-  0xdcbc		49c1f83f		SARQ $0x3f, R8		
-  0xdcc0		4921d8			ANDQ BX, R8		
-  0xdcc3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xdcc7		48891424		MOVQ DX, 0(SP)		
-  0xdccb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xdcd0		e800000000		CALL 0xdcd5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xdcd5		448b5c2410		MOVL 0x10(SP), R11	
-  0xdcda		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xdcdf		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xdce7		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xdcef		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xdcf7		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xdcff		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xdd07		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xdd0f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xdd15		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xdd1d		e9a4f9ffff		JMP 0xd6c6		
-  0xdd22		0f1f4000		NOPL 0(AX)		
-	switch bt[len(bt)-1].pc {
-  0xdd26		4981fd89000000		CMPQ $0x89, R13		
-	case 137:
-  0xdd2d		0f8f381d0000		JG 0xfa6b		
-	switch bt[len(bt)-1].pc {
-  0xdd33		4983fd75		CMPQ $0x75, R13		
-	case 117:
-  0xdd37		0f8f8e0e0000		JG 0xebcb		
-  0xdd3d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-	case 99:
-  0xdd46		4983fd63		CMPQ $0x63, R13		
-  0xdd4a		0f85a8070000		JNE 0xe4f8		
-		c, i = bt[n].c, bt[n].i
-  0xdd50		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0xdd55		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0xdd5d		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xdd61		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xdd68		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xdd70		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xdd75		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xdd7a		e800000000		CALL 0xdd7f			[1:5]R_CALL:runtime.duffcopy+756	
-  0xdd7f		488b6d00		MOVQ 0(BP), BP			
-	c[10] = i
-  0xdd83		4c89ac2478050000	MOVQ R13, 0x578(SP)	
-	bt = append(bt, state{c, i, 97, 0})
-  0xdd8b		48c78424400c000000000000	MOVQ $0x0, 0xc40(SP)		
-  0xdd97		488dbc24480c0000		LEAQ 0xc48(SP), DI		
-  0xdd9f		0f57c0				XORPS X0, X0			
-  0xdda2		488d7ff0			LEAQ -0x10(DI), DI		
-  0xdda6		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xddab		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xddb0		e800000000			CALL 0xddb5			[1:5]R_CALL:runtime.duffzero+250	
-  0xddb5		488b6d00			MOVQ 0(BP), BP			
-  0xddb9		488dbc24400c0000		LEAQ 0xc40(SP), DI		
-  0xddc1		488db42428050000		LEAQ 0x528(SP), SI		
-  0xddc9		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xddce		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xddd3		e800000000			CALL 0xddd8			[1:5]R_CALL:runtime.duffcopy+756	
-  0xddd8		488b6d00			MOVQ 0(BP), BP			
-  0xdddc		4c89ac24e00c0000		MOVQ R13, 0xce0(SP)		
-  0xdde4		48c78424e80c000061000000	MOVQ $0x61, 0xce8(SP)		
-  0xddf0		48c78424f00c000000000000	MOVQ $0x0, 0xcf0(SP)		
-  0xddfc		4839d9				CMPQ BX, CX			
-  0xddff		0f8286060000			JB 0xe48b			
-  0xde05		4c8ba424400c0000		MOVQ 0xc40(SP), R12		
-  0xde0d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0xde15		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0xde19		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0xde20		488db424480c0000		LEAQ 0xc48(SP), SI		
-  0xde28		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xde2d		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xde32		e800000000			CALL 0xde37			[1:5]R_CALL:runtime.duffcopy+742	
-  0xde37		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xde3b		4d85ed			TESTQ R13, R13		
-  0xde3e		0f8ccc050000		JL 0xe410		
-  0xde44		6690			NOPW			
-  0xde46		4d39c5			CMPQ R8, R13		
-  0xde49		0f8dc1050000		JGE 0xe410		
-	bt = append(bt, state{c, i, 97, 0})
-  0xde4f		48898424601e0000	MOVQ AX, 0x1e60(SP)	
-  0xde57		48899c24f0020000	MOVQ BX, 0x2f0(SP)	
-  0xde5f		48898c24e8020000	MOVQ CX, 0x2e8(SP)	
-		cr, sz := rune(r[i]), 1
-  0xde67		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xde6c		4181fb80000000		CMPL $0x80, R11		
-  0xde73		0f8d9f050000		JGE 0xe418		
-  0xde79		be01000000		MOVL $0x1, SI		
-  0xde7e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if false || cr == 97 {
-  0xde86		4183fb61		CMPL $0x61, R11		
-  0xde8a		0f8580050000		JNE 0xe410		
-			i += sz
-  0xde90		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0xde94		4d85db			TESTQ R11, R11		
-  0xde97		0f8c4e350000		JL 0x113eb		
-  0xde9d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xdea6		4d39c3			CMPQ R8, R11		
-  0xdea9		0f8d3c350000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xdeaf		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xdeb4		4181fc80000000		CMPL $0x80, R12		
-  0xdebb		0f8dd8040000		JGE 0xe399		
-  0xdec1		be01000000		MOVL $0x1, SI		
-		if false || cr == 103 {
-  0xdec6		4183fc67		CMPL $0x67, R12		
-  0xdeca		0f851b350000		JNE 0x113eb		
-			i += sz
-  0xded0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xded3		4d85db			TESTQ R11, R11		
-  0xded6		0f8c0f350000		JL 0x113eb		
-  0xdedc		4d39c3			CMPQ R8, R11		
-  0xdedf		0f8d06350000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xdee5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xdeea		4181fc80000000		CMPL $0x80, R12		
-  0xdef1		0f8d2b040000		JGE 0xe322		
-  0xdef7		be01000000		MOVL $0x1, SI		
-  0xdefc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xdf05		90			NOPL			
-		if false || cr == 103 {
-  0xdf06		4183fc67		CMPL $0x67, R12		
-  0xdf0a		0f85db340000		JNE 0x113eb		
-			i += sz
-  0xdf10		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xdf13		4d85db			TESTQ R11, R11		
-  0xdf16		0f8ccf340000		JL 0x113eb		
-  0xdf1c		4d39c3			CMPQ R8, R11		
-  0xdf1f		0f8dc6340000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xdf25		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xdf2a		4181fc80000000		CMPL $0x80, R12		
-  0xdf31		0f8d74030000		JGE 0xe2ab		
-  0xdf37		be01000000		MOVL $0x1, SI		
-  0xdf3c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xdf45		90			NOPL			
-		if cr < 128 {
-  0xdf46		4181fc80000000		CMPL $0x80, R12		
-  0xdf4d		0f8d98340000		JGE 0x113eb		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xdf53		4589e5			MOVL R12, R13			
-  0xdf56		41c1fc1f		SARL $0x1f, R12			
-  0xdf5a		41c1ec1d		SHRL $0x1d, R12			
-  0xdf5e		4501ec			ADDL R13, R12			
-  0xdf61		41c1fc03		SARL $0x3, R12			
-  0xdf65		4d63f4			MOVSXD R12, R14			
-  0xdf68		4983fe10		CMPQ $0x10, R14			
-  0xdf6c		0f83d0530000		JAE 0x13342			
-  0xdf72		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"	
-  0xdf79		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xdf7e		41c1e403		SHLL $0x3, R12			
-  0xdf82		4529e5			SUBL R12, R13			
-  0xdf85		90			NOPL				
-  0xdf86		4585ed			TESTL R13, R13			
-  0xdf89		0f8cae530000		JL 0x1333d			
-  0xdf8f		4183fd20		CMPL $0x20, R13			
-  0xdf93		4519e4			SBBL R12, R12			
-	bt = append(bt, state{c, i, 97, 0})
-  0xdf96		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xdf99		4489e9			MOVL R13, CX		
-  0xdf9c		41bf01000000		MOVL $0x1, R15		
-  0xdfa2		41d3e7			SHLL CL, R15		
-  0xdfa5		4521fc			ANDL R15, R12		
-  0xdfa8		4584f4			TESTL R14, R12		
-  0xdfab		0f84f1020000		JE 0xe2a2		
-				i += sz
-  0xdfb1		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xdfb4		4d85db			TESTQ R11, R11		
-  0xdfb7		0f8c65020000		JL 0xe222		
-  0xdfbd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xdfc6		4d39c3			CMPQ R8, R11		
-  0xdfc9		0f8d53020000		JGE 0xe222		
-		cr, sz := rune(r[i]), 1
-  0xdfcf		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xdfd4		4181fc80000000		CMPL $0x80, R12		
-  0xdfdb		0f8d4a020000		JGE 0xe22b		
-  0xdfe1		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0xdfe6		4183fc74		CMPL $0x74, R12		
-  0xdfea		0f8532020000		JNE 0xe222		
-			i += sz
-  0xdff0		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xdff3		4d85db			TESTQ R11, R11		
-  0xdff6		0f8ca6010000		JL 0xe1a2		
-  0xdffc		4d39c3			CMPQ R8, R11		
-  0xdfff		0f8d9d010000		JGE 0xe1a2		
-		cr, sz := rune(r[i]), 1
-  0xe005		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xe00a		4181fc80000000		CMPL $0x80, R12		
-  0xe011		0f8d94010000		JGE 0xe1ab		
-  0xe017		b901000000		MOVL $0x1, CX		
-  0xe01c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe025		90			NOPL			
-		if false || cr == 97 {
-  0xe026		4183fc61		CMPL $0x61, R12		
-  0xe02a		0f8572010000		JNE 0xe1a2		
-			i += sz
-  0xe030		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xe033		4d85db			TESTQ R11, R11		
-  0xe036		0f8ce6000000		JL 0xe122		
-  0xe03c		4d39c3			CMPQ R8, R11		
-  0xe03f		0f8ddd000000		JGE 0xe122		
-		cr, sz := rune(r[i]), 1
-  0xe045		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xe04a		4181fc80000000		CMPL $0x80, R12		
-  0xe051		0f8dd4000000		JGE 0xe12b		
-  0xe057		b901000000		MOVL $0x1, CX		
-  0xe05c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe065		90			NOPL			
-		if false || cr == 97 {
-  0xe066		4183fc61		CMPL $0x61, R12		
-  0xe06a		0f85b2000000		JNE 0xe122		
-			i += sz
-  0xe070		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xe073		4d85db			TESTQ R11, R11		
-  0xe076		7c22			JL 0xe09a		
-  0xe078		4d39c3			CMPQ R8, R11		
-  0xe07b		7d1d			JGE 0xe09a		
-		cr, sz := rune(r[i]), 1
-  0xe07d		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0xe082		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xe086		4181fc80000000		CMPL $0x80, R12		
-  0xe08d		7d1c			JGE 0xe0ab		
-  0xe08f		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xe094		4183fc61		CMPL $0x61, R12		
-  0xe098		7408			JE 0xe0a2		
-	goto inst161
-  0xe09a		4889f9			MOVQ DI, CX		
-	goto fail
-  0xe09d		e949330000		JMP 0x113eb		
-			i += sz
-  0xe0a2		4a8d1c19		LEAQ 0(CX)(R11*1), BX	
-			goto inst98
-  0xe0a6		e943f8ffff		JMP 0xd8ee		
-			i += sz
-  0xe0ab		4c899c24e0020000	MOVQ R11, 0x2e0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe0b3		4d29d8			SUBQ R11, R8		
-  0xe0b6		4c89c1			MOVQ R8, CX		
-  0xe0b9		49f7d8			NEGQ R8			
-  0xe0bc		49c1f83f		SARQ $0x3f, R8		
-  0xe0c0		4d21d8			ANDQ R11, R8		
-  0xe0c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe0c7		48891424		MOVQ DX, 0(SP)		
-  0xe0cb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe0d0		e800000000		CALL 0xe0d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe0d5		448b642410		MOVL 0x10(SP), R12	
-  0xe0da		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe0df		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe0e7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe0ef		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-  0xe0f7		488bbc24e8020000	MOVQ 0x2e8(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xe0ff		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe107		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe10f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xe115		4c8b9c24e0020000	MOVQ 0x2e0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe11d		e972ffffff		JMP 0xe094		
-	goto inst161
-  0xe122		4889f9			MOVQ DI, CX		
-  0xe125		90			NOPL			
-	goto fail
-  0xe126		e9c0320000		JMP 0x113eb		
-			i += sz
-  0xe12b		4c899c24d8020000	MOVQ R11, 0x2d8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe133		4d29d8			SUBQ R11, R8		
-  0xe136		4c89c1			MOVQ R8, CX		
-  0xe139		49f7d8			NEGQ R8			
-  0xe13c		49c1f83f		SARQ $0x3f, R8		
-  0xe140		4d21d8			ANDQ R11, R8		
-  0xe143		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe147		48891424		MOVQ DX, 0(SP)		
-  0xe14b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe150		e800000000		CALL 0xe155		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe155		448b642410		MOVL 0x10(SP), R12	
-  0xe15a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe15f		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe167		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe16f		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-  0xe177		488bbc24e8020000	MOVQ 0x2e8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xe17f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe187		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe18f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xe195		4c8b9c24d8020000	MOVQ 0x2d8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe19d		e9c4feffff		JMP 0xe066		
-	goto inst161
-  0xe1a2		4889f9			MOVQ DI, CX		
-  0xe1a5		90			NOPL			
-	goto fail
-  0xe1a6		e940320000		JMP 0x113eb		
-			i += sz
-  0xe1ab		4c899c24d0020000	MOVQ R11, 0x2d0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe1b3		4d29d8			SUBQ R11, R8		
-  0xe1b6		4c89c1			MOVQ R8, CX		
-  0xe1b9		49f7d8			NEGQ R8			
-  0xe1bc		49c1f83f		SARQ $0x3f, R8		
-  0xe1c0		4d21d8			ANDQ R11, R8		
-  0xe1c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe1c7		48891424		MOVQ DX, 0(SP)		
-  0xe1cb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe1d0		e800000000		CALL 0xe1d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe1d5		448b642410		MOVL 0x10(SP), R12	
-  0xe1da		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe1df		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe1e7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe1ef		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-  0xe1f7		488bbc24e8020000	MOVQ 0x2e8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xe1ff		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe207		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe20f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xe215		4c8b9c24d0020000	MOVQ 0x2d0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe21d		e904feffff		JMP 0xe026		
-	goto inst161
-  0xe222		4889f9			MOVQ DI, CX		
-  0xe225		90			NOPL			
-	goto fail
-  0xe226		e9c0310000		JMP 0x113eb		
-				i += sz
-  0xe22b		4c899c24c8020000	MOVQ R11, 0x2c8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe233		4d29d8			SUBQ R11, R8		
-  0xe236		4c89c1			MOVQ R8, CX		
-  0xe239		49f7d8			NEGQ R8			
-  0xe23c		49c1f83f		SARQ $0x3f, R8		
-  0xe240		4d21d8			ANDQ R11, R8		
-  0xe243		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe247		48891424		MOVQ DX, 0(SP)		
-  0xe24b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe250		e800000000		CALL 0xe255		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe255		448b642410		MOVL 0x10(SP), R12	
-  0xe25a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe25f		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe267		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe26f		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-  0xe277		488bbc24e8020000	MOVQ 0x2e8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xe27f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe287		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe28f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xe295		4c8b9c24c8020000	MOVQ 0x2c8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe29d		e944fdffff		JMP 0xdfe6		
-	goto inst161
-  0xe2a2		4889f9			MOVQ DI, CX		
-  0xe2a5		90			NOPL			
-			goto fail
-  0xe2a6		e940310000		JMP 0x113eb		
-			i += sz
-  0xe2ab		4c899c24c0020000	MOVQ R11, 0x2c0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe2b3		4d29d8			SUBQ R11, R8		
-  0xe2b6		4c89c1			MOVQ R8, CX		
-  0xe2b9		49f7d8			NEGQ R8			
-  0xe2bc		49c1f83f		SARQ $0x3f, R8		
-  0xe2c0		4d21d8			ANDQ R11, R8		
-  0xe2c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe2c7		48891424		MOVQ DX, 0(SP)		
-  0xe2cb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe2d0		e800000000		CALL 0xe2d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe2d5		448b642410		MOVL 0x10(SP), R12	
-  0xe2da		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xe2df		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-  0xe2e7		488b8c24e8020000	MOVQ 0x2e8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xe2ef		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe2f7		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xe2ff		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe307		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe30f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xe315		4c8b9c24c0020000	MOVQ 0x2c0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe31d		e924fcffff		JMP 0xdf46		
-			i += sz
-  0xe322		4c899c24b8020000	MOVQ R11, 0x2b8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe32a		4d29d8			SUBQ R11, R8		
-  0xe32d		4c89c1			MOVQ R8, CX		
-  0xe330		49f7d8			NEGQ R8			
-  0xe333		49c1f83f		SARQ $0x3f, R8		
-  0xe337		4d21d8			ANDQ R11, R8		
-  0xe33a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe33e		48891424		MOVQ DX, 0(SP)		
-  0xe342		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe347		e800000000		CALL 0xe34c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe34c		448b642410		MOVL 0x10(SP), R12	
-  0xe351		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xe356		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-  0xe35e		488b8c24e8020000	MOVQ 0x2e8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xe366		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe36e		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xe376		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe37e		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe386		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xe38c		4c8b9c24b8020000	MOVQ 0x2b8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe394		e96dfbffff		JMP 0xdf06		
-			i += sz
-  0xe399		4c899c24b0020000	MOVQ R11, 0x2b0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe3a1		4d29d8			SUBQ R11, R8		
-  0xe3a4		4c89c1			MOVQ R8, CX		
-  0xe3a7		49f7d8			NEGQ R8			
-  0xe3aa		49c1f83f		SARQ $0x3f, R8		
-  0xe3ae		4d21d8			ANDQ R11, R8		
-  0xe3b1		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe3b5		48891424		MOVQ DX, 0(SP)		
-  0xe3b9		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe3be		e800000000		CALL 0xe3c3		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe3c3		448b642410		MOVL 0x10(SP), R12	
-  0xe3c8		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xe3cd		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-  0xe3d5		488b8c24e8020000	MOVQ 0x2e8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xe3dd		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe3e5		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xe3ed		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe3f5		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe3fd		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xe403		4c8b9c24b0020000	MOVQ 0x2b0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe40b		e9b6faffff		JMP 0xdec6		
-				goto inst148
-  0xe410		4d89eb			MOVQ R13, R11		
-	goto fail
-  0xe413		e9d32f0000		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe418		4d29e8			SUBQ R13, R8		
-  0xe41b		4c89c1			MOVQ R8, CX		
-  0xe41e		49f7d8			NEGQ R8			
-  0xe421		49c1f83f		SARQ $0x3f, R8		
-  0xe425		4d21e8			ANDQ R13, R8		
-  0xe428		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe42c		48891424		MOVQ DX, 0(SP)		
-  0xe430		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe435		e800000000		CALL 0xe43a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe43a		448b5c2410		MOVL 0x10(SP), R11	
-  0xe43f		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xe444		488b8424601e0000	MOVQ 0x1e60(SP), AX	
-  0xe44c		488b8c24e8020000	MOVQ 0x2e8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xe454		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xe45c		488b9c24f0020000	MOVQ 0x2f0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xe464		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe46c		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe474		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xe47a		4c8bac2408050000	MOVQ 0x508(SP), R13	
-  0xe482		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe486		e9fbf9ffff		JMP 0xde86		
-	bt = append(bt, state{c, i, 97, 0})
-  0xe48b		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0xe492		48891424		MOVQ DX, 0(SP)		
-  0xe496		4889442408		MOVQ AX, 0x8(SP)	
-  0xe49b		4c89642410		MOVQ R12, 0x10(SP)	
-  0xe4a0		48894c2418		MOVQ CX, 0x18(SP)	
-  0xe4a5		48895c2420		MOVQ BX, 0x20(SP)	
-  0xe4aa		e800000000		CALL 0xe4af		[1:5]R_CALL:runtime.growslice	
-  0xe4af		488b442428		MOVQ 0x28(SP), AX	
-  0xe4b4		488b4c2430		MOVQ 0x30(SP), CX	
-  0xe4b9		488b542438		MOVQ 0x38(SP), DX	
-  0xe4be		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0xe4c2		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe4ca		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe4d2		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 97, 0})
-  0xe4d8		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0xe4e0		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 97, 0})
-  0xe4e8		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0xe4eb		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 97, 0})
-  0xe4f3		e90df9ffff		JMP 0xde05		
-	switch bt[len(bt)-1].pc {
-  0xe4f8		4983fd75		CMPQ $0x75, R13		
-	case 117:
-  0xe4fc		0f85764d0000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0xe502		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0xe507		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xe50b		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xe512		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xe51a		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0xe523		0f1f00			NOPL 0(AX)			
-  0xe526		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xe52b		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xe530		e800000000		CALL 0xe535			[1:5]R_CALL:runtime.duffcopy+756	
-  0xe535		488b6d00		MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xe539		4885db			TESTQ BX, BX		
-  0xe53c		0f8c02060000		JL 0xeb44		
-  0xe542		0f1f4000		NOPL 0(AX)		
-  0xe546		4c39c3			CMPQ R8, BX		
-  0xe549		0f8df5050000		JGE 0xeb44		
-		cr, sz := rune(r[i]), 1
-  0xe54f		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xe554		4181fb80000000		CMPL $0x80, R11		
-  0xe55b		0f8dee050000		JGE 0xeb4f		
-  0xe561		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xe566		4183fb74		CMPL $0x74, R11		
-  0xe56a		0f85d4050000		JNE 0xeb44		
-			i += sz
-  0xe570		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xe573		4885db			TESTQ BX, BX		
-  0xe576		0f8c46050000		JL 0xeac2		
-  0xe57c		4c39c3			CMPQ R8, BX		
-  0xe57f		0f8d3d050000		JGE 0xeac2		
-		cr, sz := rune(r[i]), 1
-  0xe585		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xe58a		4181fb80000000		CMPL $0x80, R11		
-  0xe591		0f8d36050000		JGE 0xeacd		
-  0xe597		be01000000		MOVL $0x1, SI		
-  0xe59c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe5a5		90			NOPL			
-		if false || cr == 116 {
-  0xe5a6		4183fb74		CMPL $0x74, R11		
-  0xe5aa		0f8512050000		JNE 0xeac2		
-			i += sz
-  0xe5b0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xe5b3		4885db			TESTQ BX, BX		
-  0xe5b6		0f8c7f040000		JL 0xea3b		
-  0xe5bc		4c39c3			CMPQ R8, BX		
-  0xe5bf		0f8d76040000		JGE 0xea3b		
-		cr, sz := rune(r[i]), 1
-  0xe5c5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xe5ca		4181fb80000000		CMPL $0x80, R11		
-  0xe5d1		0f8d74040000		JGE 0xea4b		
-  0xe5d7		be01000000		MOVL $0x1, SI		
-  0xe5dc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe5e5		90			NOPL			
-		if false || cr == 116 {
-  0xe5e6		4183fb74		CMPL $0x74, R11		
-  0xe5ea		0f854b040000		JNE 0xea3b		
-			i += sz
-  0xe5f0		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xe5f3		4885db			TESTQ BX, BX		
-  0xe5f6		0f8cbd030000		JL 0xe9b9		
-  0xe5fc		4c39c3			CMPQ R8, BX		
-  0xe5ff		0f8db4030000		JGE 0xe9b9		
-		cr, sz := rune(r[i]), 1
-  0xe605		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xe60a		4181fb80000000		CMPL $0x80, R11		
-  0xe611		0f8dad030000		JGE 0xe9c4		
-  0xe617		be01000000		MOVL $0x1, SI		
-  0xe61c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe625		90			NOPL			
-		if cr < 128 {
-  0xe626		4181fb80000000		CMPL $0x80, R11		
-  0xe62d		0f8d86030000		JGE 0xe9b9		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xe633		4589dd			MOVL R11, R13			
-  0xe636		41c1fb1f		SARL $0x1f, R11			
-  0xe63a		41c1eb1d		SHRL $0x1d, R11			
-  0xe63e		4501eb			ADDL R13, R11			
-  0xe641		41c1fb03		SARL $0x3, R11			
-  0xe645		4d63f3			MOVSXD R11, R14			
-  0xe648		4983fe10		CMPQ $0x10, R14			
-  0xe64c		0f83b94c0000		JAE 0x1330b			
-  0xe652		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
-  0xe659		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xe65e		41c1e303		SHLL $0x3, R11			
-  0xe662		4529dd			SUBL R11, R13			
-  0xe665		90			NOPL				
-  0xe666		4585ed			TESTL R13, R13			
-  0xe669		0f8c974c0000		JL 0x13306			
-  0xe66f		4183fd20		CMPL $0x20, R13			
-  0xe673		4519db			SBBL R11, R11			
-	goto inst161
-  0xe676		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xe679		4489e9			MOVL R13, CX		
-  0xe67c		41bf01000000		MOVL $0x1, R15		
-  0xe682		41d3e7			SHLL CL, R15		
-  0xe685		4521df			ANDL R11, R15		
-  0xe688		4584f7			TESTL R14, R15		
-  0xe68b		0f841a030000		JE 0xe9ab		
-				i += sz
-  0xe691		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xe694		4885db			TESTQ BX, BX		
-  0xe697		0f8c85020000		JL 0xe922		
-  0xe69d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe6a6		4c39c3			CMPQ R8, BX		
-  0xe6a9		0f8d73020000		JGE 0xe922		
-		cr, sz := rune(r[i]), 1
-  0xe6af		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xe6b4		4181fb80000000		CMPL $0x80, R11		
-  0xe6bb		0f8d6f020000		JGE 0xe930		
-  0xe6c1		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0xe6c6		4183fb63		CMPL $0x63, R11		
-  0xe6ca		0f8552020000		JNE 0xe922		
-			i += sz
-  0xe6d0		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xe6d3		4885db			TESTQ BX, BX		
-  0xe6d6		0f8cbc010000		JL 0xe898		
-  0xe6dc		4c39c3			CMPQ R8, BX		
-  0xe6df		0f8db3010000		JGE 0xe898		
-		cr, sz := rune(r[i]), 1
-  0xe6e5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xe6ea		4181fb80000000		CMPL $0x80, R11		
-  0xe6f1		0f8db4010000		JGE 0xe8ab		
-  0xe6f7		b901000000		MOVL $0x1, CX		
-  0xe6fc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe705		90			NOPL			
-		if false || cr == 99 {
-  0xe706		4183fb63		CMPL $0x63, R11		
-  0xe70a		0f8588010000		JNE 0xe898		
-			i += sz
-  0xe710		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xe713		4885db			TESTQ BX, BX		
-  0xe716		0f8cf6000000		JL 0xe812		
-  0xe71c		4c39c3			CMPQ R8, BX		
-  0xe71f		0f8ded000000		JGE 0xe812		
-		cr, sz := rune(r[i]), 1
-  0xe725		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xe72a		4181fb80000000		CMPL $0x80, R11		
-  0xe731		0f8de9000000		JGE 0xe820		
-  0xe737		b901000000		MOVL $0x1, CX		
-  0xe73c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xe745		90			NOPL			
-		if false || cr == 99 {
-  0xe746		4183fb63		CMPL $0x63, R11		
-  0xe74a		0f85c2000000		JNE 0xe812		
-			i += sz
-  0xe750		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xe753		4885db			TESTQ BX, BX		
-  0xe756		7c22			JL 0xe77a		
-  0xe758		4c39c3			CMPQ R8, BX		
-  0xe75b		7d1d			JGE 0xe77a		
-		cr, sz := rune(r[i]), 1
-  0xe75d		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xe762		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xe766		4181fb80000000		CMPL $0x80, R11		
-  0xe76d		7d2c			JGE 0xe79b		
-  0xe76f		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0xe774		4183fb74		CMPL $0x74, R11		
-  0xe778		7411			JE 0xe78b		
-				goto inst148
-  0xe77a		4989db			MOVQ BX, R11		
-	goto inst161
-  0xe77d		4889f9			MOVQ DI, CX		
-  0xe780		4c89e3			MOVQ R12, BX		
-  0xe783		0f1f00			NOPL 0(AX)		
-	goto fail
-  0xe786		e9602c0000		JMP 0x113eb		
-			i += sz
-  0xe78b		4801cb			ADDQ CX, BX		
-	c[13] = i
-  0xe78e		48899c2490050000	MOVQ BX, 0x590(SP)	
-	goto inst180
-  0xe796		e9b0bbffff		JMP 0xa34b		
-			i += sz
-  0xe79b		48899c24a8020000	MOVQ BX, 0x2a8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe7a3		4929d8			SUBQ BX, R8		
-  0xe7a6		4c89c1			MOVQ R8, CX		
-  0xe7a9		49f7d8			NEGQ R8			
-  0xe7ac		49c1f83f		SARQ $0x3f, R8		
-  0xe7b0		4921d8			ANDQ BX, R8		
-  0xe7b3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe7b7		48891424		MOVQ DX, 0(SP)		
-  0xe7bb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe7c0		e800000000		CALL 0xe7c5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe7c5		448b5c2410		MOVL 0x10(SP), R11	
-  0xe7ca		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe7cf		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe7d7		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xe7df		488b9c24a8020000	MOVQ 0x2a8(SP), BX	
-	goto inst161
-  0xe7e7		488bbc2418050000	MOVQ 0x518(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xe7ef		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe7f7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe7ff		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xe805		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe80d		e962ffffff		JMP 0xe774		
-				goto inst148
-  0xe812		4989db			MOVQ BX, R11		
-	goto inst161
-  0xe815		4889f9			MOVQ DI, CX		
-  0xe818		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xe81b		e9cb2b0000		JMP 0x113eb		
-			i += sz
-  0xe820		48899c24a0020000	MOVQ BX, 0x2a0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe828		4929d8			SUBQ BX, R8		
-  0xe82b		4c89c1			MOVQ R8, CX		
-  0xe82e		49f7d8			NEGQ R8			
-  0xe831		49c1f83f		SARQ $0x3f, R8		
-  0xe835		4921d8			ANDQ BX, R8		
-  0xe838		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe83c		48891424		MOVQ DX, 0(SP)		
-  0xe840		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe845		90			NOPL			
-  0xe846		e800000000		CALL 0xe84b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe84b		448b5c2410		MOVL 0x10(SP), R11	
-  0xe850		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe855		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe85d		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xe865		488b9c24a0020000	MOVQ 0x2a0(SP), BX	
-	goto inst161
-  0xe86d		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xe875		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe87d		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe885		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xe88b		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe893		e9aefeffff		JMP 0xe746		
-				goto inst148
-  0xe898		4989db			MOVQ BX, R11		
-	goto inst161
-  0xe89b		4889f9			MOVQ DI, CX		
-  0xe89e		4c89e3			MOVQ R12, BX		
-  0xe8a1		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0xe8a6		e9402b0000		JMP 0x113eb		
-			i += sz
-  0xe8ab		48899c2498020000	MOVQ BX, 0x298(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe8b3		4929d8			SUBQ BX, R8		
-  0xe8b6		4c89c1			MOVQ R8, CX		
-  0xe8b9		49f7d8			NEGQ R8			
-  0xe8bc		49c1f83f		SARQ $0x3f, R8		
-  0xe8c0		4921d8			ANDQ BX, R8		
-  0xe8c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe8c7		48891424		MOVQ DX, 0(SP)		
-  0xe8cb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe8d0		e800000000		CALL 0xe8d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe8d5		448b5c2410		MOVL 0x10(SP), R11	
-  0xe8da		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe8df		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe8e7		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xe8ef		488b9c2498020000	MOVQ 0x298(SP), BX	
-	goto inst161
-  0xe8f7		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xe8ff		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe907		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe90f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xe915		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe91d		e9e4fdffff		JMP 0xe706		
-				goto inst148
-  0xe922		4989db			MOVQ BX, R11		
-	goto inst161
-  0xe925		4889f9			MOVQ DI, CX		
-  0xe928		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xe92b		e9bb2a0000		JMP 0x113eb		
-				i += sz
-  0xe930		48899c2490020000	MOVQ BX, 0x290(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe938		4929d8			SUBQ BX, R8		
-  0xe93b		4c89c1			MOVQ R8, CX		
-  0xe93e		49f7d8			NEGQ R8			
-  0xe941		49c1f83f		SARQ $0x3f, R8		
-  0xe945		4921d8			ANDQ BX, R8		
-  0xe948		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe94c		48891424		MOVQ DX, 0(SP)		
-  0xe950		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe955		e800000000		CALL 0xe95a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe95a		448b5c2410		MOVL 0x10(SP), R11	
-  0xe95f		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xe964		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xe96c		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xe974		488b9c2490020000	MOVQ 0x290(SP), BX	
-	goto inst161
-  0xe97c		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xe984		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xe98c		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xe994		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xe99a		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xe9a2		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe9a6		e91bfdffff		JMP 0xe6c6		
-				goto inst148
-  0xe9ab		4989db			MOVQ BX, R11		
-	goto inst161
-  0xe9ae		4889f9			MOVQ DI, CX		
-  0xe9b1		4c89e3			MOVQ R12, BX		
-			goto fail
-  0xe9b4		e9322a0000		JMP 0x113eb		
-				goto inst148
-  0xe9b9		4989db			MOVQ BX, R11		
-	goto inst161
-  0xe9bc		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xe9bf		e9272a0000		JMP 0x113eb		
-			i += sz
-  0xe9c4		48899c2488020000	MOVQ BX, 0x288(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xe9cc		4929d8			SUBQ BX, R8		
-  0xe9cf		4c89c1			MOVQ R8, CX		
-  0xe9d2		49f7d8			NEGQ R8			
-  0xe9d5		49c1f83f		SARQ $0x3f, R8		
-  0xe9d9		4921d8			ANDQ BX, R8		
-  0xe9dc		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xe9e0		48891424		MOVQ DX, 0(SP)		
-  0xe9e4		48894c2408		MOVQ CX, 0x8(SP)	
-  0xe9e9		e800000000		CALL 0xe9ee		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xe9ee		448b5c2410		MOVL 0x10(SP), R11	
-  0xe9f3		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xe9f8		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xea00		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xea08		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xea10		488b9c2488020000	MOVQ 0x288(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xea18		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xea20		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xea28		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xea2e		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xea36		e9ebfbffff		JMP 0xe626		
-				goto inst148
-  0xea3b		4989db			MOVQ BX, R11		
-	goto inst161
-  0xea3e		4c89e3			MOVQ R12, BX		
-  0xea41		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0xea46		e9a0290000		JMP 0x113eb		
-			i += sz
-  0xea4b		48899c2480020000	MOVQ BX, 0x280(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xea53		4929d8			SUBQ BX, R8		
-  0xea56		4c89c1			MOVQ R8, CX		
-  0xea59		49f7d8			NEGQ R8			
-  0xea5c		49c1f83f		SARQ $0x3f, R8		
-  0xea60		4921d8			ANDQ BX, R8		
-  0xea63		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xea67		48891424		MOVQ DX, 0(SP)		
-  0xea6b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xea70		e800000000		CALL 0xea75		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xea75		448b5c2410		MOVL 0x10(SP), R11	
-  0xea7a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xea7f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xea87		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xea8f		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xea97		488b9c2480020000	MOVQ 0x280(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xea9f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xeaa7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xeaaf		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xeab5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xeabd		e924fbffff		JMP 0xe5e6		
-				goto inst148
-  0xeac2		4989db			MOVQ BX, R11		
-	goto inst161
-  0xeac5		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xeac8		e91e290000		JMP 0x113eb		
-			i += sz
-  0xeacd		48899c2478020000	MOVQ BX, 0x278(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xead5		4929d8			SUBQ BX, R8		
-  0xead8		4c89c1			MOVQ R8, CX		
-  0xeadb		49f7d8			NEGQ R8			
-  0xeade		49c1f83f		SARQ $0x3f, R8		
-  0xeae2		4921d8			ANDQ BX, R8		
-  0xeae5		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xeae9		48891424		MOVQ DX, 0(SP)		
-  0xeaed		48894c2408		MOVQ CX, 0x8(SP)	
-  0xeaf2		e800000000		CALL 0xeaf7		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xeaf7		448b5c2410		MOVL 0x10(SP), R11	
-  0xeafc		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xeb01		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xeb09		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xeb11		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xeb19		488b9c2478020000	MOVQ 0x278(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xeb21		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xeb29		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xeb31		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xeb37		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xeb3f		e962faffff		JMP 0xe5a6		
-				goto inst148
-  0xeb44		4989db			MOVQ BX, R11		
-	goto inst161
-  0xeb47		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xeb4a		e99c280000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0xeb4f		48899c2470020000	MOVQ BX, 0x270(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xeb57		4929d8			SUBQ BX, R8		
-  0xeb5a		4c89c1			MOVQ R8, CX		
-  0xeb5d		49f7d8			NEGQ R8			
-  0xeb60		49c1f83f		SARQ $0x3f, R8		
-  0xeb64		4921d8			ANDQ BX, R8		
-  0xeb67		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xeb6b		48891424		MOVQ DX, 0(SP)		
-  0xeb6f		48894c2408		MOVQ CX, 0x8(SP)	
-  0xeb74		e800000000		CALL 0xeb79		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xeb79		448b5c2410		MOVL 0x10(SP), R11	
-  0xeb7e		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xeb83		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xeb8b		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xeb93		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xeb9b		488b9c2470020000	MOVQ 0x270(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xeba3		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xebab		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xebb3		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xebb9		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xebc1		0f1f440000		NOPL 0(AX)(AX*1)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xebc6		e99bf9ffff		JMP 0xe566		
-	case 119:
-  0xebcb		4983fd77		CMPQ $0x77, R13		
-  0xebcf		0f85bf070000		JNE 0xf394		
-		c, i = bt[n].c, bt[n].i
-  0xebd5		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0xebda		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0xebe2		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xebe6		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xebed		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xebf5		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0xebfe		0f1f840000000000	NOPL 0(AX)(AX*1)		
-  0xec06		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xec0b		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xec10		e800000000		CALL 0xec15			[1:5]R_CALL:runtime.duffcopy+756	
-  0xec15		488b6d00		MOVQ 0(BP), BP			
-	c[12] = i
-  0xec19		4c89ac2488050000	MOVQ R13, 0x588(SP)	
-	bt = append(bt, state{c, i, 117, 0})
-  0xec21		48c78424d00a000000000000	MOVQ $0x0, 0xad0(SP)		
-  0xec2d		488dbc24d80a0000		LEAQ 0xad8(SP), DI		
-  0xec35		0f57c0				XORPS X0, X0			
-  0xec38		488d7ff0			LEAQ -0x10(DI), DI		
-  0xec3c		660f1f840000000000		NOPW 0(AX)(AX*1)		
-  0xec45		90				NOPL				
-  0xec46		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xec4b		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xec50		e800000000			CALL 0xec55			[1:5]R_CALL:runtime.duffzero+250	
-  0xec55		488b6d00			MOVQ 0(BP), BP			
-  0xec59		488dbc24d00a0000		LEAQ 0xad0(SP), DI		
-  0xec61		488db42428050000		LEAQ 0x528(SP), SI		
-  0xec69		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xec6e		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xec73		e800000000			CALL 0xec78			[1:5]R_CALL:runtime.duffcopy+756	
-  0xec78		488b6d00			MOVQ 0(BP), BP			
-  0xec7c		4c89ac24700b0000		MOVQ R13, 0xb70(SP)		
-  0xec84		48c78424780b000075000000	MOVQ $0x75, 0xb78(SP)		
-  0xec90		48c78424800b000000000000	MOVQ $0x0, 0xb80(SP)		
-  0xec9c		4839d9				CMPQ BX, CX			
-  0xec9f		0f827d060000			JB 0xf322			
-  0xeca5		4c8ba424d00a0000		MOVQ 0xad0(SP), R12		
-  0xecad		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0xecb5		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0xecb9		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0xecc0		488db424d80a0000		LEAQ 0xad8(SP), SI		
-  0xecc8		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xeccd		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xecd2		e800000000			CALL 0xecd7			[1:5]R_CALL:runtime.duffcopy+742	
-  0xecd7		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xecdb		4d85ed			TESTQ R13, R13		
-  0xecde		0f8cc7050000		JL 0xf2ab		
-  0xece4		6690			NOPW			
-  0xece6		4d39c5			CMPQ R8, R13		
-  0xece9		0f8dbc050000		JGE 0xf2ab		
-	bt = append(bt, state{c, i, 117, 0})
-  0xecef		48898424581e0000	MOVQ AX, 0x1e58(SP)	
-  0xecf7		48899c2468020000	MOVQ BX, 0x268(SP)	
-  0xecff		48898c2460020000	MOVQ CX, 0x260(SP)	
-		cr, sz := rune(r[i]), 1
-  0xed07		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xed0c		4181fb80000000		CMPL $0x80, R11		
-  0xed13		0f8d9a050000		JGE 0xf2b3		
-  0xed19		be01000000		MOVL $0x1, SI		
-  0xed1e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if false || cr == 97 {
-  0xed26		4183fb61		CMPL $0x61, R11		
-  0xed2a		0f857b050000		JNE 0xf2ab		
-			i += sz
-  0xed30		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0xed34		4d85db			TESTQ R11, R11		
-  0xed37		0f8cae260000		JL 0x113eb		
-  0xed3d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xed46		4d39c3			CMPQ R8, R11		
-  0xed49		0f8d9c260000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xed4f		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xed54		4181fc80000000		CMPL $0x80, R12		
-  0xed5b		0f8dcf040000		JGE 0xf230		
-  0xed61		be01000000		MOVL $0x1, SI		
-		if false || cr == 103 {
-  0xed66		4183fc67		CMPL $0x67, R12		
-  0xed6a		0f857b260000		JNE 0x113eb		
-			i += sz
-  0xed70		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xed73		4d85db			TESTQ R11, R11		
-  0xed76		0f8c6f260000		JL 0x113eb		
-  0xed7c		4d39c3			CMPQ R8, R11		
-  0xed7f		0f8d66260000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xed85		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xed8a		4181fc80000000		CMPL $0x80, R12		
-  0xed91		0f8d22040000		JGE 0xf1b9		
-  0xed97		be01000000		MOVL $0x1, SI		
-  0xed9c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xeda5		90			NOPL			
-		if false || cr == 103 {
-  0xeda6		4183fc67		CMPL $0x67, R12		
-  0xedaa		0f853b260000		JNE 0x113eb		
-			i += sz
-  0xedb0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xedb3		4d85db			TESTQ R11, R11		
-  0xedb6		0f8c2f260000		JL 0x113eb		
-  0xedbc		4d39c3			CMPQ R8, R11		
-  0xedbf		0f8d26260000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xedc5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xedca		4181fc80000000		CMPL $0x80, R12		
-  0xedd1		0f8d6b030000		JGE 0xf142		
-  0xedd7		be01000000		MOVL $0x1, SI		
-  0xeddc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xede5		90			NOPL			
-		if false || cr == 103 {
-  0xede6		4183fc67		CMPL $0x67, R12		
-  0xedea		0f85fb250000		JNE 0x113eb		
-			i += sz
-  0xedf0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xedf3		4d85db			TESTQ R11, R11		
-  0xedf6		0f8cef250000		JL 0x113eb		
-  0xedfc		4d39c3			CMPQ R8, R11		
-  0xedff		0f8de6250000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xee05		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xee0a		4181fc80000000		CMPL $0x80, R12		
-  0xee11		0f8db4020000		JGE 0xf0cb		
-  0xee17		be01000000		MOVL $0x1, SI		
-  0xee1c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xee25		90			NOPL			
-		if cr < 128 {
-  0xee26		4181fc80000000		CMPL $0x80, R12		
-  0xee2d		0f8db8250000		JGE 0x113eb		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xee33		4589e5			MOVL R12, R13			
-  0xee36		41c1fc1f		SARL $0x1f, R12			
-  0xee3a		41c1ec1d		SHRL $0x1d, R12			
-  0xee3e		4501ec			ADDL R13, R12			
-  0xee41		41c1fc03		SARL $0x3, R12			
-  0xee45		4d63f4			MOVSXD R12, R14			
-  0xee48		4983fe10		CMPQ $0x10, R14			
-  0xee4c		0f83cb440000		JAE 0x1331d			
-  0xee52		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
-  0xee59		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xee5e		41c1e403		SHLL $0x3, R12			
-  0xee62		4529e5			SUBL R12, R13			
-  0xee65		90			NOPL				
-  0xee66		4585ed			TESTL R13, R13			
-  0xee69		0f8ca9440000		JL 0x13318			
-  0xee6f		4183fd20		CMPL $0x20, R13			
-  0xee73		4519e4			SBBL R12, R12			
-	bt = append(bt, state{c, i, 117, 0})
-  0xee76		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xee79		4489e9			MOVL R13, CX		
-  0xee7c		41bf01000000		MOVL $0x1, R15		
-  0xee82		41d3e7			SHLL CL, R15		
-  0xee85		4521fc			ANDL R15, R12		
-  0xee88		4584f4			TESTL R14, R12		
-  0xee8b		0f8431020000		JE 0xf0c2		
-				i += sz
-  0xee91		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xee94		4d85db			TESTQ R11, R11		
-  0xee97		0f8ca5010000		JL 0xf042		
-  0xee9d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xeea6		4d39c3			CMPQ R8, R11		
-  0xeea9		0f8d93010000		JGE 0xf042		
-		cr, sz := rune(r[i]), 1
-  0xeeaf		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xeeb4		4181fc80000000		CMPL $0x80, R12		
-  0xeebb		0f8d8a010000		JGE 0xf04b		
-  0xeec1		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xeec6		4183fc61		CMPL $0x61, R12		
-  0xeeca		0f8572010000		JNE 0xf042		
-			i += sz
-  0xeed0		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xeed3		4d85db			TESTQ R11, R11		
-  0xeed6		0f8ce6000000		JL 0xefc2		
-  0xeedc		4d39c3			CMPQ R8, R11		
-  0xeedf		0f8ddd000000		JGE 0xefc2		
-		cr, sz := rune(r[i]), 1
-  0xeee5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xeeea		4181fc80000000		CMPL $0x80, R12		
-  0xeef1		0f8dd4000000		JGE 0xefcb		
-  0xeef7		b901000000		MOVL $0x1, CX		
-  0xeefc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xef05		90			NOPL			
-		if false || cr == 97 {
-  0xef06		4183fc61		CMPL $0x61, R12		
-  0xef0a		0f85b2000000		JNE 0xefc2		
-			i += sz
-  0xef10		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xef13		4d85db			TESTQ R11, R11		
-  0xef16		7c22			JL 0xef3a		
-  0xef18		4d39c3			CMPQ R8, R11		
-  0xef1b		7d1d			JGE 0xef3a		
-		cr, sz := rune(r[i]), 1
-  0xef1d		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0xef22		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xef26		4181fc80000000		CMPL $0x80, R12		
-  0xef2d		7d1c			JGE 0xef4b		
-  0xef2f		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xef34		4183fc61		CMPL $0x61, R12		
-  0xef38		7408			JE 0xef42		
-	goto inst161
-  0xef3a		4889f9			MOVQ DI, CX		
-	goto fail
-  0xef3d		e9a9240000		JMP 0x113eb		
-			i += sz
-  0xef42		4a8d1c19		LEAQ 0(CX)(R11*1), BX	
-			goto inst118
-  0xef46		e943f8ffff		JMP 0xe78e		
-			i += sz
-  0xef4b		4c899c2458020000	MOVQ R11, 0x258(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xef53		4d29d8			SUBQ R11, R8		
-  0xef56		4c89c1			MOVQ R8, CX		
-  0xef59		49f7d8			NEGQ R8			
-  0xef5c		49c1f83f		SARQ $0x3f, R8		
-  0xef60		4d21d8			ANDQ R11, R8		
-  0xef63		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xef67		48891424		MOVQ DX, 0(SP)		
-  0xef6b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xef70		e800000000		CALL 0xef75		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xef75		448b642410		MOVL 0x10(SP), R12	
-  0xef7a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xef7f		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-		if len(r[si:]) != 0 {
-  0xef87		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xef8f		488b9c2468020000	MOVQ 0x268(SP), BX	
-  0xef97		488bbc2460020000	MOVQ 0x260(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xef9f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xefa7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xefaf		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xefb5		4c8b9c2458020000	MOVQ 0x258(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xefbd		e972ffffff		JMP 0xef34		
-	goto inst161
-  0xefc2		4889f9			MOVQ DI, CX		
-  0xefc5		90			NOPL			
-	goto fail
-  0xefc6		e920240000		JMP 0x113eb		
-			i += sz
-  0xefcb		4c899c2450020000	MOVQ R11, 0x250(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xefd3		4d29d8			SUBQ R11, R8		
-  0xefd6		4c89c1			MOVQ R8, CX		
-  0xefd9		49f7d8			NEGQ R8			
-  0xefdc		49c1f83f		SARQ $0x3f, R8		
-  0xefe0		4d21d8			ANDQ R11, R8		
-  0xefe3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xefe7		48891424		MOVQ DX, 0(SP)		
-  0xefeb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xeff0		e800000000		CALL 0xeff5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xeff5		448b642410		MOVL 0x10(SP), R12	
-  0xeffa		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xefff		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-		if len(r[si:]) != 0 {
-  0xf007		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xf00f		488b9c2468020000	MOVQ 0x268(SP), BX	
-  0xf017		488bbc2460020000	MOVQ 0x260(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xf01f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf027		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf02f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xf035		4c8b9c2450020000	MOVQ 0x250(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf03d		e9c4feffff		JMP 0xef06		
-	goto inst161
-  0xf042		4889f9			MOVQ DI, CX		
-  0xf045		90			NOPL			
-	goto fail
-  0xf046		e9a0230000		JMP 0x113eb		
-				i += sz
-  0xf04b		4c899c2448020000	MOVQ R11, 0x248(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf053		4d29d8			SUBQ R11, R8		
-  0xf056		4c89c1			MOVQ R8, CX		
-  0xf059		49f7d8			NEGQ R8			
-  0xf05c		49c1f83f		SARQ $0x3f, R8		
-  0xf060		4d21d8			ANDQ R11, R8		
-  0xf063		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf067		48891424		MOVQ DX, 0(SP)		
-  0xf06b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf070		e800000000		CALL 0xf075		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf075		448b642410		MOVL 0x10(SP), R12	
-  0xf07a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xf07f		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-		if len(r[si:]) != 0 {
-  0xf087		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xf08f		488b9c2468020000	MOVQ 0x268(SP), BX	
-  0xf097		488bbc2460020000	MOVQ 0x260(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xf09f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf0a7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf0af		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xf0b5		4c8b9c2448020000	MOVQ 0x248(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf0bd		e904feffff		JMP 0xeec6		
-	goto inst161
-  0xf0c2		4889f9			MOVQ DI, CX		
-  0xf0c5		90			NOPL			
-			goto fail
-  0xf0c6		e920230000		JMP 0x113eb		
-			i += sz
-  0xf0cb		4c899c2440020000	MOVQ R11, 0x240(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf0d3		4d29d8			SUBQ R11, R8		
-  0xf0d6		4c89c1			MOVQ R8, CX		
-  0xf0d9		49f7d8			NEGQ R8			
-  0xf0dc		49c1f83f		SARQ $0x3f, R8		
-  0xf0e0		4d21d8			ANDQ R11, R8		
-  0xf0e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf0e7		48891424		MOVQ DX, 0(SP)		
-  0xf0eb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf0f0		e800000000		CALL 0xf0f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf0f5		448b642410		MOVL 0x10(SP), R12	
-  0xf0fa		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xf0ff		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-  0xf107		488b8c2460020000	MOVQ 0x260(SP), CX	
-		if len(r[si:]) != 0 {
-  0xf10f		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xf117		488b9c2468020000	MOVQ 0x268(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xf11f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf127		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf12f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xf135		4c8b9c2440020000	MOVQ 0x240(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf13d		e9e4fcffff		JMP 0xee26		
-			i += sz
-  0xf142		4c899c2438020000	MOVQ R11, 0x238(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf14a		4d29d8			SUBQ R11, R8		
-  0xf14d		4c89c1			MOVQ R8, CX		
-  0xf150		49f7d8			NEGQ R8			
-  0xf153		49c1f83f		SARQ $0x3f, R8		
-  0xf157		4d21d8			ANDQ R11, R8		
-  0xf15a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf15e		48891424		MOVQ DX, 0(SP)		
-  0xf162		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf167		e800000000		CALL 0xf16c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf16c		448b642410		MOVL 0x10(SP), R12	
-  0xf171		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xf176		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-  0xf17e		488b8c2460020000	MOVQ 0x260(SP), CX	
-		if len(r[si:]) != 0 {
-  0xf186		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xf18e		488b9c2468020000	MOVQ 0x268(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xf196		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf19e		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf1a6		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xf1ac		4c8b9c2438020000	MOVQ 0x238(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf1b4		e92dfcffff		JMP 0xede6		
-			i += sz
-  0xf1b9		4c899c2430020000	MOVQ R11, 0x230(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf1c1		4d29d8			SUBQ R11, R8		
-  0xf1c4		4c89c1			MOVQ R8, CX		
-  0xf1c7		49f7d8			NEGQ R8			
-  0xf1ca		49c1f83f		SARQ $0x3f, R8		
-  0xf1ce		4d21d8			ANDQ R11, R8		
-  0xf1d1		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf1d5		48891424		MOVQ DX, 0(SP)		
-  0xf1d9		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf1de		e800000000		CALL 0xf1e3		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf1e3		448b642410		MOVL 0x10(SP), R12	
-  0xf1e8		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xf1ed		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-  0xf1f5		488b8c2460020000	MOVQ 0x260(SP), CX	
-		if len(r[si:]) != 0 {
-  0xf1fd		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xf205		488b9c2468020000	MOVQ 0x268(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xf20d		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf215		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf21d		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xf223		4c8b9c2430020000	MOVQ 0x230(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf22b		e976fbffff		JMP 0xeda6		
-			i += sz
-  0xf230		4c899c2428020000	MOVQ R11, 0x228(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf238		4d29d8			SUBQ R11, R8		
-  0xf23b		4c89c1			MOVQ R8, CX		
-  0xf23e		49f7d8			NEGQ R8			
-  0xf241		49c1f83f		SARQ $0x3f, R8		
-  0xf245		4d21d8			ANDQ R11, R8		
-  0xf248		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf24c		48891424		MOVQ DX, 0(SP)		
-  0xf250		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf255		e800000000		CALL 0xf25a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf25a		448b642410		MOVL 0x10(SP), R12	
-  0xf25f		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xf264		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-  0xf26c		488b8c2460020000	MOVQ 0x260(SP), CX	
-		if len(r[si:]) != 0 {
-  0xf274		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xf27c		488b9c2468020000	MOVQ 0x268(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xf284		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf28c		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf294		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xf29a		4c8b9c2428020000	MOVQ 0x228(SP), R11	
-  0xf2a2		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf2a6		e9bbfaffff		JMP 0xed66		
-				goto inst148
-  0xf2ab		4d89eb			MOVQ R13, R11		
-	goto fail
-  0xf2ae		e938210000		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf2b3		4d29e8			SUBQ R13, R8		
-  0xf2b6		4c89c1			MOVQ R8, CX		
-  0xf2b9		49f7d8			NEGQ R8			
-  0xf2bc		49c1f83f		SARQ $0x3f, R8		
-  0xf2c0		4d21e8			ANDQ R13, R8		
-  0xf2c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf2c7		48891424		MOVQ DX, 0(SP)		
-  0xf2cb		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf2d0		e800000000		CALL 0xf2d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf2d5		448b5c2410		MOVL 0x10(SP), R11	
-  0xf2da		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xf2df		488b8424581e0000	MOVQ 0x1e58(SP), AX	
-  0xf2e7		488b8c2460020000	MOVQ 0x260(SP), CX	
-		if len(r[si:]) != 0 {
-  0xf2ef		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xf2f7		488b9c2468020000	MOVQ 0x268(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xf2ff		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf307		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf30f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xf315		4c8bac2408050000	MOVQ 0x508(SP), R13	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf31d		e904faffff		JMP 0xed26		
-	bt = append(bt, state{c, i, 117, 0})
-  0xf322		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0xf329		48891424		MOVQ DX, 0(SP)		
-  0xf32d		4889442408		MOVQ AX, 0x8(SP)	
-  0xf332		4c89642410		MOVQ R12, 0x10(SP)	
-  0xf337		48894c2418		MOVQ CX, 0x18(SP)	
-  0xf33c		48895c2420		MOVQ BX, 0x20(SP)	
-  0xf341		0f1f440000		NOPL 0(AX)(AX*1)	
-  0xf346		e800000000		CALL 0xf34b		[1:5]R_CALL:runtime.growslice	
-  0xf34b		488b442428		MOVQ 0x28(SP), AX	
-  0xf350		488b4c2430		MOVQ 0x30(SP), CX	
-  0xf355		488b542438		MOVQ 0x38(SP), DX	
-  0xf35a		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0xf35e		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf366		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf36e		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 117, 0})
-  0xf374		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0xf37c		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 117, 0})
-  0xf384		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0xf387		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 117, 0})
-  0xf38f		e911f9ffff		JMP 0xeca5		
-	switch bt[len(bt)-1].pc {
-  0xf394		4981fd89000000		CMPQ $0x89, R13		
-	case 137:
-  0xf39b		0f85d73e0000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0xf3a1		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0xf3a6		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xf3aa		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xf3b1		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xf3b9		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0xf3c2		0f1f4000		NOPL 0(AX)			
-  0xf3c6		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xf3cb		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xf3d0		e800000000		CALL 0xf3d5			[1:5]R_CALL:runtime.duffcopy+756	
-  0xf3d5		488b6d00		MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xf3d9		4885db			TESTQ BX, BX		
-  0xf3dc		0f8c02060000		JL 0xf9e4		
-  0xf3e2		0f1f4000		NOPL 0(AX)		
-  0xf3e6		4c39c3			CMPQ R8, BX		
-  0xf3e9		0f8df5050000		JGE 0xf9e4		
-		cr, sz := rune(r[i]), 1
-  0xf3ef		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xf3f4		4181fb80000000		CMPL $0x80, R11		
-  0xf3fb		0f8dee050000		JGE 0xf9ef		
-  0xf401		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0xf406		4183fb74		CMPL $0x74, R11		
-  0xf40a		0f85d4050000		JNE 0xf9e4		
-			i += sz
-  0xf410		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xf413		4885db			TESTQ BX, BX		
-  0xf416		0f8c46050000		JL 0xf962		
-  0xf41c		4c39c3			CMPQ R8, BX		
-  0xf41f		0f8d3d050000		JGE 0xf962		
-		cr, sz := rune(r[i]), 1
-  0xf425		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xf42a		4181fb80000000		CMPL $0x80, R11		
-  0xf431		0f8d36050000		JGE 0xf96d		
-  0xf437		be01000000		MOVL $0x1, SI		
-  0xf43c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xf445		90			NOPL			
-		if false || cr == 116 {
-  0xf446		4183fb74		CMPL $0x74, R11		
-  0xf44a		0f8512050000		JNE 0xf962		
-			i += sz
-  0xf450		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xf453		4885db			TESTQ BX, BX		
-  0xf456		0f8c82040000		JL 0xf8de		
-  0xf45c		4c39c3			CMPQ R8, BX		
-  0xf45f		0f8d79040000		JGE 0xf8de		
-		cr, sz := rune(r[i]), 1
-  0xf465		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xf46a		4181fb80000000		CMPL $0x80, R11		
-  0xf471		0f8d74040000		JGE 0xf8eb		
-  0xf477		be01000000		MOVL $0x1, SI		
-  0xf47c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xf485		90			NOPL			
-		if cr < 128 {
-  0xf486		4181fb80000000		CMPL $0x80, R11		
-  0xf48d		0f8d4b040000		JGE 0xf8de		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xf493		4589dd			MOVL R11, R13			
-  0xf496		41c1fb1f		SARL $0x1f, R11			
-  0xf49a		41c1eb1d		SHRL $0x1d, R11			
-  0xf49e		4501eb			ADDL R13, R11			
-  0xf4a1		41c1fb03		SARL $0x3, R11			
-  0xf4a5		4d63f3			MOVSXD R11, R14			
-  0xf4a8		4983fe10		CMPQ $0x10, R14			
-  0xf4ac		0f83303e0000		JAE 0x132e2			
-  0xf4b2		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
-  0xf4b9		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xf4be		41c1e303		SHLL $0x3, R11			
-  0xf4c2		4529dd			SUBL R11, R13			
-  0xf4c5		90			NOPL				
-  0xf4c6		4585ed			TESTL R13, R13			
-  0xf4c9		0f8c0e3e0000		JL 0x132dd			
-  0xf4cf		4183fd20		CMPL $0x20, R13			
-  0xf4d3		4519db			SBBL R11, R11			
-	goto inst161
-  0xf4d6		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xf4d9		4489e9			MOVL R13, CX		
-  0xf4dc		41bf01000000		MOVL $0x1, R15		
-  0xf4e2		41d3e7			SHLL CL, R15		
-  0xf4e5		4521fb			ANDL R15, R11		
-  0xf4e8		4584f3			TESTL R14, R11		
-  0xf4eb		0f84df030000		JE 0xf8d0		
-				i += sz
-  0xf4f1		4801f3			ADDQ SI, BX		
-	if i >= 0 && i < len(r) {
-  0xf4f4		4885db			TESTQ BX, BX		
-  0xf4f7		0f8c4e030000		JL 0xf84b		
-  0xf4fd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xf506		4c39c3			CMPQ R8, BX		
-  0xf509		0f8d3c030000		JGE 0xf84b		
-		cr, sz := rune(r[i]), 1
-  0xf50f		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xf514		4181fb80000000		CMPL $0x80, R11		
-  0xf51b		0f8d38030000		JGE 0xf859		
-  0xf521		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xf526		4183fb61		CMPL $0x61, R11		
-  0xf52a		0f851b030000		JNE 0xf84b		
-			i += sz
-  0xf530		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xf533		4885db			TESTQ BX, BX		
-  0xf536		0f8c86020000		JL 0xf7c2		
-  0xf53c		4c39c3			CMPQ R8, BX		
-  0xf53f		0f8d7d020000		JGE 0xf7c2		
-		cr, sz := rune(r[i]), 1
-  0xf545		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xf54a		4181fb80000000		CMPL $0x80, R11		
-  0xf551		0f8d79020000		JGE 0xf7d0		
-  0xf557		b901000000		MOVL $0x1, CX		
-  0xf55c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xf565		90			NOPL			
-		if false || cr == 99 {
-  0xf566		4183fb63		CMPL $0x63, R11		
-  0xf56a		0f8552020000		JNE 0xf7c2		
-			i += sz
-  0xf570		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xf573		4885db			TESTQ BX, BX		
-  0xf576		0f8cbc010000		JL 0xf738		
-  0xf57c		4c39c3			CMPQ R8, BX		
-  0xf57f		0f8db3010000		JGE 0xf738		
-		cr, sz := rune(r[i]), 1
-  0xf585		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xf58a		4181fb80000000		CMPL $0x80, R11		
-  0xf591		0f8db4010000		JGE 0xf74b		
-  0xf597		b901000000		MOVL $0x1, CX		
-  0xf59c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xf5a5		90			NOPL			
-		if false || cr == 99 {
-  0xf5a6		4183fb63		CMPL $0x63, R11		
-  0xf5aa		0f8588010000		JNE 0xf738		
-			i += sz
-  0xf5b0		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xf5b3		4885db			TESTQ BX, BX		
-  0xf5b6		0f8cf6000000		JL 0xf6b2		
-  0xf5bc		4c39c3			CMPQ R8, BX		
-  0xf5bf		0f8ded000000		JGE 0xf6b2		
-		cr, sz := rune(r[i]), 1
-  0xf5c5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xf5ca		4181fb80000000		CMPL $0x80, R11		
-  0xf5d1		0f8de9000000		JGE 0xf6c0		
-  0xf5d7		b901000000		MOVL $0x1, CX		
-  0xf5dc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xf5e5		90			NOPL			
-		if false || cr == 99 {
-  0xf5e6		4183fb63		CMPL $0x63, R11		
-  0xf5ea		0f85c2000000		JNE 0xf6b2		
-			i += sz
-  0xf5f0		4801cb			ADDQ CX, BX		
-	if i >= 0 && i < len(r) {
-  0xf5f3		4885db			TESTQ BX, BX		
-  0xf5f6		7c22			JL 0xf61a		
-  0xf5f8		4c39c3			CMPQ R8, BX		
-  0xf5fb		7d1d			JGE 0xf61a		
-		cr, sz := rune(r[i]), 1
-  0xf5fd		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0xf602		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xf606		4181fb80000000		CMPL $0x80, R11		
-  0xf60d		7d2c			JGE 0xf63b		
-  0xf60f		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0xf614		4183fb74		CMPL $0x74, R11		
-  0xf618		7411			JE 0xf62b		
-				goto inst148
-  0xf61a		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf61d		4889f9			MOVQ DI, CX		
-  0xf620		4c89e3			MOVQ R12, BX		
-  0xf623		0f1f00			NOPL 0(AX)		
-	goto fail
-  0xf626		e9c01d0000		JMP 0x113eb		
-			i += sz
-  0xf62b		4801cb			ADDQ CX, BX		
-	c[15] = i
-  0xf62e		48899c24a0050000	MOVQ BX, 0x5a0(SP)	
-	goto inst180
-  0xf636		e910adffff		JMP 0xa34b		
-			i += sz
-  0xf63b		48899c2420020000	MOVQ BX, 0x220(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf643		4929d8			SUBQ BX, R8		
-  0xf646		4c89c1			MOVQ R8, CX		
-  0xf649		49f7d8			NEGQ R8			
-  0xf64c		49c1f83f		SARQ $0x3f, R8		
-  0xf650		4921d8			ANDQ BX, R8		
-  0xf653		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf657		48891424		MOVQ DX, 0(SP)		
-  0xf65b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf660		e800000000		CALL 0xf665		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf665		448b5c2410		MOVL 0x10(SP), R11	
-  0xf66a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xf66f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xf677		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xf67f		488b9c2420020000	MOVQ 0x220(SP), BX	
-	goto inst161
-  0xf687		488bbc2418050000	MOVQ 0x518(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xf68f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf697		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf69f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xf6a5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf6ad		e962ffffff		JMP 0xf614		
-				goto inst148
-  0xf6b2		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf6b5		4889f9			MOVQ DI, CX		
-  0xf6b8		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xf6bb		e92b1d0000		JMP 0x113eb		
-			i += sz
-  0xf6c0		48899c2418020000	MOVQ BX, 0x218(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf6c8		4929d8			SUBQ BX, R8		
-  0xf6cb		4c89c1			MOVQ R8, CX		
-  0xf6ce		49f7d8			NEGQ R8			
-  0xf6d1		49c1f83f		SARQ $0x3f, R8		
-  0xf6d5		4921d8			ANDQ BX, R8		
-  0xf6d8		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf6dc		48891424		MOVQ DX, 0(SP)		
-  0xf6e0		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf6e5		90			NOPL			
-  0xf6e6		e800000000		CALL 0xf6eb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf6eb		448b5c2410		MOVL 0x10(SP), R11	
-  0xf6f0		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xf6f5		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xf6fd		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xf705		488b9c2418020000	MOVQ 0x218(SP), BX	
-	goto inst161
-  0xf70d		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xf715		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf71d		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf725		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xf72b		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf733		e9aefeffff		JMP 0xf5e6		
-				goto inst148
-  0xf738		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf73b		4889f9			MOVQ DI, CX		
-  0xf73e		4c89e3			MOVQ R12, BX		
-  0xf741		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0xf746		e9a01c0000		JMP 0x113eb		
-			i += sz
-  0xf74b		48899c2410020000	MOVQ BX, 0x210(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf753		4929d8			SUBQ BX, R8		
-  0xf756		4c89c1			MOVQ R8, CX		
-  0xf759		49f7d8			NEGQ R8			
-  0xf75c		49c1f83f		SARQ $0x3f, R8		
-  0xf760		4921d8			ANDQ BX, R8		
-  0xf763		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf767		48891424		MOVQ DX, 0(SP)		
-  0xf76b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf770		e800000000		CALL 0xf775		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf775		448b5c2410		MOVL 0x10(SP), R11	
-  0xf77a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xf77f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xf787		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xf78f		488b9c2410020000	MOVQ 0x210(SP), BX	
-	goto inst161
-  0xf797		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xf79f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf7a7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf7af		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xf7b5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf7bd		e9e4fdffff		JMP 0xf5a6		
-				goto inst148
-  0xf7c2		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf7c5		4889f9			MOVQ DI, CX		
-  0xf7c8		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xf7cb		e91b1c0000		JMP 0x113eb		
-			i += sz
-  0xf7d0		48899c2408020000	MOVQ BX, 0x208(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf7d8		4929d8			SUBQ BX, R8		
-  0xf7db		4c89c1			MOVQ R8, CX		
-  0xf7de		49f7d8			NEGQ R8			
-  0xf7e1		49c1f83f		SARQ $0x3f, R8		
-  0xf7e5		4921d8			ANDQ BX, R8		
-  0xf7e8		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf7ec		48891424		MOVQ DX, 0(SP)		
-  0xf7f0		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf7f5		e800000000		CALL 0xf7fa		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf7fa		448b5c2410		MOVL 0x10(SP), R11	
-  0xf7ff		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xf804		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xf80c		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xf814		488b9c2408020000	MOVQ 0x208(SP), BX	
-	goto inst161
-  0xf81c		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xf824		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf82c		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf834		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xf83a		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xf842		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf846		e91bfdffff		JMP 0xf566		
-				goto inst148
-  0xf84b		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf84e		4889f9			MOVQ DI, CX		
-  0xf851		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xf854		e9921b0000		JMP 0x113eb		
-				i += sz
-  0xf859		48899c2400020000	MOVQ BX, 0x200(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf861		4929d8			SUBQ BX, R8		
-  0xf864		4c89c1			MOVQ R8, CX		
-  0xf867		49f7d8			NEGQ R8			
-  0xf86a		49c1f83f		SARQ $0x3f, R8		
-  0xf86e		4921d8			ANDQ BX, R8		
-  0xf871		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf875		48891424		MOVQ DX, 0(SP)		
-  0xf879		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf87e		e800000000		CALL 0xf883		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf883		448b5c2410		MOVL 0x10(SP), R11	
-  0xf888		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xf88d		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0xf895		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xf89d		488b9c2400020000	MOVQ 0x200(SP), BX	
-	goto inst161
-  0xf8a5		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xf8ad		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf8b5		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf8bd		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xf8c3		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf8cb		e956fcffff		JMP 0xf526		
-				goto inst148
-  0xf8d0		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf8d3		4889f9			MOVQ DI, CX		
-  0xf8d6		4c89e3			MOVQ R12, BX		
-			goto fail
-  0xf8d9		e90d1b0000		JMP 0x113eb		
-				goto inst148
-  0xf8de		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf8e1		4c89e3			MOVQ R12, BX		
-  0xf8e4		6690			NOPW			
-	goto fail
-  0xf8e6		e9001b0000		JMP 0x113eb		
-			i += sz
-  0xf8eb		48899c24f8010000	MOVQ BX, 0x1f8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf8f3		4929d8			SUBQ BX, R8		
-  0xf8f6		4c89c1			MOVQ R8, CX		
-  0xf8f9		49f7d8			NEGQ R8			
-  0xf8fc		49c1f83f		SARQ $0x3f, R8		
-  0xf900		4921d8			ANDQ BX, R8		
-  0xf903		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf907		48891424		MOVQ DX, 0(SP)		
-  0xf90b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf910		e800000000		CALL 0xf915		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf915		448b5c2410		MOVL 0x10(SP), R11	
-  0xf91a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xf91f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xf927		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xf92f		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0xf937		488b9c24f8010000	MOVQ 0x1f8(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xf93f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf947		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf94f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xf955		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf95d		e924fbffff		JMP 0xf486		
-				goto inst148
-  0xf962		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf965		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xf968		e97e1a0000		JMP 0x113eb		
-			i += sz
-  0xf96d		48899c24f0010000	MOVQ BX, 0x1f0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf975		4929d8			SUBQ BX, R8		
-  0xf978		4c89c1			MOVQ R8, CX		
-  0xf97b		49f7d8			NEGQ R8			
-  0xf97e		49c1f83f		SARQ $0x3f, R8		
-  0xf982		4921d8			ANDQ BX, R8		
-  0xf985		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xf989		48891424		MOVQ DX, 0(SP)		
-  0xf98d		48894c2408		MOVQ CX, 0x8(SP)	
-  0xf992		e800000000		CALL 0xf997		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xf997		448b5c2410		MOVL 0x10(SP), R11	
-  0xf99c		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xf9a1		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xf9a9		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xf9b1		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xf9b9		488b9c24f0010000	MOVQ 0x1f0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xf9c1		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xf9c9		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xf9d1		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xf9d7		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf9df		e962faffff		JMP 0xf446		
-				goto inst148
-  0xf9e4		4989db			MOVQ BX, R11		
-	goto inst161
-  0xf9e7		4c89e3			MOVQ R12, BX		
-	goto fail
-  0xf9ea		e9fc190000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0xf9ef		48899c24e8010000	MOVQ BX, 0x1e8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xf9f7		4929d8			SUBQ BX, R8		
-  0xf9fa		4c89c1			MOVQ R8, CX		
-  0xf9fd		49f7d8			NEGQ R8			
-  0xfa00		49c1f83f		SARQ $0x3f, R8		
-  0xfa04		4921d8			ANDQ BX, R8		
-  0xfa07		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xfa0b		48891424		MOVQ DX, 0(SP)		
-  0xfa0f		48894c2408		MOVQ CX, 0x8(SP)	
-  0xfa14		e800000000		CALL 0xfa19		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xfa19		448b5c2410		MOVL 0x10(SP), R11	
-  0xfa1e		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xfa23		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0xfa2b		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0xfa33		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0xfa3b		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xfa43		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xfa4b		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xfa53		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0xfa59		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0xfa61		0f1f440000		NOPL 0(AX)(AX*1)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xfa66		e99bf9ffff		JMP 0xf406		
-	switch bt[len(bt)-1].pc {
-  0xfa6b		4981fd9d000000		CMPQ $0x9d, R13		
-	case 157:
-  0xfa72		0f8f8e0e0000		JG 0x10906		
-	case 139:
-  0xfa78		4981fd8b000000		CMPQ $0x8b, R13		
-  0xfa7f		0f85a6070000		JNE 0x1022b		
-		c, i = bt[n].c, bt[n].i
-  0xfa85		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0xfa8a		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0xfa92		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0xfa96		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0xfa9d		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0xfaa5		90			NOPL				
-  0xfaa6		48896c24f0		MOVQ BP, -0x10(SP)		
-  0xfaab		488d6c24f0		LEAQ -0x10(SP), BP		
-  0xfab0		e800000000		CALL 0xfab5			[1:5]R_CALL:runtime.duffcopy+756	
-  0xfab5		488b6d00		MOVQ 0(BP), BP			
-	c[14] = i
-  0xfab9		4c89ac2498050000	MOVQ R13, 0x598(SP)	
-	bt = append(bt, state{c, i, 137, 0})
-  0xfac1		48c784246009000000000000	MOVQ $0x0, 0x960(SP)		
-  0xfacd		488dbc2468090000		LEAQ 0x968(SP), DI		
-  0xfad5		0f57c0				XORPS X0, X0			
-  0xfad8		488d7ff0			LEAQ -0x10(DI), DI		
-  0xfadc		660f1f840000000000		NOPW 0(AX)(AX*1)		
-  0xfae5		90				NOPL				
-  0xfae6		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xfaeb		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xfaf0		e800000000			CALL 0xfaf5			[1:5]R_CALL:runtime.duffzero+250	
-  0xfaf5		488b6d00			MOVQ 0(BP), BP			
-  0xfaf9		488dbc2460090000		LEAQ 0x960(SP), DI		
-  0xfb01		488db42428050000		LEAQ 0x528(SP), SI		
-  0xfb09		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xfb0e		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xfb13		e800000000			CALL 0xfb18			[1:5]R_CALL:runtime.duffcopy+756	
-  0xfb18		488b6d00			MOVQ 0(BP), BP			
-  0xfb1c		4c89ac24000a0000		MOVQ R13, 0xa00(SP)		
-  0xfb24		48c78424080a000089000000	MOVQ $0x89, 0xa08(SP)		
-  0xfb30		48c78424100a000000000000	MOVQ $0x0, 0xa10(SP)		
-  0xfb3c		4839d9				CMPQ BX, CX			
-  0xfb3f		0f8275060000			JB 0x101ba			
-  0xfb45		4c8ba42460090000		MOVQ 0x960(SP), R12		
-  0xfb4d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0xfb55		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0xfb59		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0xfb60		488db42468090000		LEAQ 0x968(SP), SI		
-  0xfb68		48896c24f0			MOVQ BP, -0x10(SP)		
-  0xfb6d		488d6c24f0			LEAQ -0x10(SP), BP		
-  0xfb72		e800000000			CALL 0xfb77			[1:5]R_CALL:runtime.duffcopy+742	
-  0xfb77		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0xfb7b		4d85ed			TESTQ R13, R13		
-  0xfb7e		0f8cbe050000		JL 0x10142		
-  0xfb84		6690			NOPW			
-  0xfb86		4d39c5			CMPQ R8, R13		
-  0xfb89		0f8db3050000		JGE 0x10142		
-	bt = append(bt, state{c, i, 137, 0})
-  0xfb8f		48898424501e0000	MOVQ AX, 0x1e50(SP)	
-  0xfb97		48899c24e0010000	MOVQ BX, 0x1e0(SP)	
-  0xfb9f		48898c24d8010000	MOVQ CX, 0x1d8(SP)	
-		cr, sz := rune(r[i]), 1
-  0xfba7		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0xfbac		4181fb80000000		CMPL $0x80, R11		
-  0xfbb3		0f8d92050000		JGE 0x1014b		
-  0xfbb9		be01000000		MOVL $0x1, SI		
-  0xfbbe		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if false || cr == 97 {
-  0xfbc6		4183fb61		CMPL $0x61, R11		
-  0xfbca		0f8572050000		JNE 0x10142		
-			i += sz
-  0xfbd0		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0xfbd4		4d85db			TESTQ R11, R11		
-  0xfbd7		0f8c0e180000		JL 0x113eb		
-  0xfbdd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xfbe6		4d39c3			CMPQ R8, R11		
-  0xfbe9		0f8dfc170000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xfbef		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xfbf4		4181fc80000000		CMPL $0x80, R12		
-  0xfbfb		0f8dca040000		JGE 0x100cb		
-  0xfc01		be01000000		MOVL $0x1, SI		
-		if false || cr == 103 {
-  0xfc06		4183fc67		CMPL $0x67, R12		
-  0xfc0a		0f85db170000		JNE 0x113eb		
-			i += sz
-  0xfc10		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xfc13		4d85db			TESTQ R11, R11		
-  0xfc16		0f8ccf170000		JL 0x113eb		
-  0xfc1c		4d39c3			CMPQ R8, R11		
-  0xfc1f		0f8dc6170000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xfc25		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xfc2a		4181fc80000000		CMPL $0x80, R12		
-  0xfc31		0f8d19040000		JGE 0x10050		
-  0xfc37		be01000000		MOVL $0x1, SI		
-  0xfc3c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xfc45		90			NOPL			
-		if false || cr == 103 {
-  0xfc46		4183fc67		CMPL $0x67, R12		
-  0xfc4a		0f859b170000		JNE 0x113eb		
-			i += sz
-  0xfc50		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xfc53		4d85db			TESTQ R11, R11		
-  0xfc56		0f8c8f170000		JL 0x113eb		
-  0xfc5c		4d39c3			CMPQ R8, R11		
-  0xfc5f		0f8d86170000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xfc65		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xfc6a		4181fc80000000		CMPL $0x80, R12		
-  0xfc71		0f8d62030000		JGE 0xffd9		
-  0xfc77		be01000000		MOVL $0x1, SI		
-  0xfc7c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xfc85		90			NOPL			
-		if false || cr == 103 {
-  0xfc86		4183fc67		CMPL $0x67, R12		
-  0xfc8a		0f855b170000		JNE 0x113eb		
-			i += sz
-  0xfc90		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xfc93		4d85db			TESTQ R11, R11		
-  0xfc96		0f8c4f170000		JL 0x113eb		
-  0xfc9c		4d39c3			CMPQ R8, R11		
-  0xfc9f		0f8d46170000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xfca5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xfcaa		4181fc80000000		CMPL $0x80, R12		
-  0xfcb1		0f8dab020000		JGE 0xff62		
-  0xfcb7		be01000000		MOVL $0x1, SI		
-  0xfcbc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xfcc5		90			NOPL			
-		if false || cr == 116 {
-  0xfcc6		4183fc74		CMPL $0x74, R12		
-  0xfcca		0f851b170000		JNE 0x113eb		
-			i += sz
-  0xfcd0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xfcd3		4d85db			TESTQ R11, R11		
-  0xfcd6		0f8c0f170000		JL 0x113eb		
-  0xfcdc		4d39c3			CMPQ R8, R11		
-  0xfcdf		0f8d06170000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0xfce5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xfcea		4181fc80000000		CMPL $0x80, R12		
-  0xfcf1		0f8df4010000		JGE 0xfeeb		
-  0xfcf7		be01000000		MOVL $0x1, SI		
-  0xfcfc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xfd05		90			NOPL			
-		if cr < 128 {
-  0xfd06		4181fc80000000		CMPL $0x80, R12		
-  0xfd0d		0f8dd8160000		JGE 0x113eb		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xfd13		4589e5			MOVL R12, R13			
-  0xfd16		41c1fc1f		SARL $0x1f, R12			
-  0xfd1a		41c1ec1d		SHRL $0x1d, R12			
-  0xfd1e		4501ec			ADDL R13, R12			
-  0xfd21		41c1fc03		SARL $0x3, R12			
-  0xfd25		4d63f4			MOVSXD R12, R14			
-  0xfd28		4983fe10		CMPQ $0x10, R14			
-  0xfd2c		0f83c2350000		JAE 0x132f4			
-  0xfd32		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
-  0xfd39		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0xfd3e		41c1e403		SHLL $0x3, R12			
-  0xfd42		4529e5			SUBL R12, R13			
-  0xfd45		90			NOPL				
-  0xfd46		4585ed			TESTL R13, R13			
-  0xfd49		0f8ca0350000		JL 0x132ef			
-  0xfd4f		4183fd20		CMPL $0x20, R13			
-  0xfd53		4519e4			SBBL R12, R12			
-	bt = append(bt, state{c, i, 137, 0})
-  0xfd56		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0xfd59		4489e9			MOVL R13, CX		
-  0xfd5c		41bf01000000		MOVL $0x1, R15		
-  0xfd62		41d3e7			SHLL CL, R15		
-  0xfd65		4521e7			ANDL R12, R15		
-  0xfd68		4584f7			TESTL R14, R15		
-  0xfd6b		0f8471010000		JE 0xfee2		
-				i += sz
-  0xfd71		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0xfd74		4d85db			TESTQ R11, R11		
-  0xfd77		0f8ce5000000		JL 0xfe62		
-  0xfd7d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0xfd86		4d39c3			CMPQ R8, R11		
-  0xfd89		0f8dd3000000		JGE 0xfe62		
-		cr, sz := rune(r[i]), 1
-  0xfd8f		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0xfd94		4181fc80000000		CMPL $0x80, R12		
-  0xfd9b		0f8dca000000		JGE 0xfe6b		
-  0xfda1		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xfda6		4183fc61		CMPL $0x61, R12		
-  0xfdaa		0f85b2000000		JNE 0xfe62		
-			i += sz
-  0xfdb0		4901cb			ADDQ CX, R11		
-	if i >= 0 && i < len(r) {
-  0xfdb3		4d85db			TESTQ R11, R11		
-  0xfdb6		7c22			JL 0xfdda		
-  0xfdb8		4d39c3			CMPQ R8, R11		
-  0xfdbb		7d1d			JGE 0xfdda		
-		cr, sz := rune(r[i]), 1
-  0xfdbd		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0xfdc2		0f1f4000		NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0xfdc6		4181fc80000000		CMPL $0x80, R12		
-  0xfdcd		7d1c			JGE 0xfdeb		
-  0xfdcf		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0xfdd4		4183fc61		CMPL $0x61, R12		
-  0xfdd8		7408			JE 0xfde2		
-	goto inst161
-  0xfdda		4889f9			MOVQ DI, CX		
-	goto fail
-  0xfddd		e909160000		JMP 0x113eb		
-			i += sz
-  0xfde2		4a8d1c19		LEAQ 0(CX)(R11*1), BX	
-			goto inst138
-  0xfde6		e943f8ffff		JMP 0xf62e		
-			i += sz
-  0xfdeb		4c899c24d0010000	MOVQ R11, 0x1d0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xfdf3		4d29d8			SUBQ R11, R8		
-  0xfdf6		4c89c1			MOVQ R8, CX		
-  0xfdf9		49f7d8			NEGQ R8			
-  0xfdfc		49c1f83f		SARQ $0x3f, R8		
-  0xfe00		4d21d8			ANDQ R11, R8		
-  0xfe03		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xfe07		48891424		MOVQ DX, 0(SP)		
-  0xfe0b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xfe10		e800000000		CALL 0xfe15		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xfe15		448b642410		MOVL 0x10(SP), R12	
-  0xfe1a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xfe1f		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-		if len(r[si:]) != 0 {
-  0xfe27		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xfe2f		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-  0xfe37		488bbc24d8010000	MOVQ 0x1d8(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0xfe3f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xfe47		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xfe4f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xfe55		4c8b9c24d0010000	MOVQ 0x1d0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xfe5d		e972ffffff		JMP 0xfdd4		
-	goto inst161
-  0xfe62		4889f9			MOVQ DI, CX		
-  0xfe65		90			NOPL			
-	goto fail
-  0xfe66		e980150000		JMP 0x113eb		
-				i += sz
-  0xfe6b		4c899c24c8010000	MOVQ R11, 0x1c8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xfe73		4d29d8			SUBQ R11, R8		
-  0xfe76		4c89c1			MOVQ R8, CX		
-  0xfe79		49f7d8			NEGQ R8			
-  0xfe7c		49c1f83f		SARQ $0x3f, R8		
-  0xfe80		4d21d8			ANDQ R11, R8		
-  0xfe83		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xfe87		48891424		MOVQ DX, 0(SP)		
-  0xfe8b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xfe90		e800000000		CALL 0xfe95		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xfe95		448b642410		MOVL 0x10(SP), R12	
-  0xfe9a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0xfe9f		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-		if len(r[si:]) != 0 {
-  0xfea7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xfeaf		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-  0xfeb7		488bbc24d8010000	MOVQ 0x1d8(SP), DI	
-	if i >= 0 && i < len(r) {
-  0xfebf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xfec7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xfecf		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xfed5		4c8b9c24c8010000	MOVQ 0x1c8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xfedd		e9c4feffff		JMP 0xfda6		
-	goto inst161
-  0xfee2		4889f9			MOVQ DI, CX		
-  0xfee5		90			NOPL			
-			goto fail
-  0xfee6		e900150000		JMP 0x113eb		
-			i += sz
-  0xfeeb		4c899c24c0010000	MOVQ R11, 0x1c0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xfef3		4d29d8			SUBQ R11, R8		
-  0xfef6		4c89c1			MOVQ R8, CX		
-  0xfef9		49f7d8			NEGQ R8			
-  0xfefc		49c1f83f		SARQ $0x3f, R8		
-  0xff00		4d21d8			ANDQ R11, R8		
-  0xff03		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xff07		48891424		MOVQ DX, 0(SP)		
-  0xff0b		48894c2408		MOVQ CX, 0x8(SP)	
-  0xff10		e800000000		CALL 0xff15		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xff15		448b642410		MOVL 0x10(SP), R12	
-  0xff1a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xff1f		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-  0xff27		488b8c24d8010000	MOVQ 0x1d8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xff2f		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xff37		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0xff3f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xff47		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xff4f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0xff55		4c8b9c24c0010000	MOVQ 0x1c0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xff5d		e9a4fdffff		JMP 0xfd06		
-			i += sz
-  0xff62		4c899c24b8010000	MOVQ R11, 0x1b8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xff6a		4d29d8			SUBQ R11, R8		
-  0xff6d		4c89c1			MOVQ R8, CX		
-  0xff70		49f7d8			NEGQ R8			
-  0xff73		49c1f83f		SARQ $0x3f, R8		
-  0xff77		4d21d8			ANDQ R11, R8		
-  0xff7a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xff7e		48891424		MOVQ DX, 0(SP)		
-  0xff82		48894c2408		MOVQ CX, 0x8(SP)	
-  0xff87		e800000000		CALL 0xff8c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0xff8c		448b642410		MOVL 0x10(SP), R12	
-  0xff91		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0xff96		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-  0xff9e		488b8c24d8010000	MOVQ 0x1d8(SP), CX	
-		if len(r[si:]) != 0 {
-  0xffa6		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0xffae		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0xffb6		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0xffbe		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0xffc6		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0xffcc		4c8b9c24b8010000	MOVQ 0x1b8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xffd4		e9edfcffff		JMP 0xfcc6		
-			i += sz
-  0xffd9		4c899c24b0010000	MOVQ R11, 0x1b0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0xffe1		4d29d8			SUBQ R11, R8		
-  0xffe4		4c89c1			MOVQ R8, CX		
-  0xffe7		49f7d8			NEGQ R8			
-  0xffea		49c1f83f		SARQ $0x3f, R8		
-  0xffee		4d21d8			ANDQ R11, R8		
-  0xfff1		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0xfff5		48891424		MOVQ DX, 0(SP)		
-  0xfff9		48894c2408		MOVQ CX, 0x8(SP)	
-  0xfffe		e800000000		CALL 0x10003		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10003		448b642410		MOVL 0x10(SP), R12	
-  0x10008		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x1000d		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-  0x10015		488b8c24d8010000	MOVQ 0x1d8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x1001d		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10025		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x1002d		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10035		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1003d		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x10043		4c8b9c24b0010000	MOVQ 0x1b0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1004b		e936fcffff		JMP 0xfc86		
-			i += sz
-  0x10050		4c899c24a8010000	MOVQ R11, 0x1a8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10058		4d29d8			SUBQ R11, R8		
-  0x1005b		4c89c1			MOVQ R8, CX		
-  0x1005e		49f7d8			NEGQ R8			
-  0x10061		49c1f83f		SARQ $0x3f, R8		
-  0x10065		4d21d8			ANDQ R11, R8		
-  0x10068		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x1006c		48891424		MOVQ DX, 0(SP)		
-  0x10070		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10075		e800000000		CALL 0x1007a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x1007a		448b642410		MOVL 0x10(SP), R12	
-  0x1007f		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10084		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-  0x1008c		488b8c24d8010000	MOVQ 0x1d8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10094		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x1009c		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x100a4		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x100ac		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x100b4		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x100ba		4c8b9c24a8010000	MOVQ 0x1a8(SP), R11	
-  0x100c2		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x100c6		e97bfbffff		JMP 0xfc46		
-			i += sz
-  0x100cb		4c899c24a0010000	MOVQ R11, 0x1a0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x100d3		4d29d8			SUBQ R11, R8		
-  0x100d6		4c89c1			MOVQ R8, CX		
-  0x100d9		49f7d8			NEGQ R8			
-  0x100dc		49c1f83f		SARQ $0x3f, R8		
-  0x100e0		4d21d8			ANDQ R11, R8		
-  0x100e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x100e7		48891424		MOVQ DX, 0(SP)		
-  0x100eb		48894c2408		MOVQ CX, 0x8(SP)	
-  0x100f0		e800000000		CALL 0x100f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x100f5		448b642410		MOVL 0x10(SP), R12	
-  0x100fa		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x100ff		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-  0x10107		488b8c24d8010000	MOVQ 0x1d8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x1010f		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10117		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x1011f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10127		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1012f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x10135		4c8b9c24a0010000	MOVQ 0x1a0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1013d		e9c4faffff		JMP 0xfc06		
-				goto inst148
-  0x10142		4d89eb			MOVQ R13, R11		
-  0x10145		90			NOPL			
-	goto fail
-  0x10146		e9a0120000		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1014b		4d29e8			SUBQ R13, R8		
-  0x1014e		4c89c1			MOVQ R8, CX		
-  0x10151		49f7d8			NEGQ R8			
-  0x10154		49c1f83f		SARQ $0x3f, R8		
-  0x10158		4d21e8			ANDQ R13, R8		
-  0x1015b		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x1015f		48891424		MOVQ DX, 0(SP)		
-  0x10163		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10168		e800000000		CALL 0x1016d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x1016d		448b5c2410		MOVL 0x10(SP), R11	
-  0x10172		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10177		488b8424501e0000	MOVQ 0x1e50(SP), AX	
-  0x1017f		488b8c24d8010000	MOVQ 0x1d8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10187		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x1018f		488b9c24e0010000	MOVQ 0x1e0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x10197		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x1019f		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x101a7		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x101ad		4c8bac2408050000	MOVQ 0x508(SP), R13	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x101b5		e90cfaffff		JMP 0xfbc6		
-	bt = append(bt, state{c, i, 137, 0})
-  0x101ba		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x101c1		48891424		MOVQ DX, 0(SP)		
-  0x101c5		4889442408		MOVQ AX, 0x8(SP)	
-  0x101ca		4c89642410		MOVQ R12, 0x10(SP)	
-  0x101cf		48894c2418		MOVQ CX, 0x18(SP)	
-  0x101d4		48895c2420		MOVQ BX, 0x20(SP)	
-  0x101d9		e800000000		CALL 0x101de		[1:5]R_CALL:runtime.growslice	
-  0x101de		488b442428		MOVQ 0x28(SP), AX	
-  0x101e3		488b4c2430		MOVQ 0x30(SP), CX	
-  0x101e8		488b542438		MOVQ 0x38(SP), DX	
-  0x101ed		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0x101f1		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x101f9		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10201		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 137, 0})
-  0x10207		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0x1020f		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 137, 0})
-  0x10217		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0x1021a		488b942420050000	MOVQ 0x520(SP), DX	
-  0x10222		0f1f4000		NOPL 0(AX)		
-	bt = append(bt, state{c, i, 137, 0})
-  0x10226		e91af9ffff		JMP 0xfb45		
-	switch bt[len(bt)-1].pc {
-  0x1022b		4981fd9d000000		CMPQ $0x9d, R13		
-	case 157:
-  0x10232		0f8540300000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0x10238		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0x1023d		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0x10241		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0x10248		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0x10250		48896c24f0		MOVQ BP, -0x10(SP)		
-  0x10255		488d6c24f0		LEAQ -0x10(SP), BP		
-  0x1025a		e800000000		CALL 0x1025f			[1:5]R_CALL:runtime.duffcopy+756	
-  0x1025f		488b6d00		MOVQ 0(BP), BP			
-  0x10263		0f1f00			NOPL 0(AX)			
-	if i >= 0 && i < len(r) {
-  0x10266		4885db			TESTQ BX, BX		
-  0x10269		0f8c0c060000		JL 0x1087b		
-  0x1026f		4c39c3			CMPQ R8, BX		
-  0x10272		0f8d03060000		JGE 0x1087b		
-		cr, sz := rune(r[i]), 1
-  0x10278		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1027d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x10286		4181fb80000000		CMPL $0x80, R11		
-  0x1028d		0f8df8050000		JGE 0x1088b		
-  0x10293		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0x10298		4183fb74		CMPL $0x74, R11		
-  0x1029c		0f85d9050000		JNE 0x1087b		
-			i += sz
-  0x102a2		4801f3			ADDQ SI, BX		
-  0x102a5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x102a6		4885db			TESTQ BX, BX		
-  0x102a9		0f8c4a050000		JL 0x107f9		
-  0x102af		4c39c3			CMPQ R8, BX		
-  0x102b2		0f8d41050000		JGE 0x107f9		
-		cr, sz := rune(r[i]), 1
-  0x102b8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x102bd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x102c6		4181fb80000000		CMPL $0x80, R11		
-  0x102cd		0f8d31050000		JGE 0x10804		
-  0x102d3		be01000000		MOVL $0x1, SI		
-		if cr < 128 {
-  0x102d8		4181fb80000000		CMPL $0x80, R11		
-  0x102df		0f8d14050000		JGE 0x107f9		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x102e5		4589dd			MOVL R11, R13			
-  0x102e8		41c1fb1f		SARL $0x1f, R11			
-  0x102ec		41c1eb1d		SHRL $0x1d, R11			
-  0x102f0		4501eb			ADDL R13, R11			
-  0x102f3		41c1fb03		SARL $0x3, R11			
-  0x102f7		4d63f3			MOVSXD R11, R14			
-  0x102fa		4983fe10		CMPQ $0x10, R14			
-  0x102fe		0f83b92f0000		JAE 0x132bd			
-  0x10304		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
-  0x1030b		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0x10310		41c1e303		SHLL $0x3, R11			
-  0x10314		4529dd			SUBL R11, R13			
-  0x10317		4585ed			TESTL R13, R13			
-  0x1031a		0f8c982f0000		JL 0x132b8			
-  0x10320		4183fd20		CMPL $0x20, R13			
-  0x10324		4519db			SBBL R11, R11			
-	goto inst161
-  0x10327		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x1032a		4489e9			MOVL R13, CX		
-  0x1032d		41bf01000000		MOVL $0x1, R15		
-  0x10333		41d3e7			SHLL CL, R15		
-  0x10336		4521df			ANDL R11, R15		
-  0x10339		4584f7			TESTL R14, R15		
-  0x1033c		0f84a9040000		JE 0x107eb		
-				i += sz
-  0x10342		4801f3			ADDQ SI, BX		
-  0x10345		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x10346		4885db			TESTQ BX, BX		
-  0x10349		0f8c13040000		JL 0x10762		
-  0x1034f		4c39c3			CMPQ R8, BX		
-  0x10352		0f8d0a040000		JGE 0x10762		
-		cr, sz := rune(r[i]), 1
-  0x10358		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1035d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x10366		4181fb80000000		CMPL $0x80, R11		
-  0x1036d		0f8dfd030000		JGE 0x10770		
-  0x10373		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0x10378		4183fb74		CMPL $0x74, R11		
-  0x1037c		0f85e0030000		JNE 0x10762		
-			i += sz
-  0x10382		4801cb			ADDQ CX, BX		
-  0x10385		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x10386		4885db			TESTQ BX, BX		
-  0x10389		0f8c49030000		JL 0x106d8		
-  0x1038f		4c39c3			CMPQ R8, BX		
-  0x10392		0f8d40030000		JGE 0x106d8		
-		cr, sz := rune(r[i]), 1
-  0x10398		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1039d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x103a6		4181fb80000000		CMPL $0x80, R11		
-  0x103ad		0f8d38030000		JGE 0x106eb		
-  0x103b3		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0x103b8		4183fb61		CMPL $0x61, R11		
-  0x103bc		0f8516030000		JNE 0x106d8		
-			i += sz
-  0x103c2		4801cb			ADDQ CX, BX		
-  0x103c5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x103c6		4885db			TESTQ BX, BX		
-  0x103c9		0f8c81020000		JL 0x10650		
-  0x103cf		4c39c3			CMPQ R8, BX		
-  0x103d2		0f8d78020000		JGE 0x10650		
-		cr, sz := rune(r[i]), 1
-  0x103d8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x103dd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x103e6		4181fb80000000		CMPL $0x80, R11		
-  0x103ed		0f8d6b020000		JGE 0x1065e		
-  0x103f3		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0x103f8		4183fb63		CMPL $0x63, R11		
-  0x103fc		0f854e020000		JNE 0x10650		
-			i += sz
-  0x10402		4801cb			ADDQ CX, BX		
-  0x10405		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x10406		4885db			TESTQ BX, BX		
-  0x10409		0f8cbc010000		JL 0x105cb		
-  0x1040f		4c39c3			CMPQ R8, BX		
-  0x10412		0f8db3010000		JGE 0x105cb		
-		cr, sz := rune(r[i]), 1
-  0x10418		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1041d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x10426		4181fb80000000		CMPL $0x80, R11		
-  0x1042d		0f8da6010000		JGE 0x105d9		
-  0x10433		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0x10438		4183fb63		CMPL $0x63, R11		
-  0x1043c		0f8589010000		JNE 0x105cb		
-			i += sz
-  0x10442		4801cb			ADDQ CX, BX		
-  0x10445		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x10446		4885db			TESTQ BX, BX		
-  0x10449		0f8cf3000000		JL 0x10542		
-  0x1044f		4c39c3			CMPQ R8, BX		
-  0x10452		0f8dea000000		JGE 0x10542		
-		cr, sz := rune(r[i]), 1
-  0x10458		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1045d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x10466		4181fb80000000		CMPL $0x80, R11		
-  0x1046d		0f8ddd000000		JGE 0x10550		
-  0x10473		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0x10478		4183fb63		CMPL $0x63, R11		
-  0x1047c		0f85c0000000		JNE 0x10542		
-			i += sz
-  0x10482		4801cb			ADDQ CX, BX		
-  0x10485		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x10486		4885db			TESTQ BX, BX		
-  0x10489		7c21			JL 0x104ac		
-  0x1048b		4c39c3			CMPQ R8, BX		
-  0x1048e		7d1c			JGE 0x104ac		
-		cr, sz := rune(r[i]), 1
-  0x10490		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0x10495		4181fb80000000		CMPL $0x80, R11		
-  0x1049c		7d2d			JGE 0x104cb		
-  0x1049e		b901000000		MOVL $0x1, CX		
-  0x104a3		0f1f00			NOPL 0(AX)		
-		if false || cr == 116 {
-  0x104a6		4183fb74		CMPL $0x74, R11		
-  0x104aa		740e			JE 0x104ba		
-				goto inst148
-  0x104ac		4989db			MOVQ BX, R11		
-	goto inst161
-  0x104af		4889f9			MOVQ DI, CX		
-  0x104b2		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x104b5		e9310f0000		JMP 0x113eb		
-			i += sz
-  0x104ba		4801cb			ADDQ CX, BX		
-	c[17] = i
-  0x104bd		48899c24b0050000	MOVQ BX, 0x5b0(SP)	
-  0x104c5		90			NOPL			
-	goto inst180
-  0x104c6		e9809effff		JMP 0xa34b		
-			i += sz
-  0x104cb		48899c2498010000	MOVQ BX, 0x198(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x104d3		4929d8			SUBQ BX, R8		
-  0x104d6		4c89c1			MOVQ R8, CX		
-  0x104d9		49f7d8			NEGQ R8			
-  0x104dc		49c1f83f		SARQ $0x3f, R8		
-  0x104e0		4921d8			ANDQ BX, R8		
-  0x104e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x104e7		48891424		MOVQ DX, 0(SP)		
-  0x104eb		48894c2408		MOVQ CX, 0x8(SP)	
-  0x104f0		e800000000		CALL 0x104f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x104f5		448b5c2410		MOVL 0x10(SP), R11	
-  0x104fa		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x104ff		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x10507		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0x1050f		488b9c2498010000	MOVQ 0x198(SP), BX	
-	goto inst161
-  0x10517		488bbc2418050000	MOVQ 0x518(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0x1051f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10527		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1052f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x10535		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1053d		e964ffffff		JMP 0x104a6		
-				goto inst148
-  0x10542		4989db			MOVQ BX, R11		
-	goto inst161
-  0x10545		4889f9			MOVQ DI, CX		
-  0x10548		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x1054b		e99b0e0000		JMP 0x113eb		
-			i += sz
-  0x10550		48899c2490010000	MOVQ BX, 0x190(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10558		4929d8			SUBQ BX, R8		
-  0x1055b		4c89c1			MOVQ R8, CX		
-  0x1055e		49f7d8			NEGQ R8			
-  0x10561		49c1f83f		SARQ $0x3f, R8		
-  0x10565		4921d8			ANDQ BX, R8		
-  0x10568		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x1056c		48891424		MOVQ DX, 0(SP)		
-  0x10570		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10575		e800000000		CALL 0x1057a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x1057a		448b5c2410		MOVL 0x10(SP), R11	
-  0x1057f		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x10584		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x1058c		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x10594		488b9c2490010000	MOVQ 0x190(SP), BX	
-	goto inst161
-  0x1059c		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x105a4		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x105ac		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x105b4		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x105ba		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0x105c2		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x105c6		e9adfeffff		JMP 0x10478		
-				goto inst148
-  0x105cb		4989db			MOVQ BX, R11		
-	goto inst161
-  0x105ce		4889f9			MOVQ DI, CX		
-  0x105d1		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x105d4		e9120e0000		JMP 0x113eb		
-			i += sz
-  0x105d9		48899c2488010000	MOVQ BX, 0x188(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x105e1		4929d8			SUBQ BX, R8		
-  0x105e4		4c89c1			MOVQ R8, CX		
-  0x105e7		49f7d8			NEGQ R8			
-  0x105ea		49c1f83f		SARQ $0x3f, R8		
-  0x105ee		4921d8			ANDQ BX, R8		
-  0x105f1		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x105f5		48891424		MOVQ DX, 0(SP)		
-  0x105f9		48894c2408		MOVQ CX, 0x8(SP)	
-  0x105fe		e800000000		CALL 0x10603		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10603		448b5c2410		MOVL 0x10(SP), R11	
-  0x10608		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x1060d		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x10615		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x1061d		488b9c2488010000	MOVQ 0x188(SP), BX	
-	goto inst161
-  0x10625		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x1062d		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10635		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1063d		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x10643		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1064b		e9e8fdffff		JMP 0x10438		
-				goto inst148
-  0x10650		4989db			MOVQ BX, R11		
-	goto inst161
-  0x10653		4889f9			MOVQ DI, CX		
-  0x10656		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x10659		e98d0d0000		JMP 0x113eb		
-			i += sz
-  0x1065e		48899c2480010000	MOVQ BX, 0x180(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10666		4929d8			SUBQ BX, R8		
-  0x10669		4c89c1			MOVQ R8, CX		
-  0x1066c		49f7d8			NEGQ R8			
-  0x1066f		49c1f83f		SARQ $0x3f, R8		
-  0x10673		4921d8			ANDQ BX, R8		
-  0x10676		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x1067a		48891424		MOVQ DX, 0(SP)		
-  0x1067e		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10683		0f1f00			NOPL 0(AX)		
-  0x10686		e800000000		CALL 0x1068b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x1068b		448b5c2410		MOVL 0x10(SP), R11	
-  0x10690		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x10695		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x1069d		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x106a5		488b9c2480010000	MOVQ 0x180(SP), BX	
-	goto inst161
-  0x106ad		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x106b5		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x106bd		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x106c5		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x106cb		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x106d3		e920fdffff		JMP 0x103f8		
-				goto inst148
-  0x106d8		4989db			MOVQ BX, R11		
-	goto inst161
-  0x106db		4889f9			MOVQ DI, CX		
-  0x106de		4c89e3			MOVQ R12, BX		
-  0x106e1		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0x106e6		e9000d0000		JMP 0x113eb		
-			i += sz
-  0x106eb		48899c2478010000	MOVQ BX, 0x178(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x106f3		4929d8			SUBQ BX, R8		
-  0x106f6		4c89c1			MOVQ R8, CX		
-  0x106f9		49f7d8			NEGQ R8			
-  0x106fc		49c1f83f		SARQ $0x3f, R8		
-  0x10700		4921d8			ANDQ BX, R8		
-  0x10703		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10707		48891424		MOVQ DX, 0(SP)		
-  0x1070b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10710		e800000000		CALL 0x10715		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10715		448b5c2410		MOVL 0x10(SP), R11	
-  0x1071a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x1071f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x10727		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x1072f		488b9c2478010000	MOVQ 0x178(SP), BX	
-	goto inst161
-  0x10737		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x1073f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10747		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1074f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x10755		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1075d		e956fcffff		JMP 0x103b8		
-				goto inst148
-  0x10762		4989db			MOVQ BX, R11		
-	goto inst161
-  0x10765		4889f9			MOVQ DI, CX		
-  0x10768		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x1076b		e97b0c0000		JMP 0x113eb		
-				i += sz
-  0x10770		48899c2470010000	MOVQ BX, 0x170(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10778		4929d8			SUBQ BX, R8		
-  0x1077b		4c89c1			MOVQ R8, CX		
-  0x1077e		49f7d8			NEGQ R8			
-  0x10781		49c1f83f		SARQ $0x3f, R8		
-  0x10785		4921d8			ANDQ BX, R8		
-  0x10788		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x1078c		48891424		MOVQ DX, 0(SP)		
-  0x10790		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10795		e800000000		CALL 0x1079a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x1079a		448b5c2410		MOVL 0x10(SP), R11	
-  0x1079f		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x107a4		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x107ac		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x107b4		488b9c2470010000	MOVQ 0x170(SP), BX	
-	goto inst161
-  0x107bc		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x107c4		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x107cc		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x107d4		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x107da		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0x107e2		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x107e6		e98dfbffff		JMP 0x10378		
-				goto inst148
-  0x107eb		4989db			MOVQ BX, R11		
-	goto inst161
-  0x107ee		4889f9			MOVQ DI, CX		
-  0x107f1		4c89e3			MOVQ R12, BX		
-			goto fail
-  0x107f4		e9f20b0000		JMP 0x113eb		
-				goto inst148
-  0x107f9		4989db			MOVQ BX, R11		
-	goto inst161
-  0x107fc		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x107ff		e9e70b0000		JMP 0x113eb		
-			i += sz
-  0x10804		48899c2468010000	MOVQ BX, 0x168(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1080c		4929d8			SUBQ BX, R8		
-  0x1080f		4c89c1			MOVQ R8, CX		
-  0x10812		49f7d8			NEGQ R8			
-  0x10815		49c1f83f		SARQ $0x3f, R8		
-  0x10819		4921d8			ANDQ BX, R8		
-  0x1081c		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10820		48891424		MOVQ DX, 0(SP)		
-  0x10824		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10829		e800000000		CALL 0x1082e		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x1082e		448b5c2410		MOVL 0x10(SP), R11	
-  0x10833		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10838		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0x10840		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10848		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0x10850		488b9c2468010000	MOVQ 0x168(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0x10858		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10860		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10868		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x1086e		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10876		e95dfaffff		JMP 0x102d8		
-				goto inst148
-  0x1087b		4989db			MOVQ BX, R11		
-	goto inst161
-  0x1087e		4c89e3			MOVQ R12, BX		
-  0x10881		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0x10886		e9600b0000		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0x1088b		48899c2460010000	MOVQ BX, 0x160(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10893		4929d8			SUBQ BX, R8		
-  0x10896		4c89c1			MOVQ R8, CX		
-  0x10899		49f7d8			NEGQ R8			
-  0x1089c		49c1f83f		SARQ $0x3f, R8		
-  0x108a0		4921d8			ANDQ BX, R8		
-  0x108a3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x108a7		48891424		MOVQ DX, 0(SP)		
-  0x108ab		48894c2408		MOVQ CX, 0x8(SP)	
-  0x108b0		e800000000		CALL 0x108b5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x108b5		448b5c2410		MOVL 0x10(SP), R11	
-  0x108ba		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x108bf		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0x108c7		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0x108cf		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x108d7		488b9c2460010000	MOVQ 0x160(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x108df		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x108e7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x108ef		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x108f5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x108fd		e996f9ffff		JMP 0x10298		
-  0x10902		0f1f4000		NOPL 0(AX)		
-	case 159:
-  0x10906		4981fd9f000000		CMPQ $0x9f, R13		
-  0x1090d		0f85b3070000		JNE 0x110c6		
-		c, i = bt[n].c, bt[n].i
-  0x10913		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0x10918		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0x10920		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0x10924		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0x1092b		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0x10933		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0x1093c		660f1f840000000000	NOPW 0(AX)(AX*1)		
-  0x10945		90			NOPL				
-  0x10946		48896c24f0		MOVQ BP, -0x10(SP)		
-  0x1094b		488d6c24f0		LEAQ -0x10(SP), BP		
-  0x10950		e800000000		CALL 0x10955			[1:5]R_CALL:runtime.duffcopy+756	
-  0x10955		488b6d00		MOVQ 0(BP), BP			
-	c[16] = i
-  0x10959		4c89ac24a8050000	MOVQ R13, 0x5a8(SP)	
-	bt = append(bt, state{c, i, 157, 0})
-  0x10961		48c78424f007000000000000	MOVQ $0x0, 0x7f0(SP)		
-  0x1096d		488dbc24f8070000		LEAQ 0x7f8(SP), DI		
-  0x10975		0f57c0				XORPS X0, X0			
-  0x10978		488d7ff0			LEAQ -0x10(DI), DI		
-  0x1097c		660f1f840000000000		NOPW 0(AX)(AX*1)		
-  0x10985		90				NOPL				
-  0x10986		48896c24f0			MOVQ BP, -0x10(SP)		
-  0x1098b		488d6c24f0			LEAQ -0x10(SP), BP		
-  0x10990		e800000000			CALL 0x10995			[1:5]R_CALL:runtime.duffzero+250	
-  0x10995		488b6d00			MOVQ 0(BP), BP			
-  0x10999		488dbc24f0070000		LEAQ 0x7f0(SP), DI		
-  0x109a1		488db42428050000		LEAQ 0x528(SP), SI		
-  0x109a9		48896c24f0			MOVQ BP, -0x10(SP)		
-  0x109ae		488d6c24f0			LEAQ -0x10(SP), BP		
-  0x109b3		e800000000			CALL 0x109b8			[1:5]R_CALL:runtime.duffcopy+756	
-  0x109b8		488b6d00			MOVQ 0(BP), BP			
-  0x109bc		4c89ac2490080000		MOVQ R13, 0x890(SP)		
-  0x109c4		48c78424980800009d000000	MOVQ $0x9d, 0x898(SP)		
-  0x109d0		48c78424a008000000000000	MOVQ $0x0, 0x8a0(SP)		
-  0x109dc		4839d9				CMPQ BX, CX			
-  0x109df		0f826b060000			JB 0x11050			
-  0x109e5		4c8ba424f0070000		MOVQ 0x7f0(SP), R12		
-  0x109ed		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0x109f5		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0x109f9		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0x10a00		488db424f8070000		LEAQ 0x7f8(SP), SI		
-  0x10a08		48896c24f0			MOVQ BP, -0x10(SP)		
-  0x10a0d		488d6c24f0			LEAQ -0x10(SP), BP		
-  0x10a12		e800000000			CALL 0x10a17			[1:5]R_CALL:runtime.duffcopy+742	
-  0x10a17		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0x10a1b		4d85ed			TESTQ R13, R13		
-  0x10a1e		0f8cb5050000		JL 0x10fd9		
-  0x10a24		6690			NOPW			
-  0x10a26		4d39c5			CMPQ R8, R13		
-  0x10a29		0f8daa050000		JGE 0x10fd9		
-	bt = append(bt, state{c, i, 157, 0})
-  0x10a2f		48898424481e0000	MOVQ AX, 0x1e48(SP)	
-  0x10a37		48899c2458010000	MOVQ BX, 0x158(SP)	
-  0x10a3f		48898c2450010000	MOVQ CX, 0x150(SP)	
-		cr, sz := rune(r[i]), 1
-  0x10a47		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0x10a4c		4181fb80000000		CMPL $0x80, R11		
-  0x10a53		0f8d88050000		JGE 0x10fe1		
-  0x10a59		be01000000		MOVL $0x1, SI		
-  0x10a5e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if false || cr == 97 {
-  0x10a66		4183fb61		CMPL $0x61, R11		
-  0x10a6a		0f8569050000		JNE 0x10fd9		
-			i += sz
-  0x10a70		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0x10a74		4d85db			TESTQ R11, R11		
-  0x10a77		0f8c6e090000		JL 0x113eb		
-  0x10a7d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x10a86		4d39c3			CMPQ R8, R11		
-  0x10a89		0f8d5c090000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x10a8f		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x10a94		4181fc80000000		CMPL $0x80, R12		
-  0x10a9b		0f8dc1040000		JGE 0x10f62		
-  0x10aa1		be01000000		MOVL $0x1, SI		
-		if false || cr == 103 {
-  0x10aa6		4183fc67		CMPL $0x67, R12		
-  0x10aaa		0f853b090000		JNE 0x113eb		
-			i += sz
-  0x10ab0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x10ab3		4d85db			TESTQ R11, R11		
-  0x10ab6		0f8c2f090000		JL 0x113eb		
-  0x10abc		4d39c3			CMPQ R8, R11		
-  0x10abf		0f8d26090000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x10ac5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x10aca		4181fc80000000		CMPL $0x80, R12		
-  0x10ad1		0f8d14040000		JGE 0x10eeb		
-  0x10ad7		be01000000		MOVL $0x1, SI		
-  0x10adc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x10ae5		90			NOPL			
-		if false || cr == 103 {
-  0x10ae6		4183fc67		CMPL $0x67, R12		
-  0x10aea		0f85fb080000		JNE 0x113eb		
-			i += sz
-  0x10af0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x10af3		4d85db			TESTQ R11, R11		
-  0x10af6		0f8cef080000		JL 0x113eb		
-  0x10afc		4d39c3			CMPQ R8, R11		
-  0x10aff		0f8de6080000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x10b05		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x10b0a		4181fc80000000		CMPL $0x80, R12		
-  0x10b11		0f8d59030000		JGE 0x10e70		
-  0x10b17		be01000000		MOVL $0x1, SI		
-  0x10b1c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x10b25		90			NOPL			
-		if false || cr == 103 {
-  0x10b26		4183fc67		CMPL $0x67, R12		
-  0x10b2a		0f85bb080000		JNE 0x113eb		
-			i += sz
-  0x10b30		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x10b33		4d85db			TESTQ R11, R11		
-  0x10b36		0f8caf080000		JL 0x113eb		
-  0x10b3c		4d39c3			CMPQ R8, R11		
-  0x10b3f		0f8da6080000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x10b45		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x10b4a		4181fc80000000		CMPL $0x80, R12		
-  0x10b51		0f8da2020000		JGE 0x10df9		
-  0x10b57		be01000000		MOVL $0x1, SI		
-  0x10b5c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x10b65		90			NOPL			
-		if false || cr == 116 {
-  0x10b66		4183fc74		CMPL $0x74, R12		
-  0x10b6a		0f857b080000		JNE 0x113eb		
-			i += sz
-  0x10b70		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x10b73		4d85db			TESTQ R11, R11		
-  0x10b76		0f8c6f080000		JL 0x113eb		
-  0x10b7c		4d39c3			CMPQ R8, R11		
-  0x10b7f		0f8d66080000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x10b85		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x10b8a		4181fc80000000		CMPL $0x80, R12		
-  0x10b91		0f8deb010000		JGE 0x10d82		
-  0x10b97		be01000000		MOVL $0x1, SI		
-  0x10b9c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x10ba5		90			NOPL			
-		if false || cr == 97 {
-  0x10ba6		4183fc61		CMPL $0x61, R12		
-  0x10baa		0f853b080000		JNE 0x113eb		
-			i += sz
-  0x10bb0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x10bb3		4d85db			TESTQ R11, R11		
-  0x10bb6		0f8c2f080000		JL 0x113eb		
-  0x10bbc		4d39c3			CMPQ R8, R11		
-  0x10bbf		0f8d26080000		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x10bc5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x10bca		4181fc80000000		CMPL $0x80, R12		
-  0x10bd1		0f8d34010000		JGE 0x10d0b		
-  0x10bd7		be01000000		MOVL $0x1, SI		
-  0x10bdc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x10be5		90			NOPL			
-		if cr < 128 {
-  0x10be6		4181fc80000000		CMPL $0x80, R12		
-  0x10bed		0f8df8070000		JGE 0x113eb		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x10bf3		4589e5			MOVL R12, R13			
-  0x10bf6		41c1fc1f		SARL $0x1f, R12			
-  0x10bfa		41c1ec1d		SHRL $0x1d, R12			
-  0x10bfe		4501ec			ADDL R13, R12			
-  0x10c01		41c1fc03		SARL $0x3, R12			
-  0x10c05		4d63f4			MOVSXD R12, R14			
-  0x10c08		4983fe10		CMPQ $0x10, R14			
-  0x10c0c		0f83be260000		JAE 0x132d0			
-  0x10c12		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
-  0x10c19		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0x10c1e		41c1e403		SHLL $0x3, R12			
-  0x10c22		4529e5			SUBL R12, R13			
-  0x10c25		90			NOPL				
-  0x10c26		4585ed			TESTL R13, R13			
-  0x10c29		0f8c9c260000		JL 0x132cb			
-  0x10c2f		4183fd20		CMPL $0x20, R13			
-  0x10c33		4519e4			SBBL R12, R12			
-	bt = append(bt, state{c, i, 157, 0})
-  0x10c36		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x10c39		4489e9			MOVL R13, CX		
-  0x10c3c		41bf01000000		MOVL $0x1, R15		
-  0x10c42		41d3e7			SHLL CL, R15		
-  0x10c45		4521e7			ANDL R12, R15		
-  0x10c48		4584f7			TESTL R14, R15		
-  0x10c4b		0f84b1000000		JE 0x10d02		
-				i += sz
-  0x10c51		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x10c54		4d85db			TESTQ R11, R11		
-  0x10c57		7c21			JL 0x10c7a		
-  0x10c59		4d39c3			CMPQ R8, R11		
-  0x10c5c		7d1c			JGE 0x10c7a		
-		cr, sz := rune(r[i]), 1
-  0x10c5e		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x10c63		0f1f00			NOPL 0(AX)		
-		if cr >= utf8.RuneSelf {
-  0x10c66		4181fc80000000		CMPL $0x80, R12		
-  0x10c6d		7d1c			JGE 0x10c8b		
-  0x10c6f		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0x10c74		4183fc61		CMPL $0x61, R12		
-  0x10c78		7408			JE 0x10c82		
-	goto inst161
-  0x10c7a		4889f9			MOVQ DI, CX		
-	goto fail
-  0x10c7d		e969070000		JMP 0x113eb		
-			i += sz
-  0x10c82		4a8d1c19		LEAQ 0(CX)(R11*1), BX	
-			goto inst158
-  0x10c86		e932f8ffff		JMP 0x104bd		
-				i += sz
-  0x10c8b		4c899c2448010000	MOVQ R11, 0x148(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10c93		4d29d8			SUBQ R11, R8		
-  0x10c96		4c89c1			MOVQ R8, CX		
-  0x10c99		49f7d8			NEGQ R8			
-  0x10c9c		49c1f83f		SARQ $0x3f, R8		
-  0x10ca0		4d21d8			ANDQ R11, R8		
-  0x10ca3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10ca7		48891424		MOVQ DX, 0(SP)		
-  0x10cab		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10cb0		e800000000		CALL 0x10cb5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10cb5		448b642410		MOVL 0x10(SP), R12	
-  0x10cba		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x10cbf		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-		if len(r[si:]) != 0 {
-  0x10cc7		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10ccf		488b9c2458010000	MOVQ 0x158(SP), BX	
-  0x10cd7		488bbc2450010000	MOVQ 0x150(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0x10cdf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10ce7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10cef		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0x10cf5		4c8b9c2448010000	MOVQ 0x148(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10cfd		e972ffffff		JMP 0x10c74		
-	goto inst161
-  0x10d02		4889f9			MOVQ DI, CX		
-  0x10d05		90			NOPL			
-			goto fail
-  0x10d06		e9e0060000		JMP 0x113eb		
-			i += sz
-  0x10d0b		4c899c2440010000	MOVQ R11, 0x140(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10d13		4d29d8			SUBQ R11, R8		
-  0x10d16		4c89c1			MOVQ R8, CX		
-  0x10d19		49f7d8			NEGQ R8			
-  0x10d1c		49c1f83f		SARQ $0x3f, R8		
-  0x10d20		4d21d8			ANDQ R11, R8		
-  0x10d23		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10d27		48891424		MOVQ DX, 0(SP)		
-  0x10d2b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10d30		e800000000		CALL 0x10d35		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10d35		448b642410		MOVL 0x10(SP), R12	
-  0x10d3a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10d3f		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-  0x10d47		488b8c2450010000	MOVQ 0x150(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10d4f		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10d57		488b9c2458010000	MOVQ 0x158(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0x10d5f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10d67		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10d6f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0x10d75		4c8b9c2440010000	MOVQ 0x140(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10d7d		e964feffff		JMP 0x10be6		
-			i += sz
-  0x10d82		4c899c2438010000	MOVQ R11, 0x138(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10d8a		4d29d8			SUBQ R11, R8		
-  0x10d8d		4c89c1			MOVQ R8, CX		
-  0x10d90		49f7d8			NEGQ R8			
-  0x10d93		49c1f83f		SARQ $0x3f, R8		
-  0x10d97		4d21d8			ANDQ R11, R8		
-  0x10d9a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10d9e		48891424		MOVQ DX, 0(SP)		
-  0x10da2		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10da7		e800000000		CALL 0x10dac		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10dac		448b642410		MOVL 0x10(SP), R12	
-  0x10db1		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10db6		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-  0x10dbe		488b8c2450010000	MOVQ 0x150(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10dc6		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10dce		488b9c2458010000	MOVQ 0x158(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x10dd6		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10dde		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10de6		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x10dec		4c8b9c2438010000	MOVQ 0x138(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10df4		e9adfdffff		JMP 0x10ba6		
-			i += sz
-  0x10df9		4c899c2430010000	MOVQ R11, 0x130(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10e01		4d29d8			SUBQ R11, R8		
-  0x10e04		4c89c1			MOVQ R8, CX		
-  0x10e07		49f7d8			NEGQ R8			
-  0x10e0a		49c1f83f		SARQ $0x3f, R8		
-  0x10e0e		4d21d8			ANDQ R11, R8		
-  0x10e11		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10e15		48891424		MOVQ DX, 0(SP)		
-  0x10e19		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10e1e		e800000000		CALL 0x10e23		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10e23		448b642410		MOVL 0x10(SP), R12	
-  0x10e28		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10e2d		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-  0x10e35		488b8c2450010000	MOVQ 0x150(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10e3d		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10e45		488b9c2458010000	MOVQ 0x158(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x10e4d		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10e55		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10e5d		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x10e63		4c8b9c2430010000	MOVQ 0x130(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10e6b		e9f6fcffff		JMP 0x10b66		
-			i += sz
-  0x10e70		4c899c2428010000	MOVQ R11, 0x128(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10e78		4d29d8			SUBQ R11, R8		
-  0x10e7b		4c89c1			MOVQ R8, CX		
-  0x10e7e		49f7d8			NEGQ R8			
-  0x10e81		49c1f83f		SARQ $0x3f, R8		
-  0x10e85		4d21d8			ANDQ R11, R8		
-  0x10e88		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10e8c		48891424		MOVQ DX, 0(SP)		
-  0x10e90		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10e95		e800000000		CALL 0x10e9a		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10e9a		448b642410		MOVL 0x10(SP), R12	
-  0x10e9f		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10ea4		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-  0x10eac		488b8c2450010000	MOVQ 0x150(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10eb4		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10ebc		488b9c2458010000	MOVQ 0x158(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x10ec4		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10ecc		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10ed4		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x10eda		4c8b9c2428010000	MOVQ 0x128(SP), R11	
-  0x10ee2		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10ee6		e93bfcffff		JMP 0x10b26		
-			i += sz
-  0x10eeb		4c899c2420010000	MOVQ R11, 0x120(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10ef3		4d29d8			SUBQ R11, R8		
-  0x10ef6		4c89c1			MOVQ R8, CX		
-  0x10ef9		49f7d8			NEGQ R8			
-  0x10efc		49c1f83f		SARQ $0x3f, R8		
-  0x10f00		4d21d8			ANDQ R11, R8		
-  0x10f03		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10f07		48891424		MOVQ DX, 0(SP)		
-  0x10f0b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10f10		e800000000		CALL 0x10f15		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10f15		448b642410		MOVL 0x10(SP), R12	
-  0x10f1a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10f1f		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-  0x10f27		488b8c2450010000	MOVQ 0x150(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10f2f		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10f37		488b9c2458010000	MOVQ 0x158(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x10f3f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10f47		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10f4f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x10f55		4c8b9c2420010000	MOVQ 0x120(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10f5d		e984fbffff		JMP 0x10ae6		
-			i += sz
-  0x10f62		4c899c2418010000	MOVQ R11, 0x118(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10f6a		4d29d8			SUBQ R11, R8		
-  0x10f6d		4c89c1			MOVQ R8, CX		
-  0x10f70		49f7d8			NEGQ R8			
-  0x10f73		49c1f83f		SARQ $0x3f, R8		
-  0x10f77		4d21d8			ANDQ R11, R8		
-  0x10f7a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10f7e		48891424		MOVQ DX, 0(SP)		
-  0x10f82		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10f87		e800000000		CALL 0x10f8c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x10f8c		448b642410		MOVL 0x10(SP), R12	
-  0x10f91		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x10f96		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-  0x10f9e		488b8c2450010000	MOVQ 0x150(SP), CX	
-		if len(r[si:]) != 0 {
-  0x10fa6		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x10fae		488b9c2458010000	MOVQ 0x158(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x10fb6		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x10fbe		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x10fc6		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x10fcc		4c8b9c2418010000	MOVQ 0x118(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10fd4		e9cdfaffff		JMP 0x10aa6		
-				goto inst148
-  0x10fd9		4d89eb			MOVQ R13, R11		
-	goto fail
-  0x10fdc		e90a040000		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x10fe1		4d29e8			SUBQ R13, R8		
-  0x10fe4		4c89c1			MOVQ R8, CX		
-  0x10fe7		49f7d8			NEGQ R8			
-  0x10fea		49c1f83f		SARQ $0x3f, R8		
-  0x10fee		4d21e8			ANDQ R13, R8		
-  0x10ff1		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x10ff5		48891424		MOVQ DX, 0(SP)		
-  0x10ff9		48894c2408		MOVQ CX, 0x8(SP)	
-  0x10ffe		e800000000		CALL 0x11003		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11003		448b5c2410		MOVL 0x10(SP), R11	
-  0x11008		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x1100d		488b8424481e0000	MOVQ 0x1e48(SP), AX	
-  0x11015		488b8c2450010000	MOVQ 0x150(SP), CX	
-		if len(r[si:]) != 0 {
-  0x1101d		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x11025		488b9c2458010000	MOVQ 0x158(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x1102d		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11035		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1103d		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x11043		4c8bac2408050000	MOVQ 0x508(SP), R13	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1104b		e916faffff		JMP 0x10a66		
-	bt = append(bt, state{c, i, 157, 0})
-  0x11050		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x11057		48891424		MOVQ DX, 0(SP)		
-  0x1105b		4889442408		MOVQ AX, 0x8(SP)	
-  0x11060		4c89642410		MOVQ R12, 0x10(SP)	
-  0x11065		48894c2418		MOVQ CX, 0x18(SP)	
-  0x1106a		48895c2420		MOVQ BX, 0x20(SP)	
-  0x1106f		e800000000		CALL 0x11074		[1:5]R_CALL:runtime.growslice	
-  0x11074		488b442428		MOVQ 0x28(SP), AX	
-  0x11079		488b4c2430		MOVQ 0x30(SP), CX	
-  0x1107e		488b542438		MOVQ 0x38(SP), DX	
-  0x11083		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0x11087		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x1108f		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x11097		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 157, 0})
-  0x1109d		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0x110a5		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 157, 0})
-  0x110ad		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0x110b0		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 157, 0})
-  0x110b8		e928f9ffff		JMP 0x109e5		
-  0x110bd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-	case 177:
-  0x110c6		4981fdb1000000		CMPQ $0xb1, R13		
-  0x110cd		0f855f090000		JNE 0x11a32		
-		c, i = bt[n].c, bt[n].i
-  0x110d3		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0x110d8		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0x110dc		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0x110e3		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0x110eb		48896c24f0		MOVQ BP, -0x10(SP)		
-  0x110f0		488d6c24f0		LEAQ -0x10(SP), BP		
-  0x110f5		e800000000		CALL 0x110fa			[1:5]R_CALL:runtime.duffcopy+756	
-  0x110fa		488b6d00		MOVQ 0(BP), BP			
-  0x110fe		0f1f840000000000	NOPL 0(AX)(AX*1)		
-	if i >= 0 && i < len(r) {
-  0x11106		4885db			TESTQ BX, BX		
-  0x11109		0f8ca1080000		JL 0x119b0		
-  0x1110f		4c39c3			CMPQ R8, BX		
-  0x11112		0f8d98080000		JGE 0x119b0		
-		cr, sz := rune(r[i]), 1
-  0x11118		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1111d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11126		4181fb80000000		CMPL $0x80, R11		
-  0x1112d		0f8d88080000		JGE 0x119bb		
-  0x11133		be01000000		MOVL $0x1, SI		
-		if cr < 128 {
-  0x11138		4181fb80000000		CMPL $0x80, R11		
-  0x1113f		0f8d6b080000		JGE 0x119b0		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x11145		4589dd			MOVL R11, R13			
-  0x11148		41c1fb1f		SARL $0x1f, R11			
-  0x1114c		41c1eb1d		SHRL $0x1d, R11			
-  0x11150		4501eb			ADDL R13, R11			
-  0x11153		41c1fb03		SARL $0x3, R11			
-  0x11157		4d63f3			MOVSXD R11, R14			
-  0x1115a		4983fe10		CMPQ $0x10, R14			
-  0x1115e		0f8332210000		JAE 0x13296			
-  0x11164		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
-  0x1116b		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0x11170		41c1e303		SHLL $0x3, R11			
-  0x11174		4529dd			SUBL R11, R13			
-  0x11177		4585ed			TESTL R13, R13			
-  0x1117a		0f8c11210000		JL 0x13291			
-  0x11180		4183fd20		CMPL $0x20, R13			
-  0x11184		4519db			SBBL R11, R11			
-	goto inst161
-  0x11187		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x1118a		4489e9			MOVL R13, CX		
-  0x1118d		41bf01000000		MOVL $0x1, R15		
-  0x11193		41d3e7			SHLL CL, R15		
-  0x11196		4521fb			ANDL R15, R11		
-  0x11199		4584f3			TESTL R14, R11		
-  0x1119c		0f8400080000		JE 0x119a2		
-				i += sz
-  0x111a2		4801f3			ADDQ SI, BX		
-  0x111a5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x111a6		4885db			TESTQ BX, BX		
-  0x111a9		0f8c69070000		JL 0x11918		
-  0x111af		4c39c3			CMPQ R8, BX		
-  0x111b2		0f8d60070000		JGE 0x11918		
-		cr, sz := rune(r[i]), 1
-  0x111b8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x111bd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x111c6		4181fb80000000		CMPL $0x80, R11		
-  0x111cd		0f8d58070000		JGE 0x1192b		
-  0x111d3		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0x111d8		4183fb74		CMPL $0x74, R11		
-  0x111dc		0f8536070000		JNE 0x11918		
-			i += sz
-  0x111e2		4801cb			ADDQ CX, BX		
-  0x111e5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x111e6		4885db			TESTQ BX, BX		
-  0x111e9		0f8ca1060000		JL 0x11890		
-  0x111ef		4c39c3			CMPQ R8, BX		
-  0x111f2		0f8d98060000		JGE 0x11890		
-		cr, sz := rune(r[i]), 1
-  0x111f8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x111fd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11206		4181fb80000000		CMPL $0x80, R11		
-  0x1120d		0f8d8b060000		JGE 0x1189e		
-  0x11213		b901000000		MOVL $0x1, CX		
-		if false || cr == 116 {
-  0x11218		4183fb74		CMPL $0x74, R11		
-  0x1121c		0f856e060000		JNE 0x11890		
-			i += sz
-  0x11222		4801cb			ADDQ CX, BX		
-  0x11225		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11226		4885db			TESTQ BX, BX		
-  0x11229		0f8cdc050000		JL 0x1180b		
-  0x1122f		4c39c3			CMPQ R8, BX		
-  0x11232		0f8dd3050000		JGE 0x1180b		
-		cr, sz := rune(r[i]), 1
-  0x11238		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1123d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11246		4181fb80000000		CMPL $0x80, R11		
-  0x1124d		0f8dc6050000		JGE 0x11819		
-  0x11253		b901000000		MOVL $0x1, CX		
-		if false || cr == 97 {
-  0x11258		4183fb61		CMPL $0x61, R11		
-  0x1125c		0f85a9050000		JNE 0x1180b		
-			i += sz
-  0x11262		4801cb			ADDQ CX, BX		
-  0x11265		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11266		4885db			TESTQ BX, BX		
-  0x11269		0f8c13050000		JL 0x11782		
-  0x1126f		4c39c3			CMPQ R8, BX		
-  0x11272		0f8d0a050000		JGE 0x11782		
-		cr, sz := rune(r[i]), 1
-  0x11278		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1127d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11286		4181fb80000000		CMPL $0x80, R11		
-  0x1128d		0f8dfd040000		JGE 0x11790		
-  0x11293		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0x11298		4183fb63		CMPL $0x63, R11		
-  0x1129c		0f85e0040000		JNE 0x11782		
-			i += sz
-  0x112a2		4801cb			ADDQ CX, BX		
-  0x112a5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x112a6		4885db			TESTQ BX, BX		
-  0x112a9		0f8c49040000		JL 0x116f8		
-  0x112af		4c39c3			CMPQ R8, BX		
-  0x112b2		0f8d40040000		JGE 0x116f8		
-		cr, sz := rune(r[i]), 1
-  0x112b8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x112bd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x112c6		4181fb80000000		CMPL $0x80, R11		
-  0x112cd		0f8d38040000		JGE 0x1170b		
-  0x112d3		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0x112d8		4183fb63		CMPL $0x63, R11		
-  0x112dc		0f8516040000		JNE 0x116f8		
-			i += sz
-  0x112e2		4801cb			ADDQ CX, BX		
-  0x112e5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x112e6		4885db			TESTQ BX, BX		
-  0x112e9		0f8cf3000000		JL 0x113e2		
-  0x112ef		4c39c3			CMPQ R8, BX		
-  0x112f2		0f8dea000000		JGE 0x113e2		
-		cr, sz := rune(r[i]), 1
-  0x112f8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x112fd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11306		4181fb80000000		CMPL $0x80, R11		
-  0x1130d		0f8d69030000		JGE 0x1167c		
-  0x11313		b901000000		MOVL $0x1, CX		
-		if false || cr == 99 {
-  0x11318		4183fb63		CMPL $0x63, R11		
-  0x1131c		0f85c0000000		JNE 0x113e2		
-			i += sz
-  0x11322		4801cb			ADDQ CX, BX		
-  0x11325		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11326		4885db			TESTQ BX, BX		
-  0x11329		7c21			JL 0x1134c		
-  0x1132b		4c39c3			CMPQ R8, BX		
-  0x1132e		7d1c			JGE 0x1134c		
-		cr, sz := rune(r[i]), 1
-  0x11330		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0x11335		4181fb80000000		CMPL $0x80, R11		
-  0x1133c		7d2d			JGE 0x1136b		
-  0x1133e		b901000000		MOVL $0x1, CX		
-  0x11343		0f1f00			NOPL 0(AX)		
-		if false || cr == 116 {
-  0x11346		4183fb74		CMPL $0x74, R11		
-  0x1134a		740e			JE 0x1135a		
-				goto inst148
-  0x1134c		4989db			MOVQ BX, R11		
-	goto inst161
-  0x1134f		4889f9			MOVQ DI, CX		
-  0x11352		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x11355		e991000000		JMP 0x113eb		
-			i += sz
-  0x1135a		4801cb			ADDQ CX, BX		
-	c[19] = i
-  0x1135d		48899c24c0050000	MOVQ BX, 0x5c0(SP)	
-  0x11365		90			NOPL			
-	goto inst180
-  0x11366		e9e08fffff		JMP 0xa34b		
-			i += sz
-  0x1136b		48899c2410010000	MOVQ BX, 0x110(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11373		4929d8			SUBQ BX, R8		
-  0x11376		4c89c1			MOVQ R8, CX		
-  0x11379		49f7d8			NEGQ R8			
-  0x1137c		49c1f83f		SARQ $0x3f, R8		
-  0x11380		4921d8			ANDQ BX, R8		
-  0x11383		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11387		48891424		MOVQ DX, 0(SP)		
-  0x1138b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11390		e800000000		CALL 0x11395		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11395		448b5c2410		MOVL 0x10(SP), R11	
-  0x1139a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x1139f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x113a7		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0x113af		488b9c2410010000	MOVQ 0x110(SP), BX	
-	goto inst161
-  0x113b7		488bbc2418050000	MOVQ 0x518(SP), DI	
-		if i <= len(r) && len(bt) > 0 {
-  0x113bf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x113c7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x113cf		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x113d5		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x113dd		e964ffffff		JMP 0x11346		
-				goto inst148
-  0x113e2		4989db			MOVQ BX, R11		
-	goto inst161
-  0x113e5		4889f9			MOVQ DI, CX		
-  0x113e8		4c89e3			MOVQ R12, BX		
-		if i <= len(r) && len(bt) > 0 {
-  0x113eb		4d39d8			CMPQ R11, R8		
-  0x113ee		0f8c000e0000		JL 0x121f4		
-  0x113f4		4885db			TESTQ BX, BX		
-  0x113f7		0f8ef70d0000		JLE 0x121f4		
-	goto inst161
-  0x113fd		48898c2418050000	MOVQ CX, 0x518(SP)	
-  0x11405		48898424801e0000	MOVQ AX, 0x1e80(SP)	
-	switch bt[len(bt)-1].pc {
-  0x1140d		4c69dbb8000000		IMULQ $0xb8, BX, R11		
-  0x11414		4c899c2410050000	MOVQ R11, 0x510(SP)		
-  0x1141c		4c8d63ff		LEAQ -0x1(BX), R12		
-  0x11420		4c89a42408050000	MOVQ R12, 0x508(SP)		
-  0x11428		4d8b6c03f0		MOVQ -0x10(R11)(AX*1), R13	
-  0x1142d		4983fd61		CMPQ $0x61, R13			
-	case 97:
-  0x11431		0f8fefc8ffff		JG 0xdd26		
-	switch bt[len(bt)-1].pc {
-  0x11437		4983fd39		CMPQ $0x39, R13		
-	case 57:
-  0x1143b		0f8fb7abffff		JG 0xbff8		
-  0x11441		0f1f440000		NOPL 0(AX)(AX*1)	
-	switch bt[len(bt)-1].pc {
-  0x11446		4983fd25		CMPQ $0x25, R13		
-	case 37:
-  0x1144a		0f8f0a9dffff		JG 0xb15a		
-	case 18:
-  0x11450		4983fd12		CMPQ $0x12, R13		
-  0x11454		0f854096ffff		JNE 0xaa9a		
-		c, i = bt[n].c, bt[n].i
-  0x1145a		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
-  0x1145f		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0x11463		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0x1146a		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0x11472		48896c24f0		MOVQ BP, -0x10(SP)		
-  0x11477		488d6c24f0		LEAQ -0x10(SP), BP		
-  0x1147c		e800000000		CALL 0x11481			[1:5]R_CALL:runtime.duffcopy+756	
-  0x11481		488b6d00		MOVQ 0(BP), BP			
-  0x11485		90			NOPL				
-	if i >= 0 && i < len(r) {
-  0x11486		4885db			TESTQ BX, BX		
-  0x11489		0f8c8995ffff		JL 0xaa18		
-  0x1148f		4c39c3			CMPQ R8, BX		
-  0x11492		0f8d8095ffff		JGE 0xaa18		
-		cr, sz := rune(r[i]), 1
-  0x11498		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1149d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x114a6		4181fb80000000		CMPL $0x80, R11		
-  0x114ad		0f8d7095ffff		JGE 0xaa23		
-  0x114b3		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0x114b8		4183fb74		CMPL $0x74, R11		
-  0x114bc		0f855695ffff		JNE 0xaa18		
-			i += sz
-  0x114c2		4801f3			ADDQ SI, BX		
-  0x114c5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x114c6		4885db			TESTQ BX, BX		
-  0x114c9		0f8cc294ffff		JL 0xa991		
-  0x114cf		4c39c3			CMPQ R8, BX		
-  0x114d2		0f8db994ffff		JGE 0xa991		
-		cr, sz := rune(r[i]), 1
-  0x114d8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x114dd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x114e6		4181fb80000000		CMPL $0x80, R11		
-  0x114ed		0f8da994ffff		JGE 0xa99c		
-  0x114f3		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0x114f8		4183fb74		CMPL $0x74, R11		
-  0x114fc		0f858f94ffff		JNE 0xa991		
-			i += sz
-  0x11502		4801f3			ADDQ SI, BX		
-  0x11505		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11506		4885db			TESTQ BX, BX		
-  0x11509		0f8c0094ffff		JL 0xa90f		
-  0x1150f		4c39c3			CMPQ R8, BX		
-  0x11512		0f8df793ffff		JGE 0xa90f		
-		cr, sz := rune(r[i]), 1
-  0x11518		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1151d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11526		4181fb80000000		CMPL $0x80, R11		
-  0x1152d		0f8de793ffff		JGE 0xa91a		
-  0x11533		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0x11538		4183fb74		CMPL $0x74, R11		
-  0x1153c		0f85cd93ffff		JNE 0xa90f		
-			i += sz
-  0x11542		4801f3			ADDQ SI, BX		
-  0x11545		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11546		4885db			TESTQ BX, BX		
-  0x11549		0f8c3e93ffff		JL 0xa88d		
-  0x1154f		4c39c3			CMPQ R8, BX		
-  0x11552		0f8d3593ffff		JGE 0xa88d		
-		cr, sz := rune(r[i]), 1
-  0x11558		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1155d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11566		4181fb80000000		CMPL $0x80, R11		
-  0x1156d		0f8d2593ffff		JGE 0xa898		
-  0x11573		be01000000		MOVL $0x1, SI		
-		if false || cr == 97 {
-  0x11578		4183fb61		CMPL $0x61, R11		
-  0x1157c		0f850b93ffff		JNE 0xa88d		
-			i += sz
-  0x11582		4801f3			ADDQ SI, BX		
-  0x11585		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11586		4885db			TESTQ BX, BX		
-  0x11589		0f8c7c92ffff		JL 0xa80b		
-  0x1158f		4c39c3			CMPQ R8, BX		
-  0x11592		0f8d7392ffff		JGE 0xa80b		
-		cr, sz := rune(r[i]), 1
-  0x11598		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1159d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x115a6		4181fb80000000		CMPL $0x80, R11		
-  0x115ad		0f8d6392ffff		JGE 0xa816		
-  0x115b3		be01000000		MOVL $0x1, SI		
-		if false || cr == 99 {
-  0x115b8		4183fb63		CMPL $0x63, R11		
-  0x115bc		0f854992ffff		JNE 0xa80b		
-			i += sz
-  0x115c2		4801f3			ADDQ SI, BX		
-  0x115c5		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x115c6		4885db			TESTQ BX, BX		
-  0x115c9		0f8cb591ffff		JL 0xa784		
-  0x115cf		4c39c3			CMPQ R8, BX		
-  0x115d2		0f8dac91ffff		JGE 0xa784		
-		cr, sz := rune(r[i]), 1
-  0x115d8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x115dd		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x115e6		4181fb80000000		CMPL $0x80, R11		
-  0x115ed		0f8d9c91ffff		JGE 0xa78f		
-  0x115f3		be01000000		MOVL $0x1, SI		
-		if false || cr == 99 {
-  0x115f8		4183fb63		CMPL $0x63, R11		
-  0x115fc		0f858291ffff		JNE 0xa784		
-			i += sz
-  0x11602		4801f3			ADDQ SI, BX		
-  0x11605		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11606		4885db			TESTQ BX, BX		
-  0x11609		0f8cf390ffff		JL 0xa702		
-  0x1160f		4c39c3			CMPQ R8, BX		
-  0x11612		0f8dea90ffff		JGE 0xa702		
-		cr, sz := rune(r[i]), 1
-  0x11618		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-  0x1161d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-		if cr >= utf8.RuneSelf {
-  0x11626		4181fb80000000		CMPL $0x80, R11		
-  0x1162d		0f8dda90ffff		JGE 0xa70d		
-  0x11633		be01000000		MOVL $0x1, SI		
-		if false || cr == 99 {
-  0x11638		4183fb63		CMPL $0x63, R11		
-  0x1163c		0f85c090ffff		JNE 0xa702		
-			i += sz
-  0x11642		4801f3			ADDQ SI, BX		
-  0x11645		90			NOPL			
-	if i >= 0 && i < len(r) {
-  0x11646		4885db			TESTQ BX, BX		
-  0x11649		7c26			JL 0x11671		
-  0x1164b		4c39c3			CMPQ R8, BX		
-  0x1164e		7d21			JGE 0x11671		
-		cr, sz := rune(r[i]), 1
-  0x11650		450fb61c19		MOVZX 0(R9)(BX*1), R11	
-		if cr >= utf8.RuneSelf {
-  0x11655		4181fb80000000		CMPL $0x80, R11		
-  0x1165c		0f8d2f90ffff		JGE 0xa691		
-  0x11662		be01000000		MOVL $0x1, SI		
-		if false || cr == 116 {
-  0x11667		4183fb74		CMPL $0x74, R11		
-  0x1166b		0f84cf8cffff		JE 0xa340		
-				goto inst148
-  0x11671		4989db			MOVQ BX, R11		
-	goto inst161
-  0x11674		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x11677		e96ffdffff		JMP 0x113eb		
-			i += sz
-  0x1167c		48899c2408010000	MOVQ BX, 0x108(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11684		4929d8			SUBQ BX, R8		
-  0x11687		4c89c1			MOVQ R8, CX		
-  0x1168a		49f7d8			NEGQ R8			
-  0x1168d		49c1f83f		SARQ $0x3f, R8		
-  0x11691		4921d8			ANDQ BX, R8		
-  0x11694		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11698		48891424		MOVQ DX, 0(SP)		
-  0x1169c		48894c2408		MOVQ CX, 0x8(SP)	
-  0x116a1		0f1f440000		NOPL 0(AX)(AX*1)	
-  0x116a6		e800000000		CALL 0x116ab		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x116ab		448b5c2410		MOVL 0x10(SP), R11	
-  0x116b0		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x116b5		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x116bd		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x116c5		488b9c2408010000	MOVQ 0x108(SP), BX	
-	goto inst161
-  0x116cd		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x116d5		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x116dd		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x116e5		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x116eb		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x116f3		e920fcffff		JMP 0x11318		
-				goto inst148
-  0x116f8		4989db			MOVQ BX, R11		
-	goto inst161
-  0x116fb		4889f9			MOVQ DI, CX		
-  0x116fe		4c89e3			MOVQ R12, BX		
-  0x11701		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0x11706		e9e0fcffff		JMP 0x113eb		
-			i += sz
-  0x1170b		48899c2400010000	MOVQ BX, 0x100(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11713		4929d8			SUBQ BX, R8		
-  0x11716		4c89c1			MOVQ R8, CX		
-  0x11719		49f7d8			NEGQ R8			
-  0x1171c		49c1f83f		SARQ $0x3f, R8		
-  0x11720		4921d8			ANDQ BX, R8		
-  0x11723		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11727		48891424		MOVQ DX, 0(SP)		
-  0x1172b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11730		e800000000		CALL 0x11735		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11735		448b5c2410		MOVL 0x10(SP), R11	
-  0x1173a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x1173f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x11747		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x1174f		488b9c2400010000	MOVQ 0x100(SP), BX	
-	goto inst161
-  0x11757		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x1175f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11767		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1176f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x11775		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1177d		e956fbffff		JMP 0x112d8		
-				goto inst148
-  0x11782		4989db			MOVQ BX, R11		
-	goto inst161
-  0x11785		4889f9			MOVQ DI, CX		
-  0x11788		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x1178b		e95bfcffff		JMP 0x113eb		
-			i += sz
-  0x11790		48899c24f8000000	MOVQ BX, 0xf8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11798		4929d8			SUBQ BX, R8		
-  0x1179b		4c89c1			MOVQ R8, CX		
-  0x1179e		49f7d8			NEGQ R8			
-  0x117a1		49c1f83f		SARQ $0x3f, R8		
-  0x117a5		4921d8			ANDQ BX, R8		
-  0x117a8		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x117ac		48891424		MOVQ DX, 0(SP)		
-  0x117b0		48894c2408		MOVQ CX, 0x8(SP)	
-  0x117b5		e800000000		CALL 0x117ba		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x117ba		448b5c2410		MOVL 0x10(SP), R11	
-  0x117bf		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x117c4		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x117cc		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x117d4		488b9c24f8000000	MOVQ 0xf8(SP), BX	
-	goto inst161
-  0x117dc		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x117e4		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x117ec		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x117f4		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x117fa		4c8ba42408050000	MOVQ 0x508(SP), R12	
-  0x11802		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11806		e98dfaffff		JMP 0x11298		
-				goto inst148
-  0x1180b		4989db			MOVQ BX, R11		
-	goto inst161
-  0x1180e		4889f9			MOVQ DI, CX		
-  0x11811		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x11814		e9d2fbffff		JMP 0x113eb		
-			i += sz
-  0x11819		48899c24f0000000	MOVQ BX, 0xf0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11821		4929d8			SUBQ BX, R8		
-  0x11824		4c89c1			MOVQ R8, CX		
-  0x11827		49f7d8			NEGQ R8			
-  0x1182a		49c1f83f		SARQ $0x3f, R8		
-  0x1182e		4921d8			ANDQ BX, R8		
-  0x11831		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11835		48891424		MOVQ DX, 0(SP)		
-  0x11839		48894c2408		MOVQ CX, 0x8(SP)	
-  0x1183e		e800000000		CALL 0x11843		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11843		448b5c2410		MOVL 0x10(SP), R11	
-  0x11848		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x1184d		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x11855		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x1185d		488b9c24f0000000	MOVQ 0xf0(SP), BX	
-	goto inst161
-  0x11865		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x1186d		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11875		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1187d		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x11883		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1188b		e9c8f9ffff		JMP 0x11258		
-				goto inst148
-  0x11890		4989db			MOVQ BX, R11		
-	goto inst161
-  0x11893		4889f9			MOVQ DI, CX		
-  0x11896		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x11899		e94dfbffff		JMP 0x113eb		
-			i += sz
-  0x1189e		48899c24e8000000	MOVQ BX, 0xe8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x118a6		4929d8			SUBQ BX, R8		
-  0x118a9		4c89c1			MOVQ R8, CX		
-  0x118ac		49f7d8			NEGQ R8			
-  0x118af		49c1f83f		SARQ $0x3f, R8		
-  0x118b3		4921d8			ANDQ BX, R8		
-  0x118b6		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x118ba		48891424		MOVQ DX, 0(SP)		
-  0x118be		48894c2408		MOVQ CX, 0x8(SP)	
-  0x118c3		0f1f00			NOPL 0(AX)		
-  0x118c6		e800000000		CALL 0x118cb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x118cb		448b5c2410		MOVL 0x10(SP), R11	
-  0x118d0		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x118d5		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x118dd		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x118e5		488b9c24e8000000	MOVQ 0xe8(SP), BX	
-	goto inst161
-  0x118ed		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x118f5		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x118fd		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x11905		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x1190b		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11913		e900f9ffff		JMP 0x11218		
-				goto inst148
-  0x11918		4989db			MOVQ BX, R11		
-	goto inst161
-  0x1191b		4889f9			MOVQ DI, CX		
-  0x1191e		4c89e3			MOVQ R12, BX		
-  0x11921		0f1f440000		NOPL 0(AX)(AX*1)	
-	goto fail
-  0x11926		e9c0faffff		JMP 0x113eb		
-				i += sz
-  0x1192b		48899c24e0000000	MOVQ BX, 0xe0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11933		4929d8			SUBQ BX, R8		
-  0x11936		4c89c1			MOVQ R8, CX		
-  0x11939		49f7d8			NEGQ R8			
-  0x1193c		49c1f83f		SARQ $0x3f, R8		
-  0x11940		4921d8			ANDQ BX, R8		
-  0x11943		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11947		48891424		MOVQ DX, 0(SP)		
-  0x1194b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11950		e800000000		CALL 0x11955		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11955		448b5c2410		MOVL 0x10(SP), R11	
-  0x1195a		488b4c2418		MOVQ 0x18(SP), CX	
-	goto inst161
-  0x1195f		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-		if len(r[si:]) != 0 {
-  0x11967		488b942420050000	MOVQ 0x520(SP), DX	
-			i += sz
-  0x1196f		488b9c24e0000000	MOVQ 0xe0(SP), BX	
-	goto inst161
-  0x11977		488bbc2418050000	MOVQ 0x518(SP), DI	
-	if i >= 0 && i < len(r) {
-  0x1197f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11987		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1198f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x11995		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1199d		e936f8ffff		JMP 0x111d8		
-				goto inst148
-  0x119a2		4989db			MOVQ BX, R11		
-	goto inst161
-  0x119a5		4889f9			MOVQ DI, CX		
-  0x119a8		4c89e3			MOVQ R12, BX		
-			goto fail
-  0x119ab		e93bfaffff		JMP 0x113eb		
-				goto inst148
-  0x119b0		4989db			MOVQ BX, R11		
-	goto inst161
-  0x119b3		4c89e3			MOVQ R12, BX		
-	goto fail
-  0x119b6		e930faffff		JMP 0x113eb		
-		c, i = bt[n].c, bt[n].i
-  0x119bb		48899c24d8000000	MOVQ BX, 0xd8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x119c3		4929d8			SUBQ BX, R8		
-  0x119c6		4c89c1			MOVQ R8, CX		
-  0x119c9		49f7d8			NEGQ R8			
-  0x119cc		49c1f83f		SARQ $0x3f, R8		
-  0x119d0		4921d8			ANDQ BX, R8		
-  0x119d3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x119d7		48891424		MOVQ DX, 0(SP)		
-  0x119db		48894c2408		MOVQ CX, 0x8(SP)	
-  0x119e0		e800000000		CALL 0x119e5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x119e5		448b5c2410		MOVL 0x10(SP), R11	
-  0x119ea		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x119ef		488b8424801e0000	MOVQ 0x1e80(SP), AX	
-  0x119f7		488b8c2418050000	MOVQ 0x518(SP), CX	
-		if len(r[si:]) != 0 {
-  0x119ff		488b942420050000	MOVQ 0x520(SP), DX	
-				goto inst148
-  0x11a07		488b9c24d8000000	MOVQ 0xd8(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0x11a0f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11a17		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x11a1f		41ba11000000		MOVL $0x11, R10		
-	goto inst161
-  0x11a25		4c8ba42408050000	MOVQ 0x508(SP), R12	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11a2d		e906f7ffff		JMP 0x11138		
-	case 179:
-  0x11a32		4981fdb3000000		CMPQ $0xb3, R13		
-  0x11a39		0f8539180000		JNE 0x13278		
-		c, i = bt[n].c, bt[n].i
-  0x11a3f		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
-  0x11a44		4c89ac2408050000	MOVQ R13, 0x508(SP)		
-  0x11a4c		4a8d3418		LEAQ 0(AX)(R11*1), SI		
-  0x11a50		488db648ffffff		LEAQ 0xffffff48(SI), SI		
-  0x11a57		488dbc2428050000	LEAQ 0x528(SP), DI		
-  0x11a5f		0f1f8000000000		NOPL 0(AX)			
-  0x11a66		48896c24f0		MOVQ BP, -0x10(SP)		
-  0x11a6b		488d6c24f0		LEAQ -0x10(SP), BP		
-  0x11a70		e800000000		CALL 0x11a75			[1:5]R_CALL:runtime.duffcopy+756	
-  0x11a75		488b6d00		MOVQ 0(BP), BP			
-	c[18] = i
-  0x11a79		4c89ac24b8050000	MOVQ R13, 0x5b8(SP)	
-	bt = append(bt, state{c, i, 177, 0})
-  0x11a81		48c784248006000000000000	MOVQ $0x0, 0x680(SP)		
-  0x11a8d		488dbc2488060000		LEAQ 0x688(SP), DI		
-  0x11a95		0f57c0				XORPS X0, X0			
-  0x11a98		488d7ff0			LEAQ -0x10(DI), DI		
-  0x11a9c		660f1f840000000000		NOPW 0(AX)(AX*1)		
-  0x11aa5		90				NOPL				
-  0x11aa6		48896c24f0			MOVQ BP, -0x10(SP)		
-  0x11aab		488d6c24f0			LEAQ -0x10(SP), BP		
-  0x11ab0		e800000000			CALL 0x11ab5			[1:5]R_CALL:runtime.duffzero+250	
-  0x11ab5		488b6d00			MOVQ 0(BP), BP			
-  0x11ab9		488dbc2480060000		LEAQ 0x680(SP), DI		
-  0x11ac1		488db42428050000		LEAQ 0x528(SP), SI		
-  0x11ac9		48896c24f0			MOVQ BP, -0x10(SP)		
-  0x11ace		488d6c24f0			LEAQ -0x10(SP), BP		
-  0x11ad3		e800000000			CALL 0x11ad8			[1:5]R_CALL:runtime.duffcopy+756	
-  0x11ad8		488b6d00			MOVQ 0(BP), BP			
-  0x11adc		4c89ac2420070000		MOVQ R13, 0x720(SP)		
-  0x11ae4		48c7842428070000b1000000	MOVQ $0xb1, 0x728(SP)		
-  0x11af0		48c784243007000000000000	MOVQ $0x0, 0x730(SP)		
-  0x11afc		4839d9				CMPQ BX, CX			
-  0x11aff		0f827d060000			JB 0x12182			
-  0x11b05		4c8ba42480060000		MOVQ 0x680(SP), R12		
-  0x11b0d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
-  0x11b15		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
-  0x11b19		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
-  0x11b20		488db42488060000		LEAQ 0x688(SP), SI		
-  0x11b28		48896c24f0			MOVQ BP, -0x10(SP)		
-  0x11b2d		488d6c24f0			LEAQ -0x10(SP), BP		
-  0x11b32		e800000000			CALL 0x11b37			[1:5]R_CALL:runtime.duffcopy+742	
-  0x11b37		488b6d00			MOVQ 0(BP), BP			
-	if i >= 0 && i < len(r) {
-  0x11b3b		4d85ed			TESTQ R13, R13		
-  0x11b3e		0f8cc7050000		JL 0x1210b		
-  0x11b44		6690			NOPW			
-  0x11b46		4d39c5			CMPQ R8, R13		
-  0x11b49		0f8dbc050000		JGE 0x1210b		
-	bt = append(bt, state{c, i, 177, 0})
-  0x11b4f		48898424401e0000	MOVQ AX, 0x1e40(SP)	
-  0x11b57		48899c24d0000000	MOVQ BX, 0xd0(SP)	
-  0x11b5f		48898c24c8000000	MOVQ CX, 0xc8(SP)	
-		cr, sz := rune(r[i]), 1
-  0x11b67		470fb61c29		MOVZX 0(R9)(R13*1), R11	
-		if cr >= utf8.RuneSelf {
-  0x11b6c		4181fb80000000		CMPL $0x80, R11		
-  0x11b73		0f8d9a050000		JGE 0x12113		
-  0x11b79		be01000000		MOVL $0x1, SI		
-  0x11b7e		0f1f840000000000	NOPL 0(AX)(AX*1)	
-		if false || cr == 97 {
-  0x11b86		4183fb61		CMPL $0x61, R11		
-  0x11b8a		0f857b050000		JNE 0x1210b		
-			i += sz
-  0x11b90		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
-	if i >= 0 && i < len(r) {
-  0x11b94		4d85db			TESTQ R11, R11		
-  0x11b97		0f8c4ef8ffff		JL 0x113eb		
-  0x11b9d		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x11ba6		4d39c3			CMPQ R8, R11		
-  0x11ba9		0f8d3cf8ffff		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x11baf		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x11bb4		4181fc80000000		CMPL $0x80, R12		
-  0x11bbb		0f8dcf040000		JGE 0x12090		
-  0x11bc1		be01000000		MOVL $0x1, SI		
-		if false || cr == 103 {
-  0x11bc6		4183fc67		CMPL $0x67, R12		
-  0x11bca		0f851bf8ffff		JNE 0x113eb		
-			i += sz
-  0x11bd0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x11bd3		4d85db			TESTQ R11, R11		
-  0x11bd6		0f8c0ff8ffff		JL 0x113eb		
-  0x11bdc		4d39c3			CMPQ R8, R11		
-  0x11bdf		0f8d06f8ffff		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x11be5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x11bea		4181fc80000000		CMPL $0x80, R12		
-  0x11bf1		0f8d22040000		JGE 0x12019		
-  0x11bf7		be01000000		MOVL $0x1, SI		
-  0x11bfc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x11c05		90			NOPL			
-		if false || cr == 103 {
-  0x11c06		4183fc67		CMPL $0x67, R12		
-  0x11c0a		0f85dbf7ffff		JNE 0x113eb		
-			i += sz
-  0x11c10		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x11c13		4d85db			TESTQ R11, R11		
-  0x11c16		0f8ccff7ffff		JL 0x113eb		
-  0x11c1c		4d39c3			CMPQ R8, R11		
-  0x11c1f		0f8dc6f7ffff		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x11c25		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x11c2a		4181fc80000000		CMPL $0x80, R12		
-  0x11c31		0f8d6b030000		JGE 0x11fa2		
-  0x11c37		be01000000		MOVL $0x1, SI		
-  0x11c3c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x11c45		90			NOPL			
-		if false || cr == 103 {
-  0x11c46		4183fc67		CMPL $0x67, R12		
-  0x11c4a		0f859bf7ffff		JNE 0x113eb		
-			i += sz
-  0x11c50		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x11c53		4d85db			TESTQ R11, R11		
-  0x11c56		0f8c8ff7ffff		JL 0x113eb		
-  0x11c5c		4d39c3			CMPQ R8, R11		
-  0x11c5f		0f8d86f7ffff		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x11c65		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x11c6a		4181fc80000000		CMPL $0x80, R12		
-  0x11c71		0f8db4020000		JGE 0x11f2b		
-  0x11c77		be01000000		MOVL $0x1, SI		
-  0x11c7c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x11c85		90			NOPL			
-		if false || cr == 116 {
-  0x11c86		4183fc74		CMPL $0x74, R12		
-  0x11c8a		0f855bf7ffff		JNE 0x113eb		
-			i += sz
-  0x11c90		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x11c93		4d85db			TESTQ R11, R11		
-  0x11c96		0f8c4ff7ffff		JL 0x113eb		
-  0x11c9c		4d39c3			CMPQ R8, R11		
-  0x11c9f		0f8d46f7ffff		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x11ca5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x11caa		4181fc80000000		CMPL $0x80, R12		
-  0x11cb1		0f8df8010000		JGE 0x11eaf		
-  0x11cb7		be01000000		MOVL $0x1, SI		
-  0x11cbc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x11cc5		90			NOPL			
-		if false || cr == 97 {
-  0x11cc6		4183fc61		CMPL $0x61, R12		
-  0x11cca		0f851bf7ffff		JNE 0x113eb		
-			i += sz
-  0x11cd0		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x11cd3		4d85db			TESTQ R11, R11		
-  0x11cd6		0f8c0ff7ffff		JL 0x113eb		
-  0x11cdc		4d39c3			CMPQ R8, R11		
-  0x11cdf		0f8d06f7ffff		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x11ce5		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x11cea		4181fc80000000		CMPL $0x80, R12		
-  0x11cf1		0f8d41010000		JGE 0x11e38		
-  0x11cf7		be01000000		MOVL $0x1, SI		
-  0x11cfc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x11d05		90			NOPL			
-		if false || cr == 97 {
-  0x11d06		4183fc61		CMPL $0x61, R12		
-  0x11d0a		0f85dbf6ffff		JNE 0x113eb		
-			i += sz
-  0x11d10		4901f3			ADDQ SI, R11		
-	if i >= 0 && i < len(r) {
-  0x11d13		4d85db			TESTQ R11, R11		
-  0x11d16		0f8ccff6ffff		JL 0x113eb		
-  0x11d1c		4d39c3			CMPQ R8, R11		
-  0x11d1f		0f8dc6f6ffff		JGE 0x113eb		
-		cr, sz := rune(r[i]), 1
-  0x11d25		470fb62419		MOVZX 0(R9)(R11*1), R12	
-		if cr >= utf8.RuneSelf {
-  0x11d2a		4181fc80000000		CMPL $0x80, R12		
-  0x11d31		0f8d87000000		JGE 0x11dbe		
-  0x11d37		be01000000		MOVL $0x1, SI		
-  0x11d3c		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x11d45		90			NOPL			
-		if cr < 128 {
-  0x11d46		4181fc80000000		CMPL $0x80, R12		
-  0x11d4d		0f8d98f6ffff		JGE 0x113eb		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x11d53		4589e5			MOVL R12, R13			
-  0x11d56		41c1fc1f		SARL $0x1f, R12			
-  0x11d5a		41c1ec1d		SHRL $0x1d, R12			
-  0x11d5e		4501ec			ADDL R13, R12			
-  0x11d61		41c1fc03		SARL $0x3, R12			
-  0x11d65		4d63f4			MOVSXD R12, R14			
-  0x11d68		4983fe10		CMPQ $0x10, R14			
-  0x11d6c		0f8339150000		JAE 0x132ab			
-  0x11d72		4c8d3d00000000		LEAQ 0(IP), R15			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
-  0x11d79		470fb6343e		MOVZX 0(R14)(R15*1), R14	
-  0x11d7e		41c1e403		SHLL $0x3, R12			
-  0x11d82		4529e5			SUBL R12, R13			
-  0x11d85		90			NOPL				
-  0x11d86		4585ed			TESTL R13, R13			
-  0x11d89		0f8c17150000		JL 0x132a6			
-  0x11d8f		4183fd20		CMPL $0x20, R13			
-  0x11d93		4519e4			SBBL R12, R12			
-	bt = append(bt, state{c, i, 177, 0})
-  0x11d96		4889cf			MOVQ CX, DI		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x11d99		4489e9			MOVL R13, CX		
-  0x11d9c		41bf01000000		MOVL $0x1, R15		
-  0x11da2		41d3e7			SHLL CL, R15		
-  0x11da5		4521e7			ANDL R12, R15		
-  0x11da8		4584f7			TESTL R14, R15		
-  0x11dab		7508			JNE 0x11db5		
-	goto inst161
-  0x11dad		4889f9			MOVQ DI, CX		
-			goto fail
-  0x11db0		e936f6ffff		JMP 0x113eb		
-				i += sz
-  0x11db5		4a8d1c1e		LEAQ 0(SI)(R11*1), BX	
-				goto inst178
-  0x11db9		e99ff5ffff		JMP 0x1135d		
-			i += sz
-  0x11dbe		4c899c24c0000000	MOVQ R11, 0xc0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11dc6		4d29d8			SUBQ R11, R8		
-  0x11dc9		4c89c1			MOVQ R8, CX		
-  0x11dcc		49f7d8			NEGQ R8			
-  0x11dcf		49c1f83f		SARQ $0x3f, R8		
-  0x11dd3		4d21d8			ANDQ R11, R8		
-  0x11dd6		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11dda		48891424		MOVQ DX, 0(SP)		
-  0x11dde		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11de3		0f1f00			NOPL 0(AX)		
-  0x11de6		e800000000		CALL 0x11deb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11deb		448b642410		MOVL 0x10(SP), R12	
-  0x11df0		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x11df5		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x11dfd		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x11e05		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x11e0d		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0x11e15		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11e1d		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x11e25		41ba11000000		MOVL $0x11, R10		
-				goto inst148
-  0x11e2b		4c8b9c24c0000000	MOVQ 0xc0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11e33		e90effffff		JMP 0x11d46		
-			i += sz
-  0x11e38		4c899c24b8000000	MOVQ R11, 0xb8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11e40		4d29d8			SUBQ R11, R8		
-  0x11e43		4c89c1			MOVQ R8, CX		
-  0x11e46		49f7d8			NEGQ R8			
-  0x11e49		49c1f83f		SARQ $0x3f, R8		
-  0x11e4d		4d21d8			ANDQ R11, R8		
-  0x11e50		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11e54		48891424		MOVQ DX, 0(SP)		
-  0x11e58		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11e5d		e800000000		CALL 0x11e62		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11e62		448b642410		MOVL 0x10(SP), R12	
-  0x11e67		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x11e6c		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x11e74		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x11e7c		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x11e84		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x11e8c		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11e94		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x11e9c		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x11ea2		4c8b9c24b8000000	MOVQ 0xb8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11eaa		e957feffff		JMP 0x11d06		
-			i += sz
-  0x11eaf		4c899c24b0000000	MOVQ R11, 0xb0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11eb7		4d29d8			SUBQ R11, R8		
-  0x11eba		4c89c1			MOVQ R8, CX		
-  0x11ebd		49f7d8			NEGQ R8			
-  0x11ec0		49c1f83f		SARQ $0x3f, R8		
-  0x11ec4		4d21d8			ANDQ R11, R8		
-  0x11ec7		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11ecb		48891424		MOVQ DX, 0(SP)		
-  0x11ecf		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11ed4		e800000000		CALL 0x11ed9		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11ed9		448b642410		MOVL 0x10(SP), R12	
-  0x11ede		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x11ee3		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x11eeb		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x11ef3		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x11efb		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x11f03		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11f0b		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x11f13		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x11f19		4c8b9c24b0000000	MOVQ 0xb0(SP), R11	
-  0x11f21		0f1f440000		NOPL 0(AX)(AX*1)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11f26		e99bfdffff		JMP 0x11cc6		
-			i += sz
-  0x11f2b		4c899c24a8000000	MOVQ R11, 0xa8(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11f33		4d29d8			SUBQ R11, R8		
-  0x11f36		4c89c1			MOVQ R8, CX		
-  0x11f39		49f7d8			NEGQ R8			
-  0x11f3c		49c1f83f		SARQ $0x3f, R8		
-  0x11f40		4d21d8			ANDQ R11, R8		
-  0x11f43		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11f47		48891424		MOVQ DX, 0(SP)		
-  0x11f4b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11f50		e800000000		CALL 0x11f55		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11f55		448b642410		MOVL 0x10(SP), R12	
-  0x11f5a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x11f5f		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x11f67		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x11f6f		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x11f77		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x11f7f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11f87		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x11f8f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x11f95		4c8b9c24a8000000	MOVQ 0xa8(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11f9d		e9e4fcffff		JMP 0x11c86		
-			i += sz
-  0x11fa2		4c899c24a0000000	MOVQ R11, 0xa0(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x11faa		4d29d8			SUBQ R11, R8		
-  0x11fad		4c89c1			MOVQ R8, CX		
-  0x11fb0		49f7d8			NEGQ R8			
-  0x11fb3		49c1f83f		SARQ $0x3f, R8		
-  0x11fb7		4d21d8			ANDQ R11, R8		
-  0x11fba		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x11fbe		48891424		MOVQ DX, 0(SP)		
-  0x11fc2		48894c2408		MOVQ CX, 0x8(SP)	
-  0x11fc7		e800000000		CALL 0x11fcc		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x11fcc		448b642410		MOVL 0x10(SP), R12	
-  0x11fd1		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x11fd6		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x11fde		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x11fe6		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x11fee		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x11ff6		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x11ffe		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12006		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x1200c		4c8b9c24a0000000	MOVQ 0xa0(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12014		e92dfcffff		JMP 0x11c46		
-			i += sz
-  0x12019		4c899c2498000000	MOVQ R11, 0x98(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12021		4d29d8			SUBQ R11, R8		
-  0x12024		4c89c1			MOVQ R8, CX		
-  0x12027		49f7d8			NEGQ R8			
-  0x1202a		49c1f83f		SARQ $0x3f, R8		
-  0x1202e		4d21d8			ANDQ R11, R8		
-  0x12031		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12035		48891424		MOVQ DX, 0(SP)		
-  0x12039		48894c2408		MOVQ CX, 0x8(SP)	
-  0x1203e		e800000000		CALL 0x12043		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12043		448b642410		MOVL 0x10(SP), R12	
-  0x12048		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x1204d		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x12055		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x1205d		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12065		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x1206d		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12075		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1207d		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12083		4c8b9c2498000000	MOVQ 0x98(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1208b		e976fbffff		JMP 0x11c06		
-			i += sz
-  0x12090		4c899c2490000000	MOVQ R11, 0x90(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12098		4d29d8			SUBQ R11, R8		
-  0x1209b		4c89c1			MOVQ R8, CX		
-  0x1209e		49f7d8			NEGQ R8			
-  0x120a1		49c1f83f		SARQ $0x3f, R8		
-  0x120a5		4d21d8			ANDQ R11, R8		
-  0x120a8		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x120ac		48891424		MOVQ DX, 0(SP)		
-  0x120b0		48894c2408		MOVQ CX, 0x8(SP)	
-  0x120b5		e800000000		CALL 0x120ba		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x120ba		448b642410		MOVL 0x10(SP), R12	
-  0x120bf		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x120c4		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x120cc		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x120d4		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x120dc		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x120e4		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x120ec		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x120f4		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x120fa		4c8b9c2490000000	MOVQ 0x90(SP), R11	
-  0x12102		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12106		e9bbfaffff		JMP 0x11bc6		
-				goto inst148
-  0x1210b		4d89eb			MOVQ R13, R11		
-	goto fail
-  0x1210e		e9d8f2ffff		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12113		4d29e8			SUBQ R13, R8		
-  0x12116		4c89c1			MOVQ R8, CX		
-  0x12119		49f7d8			NEGQ R8			
-  0x1211c		49c1f83f		SARQ $0x3f, R8		
-  0x12120		4d21e8			ANDQ R13, R8		
-  0x12123		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12127		48891424		MOVQ DX, 0(SP)		
-  0x1212b		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12130		e800000000		CALL 0x12135		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12135		448b5c2410		MOVL 0x10(SP), R11	
-  0x1213a		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x1213f		488b8424401e0000	MOVQ 0x1e40(SP), AX	
-  0x12147		488b8c24c8000000	MOVQ 0xc8(SP), CX	
-		if len(r[si:]) != 0 {
-  0x1214f		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12157		488b9c24d0000000	MOVQ 0xd0(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x1215f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12167		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1216f		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12175		4c8bac2408050000	MOVQ 0x508(SP), R13	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x1217d		e904faffff		JMP 0x11b86		
-	bt = append(bt, state{c, i, 177, 0})
-  0x12182		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x12189		48891424		MOVQ DX, 0(SP)		
-  0x1218d		4889442408		MOVQ AX, 0x8(SP)	
-  0x12192		4c89642410		MOVQ R12, 0x10(SP)	
-  0x12197		48894c2418		MOVQ CX, 0x18(SP)	
-  0x1219c		48895c2420		MOVQ BX, 0x20(SP)	
-  0x121a1		0f1f440000		NOPL 0(AX)(AX*1)	
-  0x121a6		e800000000		CALL 0x121ab		[1:5]R_CALL:runtime.growslice	
-  0x121ab		488b442428		MOVQ 0x28(SP), AX	
-  0x121b0		488b4c2430		MOVQ 0x30(SP), CX	
-  0x121b5		488b542438		MOVQ 0x38(SP), DX	
-  0x121ba		488d5901		LEAQ 0x1(CX), BX	
-	if i >= 0 && i < len(r) {
-  0x121be		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x121c6		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x121ce		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 177, 0})
-  0x121d4		4c8b9c2410050000	MOVQ 0x510(SP), R11	
-	if i >= 0 && i < len(r) {
-  0x121dc		4c8bac2408050000	MOVQ 0x508(SP), R13	
-	bt = append(bt, state{c, i, 177, 0})
-  0x121e4		4889d1			MOVQ DX, CX		
-		if len(r[si:]) != 0 {
-  0x121e7		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 177, 0})
-  0x121ef		e911f9ffff		JMP 0x11b05		
-		if len(r[si:]) != 0 {
-  0x121f4		4939d0			CMPQ DX, R8		
-  0x121f7		0f8270100000		JB 0x1326d		
-  0x121fd		4c89c1			MOVQ R8, CX		
-  0x12200		4929d0			SUBQ DX, R8		
-  0x12203		4c89c3			MOVQ R8, BX		
-  0x12206		49f7d8			NEGQ R8			
-  0x12209		49c1f83f		SARQ $0x3f, R8		
-  0x1220d		4921d0			ANDQ DX, R8		
-  0x12210		4d01c8			ADDQ R9, R8		
-  0x12213		4885db			TESTQ BX, BX		
-  0x12216		0f84a5090000		JE 0x12bc1		
-  0x1221c		4839d1			CMPQ DX, CX		
-			cr, sz := rune(r[i]), 1
-  0x1221f		0f8640100000		JBE 0x13265		
-  0x12225		460fb61c0a		MOVZX 0(DX)(R9*1), R11	
-			if cr >= utf8.RuneSelf {
-  0x1222a		4181fb80000000		CMPL $0x80, R11		
-  0x12231		0f8d54090000		JGE 0x12b8b		
-  0x12237		b801000000		MOVL $0x1, AX		
-			si += sz
-  0x1223c		4801d0			ADDQ DX, AX		
-func Match(r string) ([10]string, bool) {
-  0x1223f		0f57c0			XORPS X0, X0		
+  0xa376		64488b0c2500000000	MOVQ FS:0, CX		[5:9]R_TLS_LE		
+  0xa37f		488b7110		MOVQ 0x10(CX), SI	
+  0xa383		4881fedefaffff		CMPQ $-0x522, SI	
+  0xa38a		0f84a69a0000		JE 0x13e36		
+  0xa390		488d8424a0030000	LEAQ 0x3a0(SP), AX	
+  0xa398		4829f0			SUBQ SI, AX		
+  0xa39b		483d98230000		CMPQ $0x2398, AX	
+  0xa3a1		0f868f9a0000		JBE 0x13e36		
+  0xa3a7		4881ec78200000		SUBQ $0x2078, SP	
+  0xa3ae		4889ac2470200000	MOVQ BP, 0x2070(SP)	
+  0xa3b6		488dac2470200000	LEAQ 0x2070(SP), BP	
+  0xa3be		488dbc2490200000	LEAQ 0x2090(SP), DI	
+  0xa3c6		0f57c0			XORPS X0, X0		
+  0xa3c9		488d7fe0		LEAQ -0x20(DI), DI	
+  0xa3cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xa3d6		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xa3db		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xa3e0		e800000000		CALL 0xa3e5		[1:5]R_CALL:runtime.duffzero+254	
+  0xa3e5		488b6d00		MOVQ 0(BP), BP		
+  0xa3e9		31c0			XORL AX, AX		
 	var _bt [17]state // static storage for backtracking state
-  0x12242		48c784240012000000000000	MOVQ $0x0, 0x1200(SP)	
-  0x1224e		488dbc2408120000		LEAQ 0x1208(SP), DI	
-  0x12256		b986010000			MOVL $0x186, CX		
+  0xa3eb		48c78424a812000000000000	MOVQ $0x0, 0x12a8(SP)	
+  0xa3f7		488dbc24b0120000		LEAQ 0x12b0(SP), DI	
+  0xa3ff		b986010000			MOVL $0x186, CX		
 			goto restart
-  0x1225b		4889c2			MOVQ AX, DX		
+  0xa404		4889c2			MOVQ AX, DX		
 	var _bt [17]state // static storage for backtracking state
-  0x1225e		31c0			XORL AX, AX		
-  0x12260		f348ab			REP; STOSQ AX, ES:0(DI)	
+  0xa407		31c0			XORL AX, AX		
+  0xa409		f348ab			REP; STOSQ AX, ES:0(DI)	
 	var c [20]int     // captures
-  0x12263		488dbc2428050000	LEAQ 0x528(SP), DI	
-  0x1226b		488d7fe0		LEAQ -0x20(DI), DI	
-  0x1226f		48896c24f0		MOVQ BP, -0x10(SP)	
-  0x12274		488d6c24f0		LEAQ -0x10(SP), BP	
-  0x12279		e800000000		CALL 0x1227e		[1:5]R_CALL:runtime.duffzero+254	
-  0x1227e		488b6d00		MOVQ 0(BP), BP		
-	c[0] = i          // start of match
-  0x12282		4889942428050000	MOVQ DX, 0x528(SP)	
+  0xa40c		488dbc2430050000	LEAQ 0x530(SP), DI	
+  0xa414		488d7fe0		LEAQ -0x20(DI), DI	
+  0xa418		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xa41d		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xa422		e800000000		CALL 0xa427		[1:5]R_CALL:runtime.duffzero+254	
+  0xa427		488b6d00		MOVQ 0(BP), BP		
+	var bc [20]int    // captures for the longest match so far
+  0xa42b		488dbc24d0050000	LEAQ 0x5d0(SP), DI	
+  0xa433		488d7fe0		LEAQ -0x20(DI), DI	
+  0xa437		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xa43c		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xa441		e800000000		CALL 0xa446		[1:5]R_CALL:runtime.duffzero+254	
+  0xa446		488b6d00		MOVQ 0(BP), BP		
+	c[0] = i     // start of match
+  0xa44a		4889942430050000	MOVQ DX, 0x530(SP)	
 	bt = append(bt, state{c, i, 179, 0})
-  0x1228a		48c78424c805000000000000	MOVQ $0x0, 0x5c8(SP)	
-  0x12296		488dbc24d0050000		LEAQ 0x5d0(SP), DI	
-  0x1229e		488d7ff0			LEAQ -0x10(DI), DI	
-  0x122a2		0f1f4000			NOPL 0(AX)		
-  0x122a6		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x122ab		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x122b0		e800000000			CALL 0x122b5		[1:5]R_CALL:runtime.duffzero+250	
-  0x122b5		488b6d00			MOVQ 0(BP), BP		
-  0x122b9		488dbc24c8050000		LEAQ 0x5c8(SP), DI	
-  0x122c1		488db42428050000		LEAQ 0x528(SP), SI	
-  0x122c9		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x122ce		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x122d3		e800000000			CALL 0x122d8		[1:5]R_CALL:runtime.duffcopy+756	
-  0x122d8		488b6d00			MOVQ 0(BP), BP		
-  0x122dc		4889942468060000		MOVQ DX, 0x668(SP)	
-  0x122e4		48c7842470060000b3000000	MOVQ $0xb3, 0x670(SP)	
-  0x122f0		48c784247806000000000000	MOVQ $0x0, 0x678(SP)	
-  0x122fc		488b9c24c8050000		MOVQ 0x5c8(SP), BX	
-  0x12304		48899c2400120000		MOVQ BX, 0x1200(SP)	
-  0x1230c		488dbc2408120000		LEAQ 0x1208(SP), DI	
-  0x12314		488db424d0050000		LEAQ 0x5d0(SP), SI	
-  0x1231c		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x12325		90				NOPL			
-  0x12326		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1232b		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12330		e800000000			CALL 0x12335		[1:5]R_CALL:runtime.duffcopy+742	
-  0x12335		488b6d00			MOVQ 0(BP), BP		
+  0xa452		48c784247006000000000000	MOVQ $0x0, 0x670(SP)	
+  0xa45e		488dbc2478060000		LEAQ 0x678(SP), DI	
+  0xa466		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa46a		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa473		0f1f00				NOPL 0(AX)		
+  0xa476		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa47b		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa480		e800000000			CALL 0xa485		[1:5]R_CALL:runtime.duffzero+250	
+  0xa485		488b6d00			MOVQ 0(BP), BP		
+  0xa489		488dbc2470060000		LEAQ 0x670(SP), DI	
+  0xa491		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa499		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa49e		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa4a3		e800000000			CALL 0xa4a8		[1:5]R_CALL:runtime.duffcopy+756	
+  0xa4a8		488b6d00			MOVQ 0(BP), BP		
+  0xa4ac		4889942410070000		MOVQ DX, 0x710(SP)	
+  0xa4b4		48c7842418070000b3000000	MOVQ $0xb3, 0x718(SP)	
+  0xa4c0		48c784242007000000000000	MOVQ $0x0, 0x720(SP)	
+  0xa4cc		488b9c2470060000		MOVQ 0x670(SP), BX	
+  0xa4d4		48899c24a8120000		MOVQ BX, 0x12a8(SP)	
+  0xa4dc		488dbc24b0120000		LEAQ 0x12b0(SP), DI	
+  0xa4e4		488db42478060000		LEAQ 0x678(SP), SI	
+  0xa4ec		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa4f5		90				NOPL			
+  0xa4f6		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa4fb		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa500		e800000000			CALL 0xa505		[1:5]R_CALL:runtime.duffcopy+742	
+  0xa505		488b6d00			MOVQ 0(BP), BP		
 	bt = append(bt, state{c, i, 159, 0})
-  0x12339		48c784243807000000000000	MOVQ $0x0, 0x738(SP)	
-  0x12345		488dbc2440070000		LEAQ 0x740(SP), DI	
-  0x1234d		0f57c0				XORPS X0, X0		
-  0x12350		488d7ff0			LEAQ -0x10(DI), DI	
-  0x12354		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x1235d		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x12366		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1236b		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12370		e800000000			CALL 0x12375		[1:5]R_CALL:runtime.duffzero+250	
-  0x12375		488b6d00			MOVQ 0(BP), BP		
-  0x12379		488dbc2438070000		LEAQ 0x738(SP), DI	
-  0x12381		488db42428050000		LEAQ 0x528(SP), SI	
-  0x12389		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1238e		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12393		e800000000			CALL 0x12398		[1:5]R_CALL:runtime.duffcopy+756	
-  0x12398		488b6d00			MOVQ 0(BP), BP		
-  0x1239c		48899424d8070000		MOVQ DX, 0x7d8(SP)	
-  0x123a4		48c78424e00700009f000000	MOVQ $0x9f, 0x7e0(SP)	
-  0x123b0		48c78424e807000000000000	MOVQ $0x0, 0x7e8(SP)	
-  0x123bc		488b9c2438070000		MOVQ 0x738(SP), BX	
-  0x123c4		48899c24b8120000		MOVQ BX, 0x12b8(SP)	
-  0x123cc		488dbc24c0120000		LEAQ 0x12c0(SP), DI	
-  0x123d4		488db42440070000		LEAQ 0x740(SP), SI	
-  0x123dc		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x123e5		90				NOPL			
-  0x123e6		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x123eb		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x123f0		e800000000			CALL 0x123f5		[1:5]R_CALL:runtime.duffcopy+742	
-  0x123f5		488b6d00			MOVQ 0(BP), BP		
+  0xa509		48c78424e007000000000000	MOVQ $0x0, 0x7e0(SP)	
+  0xa515		488dbc24e8070000		LEAQ 0x7e8(SP), DI	
+  0xa51d		0f57c0				XORPS X0, X0		
+  0xa520		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa524		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa52d		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa536		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa53b		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa540		e800000000			CALL 0xa545		[1:5]R_CALL:runtime.duffzero+250	
+  0xa545		488b6d00			MOVQ 0(BP), BP		
+  0xa549		488dbc24e0070000		LEAQ 0x7e0(SP), DI	
+  0xa551		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa559		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa55e		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa563		e800000000			CALL 0xa568		[1:5]R_CALL:runtime.duffcopy+756	
+  0xa568		488b6d00			MOVQ 0(BP), BP		
+  0xa56c		4889942480080000		MOVQ DX, 0x880(SP)	
+  0xa574		48c78424880800009f000000	MOVQ $0x9f, 0x888(SP)	
+  0xa580		48c784249008000000000000	MOVQ $0x0, 0x890(SP)	
+  0xa58c		488b9c24e0070000		MOVQ 0x7e0(SP), BX	
+  0xa594		48899c2460130000		MOVQ BX, 0x1360(SP)	
+  0xa59c		488dbc2468130000		LEAQ 0x1368(SP), DI	
+  0xa5a4		488db424e8070000		LEAQ 0x7e8(SP), SI	
+  0xa5ac		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa5b5		90				NOPL			
+  0xa5b6		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa5bb		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa5c0		e800000000			CALL 0xa5c5		[1:5]R_CALL:runtime.duffcopy+742	
+  0xa5c5		488b6d00			MOVQ 0(BP), BP		
 	bt = append(bt, state{c, i, 139, 0})
-  0x123f9		48c78424a808000000000000	MOVQ $0x0, 0x8a8(SP)	
-  0x12405		488dbc24b0080000		LEAQ 0x8b0(SP), DI	
-  0x1240d		0f57c0				XORPS X0, X0		
-  0x12410		488d7ff0			LEAQ -0x10(DI), DI	
-  0x12414		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x1241d		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x12426		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1242b		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12430		e800000000			CALL 0x12435		[1:5]R_CALL:runtime.duffzero+250	
-  0x12435		488b6d00			MOVQ 0(BP), BP		
-  0x12439		488dbc24a8080000		LEAQ 0x8a8(SP), DI	
-  0x12441		488db42428050000		LEAQ 0x528(SP), SI	
-  0x12449		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1244e		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12453		e800000000			CALL 0x12458		[1:5]R_CALL:runtime.duffcopy+756	
-  0x12458		488b6d00			MOVQ 0(BP), BP		
-  0x1245c		4889942448090000		MOVQ DX, 0x948(SP)	
-  0x12464		48c78424500900008b000000	MOVQ $0x8b, 0x950(SP)	
-  0x12470		48c784245809000000000000	MOVQ $0x0, 0x958(SP)	
+  0xa5c9		48c784245009000000000000	MOVQ $0x0, 0x950(SP)	
+  0xa5d5		488dbc2458090000		LEAQ 0x958(SP), DI	
+  0xa5dd		0f57c0				XORPS X0, X0		
+  0xa5e0		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa5e4		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa5ed		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa5f6		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa5fb		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa600		e800000000			CALL 0xa605		[1:5]R_CALL:runtime.duffzero+250	
+  0xa605		488b6d00			MOVQ 0(BP), BP		
+  0xa609		488dbc2450090000		LEAQ 0x950(SP), DI	
+  0xa611		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa619		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa61e		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa623		e800000000			CALL 0xa628		[1:5]R_CALL:runtime.duffcopy+756	
+  0xa628		488b6d00			MOVQ 0(BP), BP		
+  0xa62c		48899424f0090000		MOVQ DX, 0x9f0(SP)	
+  0xa634		48c78424f80900008b000000	MOVQ $0x8b, 0x9f8(SP)	
+  0xa640		48c78424000a000000000000	MOVQ $0x0, 0xa00(SP)	
 			goto restart
-  0x1247c		4889942420050000	MOVQ DX, 0x520(SP)	
+  0xa64c		4889942428050000	MOVQ DX, 0x528(SP)	
 	bt = append(bt, state{c, i, 139, 0})
-  0x12484		488b9c24a8080000	MOVQ 0x8a8(SP), BX	
-  0x1248c		4c8d842400120000	LEAQ 0x1200(SP), R8	
-  0x12494		49899870010000		MOVQ BX, 0x170(R8)	
-  0x1249b		bb70010000		MOVL $0x170, BX		
-  0x124a0		4a8d3c03		LEAQ 0(BX)(R8*1), DI	
-  0x124a4		488d7f08		LEAQ 0x8(DI), DI	
-  0x124a8		488db424b0080000	LEAQ 0x8b0(SP), SI	
-  0x124b0		48896c24f0		MOVQ BP, -0x10(SP)	
-  0x124b5		488d6c24f0		LEAQ -0x10(SP), BP	
-  0x124ba		e800000000		CALL 0x124bf		[1:5]R_CALL:runtime.duffcopy+742	
-  0x124bf		488b6d00		MOVQ 0(BP), BP		
+  0xa654		488b9c2450090000	MOVQ 0x950(SP), BX	
+  0xa65c		4c8d8424a8120000	LEAQ 0x12a8(SP), R8	
+  0xa664		49899870010000		MOVQ BX, 0x170(R8)	
+  0xa66b		bb70010000		MOVL $0x170, BX		
+  0xa670		4a8d3c03		LEAQ 0(BX)(R8*1), DI	
+  0xa674		488d7f08		LEAQ 0x8(DI), DI	
+  0xa678		488db42458090000	LEAQ 0x958(SP), SI	
+  0xa680		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xa685		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xa68a		e800000000		CALL 0xa68f		[1:5]R_CALL:runtime.duffcopy+742	
+  0xa68f		488b6d00		MOVQ 0(BP), BP		
 	bt = append(bt, state{c, i, 119, 0})
-  0x124c3		48c78424180a000000000000	MOVQ $0x0, 0xa18(SP)	
-  0x124cf		488dbc24200a0000		LEAQ 0xa20(SP), DI	
-  0x124d7		0f57c0				XORPS X0, X0		
-  0x124da		488d7ff0			LEAQ -0x10(DI), DI	
-  0x124de		0f1f840000000000		NOPL 0(AX)(AX*1)	
-  0x124e6		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x124eb		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x124f0		e800000000			CALL 0x124f5		[1:5]R_CALL:runtime.duffzero+250	
-  0x124f5		488b6d00			MOVQ 0(BP), BP		
-  0x124f9		488dbc24180a0000		LEAQ 0xa18(SP), DI	
-  0x12501		488db42428050000		LEAQ 0x528(SP), SI	
-  0x12509		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1250e		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12513		e800000000			CALL 0x12518		[1:5]R_CALL:runtime.duffcopy+756	
-  0x12518		488b6d00			MOVQ 0(BP), BP		
-  0x1251c		48899424b80a0000		MOVQ DX, 0xab8(SP)	
-  0x12524		48c78424c00a000077000000	MOVQ $0x77, 0xac0(SP)	
-  0x12530		48c78424c80a000000000000	MOVQ $0x0, 0xac8(SP)	
-  0x1253c		bb03000000			MOVL $0x3, BX		
-  0x12541		4c8d4b01			LEAQ 0x1(BX), R9	
-  0x12545		41ba11000000			MOVL $0x11, R10		
-  0x1254b		4d39d1				CMPQ R10, R9		
-  0x1254e		0f87370c0000			JA 0x1318b		
+  0xa693		48c78424c00a000000000000	MOVQ $0x0, 0xac0(SP)	
+  0xa69f		488dbc24c80a0000		LEAQ 0xac8(SP), DI	
+  0xa6a7		0f57c0				XORPS X0, X0		
+  0xa6aa		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa6ae		0f1f840000000000		NOPL 0(AX)(AX*1)	
+  0xa6b6		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa6bb		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa6c0		e800000000			CALL 0xa6c5		[1:5]R_CALL:runtime.duffzero+250	
+  0xa6c5		488b6d00			MOVQ 0(BP), BP		
+  0xa6c9		488dbc24c00a0000		LEAQ 0xac0(SP), DI	
+  0xa6d1		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa6d9		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa6de		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa6e3		e800000000			CALL 0xa6e8		[1:5]R_CALL:runtime.duffcopy+756	
+  0xa6e8		488b6d00			MOVQ 0(BP), BP		
+  0xa6ec		48899424600b0000		MOVQ DX, 0xb60(SP)	
+  0xa6f4		48c78424680b000077000000	MOVQ $0x77, 0xb68(SP)	
+  0xa700		48c78424700b000000000000	MOVQ $0x0, 0xb70(SP)	
+  0xa70c		bb03000000			MOVL $0x3, BX		
+  0xa711		4c8d4b01			LEAQ 0x1(BX), R9	
+  0xa715		41ba11000000			MOVL $0x11, R10		
+  0xa71b		4d39d1				CMPQ R10, R9		
+  0xa71e		0f87d7940000			JA 0x13bfb		
 	bt := _bt[:0]     // backtracking state
-  0x12554		488d842400120000	LEAQ 0x1200(SP), AX	
-  0x1255c		b911000000		MOVL $0x11, CX		
+  0xa724		488d8424a8120000	LEAQ 0x12a8(SP), AX	
+  0xa72c		b911000000		MOVL $0x11, CX		
 	bt = append(bt, state{c, i, 119, 0})
-  0x12561		4c8b8424180a0000	MOVQ 0xa18(SP), R8	
-  0x12569		4869dbb8000000		IMULQ $0xb8, BX, BX	
-  0x12570		4c890418		MOVQ R8, 0(AX)(BX*1)	
-  0x12574		488d3c18		LEAQ 0(AX)(BX*1), DI	
-  0x12578		488d7f08		LEAQ 0x8(DI), DI	
-  0x1257c		488db424200a0000	LEAQ 0xa20(SP), SI	
-  0x12584		6690			NOPW			
-  0x12586		48896c24f0		MOVQ BP, -0x10(SP)	
-  0x1258b		488d6c24f0		LEAQ -0x10(SP), BP	
-  0x12590		e800000000		CALL 0x12595		[1:5]R_CALL:runtime.duffcopy+742	
-  0x12595		488b6d00		MOVQ 0(BP), BP		
+  0xa731		4c8b8424c00a0000	MOVQ 0xac0(SP), R8	
+  0xa739		4869dbb8000000		IMULQ $0xb8, BX, BX	
+  0xa740		4c890418		MOVQ R8, 0(AX)(BX*1)	
+  0xa744		488d3c18		LEAQ 0(AX)(BX*1), DI	
+  0xa748		488d7f08		LEAQ 0x8(DI), DI	
+  0xa74c		488db424c80a0000	LEAQ 0xac8(SP), SI	
+  0xa754		6690			NOPW			
+  0xa756		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xa75b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xa760		e800000000		CALL 0xa765		[1:5]R_CALL:runtime.duffcopy+742	
+  0xa765		488b6d00		MOVQ 0(BP), BP		
 	bt = append(bt, state{c, i, 99, 0})
-  0x12599		48c78424880b000000000000	MOVQ $0x0, 0xb88(SP)	
-  0x125a5		488dbc24900b0000		LEAQ 0xb90(SP), DI	
-  0x125ad		0f57c0				XORPS X0, X0		
-  0x125b0		488d7ff0			LEAQ -0x10(DI), DI	
-  0x125b4		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x125bd		660f1f840000000000		NOPW 0(AX)(AX*1)	
-  0x125c6		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x125cb		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x125d0		e800000000			CALL 0x125d5		[1:5]R_CALL:runtime.duffzero+250	
-  0x125d5		488b6d00			MOVQ 0(BP), BP		
-  0x125d9		488dbc24880b0000		LEAQ 0xb88(SP), DI	
-  0x125e1		488db42428050000		LEAQ 0x528(SP), SI	
-  0x125e9		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x125ee		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x125f3		e800000000			CALL 0x125f8		[1:5]R_CALL:runtime.duffcopy+756	
-  0x125f8		488b6d00			MOVQ 0(BP), BP		
-  0x125fc		48899424280c0000		MOVQ DX, 0xc28(SP)	
-  0x12604		48c78424300c000063000000	MOVQ $0x63, 0xc30(SP)	
-  0x12610		48c78424380c000000000000	MOVQ $0x0, 0xc38(SP)	
-  0x1261c		498d5901			LEAQ 0x1(R9), BX	
-  0x12620		660f1f440000			NOPW 0(AX)(AX*1)	
-  0x12626		4839cb				CMPQ CX, BX		
-  0x12629		0f87fc0a0000			JA 0x1312b		
-  0x1262f		4c8b8424880b0000		MOVQ 0xb88(SP), R8	
-  0x12637		4d69c9b8000000			IMULQ $0xb8, R9, R9	
-  0x1263e		4e890408			MOVQ R8, 0(AX)(R9*1)	
-  0x12642		4a8d3c08			LEAQ 0(AX)(R9*1), DI	
-  0x12646		488d7f08			LEAQ 0x8(DI), DI	
-  0x1264a		488db424900b0000		LEAQ 0xb90(SP), SI	
-  0x12652		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x12657		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x1265c		e800000000			CALL 0x12661		[1:5]R_CALL:runtime.duffcopy+742	
-  0x12661		488b6d00			MOVQ 0(BP), BP		
+  0xa769		48c78424300c000000000000	MOVQ $0x0, 0xc30(SP)	
+  0xa775		488dbc24380c0000		LEAQ 0xc38(SP), DI	
+  0xa77d		0f57c0				XORPS X0, X0		
+  0xa780		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa784		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa78d		660f1f840000000000		NOPW 0(AX)(AX*1)	
+  0xa796		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa79b		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa7a0		e800000000			CALL 0xa7a5		[1:5]R_CALL:runtime.duffzero+250	
+  0xa7a5		488b6d00			MOVQ 0(BP), BP		
+  0xa7a9		488dbc24300c0000		LEAQ 0xc30(SP), DI	
+  0xa7b1		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa7b9		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa7be		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa7c3		e800000000			CALL 0xa7c8		[1:5]R_CALL:runtime.duffcopy+756	
+  0xa7c8		488b6d00			MOVQ 0(BP), BP		
+  0xa7cc		48899424d00c0000		MOVQ DX, 0xcd0(SP)	
+  0xa7d4		48c78424d80c000063000000	MOVQ $0x63, 0xcd8(SP)	
+  0xa7e0		48c78424e00c000000000000	MOVQ $0x0, 0xce0(SP)	
+  0xa7ec		498d5901			LEAQ 0x1(R9), BX	
+  0xa7f0		660f1f440000			NOPW 0(AX)(AX*1)	
+  0xa7f6		4839cb				CMPQ CX, BX		
+  0xa7f9		0f879c930000			JA 0x13b9b		
+  0xa7ff		4c8b8424300c0000		MOVQ 0xc30(SP), R8	
+  0xa807		4d69c9b8000000			IMULQ $0xb8, R9, R9	
+  0xa80e		4e890408			MOVQ R8, 0(AX)(R9*1)	
+  0xa812		4a8d3c08			LEAQ 0(AX)(R9*1), DI	
+  0xa816		488d7f08			LEAQ 0x8(DI), DI	
+  0xa81a		488db424380c0000		LEAQ 0xc38(SP), SI	
+  0xa822		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa827		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa82c		e800000000			CALL 0xa831		[1:5]R_CALL:runtime.duffcopy+742	
+  0xa831		488b6d00			MOVQ 0(BP), BP		
 	bt = append(bt, state{c, i, 79, 0})
-  0x12665		48c78424f80c000000000000	MOVQ $0x0, 0xcf8(SP)	
-  0x12671		488dbc24000d0000		LEAQ 0xd00(SP), DI	
-  0x12679		0f57c0				XORPS X0, X0		
-  0x1267c		488d7ff0			LEAQ -0x10(DI), DI	
-  0x12680		660f1f440000			NOPW 0(AX)(AX*1)	
-  0x12686		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1268b		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12690		e800000000			CALL 0x12695		[1:5]R_CALL:runtime.duffzero+250	
-  0x12695		488b6d00			MOVQ 0(BP), BP		
-  0x12699		488dbc24f80c0000		LEAQ 0xcf8(SP), DI	
-  0x126a1		488db42428050000		LEAQ 0x528(SP), SI	
-  0x126a9		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x126ae		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x126b3		e800000000			CALL 0x126b8		[1:5]R_CALL:runtime.duffcopy+756	
-  0x126b8		488b6d00			MOVQ 0(BP), BP		
-  0x126bc		48899424980d0000		MOVQ DX, 0xd98(SP)	
-  0x126c4		48c78424a00d00004f000000	MOVQ $0x4f, 0xda0(SP)	
-  0x126d0		48c78424a80d000000000000	MOVQ $0x0, 0xda8(SP)	
-  0x126dc		4c8d4301			LEAQ 0x1(BX), R8	
-  0x126e0		660f1f440000			NOPW 0(AX)(AX*1)	
-  0x126e6		4939c8				CMPQ CX, R8		
-  0x126e9		0f87df090000			JA 0x130ce		
-  0x126ef		4c8b8c24f80c0000		MOVQ 0xcf8(SP), R9	
-  0x126f7		4869dbb8000000			IMULQ $0xb8, BX, BX	
-  0x126fe		4c890c18			MOVQ R9, 0(AX)(BX*1)	
-  0x12702		488d3c18			LEAQ 0(AX)(BX*1), DI	
-  0x12706		488d7f08			LEAQ 0x8(DI), DI	
-  0x1270a		488db424000d0000		LEAQ 0xd00(SP), SI	
-  0x12712		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x12717		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x1271c		e800000000			CALL 0x12721		[1:5]R_CALL:runtime.duffcopy+742	
-  0x12721		488b6d00			MOVQ 0(BP), BP		
+  0xa835		48c78424a00d000000000000	MOVQ $0x0, 0xda0(SP)	
+  0xa841		488dbc24a80d0000		LEAQ 0xda8(SP), DI	
+  0xa849		0f57c0				XORPS X0, X0		
+  0xa84c		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa850		660f1f440000			NOPW 0(AX)(AX*1)	
+  0xa856		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa85b		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa860		e800000000			CALL 0xa865		[1:5]R_CALL:runtime.duffzero+250	
+  0xa865		488b6d00			MOVQ 0(BP), BP		
+  0xa869		488dbc24a00d0000		LEAQ 0xda0(SP), DI	
+  0xa871		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa879		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa87e		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa883		e800000000			CALL 0xa888		[1:5]R_CALL:runtime.duffcopy+756	
+  0xa888		488b6d00			MOVQ 0(BP), BP		
+  0xa88c		48899424400e0000		MOVQ DX, 0xe40(SP)	
+  0xa894		48c78424480e00004f000000	MOVQ $0x4f, 0xe48(SP)	
+  0xa8a0		48c78424500e000000000000	MOVQ $0x0, 0xe50(SP)	
+  0xa8ac		4c8d4301			LEAQ 0x1(BX), R8	
+  0xa8b0		660f1f440000			NOPW 0(AX)(AX*1)	
+  0xa8b6		4939c8				CMPQ CX, R8		
+  0xa8b9		0f877c920000			JA 0x13b3b		
+  0xa8bf		4c8b8c24a00d0000		MOVQ 0xda0(SP), R9	
+  0xa8c7		4869dbb8000000			IMULQ $0xb8, BX, BX	
+  0xa8ce		4c890c18			MOVQ R9, 0(AX)(BX*1)	
+  0xa8d2		488d3c18			LEAQ 0(AX)(BX*1), DI	
+  0xa8d6		488d7f08			LEAQ 0x8(DI), DI	
+  0xa8da		488db424a80d0000		LEAQ 0xda8(SP), SI	
+  0xa8e2		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa8e7		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa8ec		e800000000			CALL 0xa8f1		[1:5]R_CALL:runtime.duffcopy+742	
+  0xa8f1		488b6d00			MOVQ 0(BP), BP		
 	bt = append(bt, state{c, i, 59, 0})
-  0x12725		48c78424680e000000000000	MOVQ $0x0, 0xe68(SP)	
-  0x12731		488dbc24700e0000		LEAQ 0xe70(SP), DI	
-  0x12739		0f57c0				XORPS X0, X0		
-  0x1273c		488d7ff0			LEAQ -0x10(DI), DI	
-  0x12740		660f1f440000			NOPW 0(AX)(AX*1)	
-  0x12746		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1274b		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12750		e800000000			CALL 0x12755		[1:5]R_CALL:runtime.duffzero+250	
-  0x12755		488b6d00			MOVQ 0(BP), BP		
-  0x12759		488dbc24680e0000		LEAQ 0xe68(SP), DI	
-  0x12761		488db42428050000		LEAQ 0x528(SP), SI	
-  0x12769		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1276e		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12773		e800000000			CALL 0x12778		[1:5]R_CALL:runtime.duffcopy+756	
-  0x12778		488b6d00			MOVQ 0(BP), BP		
-  0x1277c		48899424080f0000		MOVQ DX, 0xf08(SP)	
-  0x12784		48c78424100f00003b000000	MOVQ $0x3b, 0xf10(SP)	
-  0x12790		48c78424180f000000000000	MOVQ $0x0, 0xf18(SP)	
-  0x1279c		498d5801			LEAQ 0x1(R8), BX	
-  0x127a0		660f1f440000			NOPW 0(AX)(AX*1)	
-  0x127a6		4839cb				CMPQ CX, BX		
-  0x127a9		0f87c2080000			JA 0x13071		
-  0x127af		4c8b8c24680e0000		MOVQ 0xe68(SP), R9	
-  0x127b7		4d69c0b8000000			IMULQ $0xb8, R8, R8	
-  0x127be		4e890c00			MOVQ R9, 0(AX)(R8*1)	
-  0x127c2		4a8d3c00			LEAQ 0(AX)(R8*1), DI	
-  0x127c6		488d7f08			LEAQ 0x8(DI), DI	
-  0x127ca		488db424700e0000		LEAQ 0xe70(SP), SI	
-  0x127d2		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x127d7		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x127dc		e800000000			CALL 0x127e1		[1:5]R_CALL:runtime.duffcopy+742	
-  0x127e1		488b6d00			MOVQ 0(BP), BP		
+  0xa8f5		48c78424100f000000000000	MOVQ $0x0, 0xf10(SP)	
+  0xa901		488dbc24180f0000		LEAQ 0xf18(SP), DI	
+  0xa909		0f57c0				XORPS X0, X0		
+  0xa90c		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa910		660f1f440000			NOPW 0(AX)(AX*1)	
+  0xa916		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa91b		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa920		e800000000			CALL 0xa925		[1:5]R_CALL:runtime.duffzero+250	
+  0xa925		488b6d00			MOVQ 0(BP), BP		
+  0xa929		488dbc24100f0000		LEAQ 0xf10(SP), DI	
+  0xa931		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa939		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa93e		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa943		e800000000			CALL 0xa948		[1:5]R_CALL:runtime.duffcopy+756	
+  0xa948		488b6d00			MOVQ 0(BP), BP		
+  0xa94c		48899424b00f0000		MOVQ DX, 0xfb0(SP)	
+  0xa954		48c78424b80f00003b000000	MOVQ $0x3b, 0xfb8(SP)	
+  0xa960		48c78424c00f000000000000	MOVQ $0x0, 0xfc0(SP)	
+  0xa96c		498d5801			LEAQ 0x1(R8), BX	
+  0xa970		660f1f440000			NOPW 0(AX)(AX*1)	
+  0xa976		4839cb				CMPQ CX, BX		
+  0xa979		0f875c910000			JA 0x13adb		
+  0xa97f		4c8b8c24100f0000		MOVQ 0xf10(SP), R9	
+  0xa987		4d69c0b8000000			IMULQ $0xb8, R8, R8	
+  0xa98e		4e890c00			MOVQ R9, 0(AX)(R8*1)	
+  0xa992		4a8d3c00			LEAQ 0(AX)(R8*1), DI	
+  0xa996		488d7f08			LEAQ 0x8(DI), DI	
+  0xa99a		488db424180f0000		LEAQ 0xf18(SP), SI	
+  0xa9a2		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa9a7		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa9ac		e800000000			CALL 0xa9b1		[1:5]R_CALL:runtime.duffcopy+742	
+  0xa9b1		488b6d00			MOVQ 0(BP), BP		
 	bt = append(bt, state{c, i, 39, 0})
-  0x127e5		48c78424d80f000000000000	MOVQ $0x0, 0xfd8(SP)	
-  0x127f1		488dbc24e00f0000		LEAQ 0xfe0(SP), DI	
-  0x127f9		0f57c0				XORPS X0, X0		
-  0x127fc		488d7ff0			LEAQ -0x10(DI), DI	
-  0x12800		660f1f440000			NOPW 0(AX)(AX*1)	
-  0x12806		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1280b		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12810		e800000000			CALL 0x12815		[1:5]R_CALL:runtime.duffzero+250	
-  0x12815		488b6d00			MOVQ 0(BP), BP		
-  0x12819		488dbc24d80f0000		LEAQ 0xfd8(SP), DI	
-  0x12821		488db42428050000		LEAQ 0x528(SP), SI	
-  0x12829		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x1282e		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x12833		e800000000			CALL 0x12838		[1:5]R_CALL:runtime.duffcopy+756	
-  0x12838		488b6d00			MOVQ 0(BP), BP		
-  0x1283c		4889942478100000		MOVQ DX, 0x1078(SP)	
-  0x12844		48c784248010000027000000	MOVQ $0x27, 0x1080(SP)	
-  0x12850		48c784248810000000000000	MOVQ $0x0, 0x1088(SP)	
-  0x1285c		4c8d4301			LEAQ 0x1(BX), R8	
-  0x12860		660f1f440000			NOPW 0(AX)(AX*1)	
-  0x12866		4939c8				CMPQ CX, R8		
-  0x12869		0f87a5070000			JA 0x13014		
-  0x1286f		4c8b8c24d80f0000		MOVQ 0xfd8(SP), R9	
-  0x12877		4869dbb8000000			IMULQ $0xb8, BX, BX	
-  0x1287e		4c890c18			MOVQ R9, 0(AX)(BX*1)	
-  0x12882		488d3c18			LEAQ 0(AX)(BX*1), DI	
-  0x12886		488d7f08			LEAQ 0x8(DI), DI	
-  0x1288a		488db424e00f0000		LEAQ 0xfe0(SP), SI	
-  0x12892		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x12897		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x1289c		e800000000			CALL 0x128a1		[1:5]R_CALL:runtime.duffcopy+742	
-  0x128a1		488b6d00			MOVQ 0(BP), BP		
+  0xa9b5		48c784248010000000000000	MOVQ $0x0, 0x1080(SP)	
+  0xa9c1		488dbc2488100000		LEAQ 0x1088(SP), DI	
+  0xa9c9		0f57c0				XORPS X0, X0		
+  0xa9cc		488d7ff0			LEAQ -0x10(DI), DI	
+  0xa9d0		660f1f440000			NOPW 0(AX)(AX*1)	
+  0xa9d6		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa9db		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xa9e0		e800000000			CALL 0xa9e5		[1:5]R_CALL:runtime.duffzero+250	
+  0xa9e5		488b6d00			MOVQ 0(BP), BP		
+  0xa9e9		488dbc2480100000		LEAQ 0x1080(SP), DI	
+  0xa9f1		488db42430050000		LEAQ 0x530(SP), SI	
+  0xa9f9		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xa9fe		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xaa03		e800000000			CALL 0xaa08		[1:5]R_CALL:runtime.duffcopy+756	
+  0xaa08		488b6d00			MOVQ 0(BP), BP		
+  0xaa0c		4889942420110000		MOVQ DX, 0x1120(SP)	
+  0xaa14		48c784242811000027000000	MOVQ $0x27, 0x1128(SP)	
+  0xaa20		48c784243011000000000000	MOVQ $0x0, 0x1130(SP)	
+  0xaa2c		4c8d4301			LEAQ 0x1(BX), R8	
+  0xaa30		660f1f440000			NOPW 0(AX)(AX*1)	
+  0xaa36		4939c8				CMPQ CX, R8		
+  0xaa39		0f873c900000			JA 0x13a7b		
+  0xaa3f		4c8b8c2480100000		MOVQ 0x1080(SP), R9	
+  0xaa47		4869dbb8000000			IMULQ $0xb8, BX, BX	
+  0xaa4e		4c890c18			MOVQ R9, 0(AX)(BX*1)	
+  0xaa52		488d3c18			LEAQ 0(AX)(BX*1), DI	
+  0xaa56		488d7f08			LEAQ 0x8(DI), DI	
+  0xaa5a		488db42488100000		LEAQ 0x1088(SP), SI	
+  0xaa62		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xaa67		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xaa6c		e800000000			CALL 0xaa71		[1:5]R_CALL:runtime.duffcopy+742	
+  0xaa71		488b6d00			MOVQ 0(BP), BP		
 	c[2] = i
-  0x128a5		4889942438050000	MOVQ DX, 0x538(SP)	
+  0xaa75		4889942440050000	MOVQ DX, 0x540(SP)	
 	bt = append(bt, state{c, i, 18, 0})
-  0x128ad		48c784244811000000000000	MOVQ $0x0, 0x1148(SP)	
-  0x128b9		488dbc2450110000		LEAQ 0x1150(SP), DI	
-  0x128c1		0f57c0				XORPS X0, X0		
-  0x128c4		488d7ff0			LEAQ -0x10(DI), DI	
-  0x128c8		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x128cd		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x128d2		e800000000			CALL 0x128d7		[1:5]R_CALL:runtime.duffzero+250	
-  0x128d7		488b6d00			MOVQ 0(BP), BP		
-  0x128db		488dbc2448110000		LEAQ 0x1148(SP), DI	
-  0x128e3		488db42428050000		LEAQ 0x528(SP), SI	
-  0x128eb		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x128f0		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x128f5		e800000000			CALL 0x128fa		[1:5]R_CALL:runtime.duffcopy+756	
-  0x128fa		488b6d00			MOVQ 0(BP), BP		
-  0x128fe		48899424e8110000		MOVQ DX, 0x11e8(SP)	
-  0x12906		48c78424f011000012000000	MOVQ $0x12, 0x11f0(SP)	
-  0x12912		48c78424f811000000000000	MOVQ $0x0, 0x11f8(SP)	
-  0x1291e		498d5801			LEAQ 0x1(R8), BX	
-  0x12922		0f1f4000			NOPL 0(AX)		
-  0x12926		4839cb				CMPQ CX, BX		
-  0x12929		0f8788060000			JA 0x12fb7		
-  0x1292f		4c8b8c2448110000		MOVQ 0x1148(SP), R9	
-  0x12937		4d69c0b8000000			IMULQ $0xb8, R8, R8	
-  0x1293e		4e890c00			MOVQ R9, 0(AX)(R8*1)	
-  0x12942		4a8d3c00			LEAQ 0(AX)(R8*1), DI	
-  0x12946		488d7f08			LEAQ 0x8(DI), DI	
-  0x1294a		488db42450110000		LEAQ 0x1150(SP), SI	
-  0x12952		48896c24f0			MOVQ BP, -0x10(SP)	
-  0x12957		488d6c24f0			LEAQ -0x10(SP), BP	
-  0x1295c		e800000000			CALL 0x12961		[1:5]R_CALL:runtime.duffcopy+742	
-  0x12961		488b6d00			MOVQ 0(BP), BP		
-  0x12965		90				NOPL			
+  0xaa7d		48c78424f011000000000000	MOVQ $0x0, 0x11f0(SP)	
+  0xaa89		488dbc24f8110000		LEAQ 0x11f8(SP), DI	
+  0xaa91		0f57c0				XORPS X0, X0		
+  0xaa94		488d7ff0			LEAQ -0x10(DI), DI	
+  0xaa98		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xaa9d		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xaaa2		e800000000			CALL 0xaaa7		[1:5]R_CALL:runtime.duffzero+250	
+  0xaaa7		488b6d00			MOVQ 0(BP), BP		
+  0xaaab		488dbc24f0110000		LEAQ 0x11f0(SP), DI	
+  0xaab3		488db42430050000		LEAQ 0x530(SP), SI	
+  0xaabb		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xaac0		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xaac5		e800000000			CALL 0xaaca		[1:5]R_CALL:runtime.duffcopy+756	
+  0xaaca		488b6d00			MOVQ 0(BP), BP		
+  0xaace		4889942490120000		MOVQ DX, 0x1290(SP)	
+  0xaad6		48c784249812000012000000	MOVQ $0x12, 0x1298(SP)	
+  0xaae2		48c78424a012000000000000	MOVQ $0x0, 0x12a0(SP)	
+  0xaaee		498d5801			LEAQ 0x1(R8), BX	
+  0xaaf2		0f1f4000			NOPL 0(AX)		
+  0xaaf6		4839cb				CMPQ CX, BX		
+  0xaaf9		0f871f8f0000			JA 0x13a1e		
+  0xaaff		4c8b8c24f0110000		MOVQ 0x11f0(SP), R9	
+  0xab07		4d69c0b8000000			IMULQ $0xb8, R8, R8	
+  0xab0e		4e890c00			MOVQ R9, 0(AX)(R8*1)	
+  0xab12		4a8d3c00			LEAQ 0(AX)(R8*1), DI	
+  0xab16		488d7f08			LEAQ 0x8(DI), DI	
+  0xab1a		488db424f8110000		LEAQ 0x11f8(SP), SI	
+  0xab22		48896c24f0			MOVQ BP, -0x10(SP)	
+  0xab27		488d6c24f0			LEAQ -0x10(SP), BP	
+  0xab2c		e800000000			CALL 0xab31		[1:5]R_CALL:runtime.duffcopy+742	
+  0xab31		488b6d00			MOVQ 0(BP), BP		
+  0xab35		90				NOPL			
 	if i >= 0 && i < len(r) {
-  0x12966		4885d2			TESTQ DX, DX		
-  0x12969		0f8c3e060000		JL 0x12fad		
-  0x1296f		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-  0x12977		4939d0			CMPQ DX, R8		
-  0x1297a		0f8e23060000		JLE 0x12fa3		
+  0xab36		4885d2			TESTQ DX, DX		
+  0xab39		0f8cd58e0000		JL 0x13a14		
+  0xab3f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+  0xab47		4939d0			CMPQ DX, R8		
+  0xab4a		0f8eba8e0000		JLE 0x13a0a		
 	bt = append(bt, state{c, i, 18, 0})
-  0x12980		48898424381e0000	MOVQ AX, 0x1e38(SP)	
-  0x12988		48895c2448		MOVQ BX, 0x48(SP)	
-  0x1298d		48894c2450		MOVQ CX, 0x50(SP)	
+  0xab50		48898424e01e0000	MOVQ AX, 0x1ee0(SP)	
+  0xab58		48895c2450		MOVQ BX, 0x50(SP)	
+  0xab5d		48894c2458		MOVQ CX, 0x58(SP)	
 		cr, sz := rune(r[i]), 1
-  0x12992		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x1299a		460fb61c0a		MOVZX 0(DX)(R9*1), R11	
-  0x1299f		0f1f8000000000		NOPL 0(AX)		
+  0xab62		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xab6a		460fb61c0a		MOVZX 0(DX)(R9*1), R11	
+  0xab6f		0f1f8000000000		NOPL 0(AX)		
 		if cr >= utf8.RuneSelf {
-  0x129a6		4181fb80000000		CMPL $0x80, R11		
-  0x129ad		0f8d8f050000		JGE 0x12f42		
-  0x129b3		be01000000		MOVL $0x1, SI		
+  0xab76		4181fb80000000		CMPL $0x80, R11		
+  0xab7d		0f8d268e0000		JGE 0x139a9		
+  0xab83		be01000000		MOVL $0x1, SI		
 		if false || cr == 97 {
-  0x129b8		4183fb61		CMPL $0x61, R11		
-  0x129bc		0f8578050000		JNE 0x12f3a		
+  0xab88		4183fb61		CMPL $0x61, R11		
+  0xab8c		0f850d8e0000		JNE 0x1399f		
 			i += sz
-  0x129c2		4c8d1c16		LEAQ 0(SI)(DX*1), R11	
+  0xab92		4c8d1c16		LEAQ 0(SI)(DX*1), R11	
 	if i >= 0 && i < len(r) {
-  0x129c6		4d85db			TESTQ R11, R11		
-  0x129c9		0f8c1ceaffff		JL 0x113eb		
-  0x129cf		4d39c3			CMPQ R8, R11		
-  0x129d2		0f8d13eaffff		JGE 0x113eb		
+  0xab96		4d85db			TESTQ R11, R11		
+  0xab99		0f8c878d0000		JL 0x13926		
+  0xab9f		4d39c3			CMPQ R8, R11		
+  0xaba2		0f8d7e8d0000		JGE 0x13926		
 		cr, sz := rune(r[i]), 1
-  0x129d8		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x129dd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xaba8		470fb62419		MOVZX 0(R9)(R11*1), R12	
+  0xabad		660f1f840000000000	NOPW 0(AX)(AX*1)	
 		if cr >= utf8.RuneSelf {
-  0x129e6		4181fc80000000		CMPL $0x80, R12		
-  0x129ed		0f8ddc040000		JGE 0x12ecf		
-  0x129f3		be01000000		MOVL $0x1, SI		
+  0xabb6		4181fc80000000		CMPL $0x80, R12		
+  0xabbd		0f8d6d8d0000		JGE 0x13930		
+  0xabc3		be01000000		MOVL $0x1, SI		
 		if false || cr == 103 {
-  0x129f8		4183fc67		CMPL $0x67, R12		
-  0x129fc		0f85e9e9ffff		JNE 0x113eb		
+  0xabc8		4183fc67		CMPL $0x67, R12		
+  0xabcc		0f85548d0000		JNE 0x13926		
 			i += sz
-  0x12a02		4901f3			ADDQ SI, R11		
-  0x12a05		90			NOPL			
+  0xabd2		4901f3			ADDQ SI, R11		
+  0xabd5		90			NOPL			
 	if i >= 0 && i < len(r) {
-  0x12a06		4d85db			TESTQ R11, R11		
-  0x12a09		0f8cdce9ffff		JL 0x113eb		
-  0x12a0f		4d39c3			CMPQ R8, R11		
-  0x12a12		0f8dd3e9ffff		JGE 0x113eb		
+  0xabd6		4d85db			TESTQ R11, R11		
+  0xabd9		0f8cd18c0000		JL 0x138b0		
+  0xabdf		4d39c3			CMPQ R8, R11		
+  0xabe2		0f8dc88c0000		JGE 0x138b0		
 		cr, sz := rune(r[i]), 1
-  0x12a18		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x12a1d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xabe8		470fb62419		MOVZX 0(R9)(R11*1), R12	
+  0xabed		660f1f840000000000	NOPW 0(AX)(AX*1)	
 		if cr >= utf8.RuneSelf {
-  0x12a26		4181fc80000000		CMPL $0x80, R12		
-  0x12a2d		0f8d2e040000		JGE 0x12e61		
-  0x12a33		be01000000		MOVL $0x1, SI		
+  0xabf6		4181fc80000000		CMPL $0x80, R12		
+  0xabfd		0f8db88c0000		JGE 0x138bb		
+  0xac03		be01000000		MOVL $0x1, SI		
 		if false || cr == 103 {
-  0x12a38		4183fc67		CMPL $0x67, R12		
-  0x12a3c		0f85a9e9ffff		JNE 0x113eb		
+  0xac08		4183fc67		CMPL $0x67, R12		
+  0xac0c		0f859e8c0000		JNE 0x138b0		
 			i += sz
-  0x12a42		4901f3			ADDQ SI, R11		
-  0x12a45		90			NOPL			
+  0xac12		4901f3			ADDQ SI, R11		
+  0xac15		90			NOPL			
 	if i >= 0 && i < len(r) {
-  0x12a46		4d85db			TESTQ R11, R11		
-  0x12a49		0f8c9ce9ffff		JL 0x113eb		
-  0x12a4f		4d39c3			CMPQ R8, R11		
-  0x12a52		0f8d93e9ffff		JGE 0x113eb		
+  0xac16		4d85db			TESTQ R11, R11		
+  0xac19		0f8c1c8c0000		JL 0x1383b		
+  0xac1f		4d39c3			CMPQ R8, R11		
+  0xac22		0f8d138c0000		JGE 0x1383b		
 		cr, sz := rune(r[i]), 1
-  0x12a58		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x12a5d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xac28		470fb62419		MOVZX 0(R9)(R11*1), R12	
+  0xac2d		660f1f840000000000	NOPW 0(AX)(AX*1)	
 		if cr >= utf8.RuneSelf {
-  0x12a66		4181fc80000000		CMPL $0x80, R12		
-  0x12a6d		0f8d83030000		JGE 0x12df6		
-  0x12a73		be01000000		MOVL $0x1, SI		
+  0xac36		4181fc80000000		CMPL $0x80, R12		
+  0xac3d		0f8d028c0000		JGE 0x13845		
+  0xac43		be01000000		MOVL $0x1, SI		
 		if false || cr == 103 {
-  0x12a78		4183fc67		CMPL $0x67, R12		
-  0x12a7c		0f8569e9ffff		JNE 0x113eb		
+  0xac48		4183fc67		CMPL $0x67, R12		
+  0xac4c		0f85e98b0000		JNE 0x1383b		
 			i += sz
-  0x12a82		4901f3			ADDQ SI, R11		
-  0x12a85		90			NOPL			
+  0xac52		4901f3			ADDQ SI, R11		
+  0xac55		90			NOPL			
 	if i >= 0 && i < len(r) {
-  0x12a86		4d85db			TESTQ R11, R11		
-  0x12a89		0f8c5ce9ffff		JL 0x113eb		
-  0x12a8f		4d39c3			CMPQ R8, R11		
-  0x12a92		0f8d53e9ffff		JGE 0x113eb		
+  0xac56		4d85db			TESTQ R11, R11		
+  0xac59		0f8c638b0000		JL 0x137c2		
+  0xac5f		4d39c3			CMPQ R8, R11		
+  0xac62		0f8d5a8b0000		JGE 0x137c2		
 		cr, sz := rune(r[i]), 1
-  0x12a98		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x12a9d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xac68		470fb62419		MOVZX 0(R9)(R11*1), R12	
+  0xac6d		660f1f840000000000	NOPW 0(AX)(AX*1)	
 		if cr >= utf8.RuneSelf {
-  0x12aa6		4181fc80000000		CMPL $0x80, R12		
-  0x12aad		0f8dd8020000		JGE 0x12d8b		
-  0x12ab3		be01000000		MOVL $0x1, SI		
+  0xac76		4181fc80000000		CMPL $0x80, R12		
+  0xac7d		0f8d498b0000		JGE 0x137cc		
+  0xac83		be01000000		MOVL $0x1, SI		
 		if false || cr == 116 {
-  0x12ab8		4183fc74		CMPL $0x74, R12		
-  0x12abc		0f8529e9ffff		JNE 0x113eb		
+  0xac88		4183fc74		CMPL $0x74, R12		
+  0xac8c		0f85308b0000		JNE 0x137c2		
 			i += sz
-  0x12ac2		4901f3			ADDQ SI, R11		
-  0x12ac5		90			NOPL			
+  0xac92		4901f3			ADDQ SI, R11		
+  0xac95		90			NOPL			
 	if i >= 0 && i < len(r) {
-  0x12ac6		4d85db			TESTQ R11, R11		
-  0x12ac9		0f8c1ce9ffff		JL 0x113eb		
-  0x12acf		4d39c3			CMPQ R8, R11		
-  0x12ad2		0f8d13e9ffff		JGE 0x113eb		
+  0xac96		4d85db			TESTQ R11, R11		
+  0xac99		0f8ca38a0000		JL 0x13742		
+  0xac9f		4d39c3			CMPQ R8, R11		
+  0xaca2		0f8d9a8a0000		JGE 0x13742		
 		cr, sz := rune(r[i]), 1
-  0x12ad8		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x12add		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xaca8		470fb62419		MOVZX 0(R9)(R11*1), R12	
+  0xacad		660f1f840000000000	NOPW 0(AX)(AX*1)	
 		if cr >= utf8.RuneSelf {
-  0x12ae6		4181fc80000000		CMPL $0x80, R12		
-  0x12aed		0f8d29020000		JGE 0x12d1c		
-  0x12af3		be01000000		MOVL $0x1, SI		
+  0xacb6		4181fc80000000		CMPL $0x80, R12		
+  0xacbd		0f8d898a0000		JGE 0x1374c		
+  0xacc3		be01000000		MOVL $0x1, SI		
 		if false || cr == 97 {
-  0x12af8		4183fc61		CMPL $0x61, R12		
-  0x12afc		0f85e9e8ffff		JNE 0x113eb		
+  0xacc8		4183fc61		CMPL $0x61, R12		
+  0xaccc		0f85708a0000		JNE 0x13742		
 			i += sz
-  0x12b02		4901f3			ADDQ SI, R11		
-  0x12b05		90			NOPL			
+  0xacd2		4901f3			ADDQ SI, R11		
+  0xacd5		90			NOPL			
 	if i >= 0 && i < len(r) {
-  0x12b06		4d85db			TESTQ R11, R11		
-  0x12b09		0f8cdce8ffff		JL 0x113eb		
-  0x12b0f		4d39c3			CMPQ R8, R11		
-  0x12b12		0f8dd3e8ffff		JGE 0x113eb		
+  0xacd6		4d85db			TESTQ R11, R11		
+  0xacd9		0f8ce5890000		JL 0x136c4		
+  0xacdf		4d39c3			CMPQ R8, R11		
+  0xace2		0f8ddc890000		JGE 0x136c4		
 		cr, sz := rune(r[i]), 1
-  0x12b18		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x12b1d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xace8		470fb62419		MOVZX 0(R9)(R11*1), R12	
+  0xaced		660f1f840000000000	NOPW 0(AX)(AX*1)	
 		if cr >= utf8.RuneSelf {
-  0x12b26		4181fc80000000		CMPL $0x80, R12		
-  0x12b2d		0f8d78010000		JGE 0x12cab		
-  0x12b33		be01000000		MOVL $0x1, SI		
+  0xacf6		4181fc80000000		CMPL $0x80, R12		
+  0xacfd		0f8dcb890000		JGE 0x136ce		
+  0xad03		be01000000		MOVL $0x1, SI		
 		if false || cr == 97 {
-  0x12b38		4183fc61		CMPL $0x61, R12		
-  0x12b3c		0f85a9e8ffff		JNE 0x113eb		
+  0xad08		4183fc61		CMPL $0x61, R12		
+  0xad0c		0f85b2890000		JNE 0x136c4		
 			i += sz
-  0x12b42		4901f3			ADDQ SI, R11		
-  0x12b45		90			NOPL			
+  0xad12		4901f3			ADDQ SI, R11		
+  0xad15		90			NOPL			
 	if i >= 0 && i < len(r) {
-  0x12b46		4d85db			TESTQ R11, R11		
-  0x12b49		0f8c9ce8ffff		JL 0x113eb		
-  0x12b4f		4d39c3			CMPQ R8, R11		
-  0x12b52		0f8d93e8ffff		JGE 0x113eb		
+  0xad16		4d85db			TESTQ R11, R11		
+  0xad19		0f8c2a890000		JL 0x13649		
+  0xad1f		4d39c3			CMPQ R8, R11		
+  0xad22		0f8d21890000		JGE 0x13649		
 		cr, sz := rune(r[i]), 1
-  0x12b58		470fb62419		MOVZX 0(R9)(R11*1), R12	
-  0x12b5d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xad28		470fb62419		MOVZX 0(R9)(R11*1), R12	
+  0xad2d		660f1f840000000000	NOPW 0(AX)(AX*1)	
 		if cr >= utf8.RuneSelf {
-  0x12b66		4181fc80000000		CMPL $0x80, R12		
-  0x12b6d		0f8dc7000000		JGE 0x12c3a		
-  0x12b73		be01000000		MOVL $0x1, SI		
+  0xad36		4181fc80000000		CMPL $0x80, R12		
+  0xad3d		0f8d10890000		JGE 0x13653		
+  0xad43		be01000000		MOVL $0x1, SI		
 		if false || cr == 97 {
-  0x12b78		4183fc61		CMPL $0x61, R12		
-  0x12b7c		0f8569e8ffff		JNE 0x113eb		
-  0x12b82		0f1f4000		NOPL 0(AX)		
-  0x12b86		e9a6000000		JMP 0x12c31		
-				cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12b8b		4c890424		MOVQ R8, 0(SP)		
-  0x12b8f		48895c2408		MOVQ BX, 0x8(SP)	
-  0x12b94		e800000000		CALL 0x12b99		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12b99		488b442418		MOVQ 0x18(SP), AX	
-	if i >= 0 && i < len(r) {
-  0x12b9e		488b8c24e01f0000	MOVQ 0x1fe0(SP), CX	
-			si += sz
-  0x12ba6		488b942420050000	MOVQ 0x520(SP), DX	
-		cr, sz := rune(r[i]), 1
-  0x12bae		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12bb6		41ba11000000		MOVL $0x11, R10		
-				cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12bbc		e97bf6ffff		JMP 0x1223c		
-		var m [10]string
-  0x12bc1		488dbc24281f0000	LEAQ 0x1f28(SP), DI	
-  0x12bc9		0f57c0			XORPS X0, X0		
-  0x12bcc		488d7fe0		LEAQ -0x20(DI), DI	
-  0x12bd0		48896c24f0		MOVQ BP, -0x10(SP)	
-  0x12bd5		488d6c24f0		LEAQ -0x10(SP), BP	
-  0x12bda		e800000000		CALL 0x12bdf		[1:5]R_CALL:runtime.duffzero+254	
-  0x12bdf		488b6d00		MOVQ 0(BP), BP		
-		return m, false
-  0x12be3		488dbc24e81f0000	LEAQ 0x1fe8(SP), DI	
-  0x12beb		488db424281f0000	LEAQ 0x1f28(SP), SI	
-  0x12bf3		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x12bfc		660f1f840000000000	NOPW 0(AX)(AX*1)	
-  0x12c05		90			NOPL			
-  0x12c06		48896c24f0		MOVQ BP, -0x10(SP)	
-  0x12c0b		488d6c24f0		LEAQ -0x10(SP), BP	
-  0x12c10		e800000000		CALL 0x12c15		[1:5]R_CALL:runtime.duffcopy+756	
-  0x12c15		488b6d00		MOVQ 0(BP), BP		
-  0x12c19		c684248820000000	MOVB $0x0, 0x2088(SP)	
-  0x12c21		488bac24c81f0000	MOVQ 0x1fc8(SP), BP	
-  0x12c29		4881c4d01f0000		ADDQ $0x1fd0, SP	
-  0x12c30		c3			RET			
+  0xad48		4183fc61		CMPL $0x61, R12		
+  0xad4c		0f85f7880000		JNE 0x13649		
 			i += sz
-  0x12c31		4a8d1c1e		LEAQ 0(SI)(R11*1), BX	
+  0xad52		4901f3			ADDQ SI, R11		
+  0xad55		31f6			XORL SI, SI		
+	c[3] = i
+  0xad57		4c899c2448050000	MOVQ R11, 0x548(SP)	
+	c[1] = i // end of match
+  0xad5f		4c899c2438050000	MOVQ R11, 0x538(SP)	
+		if i <= len(r) && len(bt) > 0 {
+  0xad67		4084f6			TESTL SI, SI		
+	if !matched || c[1]-c[0] > bc[1]-bc[0] {
+  0xad6a		0f84d1880000		JE 0x13641		
+  0xad70		4c8ba42430050000	MOVQ 0x530(SP), R12	
+  0xad78		4d89dd			MOVQ R11, R13		
+  0xad7b		4d29e3			SUBQ R12, R11		
+  0xad7e		4c8ba424d8050000	MOVQ 0x5d8(SP), R12	
+  0xad86		4c2ba424d0050000	SUBQ 0x5d0(SP), R12	
+  0xad8e		4d39e3			CMPQ R12, R11		
+  0xad91		7e43			JLE 0xadd6		
+		bc = c
+  0xad93		488dbc24d0050000	LEAQ 0x5d0(SP), DI	
+  0xad9b		488db42430050000	LEAQ 0x530(SP), SI	
+  0xada3		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xadac		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xadb5		90			NOPL			
+  0xadb6		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xadbb		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xadc0		e800000000		CALL 0xadc5		[1:5]R_CALL:runtime.duffcopy+756	
+  0xadc5		488b6d00		MOVQ 0(BP), BP		
+  0xadc9		be01000000		MOVL $0x1, SI		
+  0xadce		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if i <= len(r) && len(bt) > 0 {
+  0xadd6		4d39e8			CMPQ R13, R8		
+  0xadd9		0f8c44840000		JL 0x13223		
+  0xaddf		4885db			TESTQ BX, BX		
+  0xade2		0f8e3b840000		JLE 0x13223		
+	goto inst161
+  0xade8		48898c2420050000	MOVQ CX, 0x520(SP)	
+  0xadf0		48898424281f0000	MOVQ AX, 0x1f28(SP)	
+	goto fail
+  0xadf8		4088742447		MOVB SI, 0x47(SP)	
+	switch bt[len(bt)-1].pc {
+  0xadfd		4c69dbb8000000		IMULQ $0xb8, BX, R11		
+  0xae04		4c899c2418050000	MOVQ R11, 0x518(SP)		
+  0xae0c		4c8d63ff		LEAQ -0x1(BX), R12		
+  0xae10		4c89a42410050000	MOVQ R12, 0x510(SP)		
+  0xae18		4d8b6c03f0		MOVQ -0x10(R11)(AX*1), R13	
+  0xae1d		4983fd61		CMPQ $0x61, R13			
+	case 97:
+  0xae21		0f8ff43c0000		JG 0xeb1b		
+	switch bt[len(bt)-1].pc {
+  0xae27		4983fd39		CMPQ $0x39, R13		
+	case 57:
+  0xae2b		0f8faa1d0000		JG 0xcbdb		
+  0xae31		0f1f440000		NOPL 0(AX)(AX*1)	
+	switch bt[len(bt)-1].pc {
+  0xae36		4983fd25		CMPQ $0x25, R13		
+	case 37:
+  0xae3a		0f8ffb0d0000		JG 0xbc3b		
+	case 18:
+  0xae40		4983fd12		CMPQ $0x12, R13		
+  0xae44		0f859e060000		JNE 0xb4e8		
+		c, i = bt[n].c, bt[n].i
+  0xae4a		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0xae4f		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0xae53		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0xae5a		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xae62		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0xae65		4c89de			MOVQ R11, SI		
+  0xae68		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xae71		0f1f440000		NOPL 0(AX)(AX*1)	
+  0xae76		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xae7b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xae80		e800000000		CALL 0xae85		[1:5]R_CALL:runtime.duffcopy+756	
+  0xae85		488b6d00		MOVQ 0(BP), BP		
+	if i >= 0 && i < len(r) {
+  0xae89		4885db			TESTQ BX, BX		
+  0xae8c		0f8cc9050000		JL 0xb45b		
+  0xae92		0f1f4000		NOPL 0(AX)		
+  0xae96		4c39c3			CMPQ R8, BX		
+  0xae99		0f8dbc050000		JGE 0xb45b		
+		cr, sz := rune(r[i]), 1
+  0xae9f		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xaea4		4181fb80000000		CMPL $0x80, R11		
+  0xaeab		0f8dba050000		JGE 0xb46b		
+  0xaeb1		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xaeb6		4183fb74		CMPL $0x74, R11		
+  0xaeba		0f859b050000		JNE 0xb45b		
+			i += sz
+  0xaec0		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xaec3		4885db			TESTQ BX, BX		
+  0xaec6		0f8cfc040000		JL 0xb3c8		
+  0xaecc		4c39c3			CMPQ R8, BX		
+  0xaecf		0f8df3040000		JGE 0xb3c8		
+		cr, sz := rune(r[i]), 1
+  0xaed5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xaeda		4181fb80000000		CMPL $0x80, R11		
+  0xaee1		0f8df4040000		JGE 0xb3db		
+  0xaee7		be01000000		MOVL $0x1, SI		
+  0xaeec		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xaef5		90			NOPL			
+		if false || cr == 116 {
+  0xaef6		4183fb74		CMPL $0x74, R11		
+  0xaefa		0f85c8040000		JNE 0xb3c8		
+			i += sz
+  0xaf00		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xaf03		4885db			TESTQ BX, BX		
+  0xaf06		0f8c2f040000		JL 0xb33b		
+  0xaf0c		4c39c3			CMPQ R8, BX		
+  0xaf0f		0f8d26040000		JGE 0xb33b		
+		cr, sz := rune(r[i]), 1
+  0xaf15		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xaf1a		4181fb80000000		CMPL $0x80, R11		
+  0xaf21		0f8d24040000		JGE 0xb34b		
+  0xaf27		be01000000		MOVL $0x1, SI		
+  0xaf2c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xaf35		90			NOPL			
+		if false || cr == 116 {
+  0xaf36		4183fb74		CMPL $0x74, R11		
+  0xaf3a		0f85fb030000		JNE 0xb33b		
+			i += sz
+  0xaf40		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xaf43		4885db			TESTQ BX, BX		
+  0xaf46		0f8c5c030000		JL 0xb2a8		
+  0xaf4c		4c39c3			CMPQ R8, BX		
+  0xaf4f		0f8d53030000		JGE 0xb2a8		
+		cr, sz := rune(r[i]), 1
+  0xaf55		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xaf5a		4181fb80000000		CMPL $0x80, R11		
+  0xaf61		0f8d54030000		JGE 0xb2bb		
+  0xaf67		be01000000		MOVL $0x1, SI		
+  0xaf6c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xaf75		90			NOPL			
+		if false || cr == 97 {
+  0xaf76		4183fb61		CMPL $0x61, R11		
+  0xaf7a		0f8528030000		JNE 0xb2a8		
+			i += sz
+  0xaf80		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xaf83		4885db			TESTQ BX, BX		
+  0xaf86		0f8c8f020000		JL 0xb21b		
+  0xaf8c		4c39c3			CMPQ R8, BX		
+  0xaf8f		0f8d86020000		JGE 0xb21b		
+		cr, sz := rune(r[i]), 1
+  0xaf95		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xaf9a		4181fb80000000		CMPL $0x80, R11		
+  0xafa1		0f8d84020000		JGE 0xb22b		
+  0xafa7		be01000000		MOVL $0x1, SI		
+  0xafac		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xafb5		90			NOPL			
+		if false || cr == 99 {
+  0xafb6		4183fb63		CMPL $0x63, R11		
+  0xafba		0f855b020000		JNE 0xb21b		
+			i += sz
+  0xafc0		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xafc3		4885db			TESTQ BX, BX		
+  0xafc6		0f8cc2010000		JL 0xb18e		
+  0xafcc		4c39c3			CMPQ R8, BX		
+  0xafcf		0f8db9010000		JGE 0xb18e		
+		cr, sz := rune(r[i]), 1
+  0xafd5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xafda		4181fb80000000		CMPL $0x80, R11		
+  0xafe1		0f8db7010000		JGE 0xb19e		
+  0xafe7		be01000000		MOVL $0x1, SI		
+  0xafec		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xaff5		90			NOPL			
+		if false || cr == 99 {
+  0xaff6		4183fb63		CMPL $0x63, R11		
+  0xaffa		0f858e010000		JNE 0xb18e		
+			i += sz
+  0xb000		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb003		4885db			TESTQ BX, BX		
+  0xb006		0f8cf5000000		JL 0xb101		
+  0xb00c		4c39c3			CMPQ R8, BX		
+  0xb00f		0f8dec000000		JGE 0xb101		
+		cr, sz := rune(r[i]), 1
+  0xb015		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb01a		4181fb80000000		CMPL $0x80, R11		
+  0xb021		0f8dea000000		JGE 0xb111		
+  0xb027		be01000000		MOVL $0x1, SI		
+  0xb02c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb035		90			NOPL			
+		if false || cr == 99 {
+  0xb036		4183fb63		CMPL $0x63, R11		
+  0xb03a		0f85c1000000		JNE 0xb101		
+			i += sz
+  0xb040		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb043		4885db			TESTQ BX, BX		
+  0xb046		7c22			JL 0xb06a		
+  0xb048		4c39c3			CMPQ R8, BX		
+  0xb04b		7d1d			JGE 0xb06a		
+		cr, sz := rune(r[i]), 1
+  0xb04d		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xb052		0f1f4000		NOPL 0(AX)		
+		if cr >= utf8.RuneSelf {
+  0xb056		4181fb80000000		CMPL $0x80, R11		
+  0xb05d		7d2b			JGE 0xb08a		
+  0xb05f		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xb064		4183fb74		CMPL $0x74, R11		
+  0xb068		7411			JE 0xb07b		
+				goto inst148
+  0xb06a		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb06d		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb070		0fb6742447		MOVZX 0x47(SP), SI	
+  0xb075		90			NOPL			
+	goto fail
+  0xb076		e95bfdffff		JMP 0xadd6		
+			i += sz
+  0xb07b		4c8d1c1e		LEAQ 0(SI)(BX*1), R11	
+		goto inst10
+  0xb07f		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0xb082		4489ee			MOVL R13, SI		
 			goto inst19
-  0x12c35		e90977ffff		JMP 0xa343		
+  0xb085		e9cdfcffff		JMP 0xad57		
 			i += sz
-  0x12c3a		4c899c2488000000	MOVQ R11, 0x88(SP)	
+  0xb08a		48895c2448		MOVQ BX, 0x48(SP)	
 			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12c42		4d29d8			SUBQ R11, R8		
-  0x12c45		4c89c1			MOVQ R8, CX		
-  0x12c48		49f7d8			NEGQ R8			
-  0x12c4b		49c1f83f		SARQ $0x3f, R8		
-  0x12c4f		4d21d8			ANDQ R11, R8		
-  0x12c52		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12c56		48891424		MOVQ DX, 0(SP)		
-  0x12c5a		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12c5f		e800000000		CALL 0x12c64		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12c64		448b642410		MOVL 0x10(SP), R12	
-  0x12c69		488b742418		MOVQ 0x18(SP), SI	
+  0xb08f		4929d8			SUBQ BX, R8		
+  0xb092		4c89c1			MOVQ R8, CX		
+  0xb095		49f7d8			NEGQ R8			
+  0xb098		49c1f83f		SARQ $0x3f, R8		
+  0xb09c		4921d8			ANDQ BX, R8		
+  0xb09f		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb0a3		48891424		MOVQ DX, 0(SP)		
+  0xb0a7		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb0ac		e800000000		CALL 0xb0b1		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb0b1		448b5c2410		MOVL 0x10(SP), R11	
+  0xb0b6		488b742418		MOVQ 0x18(SP), SI	
 	goto inst161
-  0x12c6e		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12c76		488b4c2450		MOVQ 0x50(SP), CX	
+  0xb0bb		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb0c3		488b8c2420050000	MOVQ 0x520(SP), CX	
 		if len(r[si:]) != 0 {
-  0x12c7b		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12c83		488b5c2448		MOVQ 0x48(SP), BX	
-		if i <= len(r) && len(bt) > 0 {
-  0x12c88		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12c90		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12c98		41ba11000000		MOVL $0x11, R10		
+  0xb0cb		488b942428050000	MOVQ 0x528(SP), DX	
 				goto inst148
-  0x12c9e		4c8b9c2488000000	MOVQ 0x88(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12ca6		e9cdfeffff		JMP 0x12b78		
-			i += sz
-  0x12cab		4c899c2480000000	MOVQ R11, 0x80(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12cb3		4d29d8			SUBQ R11, R8		
-  0x12cb6		4c89c1			MOVQ R8, CX		
-  0x12cb9		49f7d8			NEGQ R8			
-  0x12cbc		49c1f83f		SARQ $0x3f, R8		
-  0x12cc0		4d21d8			ANDQ R11, R8		
-  0x12cc3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12cc7		48891424		MOVQ DX, 0(SP)		
-  0x12ccb		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12cd0		e800000000		CALL 0x12cd5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12cd5		448b642410		MOVL 0x10(SP), R12	
-  0x12cda		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x12cdf		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12ce7		488b4c2450		MOVQ 0x50(SP), CX	
-		if len(r[si:]) != 0 {
-  0x12cec		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12cf4		488b5c2448		MOVQ 0x48(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x12cf9		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12d01		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12d09		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12d0f		4c8b9c2480000000	MOVQ 0x80(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12d17		e91cfeffff		JMP 0x12b38		
-			i += sz
-  0x12d1c		4c895c2478		MOVQ R11, 0x78(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12d21		4d29d8			SUBQ R11, R8		
-  0x12d24		4c89c1			MOVQ R8, CX		
-  0x12d27		49f7d8			NEGQ R8			
-  0x12d2a		49c1f83f		SARQ $0x3f, R8		
-  0x12d2e		4d21d8			ANDQ R11, R8		
-  0x12d31		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12d35		48891424		MOVQ DX, 0(SP)		
-  0x12d39		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12d3e		e800000000		CALL 0x12d43		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12d43		448b642410		MOVL 0x10(SP), R12	
-  0x12d48		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x12d4d		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12d55		488b4c2450		MOVQ 0x50(SP), CX	
-		if len(r[si:]) != 0 {
-  0x12d5a		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12d62		488b5c2448		MOVQ 0x48(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x12d67		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12d6f		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12d77		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12d7d		4c8b5c2478		MOVQ 0x78(SP), R11	
-  0x12d82		0f1f4000		NOPL 0(AX)		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12d86		e96dfdffff		JMP 0x12af8		
-			i += sz
-  0x12d8b		4c895c2470		MOVQ R11, 0x70(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12d90		4d29d8			SUBQ R11, R8		
-  0x12d93		4c89c1			MOVQ R8, CX		
-  0x12d96		49f7d8			NEGQ R8			
-  0x12d99		49c1f83f		SARQ $0x3f, R8		
-  0x12d9d		4d21d8			ANDQ R11, R8		
-  0x12da0		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12da4		48891424		MOVQ DX, 0(SP)		
-  0x12da8		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12dad		e800000000		CALL 0x12db2		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12db2		448b642410		MOVL 0x10(SP), R12	
-  0x12db7		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x12dbc		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12dc4		488b4c2450		MOVQ 0x50(SP), CX	
-		if len(r[si:]) != 0 {
-  0x12dc9		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12dd1		488b5c2448		MOVQ 0x48(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x12dd6		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12dde		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12de6		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12dec		4c8b5c2470		MOVQ 0x70(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12df1		e9c2fcffff		JMP 0x12ab8		
-			i += sz
-  0x12df6		4c895c2468		MOVQ R11, 0x68(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12dfb		4d29d8			SUBQ R11, R8		
-  0x12dfe		4c89c1			MOVQ R8, CX		
-  0x12e01		49f7d8			NEGQ R8			
-  0x12e04		49c1f83f		SARQ $0x3f, R8		
-  0x12e08		4d21d8			ANDQ R11, R8		
-  0x12e0b		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12e0f		48891424		MOVQ DX, 0(SP)		
-  0x12e13		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12e18		e800000000		CALL 0x12e1d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12e1d		448b642410		MOVL 0x10(SP), R12	
-  0x12e22		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x12e27		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12e2f		488b4c2450		MOVQ 0x50(SP), CX	
-		if len(r[si:]) != 0 {
-  0x12e34		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12e3c		488b5c2448		MOVQ 0x48(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x12e41		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12e49		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12e51		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12e57		4c8b5c2468		MOVQ 0x68(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12e5c		e917fcffff		JMP 0x12a78		
-			i += sz
-  0x12e61		4c895c2460		MOVQ R11, 0x60(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12e66		4d29d8			SUBQ R11, R8		
-  0x12e69		4c89c1			MOVQ R8, CX		
-  0x12e6c		49f7d8			NEGQ R8			
-  0x12e6f		49c1f83f		SARQ $0x3f, R8		
-  0x12e73		4d21d8			ANDQ R11, R8		
-  0x12e76		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12e7a		48891424		MOVQ DX, 0(SP)		
-  0x12e7e		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12e83		0f1f00			NOPL 0(AX)		
-  0x12e86		e800000000		CALL 0x12e8b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12e8b		448b642410		MOVL 0x10(SP), R12	
-  0x12e90		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x12e95		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12e9d		488b4c2450		MOVQ 0x50(SP), CX	
-		if len(r[si:]) != 0 {
-  0x12ea2		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12eaa		488b5c2448		MOVQ 0x48(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x12eaf		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12eb7		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12ebf		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12ec5		4c8b5c2460		MOVQ 0x60(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12eca		e969fbffff		JMP 0x12a38		
-			i += sz
-  0x12ecf		4c895c2458		MOVQ R11, 0x58(SP)	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12ed4		4d29d8			SUBQ R11, R8		
-  0x12ed7		4c89c1			MOVQ R8, CX		
-  0x12eda		49f7d8			NEGQ R8			
-  0x12edd		49c1f83f		SARQ $0x3f, R8		
-  0x12ee1		4d21d8			ANDQ R11, R8		
-  0x12ee4		4b8d1401		LEAQ 0(R9)(R8*1), DX	
-  0x12ee8		48891424		MOVQ DX, 0(SP)		
-  0x12eec		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12ef1		e800000000		CALL 0x12ef6		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12ef6		448b642410		MOVL 0x10(SP), R12	
-  0x12efb		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x12f00		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12f08		488b4c2450		MOVQ 0x50(SP), CX	
-		if len(r[si:]) != 0 {
-  0x12f0d		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12f15		488b5c2448		MOVQ 0x48(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x12f1a		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12f22		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12f2a		41ba11000000		MOVL $0x11, R10		
-			i += sz
-  0x12f30		4c8b5c2458		MOVQ 0x58(SP), R11	
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12f35		e9befaffff		JMP 0x129f8		
-				goto inst148
-  0x12f3a		4989d3			MOVQ DX, R11		
-	goto fail
-  0x12f3d		e9a9e4ffff		JMP 0x113eb		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12f42		4929d0			SUBQ DX, R8		
-  0x12f45		4c89c1			MOVQ R8, CX		
-  0x12f48		49f7d8			NEGQ R8			
-  0x12f4b		49c1f83f		SARQ $0x3f, R8		
-  0x12f4f		4921d0			ANDQ DX, R8		
-  0x12f52		4b8d1c01		LEAQ 0(R9)(R8*1), BX	
-  0x12f56		48891c24		MOVQ BX, 0(SP)		
-  0x12f5a		48894c2408		MOVQ CX, 0x8(SP)	
-  0x12f5f		e800000000		CALL 0x12f64		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
-  0x12f64		448b5c2410		MOVL 0x10(SP), R11	
-  0x12f69		488b742418		MOVQ 0x18(SP), SI	
-	goto inst161
-  0x12f6e		488b8424381e0000	MOVQ 0x1e38(SP), AX	
-  0x12f76		488b4c2450		MOVQ 0x50(SP), CX	
-			i += sz
-  0x12f7b		488b942420050000	MOVQ 0x520(SP), DX	
-	goto inst161
-  0x12f83		488b5c2448		MOVQ 0x48(SP), BX	
-	if i >= 0 && i < len(r) {
-  0x12f88		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
-		cr, sz := rune(r[i]), 1
-  0x12f90		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-  0x12f98		41ba11000000		MOVL $0x11, R10		
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x12f9e		e915faffff		JMP 0x129b8		
-		cr, sz := rune(r[i]), 1
-  0x12fa3		4c8b8c24d81f0000	MOVQ 0x1fd8(SP), R9	
-	goto fail
-  0x12fab		eb8d			JMP 0x12f3a		
+  0xb0d3		488b5c2448		MOVQ 0x48(SP), BX	
 		if i <= len(r) && len(bt) > 0 {
-  0x12fad		4c8b8424e01f0000	MOVQ 0x1fe0(SP), R8	
+  0xb0d8		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb0e0		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb0e8		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb0ee		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb0f6		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb0fc		e963ffffff		JMP 0xb064		
+				goto inst148
+  0xb101		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb104		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb107		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb10c		e9c5fcffff		JMP 0xadd6		
+			i += sz
+  0xb111		48899c2408050000	MOVQ BX, 0x508(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb119		4929d8			SUBQ BX, R8		
+  0xb11c		4c89c1			MOVQ R8, CX		
+  0xb11f		49f7d8			NEGQ R8			
+  0xb122		49c1f83f		SARQ $0x3f, R8		
+  0xb126		4921d8			ANDQ BX, R8		
+  0xb129		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb12d		48891424		MOVQ DX, 0(SP)		
+  0xb131		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb136		e800000000		CALL 0xb13b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb13b		448b5c2410		MOVL 0x10(SP), R11	
+  0xb140		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb145		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb14d		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb155		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb15d		488b9c2408050000	MOVQ 0x508(SP), BX	
 	if i >= 0 && i < len(r) {
-  0x12fb5		ebec			JMP 0x12fa3		
-	bt = append(bt, state{c, i, 39, 0})
-  0x12fb7		4c89842418050000	MOVQ R8, 0x518(SP)	
-	bt = append(bt, state{c, i, 18, 0})
-  0x12fbf		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x12fc6		48891424		MOVQ DX, 0(SP)		
-  0x12fca		4889442408		MOVQ AX, 0x8(SP)	
-  0x12fcf		4c89442410		MOVQ R8, 0x10(SP)	
-  0x12fd4		48894c2418		MOVQ CX, 0x18(SP)	
-  0x12fd9		48895c2420		MOVQ BX, 0x20(SP)	
-  0x12fde		e800000000		CALL 0x12fe3		[1:5]R_CALL:runtime.growslice	
-  0x12fe3		488b442428		MOVQ 0x28(SP), AX	
-  0x12fe8		488b4c2430		MOVQ 0x30(SP), CX	
-  0x12fed		488b542438		MOVQ 0x38(SP), DX	
-  0x12ff2		488d5901		LEAQ 0x1(CX), BX	
-  0x12ff6		4c8b842418050000	MOVQ 0x518(SP), R8	
-  0x12ffe		41ba11000000		MOVL $0x11, R10		
-  0x13004		4889d1			MOVQ DX, CX		
+  0xb165		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb16d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb175		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb17b		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb183		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb189		e9a8feffff		JMP 0xb036		
+				goto inst148
+  0xb18e		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb191		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb194		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb199		e938fcffff		JMP 0xadd6		
+			i += sz
+  0xb19e		48899c2400050000	MOVQ BX, 0x500(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb1a6		4929d8			SUBQ BX, R8		
+  0xb1a9		4c89c1			MOVQ R8, CX		
+  0xb1ac		49f7d8			NEGQ R8			
+  0xb1af		49c1f83f		SARQ $0x3f, R8		
+  0xb1b3		4921d8			ANDQ BX, R8		
+  0xb1b6		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb1ba		48891424		MOVQ DX, 0(SP)		
+  0xb1be		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb1c3		e800000000		CALL 0xb1c8		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb1c8		448b5c2410		MOVL 0x10(SP), R11	
+  0xb1cd		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb1d2		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb1da		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb1e2		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb1ea		488b9c2400050000	MOVQ 0x500(SP), BX	
 	if i >= 0 && i < len(r) {
-  0x13007		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 18, 0})
-  0x1300f		e91bf9ffff		JMP 0x1292f		
-	bt = append(bt, state{c, i, 59, 0})
-  0x13014		48899c2418050000	MOVQ BX, 0x518(SP)	
-	bt = append(bt, state{c, i, 39, 0})
-  0x1301c		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x13023		48891424		MOVQ DX, 0(SP)		
-  0x13027		4889442408		MOVQ AX, 0x8(SP)	
-  0x1302c		48895c2410		MOVQ BX, 0x10(SP)	
-  0x13031		48894c2418		MOVQ CX, 0x18(SP)	
-  0x13036		4c89442420		MOVQ R8, 0x20(SP)	
-  0x1303b		e800000000		CALL 0x13040		[1:5]R_CALL:runtime.growslice	
-  0x13040		488b442428		MOVQ 0x28(SP), AX	
-  0x13045		488b4c2430		MOVQ 0x30(SP), CX	
-  0x1304a		488b542438		MOVQ 0x38(SP), DX	
-  0x1304f		4c8d4101		LEAQ 0x1(CX), R8	
-  0x13053		488b9c2418050000	MOVQ 0x518(SP), BX	
-  0x1305b		41ba11000000		MOVL $0x11, R10		
-  0x13061		4889d1			MOVQ DX, CX		
-	c[2] = i
-  0x13064		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 39, 0})
-  0x1306c		e9fef7ffff		JMP 0x1286f		
-	bt = append(bt, state{c, i, 79, 0})
-  0x13071		4c89842418050000	MOVQ R8, 0x518(SP)	
-	bt = append(bt, state{c, i, 59, 0})
-  0x13079		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x13080		48891424		MOVQ DX, 0(SP)		
-  0x13084		4889442408		MOVQ AX, 0x8(SP)	
-  0x13089		4c89442410		MOVQ R8, 0x10(SP)	
-  0x1308e		48894c2418		MOVQ CX, 0x18(SP)	
-  0x13093		48895c2420		MOVQ BX, 0x20(SP)	
-  0x13098		e800000000		CALL 0x1309d		[1:5]R_CALL:runtime.growslice	
-  0x1309d		488b442428		MOVQ 0x28(SP), AX	
-  0x130a2		488b4c2430		MOVQ 0x30(SP), CX	
-  0x130a7		488b542438		MOVQ 0x38(SP), DX	
-  0x130ac		488d5901		LEAQ 0x1(CX), BX	
-  0x130b0		4c8b842418050000	MOVQ 0x518(SP), R8	
-  0x130b8		41ba11000000		MOVL $0x11, R10		
-  0x130be		4889d1			MOVQ DX, CX		
-	bt = append(bt, state{c, i, 39, 0})
-  0x130c1		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 59, 0})
-  0x130c9		e9e1f6ffff		JMP 0x127af		
-	bt = append(bt, state{c, i, 99, 0})
-  0x130ce		48899c2418050000	MOVQ BX, 0x518(SP)	
-	bt = append(bt, state{c, i, 79, 0})
-  0x130d6		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x130dd		48891424		MOVQ DX, 0(SP)		
-  0x130e1		4889442408		MOVQ AX, 0x8(SP)	
-  0x130e6		48895c2410		MOVQ BX, 0x10(SP)	
-  0x130eb		48894c2418		MOVQ CX, 0x18(SP)	
-  0x130f0		4c89442420		MOVQ R8, 0x20(SP)	
-  0x130f5		e800000000		CALL 0x130fa		[1:5]R_CALL:runtime.growslice	
-  0x130fa		488b442428		MOVQ 0x28(SP), AX	
-  0x130ff		488b4c2430		MOVQ 0x30(SP), CX	
-  0x13104		488b542438		MOVQ 0x38(SP), DX	
-  0x13109		4c8d4101		LEAQ 0x1(CX), R8	
-  0x1310d		488b9c2418050000	MOVQ 0x518(SP), BX	
+  0xb1f2		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb1fa		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb202		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb208		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb210		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb216		e9dbfdffff		JMP 0xaff6		
+				goto inst148
+  0xb21b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb21e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb221		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb226		e9abfbffff		JMP 0xadd6		
+			i += sz
+  0xb22b		48899c24f8040000	MOVQ BX, 0x4f8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb233		4929d8			SUBQ BX, R8		
+  0xb236		4c89c1			MOVQ R8, CX		
+  0xb239		49f7d8			NEGQ R8			
+  0xb23c		49c1f83f		SARQ $0x3f, R8		
+  0xb240		4921d8			ANDQ BX, R8		
+  0xb243		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb247		48891424		MOVQ DX, 0(SP)		
+  0xb24b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb250		e800000000		CALL 0xb255		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb255		448b5c2410		MOVL 0x10(SP), R11	
+  0xb25a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb25f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb267		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb26f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb277		488b9c24f8040000	MOVQ 0x4f8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb27f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb287		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb28f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb295		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb29d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb2a3		e90efdffff		JMP 0xafb6		
+				goto inst148
+  0xb2a8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb2ab		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb2ae		0fb6742447		MOVZX 0x47(SP), SI	
+  0xb2b3		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xb2b6		e91bfbffff		JMP 0xadd6		
+			i += sz
+  0xb2bb		48899c24f0040000	MOVQ BX, 0x4f0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb2c3		4929d8			SUBQ BX, R8		
+  0xb2c6		4c89c1			MOVQ R8, CX		
+  0xb2c9		49f7d8			NEGQ R8			
+  0xb2cc		49c1f83f		SARQ $0x3f, R8		
+  0xb2d0		4921d8			ANDQ BX, R8		
+  0xb2d3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb2d7		48891424		MOVQ DX, 0(SP)		
+  0xb2db		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb2e0		e800000000		CALL 0xb2e5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb2e5		448b5c2410		MOVL 0x10(SP), R11	
+  0xb2ea		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb2ef		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb2f7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb2ff		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb307		488b9c24f0040000	MOVQ 0x4f0(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb30f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb317		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb31f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb325		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb32d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xb333		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb336		e93bfcffff		JMP 0xaf76		
+				goto inst148
+  0xb33b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb33e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb341		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb346		e98bfaffff		JMP 0xadd6		
+			i += sz
+  0xb34b		48899c24e8040000	MOVQ BX, 0x4e8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb353		4929d8			SUBQ BX, R8		
+  0xb356		4c89c1			MOVQ R8, CX		
+  0xb359		49f7d8			NEGQ R8			
+  0xb35c		49c1f83f		SARQ $0x3f, R8		
+  0xb360		4921d8			ANDQ BX, R8		
+  0xb363		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb367		48891424		MOVQ DX, 0(SP)		
+  0xb36b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb370		e800000000		CALL 0xb375		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb375		448b5c2410		MOVL 0x10(SP), R11	
+  0xb37a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb37f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb387		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb38f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb397		488b9c24e8040000	MOVQ 0x4e8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb39f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb3a7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb3af		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb3b5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb3bd		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb3c3		e96efbffff		JMP 0xaf36		
+				goto inst148
+  0xb3c8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb3cb		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb3ce		0fb6742447		MOVZX 0x47(SP), SI	
+  0xb3d3		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xb3d6		e9fbf9ffff		JMP 0xadd6		
+			i += sz
+  0xb3db		48899c24e0040000	MOVQ BX, 0x4e0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb3e3		4929d8			SUBQ BX, R8		
+  0xb3e6		4c89c1			MOVQ R8, CX		
+  0xb3e9		49f7d8			NEGQ R8			
+  0xb3ec		49c1f83f		SARQ $0x3f, R8		
+  0xb3f0		4921d8			ANDQ BX, R8		
+  0xb3f3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb3f7		48891424		MOVQ DX, 0(SP)		
+  0xb3fb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb400		e800000000		CALL 0xb405		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb405		448b5c2410		MOVL 0x10(SP), R11	
+  0xb40a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb40f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb417		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb41f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb427		488b9c24e0040000	MOVQ 0x4e0(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb42f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb437		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb43f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb445		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb44d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xb453		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb456		e99bfaffff		JMP 0xaef6		
+				goto inst148
+  0xb45b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb45e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb461		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb466		e96bf9ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0xb46b		48899c24d8040000	MOVQ BX, 0x4d8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb473		4929d8			SUBQ BX, R8		
+  0xb476		4c89c1			MOVQ R8, CX		
+  0xb479		49f7d8			NEGQ R8			
+  0xb47c		49c1f83f		SARQ $0x3f, R8		
+  0xb480		4921d8			ANDQ BX, R8		
+  0xb483		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb487		48891424		MOVQ DX, 0(SP)		
+  0xb48b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb490		e800000000		CALL 0xb495		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb495		448b5c2410		MOVL 0x10(SP), R11	
+  0xb49a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb49f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb4a7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb4af		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb4b7		488b9c24d8040000	MOVQ 0x4d8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb4bf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb4c7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb4cf		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb4d5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb4dd		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb4e3		e9cef9ffff		JMP 0xaeb6		
+	switch bt[len(bt)-1].pc {
+  0xb4e8		4983fd25		CMPQ $0x25, R13		
+	case 37:
+  0xb4ec		0f85f6870000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0xb4f2		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0xb4f7		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0xb4fb		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0xb502		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xb50a		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0xb50d		4c89de			MOVQ R11, SI		
+  0xb510		660f1f440000		NOPW 0(AX)(AX*1)	
+  0xb516		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xb51b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xb520		e800000000		CALL 0xb525		[1:5]R_CALL:runtime.duffcopy+756	
+  0xb525		488b6d00		MOVQ 0(BP), BP		
+	if i >= 0 && i < len(r) {
+  0xb529		4885db			TESTQ BX, BX		
+  0xb52c		0f8c76060000		JL 0xbba8		
+  0xb532		0f1f4000		NOPL 0(AX)		
+  0xb536		4c39c3			CMPQ R8, BX		
+  0xb539		0f8d69060000		JGE 0xbba8		
+		cr, sz := rune(r[i]), 1
+  0xb53f		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb544		4181fb80000000		CMPL $0x80, R11		
+  0xb54b		0f8d6a060000		JGE 0xbbbb		
+  0xb551		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xb556		4183fb74		CMPL $0x74, R11		
+  0xb55a		0f8548060000		JNE 0xbba8		
+			i += sz
+  0xb560		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb563		4885db			TESTQ BX, BX		
+  0xb566		0f8caf050000		JL 0xbb1b		
+  0xb56c		4c39c3			CMPQ R8, BX		
+  0xb56f		0f8da6050000		JGE 0xbb1b		
+		cr, sz := rune(r[i]), 1
+  0xb575		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb57a		4181fb80000000		CMPL $0x80, R11		
+  0xb581		0f8da4050000		JGE 0xbb2b		
+  0xb587		be01000000		MOVL $0x1, SI		
+  0xb58c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb595		90			NOPL			
+		if false || cr == 116 {
+  0xb596		4183fb74		CMPL $0x74, R11		
+  0xb59a		0f857b050000		JNE 0xbb1b		
+			i += sz
+  0xb5a0		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb5a3		4885db			TESTQ BX, BX		
+  0xb5a6		0f8cdc040000		JL 0xba88		
+  0xb5ac		4c39c3			CMPQ R8, BX		
+  0xb5af		0f8dd3040000		JGE 0xba88		
+		cr, sz := rune(r[i]), 1
+  0xb5b5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb5ba		4181fb80000000		CMPL $0x80, R11		
+  0xb5c1		0f8dd4040000		JGE 0xba9b		
+  0xb5c7		be01000000		MOVL $0x1, SI		
+  0xb5cc		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb5d5		90			NOPL			
+		if false || cr == 116 {
+  0xb5d6		4183fb74		CMPL $0x74, R11		
+  0xb5da		0f85a8040000		JNE 0xba88		
+			i += sz
+  0xb5e0		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb5e3		4885db			TESTQ BX, BX		
+  0xb5e6		0f8c0f040000		JL 0xb9fb		
+  0xb5ec		4c39c3			CMPQ R8, BX		
+  0xb5ef		0f8d06040000		JGE 0xb9fb		
+		cr, sz := rune(r[i]), 1
+  0xb5f5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb5fa		4181fb80000000		CMPL $0x80, R11		
+  0xb601		0f8d04040000		JGE 0xba0b		
+  0xb607		be01000000		MOVL $0x1, SI		
+  0xb60c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb615		90			NOPL			
+		if false || cr == 97 {
+  0xb616		4183fb61		CMPL $0x61, R11		
+  0xb61a		0f85db030000		JNE 0xb9fb		
+			i += sz
+  0xb620		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb623		4885db			TESTQ BX, BX		
+  0xb626		0f8c3c030000		JL 0xb968		
+  0xb62c		4c39c3			CMPQ R8, BX		
+  0xb62f		0f8d33030000		JGE 0xb968		
+		cr, sz := rune(r[i]), 1
+  0xb635		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb63a		4181fb80000000		CMPL $0x80, R11		
+  0xb641		0f8d34030000		JGE 0xb97b		
+  0xb647		be01000000		MOVL $0x1, SI		
+  0xb64c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb655		90			NOPL			
+		if false || cr == 99 {
+  0xb656		4183fb63		CMPL $0x63, R11		
+  0xb65a		0f8508030000		JNE 0xb968		
+			i += sz
+  0xb660		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb663		4885db			TESTQ BX, BX		
+  0xb666		0f8c6f020000		JL 0xb8db		
+  0xb66c		4c39c3			CMPQ R8, BX		
+  0xb66f		0f8d66020000		JGE 0xb8db		
+		cr, sz := rune(r[i]), 1
+  0xb675		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb67a		4181fb80000000		CMPL $0x80, R11		
+  0xb681		0f8d64020000		JGE 0xb8eb		
+  0xb687		be01000000		MOVL $0x1, SI		
+  0xb68c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb695		90			NOPL			
+		if false || cr == 99 {
+  0xb696		4183fb63		CMPL $0x63, R11		
+  0xb69a		0f853b020000		JNE 0xb8db		
+			i += sz
+  0xb6a0		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb6a3		4885db			TESTQ BX, BX		
+  0xb6a6		0f8ca2010000		JL 0xb84e		
+  0xb6ac		4c39c3			CMPQ R8, BX		
+  0xb6af		0f8d99010000		JGE 0xb84e		
+		cr, sz := rune(r[i]), 1
+  0xb6b5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb6ba		4181fb80000000		CMPL $0x80, R11		
+  0xb6c1		0f8d97010000		JGE 0xb85e		
+  0xb6c7		be01000000		MOVL $0x1, SI		
+  0xb6cc		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb6d5		90			NOPL			
+		if false || cr == 99 {
+  0xb6d6		4183fb63		CMPL $0x63, R11		
+  0xb6da		0f856e010000		JNE 0xb84e		
+			i += sz
+  0xb6e0		4801f3			ADDQ SI, BX		
+	if i >= 0 && i < len(r) {
+  0xb6e3		4885db			TESTQ BX, BX		
+  0xb6e6		0f8cd1000000		JL 0xb7bd		
+  0xb6ec		4c39c3			CMPQ R8, BX		
+  0xb6ef		0f8dc8000000		JGE 0xb7bd		
+		cr, sz := rune(r[i]), 1
+  0xb6f5		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xb6fa		4181fb80000000		CMPL $0x80, R11		
+  0xb701		0f8dc6000000		JGE 0xb7cd		
+  0xb707		be01000000		MOVL $0x1, SI		
+  0xb70c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xb715		90			NOPL			
+		if cr < 128 {
+  0xb716		4181fb80000000		CMPL $0x80, R11		
+  0xb71d		0f8d9a000000		JGE 0xb7bd		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xb723		4589de			MOVL R11, R14			
+  0xb726		41c1fb1f		SARL $0x1f, R11			
+  0xb72a		41c1eb1d		SHRL $0x1d, R11			
+  0xb72e		4501f3			ADDL R14, R11			
+  0xb731		41c1fb03		SARL $0x3, R11			
+  0xb735		4d63fb			MOVSXD R11, R15			
+  0xb738		4983ff10		CMPQ $0x10, R15			
+  0xb73c		0f83d0860000		JAE 0x13e12			
+  0xb742		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
+  0xb749		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0xb74e		41c1e303		SHLL $0x3, R11			
+  0xb752		4529de			SUBL R11, R14			
+  0xb755		90			NOPL				
+  0xb756		4585f6			TESTL R14, R14			
+  0xb759		0f8cae860000		JL 0x13e0d			
+  0xb75f		4183fe20		CMPL $0x20, R14			
+  0xb763		4519db			SBBL R11, R11			
+	goto inst161
+  0xb766		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xb769		4489f1			MOVL R14, CX		
+  0xb76c		41bf01000000		MOVL $0x1, R15		
+  0xb772		41d3e7			SHLL CL, R15		
+  0xb775		4521fb			ANDL R15, R11		
+  0xb778		4584d3			TESTL R10, R11		
+  0xb77b		751e			JNE 0xb79b		
+  0xb77d		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xb783		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb786		4889f9			MOVQ DI, CX		
+  0xb789		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb78c		0fb6742447		MOVZX 0x47(SP), SI	
+  0xb791		0f1f440000		NOPL 0(AX)(AX*1)	
+			goto fail
+  0xb796		e93bf6ffff		JMP 0xadd6		
+				i += sz
+  0xb79b		4801f3			ADDQ SI, BX		
+	c[5] = i
+  0xb79e		48899c2458050000	MOVQ BX, 0x558(SP)	
+  0xb7a6		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0xb7ac		4989db			MOVQ BX, R11		
+  0xb7af		4889f9			MOVQ DI, CX		
+  0xb7b2		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0xb7b5		4489ee			MOVL R13, SI		
+	goto inst180
+  0xb7b8		e9a2f5ffff		JMP 0xad5f		
+				goto inst148
+  0xb7bd		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb7c0		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb7c3		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb7c8		e909f6ffff		JMP 0xadd6		
+			i += sz
+  0xb7cd		48899c24d0040000	MOVQ BX, 0x4d0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb7d5		4929d8			SUBQ BX, R8		
+  0xb7d8		4c89c1			MOVQ R8, CX		
+  0xb7db		49f7d8			NEGQ R8			
+  0xb7de		49c1f83f		SARQ $0x3f, R8		
+  0xb7e2		4921d8			ANDQ BX, R8		
+  0xb7e5		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb7e9		48891424		MOVQ DX, 0(SP)		
+  0xb7ed		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb7f2		0f1f4000		NOPL 0(AX)		
+  0xb7f6		e800000000		CALL 0xb7fb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb7fb		448b5c2410		MOVL 0x10(SP), R11	
+  0xb800		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb805		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb80d		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb815		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xb81d		488b9c24d0040000	MOVQ 0x4d0(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xb825		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb82d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb835		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb83b		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb843		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb849		e9c8feffff		JMP 0xb716		
+				goto inst148
+  0xb84e		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb851		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb854		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb859		e978f5ffff		JMP 0xadd6		
+			i += sz
+  0xb85e		48899c24c8040000	MOVQ BX, 0x4c8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb866		4929d8			SUBQ BX, R8		
+  0xb869		4c89c1			MOVQ R8, CX		
+  0xb86c		49f7d8			NEGQ R8			
+  0xb86f		49c1f83f		SARQ $0x3f, R8		
+  0xb873		4921d8			ANDQ BX, R8		
+  0xb876		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb87a		48891424		MOVQ DX, 0(SP)		
+  0xb87e		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb883		e800000000		CALL 0xb888		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb888		448b5c2410		MOVL 0x10(SP), R11	
+  0xb88d		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb892		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb89a		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb8a2		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb8aa		488b9c24c8040000	MOVQ 0x4c8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb8b2		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb8ba		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb8c2		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb8c8		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb8d0		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb8d6		e9fbfdffff		JMP 0xb6d6		
+				goto inst148
+  0xb8db		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb8de		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb8e1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xb8e6		e9ebf4ffff		JMP 0xadd6		
+			i += sz
+  0xb8eb		48899c24c0040000	MOVQ BX, 0x4c0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb8f3		4929d8			SUBQ BX, R8		
+  0xb8f6		4c89c1			MOVQ R8, CX		
+  0xb8f9		49f7d8			NEGQ R8			
+  0xb8fc		49c1f83f		SARQ $0x3f, R8		
+  0xb900		4921d8			ANDQ BX, R8		
+  0xb903		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb907		48891424		MOVQ DX, 0(SP)		
+  0xb90b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb910		e800000000		CALL 0xb915		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb915		448b5c2410		MOVL 0x10(SP), R11	
+  0xb91a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb91f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb927		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb92f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb937		488b9c24c0040000	MOVQ 0x4c0(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb93f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb947		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb94f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb955		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb95d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb963		e92efdffff		JMP 0xb696		
+				goto inst148
+  0xb968		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb96b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xb96e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xb973		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xb976		e95bf4ffff		JMP 0xadd6		
+			i += sz
+  0xb97b		48899c24b8040000	MOVQ BX, 0x4b8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb983		4929d8			SUBQ BX, R8		
+  0xb986		4c89c1			MOVQ R8, CX		
+  0xb989		49f7d8			NEGQ R8			
+  0xb98c		49c1f83f		SARQ $0x3f, R8		
+  0xb990		4921d8			ANDQ BX, R8		
+  0xb993		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xb997		48891424		MOVQ DX, 0(SP)		
+  0xb99b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xb9a0		e800000000		CALL 0xb9a5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xb9a5		448b5c2410		MOVL 0x10(SP), R11	
+  0xb9aa		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xb9af		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xb9b7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xb9bf		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xb9c7		488b9c24b8040000	MOVQ 0x4b8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xb9cf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xb9d7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xb9df		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xb9e5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xb9ed		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xb9f3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xb9f6		e95bfcffff		JMP 0xb656		
+				goto inst148
+  0xb9fb		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xb9fe		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xba01		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xba06		e9cbf3ffff		JMP 0xadd6		
+			i += sz
+  0xba0b		48899c24b0040000	MOVQ BX, 0x4b0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xba13		4929d8			SUBQ BX, R8		
+  0xba16		4c89c1			MOVQ R8, CX		
+  0xba19		49f7d8			NEGQ R8			
+  0xba1c		49c1f83f		SARQ $0x3f, R8		
+  0xba20		4921d8			ANDQ BX, R8		
+  0xba23		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xba27		48891424		MOVQ DX, 0(SP)		
+  0xba2b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xba30		e800000000		CALL 0xba35		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xba35		448b5c2410		MOVL 0x10(SP), R11	
+  0xba3a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xba3f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xba47		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xba4f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xba57		488b9c24b0040000	MOVQ 0x4b0(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xba5f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xba67		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xba6f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xba75		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xba7d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xba83		e98efbffff		JMP 0xb616		
+				goto inst148
+  0xba88		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xba8b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xba8e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xba93		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xba96		e93bf3ffff		JMP 0xadd6		
+			i += sz
+  0xba9b		48899c24a8040000	MOVQ BX, 0x4a8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xbaa3		4929d8			SUBQ BX, R8		
+  0xbaa6		4c89c1			MOVQ R8, CX		
+  0xbaa9		49f7d8			NEGQ R8			
+  0xbaac		49c1f83f		SARQ $0x3f, R8		
+  0xbab0		4921d8			ANDQ BX, R8		
+  0xbab3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xbab7		48891424		MOVQ DX, 0(SP)		
+  0xbabb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xbac0		e800000000		CALL 0xbac5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xbac5		448b5c2410		MOVL 0x10(SP), R11	
+  0xbaca		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xbacf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xbad7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xbadf		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xbae7		488b9c24a8040000	MOVQ 0x4a8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xbaef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xbaf7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xbaff		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xbb05		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xbb0d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xbb13		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xbb16		e9bbfaffff		JMP 0xb5d6		
+				goto inst148
+  0xbb1b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xbb1e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xbb21		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xbb26		e9abf2ffff		JMP 0xadd6		
+			i += sz
+  0xbb2b		48899c24a0040000	MOVQ BX, 0x4a0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xbb33		4929d8			SUBQ BX, R8		
+  0xbb36		4c89c1			MOVQ R8, CX		
+  0xbb39		49f7d8			NEGQ R8			
+  0xbb3c		49c1f83f		SARQ $0x3f, R8		
+  0xbb40		4921d8			ANDQ BX, R8		
+  0xbb43		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xbb47		48891424		MOVQ DX, 0(SP)		
+  0xbb4b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xbb50		e800000000		CALL 0xbb55		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xbb55		448b5c2410		MOVL 0x10(SP), R11	
+  0xbb5a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xbb5f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xbb67		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xbb6f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xbb77		488b9c24a0040000	MOVQ 0x4a0(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xbb7f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xbb87		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xbb8f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xbb95		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xbb9d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xbba3		e9eef9ffff		JMP 0xb596		
+				goto inst148
+  0xbba8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xbbab		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xbbae		0fb6742447		MOVZX 0x47(SP), SI	
+  0xbbb3		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xbbb6		e91bf2ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0xbbbb		48899c2498040000	MOVQ BX, 0x498(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xbbc3		4929d8			SUBQ BX, R8		
+  0xbbc6		4c89c1			MOVQ R8, CX		
+  0xbbc9		49f7d8			NEGQ R8			
+  0xbbcc		49c1f83f		SARQ $0x3f, R8		
+  0xbbd0		4921d8			ANDQ BX, R8		
+  0xbbd3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xbbd7		48891424		MOVQ DX, 0(SP)		
+  0xbbdb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xbbe0		e800000000		CALL 0xbbe5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xbbe5		448b5c2410		MOVL 0x10(SP), R11	
+  0xbbea		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xbbef		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xbbf7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xbbff		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xbc07		488b9c2498040000	MOVQ 0x498(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xbc0f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xbc17		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xbc1f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xbc25		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xbc2d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xbc33		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xbc36		e91bf9ffff		JMP 0xb556		
+	case 39:
+  0xbc3b		4983fd27		CMPQ $0x27, R13		
+  0xbc3f		0f8551080000		JNE 0xc496		
+		c, i = bt[n].c, bt[n].i
+  0xbc45		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0xbc4a		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0xbc52		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0xbc56		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0xbc5d		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xbc65		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0xbc68		4c89f6			MOVQ R14, SI		
+  0xbc6b		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xbc74		6690			NOPW			
+  0xbc76		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xbc7b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xbc80		e800000000		CALL 0xbc85		[1:5]R_CALL:runtime.duffcopy+756	
+  0xbc85		488b6d00		MOVQ 0(BP), BP		
+	c[4] = i
+  0xbc89		4c89ac2450050000	MOVQ R13, 0x550(SP)	
+	bt = append(bt, state{c, i, 37, 0})
+  0xbc91		48c784243811000000000000	MOVQ $0x0, 0x1138(SP)		
+  0xbc9d		488dbc2440110000		LEAQ 0x1140(SP), DI		
+  0xbca5		0f57c0				XORPS X0, X0			
+  0xbca8		488d7ff0			LEAQ -0x10(DI), DI		
+  0xbcac		660f1f840000000000		NOPW 0(AX)(AX*1)		
+  0xbcb5		90				NOPL				
+  0xbcb6		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xbcbb		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xbcc0		e800000000			CALL 0xbcc5			[1:5]R_CALL:runtime.duffzero+250	
+  0xbcc5		488b6d00			MOVQ 0(BP), BP			
+  0xbcc9		488dbc2438110000		LEAQ 0x1138(SP), DI		
+  0xbcd1		488db42430050000		LEAQ 0x530(SP), SI		
+  0xbcd9		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xbcde		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xbce3		e800000000			CALL 0xbce8			[1:5]R_CALL:runtime.duffcopy+756	
+  0xbce8		488b6d00			MOVQ 0(BP), BP			
+  0xbcec		4c89ac24d8110000		MOVQ R13, 0x11d8(SP)		
+  0xbcf4		48c78424e011000025000000	MOVQ $0x25, 0x11e0(SP)		
+  0xbd00		48c78424e811000000000000	MOVQ $0x0, 0x11e8(SP)		
+  0xbd0c		4839d9				CMPQ BX, CX			
+  0xbd0f		0f820d070000			JB 0xc422			
+  0xbd15		4c8ba42438110000		MOVQ 0x1138(SP), R12		
+  0xbd1d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0xbd25		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0xbd29		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0xbd30		488db42440110000		LEAQ 0x1140(SP), SI		
+  0xbd38		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xbd3d		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xbd42		e800000000			CALL 0xbd47			[1:5]R_CALL:runtime.duffcopy+742	
+  0xbd47		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0xbd4b		4d85ed			TESTQ R13, R13		
+  0xbd4e		0f8c51060000		JL 0xc3a5		
+  0xbd54		6690			NOPW			
+  0xbd56		4d39c5			CMPQ R8, R13		
+  0xbd59		0f8d46060000		JGE 0xc3a5		
+	bt = append(bt, state{c, i, 37, 0})
+  0xbd5f		48898424201f0000	MOVQ AX, 0x1f20(SP)	
+  0xbd67		48899c2490040000	MOVQ BX, 0x490(SP)	
+  0xbd6f		48898c2488040000	MOVQ CX, 0x488(SP)	
+		cr, sz := rune(r[i]), 1
+  0xbd77		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xbd7c		4181fb80000000		CMPL $0x80, R11		
+  0xbd83		0f8d24060000		JGE 0xc3ad		
+  0xbd89		be01000000		MOVL $0x1, SI		
+  0xbd8e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if cr < 128 {
+  0xbd96		4181fb80000000		CMPL $0x80, R11		
+  0xbd9d		0f8d02060000		JGE 0xc3a5		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xbda3		4589dc			MOVL R11, R12			
+  0xbda6		41c1fb1f		SARL $0x1f, R11			
+  0xbdaa		41c1eb1d		SHRL $0x1d, R11			
+  0xbdae		4501e3			ADDL R12, R11			
+  0xbdb1		41c1fb03		SARL $0x3, R11			
+  0xbdb5		4d63f3			MOVSXD R11, R14			
+  0xbdb8		4983fe10		CMPQ $0x10, R14			
+  0xbdbc		0f8362800000		JAE 0x13e24			
+  0xbdc2		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
+  0xbdc9		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0xbdce		41c1e303		SHLL $0x3, R11			
+  0xbdd2		4529dc			SUBL R11, R12			
+  0xbdd5		90			NOPL				
+  0xbdd6		4585e4			TESTL R12, R12			
+  0xbdd9		0f8c40800000		JL 0x13e1f			
+  0xbddf		4183fc20		CMPL $0x20, R12			
+  0xbde3		4519db			SBBL R11, R11			
+	bt = append(bt, state{c, i, 37, 0})
+  0xbde6		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xbde9		4489e1			MOVL R12, CX		
+  0xbdec		41be01000000		MOVL $0x1, R14		
+  0xbdf2		41d3e6			SHLL CL, R14		
+  0xbdf5		4521de			ANDL R11, R14		
+  0xbdf8		4584d6			TESTL R10, R14		
+  0xbdfb		0f8493050000		JE 0xc394		
+				i += sz
+  0xbe01		4e8d142e		LEAQ 0(SI)(R13*1), R10	
+	if i >= 0 && i < len(r) {
+  0xbe05		4d85d2			TESTQ R10, R10		
+  0xbe08		0f8cfb040000		JL 0xc309		
+  0xbe0e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0xbe16		4d39c2			CMPQ R8, R10		
+  0xbe19		0f8dea040000		JGE 0xc309		
+		cr, sz := rune(r[i]), 1
+  0xbe1f		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xbe24		4181fb80000000		CMPL $0x80, R11		
+  0xbe2b		0f8dec040000		JGE 0xc31d		
+  0xbe31		b901000000		MOVL $0x1, CX		
+		if false || cr == 103 {
+  0xbe36		4183fb67		CMPL $0x67, R11		
+  0xbe3a		0f85c9040000		JNE 0xc309		
+			i += sz
+  0xbe40		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xbe43		4d85d2			TESTQ R10, R10		
+  0xbe46		0f8c32040000		JL 0xc27e		
+  0xbe4c		4d39c2			CMPQ R8, R10		
+  0xbe4f		0f8d29040000		JGE 0xc27e		
+		cr, sz := rune(r[i]), 1
+  0xbe55		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xbe5a		4181fb80000000		CMPL $0x80, R11		
+  0xbe61		0f8d2b040000		JGE 0xc292		
+  0xbe67		b901000000		MOVL $0x1, CX		
+  0xbe6c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xbe75		90			NOPL			
+		if false || cr == 103 {
+  0xbe76		4183fb67		CMPL $0x67, R11		
+  0xbe7a		0f85fe030000		JNE 0xc27e		
+			i += sz
+  0xbe80		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xbe83		4d85d2			TESTQ R10, R10		
+  0xbe86		0f8c67030000		JL 0xc1f3		
+  0xbe8c		4d39c2			CMPQ R8, R10		
+  0xbe8f		0f8d5e030000		JGE 0xc1f3		
+		cr, sz := rune(r[i]), 1
+  0xbe95		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xbe9a		4181fb80000000		CMPL $0x80, R11		
+  0xbea1		0f8d60030000		JGE 0xc207		
+  0xbea7		b901000000		MOVL $0x1, CX		
+  0xbeac		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xbeb5		90			NOPL			
+		if false || cr == 103 {
+  0xbeb6		4183fb67		CMPL $0x67, R11		
+  0xbeba		0f8533030000		JNE 0xc1f3		
+			i += sz
+  0xbec0		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xbec3		4d85d2			TESTQ R10, R10		
+  0xbec6		0f8c9c020000		JL 0xc168		
+  0xbecc		4d39c2			CMPQ R8, R10		
+  0xbecf		0f8d93020000		JGE 0xc168		
+		cr, sz := rune(r[i]), 1
+  0xbed5		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xbeda		4181fb80000000		CMPL $0x80, R11		
+  0xbee1		0f8d95020000		JGE 0xc17c		
+  0xbee7		b901000000		MOVL $0x1, CX		
+  0xbeec		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xbef5		90			NOPL			
+		if false || cr == 116 {
+  0xbef6		4183fb74		CMPL $0x74, R11		
+  0xbefa		0f8568020000		JNE 0xc168		
+			i += sz
+  0xbf00		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xbf03		4d85d2			TESTQ R10, R10		
+  0xbf06		0f8ccf010000		JL 0xc0db		
+  0xbf0c		4d39c2			CMPQ R8, R10		
+  0xbf0f		0f8dc6010000		JGE 0xc0db		
+		cr, sz := rune(r[i]), 1
+  0xbf15		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xbf1a		4181fb80000000		CMPL $0x80, R11		
+  0xbf21		0f8dc8010000		JGE 0xc0ef		
+  0xbf27		b901000000		MOVL $0x1, CX		
+  0xbf2c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xbf35		90			NOPL			
+		if false || cr == 97 {
+  0xbf36		4183fb61		CMPL $0x61, R11		
+  0xbf3a		0f859b010000		JNE 0xc0db		
+			i += sz
+  0xbf40		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xbf43		4d85d2			TESTQ R10, R10		
+  0xbf46		0f8cff000000		JL 0xc04b		
+  0xbf4c		4d39c2			CMPQ R8, R10		
+  0xbf4f		0f8df6000000		JGE 0xc04b		
+		cr, sz := rune(r[i]), 1
+  0xbf55		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xbf5a		4181fb80000000		CMPL $0x80, R11		
+  0xbf61		0f8df8000000		JGE 0xc05f		
+  0xbf67		b901000000		MOVL $0x1, CX		
+  0xbf6c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xbf75		90			NOPL			
+		if false || cr == 97 {
+  0xbf76		4183fb61		CMPL $0x61, R11		
+  0xbf7a		0f85cb000000		JNE 0xc04b		
+			i += sz
+  0xbf80		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xbf83		4d85d2			TESTQ R10, R10		
+  0xbf86		7c22			JL 0xbfaa		
+  0xbf88		4d39c2			CMPQ R8, R10		
+  0xbf8b		7d1d			JGE 0xbfaa		
+		cr, sz := rune(r[i]), 1
+  0xbf8d		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+  0xbf92		0f1f4000		NOPL 0(AX)		
+		if cr >= utf8.RuneSelf {
+  0xbf96		4181fb80000000		CMPL $0x80, R11		
+  0xbf9d		7d35			JGE 0xbfd4		
+  0xbf9f		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0xbfa4		4183fb61		CMPL $0x61, R11		
+  0xbfa8		7414			JE 0xbfbe		
+				goto inst148
+  0xbfaa		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xbfad		4889f9			MOVQ DI, CX		
+	goto fail
+  0xbfb0		4489fe			MOVL R15, SI		
+  0xbfb3		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xbfb9		e918eeffff		JMP 0xadd6		
+			i += sz
+  0xbfbe		4901ca			ADDQ CX, R10		
+		if i <= len(r) && len(bt) > 0 {
+  0xbfc1		4589fd			MOVL R15, R13		
+			goto inst38
+  0xbfc4		4c89d3			MOVQ R10, BX		
+	goto inst21
+  0xbfc7		4c8ba42490040000	MOVQ 0x490(SP), R12	
+			goto inst38
+  0xbfcf		e9caf7ffff		JMP 0xb79e		
+			i += sz
+  0xbfd4		4c89942480040000	MOVQ R10, 0x480(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xbfdc		4d29d0			SUBQ R10, R8		
+  0xbfdf		4c89c1			MOVQ R8, CX		
+  0xbfe2		49f7d8			NEGQ R8			
+  0xbfe5		49c1f83f		SARQ $0x3f, R8		
+  0xbfe9		4d21d0			ANDQ R10, R8		
+  0xbfec		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xbff0		48891424		MOVQ DX, 0(SP)		
+  0xbff4		48894c2408		MOVQ CX, 0x8(SP)	
+  0xbff9		e800000000		CALL 0xbffe		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xbffe		448b5c2410		MOVL 0x10(SP), R11	
+  0xc003		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc008		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc010		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc018		488b9c2490040000	MOVQ 0x490(SP), BX	
+  0xc020		488bbc2488040000	MOVQ 0x488(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xc028		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc030		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+				goto inst148
+  0xc038		4c8b942480040000	MOVQ 0x480(SP), R10	
+	goto fail
+  0xc040		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc046		e959ffffff		JMP 0xbfa4		
+				goto inst148
+  0xc04b		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xc04e		4889f9			MOVQ DI, CX		
+	goto fail
+  0xc051		4489fe			MOVL R15, SI		
+  0xc054		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xc05a		e977edffff		JMP 0xadd6		
+			i += sz
+  0xc05f		4c89942478040000	MOVQ R10, 0x478(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc067		4d29d0			SUBQ R10, R8		
+  0xc06a		4c89c1			MOVQ R8, CX		
+  0xc06d		49f7d8			NEGQ R8			
+  0xc070		49c1f83f		SARQ $0x3f, R8		
+  0xc074		4d21d0			ANDQ R10, R8		
+  0xc077		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc07b		48891424		MOVQ DX, 0(SP)		
+  0xc07f		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc084		e800000000		CALL 0xc089		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc089		448b5c2410		MOVL 0x10(SP), R11	
+  0xc08e		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc093		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc09b		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc0a3		488b9c2490040000	MOVQ 0x490(SP), BX	
+  0xc0ab		488bbc2488040000	MOVQ 0x488(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xc0b3		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc0bb		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xc0c3		4c8b942478040000	MOVQ 0x478(SP), R10	
+	goto fail
+  0xc0cb		440fb67c2447		MOVZX 0x47(SP), R15	
+  0xc0d1		0f1f440000		NOPL 0(AX)(AX*1)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc0d6		e99bfeffff		JMP 0xbf76		
+				goto inst148
+  0xc0db		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xc0de		4889f9			MOVQ DI, CX		
+	goto fail
+  0xc0e1		4489fe			MOVL R15, SI		
+  0xc0e4		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xc0ea		e9e7ecffff		JMP 0xadd6		
+			i += sz
+  0xc0ef		4c89942470040000	MOVQ R10, 0x470(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc0f7		4d29d0			SUBQ R10, R8		
+  0xc0fa		4c89c1			MOVQ R8, CX		
+  0xc0fd		49f7d8			NEGQ R8			
+  0xc100		49c1f83f		SARQ $0x3f, R8		
+  0xc104		4d21d0			ANDQ R10, R8		
+  0xc107		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc10b		48891424		MOVQ DX, 0(SP)		
+  0xc10f		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc114		6690			NOPW			
+  0xc116		e800000000		CALL 0xc11b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc11b		448b5c2410		MOVL 0x10(SP), R11	
+  0xc120		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc125		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc12d		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc135		488b9c2490040000	MOVQ 0x490(SP), BX	
+  0xc13d		488bbc2488040000	MOVQ 0x488(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xc145		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc14d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xc155		4c8b942470040000	MOVQ 0x470(SP), R10	
+	goto fail
+  0xc15d		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc163		e9cefdffff		JMP 0xbf36		
+				goto inst148
+  0xc168		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xc16b		4889f9			MOVQ DI, CX		
+	goto fail
+  0xc16e		4489fe			MOVL R15, SI		
+  0xc171		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xc177		e95aecffff		JMP 0xadd6		
+			i += sz
+  0xc17c		4c89942468040000	MOVQ R10, 0x468(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc184		4d29d0			SUBQ R10, R8		
+  0xc187		4c89c1			MOVQ R8, CX		
+  0xc18a		49f7d8			NEGQ R8			
+  0xc18d		49c1f83f		SARQ $0x3f, R8		
+  0xc191		4d21d0			ANDQ R10, R8		
+  0xc194		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc198		48891424		MOVQ DX, 0(SP)		
+  0xc19c		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc1a1		e800000000		CALL 0xc1a6		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc1a6		448b5c2410		MOVL 0x10(SP), R11	
+  0xc1ab		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc1b0		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc1b8		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc1c0		488b9c2490040000	MOVQ 0x490(SP), BX	
+  0xc1c8		488bbc2488040000	MOVQ 0x488(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xc1d0		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc1d8		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xc1e0		4c8b942468040000	MOVQ 0x468(SP), R10	
+	goto fail
+  0xc1e8		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc1ee		e903fdffff		JMP 0xbef6		
+				goto inst148
+  0xc1f3		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xc1f6		4889f9			MOVQ DI, CX		
+	goto fail
+  0xc1f9		4489fe			MOVL R15, SI		
+  0xc1fc		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xc202		e9cfebffff		JMP 0xadd6		
+			i += sz
+  0xc207		4c89942460040000	MOVQ R10, 0x460(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc20f		4d29d0			SUBQ R10, R8		
+  0xc212		4c89c1			MOVQ R8, CX		
+  0xc215		49f7d8			NEGQ R8			
+  0xc218		49c1f83f		SARQ $0x3f, R8		
+  0xc21c		4d21d0			ANDQ R10, R8		
+  0xc21f		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc223		48891424		MOVQ DX, 0(SP)		
+  0xc227		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc22c		e800000000		CALL 0xc231		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc231		448b5c2410		MOVL 0x10(SP), R11	
+  0xc236		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc23b		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc243		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc24b		488b9c2490040000	MOVQ 0x490(SP), BX	
+  0xc253		488bbc2488040000	MOVQ 0x488(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xc25b		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc263		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xc26b		4c8b942460040000	MOVQ 0x460(SP), R10	
+	goto fail
+  0xc273		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc279		e938fcffff		JMP 0xbeb6		
+				goto inst148
+  0xc27e		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xc281		4889f9			MOVQ DI, CX		
+	goto fail
+  0xc284		4489fe			MOVL R15, SI		
+  0xc287		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xc28d		e944ebffff		JMP 0xadd6		
+			i += sz
+  0xc292		4c89942458040000	MOVQ R10, 0x458(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc29a		4d29d0			SUBQ R10, R8		
+  0xc29d		4c89c1			MOVQ R8, CX		
+  0xc2a0		49f7d8			NEGQ R8			
+  0xc2a3		49c1f83f		SARQ $0x3f, R8		
+  0xc2a7		4d21d0			ANDQ R10, R8		
+  0xc2aa		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc2ae		48891424		MOVQ DX, 0(SP)		
+  0xc2b2		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc2b7		e800000000		CALL 0xc2bc		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc2bc		448b5c2410		MOVL 0x10(SP), R11	
+  0xc2c1		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc2c6		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc2ce		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc2d6		488b9c2490040000	MOVQ 0x490(SP), BX	
+  0xc2de		488bbc2488040000	MOVQ 0x488(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xc2e6		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc2ee		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xc2f6		4c8b942458040000	MOVQ 0x458(SP), R10	
+	goto fail
+  0xc2fe		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc304		e96dfbffff		JMP 0xbe76		
+				goto inst148
+  0xc309		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xc30c		4889f9			MOVQ DI, CX		
+	goto fail
+  0xc30f		4489fe			MOVL R15, SI		
+  0xc312		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xc318		e9b9eaffff		JMP 0xadd6		
+				i += sz
+  0xc31d		4c89942450040000	MOVQ R10, 0x450(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc325		4d29d0			SUBQ R10, R8		
+  0xc328		4c89c1			MOVQ R8, CX		
+  0xc32b		49f7d8			NEGQ R8			
+  0xc32e		49c1f83f		SARQ $0x3f, R8		
+  0xc332		4d21d0			ANDQ R10, R8		
+  0xc335		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc339		48891424		MOVQ DX, 0(SP)		
+  0xc33d		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc342		e800000000		CALL 0xc347		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc347		448b5c2410		MOVL 0x10(SP), R11	
+  0xc34c		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc351		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc359		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc361		488b9c2490040000	MOVQ 0x490(SP), BX	
+  0xc369		488bbc2488040000	MOVQ 0x488(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xc371		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc379		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xc381		4c8b942450040000	MOVQ 0x450(SP), R10	
+	goto fail
+  0xc389		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc38f		e9a2faffff		JMP 0xbe36		
+  0xc394		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xc39a		4889f9			MOVQ DI, CX		
+	goto fail
+  0xc39d		4489fe			MOVL R15, SI		
+			goto fail
+  0xc3a0		e931eaffff		JMP 0xadd6		
+	goto fail
+  0xc3a5		4489fe			MOVL R15, SI		
+	goto fail
+  0xc3a8		e929eaffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc3ad		4d29e8			SUBQ R13, R8		
+  0xc3b0		4c89c1			MOVQ R8, CX		
+  0xc3b3		49f7d8			NEGQ R8			
+  0xc3b6		49c1f83f		SARQ $0x3f, R8		
+  0xc3ba		4d21e8			ANDQ R13, R8		
+  0xc3bd		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc3c1		48891424		MOVQ DX, 0(SP)		
+  0xc3c5		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc3ca		e800000000		CALL 0xc3cf		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc3cf		448b5c2410		MOVL 0x10(SP), R11	
+  0xc3d4		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xc3d9		488b8424201f0000	MOVQ 0x1f20(SP), AX	
+  0xc3e1		488b8c2488040000	MOVQ 0x488(SP), CX	
+		if len(r[si:]) != 0 {
+  0xc3e9		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xc3f1		488b9c2490040000	MOVQ 0x490(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xc3f9		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc401		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xc409		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xc40f		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xc417		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc41d		e974f9ffff		JMP 0xbd96		
+	bt = append(bt, state{c, i, 37, 0})
+  0xc422		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0xc429		48891424		MOVQ DX, 0(SP)		
+  0xc42d		4889442408		MOVQ AX, 0x8(SP)	
+  0xc432		4c89642410		MOVQ R12, 0x10(SP)	
+  0xc437		48894c2418		MOVQ CX, 0x18(SP)	
+  0xc43c		48895c2420		MOVQ BX, 0x20(SP)	
+  0xc441		e800000000		CALL 0xc446		[1:5]R_CALL:runtime.growslice	
+  0xc446		488b442428		MOVQ 0x28(SP), AX	
+  0xc44b		488b4c2430		MOVQ 0x30(SP), CX	
+  0xc450		488b542438		MOVQ 0x38(SP), DX	
+  0xc455		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0xc459		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc461		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xc469		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 37, 0})
+  0xc46f		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0xc477		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xc47f		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 37, 0})
+  0xc485		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0xc488		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 37, 0})
+  0xc490		e980f8ffff		JMP 0xbd15		
+  0xc495		90			NOPL			
+	switch bt[len(bt)-1].pc {
+  0xc496		4983fd39		CMPQ $0x39, R13		
+	case 57:
+  0xc49a		0f8548780000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0xc4a0		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0xc4a5		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0xc4a9		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0xc4b0		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xc4b8		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0xc4bb		4c89de			MOVQ R11, SI		
+  0xc4be		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xc4c3		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xc4c8		e800000000		CALL 0xc4cd		[1:5]R_CALL:runtime.duffcopy+756	
+  0xc4cd		488b6d00		MOVQ 0(BP), BP		
+  0xc4d1		0f1f440000		NOPL 0(AX)(AX*1)	
+	if i >= 0 && i < len(r) {
+  0xc4d6		4885db			TESTQ BX, BX		
+  0xc4d9		0f8c69060000		JL 0xcb48		
+  0xc4df		4c39c3			CMPQ R8, BX		
+  0xc4e2		0f8d60060000		JGE 0xcb48		
+		cr, sz := rune(r[i]), 1
+  0xc4e8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xc4ed		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xc4f6		4181fb80000000		CMPL $0x80, R11		
+  0xc4fd		0f8d58060000		JGE 0xcb5b		
+  0xc503		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xc508		4183fb74		CMPL $0x74, R11		
+  0xc50c		0f8536060000		JNE 0xcb48		
+			i += sz
+  0xc512		4801f3			ADDQ SI, BX		
+  0xc515		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xc516		4885db			TESTQ BX, BX		
+  0xc519		0f8c9c050000		JL 0xcabb		
+  0xc51f		4c39c3			CMPQ R8, BX		
+  0xc522		0f8d93050000		JGE 0xcabb		
+		cr, sz := rune(r[i]), 1
+  0xc528		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xc52d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xc536		4181fb80000000		CMPL $0x80, R11		
+  0xc53d		0f8d88050000		JGE 0xcacb		
+  0xc543		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xc548		4183fb74		CMPL $0x74, R11		
+  0xc54c		0f8569050000		JNE 0xcabb		
+			i += sz
+  0xc552		4801f3			ADDQ SI, BX		
+  0xc555		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xc556		4885db			TESTQ BX, BX		
+  0xc559		0f8cc9040000		JL 0xca28		
+  0xc55f		4c39c3			CMPQ R8, BX		
+  0xc562		0f8dc0040000		JGE 0xca28		
+		cr, sz := rune(r[i]), 1
+  0xc568		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xc56d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xc576		4181fb80000000		CMPL $0x80, R11		
+  0xc57d		0f8db8040000		JGE 0xca3b		
+  0xc583		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xc588		4183fb74		CMPL $0x74, R11		
+  0xc58c		0f8596040000		JNE 0xca28		
+			i += sz
+  0xc592		4801f3			ADDQ SI, BX		
+  0xc595		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xc596		4885db			TESTQ BX, BX		
+  0xc599		0f8cfc030000		JL 0xc99b		
+  0xc59f		4c39c3			CMPQ R8, BX		
+  0xc5a2		0f8df3030000		JGE 0xc99b		
+		cr, sz := rune(r[i]), 1
+  0xc5a8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xc5ad		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xc5b6		4181fb80000000		CMPL $0x80, R11		
+  0xc5bd		0f8de8030000		JGE 0xc9ab		
+  0xc5c3		be01000000		MOVL $0x1, SI		
+		if false || cr == 97 {
+  0xc5c8		4183fb61		CMPL $0x61, R11		
+  0xc5cc		0f85c9030000		JNE 0xc99b		
+			i += sz
+  0xc5d2		4801f3			ADDQ SI, BX		
+  0xc5d5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xc5d6		4885db			TESTQ BX, BX		
+  0xc5d9		0f8c29030000		JL 0xc908		
+  0xc5df		4c39c3			CMPQ R8, BX		
+  0xc5e2		0f8d20030000		JGE 0xc908		
+		cr, sz := rune(r[i]), 1
+  0xc5e8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xc5ed		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xc5f6		4181fb80000000		CMPL $0x80, R11		
+  0xc5fd		0f8d18030000		JGE 0xc91b		
+  0xc603		be01000000		MOVL $0x1, SI		
+		if false || cr == 99 {
+  0xc608		4183fb63		CMPL $0x63, R11		
+  0xc60c		0f85f6020000		JNE 0xc908		
+			i += sz
+  0xc612		4801f3			ADDQ SI, BX		
+  0xc615		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xc616		4885db			TESTQ BX, BX		
+  0xc619		0f8c5c020000		JL 0xc87b		
+  0xc61f		4c39c3			CMPQ R8, BX		
+  0xc622		0f8d53020000		JGE 0xc87b		
+		cr, sz := rune(r[i]), 1
+  0xc628		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xc62d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xc636		4181fb80000000		CMPL $0x80, R11		
+  0xc63d		0f8d48020000		JGE 0xc88b		
+  0xc643		be01000000		MOVL $0x1, SI		
+		if false || cr == 99 {
+  0xc648		4183fb63		CMPL $0x63, R11		
+  0xc64c		0f8529020000		JNE 0xc87b		
+			i += sz
+  0xc652		4801f3			ADDQ SI, BX		
+  0xc655		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xc656		4885db			TESTQ BX, BX		
+  0xc659		0f8c8c010000		JL 0xc7eb		
+  0xc65f		4c39c3			CMPQ R8, BX		
+  0xc662		0f8d83010000		JGE 0xc7eb		
+		cr, sz := rune(r[i]), 1
+  0xc668		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xc66d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xc676		4181fb80000000		CMPL $0x80, R11		
+  0xc67d		0f8d78010000		JGE 0xc7fb		
+  0xc683		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0xc688		4181fb80000000		CMPL $0x80, R11		
+  0xc68f		0f8d56010000		JGE 0xc7eb		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xc695		4589de			MOVL R11, R14			
+  0xc698		41c1fb1f		SARL $0x1f, R11			
+  0xc69c		41c1eb1d		SHRL $0x1d, R11			
+  0xc6a0		4501f3			ADDL R14, R11			
+  0xc6a3		41c1fb03		SARL $0x3, R11			
+  0xc6a7		4d63fb			MOVSXD R11, R15			
+  0xc6aa		4983ff10		CMPQ $0x10, R15			
+  0xc6ae		0f8339770000		JAE 0x13ded			
+  0xc6b4		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"	
+  0xc6bb		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0xc6c0		41c1e303		SHLL $0x3, R11			
+  0xc6c4		4529de			SUBL R11, R14			
+  0xc6c7		4585f6			TESTL R14, R14			
+  0xc6ca		0f8c18770000		JL 0x13de8			
+  0xc6d0		4183fe20		CMPL $0x20, R14			
+  0xc6d4		4519db			SBBL R11, R11			
+	goto inst161
+  0xc6d7		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xc6da		4489f1			MOVL R14, CX		
+  0xc6dd		41bf01000000		MOVL $0x1, R15		
+  0xc6e3		41d3e7			SHLL CL, R15		
+  0xc6e6		4521df			ANDL R11, R15		
+  0xc6e9		4584d7			TESTL R10, R15		
+  0xc6ec		0f84e0000000		JE 0xc7d2		
+				i += sz
+  0xc6f2		4801f3			ADDQ SI, BX		
+  0xc6f5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xc6f6		4885db			TESTQ BX, BX		
+  0xc6f9		7c21			JL 0xc71c		
+  0xc6fb		4c39c3			CMPQ R8, BX		
+  0xc6fe		7d1c			JGE 0xc71c		
+		cr, sz := rune(r[i]), 1
+  0xc700		450fb61419		MOVZX 0(R9)(BX*1), R10	
+		if cr >= utf8.RuneSelf {
+  0xc705		4181fa80000000		CMPL $0x80, R10		
+  0xc70c		7d4d			JGE 0xc75b		
+  0xc70e		b901000000		MOVL $0x1, CX		
+  0xc713		0f1f00			NOPL 0(AX)		
+		if false || cr == 116 {
+  0xc716		4183fa74		CMPL $0x74, R10		
+  0xc71a		7419			JE 0xc735		
+  0xc71c		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xc722		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xc725		4889f9			MOVQ DI, CX		
+  0xc728		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xc72b		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xc730		e9a1e6ffff		JMP 0xadd6		
+			i += sz
+  0xc735		4801cb			ADDQ CX, BX		
+	c[7] = i
+  0xc738		48899c2468050000	MOVQ BX, 0x568(SP)	
+  0xc740		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0xc746		4989db			MOVQ BX, R11		
+  0xc749		4889f9			MOVQ DI, CX		
+  0xc74c		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0xc74f		4489ee			MOVL R13, SI		
+  0xc752		0f1f4000		NOPL 0(AX)		
+	goto inst180
+  0xc756		e904e6ffff		JMP 0xad5f		
+				i += sz
+  0xc75b		48899c2448040000	MOVQ BX, 0x448(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc763		4929d8			SUBQ BX, R8		
+  0xc766		4c89c1			MOVQ R8, CX		
+  0xc769		49f7d8			NEGQ R8			
+  0xc76c		49c1f83f		SARQ $0x3f, R8		
+  0xc770		4921d8			ANDQ BX, R8		
+  0xc773		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc777		48891424		MOVQ DX, 0(SP)		
+  0xc77b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc780		e800000000		CALL 0xc785		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc785		448b542410		MOVL 0x10(SP), R10	
+  0xc78a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xc78f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xc797		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xc79f		488b9c2448040000	MOVQ 0x448(SP), BX	
+	goto inst161
+  0xc7a7		488bbc2420050000	MOVQ 0x520(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xc7af		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc7b7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xc7bf		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xc7c7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc7cd		e944ffffff		JMP 0xc716		
+  0xc7d2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xc7d8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xc7db		4889f9			MOVQ DI, CX		
+  0xc7de		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xc7e1		0fb6742447		MOVZX 0x47(SP), SI	
+			goto fail
+  0xc7e6		e9ebe5ffff		JMP 0xadd6		
+				goto inst148
+  0xc7eb		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xc7ee		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xc7f1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xc7f6		e9dbe5ffff		JMP 0xadd6		
+			i += sz
+  0xc7fb		48899c2440040000	MOVQ BX, 0x440(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc803		4929d8			SUBQ BX, R8		
+  0xc806		4c89c1			MOVQ R8, CX		
+  0xc809		49f7d8			NEGQ R8			
+  0xc80c		49c1f83f		SARQ $0x3f, R8		
+  0xc810		4921d8			ANDQ BX, R8		
+  0xc813		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc817		48891424		MOVQ DX, 0(SP)		
+  0xc81b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc820		e800000000		CALL 0xc825		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc825		448b5c2410		MOVL 0x10(SP), R11	
+  0xc82a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xc82f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xc837		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xc83f		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xc847		488b9c2440040000	MOVQ 0x440(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xc84f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc857		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xc85f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xc865		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xc86d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xc873		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc876		e90dfeffff		JMP 0xc688		
+				goto inst148
+  0xc87b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xc87e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xc881		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xc886		e94be5ffff		JMP 0xadd6		
+			i += sz
+  0xc88b		48899c2438040000	MOVQ BX, 0x438(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc893		4929d8			SUBQ BX, R8		
+  0xc896		4c89c1			MOVQ R8, CX		
+  0xc899		49f7d8			NEGQ R8			
+  0xc89c		49c1f83f		SARQ $0x3f, R8		
+  0xc8a0		4921d8			ANDQ BX, R8		
+  0xc8a3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc8a7		48891424		MOVQ DX, 0(SP)		
+  0xc8ab		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc8b0		e800000000		CALL 0xc8b5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc8b5		448b5c2410		MOVL 0x10(SP), R11	
+  0xc8ba		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xc8bf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xc8c7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xc8cf		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xc8d7		488b9c2438040000	MOVQ 0x438(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xc8df		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc8e7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xc8ef		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xc8f5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xc8fd		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc903		e940fdffff		JMP 0xc648		
+				goto inst148
+  0xc908		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xc90b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xc90e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xc913		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xc916		e9bbe4ffff		JMP 0xadd6		
+			i += sz
+  0xc91b		48899c2430040000	MOVQ BX, 0x430(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc923		4929d8			SUBQ BX, R8		
+  0xc926		4c89c1			MOVQ R8, CX		
+  0xc929		49f7d8			NEGQ R8			
+  0xc92c		49c1f83f		SARQ $0x3f, R8		
+  0xc930		4921d8			ANDQ BX, R8		
+  0xc933		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc937		48891424		MOVQ DX, 0(SP)		
+  0xc93b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc940		e800000000		CALL 0xc945		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc945		448b5c2410		MOVL 0x10(SP), R11	
+  0xc94a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xc94f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xc957		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xc95f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xc967		488b9c2430040000	MOVQ 0x430(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xc96f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xc977		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xc97f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xc985		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xc98d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xc993		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc996		e96dfcffff		JMP 0xc608		
+				goto inst148
+  0xc99b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xc99e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xc9a1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xc9a6		e92be4ffff		JMP 0xadd6		
+			i += sz
+  0xc9ab		48899c2428040000	MOVQ BX, 0x428(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xc9b3		4929d8			SUBQ BX, R8		
+  0xc9b6		4c89c1			MOVQ R8, CX		
+  0xc9b9		49f7d8			NEGQ R8			
+  0xc9bc		49c1f83f		SARQ $0x3f, R8		
+  0xc9c0		4921d8			ANDQ BX, R8		
+  0xc9c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xc9c7		48891424		MOVQ DX, 0(SP)		
+  0xc9cb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xc9d0		e800000000		CALL 0xc9d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xc9d5		448b5c2410		MOVL 0x10(SP), R11	
+  0xc9da		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xc9df		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xc9e7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xc9ef		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xc9f7		488b9c2428040000	MOVQ 0x428(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xc9ff		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xca07		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xca0f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xca15		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xca1d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xca23		e9a0fbffff		JMP 0xc5c8		
+				goto inst148
+  0xca28		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xca2b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xca2e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xca33		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xca36		e99be3ffff		JMP 0xadd6		
+			i += sz
+  0xca3b		48899c2420040000	MOVQ BX, 0x420(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xca43		4929d8			SUBQ BX, R8		
+  0xca46		4c89c1			MOVQ R8, CX		
+  0xca49		49f7d8			NEGQ R8			
+  0xca4c		49c1f83f		SARQ $0x3f, R8		
+  0xca50		4921d8			ANDQ BX, R8		
+  0xca53		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xca57		48891424		MOVQ DX, 0(SP)		
+  0xca5b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xca60		e800000000		CALL 0xca65		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xca65		448b5c2410		MOVL 0x10(SP), R11	
+  0xca6a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xca6f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xca77		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xca7f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xca87		488b9c2420040000	MOVQ 0x420(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xca8f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xca97		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xca9f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xcaa5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xcaad		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xcab3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xcab6		e9cdfaffff		JMP 0xc588		
+				goto inst148
+  0xcabb		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xcabe		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xcac1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xcac6		e90be3ffff		JMP 0xadd6		
+			i += sz
+  0xcacb		48899c2418040000	MOVQ BX, 0x418(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xcad3		4929d8			SUBQ BX, R8		
+  0xcad6		4c89c1			MOVQ R8, CX		
+  0xcad9		49f7d8			NEGQ R8			
+  0xcadc		49c1f83f		SARQ $0x3f, R8		
+  0xcae0		4921d8			ANDQ BX, R8		
+  0xcae3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xcae7		48891424		MOVQ DX, 0(SP)		
+  0xcaeb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xcaf0		e800000000		CALL 0xcaf5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xcaf5		448b5c2410		MOVL 0x10(SP), R11	
+  0xcafa		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xcaff		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xcb07		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xcb0f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xcb17		488b9c2418040000	MOVQ 0x418(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xcb1f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xcb27		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xcb2f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xcb35		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xcb3d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xcb43		e900faffff		JMP 0xc548		
+				goto inst148
+  0xcb48		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xcb4b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xcb4e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xcb53		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xcb56		e97be2ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0xcb5b		48899c2410040000	MOVQ BX, 0x410(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xcb63		4929d8			SUBQ BX, R8		
+  0xcb66		4c89c1			MOVQ R8, CX		
+  0xcb69		49f7d8			NEGQ R8			
+  0xcb6c		49c1f83f		SARQ $0x3f, R8		
+  0xcb70		4921d8			ANDQ BX, R8		
+  0xcb73		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xcb77		48891424		MOVQ DX, 0(SP)		
+  0xcb7b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xcb80		e800000000		CALL 0xcb85		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xcb85		448b5c2410		MOVL 0x10(SP), R11	
+  0xcb8a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xcb8f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xcb97		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xcb9f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xcba7		488b9c2410040000	MOVQ 0x410(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xcbaf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xcbb7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xcbbf		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xcbc5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xcbcd		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xcbd3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xcbd6		e92df9ffff		JMP 0xc508		
+	switch bt[len(bt)-1].pc {
+  0xcbdb		4983fd4d		CMPQ $0x4d, R13		
+	case 77:
+  0xcbdf		0f8f960f0000		JG 0xdb7b		
+	case 59:
+  0xcbe5		4983fd3b		CMPQ $0x3b, R13		
+  0xcbe9		0f8547080000		JNE 0xd436		
+		c, i = bt[n].c, bt[n].i
+  0xcbef		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0xcbf4		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0xcbfc		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0xcc00		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0xcc07		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xcc0f		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0xcc12		4c89f6			MOVQ R14, SI		
+  0xcc15		90			NOPL			
+  0xcc16		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xcc1b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xcc20		e800000000		CALL 0xcc25		[1:5]R_CALL:runtime.duffcopy+756	
+  0xcc25		488b6d00		MOVQ 0(BP), BP		
+	c[6] = i
+  0xcc29		4c89ac2460050000	MOVQ R13, 0x560(SP)	
+	bt = append(bt, state{c, i, 57, 0})
+  0xcc31		48c78424c80f000000000000	MOVQ $0x0, 0xfc8(SP)		
+  0xcc3d		488dbc24d00f0000		LEAQ 0xfd0(SP), DI		
+  0xcc45		0f57c0				XORPS X0, X0			
+  0xcc48		488d7ff0			LEAQ -0x10(DI), DI		
+  0xcc4c		660f1f840000000000		NOPW 0(AX)(AX*1)		
+  0xcc55		90				NOPL				
+  0xcc56		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xcc5b		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xcc60		e800000000			CALL 0xcc65			[1:5]R_CALL:runtime.duffzero+250	
+  0xcc65		488b6d00			MOVQ 0(BP), BP			
+  0xcc69		488dbc24c80f0000		LEAQ 0xfc8(SP), DI		
+  0xcc71		488db42430050000		LEAQ 0x530(SP), SI		
+  0xcc79		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xcc7e		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xcc83		e800000000			CALL 0xcc88			[1:5]R_CALL:runtime.duffcopy+756	
+  0xcc88		488b6d00			MOVQ 0(BP), BP			
+  0xcc8c		4c89ac2468100000		MOVQ R13, 0x1068(SP)		
+  0xcc94		48c784247010000039000000	MOVQ $0x39, 0x1070(SP)		
+  0xcca0		48c784247810000000000000	MOVQ $0x0, 0x1078(SP)		
+  0xccac		4839d9				CMPQ BX, CX			
+  0xccaf		0f820d070000			JB 0xd3c2			
+  0xccb5		4c8ba424c80f0000		MOVQ 0xfc8(SP), R12		
+  0xccbd		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0xccc5		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0xccc9		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0xccd0		488db424d00f0000		LEAQ 0xfd0(SP), SI		
+  0xccd8		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xccdd		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xcce2		e800000000			CALL 0xcce7			[1:5]R_CALL:runtime.duffcopy+742	
+  0xcce7		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0xcceb		4d85ed			TESTQ R13, R13		
+  0xccee		0f8c51060000		JL 0xd345		
+  0xccf4		6690			NOPW			
+  0xccf6		4d39c5			CMPQ R8, R13		
+  0xccf9		0f8d46060000		JGE 0xd345		
+	bt = append(bt, state{c, i, 57, 0})
+  0xccff		48898424181f0000	MOVQ AX, 0x1f18(SP)	
+  0xcd07		48899c2408040000	MOVQ BX, 0x408(SP)	
+  0xcd0f		48898c2400040000	MOVQ CX, 0x400(SP)	
+		cr, sz := rune(r[i]), 1
+  0xcd17		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xcd1c		4181fb80000000		CMPL $0x80, R11		
+  0xcd23		0f8d24060000		JGE 0xd34d		
+  0xcd29		be01000000		MOVL $0x1, SI		
+  0xcd2e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if false || cr == 97 {
+  0xcd36		4183fb61		CMPL $0x61, R11		
+  0xcd3a		0f8505060000		JNE 0xd345		
+			i += sz
+  0xcd40		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
+	if i >= 0 && i < len(r) {
+  0xcd44		4d85db			TESTQ R11, R11		
+  0xcd47		0f8c70050000		JL 0xd2bd		
+  0xcd4d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xcd56		4d39c3			CMPQ R8, R11		
+  0xcd59		0f8d5e050000		JGE 0xd2bd		
+		cr, sz := rune(r[i]), 1
+  0xcd5f		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xcd64		4181fc80000000		CMPL $0x80, R12		
+  0xcd6b		0f8d57050000		JGE 0xd2c8		
+  0xcd71		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0xcd76		4181fc80000000		CMPL $0x80, R12		
+  0xcd7d		0f8d3a050000		JGE 0xd2bd		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xcd83		4589e5			MOVL R12, R13			
+  0xcd86		41c1fc1f		SARL $0x1f, R12			
+  0xcd8a		41c1ec1d		SHRL $0x1d, R12			
+  0xcd8e		4501ec			ADDL R13, R12			
+  0xcd91		41c1fc03		SARL $0x3, R12			
+  0xcd95		4d63f4			MOVSXD R12, R14			
+  0xcd98		4983fe10		CMPQ $0x10, R14			
+  0xcd9c		0f835e700000		JAE 0x13e00			
+  0xcda2		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"	
+  0xcda9		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0xcdae		41c1e403		SHLL $0x3, R12			
+  0xcdb2		4529e5			SUBL R12, R13			
+  0xcdb5		90			NOPL				
+  0xcdb6		4585ed			TESTL R13, R13			
+  0xcdb9		0f8c3c700000		JL 0x13dfb			
+  0xcdbf		4183fd20		CMPL $0x20, R13			
+  0xcdc3		4519e4			SBBL R12, R12			
+	bt = append(bt, state{c, i, 57, 0})
+  0xcdc6		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xcdc9		4489e9			MOVL R13, CX		
+  0xcdcc		41be01000000		MOVL $0x1, R14		
+  0xcdd2		41d3e6			SHLL CL, R14		
+  0xcdd5		4521e6			ANDL R12, R14		
+  0xcdd8		4584d6			TESTL R10, R14		
+  0xcddb		0f84c8040000		JE 0xd2a9		
+				i += sz
+  0xcde1		4e8d141e		LEAQ 0(SI)(R11*1), R10	
+	if i >= 0 && i < len(r) {
+  0xcde5		4d85d2			TESTQ R10, R10		
+  0xcde8		0f8c30040000		JL 0xd21e		
+  0xcdee		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0xcdf6		4d39c2			CMPQ R8, R10		
+  0xcdf9		0f8d1f040000		JGE 0xd21e		
+		cr, sz := rune(r[i]), 1
+  0xcdff		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xce04		4181fb80000000		CMPL $0x80, R11		
+  0xce0b		0f8d21040000		JGE 0xd232		
+  0xce11		b901000000		MOVL $0x1, CX		
+		if false || cr == 103 {
+  0xce16		4183fb67		CMPL $0x67, R11		
+  0xce1a		0f85fe030000		JNE 0xd21e		
+			i += sz
+  0xce20		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xce23		4d85d2			TESTQ R10, R10		
+  0xce26		0f8c67030000		JL 0xd193		
+  0xce2c		4d39c2			CMPQ R8, R10		
+  0xce2f		0f8d5e030000		JGE 0xd193		
+		cr, sz := rune(r[i]), 1
+  0xce35		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xce3a		4181fb80000000		CMPL $0x80, R11		
+  0xce41		0f8d60030000		JGE 0xd1a7		
+  0xce47		b901000000		MOVL $0x1, CX		
+  0xce4c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xce55		90			NOPL			
+		if false || cr == 103 {
+  0xce56		4183fb67		CMPL $0x67, R11		
+  0xce5a		0f8533030000		JNE 0xd193		
+			i += sz
+  0xce60		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xce63		4d85d2			TESTQ R10, R10		
+  0xce66		0f8c9c020000		JL 0xd108		
+  0xce6c		4d39c2			CMPQ R8, R10		
+  0xce6f		0f8d93020000		JGE 0xd108		
+		cr, sz := rune(r[i]), 1
+  0xce75		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xce7a		4181fb80000000		CMPL $0x80, R11		
+  0xce81		0f8d95020000		JGE 0xd11c		
+  0xce87		b901000000		MOVL $0x1, CX		
+  0xce8c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xce95		90			NOPL			
+		if false || cr == 116 {
+  0xce96		4183fb74		CMPL $0x74, R11		
+  0xce9a		0f8568020000		JNE 0xd108		
+			i += sz
+  0xcea0		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xcea3		4d85d2			TESTQ R10, R10		
+  0xcea6		0f8ccf010000		JL 0xd07b		
+  0xceac		4d39c2			CMPQ R8, R10		
+  0xceaf		0f8dc6010000		JGE 0xd07b		
+		cr, sz := rune(r[i]), 1
+  0xceb5		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xceba		4181fb80000000		CMPL $0x80, R11		
+  0xcec1		0f8dc8010000		JGE 0xd08f		
+  0xcec7		b901000000		MOVL $0x1, CX		
+  0xcecc		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xced5		90			NOPL			
+		if false || cr == 97 {
+  0xced6		4183fb61		CMPL $0x61, R11		
+  0xceda		0f859b010000		JNE 0xd07b		
+			i += sz
+  0xcee0		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xcee3		4d85d2			TESTQ R10, R10		
+  0xcee6		0f8cff000000		JL 0xcfeb		
+  0xceec		4d39c2			CMPQ R8, R10		
+  0xceef		0f8df6000000		JGE 0xcfeb		
+		cr, sz := rune(r[i]), 1
+  0xcef5		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xcefa		4181fb80000000		CMPL $0x80, R11		
+  0xcf01		0f8df8000000		JGE 0xcfff		
+  0xcf07		b901000000		MOVL $0x1, CX		
+  0xcf0c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xcf15		90			NOPL			
+		if false || cr == 97 {
+  0xcf16		4183fb61		CMPL $0x61, R11		
+  0xcf1a		0f85cb000000		JNE 0xcfeb		
+			i += sz
+  0xcf20		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xcf23		4d85d2			TESTQ R10, R10		
+  0xcf26		7c22			JL 0xcf4a		
+  0xcf28		4d39c2			CMPQ R8, R10		
+  0xcf2b		7d1d			JGE 0xcf4a		
+		cr, sz := rune(r[i]), 1
+  0xcf2d		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+  0xcf32		0f1f4000		NOPL 0(AX)		
+		if cr >= utf8.RuneSelf {
+  0xcf36		4181fb80000000		CMPL $0x80, R11		
+  0xcf3d		7d35			JGE 0xcf74		
+  0xcf3f		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0xcf44		4183fb61		CMPL $0x61, R11		
+  0xcf48		7414			JE 0xcf5e		
+				goto inst148
+  0xcf4a		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xcf4d		4889f9			MOVQ DI, CX		
+	goto fail
+  0xcf50		4489fe			MOVL R15, SI		
+  0xcf53		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xcf59		e978deffff		JMP 0xadd6		
+			i += sz
+  0xcf5e		4901ca			ADDQ CX, R10		
+		if i <= len(r) && len(bt) > 0 {
+  0xcf61		4589fd			MOVL R15, R13		
+			goto inst58
+  0xcf64		4c89d3			MOVQ R10, BX		
+	goto inst41
+  0xcf67		4c8ba42408040000	MOVQ 0x408(SP), R12	
+			goto inst58
+  0xcf6f		e9c4f7ffff		JMP 0xc738		
+			i += sz
+  0xcf74		4c899424f8030000	MOVQ R10, 0x3f8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xcf7c		4d29d0			SUBQ R10, R8		
+  0xcf7f		4c89c1			MOVQ R8, CX		
+  0xcf82		49f7d8			NEGQ R8			
+  0xcf85		49c1f83f		SARQ $0x3f, R8		
+  0xcf89		4d21d0			ANDQ R10, R8		
+  0xcf8c		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xcf90		48891424		MOVQ DX, 0(SP)		
+  0xcf94		48894c2408		MOVQ CX, 0x8(SP)	
+  0xcf99		e800000000		CALL 0xcf9e		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xcf9e		448b5c2410		MOVL 0x10(SP), R11	
+  0xcfa3		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xcfa8		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+		if len(r[si:]) != 0 {
+  0xcfb0		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xcfb8		488b9c2408040000	MOVQ 0x408(SP), BX	
+  0xcfc0		488bbc2400040000	MOVQ 0x400(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xcfc8		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xcfd0		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+				goto inst148
+  0xcfd8		4c8b9424f8030000	MOVQ 0x3f8(SP), R10	
+	goto fail
+  0xcfe0		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xcfe6		e959ffffff		JMP 0xcf44		
+				goto inst148
+  0xcfeb		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xcfee		4889f9			MOVQ DI, CX		
+	goto fail
+  0xcff1		4489fe			MOVL R15, SI		
+  0xcff4		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xcffa		e9d7ddffff		JMP 0xadd6		
+			i += sz
+  0xcfff		4c899424f0030000	MOVQ R10, 0x3f0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd007		4d29d0			SUBQ R10, R8		
+  0xd00a		4c89c1			MOVQ R8, CX		
+  0xd00d		49f7d8			NEGQ R8			
+  0xd010		49c1f83f		SARQ $0x3f, R8		
+  0xd014		4d21d0			ANDQ R10, R8		
+  0xd017		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd01b		48891424		MOVQ DX, 0(SP)		
+  0xd01f		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd024		e800000000		CALL 0xd029		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd029		448b5c2410		MOVL 0x10(SP), R11	
+  0xd02e		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xd033		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+		if len(r[si:]) != 0 {
+  0xd03b		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xd043		488b9c2408040000	MOVQ 0x408(SP), BX	
+  0xd04b		488bbc2400040000	MOVQ 0x400(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xd053		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd05b		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xd063		4c8b9424f0030000	MOVQ 0x3f0(SP), R10	
+	goto fail
+  0xd06b		440fb67c2447		MOVZX 0x47(SP), R15	
+  0xd071		0f1f440000		NOPL 0(AX)(AX*1)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd076		e99bfeffff		JMP 0xcf16		
+				goto inst148
+  0xd07b		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xd07e		4889f9			MOVQ DI, CX		
+	goto fail
+  0xd081		4489fe			MOVL R15, SI		
+  0xd084		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xd08a		e947ddffff		JMP 0xadd6		
+			i += sz
+  0xd08f		4c899424e8030000	MOVQ R10, 0x3e8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd097		4d29d0			SUBQ R10, R8		
+  0xd09a		4c89c1			MOVQ R8, CX		
+  0xd09d		49f7d8			NEGQ R8			
+  0xd0a0		49c1f83f		SARQ $0x3f, R8		
+  0xd0a4		4d21d0			ANDQ R10, R8		
+  0xd0a7		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd0ab		48891424		MOVQ DX, 0(SP)		
+  0xd0af		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd0b4		6690			NOPW			
+  0xd0b6		e800000000		CALL 0xd0bb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd0bb		448b5c2410		MOVL 0x10(SP), R11	
+  0xd0c0		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xd0c5		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+		if len(r[si:]) != 0 {
+  0xd0cd		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xd0d5		488b9c2408040000	MOVQ 0x408(SP), BX	
+  0xd0dd		488bbc2400040000	MOVQ 0x400(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xd0e5		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd0ed		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xd0f5		4c8b9424e8030000	MOVQ 0x3e8(SP), R10	
+	goto fail
+  0xd0fd		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd103		e9cefdffff		JMP 0xced6		
+				goto inst148
+  0xd108		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xd10b		4889f9			MOVQ DI, CX		
+	goto fail
+  0xd10e		4489fe			MOVL R15, SI		
+  0xd111		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xd117		e9badcffff		JMP 0xadd6		
+			i += sz
+  0xd11c		4c899424e0030000	MOVQ R10, 0x3e0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd124		4d29d0			SUBQ R10, R8		
+  0xd127		4c89c1			MOVQ R8, CX		
+  0xd12a		49f7d8			NEGQ R8			
+  0xd12d		49c1f83f		SARQ $0x3f, R8		
+  0xd131		4d21d0			ANDQ R10, R8		
+  0xd134		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd138		48891424		MOVQ DX, 0(SP)		
+  0xd13c		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd141		e800000000		CALL 0xd146		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd146		448b5c2410		MOVL 0x10(SP), R11	
+  0xd14b		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xd150		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+		if len(r[si:]) != 0 {
+  0xd158		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xd160		488b9c2408040000	MOVQ 0x408(SP), BX	
+  0xd168		488bbc2400040000	MOVQ 0x400(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xd170		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd178		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xd180		4c8b9424e0030000	MOVQ 0x3e0(SP), R10	
+	goto fail
+  0xd188		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd18e		e903fdffff		JMP 0xce96		
+				goto inst148
+  0xd193		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xd196		4889f9			MOVQ DI, CX		
+	goto fail
+  0xd199		4489fe			MOVL R15, SI		
+  0xd19c		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xd1a2		e92fdcffff		JMP 0xadd6		
+			i += sz
+  0xd1a7		4c899424d8030000	MOVQ R10, 0x3d8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd1af		4d29d0			SUBQ R10, R8		
+  0xd1b2		4c89c1			MOVQ R8, CX		
+  0xd1b5		49f7d8			NEGQ R8			
+  0xd1b8		49c1f83f		SARQ $0x3f, R8		
+  0xd1bc		4d21d0			ANDQ R10, R8		
+  0xd1bf		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd1c3		48891424		MOVQ DX, 0(SP)		
+  0xd1c7		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd1cc		e800000000		CALL 0xd1d1		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd1d1		448b5c2410		MOVL 0x10(SP), R11	
+  0xd1d6		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xd1db		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+		if len(r[si:]) != 0 {
+  0xd1e3		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xd1eb		488b9c2408040000	MOVQ 0x408(SP), BX	
+  0xd1f3		488bbc2400040000	MOVQ 0x400(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xd1fb		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd203		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xd20b		4c8b9424d8030000	MOVQ 0x3d8(SP), R10	
+	goto fail
+  0xd213		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd219		e938fcffff		JMP 0xce56		
+				goto inst148
+  0xd21e		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xd221		4889f9			MOVQ DI, CX		
+	goto fail
+  0xd224		4489fe			MOVL R15, SI		
+  0xd227		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xd22d		e9a4dbffff		JMP 0xadd6		
+				i += sz
+  0xd232		4c899424d0030000	MOVQ R10, 0x3d0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd23a		4d29d0			SUBQ R10, R8		
+  0xd23d		4c89c1			MOVQ R8, CX		
+  0xd240		49f7d8			NEGQ R8			
+  0xd243		49c1f83f		SARQ $0x3f, R8		
+  0xd247		4d21d0			ANDQ R10, R8		
+  0xd24a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd24e		48891424		MOVQ DX, 0(SP)		
+  0xd252		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd257		e800000000		CALL 0xd25c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd25c		448b5c2410		MOVL 0x10(SP), R11	
+  0xd261		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xd266		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+		if len(r[si:]) != 0 {
+  0xd26e		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xd276		488b9c2408040000	MOVQ 0x408(SP), BX	
+  0xd27e		488bbc2400040000	MOVQ 0x400(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xd286		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd28e		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xd296		4c8b9424d0030000	MOVQ 0x3d0(SP), R10	
+	goto fail
+  0xd29e		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd2a4		e96dfbffff		JMP 0xce16		
+  0xd2a9		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xd2af		4d89dd			MOVQ R11, R13		
+	goto inst161
+  0xd2b2		4889f9			MOVQ DI, CX		
+	goto fail
+  0xd2b5		4489fe			MOVL R15, SI		
+			goto fail
+  0xd2b8		e919dbffff		JMP 0xadd6		
+				goto inst148
+  0xd2bd		4d89dd			MOVQ R11, R13		
+	goto fail
+  0xd2c0		4489fe			MOVL R15, SI		
+	goto fail
+  0xd2c3		e90edbffff		JMP 0xadd6		
+			i += sz
+  0xd2c8		4c899c24c8030000	MOVQ R11, 0x3c8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd2d0		4d29d8			SUBQ R11, R8		
+  0xd2d3		4c89c1			MOVQ R8, CX		
+  0xd2d6		49f7d8			NEGQ R8			
+  0xd2d9		49c1f83f		SARQ $0x3f, R8		
+  0xd2dd		4d21d8			ANDQ R11, R8		
+  0xd2e0		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd2e4		48891424		MOVQ DX, 0(SP)		
+  0xd2e8		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd2ed		e800000000		CALL 0xd2f2		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd2f2		448b642410		MOVL 0x10(SP), R12	
+  0xd2f7		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xd2fc		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+  0xd304		488b8c2400040000	MOVQ 0x400(SP), CX	
+		if len(r[si:]) != 0 {
+  0xd30c		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xd314		488b9c2408040000	MOVQ 0x408(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xd31c		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd324		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xd32c		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xd332		4c8b9c24c8030000	MOVQ 0x3c8(SP), R11	
+	goto fail
+  0xd33a		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd340		e931faffff		JMP 0xcd76		
+	goto fail
+  0xd345		4489fe			MOVL R15, SI		
+	goto fail
+  0xd348		e989daffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd34d		4d29e8			SUBQ R13, R8		
+  0xd350		4c89c1			MOVQ R8, CX		
+  0xd353		49f7d8			NEGQ R8			
+  0xd356		49c1f83f		SARQ $0x3f, R8		
+  0xd35a		4d21e8			ANDQ R13, R8		
+  0xd35d		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd361		48891424		MOVQ DX, 0(SP)		
+  0xd365		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd36a		e800000000		CALL 0xd36f		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd36f		448b5c2410		MOVL 0x10(SP), R11	
+  0xd374		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xd379		488b8424181f0000	MOVQ 0x1f18(SP), AX	
+  0xd381		488b8c2400040000	MOVQ 0x400(SP), CX	
+		if len(r[si:]) != 0 {
+  0xd389		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xd391		488b9c2408040000	MOVQ 0x408(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xd399		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd3a1		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xd3a9		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0xd3af		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xd3b7		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd3bd		e974f9ffff		JMP 0xcd36		
+	bt = append(bt, state{c, i, 57, 0})
+  0xd3c2		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0xd3c9		48891424		MOVQ DX, 0(SP)		
+  0xd3cd		4889442408		MOVQ AX, 0x8(SP)	
+  0xd3d2		4c89642410		MOVQ R12, 0x10(SP)	
+  0xd3d7		48894c2418		MOVQ CX, 0x18(SP)	
+  0xd3dc		48895c2420		MOVQ BX, 0x20(SP)	
+  0xd3e1		e800000000		CALL 0xd3e6		[1:5]R_CALL:runtime.growslice	
+  0xd3e6		488b442428		MOVQ 0x28(SP), AX	
+  0xd3eb		488b4c2430		MOVQ 0x30(SP), CX	
+  0xd3f0		488b542438		MOVQ 0x38(SP), DX	
+  0xd3f5		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0xd3f9		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd401		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xd409		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 57, 0})
+  0xd40f		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0xd417		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xd41f		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 57, 0})
+  0xd425		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0xd428		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 57, 0})
+  0xd430		e980f8ffff		JMP 0xccb5		
+  0xd435		90			NOPL			
+	switch bt[len(bt)-1].pc {
+  0xd436		4983fd4d		CMPQ $0x4d, R13		
+	case 77:
+  0xd43a		0f85a8680000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0xd440		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0xd445		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0xd449		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0xd450		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xd458		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0xd45b		4c89de			MOVQ R11, SI		
+  0xd45e		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xd463		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xd468		e800000000		CALL 0xd46d		[1:5]R_CALL:runtime.duffcopy+756	
+  0xd46d		488b6d00		MOVQ 0(BP), BP		
+  0xd471		0f1f440000		NOPL 0(AX)(AX*1)	
+	if i >= 0 && i < len(r) {
+  0xd476		4885db			TESTQ BX, BX		
+  0xd479		0f8c69060000		JL 0xdae8		
+  0xd47f		4c39c3			CMPQ R8, BX		
+  0xd482		0f8d60060000		JGE 0xdae8		
+		cr, sz := rune(r[i]), 1
+  0xd488		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xd48d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xd496		4181fb80000000		CMPL $0x80, R11		
+  0xd49d		0f8d58060000		JGE 0xdafb		
+  0xd4a3		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xd4a8		4183fb74		CMPL $0x74, R11		
+  0xd4ac		0f8536060000		JNE 0xdae8		
+			i += sz
+  0xd4b2		4801f3			ADDQ SI, BX		
+  0xd4b5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xd4b6		4885db			TESTQ BX, BX		
+  0xd4b9		0f8c9c050000		JL 0xda5b		
+  0xd4bf		4c39c3			CMPQ R8, BX		
+  0xd4c2		0f8d93050000		JGE 0xda5b		
+		cr, sz := rune(r[i]), 1
+  0xd4c8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xd4cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xd4d6		4181fb80000000		CMPL $0x80, R11		
+  0xd4dd		0f8d88050000		JGE 0xda6b		
+  0xd4e3		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xd4e8		4183fb74		CMPL $0x74, R11		
+  0xd4ec		0f8569050000		JNE 0xda5b		
+			i += sz
+  0xd4f2		4801f3			ADDQ SI, BX		
+  0xd4f5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xd4f6		4885db			TESTQ BX, BX		
+  0xd4f9		0f8cc9040000		JL 0xd9c8		
+  0xd4ff		4c39c3			CMPQ R8, BX		
+  0xd502		0f8dc0040000		JGE 0xd9c8		
+		cr, sz := rune(r[i]), 1
+  0xd508		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xd50d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xd516		4181fb80000000		CMPL $0x80, R11		
+  0xd51d		0f8db8040000		JGE 0xd9db		
+  0xd523		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xd528		4183fb74		CMPL $0x74, R11		
+  0xd52c		0f8596040000		JNE 0xd9c8		
+			i += sz
+  0xd532		4801f3			ADDQ SI, BX		
+  0xd535		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xd536		4885db			TESTQ BX, BX		
+  0xd539		0f8cfc030000		JL 0xd93b		
+  0xd53f		4c39c3			CMPQ R8, BX		
+  0xd542		0f8df3030000		JGE 0xd93b		
+		cr, sz := rune(r[i]), 1
+  0xd548		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xd54d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xd556		4181fb80000000		CMPL $0x80, R11		
+  0xd55d		0f8de8030000		JGE 0xd94b		
+  0xd563		be01000000		MOVL $0x1, SI		
+		if false || cr == 97 {
+  0xd568		4183fb61		CMPL $0x61, R11		
+  0xd56c		0f85c9030000		JNE 0xd93b		
+			i += sz
+  0xd572		4801f3			ADDQ SI, BX		
+  0xd575		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xd576		4885db			TESTQ BX, BX		
+  0xd579		0f8c29030000		JL 0xd8a8		
+  0xd57f		4c39c3			CMPQ R8, BX		
+  0xd582		0f8d20030000		JGE 0xd8a8		
+		cr, sz := rune(r[i]), 1
+  0xd588		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xd58d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xd596		4181fb80000000		CMPL $0x80, R11		
+  0xd59d		0f8d18030000		JGE 0xd8bb		
+  0xd5a3		be01000000		MOVL $0x1, SI		
+		if false || cr == 99 {
+  0xd5a8		4183fb63		CMPL $0x63, R11		
+  0xd5ac		0f85f6020000		JNE 0xd8a8		
+			i += sz
+  0xd5b2		4801f3			ADDQ SI, BX		
+  0xd5b5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xd5b6		4885db			TESTQ BX, BX		
+  0xd5b9		0f8c5c020000		JL 0xd81b		
+  0xd5bf		4c39c3			CMPQ R8, BX		
+  0xd5c2		0f8d53020000		JGE 0xd81b		
+		cr, sz := rune(r[i]), 1
+  0xd5c8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xd5cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xd5d6		4181fb80000000		CMPL $0x80, R11		
+  0xd5dd		0f8d48020000		JGE 0xd82b		
+  0xd5e3		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0xd5e8		4181fb80000000		CMPL $0x80, R11		
+  0xd5ef		0f8d26020000		JGE 0xd81b		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xd5f5		4589de			MOVL R11, R14			
+  0xd5f8		41c1fb1f		SARL $0x1f, R11			
+  0xd5fc		41c1eb1d		SHRL $0x1d, R11			
+  0xd600		4501f3			ADDL R14, R11			
+  0xd603		41c1fb03		SARL $0x3, R11			
+  0xd607		4d63fb			MOVSXD R11, R15			
+  0xd60a		4983ff10		CMPQ $0x10, R15			
+  0xd60e		0f83b0670000		JAE 0x13dc4			
+  0xd614		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"	
+  0xd61b		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0xd620		41c1e303		SHLL $0x3, R11			
+  0xd624		4529de			SUBL R11, R14			
+  0xd627		4585f6			TESTL R14, R14			
+  0xd62a		0f8c8f670000		JL 0x13dbf			
+  0xd630		4183fe20		CMPL $0x20, R14			
+  0xd634		4519db			SBBL R11, R11			
+	goto inst161
+  0xd637		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xd63a		4489f1			MOVL R14, CX		
+  0xd63d		41bf01000000		MOVL $0x1, R15		
+  0xd643		41d3e7			SHLL CL, R15		
+  0xd646		4521df			ANDL R11, R15		
+  0xd649		4584d7			TESTL R10, R15		
+  0xd64c		0f84b0010000		JE 0xd802		
+				i += sz
+  0xd652		4801f3			ADDQ SI, BX		
+  0xd655		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xd656		4885db			TESTQ BX, BX		
+  0xd659		0f8c13010000		JL 0xd772		
+  0xd65f		4c39c3			CMPQ R8, BX		
+  0xd662		0f8d0a010000		JGE 0xd772		
+		cr, sz := rune(r[i]), 1
+  0xd668		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0xd66d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xd676		4181fa80000000		CMPL $0x80, R10		
+  0xd67d		0f8d08010000		JGE 0xd78b		
+  0xd683		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0xd688		4183fa63		CMPL $0x63, R10		
+  0xd68c		0f85e0000000		JNE 0xd772		
+			i += sz
+  0xd692		4801cb			ADDQ CX, BX		
+  0xd695		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xd696		4885db			TESTQ BX, BX		
+  0xd699		7c21			JL 0xd6bc		
+  0xd69b		4c39c3			CMPQ R8, BX		
+  0xd69e		7d1c			JGE 0xd6bc		
+		cr, sz := rune(r[i]), 1
+  0xd6a0		450fb61419		MOVZX 0(R9)(BX*1), R10	
+		if cr >= utf8.RuneSelf {
+  0xd6a5		4181fa80000000		CMPL $0x80, R10		
+  0xd6ac		7d4d			JGE 0xd6fb		
+  0xd6ae		b901000000		MOVL $0x1, CX		
+  0xd6b3		0f1f00			NOPL 0(AX)		
+		if false || cr == 116 {
+  0xd6b6		4183fa74		CMPL $0x74, R10		
+  0xd6ba		7419			JE 0xd6d5		
+  0xd6bc		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xd6c2		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xd6c5		4889f9			MOVQ DI, CX		
+  0xd6c8		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xd6cb		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xd6d0		e901d7ffff		JMP 0xadd6		
+			i += sz
+  0xd6d5		4801cb			ADDQ CX, BX		
+	c[9] = i
+  0xd6d8		48899c2478050000	MOVQ BX, 0x578(SP)	
+  0xd6e0		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0xd6e6		4989db			MOVQ BX, R11		
+  0xd6e9		4889f9			MOVQ DI, CX		
+  0xd6ec		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0xd6ef		4489ee			MOVL R13, SI		
+  0xd6f2		0f1f4000		NOPL 0(AX)		
+	goto inst180
+  0xd6f6		e964d6ffff		JMP 0xad5f		
+			i += sz
+  0xd6fb		48899c24c0030000	MOVQ BX, 0x3c0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd703		4929d8			SUBQ BX, R8		
+  0xd706		4c89c1			MOVQ R8, CX		
+  0xd709		49f7d8			NEGQ R8			
+  0xd70c		49c1f83f		SARQ $0x3f, R8		
+  0xd710		4921d8			ANDQ BX, R8		
+  0xd713		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd717		48891424		MOVQ DX, 0(SP)		
+  0xd71b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd720		e800000000		CALL 0xd725		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd725		448b542410		MOVL 0x10(SP), R10	
+  0xd72a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xd72f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xd737		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xd73f		488b9c24c0030000	MOVQ 0x3c0(SP), BX	
+	goto inst161
+  0xd747		488bbc2420050000	MOVQ 0x520(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xd74f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd757		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xd75f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xd767		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd76d		e944ffffff		JMP 0xd6b6		
+		if false || cr == 99 {
+  0xd772		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xd778		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xd77b		4889f9			MOVQ DI, CX		
+  0xd77e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xd781		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xd786		e94bd6ffff		JMP 0xadd6		
+				i += sz
+  0xd78b		48899c24b8030000	MOVQ BX, 0x3b8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd793		4929d8			SUBQ BX, R8		
+  0xd796		4c89c1			MOVQ R8, CX		
+  0xd799		49f7d8			NEGQ R8			
+  0xd79c		49c1f83f		SARQ $0x3f, R8		
+  0xd7a0		4921d8			ANDQ BX, R8		
+  0xd7a3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd7a7		48891424		MOVQ DX, 0(SP)		
+  0xd7ab		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd7b0		e800000000		CALL 0xd7b5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd7b5		448b542410		MOVL 0x10(SP), R10	
+  0xd7ba		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xd7bf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xd7c7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xd7cf		488b9c24b8030000	MOVQ 0x3b8(SP), BX	
+	goto inst161
+  0xd7d7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xd7df		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd7e7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xd7ef		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xd7f7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd7fd		e986feffff		JMP 0xd688		
+  0xd802		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xd808		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xd80b		4889f9			MOVQ DI, CX		
+  0xd80e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xd811		0fb6742447		MOVZX 0x47(SP), SI	
+			goto fail
+  0xd816		e9bbd5ffff		JMP 0xadd6		
+				goto inst148
+  0xd81b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xd81e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xd821		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xd826		e9abd5ffff		JMP 0xadd6		
+			i += sz
+  0xd82b		48899c24b0030000	MOVQ BX, 0x3b0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd833		4929d8			SUBQ BX, R8		
+  0xd836		4c89c1			MOVQ R8, CX		
+  0xd839		49f7d8			NEGQ R8			
+  0xd83c		49c1f83f		SARQ $0x3f, R8		
+  0xd840		4921d8			ANDQ BX, R8		
+  0xd843		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd847		48891424		MOVQ DX, 0(SP)		
+  0xd84b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd850		e800000000		CALL 0xd855		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd855		448b5c2410		MOVL 0x10(SP), R11	
+  0xd85a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xd85f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xd867		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xd86f		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xd877		488b9c24b0030000	MOVQ 0x3b0(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xd87f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd887		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xd88f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xd895		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xd89d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd8a3		e940fdffff		JMP 0xd5e8		
+				goto inst148
+  0xd8a8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xd8ab		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xd8ae		0fb6742447		MOVZX 0x47(SP), SI	
+  0xd8b3		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xd8b6		e91bd5ffff		JMP 0xadd6		
+			i += sz
+  0xd8bb		48899c24a8030000	MOVQ BX, 0x3a8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd8c3		4929d8			SUBQ BX, R8		
+  0xd8c6		4c89c1			MOVQ R8, CX		
+  0xd8c9		49f7d8			NEGQ R8			
+  0xd8cc		49c1f83f		SARQ $0x3f, R8		
+  0xd8d0		4921d8			ANDQ BX, R8		
+  0xd8d3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd8d7		48891424		MOVQ DX, 0(SP)		
+  0xd8db		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd8e0		e800000000		CALL 0xd8e5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd8e5		448b5c2410		MOVL 0x10(SP), R11	
+  0xd8ea		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xd8ef		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xd8f7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xd8ff		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xd907		488b9c24a8030000	MOVQ 0x3a8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xd90f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd917		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xd91f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xd925		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xd92d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xd933		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd936		e96dfcffff		JMP 0xd5a8		
+				goto inst148
+  0xd93b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xd93e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xd941		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xd946		e98bd4ffff		JMP 0xadd6		
+			i += sz
+  0xd94b		48899c24a0030000	MOVQ BX, 0x3a0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd953		4929d8			SUBQ BX, R8		
+  0xd956		4c89c1			MOVQ R8, CX		
+  0xd959		49f7d8			NEGQ R8			
+  0xd95c		49c1f83f		SARQ $0x3f, R8		
+  0xd960		4921d8			ANDQ BX, R8		
+  0xd963		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd967		48891424		MOVQ DX, 0(SP)		
+  0xd96b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xd970		e800000000		CALL 0xd975		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xd975		448b5c2410		MOVL 0x10(SP), R11	
+  0xd97a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xd97f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xd987		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xd98f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xd997		488b9c24a0030000	MOVQ 0x3a0(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xd99f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xd9a7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xd9af		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xd9b5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xd9bd		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd9c3		e9a0fbffff		JMP 0xd568		
+				goto inst148
+  0xd9c8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xd9cb		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xd9ce		0fb6742447		MOVZX 0x47(SP), SI	
+  0xd9d3		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xd9d6		e9fbd3ffff		JMP 0xadd6		
+			i += sz
+  0xd9db		48899c2498030000	MOVQ BX, 0x398(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xd9e3		4929d8			SUBQ BX, R8		
+  0xd9e6		4c89c1			MOVQ R8, CX		
+  0xd9e9		49f7d8			NEGQ R8			
+  0xd9ec		49c1f83f		SARQ $0x3f, R8		
+  0xd9f0		4921d8			ANDQ BX, R8		
+  0xd9f3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xd9f7		48891424		MOVQ DX, 0(SP)		
+  0xd9fb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xda00		e800000000		CALL 0xda05		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xda05		448b5c2410		MOVL 0x10(SP), R11	
+  0xda0a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xda0f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xda17		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xda1f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xda27		488b9c2498030000	MOVQ 0x398(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xda2f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xda37		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xda3f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xda45		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xda4d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xda53		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xda56		e9cdfaffff		JMP 0xd528		
+				goto inst148
+  0xda5b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xda5e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xda61		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xda66		e96bd3ffff		JMP 0xadd6		
+			i += sz
+  0xda6b		48899c2490030000	MOVQ BX, 0x390(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xda73		4929d8			SUBQ BX, R8		
+  0xda76		4c89c1			MOVQ R8, CX		
+  0xda79		49f7d8			NEGQ R8			
+  0xda7c		49c1f83f		SARQ $0x3f, R8		
+  0xda80		4921d8			ANDQ BX, R8		
+  0xda83		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xda87		48891424		MOVQ DX, 0(SP)		
+  0xda8b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xda90		e800000000		CALL 0xda95		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xda95		448b5c2410		MOVL 0x10(SP), R11	
+  0xda9a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xda9f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xdaa7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xdaaf		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xdab7		488b9c2490030000	MOVQ 0x390(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xdabf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xdac7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xdacf		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xdad5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xdadd		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xdae3		e900faffff		JMP 0xd4e8		
+				goto inst148
+  0xdae8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xdaeb		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xdaee		0fb6742447		MOVZX 0x47(SP), SI	
+  0xdaf3		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xdaf6		e9dbd2ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0xdafb		48899c2488030000	MOVQ BX, 0x388(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xdb03		4929d8			SUBQ BX, R8		
+  0xdb06		4c89c1			MOVQ R8, CX		
+  0xdb09		49f7d8			NEGQ R8			
+  0xdb0c		49c1f83f		SARQ $0x3f, R8		
+  0xdb10		4921d8			ANDQ BX, R8		
+  0xdb13		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xdb17		48891424		MOVQ DX, 0(SP)		
+  0xdb1b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xdb20		e800000000		CALL 0xdb25		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xdb25		448b5c2410		MOVL 0x10(SP), R11	
+  0xdb2a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xdb2f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xdb37		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xdb3f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xdb47		488b9c2488030000	MOVQ 0x388(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xdb4f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xdb57		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xdb5f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xdb65		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xdb6d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xdb73		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xdb76		e92df9ffff		JMP 0xd4a8		
+	case 79:
+  0xdb7b		4983fd4f		CMPQ $0x4f, R13		
+  0xdb7f		0f8551080000		JNE 0xe3d6		
+		c, i = bt[n].c, bt[n].i
+  0xdb85		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0xdb8a		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0xdb92		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0xdb96		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0xdb9d		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xdba5		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0xdba8		4c89f6			MOVQ R14, SI		
+  0xdbab		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xdbb4		6690			NOPW			
+  0xdbb6		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xdbbb		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xdbc0		e800000000		CALL 0xdbc5		[1:5]R_CALL:runtime.duffcopy+756	
+  0xdbc5		488b6d00		MOVQ 0(BP), BP		
+	c[8] = i
+  0xdbc9		4c89ac2470050000	MOVQ R13, 0x570(SP)	
+	bt = append(bt, state{c, i, 77, 0})
+  0xdbd1		48c78424580e000000000000	MOVQ $0x0, 0xe58(SP)		
+  0xdbdd		488dbc24600e0000		LEAQ 0xe60(SP), DI		
+  0xdbe5		0f57c0				XORPS X0, X0			
+  0xdbe8		488d7ff0			LEAQ -0x10(DI), DI		
+  0xdbec		660f1f840000000000		NOPW 0(AX)(AX*1)		
+  0xdbf5		90				NOPL				
+  0xdbf6		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xdbfb		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xdc00		e800000000			CALL 0xdc05			[1:5]R_CALL:runtime.duffzero+250	
+  0xdc05		488b6d00			MOVQ 0(BP), BP			
+  0xdc09		488dbc24580e0000		LEAQ 0xe58(SP), DI		
+  0xdc11		488db42430050000		LEAQ 0x530(SP), SI		
+  0xdc19		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xdc1e		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xdc23		e800000000			CALL 0xdc28			[1:5]R_CALL:runtime.duffcopy+756	
+  0xdc28		488b6d00			MOVQ 0(BP), BP			
+  0xdc2c		4c89ac24f80e0000		MOVQ R13, 0xef8(SP)		
+  0xdc34		48c78424000f00004d000000	MOVQ $0x4d, 0xf00(SP)		
+  0xdc40		48c78424080f000000000000	MOVQ $0x0, 0xf08(SP)		
+  0xdc4c		4839d9				CMPQ BX, CX			
+  0xdc4f		0f820b070000			JB 0xe360			
+  0xdc55		4c8ba424580e0000		MOVQ 0xe58(SP), R12		
+  0xdc5d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0xdc65		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0xdc69		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0xdc70		488db424600e0000		LEAQ 0xe60(SP), SI		
+  0xdc78		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xdc7d		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xdc82		e800000000			CALL 0xdc87			[1:5]R_CALL:runtime.duffcopy+742	
+  0xdc87		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0xdc8b		4d85ed			TESTQ R13, R13		
+  0xdc8e		0f8c4f060000		JL 0xe2e3		
+  0xdc94		6690			NOPW			
+  0xdc96		4d39c5			CMPQ R8, R13		
+  0xdc99		0f8d44060000		JGE 0xe2e3		
+	bt = append(bt, state{c, i, 77, 0})
+  0xdc9f		48898424101f0000	MOVQ AX, 0x1f10(SP)	
+  0xdca7		48899c2480030000	MOVQ BX, 0x380(SP)	
+  0xdcaf		48898c2478030000	MOVQ CX, 0x378(SP)	
+		cr, sz := rune(r[i]), 1
+  0xdcb7		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xdcbc		4181fb80000000		CMPL $0x80, R11		
+  0xdcc3		0f8d22060000		JGE 0xe2eb		
+  0xdcc9		be01000000		MOVL $0x1, SI		
+  0xdcce		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if false || cr == 97 {
+  0xdcd6		4183fb61		CMPL $0x61, R11		
+  0xdcda		0f8503060000		JNE 0xe2e3		
+			i += sz
+  0xdce0		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
+	if i >= 0 && i < len(r) {
+  0xdce4		4d85db			TESTQ R11, R11		
+  0xdce7		0f8c6e050000		JL 0xe25b		
+  0xdced		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xdcf6		4d39c3			CMPQ R8, R11		
+  0xdcf9		0f8d5c050000		JGE 0xe25b		
+		cr, sz := rune(r[i]), 1
+  0xdcff		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xdd04		4181fc80000000		CMPL $0x80, R12		
+  0xdd0b		0f8d55050000		JGE 0xe266		
+  0xdd11		be01000000		MOVL $0x1, SI		
+		if false || cr == 103 {
+  0xdd16		4183fc67		CMPL $0x67, R12		
+  0xdd1a		0f853b050000		JNE 0xe25b		
+			i += sz
+  0xdd20		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0xdd23		4d85db			TESTQ R11, R11		
+  0xdd26		0f8ca6040000		JL 0xe1d2		
+  0xdd2c		4d39c3			CMPQ R8, R11		
+  0xdd2f		0f8d9d040000		JGE 0xe1d2		
+		cr, sz := rune(r[i]), 1
+  0xdd35		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xdd3a		4181fc80000000		CMPL $0x80, R12		
+  0xdd41		0f8d96040000		JGE 0xe1dd		
+  0xdd47		be01000000		MOVL $0x1, SI		
+  0xdd4c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xdd55		90			NOPL			
+		if cr < 128 {
+  0xdd56		4181fc80000000		CMPL $0x80, R12		
+  0xdd5d		0f8d6f040000		JGE 0xe1d2		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xdd63		4589e5			MOVL R12, R13			
+  0xdd66		41c1fc1f		SARL $0x1f, R12			
+  0xdd6a		41c1ec1d		SHRL $0x1d, R12			
+  0xdd6e		4501ec			ADDL R13, R12			
+  0xdd71		41c1fc03		SARL $0x3, R12			
+  0xdd75		4d63f4			MOVSXD R12, R14			
+  0xdd78		4983fe10		CMPQ $0x10, R14			
+  0xdd7c		0f8359600000		JAE 0x13ddb			
+  0xdd82		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"	
+  0xdd89		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0xdd8e		41c1e403		SHLL $0x3, R12			
+  0xdd92		4529e5			SUBL R12, R13			
+  0xdd95		90			NOPL				
+  0xdd96		4585ed			TESTL R13, R13			
+  0xdd99		0f8c37600000		JL 0x13dd6			
+  0xdd9f		4183fd20		CMPL $0x20, R13			
+  0xdda3		4519e4			SBBL R12, R12			
+	bt = append(bt, state{c, i, 77, 0})
+  0xdda6		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xdda9		4489e9			MOVL R13, CX		
+  0xddac		41be01000000		MOVL $0x1, R14		
+  0xddb2		41d3e6			SHLL CL, R14		
+  0xddb5		4521f4			ANDL R14, R12		
+  0xddb8		4584d4			TESTL R10, R12		
+  0xddbb		0f84fd030000		JE 0xe1be		
+				i += sz
+  0xddc1		4e8d141e		LEAQ 0(SI)(R11*1), R10	
+	if i >= 0 && i < len(r) {
+  0xddc5		4d85d2			TESTQ R10, R10		
+  0xddc8		0f8c65030000		JL 0xe133		
+  0xddce		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0xddd6		4d39c2			CMPQ R8, R10		
+  0xddd9		0f8d54030000		JGE 0xe133		
+		cr, sz := rune(r[i]), 1
+  0xdddf		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xdde4		4181fb80000000		CMPL $0x80, R11		
+  0xddeb		0f8d56030000		JGE 0xe147		
+  0xddf1		b901000000		MOVL $0x1, CX		
+		if false || cr == 103 {
+  0xddf6		4183fb67		CMPL $0x67, R11		
+  0xddfa		0f8533030000		JNE 0xe133		
+			i += sz
+  0xde00		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xde03		4d85d2			TESTQ R10, R10		
+  0xde06		0f8c9c020000		JL 0xe0a8		
+  0xde0c		4d39c2			CMPQ R8, R10		
+  0xde0f		0f8d93020000		JGE 0xe0a8		
+		cr, sz := rune(r[i]), 1
+  0xde15		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xde1a		4181fb80000000		CMPL $0x80, R11		
+  0xde21		0f8d95020000		JGE 0xe0bc		
+  0xde27		b901000000		MOVL $0x1, CX		
+  0xde2c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xde35		90			NOPL			
+		if false || cr == 116 {
+  0xde36		4183fb74		CMPL $0x74, R11		
+  0xde3a		0f8568020000		JNE 0xe0a8		
+			i += sz
+  0xde40		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xde43		4d85d2			TESTQ R10, R10		
+  0xde46		0f8ccf010000		JL 0xe01b		
+  0xde4c		4d39c2			CMPQ R8, R10		
+  0xde4f		0f8dc6010000		JGE 0xe01b		
+		cr, sz := rune(r[i]), 1
+  0xde55		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xde5a		4181fb80000000		CMPL $0x80, R11		
+  0xde61		0f8dc8010000		JGE 0xe02f		
+  0xde67		b901000000		MOVL $0x1, CX		
+  0xde6c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xde75		90			NOPL			
+		if false || cr == 97 {
+  0xde76		4183fb61		CMPL $0x61, R11		
+  0xde7a		0f859b010000		JNE 0xe01b		
+			i += sz
+  0xde80		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xde83		4d85d2			TESTQ R10, R10		
+  0xde86		0f8cff000000		JL 0xdf8b		
+  0xde8c		4d39c2			CMPQ R8, R10		
+  0xde8f		0f8df6000000		JGE 0xdf8b		
+		cr, sz := rune(r[i]), 1
+  0xde95		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xde9a		4181fb80000000		CMPL $0x80, R11		
+  0xdea1		0f8df8000000		JGE 0xdf9f		
+  0xdea7		b901000000		MOVL $0x1, CX		
+  0xdeac		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xdeb5		90			NOPL			
+		if false || cr == 97 {
+  0xdeb6		4183fb61		CMPL $0x61, R11		
+  0xdeba		0f85cb000000		JNE 0xdf8b		
+			i += sz
+  0xdec0		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xdec3		4d85d2			TESTQ R10, R10		
+  0xdec6		7c22			JL 0xdeea		
+  0xdec8		4d39c2			CMPQ R8, R10		
+  0xdecb		7d1d			JGE 0xdeea		
+		cr, sz := rune(r[i]), 1
+  0xdecd		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+  0xded2		0f1f4000		NOPL 0(AX)		
+		if cr >= utf8.RuneSelf {
+  0xded6		4181fb80000000		CMPL $0x80, R11		
+  0xdedd		7d35			JGE 0xdf14		
+  0xdedf		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0xdee4		4183fb61		CMPL $0x61, R11		
+  0xdee8		7414			JE 0xdefe		
+				goto inst148
+  0xdeea		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xdeed		4889f9			MOVQ DI, CX		
+	goto fail
+  0xdef0		4489fe			MOVL R15, SI		
+  0xdef3		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xdef9		e9d8ceffff		JMP 0xadd6		
+			i += sz
+  0xdefe		4901ca			ADDQ CX, R10		
+		if i <= len(r) && len(bt) > 0 {
+  0xdf01		4589fd			MOVL R15, R13		
+			goto inst78
+  0xdf04		4c89d3			MOVQ R10, BX		
+	goto inst61
+  0xdf07		4c8ba42480030000	MOVQ 0x380(SP), R12	
+			goto inst78
+  0xdf0f		e9c4f7ffff		JMP 0xd6d8		
+			i += sz
+  0xdf14		4c89942470030000	MOVQ R10, 0x370(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xdf1c		4d29d0			SUBQ R10, R8		
+  0xdf1f		4c89c1			MOVQ R8, CX		
+  0xdf22		49f7d8			NEGQ R8			
+  0xdf25		49c1f83f		SARQ $0x3f, R8		
+  0xdf29		4d21d0			ANDQ R10, R8		
+  0xdf2c		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xdf30		48891424		MOVQ DX, 0(SP)		
+  0xdf34		48894c2408		MOVQ CX, 0x8(SP)	
+  0xdf39		e800000000		CALL 0xdf3e		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xdf3e		448b5c2410		MOVL 0x10(SP), R11	
+  0xdf43		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xdf48		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+		if len(r[si:]) != 0 {
+  0xdf50		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xdf58		488b9c2480030000	MOVQ 0x380(SP), BX	
+  0xdf60		488bbc2478030000	MOVQ 0x378(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xdf68		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xdf70		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+				goto inst148
+  0xdf78		4c8b942470030000	MOVQ 0x370(SP), R10	
+	goto fail
+  0xdf80		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xdf86		e959ffffff		JMP 0xdee4		
+				goto inst148
+  0xdf8b		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xdf8e		4889f9			MOVQ DI, CX		
+	goto fail
+  0xdf91		4489fe			MOVL R15, SI		
+  0xdf94		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xdf9a		e937ceffff		JMP 0xadd6		
+			i += sz
+  0xdf9f		4c89942468030000	MOVQ R10, 0x368(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xdfa7		4d29d0			SUBQ R10, R8		
+  0xdfaa		4c89c1			MOVQ R8, CX		
+  0xdfad		49f7d8			NEGQ R8			
+  0xdfb0		49c1f83f		SARQ $0x3f, R8		
+  0xdfb4		4d21d0			ANDQ R10, R8		
+  0xdfb7		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xdfbb		48891424		MOVQ DX, 0(SP)		
+  0xdfbf		48894c2408		MOVQ CX, 0x8(SP)	
+  0xdfc4		e800000000		CALL 0xdfc9		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xdfc9		448b5c2410		MOVL 0x10(SP), R11	
+  0xdfce		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xdfd3		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+		if len(r[si:]) != 0 {
+  0xdfdb		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xdfe3		488b9c2480030000	MOVQ 0x380(SP), BX	
+  0xdfeb		488bbc2478030000	MOVQ 0x378(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xdff3		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xdffb		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xe003		4c8b942468030000	MOVQ 0x368(SP), R10	
+	goto fail
+  0xe00b		440fb67c2447		MOVZX 0x47(SP), R15	
+  0xe011		0f1f440000		NOPL 0(AX)(AX*1)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe016		e99bfeffff		JMP 0xdeb6		
+				goto inst148
+  0xe01b		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xe01e		4889f9			MOVQ DI, CX		
+	goto fail
+  0xe021		4489fe			MOVL R15, SI		
+  0xe024		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xe02a		e9a7cdffff		JMP 0xadd6		
+			i += sz
+  0xe02f		4c89942460030000	MOVQ R10, 0x360(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe037		4d29d0			SUBQ R10, R8		
+  0xe03a		4c89c1			MOVQ R8, CX		
+  0xe03d		49f7d8			NEGQ R8			
+  0xe040		49c1f83f		SARQ $0x3f, R8		
+  0xe044		4d21d0			ANDQ R10, R8		
+  0xe047		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe04b		48891424		MOVQ DX, 0(SP)		
+  0xe04f		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe054		6690			NOPW			
+  0xe056		e800000000		CALL 0xe05b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe05b		448b5c2410		MOVL 0x10(SP), R11	
+  0xe060		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xe065		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+		if len(r[si:]) != 0 {
+  0xe06d		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xe075		488b9c2480030000	MOVQ 0x380(SP), BX	
+  0xe07d		488bbc2478030000	MOVQ 0x378(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xe085		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe08d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xe095		4c8b942460030000	MOVQ 0x360(SP), R10	
+	goto fail
+  0xe09d		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe0a3		e9cefdffff		JMP 0xde76		
+				goto inst148
+  0xe0a8		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xe0ab		4889f9			MOVQ DI, CX		
+	goto fail
+  0xe0ae		4489fe			MOVL R15, SI		
+  0xe0b1		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xe0b7		e91acdffff		JMP 0xadd6		
+			i += sz
+  0xe0bc		4c89942458030000	MOVQ R10, 0x358(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe0c4		4d29d0			SUBQ R10, R8		
+  0xe0c7		4c89c1			MOVQ R8, CX		
+  0xe0ca		49f7d8			NEGQ R8			
+  0xe0cd		49c1f83f		SARQ $0x3f, R8		
+  0xe0d1		4d21d0			ANDQ R10, R8		
+  0xe0d4		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe0d8		48891424		MOVQ DX, 0(SP)		
+  0xe0dc		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe0e1		e800000000		CALL 0xe0e6		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe0e6		448b5c2410		MOVL 0x10(SP), R11	
+  0xe0eb		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xe0f0		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+		if len(r[si:]) != 0 {
+  0xe0f8		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xe100		488b9c2480030000	MOVQ 0x380(SP), BX	
+  0xe108		488bbc2478030000	MOVQ 0x378(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xe110		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe118		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xe120		4c8b942458030000	MOVQ 0x358(SP), R10	
+	goto fail
+  0xe128		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe12e		e903fdffff		JMP 0xde36		
+				goto inst148
+  0xe133		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xe136		4889f9			MOVQ DI, CX		
+	goto fail
+  0xe139		4489fe			MOVL R15, SI		
+  0xe13c		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xe142		e98fccffff		JMP 0xadd6		
+				i += sz
+  0xe147		4c89942450030000	MOVQ R10, 0x350(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe14f		4d29d0			SUBQ R10, R8		
+  0xe152		4c89c1			MOVQ R8, CX		
+  0xe155		49f7d8			NEGQ R8			
+  0xe158		49c1f83f		SARQ $0x3f, R8		
+  0xe15c		4d21d0			ANDQ R10, R8		
+  0xe15f		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe163		48891424		MOVQ DX, 0(SP)		
+  0xe167		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe16c		e800000000		CALL 0xe171		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe171		448b5c2410		MOVL 0x10(SP), R11	
+  0xe176		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xe17b		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+		if len(r[si:]) != 0 {
+  0xe183		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xe18b		488b9c2480030000	MOVQ 0x380(SP), BX	
+  0xe193		488bbc2478030000	MOVQ 0x378(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xe19b		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe1a3		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xe1ab		4c8b942450030000	MOVQ 0x350(SP), R10	
+	goto fail
+  0xe1b3		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe1b9		e938fcffff		JMP 0xddf6		
+  0xe1be		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xe1c4		4d89dd			MOVQ R11, R13		
+	goto inst161
+  0xe1c7		4889f9			MOVQ DI, CX		
+	goto fail
+  0xe1ca		4489fe			MOVL R15, SI		
+			goto fail
+  0xe1cd		e904ccffff		JMP 0xadd6		
+				goto inst148
+  0xe1d2		4d89dd			MOVQ R11, R13		
+	goto fail
+  0xe1d5		4489fe			MOVL R15, SI		
+	goto fail
+  0xe1d8		e9f9cbffff		JMP 0xadd6		
+			i += sz
+  0xe1dd		4c899c2448030000	MOVQ R11, 0x348(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe1e5		4d29d8			SUBQ R11, R8		
+  0xe1e8		4c89c1			MOVQ R8, CX		
+  0xe1eb		49f7d8			NEGQ R8			
+  0xe1ee		49c1f83f		SARQ $0x3f, R8		
+  0xe1f2		4d21d8			ANDQ R11, R8		
+  0xe1f5		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe1f9		48891424		MOVQ DX, 0(SP)		
+  0xe1fd		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe202		e800000000		CALL 0xe207		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe207		448b642410		MOVL 0x10(SP), R12	
+  0xe20c		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xe211		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+  0xe219		488b8c2478030000	MOVQ 0x378(SP), CX	
+		if len(r[si:]) != 0 {
+  0xe221		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xe229		488b9c2480030000	MOVQ 0x380(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xe231		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe239		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xe241		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xe247		4c8b9c2448030000	MOVQ 0x348(SP), R11	
+	goto fail
+  0xe24f		440fb67c2447		MOVZX 0x47(SP), R15	
+  0xe255		90			NOPL			
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe256		e9fbfaffff		JMP 0xdd56		
+				goto inst148
+  0xe25b		4d89dd			MOVQ R11, R13		
+	goto fail
+  0xe25e		4489fe			MOVL R15, SI		
+	goto fail
+  0xe261		e970cbffff		JMP 0xadd6		
+			i += sz
+  0xe266		4c899c2440030000	MOVQ R11, 0x340(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe26e		4d29d8			SUBQ R11, R8		
+  0xe271		4c89c1			MOVQ R8, CX		
+  0xe274		49f7d8			NEGQ R8			
+  0xe277		49c1f83f		SARQ $0x3f, R8		
+  0xe27b		4d21d8			ANDQ R11, R8		
+  0xe27e		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe282		48891424		MOVQ DX, 0(SP)		
+  0xe286		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe28b		e800000000		CALL 0xe290		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe290		448b642410		MOVL 0x10(SP), R12	
+  0xe295		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xe29a		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+  0xe2a2		488b8c2478030000	MOVQ 0x378(SP), CX	
+		if len(r[si:]) != 0 {
+  0xe2aa		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xe2b2		488b9c2480030000	MOVQ 0x380(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xe2ba		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe2c2		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xe2ca		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0xe2d0		4c8b9c2440030000	MOVQ 0x340(SP), R11	
+	goto fail
+  0xe2d8		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe2de		e933faffff		JMP 0xdd16		
+	goto fail
+  0xe2e3		4489fe			MOVL R15, SI		
+	goto fail
+  0xe2e6		e9ebcaffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe2eb		4d29e8			SUBQ R13, R8		
+  0xe2ee		4c89c1			MOVQ R8, CX		
+  0xe2f1		49f7d8			NEGQ R8			
+  0xe2f4		49c1f83f		SARQ $0x3f, R8		
+  0xe2f8		4d21e8			ANDQ R13, R8		
+  0xe2fb		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe2ff		48891424		MOVQ DX, 0(SP)		
+  0xe303		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe308		e800000000		CALL 0xe30d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe30d		448b5c2410		MOVL 0x10(SP), R11	
+  0xe312		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xe317		488b8424101f0000	MOVQ 0x1f10(SP), AX	
+  0xe31f		488b8c2478030000	MOVQ 0x378(SP), CX	
+		if len(r[si:]) != 0 {
+  0xe327		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xe32f		488b9c2480030000	MOVQ 0x380(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xe337		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe33f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xe347		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0xe34d		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xe355		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe35b		e976f9ffff		JMP 0xdcd6		
+	bt = append(bt, state{c, i, 77, 0})
+  0xe360		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0xe367		48891424		MOVQ DX, 0(SP)		
+  0xe36b		4889442408		MOVQ AX, 0x8(SP)	
+  0xe370		4c89642410		MOVQ R12, 0x10(SP)	
+  0xe375		48894c2418		MOVQ CX, 0x18(SP)	
+  0xe37a		48895c2420		MOVQ BX, 0x20(SP)	
+  0xe37f		e800000000		CALL 0xe384		[1:5]R_CALL:runtime.growslice	
+  0xe384		488b442428		MOVQ 0x28(SP), AX	
+  0xe389		488b4c2430		MOVQ 0x30(SP), CX	
+  0xe38e		488b542438		MOVQ 0x38(SP), DX	
+  0xe393		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0xe397		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe39f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xe3a7		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 77, 0})
+  0xe3ad		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0xe3b5		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xe3bd		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 77, 0})
+  0xe3c3		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0xe3c6		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 77, 0})
+  0xe3ce		e982f8ffff		JMP 0xdc55		
+  0xe3d3		0f1f00			NOPL 0(AX)		
+	switch bt[len(bt)-1].pc {
+  0xe3d6		4983fd61		CMPQ $0x61, R13		
+	case 97:
+  0xe3da		0f8508590000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0xe3e0		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0xe3e5		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0xe3e9		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0xe3f0		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xe3f8		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0xe3fb		4c89de			MOVQ R11, SI		
+  0xe3fe		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xe403		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xe408		e800000000		CALL 0xe40d		[1:5]R_CALL:runtime.duffcopy+756	
+  0xe40d		488b6d00		MOVQ 0(BP), BP		
+  0xe411		0f1f440000		NOPL 0(AX)(AX*1)	
+	if i >= 0 && i < len(r) {
+  0xe416		4885db			TESTQ BX, BX		
+  0xe419		0f8c69060000		JL 0xea88		
+  0xe41f		4c39c3			CMPQ R8, BX		
+  0xe422		0f8d60060000		JGE 0xea88		
+		cr, sz := rune(r[i]), 1
+  0xe428		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xe42d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xe436		4181fb80000000		CMPL $0x80, R11		
+  0xe43d		0f8d58060000		JGE 0xea9b		
+  0xe443		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xe448		4183fb74		CMPL $0x74, R11		
+  0xe44c		0f8536060000		JNE 0xea88		
+			i += sz
+  0xe452		4801f3			ADDQ SI, BX		
+  0xe455		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xe456		4885db			TESTQ BX, BX		
+  0xe459		0f8c9c050000		JL 0xe9fb		
+  0xe45f		4c39c3			CMPQ R8, BX		
+  0xe462		0f8d93050000		JGE 0xe9fb		
+		cr, sz := rune(r[i]), 1
+  0xe468		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xe46d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xe476		4181fb80000000		CMPL $0x80, R11		
+  0xe47d		0f8d88050000		JGE 0xea0b		
+  0xe483		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xe488		4183fb74		CMPL $0x74, R11		
+  0xe48c		0f8569050000		JNE 0xe9fb		
+			i += sz
+  0xe492		4801f3			ADDQ SI, BX		
+  0xe495		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xe496		4885db			TESTQ BX, BX		
+  0xe499		0f8cc9040000		JL 0xe968		
+  0xe49f		4c39c3			CMPQ R8, BX		
+  0xe4a2		0f8dc0040000		JGE 0xe968		
+		cr, sz := rune(r[i]), 1
+  0xe4a8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xe4ad		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xe4b6		4181fb80000000		CMPL $0x80, R11		
+  0xe4bd		0f8db8040000		JGE 0xe97b		
+  0xe4c3		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xe4c8		4183fb74		CMPL $0x74, R11		
+  0xe4cc		0f8596040000		JNE 0xe968		
+			i += sz
+  0xe4d2		4801f3			ADDQ SI, BX		
+  0xe4d5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xe4d6		4885db			TESTQ BX, BX		
+  0xe4d9		0f8cfc030000		JL 0xe8db		
+  0xe4df		4c39c3			CMPQ R8, BX		
+  0xe4e2		0f8df3030000		JGE 0xe8db		
+		cr, sz := rune(r[i]), 1
+  0xe4e8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xe4ed		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xe4f6		4181fb80000000		CMPL $0x80, R11		
+  0xe4fd		0f8de8030000		JGE 0xe8eb		
+  0xe503		be01000000		MOVL $0x1, SI		
+		if false || cr == 97 {
+  0xe508		4183fb61		CMPL $0x61, R11		
+  0xe50c		0f85c9030000		JNE 0xe8db		
+			i += sz
+  0xe512		4801f3			ADDQ SI, BX		
+  0xe515		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xe516		4885db			TESTQ BX, BX		
+  0xe519		0f8c2c030000		JL 0xe84b		
+  0xe51f		4c39c3			CMPQ R8, BX		
+  0xe522		0f8d23030000		JGE 0xe84b		
+		cr, sz := rune(r[i]), 1
+  0xe528		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xe52d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xe536		4181fb80000000		CMPL $0x80, R11		
+  0xe53d		0f8d18030000		JGE 0xe85b		
+  0xe543		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0xe548		4181fb80000000		CMPL $0x80, R11		
+  0xe54f		0f8df6020000		JGE 0xe84b		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xe555		4589de			MOVL R11, R14			
+  0xe558		41c1fb1f		SARL $0x1f, R11			
+  0xe55c		41c1eb1d		SHRL $0x1d, R11			
+  0xe560		4501f3			ADDL R14, R11			
+  0xe563		41c1fb03		SARL $0x3, R11			
+  0xe567		4d63fb			MOVSXD R11, R15			
+  0xe56a		4983ff10		CMPQ $0x10, R15			
+  0xe56e		0f832c580000		JAE 0x13da0			
+  0xe574		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"	
+  0xe57b		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0xe580		41c1e303		SHLL $0x3, R11			
+  0xe584		4529de			SUBL R11, R14			
+  0xe587		4585f6			TESTL R14, R14			
+  0xe58a		0f8c0b580000		JL 0x13d9b			
+  0xe590		4183fe20		CMPL $0x20, R14			
+  0xe594		4519db			SBBL R11, R11			
+	goto inst161
+  0xe597		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xe59a		4489f1			MOVL R14, CX		
+  0xe59d		41bf01000000		MOVL $0x1, R15		
+  0xe5a3		41d3e7			SHLL CL, R15		
+  0xe5a6		4521fb			ANDL R15, R11		
+  0xe5a9		4584d3			TESTL R10, R11		
+  0xe5ac		0f8480020000		JE 0xe832		
+				i += sz
+  0xe5b2		4801f3			ADDQ SI, BX		
+  0xe5b5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xe5b6		4885db			TESTQ BX, BX		
+  0xe5b9		0f8ce3010000		JL 0xe7a2		
+  0xe5bf		4c39c3			CMPQ R8, BX		
+  0xe5c2		0f8dda010000		JGE 0xe7a2		
+		cr, sz := rune(r[i]), 1
+  0xe5c8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0xe5cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xe5d6		4181fa80000000		CMPL $0x80, R10		
+  0xe5dd		0f8dd8010000		JGE 0xe7bb		
+  0xe5e3		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0xe5e8		4183fa63		CMPL $0x63, R10		
+  0xe5ec		0f85b0010000		JNE 0xe7a2		
+			i += sz
+  0xe5f2		4801cb			ADDQ CX, BX		
+  0xe5f5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xe5f6		4885db			TESTQ BX, BX		
+  0xe5f9		0f8c13010000		JL 0xe712		
+  0xe5ff		4c39c3			CMPQ R8, BX		
+  0xe602		0f8d0a010000		JGE 0xe712		
+		cr, sz := rune(r[i]), 1
+  0xe608		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0xe60d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xe616		4181fa80000000		CMPL $0x80, R10		
+  0xe61d		0f8d08010000		JGE 0xe72b		
+  0xe623		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0xe628		4183fa63		CMPL $0x63, R10		
+  0xe62c		0f85e0000000		JNE 0xe712		
+			i += sz
+  0xe632		4801cb			ADDQ CX, BX		
+  0xe635		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xe636		4885db			TESTQ BX, BX		
+  0xe639		7c21			JL 0xe65c		
+  0xe63b		4c39c3			CMPQ R8, BX		
+  0xe63e		7d1c			JGE 0xe65c		
+		cr, sz := rune(r[i]), 1
+  0xe640		450fb61419		MOVZX 0(R9)(BX*1), R10	
+		if cr >= utf8.RuneSelf {
+  0xe645		4181fa80000000		CMPL $0x80, R10		
+  0xe64c		7d4d			JGE 0xe69b		
+  0xe64e		b901000000		MOVL $0x1, CX		
+  0xe653		0f1f00			NOPL 0(AX)		
+		if false || cr == 116 {
+  0xe656		4183fa74		CMPL $0x74, R10		
+  0xe65a		7419			JE 0xe675		
+  0xe65c		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xe662		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe665		4889f9			MOVQ DI, CX		
+  0xe668		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xe66b		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xe670		e961c7ffff		JMP 0xadd6		
+			i += sz
+  0xe675		4801cb			ADDQ CX, BX		
+	c[11] = i
+  0xe678		48899c2488050000	MOVQ BX, 0x588(SP)	
+  0xe680		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0xe686		4989db			MOVQ BX, R11		
+  0xe689		4889f9			MOVQ DI, CX		
+  0xe68c		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0xe68f		4489ee			MOVL R13, SI		
+  0xe692		0f1f4000		NOPL 0(AX)		
+	goto inst180
+  0xe696		e9c4c6ffff		JMP 0xad5f		
+			i += sz
+  0xe69b		48899c2438030000	MOVQ BX, 0x338(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe6a3		4929d8			SUBQ BX, R8		
+  0xe6a6		4c89c1			MOVQ R8, CX		
+  0xe6a9		49f7d8			NEGQ R8			
+  0xe6ac		49c1f83f		SARQ $0x3f, R8		
+  0xe6b0		4921d8			ANDQ BX, R8		
+  0xe6b3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe6b7		48891424		MOVQ DX, 0(SP)		
+  0xe6bb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe6c0		e800000000		CALL 0xe6c5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe6c5		448b542410		MOVL 0x10(SP), R10	
+  0xe6ca		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xe6cf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xe6d7		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xe6df		488b9c2438030000	MOVQ 0x338(SP), BX	
+	goto inst161
+  0xe6e7		488bbc2420050000	MOVQ 0x520(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xe6ef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe6f7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xe6ff		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xe707		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe70d		e944ffffff		JMP 0xe656		
+		if false || cr == 99 {
+  0xe712		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xe718		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe71b		4889f9			MOVQ DI, CX		
+  0xe71e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xe721		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xe726		e9abc6ffff		JMP 0xadd6		
+			i += sz
+  0xe72b		48899c2430030000	MOVQ BX, 0x330(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe733		4929d8			SUBQ BX, R8		
+  0xe736		4c89c1			MOVQ R8, CX		
+  0xe739		49f7d8			NEGQ R8			
+  0xe73c		49c1f83f		SARQ $0x3f, R8		
+  0xe740		4921d8			ANDQ BX, R8		
+  0xe743		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe747		48891424		MOVQ DX, 0(SP)		
+  0xe74b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe750		e800000000		CALL 0xe755		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe755		448b542410		MOVL 0x10(SP), R10	
+  0xe75a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xe75f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xe767		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xe76f		488b9c2430030000	MOVQ 0x330(SP), BX	
+	goto inst161
+  0xe777		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xe77f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe787		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xe78f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xe797		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe79d		e986feffff		JMP 0xe628		
+		if false || cr == 99 {
+  0xe7a2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xe7a8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe7ab		4889f9			MOVQ DI, CX		
+  0xe7ae		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xe7b1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xe7b6		e91bc6ffff		JMP 0xadd6		
+				i += sz
+  0xe7bb		48899c2428030000	MOVQ BX, 0x328(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe7c3		4929d8			SUBQ BX, R8		
+  0xe7c6		4c89c1			MOVQ R8, CX		
+  0xe7c9		49f7d8			NEGQ R8			
+  0xe7cc		49c1f83f		SARQ $0x3f, R8		
+  0xe7d0		4921d8			ANDQ BX, R8		
+  0xe7d3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe7d7		48891424		MOVQ DX, 0(SP)		
+  0xe7db		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe7e0		e800000000		CALL 0xe7e5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe7e5		448b542410		MOVL 0x10(SP), R10	
+  0xe7ea		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xe7ef		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xe7f7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xe7ff		488b9c2428030000	MOVQ 0x328(SP), BX	
+	goto inst161
+  0xe807		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xe80f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe817		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xe81f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xe827		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe82d		e9b6fdffff		JMP 0xe5e8		
+  0xe832		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xe838		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe83b		4889f9			MOVQ DI, CX		
+  0xe83e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xe841		0fb6742447		MOVZX 0x47(SP), SI	
+			goto fail
+  0xe846		e98bc5ffff		JMP 0xadd6		
+				goto inst148
+  0xe84b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe84e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xe851		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xe856		e97bc5ffff		JMP 0xadd6		
+			i += sz
+  0xe85b		48899c2420030000	MOVQ BX, 0x320(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe863		4929d8			SUBQ BX, R8		
+  0xe866		4c89c1			MOVQ R8, CX		
+  0xe869		49f7d8			NEGQ R8			
+  0xe86c		49c1f83f		SARQ $0x3f, R8		
+  0xe870		4921d8			ANDQ BX, R8		
+  0xe873		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe877		48891424		MOVQ DX, 0(SP)		
+  0xe87b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe880		e800000000		CALL 0xe885		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe885		448b5c2410		MOVL 0x10(SP), R11	
+  0xe88a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xe88f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xe897		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xe89f		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xe8a7		488b9c2420030000	MOVQ 0x320(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xe8af		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe8b7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xe8bf		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xe8c5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xe8cd		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xe8d3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe8d6		e96dfcffff		JMP 0xe548		
+				goto inst148
+  0xe8db		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe8de		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xe8e1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xe8e6		e9ebc4ffff		JMP 0xadd6		
+			i += sz
+  0xe8eb		48899c2418030000	MOVQ BX, 0x318(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe8f3		4929d8			SUBQ BX, R8		
+  0xe8f6		4c89c1			MOVQ R8, CX		
+  0xe8f9		49f7d8			NEGQ R8			
+  0xe8fc		49c1f83f		SARQ $0x3f, R8		
+  0xe900		4921d8			ANDQ BX, R8		
+  0xe903		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe907		48891424		MOVQ DX, 0(SP)		
+  0xe90b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe910		e800000000		CALL 0xe915		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe915		448b5c2410		MOVL 0x10(SP), R11	
+  0xe91a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xe91f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xe927		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xe92f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xe937		488b9c2418030000	MOVQ 0x318(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xe93f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe947		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xe94f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xe955		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xe95d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe963		e9a0fbffff		JMP 0xe508		
+				goto inst148
+  0xe968		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe96b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xe96e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xe973		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xe976		e95bc4ffff		JMP 0xadd6		
+			i += sz
+  0xe97b		48899c2410030000	MOVQ BX, 0x310(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe983		4929d8			SUBQ BX, R8		
+  0xe986		4c89c1			MOVQ R8, CX		
+  0xe989		49f7d8			NEGQ R8			
+  0xe98c		49c1f83f		SARQ $0x3f, R8		
+  0xe990		4921d8			ANDQ BX, R8		
+  0xe993		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xe997		48891424		MOVQ DX, 0(SP)		
+  0xe99b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xe9a0		e800000000		CALL 0xe9a5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xe9a5		448b5c2410		MOVL 0x10(SP), R11	
+  0xe9aa		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xe9af		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xe9b7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xe9bf		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xe9c7		488b9c2410030000	MOVQ 0x310(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xe9cf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xe9d7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xe9df		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xe9e5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xe9ed		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xe9f3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xe9f6		e9cdfaffff		JMP 0xe4c8		
+				goto inst148
+  0xe9fb		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xe9fe		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xea01		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xea06		e9cbc3ffff		JMP 0xadd6		
+			i += sz
+  0xea0b		48899c2408030000	MOVQ BX, 0x308(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xea13		4929d8			SUBQ BX, R8		
+  0xea16		4c89c1			MOVQ R8, CX		
+  0xea19		49f7d8			NEGQ R8			
+  0xea1c		49c1f83f		SARQ $0x3f, R8		
+  0xea20		4921d8			ANDQ BX, R8		
+  0xea23		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xea27		48891424		MOVQ DX, 0(SP)		
+  0xea2b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xea30		e800000000		CALL 0xea35		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xea35		448b5c2410		MOVL 0x10(SP), R11	
+  0xea3a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xea3f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xea47		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xea4f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xea57		488b9c2408030000	MOVQ 0x308(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xea5f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xea67		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xea6f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xea75		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xea7d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xea83		e900faffff		JMP 0xe488		
+				goto inst148
+  0xea88		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xea8b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xea8e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xea93		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xea96		e93bc3ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0xea9b		48899c2400030000	MOVQ BX, 0x300(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xeaa3		4929d8			SUBQ BX, R8		
+  0xeaa6		4c89c1			MOVQ R8, CX		
+  0xeaa9		49f7d8			NEGQ R8			
+  0xeaac		49c1f83f		SARQ $0x3f, R8		
+  0xeab0		4921d8			ANDQ BX, R8		
+  0xeab3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xeab7		48891424		MOVQ DX, 0(SP)		
+  0xeabb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xeac0		e800000000		CALL 0xeac5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xeac5		448b5c2410		MOVL 0x10(SP), R11	
+  0xeaca		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xeacf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xead7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xeadf		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xeae7		488b9c2400030000	MOVQ 0x300(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xeaef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xeaf7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xeaff		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xeb05		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xeb0d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xeb13		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xeb16		e92df9ffff		JMP 0xe448		
+	switch bt[len(bt)-1].pc {
+  0xeb1b		4981fd89000000		CMPQ $0x89, R13		
+	case 137:
+  0xeb22		0f8f531f0000		JG 0x10a7b		
+	switch bt[len(bt)-1].pc {
+  0xeb28		4983fd75		CMPQ $0x75, R13		
+	case 117:
+  0xeb2c		0f8fa90f0000		JG 0xfadb		
+  0xeb32		0f1f4000		NOPL 0(AX)		
+	case 99:
+  0xeb36		4983fd63		CMPQ $0x63, R13		
+  0xeb3a		0f8556080000		JNE 0xf396		
+		c, i = bt[n].c, bt[n].i
+  0xeb40		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0xeb45		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0xeb4d		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0xeb51		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0xeb58		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xeb60		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0xeb63		4c89f6			MOVQ R14, SI		
+  0xeb66		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xeb6f		0f1f8000000000		NOPL 0(AX)		
+  0xeb76		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xeb7b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xeb80		e800000000		CALL 0xeb85		[1:5]R_CALL:runtime.duffcopy+756	
+  0xeb85		488b6d00		MOVQ 0(BP), BP		
+	c[10] = i
+  0xeb89		4c89ac2480050000	MOVQ R13, 0x580(SP)	
+	bt = append(bt, state{c, i, 97, 0})
+  0xeb91		48c78424e80c000000000000	MOVQ $0x0, 0xce8(SP)		
+  0xeb9d		488dbc24f00c0000		LEAQ 0xcf0(SP), DI		
+  0xeba5		0f57c0				XORPS X0, X0			
+  0xeba8		488d7ff0			LEAQ -0x10(DI), DI		
+  0xebac		660f1f840000000000		NOPW 0(AX)(AX*1)		
+  0xebb5		90				NOPL				
+  0xebb6		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xebbb		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xebc0		e800000000			CALL 0xebc5			[1:5]R_CALL:runtime.duffzero+250	
+  0xebc5		488b6d00			MOVQ 0(BP), BP			
+  0xebc9		488dbc24e80c0000		LEAQ 0xce8(SP), DI		
+  0xebd1		488db42430050000		LEAQ 0x530(SP), SI		
+  0xebd9		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xebde		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xebe3		e800000000			CALL 0xebe8			[1:5]R_CALL:runtime.duffcopy+756	
+  0xebe8		488b6d00			MOVQ 0(BP), BP			
+  0xebec		4c89ac24880d0000		MOVQ R13, 0xd88(SP)		
+  0xebf4		48c78424900d000061000000	MOVQ $0x61, 0xd90(SP)		
+  0xec00		48c78424980d000000000000	MOVQ $0x0, 0xd98(SP)		
+  0xec0c		4839d9				CMPQ BX, CX			
+  0xec0f		0f820b070000			JB 0xf320			
+  0xec15		4c8ba424e80c0000		MOVQ 0xce8(SP), R12		
+  0xec1d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0xec25		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0xec29		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0xec30		488db424f00c0000		LEAQ 0xcf0(SP), SI		
+  0xec38		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xec3d		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xec42		e800000000			CALL 0xec47			[1:5]R_CALL:runtime.duffcopy+742	
+  0xec47		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0xec4b		4d85ed			TESTQ R13, R13		
+  0xec4e		0f8c4f060000		JL 0xf2a3		
+  0xec54		6690			NOPW			
+  0xec56		4d39c5			CMPQ R8, R13		
+  0xec59		0f8d44060000		JGE 0xf2a3		
+	bt = append(bt, state{c, i, 97, 0})
+  0xec5f		48898424081f0000	MOVQ AX, 0x1f08(SP)	
+  0xec67		48899c24f8020000	MOVQ BX, 0x2f8(SP)	
+  0xec6f		48898c24f0020000	MOVQ CX, 0x2f0(SP)	
+		cr, sz := rune(r[i]), 1
+  0xec77		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xec7c		4181fb80000000		CMPL $0x80, R11		
+  0xec83		0f8d22060000		JGE 0xf2ab		
+  0xec89		be01000000		MOVL $0x1, SI		
+  0xec8e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if false || cr == 97 {
+  0xec96		4183fb61		CMPL $0x61, R11		
+  0xec9a		0f8503060000		JNE 0xf2a3		
+			i += sz
+  0xeca0		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
+	if i >= 0 && i < len(r) {
+  0xeca4		4d85db			TESTQ R11, R11		
+  0xeca7		0f8c6e050000		JL 0xf21b		
+  0xecad		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xecb6		4d39c3			CMPQ R8, R11		
+  0xecb9		0f8d5c050000		JGE 0xf21b		
+		cr, sz := rune(r[i]), 1
+  0xecbf		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xecc4		4181fc80000000		CMPL $0x80, R12		
+  0xeccb		0f8d55050000		JGE 0xf226		
+  0xecd1		be01000000		MOVL $0x1, SI		
+		if false || cr == 103 {
+  0xecd6		4183fc67		CMPL $0x67, R12		
+  0xecda		0f853b050000		JNE 0xf21b		
+			i += sz
+  0xece0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0xece3		4d85db			TESTQ R11, R11		
+  0xece6		0f8ca3040000		JL 0xf18f		
+  0xecec		4d39c3			CMPQ R8, R11		
+  0xecef		0f8d9a040000		JGE 0xf18f		
+		cr, sz := rune(r[i]), 1
+  0xecf5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xecfa		4181fc80000000		CMPL $0x80, R12		
+  0xed01		0f8d94040000		JGE 0xf19b		
+  0xed07		be01000000		MOVL $0x1, SI		
+  0xed0c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xed15		90			NOPL			
+		if false || cr == 103 {
+  0xed16		4183fc67		CMPL $0x67, R12		
+  0xed1a		0f856f040000		JNE 0xf18f		
+			i += sz
+  0xed20		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0xed23		4d85db			TESTQ R11, R11		
+  0xed26		0f8cdb030000		JL 0xf107		
+  0xed2c		4d39c3			CMPQ R8, R11		
+  0xed2f		0f8dd2030000		JGE 0xf107		
+		cr, sz := rune(r[i]), 1
+  0xed35		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xed3a		4181fc80000000		CMPL $0x80, R12		
+  0xed41		0f8dcb030000		JGE 0xf112		
+  0xed47		be01000000		MOVL $0x1, SI		
+  0xed4c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xed55		90			NOPL			
+		if cr < 128 {
+  0xed56		4181fc80000000		CMPL $0x80, R12		
+  0xed5d		0f8da4030000		JGE 0xf107		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xed63		4589e5			MOVL R12, R13			
+  0xed66		41c1fc1f		SARL $0x1f, R12			
+  0xed6a		41c1ec1d		SHRL $0x1d, R12			
+  0xed6e		4501ec			ADDL R13, R12			
+  0xed71		41c1fc03		SARL $0x3, R12			
+  0xed75		4d63f4			MOVSXD R12, R14			
+  0xed78		4983fe10		CMPQ $0x10, R14			
+  0xed7c		0f8330500000		JAE 0x13db2			
+  0xed82		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"	
+  0xed89		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0xed8e		41c1e403		SHLL $0x3, R12			
+  0xed92		4529e5			SUBL R12, R13			
+  0xed95		90			NOPL				
+  0xed96		4585ed			TESTL R13, R13			
+  0xed99		0f8c0e500000		JL 0x13dad			
+  0xed9f		4183fd20		CMPL $0x20, R13			
+  0xeda3		4519e4			SBBL R12, R12			
+	bt = append(bt, state{c, i, 97, 0})
+  0xeda6		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xeda9		4489e9			MOVL R13, CX		
+  0xedac		41be01000000		MOVL $0x1, R14		
+  0xedb2		41d3e6			SHLL CL, R14		
+  0xedb5		4521e6			ANDL R12, R14		
+  0xedb8		4584d6			TESTL R10, R14		
+  0xedbb		0f8432030000		JE 0xf0f3		
+				i += sz
+  0xedc1		4e8d141e		LEAQ 0(SI)(R11*1), R10	
+	if i >= 0 && i < len(r) {
+  0xedc5		4d85d2			TESTQ R10, R10		
+  0xedc8		0f8c9a020000		JL 0xf068		
+  0xedce		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0xedd6		4d39c2			CMPQ R8, R10		
+  0xedd9		0f8d89020000		JGE 0xf068		
+		cr, sz := rune(r[i]), 1
+  0xeddf		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xede4		4181fb80000000		CMPL $0x80, R11		
+  0xedeb		0f8d8b020000		JGE 0xf07c		
+  0xedf1		b901000000		MOVL $0x1, CX		
+		if false || cr == 116 {
+  0xedf6		4183fb74		CMPL $0x74, R11		
+  0xedfa		0f8568020000		JNE 0xf068		
+			i += sz
+  0xee00		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xee03		4d85d2			TESTQ R10, R10		
+  0xee06		0f8ccf010000		JL 0xefdb		
+  0xee0c		4d39c2			CMPQ R8, R10		
+  0xee0f		0f8dc6010000		JGE 0xefdb		
+		cr, sz := rune(r[i]), 1
+  0xee15		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xee1a		4181fb80000000		CMPL $0x80, R11		
+  0xee21		0f8dc8010000		JGE 0xefef		
+  0xee27		b901000000		MOVL $0x1, CX		
+  0xee2c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xee35		90			NOPL			
+		if false || cr == 97 {
+  0xee36		4183fb61		CMPL $0x61, R11		
+  0xee3a		0f859b010000		JNE 0xefdb		
+			i += sz
+  0xee40		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xee43		4d85d2			TESTQ R10, R10		
+  0xee46		0f8cff000000		JL 0xef4b		
+  0xee4c		4d39c2			CMPQ R8, R10		
+  0xee4f		0f8df6000000		JGE 0xef4b		
+		cr, sz := rune(r[i]), 1
+  0xee55		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xee5a		4181fb80000000		CMPL $0x80, R11		
+  0xee61		0f8df8000000		JGE 0xef5f		
+  0xee67		b901000000		MOVL $0x1, CX		
+  0xee6c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xee75		90			NOPL			
+		if false || cr == 97 {
+  0xee76		4183fb61		CMPL $0x61, R11		
+  0xee7a		0f85cb000000		JNE 0xef4b		
+			i += sz
+  0xee80		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xee83		4d85d2			TESTQ R10, R10		
+  0xee86		7c22			JL 0xeeaa		
+  0xee88		4d39c2			CMPQ R8, R10		
+  0xee8b		7d1d			JGE 0xeeaa		
+		cr, sz := rune(r[i]), 1
+  0xee8d		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+  0xee92		0f1f4000		NOPL 0(AX)		
+		if cr >= utf8.RuneSelf {
+  0xee96		4181fb80000000		CMPL $0x80, R11		
+  0xee9d		7d35			JGE 0xeed4		
+  0xee9f		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0xeea4		4183fb61		CMPL $0x61, R11		
+  0xeea8		7414			JE 0xeebe		
+				goto inst148
+  0xeeaa		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xeead		4889f9			MOVQ DI, CX		
+	goto fail
+  0xeeb0		4489fe			MOVL R15, SI		
+  0xeeb3		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xeeb9		e918bfffff		JMP 0xadd6		
+			i += sz
+  0xeebe		4901ca			ADDQ CX, R10		
+		if i <= len(r) && len(bt) > 0 {
+  0xeec1		4589fd			MOVL R15, R13		
+			goto inst98
+  0xeec4		4c89d3			MOVQ R10, BX		
+	goto inst81
+  0xeec7		4c8ba424f8020000	MOVQ 0x2f8(SP), R12	
+			goto inst98
+  0xeecf		e9a4f7ffff		JMP 0xe678		
+			i += sz
+  0xeed4		4c899424e8020000	MOVQ R10, 0x2e8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xeedc		4d29d0			SUBQ R10, R8		
+  0xeedf		4c89c1			MOVQ R8, CX		
+  0xeee2		49f7d8			NEGQ R8			
+  0xeee5		49c1f83f		SARQ $0x3f, R8		
+  0xeee9		4d21d0			ANDQ R10, R8		
+  0xeeec		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xeef0		48891424		MOVQ DX, 0(SP)		
+  0xeef4		48894c2408		MOVQ CX, 0x8(SP)	
+  0xeef9		e800000000		CALL 0xeefe		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xeefe		448b5c2410		MOVL 0x10(SP), R11	
+  0xef03		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xef08		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+		if len(r[si:]) != 0 {
+  0xef10		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xef18		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+  0xef20		488bbc24f0020000	MOVQ 0x2f0(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xef28		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xef30		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+				goto inst148
+  0xef38		4c8b9424e8020000	MOVQ 0x2e8(SP), R10	
+	goto fail
+  0xef40		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xef46		e959ffffff		JMP 0xeea4		
+				goto inst148
+  0xef4b		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xef4e		4889f9			MOVQ DI, CX		
+	goto fail
+  0xef51		4489fe			MOVL R15, SI		
+  0xef54		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xef5a		e977beffff		JMP 0xadd6		
+			i += sz
+  0xef5f		4c899424e0020000	MOVQ R10, 0x2e0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xef67		4d29d0			SUBQ R10, R8		
+  0xef6a		4c89c1			MOVQ R8, CX		
+  0xef6d		49f7d8			NEGQ R8			
+  0xef70		49c1f83f		SARQ $0x3f, R8		
+  0xef74		4d21d0			ANDQ R10, R8		
+  0xef77		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xef7b		48891424		MOVQ DX, 0(SP)		
+  0xef7f		48894c2408		MOVQ CX, 0x8(SP)	
+  0xef84		e800000000		CALL 0xef89		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xef89		448b5c2410		MOVL 0x10(SP), R11	
+  0xef8e		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xef93		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+		if len(r[si:]) != 0 {
+  0xef9b		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xefa3		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+  0xefab		488bbc24f0020000	MOVQ 0x2f0(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xefb3		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xefbb		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xefc3		4c8b9424e0020000	MOVQ 0x2e0(SP), R10	
+	goto fail
+  0xefcb		440fb67c2447		MOVZX 0x47(SP), R15	
+  0xefd1		0f1f440000		NOPL 0(AX)(AX*1)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xefd6		e99bfeffff		JMP 0xee76		
+				goto inst148
+  0xefdb		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xefde		4889f9			MOVQ DI, CX		
+	goto fail
+  0xefe1		4489fe			MOVL R15, SI		
+  0xefe4		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xefea		e9e7bdffff		JMP 0xadd6		
+			i += sz
+  0xefef		4c899424d8020000	MOVQ R10, 0x2d8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xeff7		4d29d0			SUBQ R10, R8		
+  0xeffa		4c89c1			MOVQ R8, CX		
+  0xeffd		49f7d8			NEGQ R8			
+  0xf000		49c1f83f		SARQ $0x3f, R8		
+  0xf004		4d21d0			ANDQ R10, R8		
+  0xf007		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf00b		48891424		MOVQ DX, 0(SP)		
+  0xf00f		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf014		6690			NOPW			
+  0xf016		e800000000		CALL 0xf01b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf01b		448b5c2410		MOVL 0x10(SP), R11	
+  0xf020		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xf025		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+		if len(r[si:]) != 0 {
+  0xf02d		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xf035		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+  0xf03d		488bbc24f0020000	MOVQ 0x2f0(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xf045		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf04d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xf055		4c8b9424d8020000	MOVQ 0x2d8(SP), R10	
+	goto fail
+  0xf05d		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf063		e9cefdffff		JMP 0xee36		
+				goto inst148
+  0xf068		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xf06b		4889f9			MOVQ DI, CX		
+	goto fail
+  0xf06e		4489fe			MOVL R15, SI		
+  0xf071		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xf077		e95abdffff		JMP 0xadd6		
+				i += sz
+  0xf07c		4c899424d0020000	MOVQ R10, 0x2d0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf084		4d29d0			SUBQ R10, R8		
+  0xf087		4c89c1			MOVQ R8, CX		
+  0xf08a		49f7d8			NEGQ R8			
+  0xf08d		49c1f83f		SARQ $0x3f, R8		
+  0xf091		4d21d0			ANDQ R10, R8		
+  0xf094		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf098		48891424		MOVQ DX, 0(SP)		
+  0xf09c		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf0a1		e800000000		CALL 0xf0a6		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf0a6		448b5c2410		MOVL 0x10(SP), R11	
+  0xf0ab		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xf0b0		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+		if len(r[si:]) != 0 {
+  0xf0b8		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xf0c0		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+  0xf0c8		488bbc24f0020000	MOVQ 0x2f0(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xf0d0		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf0d8		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xf0e0		4c8b9424d0020000	MOVQ 0x2d0(SP), R10	
+	goto fail
+  0xf0e8		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf0ee		e903fdffff		JMP 0xedf6		
+  0xf0f3		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xf0f9		4d89dd			MOVQ R11, R13		
+	goto inst161
+  0xf0fc		4889f9			MOVQ DI, CX		
+	goto fail
+  0xf0ff		4489fe			MOVL R15, SI		
+			goto fail
+  0xf102		e9cfbcffff		JMP 0xadd6		
+				goto inst148
+  0xf107		4d89dd			MOVQ R11, R13		
+	goto fail
+  0xf10a		4489fe			MOVL R15, SI		
+	goto fail
+  0xf10d		e9c4bcffff		JMP 0xadd6		
+			i += sz
+  0xf112		4c899c24c8020000	MOVQ R11, 0x2c8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf11a		4d29d8			SUBQ R11, R8		
+  0xf11d		4c89c1			MOVQ R8, CX		
+  0xf120		49f7d8			NEGQ R8			
+  0xf123		49c1f83f		SARQ $0x3f, R8		
+  0xf127		4d21d8			ANDQ R11, R8		
+  0xf12a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf12e		48891424		MOVQ DX, 0(SP)		
+  0xf132		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf137		e800000000		CALL 0xf13c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf13c		448b642410		MOVL 0x10(SP), R12	
+  0xf141		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xf146		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+  0xf14e		488b8c24f0020000	MOVQ 0x2f0(SP), CX	
+		if len(r[si:]) != 0 {
+  0xf156		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xf15e		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xf166		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf16e		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xf176		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xf17c		4c8b9c24c8020000	MOVQ 0x2c8(SP), R11	
+	goto fail
+  0xf184		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf18a		e9c7fbffff		JMP 0xed56		
+				goto inst148
+  0xf18f		4d89dd			MOVQ R11, R13		
+	goto fail
+  0xf192		4489fe			MOVL R15, SI		
+  0xf195		90			NOPL			
+	goto fail
+  0xf196		e93bbcffff		JMP 0xadd6		
+			i += sz
+  0xf19b		4c899c24c0020000	MOVQ R11, 0x2c0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf1a3		4d29d8			SUBQ R11, R8		
+  0xf1a6		4c89c1			MOVQ R8, CX		
+  0xf1a9		49f7d8			NEGQ R8			
+  0xf1ac		49c1f83f		SARQ $0x3f, R8		
+  0xf1b0		4d21d8			ANDQ R11, R8		
+  0xf1b3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf1b7		48891424		MOVQ DX, 0(SP)		
+  0xf1bb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf1c0		e800000000		CALL 0xf1c5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf1c5		448b642410		MOVL 0x10(SP), R12	
+  0xf1ca		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xf1cf		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+  0xf1d7		488b8c24f0020000	MOVQ 0x2f0(SP), CX	
+		if len(r[si:]) != 0 {
+  0xf1df		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xf1e7		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xf1ef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf1f7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xf1ff		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0xf205		4c8b9c24c0020000	MOVQ 0x2c0(SP), R11	
+	goto fail
+  0xf20d		440fb67c2447		MOVZX 0x47(SP), R15	
+  0xf213		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf216		e9fbfaffff		JMP 0xed16		
+				goto inst148
+  0xf21b		4d89dd			MOVQ R11, R13		
+	goto fail
+  0xf21e		4489fe			MOVL R15, SI		
+	goto fail
+  0xf221		e9b0bbffff		JMP 0xadd6		
+			i += sz
+  0xf226		4c899c24b8020000	MOVQ R11, 0x2b8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf22e		4d29d8			SUBQ R11, R8		
+  0xf231		4c89c1			MOVQ R8, CX		
+  0xf234		49f7d8			NEGQ R8			
+  0xf237		49c1f83f		SARQ $0x3f, R8		
+  0xf23b		4d21d8			ANDQ R11, R8		
+  0xf23e		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf242		48891424		MOVQ DX, 0(SP)		
+  0xf246		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf24b		e800000000		CALL 0xf250		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf250		448b642410		MOVL 0x10(SP), R12	
+  0xf255		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xf25a		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+  0xf262		488b8c24f0020000	MOVQ 0x2f0(SP), CX	
+		if len(r[si:]) != 0 {
+  0xf26a		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xf272		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xf27a		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf282		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xf28a		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0xf290		4c8b9c24b8020000	MOVQ 0x2b8(SP), R11	
+	goto fail
+  0xf298		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf29e		e933faffff		JMP 0xecd6		
+	goto fail
+  0xf2a3		4489fe			MOVL R15, SI		
+	goto fail
+  0xf2a6		e92bbbffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf2ab		4d29e8			SUBQ R13, R8		
+  0xf2ae		4c89c1			MOVQ R8, CX		
+  0xf2b1		49f7d8			NEGQ R8			
+  0xf2b4		49c1f83f		SARQ $0x3f, R8		
+  0xf2b8		4d21e8			ANDQ R13, R8		
+  0xf2bb		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf2bf		48891424		MOVQ DX, 0(SP)		
+  0xf2c3		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf2c8		e800000000		CALL 0xf2cd		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf2cd		448b5c2410		MOVL 0x10(SP), R11	
+  0xf2d2		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xf2d7		488b8424081f0000	MOVQ 0x1f08(SP), AX	
+  0xf2df		488b8c24f0020000	MOVQ 0x2f0(SP), CX	
+		if len(r[si:]) != 0 {
+  0xf2e7		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xf2ef		488b9c24f8020000	MOVQ 0x2f8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xf2f7		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf2ff		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xf307		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0xf30d		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xf315		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf31b		e976f9ffff		JMP 0xec96		
+	bt = append(bt, state{c, i, 97, 0})
+  0xf320		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0xf327		48891424		MOVQ DX, 0(SP)		
+  0xf32b		4889442408		MOVQ AX, 0x8(SP)	
+  0xf330		4c89642410		MOVQ R12, 0x10(SP)	
+  0xf335		48894c2418		MOVQ CX, 0x18(SP)	
+  0xf33a		48895c2420		MOVQ BX, 0x20(SP)	
+  0xf33f		e800000000		CALL 0xf344		[1:5]R_CALL:runtime.growslice	
+  0xf344		488b442428		MOVQ 0x28(SP), AX	
+  0xf349		488b4c2430		MOVQ 0x30(SP), CX	
+  0xf34e		488b542438		MOVQ 0x38(SP), DX	
+  0xf353		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0xf357		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf35f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xf367		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 97, 0})
+  0xf36d		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0xf375		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0xf37d		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 97, 0})
+  0xf383		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0xf386		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 97, 0})
+  0xf38e		e982f8ffff		JMP 0xec15		
+  0xf393		0f1f00			NOPL 0(AX)		
+	switch bt[len(bt)-1].pc {
+  0xf396		4983fd75		CMPQ $0x75, R13		
+	case 117:
+  0xf39a		0f8548490000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0xf3a0		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0xf3a5		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0xf3a9		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0xf3b0		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xf3b8		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0xf3bb		4c89de			MOVQ R11, SI		
+  0xf3be		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xf3c3		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xf3c8		e800000000		CALL 0xf3cd		[1:5]R_CALL:runtime.duffcopy+756	
+  0xf3cd		488b6d00		MOVQ 0(BP), BP		
+  0xf3d1		0f1f440000		NOPL 0(AX)(AX*1)	
+	if i >= 0 && i < len(r) {
+  0xf3d6		4885db			TESTQ BX, BX		
+  0xf3d9		0f8c69060000		JL 0xfa48		
+  0xf3df		4c39c3			CMPQ R8, BX		
+  0xf3e2		0f8d60060000		JGE 0xfa48		
+		cr, sz := rune(r[i]), 1
+  0xf3e8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xf3ed		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xf3f6		4181fb80000000		CMPL $0x80, R11		
+  0xf3fd		0f8d58060000		JGE 0xfa5b		
+  0xf403		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xf408		4183fb74		CMPL $0x74, R11		
+  0xf40c		0f8536060000		JNE 0xfa48		
+			i += sz
+  0xf412		4801f3			ADDQ SI, BX		
+  0xf415		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xf416		4885db			TESTQ BX, BX		
+  0xf419		0f8c9c050000		JL 0xf9bb		
+  0xf41f		4c39c3			CMPQ R8, BX		
+  0xf422		0f8d93050000		JGE 0xf9bb		
+		cr, sz := rune(r[i]), 1
+  0xf428		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xf42d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xf436		4181fb80000000		CMPL $0x80, R11		
+  0xf43d		0f8d88050000		JGE 0xf9cb		
+  0xf443		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xf448		4183fb74		CMPL $0x74, R11		
+  0xf44c		0f8569050000		JNE 0xf9bb		
+			i += sz
+  0xf452		4801f3			ADDQ SI, BX		
+  0xf455		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xf456		4885db			TESTQ BX, BX		
+  0xf459		0f8cc9040000		JL 0xf928		
+  0xf45f		4c39c3			CMPQ R8, BX		
+  0xf462		0f8dc0040000		JGE 0xf928		
+		cr, sz := rune(r[i]), 1
+  0xf468		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xf46d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xf476		4181fb80000000		CMPL $0x80, R11		
+  0xf47d		0f8db8040000		JGE 0xf93b		
+  0xf483		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0xf488		4183fb74		CMPL $0x74, R11		
+  0xf48c		0f8596040000		JNE 0xf928		
+			i += sz
+  0xf492		4801f3			ADDQ SI, BX		
+  0xf495		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xf496		4885db			TESTQ BX, BX		
+  0xf499		0f8cfc030000		JL 0xf89b		
+  0xf49f		4c39c3			CMPQ R8, BX		
+  0xf4a2		0f8df3030000		JGE 0xf89b		
+		cr, sz := rune(r[i]), 1
+  0xf4a8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0xf4ad		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xf4b6		4181fb80000000		CMPL $0x80, R11		
+  0xf4bd		0f8de8030000		JGE 0xf8ab		
+  0xf4c3		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0xf4c8		4181fb80000000		CMPL $0x80, R11		
+  0xf4cf		0f8dc6030000		JGE 0xf89b		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xf4d5		4589de			MOVL R11, R14			
+  0xf4d8		41c1fb1f		SARL $0x1f, R11			
+  0xf4dc		41c1eb1d		SHRL $0x1d, R11			
+  0xf4e0		4501f3			ADDL R14, R11			
+  0xf4e3		41c1fb03		SARL $0x3, R11			
+  0xf4e7		4d63fb			MOVSXD R11, R15			
+  0xf4ea		4983ff10		CMPQ $0x10, R15			
+  0xf4ee		0f8387480000		JAE 0x13d7b			
+  0xf4f4		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
+  0xf4fb		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0xf500		41c1e303		SHLL $0x3, R11			
+  0xf504		4529de			SUBL R11, R14			
+  0xf507		4585f6			TESTL R14, R14			
+  0xf50a		0f8c66480000		JL 0x13d76			
+  0xf510		4183fe20		CMPL $0x20, R14			
+  0xf514		4519db			SBBL R11, R11			
+	goto inst161
+  0xf517		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xf51a		4489f1			MOVL R14, CX		
+  0xf51d		41bf01000000		MOVL $0x1, R15		
+  0xf523		41d3e7			SHLL CL, R15		
+  0xf526		4521fb			ANDL R15, R11		
+  0xf529		4584d3			TESTL R10, R11		
+  0xf52c		0f8450030000		JE 0xf882		
+				i += sz
+  0xf532		4801f3			ADDQ SI, BX		
+  0xf535		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xf536		4885db			TESTQ BX, BX		
+  0xf539		0f8cb3020000		JL 0xf7f2		
+  0xf53f		4c39c3			CMPQ R8, BX		
+  0xf542		0f8daa020000		JGE 0xf7f2		
+		cr, sz := rune(r[i]), 1
+  0xf548		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0xf54d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xf556		4181fa80000000		CMPL $0x80, R10		
+  0xf55d		0f8da8020000		JGE 0xf80b		
+  0xf563		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0xf568		4183fa63		CMPL $0x63, R10		
+  0xf56c		0f8580020000		JNE 0xf7f2		
+			i += sz
+  0xf572		4801cb			ADDQ CX, BX		
+  0xf575		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xf576		4885db			TESTQ BX, BX		
+  0xf579		0f8ce3010000		JL 0xf762		
+  0xf57f		4c39c3			CMPQ R8, BX		
+  0xf582		0f8dda010000		JGE 0xf762		
+		cr, sz := rune(r[i]), 1
+  0xf588		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0xf58d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xf596		4181fa80000000		CMPL $0x80, R10		
+  0xf59d		0f8dd8010000		JGE 0xf77b		
+  0xf5a3		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0xf5a8		4183fa63		CMPL $0x63, R10		
+  0xf5ac		0f85b0010000		JNE 0xf762		
+			i += sz
+  0xf5b2		4801cb			ADDQ CX, BX		
+  0xf5b5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xf5b6		4885db			TESTQ BX, BX		
+  0xf5b9		0f8c13010000		JL 0xf6d2		
+  0xf5bf		4c39c3			CMPQ R8, BX		
+  0xf5c2		0f8d0a010000		JGE 0xf6d2		
+		cr, sz := rune(r[i]), 1
+  0xf5c8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0xf5cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0xf5d6		4181fa80000000		CMPL $0x80, R10		
+  0xf5dd		0f8d08010000		JGE 0xf6eb		
+  0xf5e3		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0xf5e8		4183fa63		CMPL $0x63, R10		
+  0xf5ec		0f85e0000000		JNE 0xf6d2		
+			i += sz
+  0xf5f2		4801cb			ADDQ CX, BX		
+  0xf5f5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0xf5f6		4885db			TESTQ BX, BX		
+  0xf5f9		7c21			JL 0xf61c		
+  0xf5fb		4c39c3			CMPQ R8, BX		
+  0xf5fe		7d1c			JGE 0xf61c		
+		cr, sz := rune(r[i]), 1
+  0xf600		450fb61419		MOVZX 0(R9)(BX*1), R10	
+		if cr >= utf8.RuneSelf {
+  0xf605		4181fa80000000		CMPL $0x80, R10		
+  0xf60c		7d4d			JGE 0xf65b		
+  0xf60e		b901000000		MOVL $0x1, CX		
+  0xf613		0f1f00			NOPL 0(AX)		
+		if false || cr == 116 {
+  0xf616		4183fa74		CMPL $0x74, R10		
+  0xf61a		7419			JE 0xf635		
+  0xf61c		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xf622		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf625		4889f9			MOVQ DI, CX		
+  0xf628		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf62b		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xf630		e9a1b7ffff		JMP 0xadd6		
+			i += sz
+  0xf635		4801cb			ADDQ CX, BX		
+	c[13] = i
+  0xf638		48899c2498050000	MOVQ BX, 0x598(SP)	
+  0xf640		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0xf646		4989db			MOVQ BX, R11		
+  0xf649		4889f9			MOVQ DI, CX		
+  0xf64c		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0xf64f		4489ee			MOVL R13, SI		
+  0xf652		0f1f4000		NOPL 0(AX)		
+	goto inst180
+  0xf656		e904b7ffff		JMP 0xad5f		
+			i += sz
+  0xf65b		48899c24b0020000	MOVQ BX, 0x2b0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf663		4929d8			SUBQ BX, R8		
+  0xf666		4c89c1			MOVQ R8, CX		
+  0xf669		49f7d8			NEGQ R8			
+  0xf66c		49c1f83f		SARQ $0x3f, R8		
+  0xf670		4921d8			ANDQ BX, R8		
+  0xf673		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf677		48891424		MOVQ DX, 0(SP)		
+  0xf67b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf680		e800000000		CALL 0xf685		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf685		448b542410		MOVL 0x10(SP), R10	
+  0xf68a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xf68f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xf697		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xf69f		488b9c24b0020000	MOVQ 0x2b0(SP), BX	
+	goto inst161
+  0xf6a7		488bbc2420050000	MOVQ 0x520(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xf6af		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf6b7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xf6bf		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xf6c7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf6cd		e944ffffff		JMP 0xf616		
+		if false || cr == 99 {
+  0xf6d2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xf6d8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf6db		4889f9			MOVQ DI, CX		
+  0xf6de		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf6e1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xf6e6		e9ebb6ffff		JMP 0xadd6		
+			i += sz
+  0xf6eb		48899c24a8020000	MOVQ BX, 0x2a8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf6f3		4929d8			SUBQ BX, R8		
+  0xf6f6		4c89c1			MOVQ R8, CX		
+  0xf6f9		49f7d8			NEGQ R8			
+  0xf6fc		49c1f83f		SARQ $0x3f, R8		
+  0xf700		4921d8			ANDQ BX, R8		
+  0xf703		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf707		48891424		MOVQ DX, 0(SP)		
+  0xf70b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf710		e800000000		CALL 0xf715		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf715		448b542410		MOVL 0x10(SP), R10	
+  0xf71a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xf71f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xf727		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xf72f		488b9c24a8020000	MOVQ 0x2a8(SP), BX	
+	goto inst161
+  0xf737		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xf73f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf747		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xf74f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xf757		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf75d		e986feffff		JMP 0xf5e8		
+		if false || cr == 99 {
+  0xf762		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xf768		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf76b		4889f9			MOVQ DI, CX		
+  0xf76e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf771		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xf776		e95bb6ffff		JMP 0xadd6		
+			i += sz
+  0xf77b		48899c24a0020000	MOVQ BX, 0x2a0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf783		4929d8			SUBQ BX, R8		
+  0xf786		4c89c1			MOVQ R8, CX		
+  0xf789		49f7d8			NEGQ R8			
+  0xf78c		49c1f83f		SARQ $0x3f, R8		
+  0xf790		4921d8			ANDQ BX, R8		
+  0xf793		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf797		48891424		MOVQ DX, 0(SP)		
+  0xf79b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf7a0		e800000000		CALL 0xf7a5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf7a5		448b542410		MOVL 0x10(SP), R10	
+  0xf7aa		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xf7af		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xf7b7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xf7bf		488b9c24a0020000	MOVQ 0x2a0(SP), BX	
+	goto inst161
+  0xf7c7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xf7cf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf7d7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xf7df		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xf7e7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf7ed		e9b6fdffff		JMP 0xf5a8		
+		if false || cr == 99 {
+  0xf7f2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xf7f8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf7fb		4889f9			MOVQ DI, CX		
+  0xf7fe		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf801		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xf806		e9cbb5ffff		JMP 0xadd6		
+				i += sz
+  0xf80b		48899c2498020000	MOVQ BX, 0x298(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf813		4929d8			SUBQ BX, R8		
+  0xf816		4c89c1			MOVQ R8, CX		
+  0xf819		49f7d8			NEGQ R8			
+  0xf81c		49c1f83f		SARQ $0x3f, R8		
+  0xf820		4921d8			ANDQ BX, R8		
+  0xf823		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf827		48891424		MOVQ DX, 0(SP)		
+  0xf82b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf830		e800000000		CALL 0xf835		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf835		448b542410		MOVL 0x10(SP), R10	
+  0xf83a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xf83f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0xf847		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xf84f		488b9c2498020000	MOVQ 0x298(SP), BX	
+	goto inst161
+  0xf857		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xf85f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf867		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0xf86f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xf877		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf87d		e9e6fcffff		JMP 0xf568		
+  0xf882		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0xf888		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf88b		4889f9			MOVQ DI, CX		
+  0xf88e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf891		0fb6742447		MOVZX 0x47(SP), SI	
+			goto fail
+  0xf896		e93bb5ffff		JMP 0xadd6		
+				goto inst148
+  0xf89b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf89e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf8a1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xf8a6		e92bb5ffff		JMP 0xadd6		
+			i += sz
+  0xf8ab		48899c2490020000	MOVQ BX, 0x290(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf8b3		4929d8			SUBQ BX, R8		
+  0xf8b6		4c89c1			MOVQ R8, CX		
+  0xf8b9		49f7d8			NEGQ R8			
+  0xf8bc		49c1f83f		SARQ $0x3f, R8		
+  0xf8c0		4921d8			ANDQ BX, R8		
+  0xf8c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf8c7		48891424		MOVQ DX, 0(SP)		
+  0xf8cb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf8d0		e800000000		CALL 0xf8d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf8d5		448b5c2410		MOVL 0x10(SP), R11	
+  0xf8da		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xf8df		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xf8e7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xf8ef		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0xf8f7		488b9c2490020000	MOVQ 0x290(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0xf8ff		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf907		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xf90f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xf915		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xf91d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf923		e9a0fbffff		JMP 0xf4c8		
+				goto inst148
+  0xf928		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf92b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf92e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xf933		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xf936		e99bb4ffff		JMP 0xadd6		
+			i += sz
+  0xf93b		48899c2488020000	MOVQ BX, 0x288(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf943		4929d8			SUBQ BX, R8		
+  0xf946		4c89c1			MOVQ R8, CX		
+  0xf949		49f7d8			NEGQ R8			
+  0xf94c		49c1f83f		SARQ $0x3f, R8		
+  0xf950		4921d8			ANDQ BX, R8		
+  0xf953		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf957		48891424		MOVQ DX, 0(SP)		
+  0xf95b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf960		e800000000		CALL 0xf965		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf965		448b5c2410		MOVL 0x10(SP), R11	
+  0xf96a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xf96f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xf977		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xf97f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xf987		488b9c2488020000	MOVQ 0x288(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xf98f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xf997		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xf99f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xf9a5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xf9ad		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xf9b3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf9b6		e9cdfaffff		JMP 0xf488		
+				goto inst148
+  0xf9bb		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xf9be		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xf9c1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0xf9c6		e90bb4ffff		JMP 0xadd6		
+			i += sz
+  0xf9cb		48899c2480020000	MOVQ BX, 0x280(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xf9d3		4929d8			SUBQ BX, R8		
+  0xf9d6		4c89c1			MOVQ R8, CX		
+  0xf9d9		49f7d8			NEGQ R8			
+  0xf9dc		49c1f83f		SARQ $0x3f, R8		
+  0xf9e0		4921d8			ANDQ BX, R8		
+  0xf9e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xf9e7		48891424		MOVQ DX, 0(SP)		
+  0xf9eb		48894c2408		MOVQ CX, 0x8(SP)	
+  0xf9f0		e800000000		CALL 0xf9f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xf9f5		448b5c2410		MOVL 0x10(SP), R11	
+  0xf9fa		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xf9ff		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xfa07		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xfa0f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xfa17		488b9c2480020000	MOVQ 0x280(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xfa1f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xfa27		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xfa2f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xfa35		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xfa3d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xfa43		e900faffff		JMP 0xf448		
+				goto inst148
+  0xfa48		4989dd			MOVQ BX, R13		
+	goto inst161
+  0xfa4b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0xfa4e		0fb6742447		MOVZX 0x47(SP), SI	
+  0xfa53		0f1f00			NOPL 0(AX)		
+	goto fail
+  0xfa56		e97bb3ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0xfa5b		48899c2478020000	MOVQ BX, 0x278(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xfa63		4929d8			SUBQ BX, R8		
+  0xfa66		4c89c1			MOVQ R8, CX		
+  0xfa69		49f7d8			NEGQ R8			
+  0xfa6c		49c1f83f		SARQ $0x3f, R8		
+  0xfa70		4921d8			ANDQ BX, R8		
+  0xfa73		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xfa77		48891424		MOVQ DX, 0(SP)		
+  0xfa7b		48894c2408		MOVQ CX, 0x8(SP)	
+  0xfa80		e800000000		CALL 0xfa85		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xfa85		448b5c2410		MOVL 0x10(SP), R11	
+  0xfa8a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0xfa8f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0xfa97		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0xfa9f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0xfaa7		488b9c2478020000	MOVQ 0x278(SP), BX	
+	if i >= 0 && i < len(r) {
+  0xfaaf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xfab7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0xfabf		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0xfac5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0xfacd		440fb66c2447		MOVZX 0x47(SP), R13	
+  0xfad3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xfad6		e92df9ffff		JMP 0xf408		
+	case 119:
+  0xfadb		4983fd77		CMPQ $0x77, R13		
+  0xfadf		0f8551080000		JNE 0x10336		
+		c, i = bt[n].c, bt[n].i
+  0xfae5		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0xfaea		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0xfaf2		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0xfaf6		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0xfafd		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0xfb05		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0xfb08		4c89f6			MOVQ R14, SI		
+  0xfb0b		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xfb14		6690			NOPW			
+  0xfb16		48896c24f0		MOVQ BP, -0x10(SP)	
+  0xfb1b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0xfb20		e800000000		CALL 0xfb25		[1:5]R_CALL:runtime.duffcopy+756	
+  0xfb25		488b6d00		MOVQ 0(BP), BP		
+	c[12] = i
+  0xfb29		4c89ac2490050000	MOVQ R13, 0x590(SP)	
+	bt = append(bt, state{c, i, 117, 0})
+  0xfb31		48c78424780b000000000000	MOVQ $0x0, 0xb78(SP)		
+  0xfb3d		488dbc24800b0000		LEAQ 0xb80(SP), DI		
+  0xfb45		0f57c0				XORPS X0, X0			
+  0xfb48		488d7ff0			LEAQ -0x10(DI), DI		
+  0xfb4c		660f1f840000000000		NOPW 0(AX)(AX*1)		
+  0xfb55		90				NOPL				
+  0xfb56		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xfb5b		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xfb60		e800000000			CALL 0xfb65			[1:5]R_CALL:runtime.duffzero+250	
+  0xfb65		488b6d00			MOVQ 0(BP), BP			
+  0xfb69		488dbc24780b0000		LEAQ 0xb78(SP), DI		
+  0xfb71		488db42430050000		LEAQ 0x530(SP), SI		
+  0xfb79		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xfb7e		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xfb83		e800000000			CALL 0xfb88			[1:5]R_CALL:runtime.duffcopy+756	
+  0xfb88		488b6d00			MOVQ 0(BP), BP			
+  0xfb8c		4c89ac24180c0000		MOVQ R13, 0xc18(SP)		
+  0xfb94		48c78424200c000075000000	MOVQ $0x75, 0xc20(SP)		
+  0xfba0		48c78424280c000000000000	MOVQ $0x0, 0xc28(SP)		
+  0xfbac		4839d9				CMPQ BX, CX			
+  0xfbaf		0f820b070000			JB 0x102c0			
+  0xfbb5		4c8ba424780b0000		MOVQ 0xb78(SP), R12		
+  0xfbbd		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0xfbc5		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0xfbc9		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0xfbd0		488db424800b0000		LEAQ 0xb80(SP), SI		
+  0xfbd8		48896c24f0			MOVQ BP, -0x10(SP)		
+  0xfbdd		488d6c24f0			LEAQ -0x10(SP), BP		
+  0xfbe2		e800000000			CALL 0xfbe7			[1:5]R_CALL:runtime.duffcopy+742	
+  0xfbe7		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0xfbeb		4d85ed			TESTQ R13, R13		
+  0xfbee		0f8c4f060000		JL 0x10243		
+  0xfbf4		6690			NOPW			
+  0xfbf6		4d39c5			CMPQ R8, R13		
+  0xfbf9		0f8d44060000		JGE 0x10243		
+	bt = append(bt, state{c, i, 117, 0})
+  0xfbff		48898424001f0000	MOVQ AX, 0x1f00(SP)	
+  0xfc07		48899c2470020000	MOVQ BX, 0x270(SP)	
+  0xfc0f		48898c2468020000	MOVQ CX, 0x268(SP)	
+		cr, sz := rune(r[i]), 1
+  0xfc17		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xfc1c		4181fb80000000		CMPL $0x80, R11		
+  0xfc23		0f8d22060000		JGE 0x1024b		
+  0xfc29		be01000000		MOVL $0x1, SI		
+  0xfc2e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if false || cr == 97 {
+  0xfc36		4183fb61		CMPL $0x61, R11		
+  0xfc3a		0f8503060000		JNE 0x10243		
+			i += sz
+  0xfc40		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
+	if i >= 0 && i < len(r) {
+  0xfc44		4d85db			TESTQ R11, R11		
+  0xfc47		0f8c6e050000		JL 0x101bb		
+  0xfc4d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xfc56		4d39c3			CMPQ R8, R11		
+  0xfc59		0f8d5c050000		JGE 0x101bb		
+		cr, sz := rune(r[i]), 1
+  0xfc5f		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xfc64		4181fc80000000		CMPL $0x80, R12		
+  0xfc6b		0f8d55050000		JGE 0x101c6		
+  0xfc71		be01000000		MOVL $0x1, SI		
+		if false || cr == 103 {
+  0xfc76		4183fc67		CMPL $0x67, R12		
+  0xfc7a		0f853b050000		JNE 0x101bb		
+			i += sz
+  0xfc80		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0xfc83		4d85db			TESTQ R11, R11		
+  0xfc86		0f8ca2040000		JL 0x1012e		
+  0xfc8c		4d39c3			CMPQ R8, R11		
+  0xfc8f		0f8d99040000		JGE 0x1012e		
+		cr, sz := rune(r[i]), 1
+  0xfc95		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xfc9a		4181fc80000000		CMPL $0x80, R12		
+  0xfca1		0f8d94040000		JGE 0x1013b		
+  0xfca7		be01000000		MOVL $0x1, SI		
+  0xfcac		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xfcb5		90			NOPL			
+		if false || cr == 103 {
+  0xfcb6		4183fc67		CMPL $0x67, R12		
+  0xfcba		0f856e040000		JNE 0x1012e		
+			i += sz
+  0xfcc0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0xfcc3		4d85db			TESTQ R11, R11		
+  0xfcc6		0f8cd8030000		JL 0x100a4		
+  0xfccc		4d39c3			CMPQ R8, R11		
+  0xfccf		0f8dcf030000		JGE 0x100a4		
+		cr, sz := rune(r[i]), 1
+  0xfcd5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xfcda		4181fc80000000		CMPL $0x80, R12		
+  0xfce1		0f8dc8030000		JGE 0x100af		
+  0xfce7		be01000000		MOVL $0x1, SI		
+  0xfcec		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xfcf5		90			NOPL			
+		if false || cr == 103 {
+  0xfcf6		4183fc67		CMPL $0x67, R12		
+  0xfcfa		0f85a4030000		JNE 0x100a4		
+			i += sz
+  0xfd00		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0xfd03		4d85db			TESTQ R11, R11		
+  0xfd06		0f8c10030000		JL 0x1001c		
+  0xfd0c		4d39c3			CMPQ R8, R11		
+  0xfd0f		0f8d07030000		JGE 0x1001c		
+		cr, sz := rune(r[i]), 1
+  0xfd15		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0xfd1a		4181fc80000000		CMPL $0x80, R12		
+  0xfd21		0f8d00030000		JGE 0x10027		
+  0xfd27		be01000000		MOVL $0x1, SI		
+  0xfd2c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xfd35		90			NOPL			
+		if cr < 128 {
+  0xfd36		4181fc80000000		CMPL $0x80, R12		
+  0xfd3d		0f8dd9020000		JGE 0x1001c		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xfd43		4589e5			MOVL R12, R13			
+  0xfd46		41c1fc1f		SARL $0x1f, R12			
+  0xfd4a		41c1ec1d		SHRL $0x1d, R12			
+  0xfd4e		4501ec			ADDL R13, R12			
+  0xfd51		41c1fc03		SARL $0x3, R12			
+  0xfd55		4d63f4			MOVSXD R12, R14			
+  0xfd58		4983fe10		CMPQ $0x10, R14			
+  0xfd5c		0f832b400000		JAE 0x13d8d			
+  0xfd62		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
+  0xfd69		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0xfd6e		41c1e403		SHLL $0x3, R12			
+  0xfd72		4529e5			SUBL R12, R13			
+  0xfd75		90			NOPL				
+  0xfd76		4585ed			TESTL R13, R13			
+  0xfd79		0f8c09400000		JL 0x13d88			
+  0xfd7f		4183fd20		CMPL $0x20, R13			
+  0xfd83		4519e4			SBBL R12, R12			
+	bt = append(bt, state{c, i, 117, 0})
+  0xfd86		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0xfd89		4489e9			MOVL R13, CX		
+  0xfd8c		41be01000000		MOVL $0x1, R14		
+  0xfd92		41d3e6			SHLL CL, R14		
+  0xfd95		4521e6			ANDL R12, R14		
+  0xfd98		4584d6			TESTL R10, R14		
+  0xfd9b		0f8467020000		JE 0x10008		
+				i += sz
+  0xfda1		4e8d141e		LEAQ 0(SI)(R11*1), R10	
+	if i >= 0 && i < len(r) {
+  0xfda5		4d85d2			TESTQ R10, R10		
+  0xfda8		0f8ccd010000		JL 0xff7b		
+  0xfdae		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0xfdb6		4d39c2			CMPQ R8, R10		
+  0xfdb9		0f8dbc010000		JGE 0xff7b		
+		cr, sz := rune(r[i]), 1
+  0xfdbf		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xfdc4		4181fb80000000		CMPL $0x80, R11		
+  0xfdcb		0f8dbe010000		JGE 0xff8f		
+  0xfdd1		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0xfdd6		4183fb61		CMPL $0x61, R11		
+  0xfdda		0f859b010000		JNE 0xff7b		
+			i += sz
+  0xfde0		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xfde3		4d85d2			TESTQ R10, R10		
+  0xfde6		0f8cff000000		JL 0xfeeb		
+  0xfdec		4d39c2			CMPQ R8, R10		
+  0xfdef		0f8df6000000		JGE 0xfeeb		
+		cr, sz := rune(r[i]), 1
+  0xfdf5		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0xfdfa		4181fb80000000		CMPL $0x80, R11		
+  0xfe01		0f8df8000000		JGE 0xfeff		
+  0xfe07		b901000000		MOVL $0x1, CX		
+  0xfe0c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0xfe15		90			NOPL			
+		if false || cr == 97 {
+  0xfe16		4183fb61		CMPL $0x61, R11		
+  0xfe1a		0f85cb000000		JNE 0xfeeb		
+			i += sz
+  0xfe20		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0xfe23		4d85d2			TESTQ R10, R10		
+  0xfe26		7c22			JL 0xfe4a		
+  0xfe28		4d39c2			CMPQ R8, R10		
+  0xfe2b		7d1d			JGE 0xfe4a		
+		cr, sz := rune(r[i]), 1
+  0xfe2d		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+  0xfe32		0f1f4000		NOPL 0(AX)		
+		if cr >= utf8.RuneSelf {
+  0xfe36		4181fb80000000		CMPL $0x80, R11		
+  0xfe3d		7d35			JGE 0xfe74		
+  0xfe3f		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0xfe44		4183fb61		CMPL $0x61, R11		
+  0xfe48		7414			JE 0xfe5e		
+				goto inst148
+  0xfe4a		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xfe4d		4889f9			MOVQ DI, CX		
+	goto fail
+  0xfe50		4489fe			MOVL R15, SI		
+  0xfe53		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xfe59		e978afffff		JMP 0xadd6		
+			i += sz
+  0xfe5e		4901ca			ADDQ CX, R10		
+		if i <= len(r) && len(bt) > 0 {
+  0xfe61		4589fd			MOVL R15, R13		
+			goto inst118
+  0xfe64		4c89d3			MOVQ R10, BX		
+	goto inst101
+  0xfe67		4c8ba42470020000	MOVQ 0x270(SP), R12	
+			goto inst118
+  0xfe6f		e9c4f7ffff		JMP 0xf638		
+			i += sz
+  0xfe74		4c89942460020000	MOVQ R10, 0x260(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xfe7c		4d29d0			SUBQ R10, R8		
+  0xfe7f		4c89c1			MOVQ R8, CX		
+  0xfe82		49f7d8			NEGQ R8			
+  0xfe85		49c1f83f		SARQ $0x3f, R8		
+  0xfe89		4d21d0			ANDQ R10, R8		
+  0xfe8c		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xfe90		48891424		MOVQ DX, 0(SP)		
+  0xfe94		48894c2408		MOVQ CX, 0x8(SP)	
+  0xfe99		e800000000		CALL 0xfe9e		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xfe9e		448b5c2410		MOVL 0x10(SP), R11	
+  0xfea3		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xfea8		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+		if len(r[si:]) != 0 {
+  0xfeb0		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xfeb8		488b9c2470020000	MOVQ 0x270(SP), BX	
+  0xfec0		488bbc2468020000	MOVQ 0x268(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0xfec8		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xfed0		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+				goto inst148
+  0xfed8		4c8b942460020000	MOVQ 0x260(SP), R10	
+	goto fail
+  0xfee0		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xfee6		e959ffffff		JMP 0xfe44		
+				goto inst148
+  0xfeeb		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xfeee		4889f9			MOVQ DI, CX		
+	goto fail
+  0xfef1		4489fe			MOVL R15, SI		
+  0xfef4		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xfefa		e9d7aeffff		JMP 0xadd6		
+			i += sz
+  0xfeff		4c89942458020000	MOVQ R10, 0x258(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xff07		4d29d0			SUBQ R10, R8		
+  0xff0a		4c89c1			MOVQ R8, CX		
+  0xff0d		49f7d8			NEGQ R8			
+  0xff10		49c1f83f		SARQ $0x3f, R8		
+  0xff14		4d21d0			ANDQ R10, R8		
+  0xff17		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xff1b		48891424		MOVQ DX, 0(SP)		
+  0xff1f		48894c2408		MOVQ CX, 0x8(SP)	
+  0xff24		e800000000		CALL 0xff29		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xff29		448b5c2410		MOVL 0x10(SP), R11	
+  0xff2e		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xff33		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+		if len(r[si:]) != 0 {
+  0xff3b		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xff43		488b9c2470020000	MOVQ 0x270(SP), BX	
+  0xff4b		488bbc2468020000	MOVQ 0x268(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xff53		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xff5b		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xff63		4c8b942458020000	MOVQ 0x258(SP), R10	
+	goto fail
+  0xff6b		440fb67c2447		MOVZX 0x47(SP), R15	
+  0xff71		0f1f440000		NOPL 0(AX)(AX*1)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xff76		e99bfeffff		JMP 0xfe16		
+				goto inst148
+  0xff7b		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0xff7e		4889f9			MOVQ DI, CX		
+	goto fail
+  0xff81		4489fe			MOVL R15, SI		
+  0xff84		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0xff8a		e947aeffff		JMP 0xadd6		
+				i += sz
+  0xff8f		4c89942450020000	MOVQ R10, 0x250(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0xff97		4d29d0			SUBQ R10, R8		
+  0xff9a		4c89c1			MOVQ R8, CX		
+  0xff9d		49f7d8			NEGQ R8			
+  0xffa0		49c1f83f		SARQ $0x3f, R8		
+  0xffa4		4d21d0			ANDQ R10, R8		
+  0xffa7		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0xffab		48891424		MOVQ DX, 0(SP)		
+  0xffaf		48894c2408		MOVQ CX, 0x8(SP)	
+  0xffb4		6690			NOPW			
+  0xffb6		e800000000		CALL 0xffbb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0xffbb		448b5c2410		MOVL 0x10(SP), R11	
+  0xffc0		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0xffc5		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+		if len(r[si:]) != 0 {
+  0xffcd		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0xffd5		488b9c2470020000	MOVQ 0x270(SP), BX	
+  0xffdd		488bbc2468020000	MOVQ 0x268(SP), DI	
+	if i >= 0 && i < len(r) {
+  0xffe5		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0xffed		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0xfff5		4c8b942450020000	MOVQ 0x250(SP), R10	
+	goto fail
+  0xfffd		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10003		e9cefdffff		JMP 0xfdd6		
+  0x10008		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x1000e		4d89dd			MOVQ R11, R13		
+	goto inst161
+  0x10011		4889f9			MOVQ DI, CX		
+	goto fail
+  0x10014		4489fe			MOVL R15, SI		
+			goto fail
+  0x10017		e9baadffff		JMP 0xadd6		
+				goto inst148
+  0x1001c		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x1001f		4489fe			MOVL R15, SI		
+	goto fail
+  0x10022		e9afadffff		JMP 0xadd6		
+			i += sz
+  0x10027		4c899c2448020000	MOVQ R11, 0x248(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1002f		4d29d8			SUBQ R11, R8		
+  0x10032		4c89c1			MOVQ R8, CX		
+  0x10035		49f7d8			NEGQ R8			
+  0x10038		49c1f83f		SARQ $0x3f, R8		
+  0x1003c		4d21d8			ANDQ R11, R8		
+  0x1003f		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10043		48891424		MOVQ DX, 0(SP)		
+  0x10047		48894c2408		MOVQ CX, 0x8(SP)	
+  0x1004c		e800000000		CALL 0x10051		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10051		448b642410		MOVL 0x10(SP), R12	
+  0x10056		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1005b		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+  0x10063		488b8c2468020000	MOVQ 0x268(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1006b		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x10073		488b9c2470020000	MOVQ 0x270(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x1007b		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10083		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1008b		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x10091		4c8b9c2448020000	MOVQ 0x248(SP), R11	
+	goto fail
+  0x10099		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1009f		e992fcffff		JMP 0xfd36		
+				goto inst148
+  0x100a4		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x100a7		4489fe			MOVL R15, SI		
+	goto fail
+  0x100aa		e927adffff		JMP 0xadd6		
+			i += sz
+  0x100af		4c899c2440020000	MOVQ R11, 0x240(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x100b7		4d29d8			SUBQ R11, R8		
+  0x100ba		4c89c1			MOVQ R8, CX		
+  0x100bd		49f7d8			NEGQ R8			
+  0x100c0		49c1f83f		SARQ $0x3f, R8		
+  0x100c4		4d21d8			ANDQ R11, R8		
+  0x100c7		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x100cb		48891424		MOVQ DX, 0(SP)		
+  0x100cf		48894c2408		MOVQ CX, 0x8(SP)	
+  0x100d4		6690			NOPW			
+  0x100d6		e800000000		CALL 0x100db		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x100db		448b642410		MOVL 0x10(SP), R12	
+  0x100e0		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x100e5		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+  0x100ed		488b8c2468020000	MOVQ 0x268(SP), CX	
+		if len(r[si:]) != 0 {
+  0x100f5		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x100fd		488b9c2470020000	MOVQ 0x270(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x10105		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1010d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x10115		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x1011b		4c8b9c2440020000	MOVQ 0x240(SP), R11	
+	goto fail
+  0x10123		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10129		e9c8fbffff		JMP 0xfcf6		
+				goto inst148
+  0x1012e		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x10131		4489fe			MOVL R15, SI		
+  0x10134		6690			NOPW			
+	goto fail
+  0x10136		e99bacffff		JMP 0xadd6		
+			i += sz
+  0x1013b		4c899c2438020000	MOVQ R11, 0x238(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10143		4d29d8			SUBQ R11, R8		
+  0x10146		4c89c1			MOVQ R8, CX		
+  0x10149		49f7d8			NEGQ R8			
+  0x1014c		49c1f83f		SARQ $0x3f, R8		
+  0x10150		4d21d8			ANDQ R11, R8		
+  0x10153		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10157		48891424		MOVQ DX, 0(SP)		
+  0x1015b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10160		e800000000		CALL 0x10165		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10165		448b642410		MOVL 0x10(SP), R12	
+  0x1016a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1016f		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+  0x10177		488b8c2468020000	MOVQ 0x268(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1017f		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x10187		488b9c2470020000	MOVQ 0x270(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1018f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10197		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1019f		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x101a5		4c8b9c2438020000	MOVQ 0x238(SP), R11	
+	goto fail
+  0x101ad		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x101b3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x101b6		e9fbfaffff		JMP 0xfcb6		
+				goto inst148
+  0x101bb		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x101be		4489fe			MOVL R15, SI		
+	goto fail
+  0x101c1		e910acffff		JMP 0xadd6		
+			i += sz
+  0x101c6		4c899c2430020000	MOVQ R11, 0x230(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x101ce		4d29d8			SUBQ R11, R8		
+  0x101d1		4c89c1			MOVQ R8, CX		
+  0x101d4		49f7d8			NEGQ R8			
+  0x101d7		49c1f83f		SARQ $0x3f, R8		
+  0x101db		4d21d8			ANDQ R11, R8		
+  0x101de		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x101e2		48891424		MOVQ DX, 0(SP)		
+  0x101e6		48894c2408		MOVQ CX, 0x8(SP)	
+  0x101eb		e800000000		CALL 0x101f0		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x101f0		448b642410		MOVL 0x10(SP), R12	
+  0x101f5		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x101fa		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+  0x10202		488b8c2468020000	MOVQ 0x268(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1020a		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x10212		488b9c2470020000	MOVQ 0x270(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1021a		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10222		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1022a		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x10230		4c8b9c2430020000	MOVQ 0x230(SP), R11	
+	goto fail
+  0x10238		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1023e		e933faffff		JMP 0xfc76		
+	goto fail
+  0x10243		4489fe			MOVL R15, SI		
+	goto fail
+  0x10246		e98babffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1024b		4d29e8			SUBQ R13, R8		
+  0x1024e		4c89c1			MOVQ R8, CX		
+  0x10251		49f7d8			NEGQ R8			
+  0x10254		49c1f83f		SARQ $0x3f, R8		
+  0x10258		4d21e8			ANDQ R13, R8		
+  0x1025b		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x1025f		48891424		MOVQ DX, 0(SP)		
+  0x10263		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10268		e800000000		CALL 0x1026d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1026d		448b5c2410		MOVL 0x10(SP), R11	
+  0x10272		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x10277		488b8424001f0000	MOVQ 0x1f00(SP), AX	
+  0x1027f		488b8c2468020000	MOVQ 0x268(SP), CX	
+		if len(r[si:]) != 0 {
+  0x10287		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1028f		488b9c2470020000	MOVQ 0x270(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x10297		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1029f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x102a7		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x102ad		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x102b5		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x102bb		e976f9ffff		JMP 0xfc36		
+	bt = append(bt, state{c, i, 117, 0})
+  0x102c0		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x102c7		48891424		MOVQ DX, 0(SP)		
+  0x102cb		4889442408		MOVQ AX, 0x8(SP)	
+  0x102d0		4c89642410		MOVQ R12, 0x10(SP)	
+  0x102d5		48894c2418		MOVQ CX, 0x18(SP)	
+  0x102da		48895c2420		MOVQ BX, 0x20(SP)	
+  0x102df		e800000000		CALL 0x102e4		[1:5]R_CALL:runtime.growslice	
+  0x102e4		488b442428		MOVQ 0x28(SP), AX	
+  0x102e9		488b4c2430		MOVQ 0x30(SP), CX	
+  0x102ee		488b542438		MOVQ 0x38(SP), DX	
+  0x102f3		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0x102f7		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x102ff		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x10307		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 117, 0})
+  0x1030d		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0x10315		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x1031d		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 117, 0})
+  0x10323		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0x10326		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 117, 0})
+  0x1032e		e982f8ffff		JMP 0xfbb5		
+  0x10333		0f1f00			NOPL 0(AX)		
+	switch bt[len(bt)-1].pc {
+  0x10336		4981fd89000000		CMPQ $0x89, R13		
+	case 137:
+  0x1033d		0f85a5390000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0x10343		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0x10348		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0x1034c		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0x10353		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0x1035b		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0x1035e		4c89de			MOVQ R11, SI		
+  0x10361		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x10366		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x1036b		e800000000		CALL 0x10370		[1:5]R_CALL:runtime.duffcopy+756	
+  0x10370		488b6d00		MOVQ 0(BP), BP		
+  0x10374		6690			NOPW			
+	if i >= 0 && i < len(r) {
+  0x10376		4885db			TESTQ BX, BX		
+  0x10379		0f8c69060000		JL 0x109e8		
+  0x1037f		4c39c3			CMPQ R8, BX		
+  0x10382		0f8d60060000		JGE 0x109e8		
+		cr, sz := rune(r[i]), 1
+  0x10388		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0x1038d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x10396		4181fb80000000		CMPL $0x80, R11		
+  0x1039d		0f8d58060000		JGE 0x109fb		
+  0x103a3		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0x103a8		4183fb74		CMPL $0x74, R11		
+  0x103ac		0f8536060000		JNE 0x109e8		
+			i += sz
+  0x103b2		4801f3			ADDQ SI, BX		
+  0x103b5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x103b6		4885db			TESTQ BX, BX		
+  0x103b9		0f8c9c050000		JL 0x1095b		
+  0x103bf		4c39c3			CMPQ R8, BX		
+  0x103c2		0f8d93050000		JGE 0x1095b		
+		cr, sz := rune(r[i]), 1
+  0x103c8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0x103cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x103d6		4181fb80000000		CMPL $0x80, R11		
+  0x103dd		0f8d88050000		JGE 0x1096b		
+  0x103e3		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0x103e8		4183fb74		CMPL $0x74, R11		
+  0x103ec		0f8569050000		JNE 0x1095b		
+			i += sz
+  0x103f2		4801f3			ADDQ SI, BX		
+  0x103f5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x103f6		4885db			TESTQ BX, BX		
+  0x103f9		0f8ccc040000		JL 0x108cb		
+  0x103ff		4c39c3			CMPQ R8, BX		
+  0x10402		0f8dc3040000		JGE 0x108cb		
+		cr, sz := rune(r[i]), 1
+  0x10408		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0x1040d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x10416		4181fb80000000		CMPL $0x80, R11		
+  0x1041d		0f8db8040000		JGE 0x108db		
+  0x10423		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0x10428		4181fb80000000		CMPL $0x80, R11		
+  0x1042f		0f8d96040000		JGE 0x108cb		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x10435		4589de			MOVL R11, R14			
+  0x10438		41c1fb1f		SARL $0x1f, R11			
+  0x1043c		41c1eb1d		SHRL $0x1d, R11			
+  0x10440		4501f3			ADDL R14, R11			
+  0x10443		41c1fb03		SARL $0x3, R11			
+  0x10447		4d63fb			MOVSXD R11, R15			
+  0x1044a		4983ff10		CMPQ $0x10, R15			
+  0x1044e		0f83fe380000		JAE 0x13d52			
+  0x10454		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
+  0x1045b		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0x10460		41c1e303		SHLL $0x3, R11			
+  0x10464		4529de			SUBL R11, R14			
+  0x10467		4585f6			TESTL R14, R14			
+  0x1046a		0f8cdd380000		JL 0x13d4d			
+  0x10470		4183fe20		CMPL $0x20, R14			
+  0x10474		4519db			SBBL R11, R11			
+	goto inst161
+  0x10477		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x1047a		4489f1			MOVL R14, CX		
+  0x1047d		41bf01000000		MOVL $0x1, R15		
+  0x10483		41d3e7			SHLL CL, R15		
+  0x10486		4521fb			ANDL R15, R11		
+  0x10489		4584d3			TESTL R10, R11		
+  0x1048c		0f8420040000		JE 0x108b2		
+				i += sz
+  0x10492		4801f3			ADDQ SI, BX		
+  0x10495		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x10496		4885db			TESTQ BX, BX		
+  0x10499		0f8c83030000		JL 0x10822		
+  0x1049f		4c39c3			CMPQ R8, BX		
+  0x104a2		0f8d7a030000		JGE 0x10822		
+		cr, sz := rune(r[i]), 1
+  0x104a8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x104ad		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x104b6		4181fa80000000		CMPL $0x80, R10		
+  0x104bd		0f8d78030000		JGE 0x1083b		
+  0x104c3		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0x104c8		4183fa61		CMPL $0x61, R10		
+  0x104cc		0f8550030000		JNE 0x10822		
+			i += sz
+  0x104d2		4801cb			ADDQ CX, BX		
+  0x104d5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x104d6		4885db			TESTQ BX, BX		
+  0x104d9		0f8cb3020000		JL 0x10792		
+  0x104df		4c39c3			CMPQ R8, BX		
+  0x104e2		0f8daa020000		JGE 0x10792		
+		cr, sz := rune(r[i]), 1
+  0x104e8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x104ed		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x104f6		4181fa80000000		CMPL $0x80, R10		
+  0x104fd		0f8da8020000		JGE 0x107ab		
+  0x10503		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x10508		4183fa63		CMPL $0x63, R10		
+  0x1050c		0f8580020000		JNE 0x10792		
+			i += sz
+  0x10512		4801cb			ADDQ CX, BX		
+  0x10515		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x10516		4885db			TESTQ BX, BX		
+  0x10519		0f8ce3010000		JL 0x10702		
+  0x1051f		4c39c3			CMPQ R8, BX		
+  0x10522		0f8dda010000		JGE 0x10702		
+		cr, sz := rune(r[i]), 1
+  0x10528		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1052d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x10536		4181fa80000000		CMPL $0x80, R10		
+  0x1053d		0f8dd8010000		JGE 0x1071b		
+  0x10543		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x10548		4183fa63		CMPL $0x63, R10		
+  0x1054c		0f85b0010000		JNE 0x10702		
+			i += sz
+  0x10552		4801cb			ADDQ CX, BX		
+  0x10555		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x10556		4885db			TESTQ BX, BX		
+  0x10559		0f8c13010000		JL 0x10672		
+  0x1055f		4c39c3			CMPQ R8, BX		
+  0x10562		0f8d0a010000		JGE 0x10672		
+		cr, sz := rune(r[i]), 1
+  0x10568		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1056d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x10576		4181fa80000000		CMPL $0x80, R10		
+  0x1057d		0f8d08010000		JGE 0x1068b		
+  0x10583		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x10588		4183fa63		CMPL $0x63, R10		
+  0x1058c		0f85e0000000		JNE 0x10672		
+			i += sz
+  0x10592		4801cb			ADDQ CX, BX		
+  0x10595		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x10596		4885db			TESTQ BX, BX		
+  0x10599		7c21			JL 0x105bc		
+  0x1059b		4c39c3			CMPQ R8, BX		
+  0x1059e		7d1c			JGE 0x105bc		
+		cr, sz := rune(r[i]), 1
+  0x105a0		450fb61419		MOVZX 0(R9)(BX*1), R10	
+		if cr >= utf8.RuneSelf {
+  0x105a5		4181fa80000000		CMPL $0x80, R10		
+  0x105ac		7d4d			JGE 0x105fb		
+  0x105ae		b901000000		MOVL $0x1, CX		
+  0x105b3		0f1f00			NOPL 0(AX)		
+		if false || cr == 116 {
+  0x105b6		4183fa74		CMPL $0x74, R10		
+  0x105ba		7419			JE 0x105d5		
+  0x105bc		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x105c2		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x105c5		4889f9			MOVQ DI, CX		
+  0x105c8		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x105cb		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x105d0		e901a8ffff		JMP 0xadd6		
+			i += sz
+  0x105d5		4801cb			ADDQ CX, BX		
+	c[15] = i
+  0x105d8		48899c24a8050000	MOVQ BX, 0x5a8(SP)	
+  0x105e0		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0x105e6		4989db			MOVQ BX, R11		
+  0x105e9		4889f9			MOVQ DI, CX		
+  0x105ec		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0x105ef		4489ee			MOVL R13, SI		
+  0x105f2		0f1f4000		NOPL 0(AX)		
+	goto inst180
+  0x105f6		e964a7ffff		JMP 0xad5f		
+			i += sz
+  0x105fb		48899c2428020000	MOVQ BX, 0x228(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10603		4929d8			SUBQ BX, R8		
+  0x10606		4c89c1			MOVQ R8, CX		
+  0x10609		49f7d8			NEGQ R8			
+  0x1060c		49c1f83f		SARQ $0x3f, R8		
+  0x10610		4921d8			ANDQ BX, R8		
+  0x10613		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10617		48891424		MOVQ DX, 0(SP)		
+  0x1061b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10620		e800000000		CALL 0x10625		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10625		448b542410		MOVL 0x10(SP), R10	
+  0x1062a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1062f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x10637		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0x1063f		488b9c2428020000	MOVQ 0x228(SP), BX	
+	goto inst161
+  0x10647		488bbc2420050000	MOVQ 0x520(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0x1064f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10657		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1065f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x10667		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1066d		e944ffffff		JMP 0x105b6		
+		if false || cr == 99 {
+  0x10672		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x10678		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1067b		4889f9			MOVQ DI, CX		
+  0x1067e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x10681		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x10686		e94ba7ffff		JMP 0xadd6		
+			i += sz
+  0x1068b		48899c2420020000	MOVQ BX, 0x220(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10693		4929d8			SUBQ BX, R8		
+  0x10696		4c89c1			MOVQ R8, CX		
+  0x10699		49f7d8			NEGQ R8			
+  0x1069c		49c1f83f		SARQ $0x3f, R8		
+  0x106a0		4921d8			ANDQ BX, R8		
+  0x106a3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x106a7		48891424		MOVQ DX, 0(SP)		
+  0x106ab		48894c2408		MOVQ CX, 0x8(SP)	
+  0x106b0		e800000000		CALL 0x106b5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x106b5		448b542410		MOVL 0x10(SP), R10	
+  0x106ba		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x106bf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x106c7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x106cf		488b9c2420020000	MOVQ 0x220(SP), BX	
+	goto inst161
+  0x106d7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x106df		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x106e7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x106ef		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x106f7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x106fd		e986feffff		JMP 0x10588		
+		if false || cr == 99 {
+  0x10702		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x10708		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1070b		4889f9			MOVQ DI, CX		
+  0x1070e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x10711		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x10716		e9bba6ffff		JMP 0xadd6		
+			i += sz
+  0x1071b		48899c2418020000	MOVQ BX, 0x218(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10723		4929d8			SUBQ BX, R8		
+  0x10726		4c89c1			MOVQ R8, CX		
+  0x10729		49f7d8			NEGQ R8			
+  0x1072c		49c1f83f		SARQ $0x3f, R8		
+  0x10730		4921d8			ANDQ BX, R8		
+  0x10733		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10737		48891424		MOVQ DX, 0(SP)		
+  0x1073b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10740		e800000000		CALL 0x10745		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10745		448b542410		MOVL 0x10(SP), R10	
+  0x1074a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1074f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x10757		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1075f		488b9c2418020000	MOVQ 0x218(SP), BX	
+	goto inst161
+  0x10767		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1076f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10777		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1077f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x10787		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1078d		e9b6fdffff		JMP 0x10548		
+		if false || cr == 99 {
+  0x10792		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x10798		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1079b		4889f9			MOVQ DI, CX		
+  0x1079e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x107a1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x107a6		e92ba6ffff		JMP 0xadd6		
+			i += sz
+  0x107ab		48899c2410020000	MOVQ BX, 0x210(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x107b3		4929d8			SUBQ BX, R8		
+  0x107b6		4c89c1			MOVQ R8, CX		
+  0x107b9		49f7d8			NEGQ R8			
+  0x107bc		49c1f83f		SARQ $0x3f, R8		
+  0x107c0		4921d8			ANDQ BX, R8		
+  0x107c3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x107c7		48891424		MOVQ DX, 0(SP)		
+  0x107cb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x107d0		e800000000		CALL 0x107d5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x107d5		448b542410		MOVL 0x10(SP), R10	
+  0x107da		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x107df		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x107e7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x107ef		488b9c2410020000	MOVQ 0x210(SP), BX	
+	goto inst161
+  0x107f7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x107ff		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10807		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1080f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x10817		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1081d		e9e6fcffff		JMP 0x10508		
+		if false || cr == 97 {
+  0x10822		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x10828		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1082b		4889f9			MOVQ DI, CX		
+  0x1082e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x10831		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x10836		e99ba5ffff		JMP 0xadd6		
+				i += sz
+  0x1083b		48899c2408020000	MOVQ BX, 0x208(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10843		4929d8			SUBQ BX, R8		
+  0x10846		4c89c1			MOVQ R8, CX		
+  0x10849		49f7d8			NEGQ R8			
+  0x1084c		49c1f83f		SARQ $0x3f, R8		
+  0x10850		4921d8			ANDQ BX, R8		
+  0x10853		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10857		48891424		MOVQ DX, 0(SP)		
+  0x1085b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10860		e800000000		CALL 0x10865		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10865		448b542410		MOVL 0x10(SP), R10	
+  0x1086a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1086f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x10877		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1087f		488b9c2408020000	MOVQ 0x208(SP), BX	
+	goto inst161
+  0x10887		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1088f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10897		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1089f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x108a7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x108ad		e916fcffff		JMP 0x104c8		
+  0x108b2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x108b8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x108bb		4889f9			MOVQ DI, CX		
+  0x108be		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x108c1		0fb6742447		MOVZX 0x47(SP), SI	
+			goto fail
+  0x108c6		e90ba5ffff		JMP 0xadd6		
+				goto inst148
+  0x108cb		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x108ce		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x108d1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x108d6		e9fba4ffff		JMP 0xadd6		
+			i += sz
+  0x108db		48899c2400020000	MOVQ BX, 0x200(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x108e3		4929d8			SUBQ BX, R8		
+  0x108e6		4c89c1			MOVQ R8, CX		
+  0x108e9		49f7d8			NEGQ R8			
+  0x108ec		49c1f83f		SARQ $0x3f, R8		
+  0x108f0		4921d8			ANDQ BX, R8		
+  0x108f3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x108f7		48891424		MOVQ DX, 0(SP)		
+  0x108fb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10900		e800000000		CALL 0x10905		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10905		448b5c2410		MOVL 0x10(SP), R11	
+  0x1090a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1090f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0x10917		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1091f		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0x10927		488b9c2400020000	MOVQ 0x200(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x1092f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10937		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1093f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0x10945		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x1094d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0x10953		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10956		e9cdfaffff		JMP 0x10428		
+				goto inst148
+  0x1095b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1095e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x10961		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x10966		e96ba4ffff		JMP 0xadd6		
+			i += sz
+  0x1096b		48899c24f8010000	MOVQ BX, 0x1f8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10973		4929d8			SUBQ BX, R8		
+  0x10976		4c89c1			MOVQ R8, CX		
+  0x10979		49f7d8			NEGQ R8			
+  0x1097c		49c1f83f		SARQ $0x3f, R8		
+  0x10980		4921d8			ANDQ BX, R8		
+  0x10983		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10987		48891424		MOVQ DX, 0(SP)		
+  0x1098b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10990		e800000000		CALL 0x10995		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10995		448b5c2410		MOVL 0x10(SP), R11	
+  0x1099a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1099f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0x109a7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0x109af		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x109b7		488b9c24f8010000	MOVQ 0x1f8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x109bf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x109c7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x109cf		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0x109d5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x109dd		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x109e3		e900faffff		JMP 0x103e8		
+				goto inst148
+  0x109e8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x109eb		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x109ee		0fb6742447		MOVZX 0x47(SP), SI	
+  0x109f3		0f1f00			NOPL 0(AX)		
+	goto fail
+  0x109f6		e9dba3ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0x109fb		48899c24f0010000	MOVQ BX, 0x1f0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10a03		4929d8			SUBQ BX, R8		
+  0x10a06		4c89c1			MOVQ R8, CX		
+  0x10a09		49f7d8			NEGQ R8			
+  0x10a0c		49c1f83f		SARQ $0x3f, R8		
+  0x10a10		4921d8			ANDQ BX, R8		
+  0x10a13		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10a17		48891424		MOVQ DX, 0(SP)		
+  0x10a1b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10a20		e800000000		CALL 0x10a25		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10a25		448b5c2410		MOVL 0x10(SP), R11	
+  0x10a2a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x10a2f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0x10a37		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0x10a3f		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x10a47		488b9c24f0010000	MOVQ 0x1f0(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x10a4f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10a57		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x10a5f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0x10a65		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x10a6d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0x10a73		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10a76		e92df9ffff		JMP 0x103a8		
+	switch bt[len(bt)-1].pc {
+  0x10a7b		4981fd9d000000		CMPQ $0x9d, R13		
+	case 157:
+  0x10a82		0f8f930f0000		JG 0x11a1b		
+	case 139:
+  0x10a88		4981fd8b000000		CMPQ $0x8b, R13		
+  0x10a8f		0f8541080000		JNE 0x112d6		
+		c, i = bt[n].c, bt[n].i
+  0x10a95		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0x10a9a		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0x10aa2		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0x10aa6		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0x10aad		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0x10ab5		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0x10ab8		4c89f6			MOVQ R14, SI		
+  0x10abb		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x10ac0		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x10ac5		e800000000		CALL 0x10aca		[1:5]R_CALL:runtime.duffcopy+756	
+  0x10aca		488b6d00		MOVQ 0(BP), BP		
+	c[14] = i
+  0x10ace		4c89ac24a0050000	MOVQ R13, 0x5a0(SP)	
+	bt = append(bt, state{c, i, 137, 0})
+  0x10ad6		48c78424080a000000000000	MOVQ $0x0, 0xa08(SP)		
+  0x10ae2		488dbc24100a0000		LEAQ 0xa10(SP), DI		
+  0x10aea		0f57c0				XORPS X0, X0			
+  0x10aed		488d7ff0			LEAQ -0x10(DI), DI		
+  0x10af1		0f1f440000			NOPL 0(AX)(AX*1)		
+  0x10af6		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x10afb		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x10b00		e800000000			CALL 0x10b05			[1:5]R_CALL:runtime.duffzero+250	
+  0x10b05		488b6d00			MOVQ 0(BP), BP			
+  0x10b09		488dbc24080a0000		LEAQ 0xa08(SP), DI		
+  0x10b11		488db42430050000		LEAQ 0x530(SP), SI		
+  0x10b19		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x10b1e		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x10b23		e800000000			CALL 0x10b28			[1:5]R_CALL:runtime.duffcopy+756	
+  0x10b28		488b6d00			MOVQ 0(BP), BP			
+  0x10b2c		4c89ac24a80a0000		MOVQ R13, 0xaa8(SP)		
+  0x10b34		48c78424b00a000089000000	MOVQ $0x89, 0xab0(SP)		
+  0x10b40		48c78424b80a000000000000	MOVQ $0x0, 0xab8(SP)		
+  0x10b4c		4839d9				CMPQ BX, CX			
+  0x10b4f		0f820b070000			JB 0x11260			
+  0x10b55		4c8ba424080a0000		MOVQ 0xa08(SP), R12		
+  0x10b5d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0x10b65		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0x10b69		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0x10b70		488db424100a0000		LEAQ 0xa10(SP), SI		
+  0x10b78		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x10b7d		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x10b82		e800000000			CALL 0x10b87			[1:5]R_CALL:runtime.duffcopy+742	
+  0x10b87		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0x10b8b		4d85ed			TESTQ R13, R13		
+  0x10b8e		0f8c4f060000		JL 0x111e3		
+  0x10b94		6690			NOPW			
+  0x10b96		4d39c5			CMPQ R8, R13		
+  0x10b99		0f8d44060000		JGE 0x111e3		
+	bt = append(bt, state{c, i, 137, 0})
+  0x10b9f		48898424f81e0000	MOVQ AX, 0x1ef8(SP)	
+  0x10ba7		48899c24e8010000	MOVQ BX, 0x1e8(SP)	
+  0x10baf		48898c24e0010000	MOVQ CX, 0x1e0(SP)	
+		cr, sz := rune(r[i]), 1
+  0x10bb7		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0x10bbc		4181fb80000000		CMPL $0x80, R11		
+  0x10bc3		0f8d22060000		JGE 0x111eb		
+  0x10bc9		be01000000		MOVL $0x1, SI		
+  0x10bce		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if false || cr == 97 {
+  0x10bd6		4183fb61		CMPL $0x61, R11		
+  0x10bda		0f8503060000		JNE 0x111e3		
+			i += sz
+  0x10be0		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
+	if i >= 0 && i < len(r) {
+  0x10be4		4d85db			TESTQ R11, R11		
+  0x10be7		0f8c6e050000		JL 0x1115b		
+  0x10bed		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x10bf6		4d39c3			CMPQ R8, R11		
+  0x10bf9		0f8d5c050000		JGE 0x1115b		
+		cr, sz := rune(r[i]), 1
+  0x10bff		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x10c04		4181fc80000000		CMPL $0x80, R12		
+  0x10c0b		0f8d55050000		JGE 0x11166		
+  0x10c11		be01000000		MOVL $0x1, SI		
+		if false || cr == 103 {
+  0x10c16		4183fc67		CMPL $0x67, R12		
+  0x10c1a		0f853b050000		JNE 0x1115b		
+			i += sz
+  0x10c20		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x10c23		4d85db			TESTQ R11, R11		
+  0x10c26		0f8ca2040000		JL 0x110ce		
+  0x10c2c		4d39c3			CMPQ R8, R11		
+  0x10c2f		0f8d99040000		JGE 0x110ce		
+		cr, sz := rune(r[i]), 1
+  0x10c35		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x10c3a		4181fc80000000		CMPL $0x80, R12		
+  0x10c41		0f8d94040000		JGE 0x110db		
+  0x10c47		be01000000		MOVL $0x1, SI		
+  0x10c4c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x10c55		90			NOPL			
+		if false || cr == 103 {
+  0x10c56		4183fc67		CMPL $0x67, R12		
+  0x10c5a		0f856e040000		JNE 0x110ce		
+			i += sz
+  0x10c60		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x10c63		4d85db			TESTQ R11, R11		
+  0x10c66		0f8cd7030000		JL 0x11043		
+  0x10c6c		4d39c3			CMPQ R8, R11		
+  0x10c6f		0f8dce030000		JGE 0x11043		
+		cr, sz := rune(r[i]), 1
+  0x10c75		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x10c7a		4181fc80000000		CMPL $0x80, R12		
+  0x10c81		0f8dc7030000		JGE 0x1104e		
+  0x10c87		be01000000		MOVL $0x1, SI		
+  0x10c8c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x10c95		90			NOPL			
+		if false || cr == 103 {
+  0x10c96		4183fc67		CMPL $0x67, R12		
+  0x10c9a		0f85a3030000		JNE 0x11043		
+			i += sz
+  0x10ca0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x10ca3		4d85db			TESTQ R11, R11		
+  0x10ca6		0f8c0f030000		JL 0x10fbb		
+  0x10cac		4d39c3			CMPQ R8, R11		
+  0x10caf		0f8d06030000		JGE 0x10fbb		
+		cr, sz := rune(r[i]), 1
+  0x10cb5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x10cba		4181fc80000000		CMPL $0x80, R12		
+  0x10cc1		0f8dff020000		JGE 0x10fc6		
+  0x10cc7		be01000000		MOVL $0x1, SI		
+  0x10ccc		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x10cd5		90			NOPL			
+		if false || cr == 116 {
+  0x10cd6		4183fc74		CMPL $0x74, R12		
+  0x10cda		0f85db020000		JNE 0x10fbb		
+			i += sz
+  0x10ce0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x10ce3		4d85db			TESTQ R11, R11		
+  0x10ce6		0f8c43020000		JL 0x10f2f		
+  0x10cec		4d39c3			CMPQ R8, R11		
+  0x10cef		0f8d3a020000		JGE 0x10f2f		
+		cr, sz := rune(r[i]), 1
+  0x10cf5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x10cfa		4181fc80000000		CMPL $0x80, R12		
+  0x10d01		0f8d34020000		JGE 0x10f3b		
+  0x10d07		be01000000		MOVL $0x1, SI		
+  0x10d0c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x10d15		90			NOPL			
+		if cr < 128 {
+  0x10d16		4181fc80000000		CMPL $0x80, R12		
+  0x10d1d		0f8d0c020000		JGE 0x10f2f		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x10d23		4589e5			MOVL R12, R13			
+  0x10d26		41c1fc1f		SARL $0x1f, R12			
+  0x10d2a		41c1ec1d		SHRL $0x1d, R12			
+  0x10d2e		4501ec			ADDL R13, R12			
+  0x10d31		41c1fc03		SARL $0x3, R12			
+  0x10d35		4d63f4			MOVSXD R12, R14			
+  0x10d38		4983fe10		CMPQ $0x10, R14			
+  0x10d3c		0f8322300000		JAE 0x13d64			
+  0x10d42		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
+  0x10d49		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0x10d4e		41c1e403		SHLL $0x3, R12			
+  0x10d52		4529e5			SUBL R12, R13			
+  0x10d55		90			NOPL				
+  0x10d56		4585ed			TESTL R13, R13			
+  0x10d59		0f8c00300000		JL 0x13d5f			
+  0x10d5f		4183fd20		CMPL $0x20, R13			
+  0x10d63		4519e4			SBBL R12, R12			
+	bt = append(bt, state{c, i, 137, 0})
+  0x10d66		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x10d69		4489e9			MOVL R13, CX		
+  0x10d6c		41be01000000		MOVL $0x1, R14		
+  0x10d72		41d3e6			SHLL CL, R14		
+  0x10d75		4521f4			ANDL R14, R12		
+  0x10d78		4584d4			TESTL R10, R12		
+  0x10d7b		0f849a010000		JE 0x10f1b		
+				i += sz
+  0x10d81		4e8d141e		LEAQ 0(SI)(R11*1), R10	
+	if i >= 0 && i < len(r) {
+  0x10d85		4d85d2			TESTQ R10, R10		
+  0x10d88		0f8cfd000000		JL 0x10e8b		
+  0x10d8e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0x10d96		4d39c2			CMPQ R8, R10		
+  0x10d99		0f8dec000000		JGE 0x10e8b		
+		cr, sz := rune(r[i]), 1
+  0x10d9f		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+		if cr >= utf8.RuneSelf {
+  0x10da4		4181fb80000000		CMPL $0x80, R11		
+  0x10dab		0f8dee000000		JGE 0x10e9f		
+  0x10db1		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0x10db6		4183fb61		CMPL $0x61, R11		
+  0x10dba		0f85cb000000		JNE 0x10e8b		
+			i += sz
+  0x10dc0		4901ca			ADDQ CX, R10		
+	if i >= 0 && i < len(r) {
+  0x10dc3		4d85d2			TESTQ R10, R10		
+  0x10dc6		7c22			JL 0x10dea		
+  0x10dc8		4d39c2			CMPQ R8, R10		
+  0x10dcb		7d1d			JGE 0x10dea		
+		cr, sz := rune(r[i]), 1
+  0x10dcd		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+  0x10dd2		0f1f4000		NOPL 0(AX)		
+		if cr >= utf8.RuneSelf {
+  0x10dd6		4181fb80000000		CMPL $0x80, R11		
+  0x10ddd		7d35			JGE 0x10e14		
+  0x10ddf		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0x10de4		4183fb61		CMPL $0x61, R11		
+  0x10de8		7414			JE 0x10dfe		
+				goto inst148
+  0x10dea		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0x10ded		4889f9			MOVQ DI, CX		
+	goto fail
+  0x10df0		4489fe			MOVL R15, SI		
+  0x10df3		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0x10df9		e9d89fffff		JMP 0xadd6		
+			i += sz
+  0x10dfe		4901ca			ADDQ CX, R10		
+		if i <= len(r) && len(bt) > 0 {
+  0x10e01		4589fd			MOVL R15, R13		
+			goto inst138
+  0x10e04		4c89d3			MOVQ R10, BX		
+	goto inst121
+  0x10e07		4c8ba424e8010000	MOVQ 0x1e8(SP), R12	
+			goto inst138
+  0x10e0f		e9c4f7ffff		JMP 0x105d8		
+			i += sz
+  0x10e14		4c899424d8010000	MOVQ R10, 0x1d8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10e1c		4d29d0			SUBQ R10, R8		
+  0x10e1f		4c89c1			MOVQ R8, CX		
+  0x10e22		49f7d8			NEGQ R8			
+  0x10e25		49c1f83f		SARQ $0x3f, R8		
+  0x10e29		4d21d0			ANDQ R10, R8		
+  0x10e2c		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10e30		48891424		MOVQ DX, 0(SP)		
+  0x10e34		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10e39		e800000000		CALL 0x10e3e		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10e3e		448b5c2410		MOVL 0x10(SP), R11	
+  0x10e43		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x10e48		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+		if len(r[si:]) != 0 {
+  0x10e50		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x10e58		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+  0x10e60		488bbc24e0010000	MOVQ 0x1e0(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0x10e68		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10e70		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+				goto inst148
+  0x10e78		4c8b9424d8010000	MOVQ 0x1d8(SP), R10	
+	goto fail
+  0x10e80		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10e86		e959ffffff		JMP 0x10de4		
+				goto inst148
+  0x10e8b		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0x10e8e		4889f9			MOVQ DI, CX		
+	goto fail
+  0x10e91		4489fe			MOVL R15, SI		
+  0x10e94		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0x10e9a		e9379fffff		JMP 0xadd6		
+				i += sz
+  0x10e9f		4c899424d0010000	MOVQ R10, 0x1d0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10ea7		4d29d0			SUBQ R10, R8		
+  0x10eaa		4c89c1			MOVQ R8, CX		
+  0x10ead		49f7d8			NEGQ R8			
+  0x10eb0		49c1f83f		SARQ $0x3f, R8		
+  0x10eb4		4d21d0			ANDQ R10, R8		
+  0x10eb7		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10ebb		48891424		MOVQ DX, 0(SP)		
+  0x10ebf		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10ec4		e800000000		CALL 0x10ec9		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10ec9		448b5c2410		MOVL 0x10(SP), R11	
+  0x10ece		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x10ed3		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+		if len(r[si:]) != 0 {
+  0x10edb		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x10ee3		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+  0x10eeb		488bbc24e0010000	MOVQ 0x1e0(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x10ef3		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10efb		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+			i += sz
+  0x10f03		4c8b9424d0010000	MOVQ 0x1d0(SP), R10	
+	goto fail
+  0x10f0b		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x10f11		0f1f440000		NOPL 0(AX)(AX*1)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10f16		e99bfeffff		JMP 0x10db6		
+  0x10f1b		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x10f21		4d89dd			MOVQ R11, R13		
+	goto inst161
+  0x10f24		4889f9			MOVQ DI, CX		
+	goto fail
+  0x10f27		4489fe			MOVL R15, SI		
+			goto fail
+  0x10f2a		e9a79effff		JMP 0xadd6		
+				goto inst148
+  0x10f2f		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x10f32		4489fe			MOVL R15, SI		
+  0x10f35		90			NOPL			
+	goto fail
+  0x10f36		e99b9effff		JMP 0xadd6		
+			i += sz
+  0x10f3b		4c899c24c8010000	MOVQ R11, 0x1c8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10f43		4d29d8			SUBQ R11, R8		
+  0x10f46		4c89c1			MOVQ R8, CX		
+  0x10f49		49f7d8			NEGQ R8			
+  0x10f4c		49c1f83f		SARQ $0x3f, R8		
+  0x10f50		4d21d8			ANDQ R11, R8		
+  0x10f53		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10f57		48891424		MOVQ DX, 0(SP)		
+  0x10f5b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10f60		e800000000		CALL 0x10f65		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10f65		448b642410		MOVL 0x10(SP), R12	
+  0x10f6a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x10f6f		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+  0x10f77		488b8c24e0010000	MOVQ 0x1e0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x10f7f		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x10f87		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x10f8f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x10f97		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x10f9f		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x10fa5		4c8b9c24c8010000	MOVQ 0x1c8(SP), R11	
+	goto fail
+  0x10fad		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x10fb3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10fb6		e95bfdffff		JMP 0x10d16		
+				goto inst148
+  0x10fbb		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x10fbe		4489fe			MOVL R15, SI		
+	goto fail
+  0x10fc1		e9109effff		JMP 0xadd6		
+			i += sz
+  0x10fc6		4c899c24c0010000	MOVQ R11, 0x1c0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x10fce		4d29d8			SUBQ R11, R8		
+  0x10fd1		4c89c1			MOVQ R8, CX		
+  0x10fd4		49f7d8			NEGQ R8			
+  0x10fd7		49c1f83f		SARQ $0x3f, R8		
+  0x10fdb		4d21d8			ANDQ R11, R8		
+  0x10fde		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x10fe2		48891424		MOVQ DX, 0(SP)		
+  0x10fe6		48894c2408		MOVQ CX, 0x8(SP)	
+  0x10feb		e800000000		CALL 0x10ff0		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x10ff0		448b642410		MOVL 0x10(SP), R12	
+  0x10ff5		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x10ffa		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+  0x11002		488b8c24e0010000	MOVQ 0x1e0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1100a		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x11012		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1101a		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11022		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1102a		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x11030		4c8b9c24c0010000	MOVQ 0x1c0(SP), R11	
+	goto fail
+  0x11038		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1103e		e993fcffff		JMP 0x10cd6		
+				goto inst148
+  0x11043		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x11046		4489fe			MOVL R15, SI		
+	goto fail
+  0x11049		e9889dffff		JMP 0xadd6		
+			i += sz
+  0x1104e		4c899c24b8010000	MOVQ R11, 0x1b8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11056		4d29d8			SUBQ R11, R8		
+  0x11059		4c89c1			MOVQ R8, CX		
+  0x1105c		49f7d8			NEGQ R8			
+  0x1105f		49c1f83f		SARQ $0x3f, R8		
+  0x11063		4d21d8			ANDQ R11, R8		
+  0x11066		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x1106a		48891424		MOVQ DX, 0(SP)		
+  0x1106e		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11073		0f1f00			NOPL 0(AX)		
+  0x11076		e800000000		CALL 0x1107b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1107b		448b642410		MOVL 0x10(SP), R12	
+  0x11080		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x11085		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+  0x1108d		488b8c24e0010000	MOVQ 0x1e0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x11095		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1109d		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x110a5		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x110ad		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x110b5		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x110bb		4c8b9c24b8010000	MOVQ 0x1b8(SP), R11	
+	goto fail
+  0x110c3		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x110c9		e9c8fbffff		JMP 0x10c96		
+				goto inst148
+  0x110ce		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x110d1		4489fe			MOVL R15, SI		
+  0x110d4		6690			NOPW			
+	goto fail
+  0x110d6		e9fb9cffff		JMP 0xadd6		
+			i += sz
+  0x110db		4c899c24b0010000	MOVQ R11, 0x1b0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x110e3		4d29d8			SUBQ R11, R8		
+  0x110e6		4c89c1			MOVQ R8, CX		
+  0x110e9		49f7d8			NEGQ R8			
+  0x110ec		49c1f83f		SARQ $0x3f, R8		
+  0x110f0		4d21d8			ANDQ R11, R8		
+  0x110f3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x110f7		48891424		MOVQ DX, 0(SP)		
+  0x110fb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11100		e800000000		CALL 0x11105		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11105		448b642410		MOVL 0x10(SP), R12	
+  0x1110a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1110f		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+  0x11117		488b8c24e0010000	MOVQ 0x1e0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1111f		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x11127		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1112f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11137		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1113f		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x11145		4c8b9c24b0010000	MOVQ 0x1b0(SP), R11	
+	goto fail
+  0x1114d		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x11153		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11156		e9fbfaffff		JMP 0x10c56		
+				goto inst148
+  0x1115b		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x1115e		4489fe			MOVL R15, SI		
+	goto fail
+  0x11161		e9709cffff		JMP 0xadd6		
+			i += sz
+  0x11166		4c899c24a8010000	MOVQ R11, 0x1a8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1116e		4d29d8			SUBQ R11, R8		
+  0x11171		4c89c1			MOVQ R8, CX		
+  0x11174		49f7d8			NEGQ R8			
+  0x11177		49c1f83f		SARQ $0x3f, R8		
+  0x1117b		4d21d8			ANDQ R11, R8		
+  0x1117e		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11182		48891424		MOVQ DX, 0(SP)		
+  0x11186		48894c2408		MOVQ CX, 0x8(SP)	
+  0x1118b		e800000000		CALL 0x11190		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11190		448b642410		MOVL 0x10(SP), R12	
+  0x11195		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1119a		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+  0x111a2		488b8c24e0010000	MOVQ 0x1e0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x111aa		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x111b2		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x111ba		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x111c2		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x111ca		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x111d0		4c8b9c24a8010000	MOVQ 0x1a8(SP), R11	
+	goto fail
+  0x111d8		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x111de		e933faffff		JMP 0x10c16		
+	goto fail
+  0x111e3		4489fe			MOVL R15, SI		
+	goto fail
+  0x111e6		e9eb9bffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x111eb		4d29e8			SUBQ R13, R8		
+  0x111ee		4c89c1			MOVQ R8, CX		
+  0x111f1		49f7d8			NEGQ R8			
+  0x111f4		49c1f83f		SARQ $0x3f, R8		
+  0x111f8		4d21e8			ANDQ R13, R8		
+  0x111fb		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x111ff		48891424		MOVQ DX, 0(SP)		
+  0x11203		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11208		e800000000		CALL 0x1120d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1120d		448b5c2410		MOVL 0x10(SP), R11	
+  0x11212		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x11217		488b8424f81e0000	MOVQ 0x1ef8(SP), AX	
+  0x1121f		488b8c24e0010000	MOVQ 0x1e0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x11227		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1122f		488b9c24e8010000	MOVQ 0x1e8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x11237		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1123f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x11247		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x1124d		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x11255		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1125b		e976f9ffff		JMP 0x10bd6		
+	bt = append(bt, state{c, i, 137, 0})
+  0x11260		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x11267		48891424		MOVQ DX, 0(SP)		
+  0x1126b		4889442408		MOVQ AX, 0x8(SP)	
+  0x11270		4c89642410		MOVQ R12, 0x10(SP)	
+  0x11275		48894c2418		MOVQ CX, 0x18(SP)	
+  0x1127a		48895c2420		MOVQ BX, 0x20(SP)	
+  0x1127f		e800000000		CALL 0x11284		[1:5]R_CALL:runtime.growslice	
+  0x11284		488b442428		MOVQ 0x28(SP), AX	
+  0x11289		488b4c2430		MOVQ 0x30(SP), CX	
+  0x1128e		488b542438		MOVQ 0x38(SP), DX	
+  0x11293		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0x11297		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1129f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x112a7		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 137, 0})
+  0x112ad		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0x112b5		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x112bd		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 137, 0})
+  0x112c3		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0x112c6		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 137, 0})
+  0x112ce		e982f8ffff		JMP 0x10b55		
+  0x112d3		0f1f00			NOPL 0(AX)		
+	switch bt[len(bt)-1].pc {
+  0x112d6		4981fd9d000000		CMPQ $0x9d, R13		
+	case 157:
+  0x112dd		0f85052a0000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0x112e3		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0x112e8		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0x112ec		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0x112f3		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0x112fb		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0x112fe		4c89de			MOVQ R11, SI		
+  0x11301		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x11306		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x1130b		e800000000		CALL 0x11310		[1:5]R_CALL:runtime.duffcopy+756	
+  0x11310		488b6d00		MOVQ 0(BP), BP		
+  0x11314		6690			NOPW			
+	if i >= 0 && i < len(r) {
+  0x11316		4885db			TESTQ BX, BX		
+  0x11319		0f8c69060000		JL 0x11988		
+  0x1131f		4c39c3			CMPQ R8, BX		
+  0x11322		0f8d60060000		JGE 0x11988		
+		cr, sz := rune(r[i]), 1
+  0x11328		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0x1132d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x11336		4181fb80000000		CMPL $0x80, R11		
+  0x1133d		0f8d58060000		JGE 0x1199b		
+  0x11343		be01000000		MOVL $0x1, SI		
+		if false || cr == 116 {
+  0x11348		4183fb74		CMPL $0x74, R11		
+  0x1134c		0f8536060000		JNE 0x11988		
+			i += sz
+  0x11352		4801f3			ADDQ SI, BX		
+  0x11355		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x11356		4885db			TESTQ BX, BX		
+  0x11359		0f8c9c050000		JL 0x118fb		
+  0x1135f		4c39c3			CMPQ R8, BX		
+  0x11362		0f8d93050000		JGE 0x118fb		
+		cr, sz := rune(r[i]), 1
+  0x11368		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0x1136d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x11376		4181fb80000000		CMPL $0x80, R11		
+  0x1137d		0f8d88050000		JGE 0x1190b		
+  0x11383		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0x11388		4181fb80000000		CMPL $0x80, R11		
+  0x1138f		0f8d66050000		JGE 0x118fb		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x11395		4589de			MOVL R11, R14			
+  0x11398		41c1fb1f		SARL $0x1f, R11			
+  0x1139c		41c1eb1d		SHRL $0x1d, R11			
+  0x113a0		4501f3			ADDL R14, R11			
+  0x113a3		41c1fb03		SARL $0x3, R11			
+  0x113a7		4d63fb			MOVSXD R11, R15			
+  0x113aa		4983ff10		CMPQ $0x10, R15			
+  0x113ae		0f8379290000		JAE 0x13d2d			
+  0x113b4		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
+  0x113bb		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0x113c0		41c1e303		SHLL $0x3, R11			
+  0x113c4		4529de			SUBL R11, R14			
+  0x113c7		4585f6			TESTL R14, R14			
+  0x113ca		0f8c58290000		JL 0x13d28			
+  0x113d0		4183fe20		CMPL $0x20, R14			
+  0x113d4		4519db			SBBL R11, R11			
+	goto inst161
+  0x113d7		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x113da		4489f1			MOVL R14, CX		
+  0x113dd		41bf01000000		MOVL $0x1, R15		
+  0x113e3		41d3e7			SHLL CL, R15		
+  0x113e6		4521fb			ANDL R15, R11		
+  0x113e9		4584d3			TESTL R10, R11		
+  0x113ec		0f84f0040000		JE 0x118e2		
+				i += sz
+  0x113f2		4801f3			ADDQ SI, BX		
+  0x113f5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x113f6		4885db			TESTQ BX, BX		
+  0x113f9		0f8c53040000		JL 0x11852		
+  0x113ff		4c39c3			CMPQ R8, BX		
+  0x11402		0f8d4a040000		JGE 0x11852		
+		cr, sz := rune(r[i]), 1
+  0x11408		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1140d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x11416		4181fa80000000		CMPL $0x80, R10		
+  0x1141d		0f8d48040000		JGE 0x1186b		
+  0x11423		b901000000		MOVL $0x1, CX		
+		if false || cr == 116 {
+  0x11428		4183fa74		CMPL $0x74, R10		
+  0x1142c		0f8520040000		JNE 0x11852		
+			i += sz
+  0x11432		4801cb			ADDQ CX, BX		
+  0x11435		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x11436		4885db			TESTQ BX, BX		
+  0x11439		0f8c83030000		JL 0x117c2		
+  0x1143f		4c39c3			CMPQ R8, BX		
+  0x11442		0f8d7a030000		JGE 0x117c2		
+		cr, sz := rune(r[i]), 1
+  0x11448		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1144d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x11456		4181fa80000000		CMPL $0x80, R10		
+  0x1145d		0f8d78030000		JGE 0x117db		
+  0x11463		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0x11468		4183fa61		CMPL $0x61, R10		
+  0x1146c		0f8550030000		JNE 0x117c2		
+			i += sz
+  0x11472		4801cb			ADDQ CX, BX		
+  0x11475		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x11476		4885db			TESTQ BX, BX		
+  0x11479		0f8cb3020000		JL 0x11732		
+  0x1147f		4c39c3			CMPQ R8, BX		
+  0x11482		0f8daa020000		JGE 0x11732		
+		cr, sz := rune(r[i]), 1
+  0x11488		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1148d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x11496		4181fa80000000		CMPL $0x80, R10		
+  0x1149d		0f8da8020000		JGE 0x1174b		
+  0x114a3		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x114a8		4183fa63		CMPL $0x63, R10		
+  0x114ac		0f8580020000		JNE 0x11732		
+			i += sz
+  0x114b2		4801cb			ADDQ CX, BX		
+  0x114b5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x114b6		4885db			TESTQ BX, BX		
+  0x114b9		0f8ce3010000		JL 0x116a2		
+  0x114bf		4c39c3			CMPQ R8, BX		
+  0x114c2		0f8dda010000		JGE 0x116a2		
+		cr, sz := rune(r[i]), 1
+  0x114c8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x114cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x114d6		4181fa80000000		CMPL $0x80, R10		
+  0x114dd		0f8dd8010000		JGE 0x116bb		
+  0x114e3		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x114e8		4183fa63		CMPL $0x63, R10		
+  0x114ec		0f85b0010000		JNE 0x116a2		
+			i += sz
+  0x114f2		4801cb			ADDQ CX, BX		
+  0x114f5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x114f6		4885db			TESTQ BX, BX		
+  0x114f9		0f8c13010000		JL 0x11612		
+  0x114ff		4c39c3			CMPQ R8, BX		
+  0x11502		0f8d0a010000		JGE 0x11612		
+		cr, sz := rune(r[i]), 1
+  0x11508		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1150d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x11516		4181fa80000000		CMPL $0x80, R10		
+  0x1151d		0f8d08010000		JGE 0x1162b		
+  0x11523		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x11528		4183fa63		CMPL $0x63, R10		
+  0x1152c		0f85e0000000		JNE 0x11612		
+			i += sz
+  0x11532		4801cb			ADDQ CX, BX		
+  0x11535		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x11536		4885db			TESTQ BX, BX		
+  0x11539		7c21			JL 0x1155c		
+  0x1153b		4c39c3			CMPQ R8, BX		
+  0x1153e		7d1c			JGE 0x1155c		
+		cr, sz := rune(r[i]), 1
+  0x11540		450fb61419		MOVZX 0(R9)(BX*1), R10	
+		if cr >= utf8.RuneSelf {
+  0x11545		4181fa80000000		CMPL $0x80, R10		
+  0x1154c		7d4d			JGE 0x1159b		
+  0x1154e		b901000000		MOVL $0x1, CX		
+  0x11553		0f1f00			NOPL 0(AX)		
+		if false || cr == 116 {
+  0x11556		4183fa74		CMPL $0x74, R10		
+  0x1155a		7419			JE 0x11575		
+  0x1155c		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x11562		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x11565		4889f9			MOVQ DI, CX		
+  0x11568		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x1156b		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x11570		e96198ffff		JMP 0xadd6		
+			i += sz
+  0x11575		4801cb			ADDQ CX, BX		
+	c[17] = i
+  0x11578		48899c24b8050000	MOVQ BX, 0x5b8(SP)	
+  0x11580		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0x11586		4989db			MOVQ BX, R11		
+  0x11589		4889f9			MOVQ DI, CX		
+  0x1158c		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0x1158f		4489ee			MOVL R13, SI		
+  0x11592		0f1f4000		NOPL 0(AX)		
+	goto inst180
+  0x11596		e9c497ffff		JMP 0xad5f		
+			i += sz
+  0x1159b		48899c24a0010000	MOVQ BX, 0x1a0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x115a3		4929d8			SUBQ BX, R8		
+  0x115a6		4c89c1			MOVQ R8, CX		
+  0x115a9		49f7d8			NEGQ R8			
+  0x115ac		49c1f83f		SARQ $0x3f, R8		
+  0x115b0		4921d8			ANDQ BX, R8		
+  0x115b3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x115b7		48891424		MOVQ DX, 0(SP)		
+  0x115bb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x115c0		e800000000		CALL 0x115c5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x115c5		448b542410		MOVL 0x10(SP), R10	
+  0x115ca		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x115cf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x115d7		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0x115df		488b9c24a0010000	MOVQ 0x1a0(SP), BX	
+	goto inst161
+  0x115e7		488bbc2420050000	MOVQ 0x520(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0x115ef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x115f7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x115ff		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x11607		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1160d		e944ffffff		JMP 0x11556		
+		if false || cr == 99 {
+  0x11612		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x11618		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1161b		4889f9			MOVQ DI, CX		
+  0x1161e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x11621		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x11626		e9ab97ffff		JMP 0xadd6		
+			i += sz
+  0x1162b		48899c2498010000	MOVQ BX, 0x198(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11633		4929d8			SUBQ BX, R8		
+  0x11636		4c89c1			MOVQ R8, CX		
+  0x11639		49f7d8			NEGQ R8			
+  0x1163c		49c1f83f		SARQ $0x3f, R8		
+  0x11640		4921d8			ANDQ BX, R8		
+  0x11643		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11647		48891424		MOVQ DX, 0(SP)		
+  0x1164b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11650		e800000000		CALL 0x11655		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11655		448b542410		MOVL 0x10(SP), R10	
+  0x1165a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1165f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x11667		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1166f		488b9c2498010000	MOVQ 0x198(SP), BX	
+	goto inst161
+  0x11677		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1167f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11687		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1168f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x11697		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1169d		e986feffff		JMP 0x11528		
+		if false || cr == 99 {
+  0x116a2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x116a8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x116ab		4889f9			MOVQ DI, CX		
+  0x116ae		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x116b1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x116b6		e91b97ffff		JMP 0xadd6		
+			i += sz
+  0x116bb		48899c2490010000	MOVQ BX, 0x190(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x116c3		4929d8			SUBQ BX, R8		
+  0x116c6		4c89c1			MOVQ R8, CX		
+  0x116c9		49f7d8			NEGQ R8			
+  0x116cc		49c1f83f		SARQ $0x3f, R8		
+  0x116d0		4921d8			ANDQ BX, R8		
+  0x116d3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x116d7		48891424		MOVQ DX, 0(SP)		
+  0x116db		48894c2408		MOVQ CX, 0x8(SP)	
+  0x116e0		e800000000		CALL 0x116e5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x116e5		448b542410		MOVL 0x10(SP), R10	
+  0x116ea		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x116ef		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x116f7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x116ff		488b9c2490010000	MOVQ 0x190(SP), BX	
+	goto inst161
+  0x11707		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1170f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11717		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1171f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x11727		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1172d		e9b6fdffff		JMP 0x114e8		
+		if false || cr == 99 {
+  0x11732		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x11738		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1173b		4889f9			MOVQ DI, CX		
+  0x1173e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x11741		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x11746		e98b96ffff		JMP 0xadd6		
+			i += sz
+  0x1174b		48899c2488010000	MOVQ BX, 0x188(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11753		4929d8			SUBQ BX, R8		
+  0x11756		4c89c1			MOVQ R8, CX		
+  0x11759		49f7d8			NEGQ R8			
+  0x1175c		49c1f83f		SARQ $0x3f, R8		
+  0x11760		4921d8			ANDQ BX, R8		
+  0x11763		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11767		48891424		MOVQ DX, 0(SP)		
+  0x1176b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11770		e800000000		CALL 0x11775		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11775		448b542410		MOVL 0x10(SP), R10	
+  0x1177a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1177f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x11787		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1178f		488b9c2488010000	MOVQ 0x188(SP), BX	
+	goto inst161
+  0x11797		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1179f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x117a7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x117af		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x117b7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x117bd		e9e6fcffff		JMP 0x114a8		
+		if false || cr == 97 {
+  0x117c2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x117c8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x117cb		4889f9			MOVQ DI, CX		
+  0x117ce		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x117d1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x117d6		e9fb95ffff		JMP 0xadd6		
+			i += sz
+  0x117db		48899c2480010000	MOVQ BX, 0x180(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x117e3		4929d8			SUBQ BX, R8		
+  0x117e6		4c89c1			MOVQ R8, CX		
+  0x117e9		49f7d8			NEGQ R8			
+  0x117ec		49c1f83f		SARQ $0x3f, R8		
+  0x117f0		4921d8			ANDQ BX, R8		
+  0x117f3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x117f7		48891424		MOVQ DX, 0(SP)		
+  0x117fb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11800		e800000000		CALL 0x11805		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11805		448b542410		MOVL 0x10(SP), R10	
+  0x1180a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1180f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x11817		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1181f		488b9c2480010000	MOVQ 0x180(SP), BX	
+	goto inst161
+  0x11827		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1182f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11837		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1183f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x11847		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1184d		e916fcffff		JMP 0x11468		
+		if false || cr == 116 {
+  0x11852		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x11858		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1185b		4889f9			MOVQ DI, CX		
+  0x1185e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x11861		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x11866		e96b95ffff		JMP 0xadd6		
+				i += sz
+  0x1186b		48899c2478010000	MOVQ BX, 0x178(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11873		4929d8			SUBQ BX, R8		
+  0x11876		4c89c1			MOVQ R8, CX		
+  0x11879		49f7d8			NEGQ R8			
+  0x1187c		49c1f83f		SARQ $0x3f, R8		
+  0x11880		4921d8			ANDQ BX, R8		
+  0x11883		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11887		48891424		MOVQ DX, 0(SP)		
+  0x1188b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11890		e800000000		CALL 0x11895		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11895		448b542410		MOVL 0x10(SP), R10	
+  0x1189a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1189f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x118a7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x118af		488b9c2478010000	MOVQ 0x178(SP), BX	
+	goto inst161
+  0x118b7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x118bf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x118c7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x118cf		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x118d7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x118dd		e946fbffff		JMP 0x11428		
+  0x118e2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x118e8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x118eb		4889f9			MOVQ DI, CX		
+  0x118ee		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x118f1		0fb6742447		MOVZX 0x47(SP), SI	
+			goto fail
+  0x118f6		e9db94ffff		JMP 0xadd6		
+				goto inst148
+  0x118fb		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x118fe		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x11901		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x11906		e9cb94ffff		JMP 0xadd6		
+			i += sz
+  0x1190b		48899c2470010000	MOVQ BX, 0x170(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11913		4929d8			SUBQ BX, R8		
+  0x11916		4c89c1			MOVQ R8, CX		
+  0x11919		49f7d8			NEGQ R8			
+  0x1191c		49c1f83f		SARQ $0x3f, R8		
+  0x11920		4921d8			ANDQ BX, R8		
+  0x11923		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11927		48891424		MOVQ DX, 0(SP)		
+  0x1192b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11930		e800000000		CALL 0x11935		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11935		448b5c2410		MOVL 0x10(SP), R11	
+  0x1193a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1193f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0x11947		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1194f		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0x11957		488b9c2470010000	MOVQ 0x170(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x1195f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11967		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1196f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0x11975		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x1197d		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11983		e900faffff		JMP 0x11388		
+				goto inst148
+  0x11988		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1198b		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x1198e		0fb6742447		MOVZX 0x47(SP), SI	
+  0x11993		0f1f00			NOPL 0(AX)		
+	goto fail
+  0x11996		e93b94ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0x1199b		48899c2468010000	MOVQ BX, 0x168(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x119a3		4929d8			SUBQ BX, R8		
+  0x119a6		4c89c1			MOVQ R8, CX		
+  0x119a9		49f7d8			NEGQ R8			
+  0x119ac		49c1f83f		SARQ $0x3f, R8		
+  0x119b0		4921d8			ANDQ BX, R8		
+  0x119b3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x119b7		48891424		MOVQ DX, 0(SP)		
+  0x119bb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x119c0		e800000000		CALL 0x119c5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x119c5		448b5c2410		MOVL 0x10(SP), R11	
+  0x119ca		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x119cf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0x119d7		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0x119df		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x119e7		488b9c2468010000	MOVQ 0x168(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x119ef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x119f7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x119ff		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0x11a05		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x11a0d		440fb66c2447		MOVZX 0x47(SP), R13	
+  0x11a13		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11a16		e92df9ffff		JMP 0x11348		
+	case 159:
+  0x11a1b		4981fd9f000000		CMPQ $0x9f, R13		
+  0x11a22		0f854e080000		JNE 0x12276		
+		c, i = bt[n].c, bt[n].i
+  0x11a28		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0x11a2d		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0x11a35		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0x11a39		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0x11a40		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0x11a48		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0x11a4b		4c89f6			MOVQ R14, SI		
+  0x11a4e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0x11a56		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x11a5b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x11a60		e800000000		CALL 0x11a65		[1:5]R_CALL:runtime.duffcopy+756	
+  0x11a65		488b6d00		MOVQ 0(BP), BP		
+	c[16] = i
+  0x11a69		4c89ac24b0050000	MOVQ R13, 0x5b0(SP)	
+	bt = append(bt, state{c, i, 157, 0})
+  0x11a71		48c784249808000000000000	MOVQ $0x0, 0x898(SP)		
+  0x11a7d		488dbc24a0080000		LEAQ 0x8a0(SP), DI		
+  0x11a85		0f57c0				XORPS X0, X0			
+  0x11a88		488d7ff0			LEAQ -0x10(DI), DI		
+  0x11a8c		660f1f840000000000		NOPW 0(AX)(AX*1)		
+  0x11a95		90				NOPL				
+  0x11a96		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x11a9b		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x11aa0		e800000000			CALL 0x11aa5			[1:5]R_CALL:runtime.duffzero+250	
+  0x11aa5		488b6d00			MOVQ 0(BP), BP			
+  0x11aa9		488dbc2498080000		LEAQ 0x898(SP), DI		
+  0x11ab1		488db42430050000		LEAQ 0x530(SP), SI		
+  0x11ab9		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x11abe		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x11ac3		e800000000			CALL 0x11ac8			[1:5]R_CALL:runtime.duffcopy+756	
+  0x11ac8		488b6d00			MOVQ 0(BP), BP			
+  0x11acc		4c89ac2438090000		MOVQ R13, 0x938(SP)		
+  0x11ad4		48c78424400900009d000000	MOVQ $0x9d, 0x940(SP)		
+  0x11ae0		48c784244809000000000000	MOVQ $0x0, 0x948(SP)		
+  0x11aec		4839d9				CMPQ BX, CX			
+  0x11aef		0f8206070000			JB 0x121fb			
+  0x11af5		4c8ba42498080000		MOVQ 0x898(SP), R12		
+  0x11afd		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0x11b05		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0x11b09		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0x11b10		488db424a0080000		LEAQ 0x8a0(SP), SI		
+  0x11b18		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x11b1d		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x11b22		e800000000			CALL 0x11b27			[1:5]R_CALL:runtime.duffcopy+742	
+  0x11b27		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0x11b2b		4d85ed			TESTQ R13, R13		
+  0x11b2e		0f8c47060000		JL 0x1217b		
+  0x11b34		6690			NOPW			
+  0x11b36		4d39c5			CMPQ R8, R13		
+  0x11b39		0f8d3c060000		JGE 0x1217b		
+	bt = append(bt, state{c, i, 157, 0})
+  0x11b3f		48898424f01e0000	MOVQ AX, 0x1ef0(SP)	
+  0x11b47		48899c2460010000	MOVQ BX, 0x160(SP)	
+  0x11b4f		48898c2458010000	MOVQ CX, 0x158(SP)	
+		cr, sz := rune(r[i]), 1
+  0x11b57		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0x11b5c		4181fb80000000		CMPL $0x80, R11		
+  0x11b63		0f8d1a060000		JGE 0x12183		
+  0x11b69		be01000000		MOVL $0x1, SI		
+  0x11b6e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if false || cr == 97 {
+  0x11b76		4183fb61		CMPL $0x61, R11		
+  0x11b7a		0f85fb050000		JNE 0x1217b		
+			i += sz
+  0x11b80		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
+	if i >= 0 && i < len(r) {
+  0x11b84		4d85db			TESTQ R11, R11		
+  0x11b87		0f8c61050000		JL 0x120ee		
+  0x11b8d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x11b96		4d39c3			CMPQ R8, R11		
+  0x11b99		0f8d4f050000		JGE 0x120ee		
+		cr, sz := rune(r[i]), 1
+  0x11b9f		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x11ba4		4181fc80000000		CMPL $0x80, R12		
+  0x11bab		0f8d4a050000		JGE 0x120fb		
+  0x11bb1		be01000000		MOVL $0x1, SI		
+		if false || cr == 103 {
+  0x11bb6		4183fc67		CMPL $0x67, R12		
+  0x11bba		0f852e050000		JNE 0x120ee		
+			i += sz
+  0x11bc0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x11bc3		4d85db			TESTQ R11, R11		
+  0x11bc6		0f8c97040000		JL 0x12063		
+  0x11bcc		4d39c3			CMPQ R8, R11		
+  0x11bcf		0f8d8e040000		JGE 0x12063		
+		cr, sz := rune(r[i]), 1
+  0x11bd5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x11bda		4181fc80000000		CMPL $0x80, R12		
+  0x11be1		0f8d87040000		JGE 0x1206e		
+  0x11be7		be01000000		MOVL $0x1, SI		
+  0x11bec		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x11bf5		90			NOPL			
+		if false || cr == 103 {
+  0x11bf6		4183fc67		CMPL $0x67, R12		
+  0x11bfa		0f8563040000		JNE 0x12063		
+			i += sz
+  0x11c00		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x11c03		4d85db			TESTQ R11, R11		
+  0x11c06		0f8ccf030000		JL 0x11fdb		
+  0x11c0c		4d39c3			CMPQ R8, R11		
+  0x11c0f		0f8dc6030000		JGE 0x11fdb		
+		cr, sz := rune(r[i]), 1
+  0x11c15		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x11c1a		4181fc80000000		CMPL $0x80, R12		
+  0x11c21		0f8dbf030000		JGE 0x11fe6		
+  0x11c27		be01000000		MOVL $0x1, SI		
+  0x11c2c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x11c35		90			NOPL			
+		if false || cr == 103 {
+  0x11c36		4183fc67		CMPL $0x67, R12		
+  0x11c3a		0f859b030000		JNE 0x11fdb		
+			i += sz
+  0x11c40		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x11c43		4d85db			TESTQ R11, R11		
+  0x11c46		0f8c03030000		JL 0x11f4f		
+  0x11c4c		4d39c3			CMPQ R8, R11		
+  0x11c4f		0f8dfa020000		JGE 0x11f4f		
+		cr, sz := rune(r[i]), 1
+  0x11c55		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x11c5a		4181fc80000000		CMPL $0x80, R12		
+  0x11c61		0f8df4020000		JGE 0x11f5b		
+  0x11c67		be01000000		MOVL $0x1, SI		
+  0x11c6c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x11c75		90			NOPL			
+		if false || cr == 116 {
+  0x11c76		4183fc74		CMPL $0x74, R12		
+  0x11c7a		0f85cf020000		JNE 0x11f4f		
+			i += sz
+  0x11c80		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x11c83		4d85db			TESTQ R11, R11		
+  0x11c86		0f8c3b020000		JL 0x11ec7		
+  0x11c8c		4d39c3			CMPQ R8, R11		
+  0x11c8f		0f8d32020000		JGE 0x11ec7		
+		cr, sz := rune(r[i]), 1
+  0x11c95		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x11c9a		4181fc80000000		CMPL $0x80, R12		
+  0x11ca1		0f8d2b020000		JGE 0x11ed2		
+  0x11ca7		be01000000		MOVL $0x1, SI		
+  0x11cac		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x11cb5		90			NOPL			
+		if false || cr == 97 {
+  0x11cb6		4183fc61		CMPL $0x61, R12		
+  0x11cba		0f8507020000		JNE 0x11ec7		
+			i += sz
+  0x11cc0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x11cc3		4d85db			TESTQ R11, R11		
+  0x11cc6		0f8c73010000		JL 0x11e3f		
+  0x11ccc		4d39c3			CMPQ R8, R11		
+  0x11ccf		0f8d6a010000		JGE 0x11e3f		
+		cr, sz := rune(r[i]), 1
+  0x11cd5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x11cda		4181fc80000000		CMPL $0x80, R12		
+  0x11ce1		0f8d63010000		JGE 0x11e4a		
+  0x11ce7		be01000000		MOVL $0x1, SI		
+  0x11cec		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x11cf5		90			NOPL			
+		if cr < 128 {
+  0x11cf6		4181fc80000000		CMPL $0x80, R12		
+  0x11cfd		0f8d3c010000		JGE 0x11e3f		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x11d03		4589e5			MOVL R12, R13			
+  0x11d06		41c1fc1f		SARL $0x1f, R12			
+  0x11d0a		41c1ec1d		SHRL $0x1d, R12			
+  0x11d0e		4501ec			ADDL R13, R12			
+  0x11d11		41c1fc03		SARL $0x3, R12			
+  0x11d15		4d63f4			MOVSXD R12, R14			
+  0x11d18		4983fe10		CMPQ $0x10, R14			
+  0x11d1c		0f831e200000		JAE 0x13d40			
+  0x11d22		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
+  0x11d29		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0x11d2e		41c1e403		SHLL $0x3, R12			
+  0x11d32		4529e5			SUBL R12, R13			
+  0x11d35		90			NOPL				
+  0x11d36		4585ed			TESTL R13, R13			
+  0x11d39		0f8cfc1f0000		JL 0x13d3b			
+  0x11d3f		4183fd20		CMPL $0x20, R13			
+  0x11d43		4519e4			SBBL R12, R12			
+	bt = append(bt, state{c, i, 157, 0})
+  0x11d46		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x11d49		4489e9			MOVL R13, CX		
+  0x11d4c		41be01000000		MOVL $0x1, R14		
+  0x11d52		41d3e6			SHLL CL, R14		
+  0x11d55		4521f4			ANDL R14, R12		
+  0x11d58		4584d4			TESTL R10, R12		
+  0x11d5b		0f84ca000000		JE 0x11e2b		
+				i += sz
+  0x11d61		4e8d141e		LEAQ 0(SI)(R11*1), R10	
+	if i >= 0 && i < len(r) {
+  0x11d65		4d85d2			TESTQ R10, R10		
+  0x11d68		7c20			JL 0x11d8a		
+  0x11d6a		4d39c2			CMPQ R8, R10		
+  0x11d6d		7d1b			JGE 0x11d8a		
+		cr, sz := rune(r[i]), 1
+  0x11d6f		470fb61c11		MOVZX 0(R9)(R10*1), R11	
+  0x11d74		6690			NOPW			
+		if cr >= utf8.RuneSelf {
+  0x11d76		4181fb80000000		CMPL $0x80, R11		
+  0x11d7d		7d35			JGE 0x11db4		
+  0x11d7f		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0x11d84		4183fb61		CMPL $0x61, R11		
+  0x11d88		7414			JE 0x11d9e		
+				goto inst148
+  0x11d8a		4d89d5			MOVQ R10, R13		
+	goto inst161
+  0x11d8d		4889f9			MOVQ DI, CX		
+	goto fail
+  0x11d90		4489fe			MOVL R15, SI		
+  0x11d93		41ba11000000		MOVL $0x11, R10		
+	goto fail
+  0x11d99		e93890ffff		JMP 0xadd6		
+			i += sz
+  0x11d9e		4901ca			ADDQ CX, R10		
+		if i <= len(r) && len(bt) > 0 {
+  0x11da1		4589fd			MOVL R15, R13		
+			goto inst158
+  0x11da4		4c89d3			MOVQ R10, BX		
+	goto inst141
+  0x11da7		4c8ba42460010000	MOVQ 0x160(SP), R12	
+			goto inst158
+  0x11daf		e9c4f7ffff		JMP 0x11578		
+				i += sz
+  0x11db4		4c89942450010000	MOVQ R10, 0x150(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11dbc		4d29d0			SUBQ R10, R8		
+  0x11dbf		4c89c1			MOVQ R8, CX		
+  0x11dc2		49f7d8			NEGQ R8			
+  0x11dc5		49c1f83f		SARQ $0x3f, R8		
+  0x11dc9		4d21d0			ANDQ R10, R8		
+  0x11dcc		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11dd0		48891424		MOVQ DX, 0(SP)		
+  0x11dd4		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11dd9		e800000000		CALL 0x11dde		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11dde		448b5c2410		MOVL 0x10(SP), R11	
+  0x11de3		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x11de8		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+		if len(r[si:]) != 0 {
+  0x11df0		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x11df8		488b9c2460010000	MOVQ 0x160(SP), BX	
+  0x11e00		488bbc2458010000	MOVQ 0x158(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0x11e08		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11e10		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+				goto inst148
+  0x11e18		4c8b942450010000	MOVQ 0x150(SP), R10	
+	goto fail
+  0x11e20		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11e26		e959ffffff		JMP 0x11d84		
+  0x11e2b		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x11e31		4d89dd			MOVQ R11, R13		
+	goto inst161
+  0x11e34		4889f9			MOVQ DI, CX		
+	goto fail
+  0x11e37		4489fe			MOVL R15, SI		
+			goto fail
+  0x11e3a		e9978fffff		JMP 0xadd6		
+				goto inst148
+  0x11e3f		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x11e42		4489fe			MOVL R15, SI		
+	goto fail
+  0x11e45		e98c8fffff		JMP 0xadd6		
+			i += sz
+  0x11e4a		4c899c2448010000	MOVQ R11, 0x148(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11e52		4d29d8			SUBQ R11, R8		
+  0x11e55		4c89c1			MOVQ R8, CX		
+  0x11e58		49f7d8			NEGQ R8			
+  0x11e5b		49c1f83f		SARQ $0x3f, R8		
+  0x11e5f		4d21d8			ANDQ R11, R8		
+  0x11e62		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11e66		48891424		MOVQ DX, 0(SP)		
+  0x11e6a		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11e6f		e800000000		CALL 0x11e74		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11e74		448b642410		MOVL 0x10(SP), R12	
+  0x11e79		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x11e7e		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+  0x11e86		488b8c2458010000	MOVQ 0x158(SP), CX	
+		if len(r[si:]) != 0 {
+  0x11e8e		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x11e96		488b9c2460010000	MOVQ 0x160(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x11e9e		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11ea6		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x11eae		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x11eb4		4c8b9c2448010000	MOVQ 0x148(SP), R11	
+	goto fail
+  0x11ebc		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11ec2		e92ffeffff		JMP 0x11cf6		
+				goto inst148
+  0x11ec7		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x11eca		4489fe			MOVL R15, SI		
+	goto fail
+  0x11ecd		e9048fffff		JMP 0xadd6		
+			i += sz
+  0x11ed2		4c899c2440010000	MOVQ R11, 0x140(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11eda		4d29d8			SUBQ R11, R8		
+  0x11edd		4c89c1			MOVQ R8, CX		
+  0x11ee0		49f7d8			NEGQ R8			
+  0x11ee3		49c1f83f		SARQ $0x3f, R8		
+  0x11ee7		4d21d8			ANDQ R11, R8		
+  0x11eea		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11eee		48891424		MOVQ DX, 0(SP)		
+  0x11ef2		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11ef7		e800000000		CALL 0x11efc		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11efc		448b642410		MOVL 0x10(SP), R12	
+  0x11f01		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x11f06		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+  0x11f0e		488b8c2458010000	MOVQ 0x158(SP), CX	
+		if len(r[si:]) != 0 {
+  0x11f16		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x11f1e		488b9c2460010000	MOVQ 0x160(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x11f26		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11f2e		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x11f36		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x11f3c		4c8b9c2440010000	MOVQ 0x140(SP), R11	
+	goto fail
+  0x11f44		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11f4a		e967fdffff		JMP 0x11cb6		
+				goto inst148
+  0x11f4f		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x11f52		4489fe			MOVL R15, SI		
+  0x11f55		90			NOPL			
+	goto fail
+  0x11f56		e97b8effff		JMP 0xadd6		
+			i += sz
+  0x11f5b		4c899c2438010000	MOVQ R11, 0x138(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11f63		4d29d8			SUBQ R11, R8		
+  0x11f66		4c89c1			MOVQ R8, CX		
+  0x11f69		49f7d8			NEGQ R8			
+  0x11f6c		49c1f83f		SARQ $0x3f, R8		
+  0x11f70		4d21d8			ANDQ R11, R8		
+  0x11f73		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x11f77		48891424		MOVQ DX, 0(SP)		
+  0x11f7b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x11f80		e800000000		CALL 0x11f85		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x11f85		448b642410		MOVL 0x10(SP), R12	
+  0x11f8a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x11f8f		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+  0x11f97		488b8c2458010000	MOVQ 0x158(SP), CX	
+		if len(r[si:]) != 0 {
+  0x11f9f		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x11fa7		488b9c2460010000	MOVQ 0x160(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x11faf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x11fb7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x11fbf		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x11fc5		4c8b9c2438010000	MOVQ 0x138(SP), R11	
+	goto fail
+  0x11fcd		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x11fd3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11fd6		e99bfcffff		JMP 0x11c76		
+				goto inst148
+  0x11fdb		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x11fde		4489fe			MOVL R15, SI		
+	goto fail
+  0x11fe1		e9f08dffff		JMP 0xadd6		
+			i += sz
+  0x11fe6		4c899c2430010000	MOVQ R11, 0x130(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x11fee		4d29d8			SUBQ R11, R8		
+  0x11ff1		4c89c1			MOVQ R8, CX		
+  0x11ff4		49f7d8			NEGQ R8			
+  0x11ff7		49c1f83f		SARQ $0x3f, R8		
+  0x11ffb		4d21d8			ANDQ R11, R8		
+  0x11ffe		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12002		48891424		MOVQ DX, 0(SP)		
+  0x12006		48894c2408		MOVQ CX, 0x8(SP)	
+  0x1200b		e800000000		CALL 0x12010		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12010		448b642410		MOVL 0x10(SP), R12	
+  0x12015		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1201a		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+  0x12022		488b8c2458010000	MOVQ 0x158(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1202a		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x12032		488b9c2460010000	MOVQ 0x160(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1203a		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12042		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1204a		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x12050		4c8b9c2430010000	MOVQ 0x130(SP), R11	
+	goto fail
+  0x12058		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1205e		e9d3fbffff		JMP 0x11c36		
+				goto inst148
+  0x12063		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x12066		4489fe			MOVL R15, SI		
+	goto fail
+  0x12069		e9688dffff		JMP 0xadd6		
+			i += sz
+  0x1206e		4c899c2428010000	MOVQ R11, 0x128(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12076		4d29d8			SUBQ R11, R8		
+  0x12079		4c89c1			MOVQ R8, CX		
+  0x1207c		49f7d8			NEGQ R8			
+  0x1207f		49c1f83f		SARQ $0x3f, R8		
+  0x12083		4d21d8			ANDQ R11, R8		
+  0x12086		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x1208a		48891424		MOVQ DX, 0(SP)		
+  0x1208e		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12093		0f1f00			NOPL 0(AX)		
+  0x12096		e800000000		CALL 0x1209b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1209b		448b642410		MOVL 0x10(SP), R12	
+  0x120a0		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x120a5		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+  0x120ad		488b8c2458010000	MOVQ 0x158(SP), CX	
+		if len(r[si:]) != 0 {
+  0x120b5		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x120bd		488b9c2460010000	MOVQ 0x160(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x120c5		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x120cd		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x120d5		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x120db		4c8b9c2428010000	MOVQ 0x128(SP), R11	
+	goto fail
+  0x120e3		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x120e9		e908fbffff		JMP 0x11bf6		
+				goto inst148
+  0x120ee		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x120f1		4489fe			MOVL R15, SI		
+  0x120f4		6690			NOPW			
+	goto fail
+  0x120f6		e9db8cffff		JMP 0xadd6		
+			i += sz
+  0x120fb		4c899c2420010000	MOVQ R11, 0x120(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12103		4d29d8			SUBQ R11, R8		
+  0x12106		4c89c1			MOVQ R8, CX		
+  0x12109		49f7d8			NEGQ R8			
+  0x1210c		49c1f83f		SARQ $0x3f, R8		
+  0x12110		4d21d8			ANDQ R11, R8		
+  0x12113		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12117		48891424		MOVQ DX, 0(SP)		
+  0x1211b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12120		e800000000		CALL 0x12125		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12125		448b642410		MOVL 0x10(SP), R12	
+  0x1212a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1212f		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+  0x12137		488b8c2458010000	MOVQ 0x158(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1213f		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x12147		488b9c2460010000	MOVQ 0x160(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1214f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12157		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1215f		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x12165		4c8b9c2420010000	MOVQ 0x120(SP), R11	
+	goto fail
+  0x1216d		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x12173		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12176		e93bfaffff		JMP 0x11bb6		
+	goto fail
+  0x1217b		4489fe			MOVL R15, SI		
+	goto fail
+  0x1217e		e9538cffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12183		4d29e8			SUBQ R13, R8		
+  0x12186		4c89c1			MOVQ R8, CX		
+  0x12189		49f7d8			NEGQ R8			
+  0x1218c		49c1f83f		SARQ $0x3f, R8		
+  0x12190		4d21e8			ANDQ R13, R8		
+  0x12193		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12197		48891424		MOVQ DX, 0(SP)		
+  0x1219b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x121a0		e800000000		CALL 0x121a5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x121a5		448b5c2410		MOVL 0x10(SP), R11	
+  0x121aa		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x121af		488b8424f01e0000	MOVQ 0x1ef0(SP), AX	
+  0x121b7		488b8c2458010000	MOVQ 0x158(SP), CX	
+		if len(r[si:]) != 0 {
+  0x121bf		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x121c7		488b9c2460010000	MOVQ 0x160(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x121cf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x121d7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x121df		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x121e5		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x121ed		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x121f3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x121f6		e97bf9ffff		JMP 0x11b76		
+	bt = append(bt, state{c, i, 157, 0})
+  0x121fb		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x12202		48891424		MOVQ DX, 0(SP)		
+  0x12206		4889442408		MOVQ AX, 0x8(SP)	
+  0x1220b		4c89642410		MOVQ R12, 0x10(SP)	
+  0x12210		48894c2418		MOVQ CX, 0x18(SP)	
+  0x12215		48895c2420		MOVQ BX, 0x20(SP)	
+  0x1221a		e800000000		CALL 0x1221f		[1:5]R_CALL:runtime.growslice	
+  0x1221f		488b442428		MOVQ 0x28(SP), AX	
+  0x12224		488b4c2430		MOVQ 0x30(SP), CX	
+  0x12229		488b542438		MOVQ 0x38(SP), DX	
+  0x1222e		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0x12232		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1223a		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x12242		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 157, 0})
+  0x12248		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0x12250		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x12258		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 157, 0})
+  0x1225e		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0x12261		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 157, 0})
+  0x12269		e987f8ffff		JMP 0x11af5		
+  0x1226e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+	case 177:
+  0x12276		4981fdb1000000		CMPQ $0xb1, R13		
+  0x1227d		0f8538070000		JNE 0x129bb		
+		c, i = bt[n].c, bt[n].i
+  0x12283		4a8b5c18e8		MOVQ -0x18(AX)(R11*1), BX	
+  0x12288		4e8d1c18		LEAQ 0(AX)(R11*1), R11		
+  0x1228c		4d8d9b48ffffff		LEAQ 0xffffff48(R11), R11	
+  0x12293		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0x1229b		4189f5			MOVL SI, R13		
+		c, i = bt[n].c, bt[n].i
+  0x1229e		4c89de			MOVQ R11, SI		
+  0x122a1		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x122a6		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x122ab		e800000000		CALL 0x122b0		[1:5]R_CALL:runtime.duffcopy+756	
+  0x122b0		488b6d00		MOVQ 0(BP), BP		
+  0x122b4		6690			NOPW			
+	if i >= 0 && i < len(r) {
+  0x122b6		4885db			TESTQ BX, BX		
+  0x122b9		0f8c6c060000		JL 0x1292b		
+  0x122bf		4c39c3			CMPQ R8, BX		
+  0x122c2		0f8d63060000		JGE 0x1292b		
+		cr, sz := rune(r[i]), 1
+  0x122c8		450fb61c19		MOVZX 0(R9)(BX*1), R11	
+  0x122cd		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x122d6		4181fb80000000		CMPL $0x80, R11		
+  0x122dd		0f8d58060000		JGE 0x1293b		
+  0x122e3		be01000000		MOVL $0x1, SI		
+		if cr < 128 {
+  0x122e8		4181fb80000000		CMPL $0x80, R11		
+  0x122ef		0f8d36060000		JGE 0x1292b		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x122f5		4589de			MOVL R11, R14			
+  0x122f8		41c1fb1f		SARL $0x1f, R11			
+  0x122fc		41c1eb1d		SHRL $0x1d, R11			
+  0x12300		4501f3			ADDL R14, R11			
+  0x12303		41c1fb03		SARL $0x3, R11			
+  0x12307		4d63fb			MOVSXD R11, R15			
+  0x1230a		4983ff10		CMPQ $0x10, R15			
+  0x1230e		0f83f2190000		JAE 0x13d06			
+  0x12314		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"	
+  0x1231b		470fb61417		MOVZX 0(R15)(R10*1), R10	
+  0x12320		41c1e303		SHLL $0x3, R11			
+  0x12324		4529de			SUBL R11, R14			
+  0x12327		4585f6			TESTL R14, R14			
+  0x1232a		0f8cd1190000		JL 0x13d01			
+  0x12330		4183fe20		CMPL $0x20, R14			
+  0x12334		4519db			SBBL R11, R11			
+	goto inst161
+  0x12337		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x1233a		4489f1			MOVL R14, CX		
+  0x1233d		41bf01000000		MOVL $0x1, R15		
+  0x12343		41d3e7			SHLL CL, R15		
+  0x12346		4521fb			ANDL R15, R11		
+  0x12349		4584d3			TESTL R10, R11		
+  0x1234c		0f84c0050000		JE 0x12912		
+				i += sz
+  0x12352		4801f3			ADDQ SI, BX		
+  0x12355		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x12356		4885db			TESTQ BX, BX		
+  0x12359		0f8c23050000		JL 0x12882		
+  0x1235f		4c39c3			CMPQ R8, BX		
+  0x12362		0f8d1a050000		JGE 0x12882		
+		cr, sz := rune(r[i]), 1
+  0x12368		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1236d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x12376		4181fa80000000		CMPL $0x80, R10		
+  0x1237d		0f8d18050000		JGE 0x1289b		
+  0x12383		b901000000		MOVL $0x1, CX		
+		if false || cr == 116 {
+  0x12388		4183fa74		CMPL $0x74, R10		
+  0x1238c		0f85f0040000		JNE 0x12882		
+			i += sz
+  0x12392		4801cb			ADDQ CX, BX		
+  0x12395		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x12396		4885db			TESTQ BX, BX		
+  0x12399		0f8c53040000		JL 0x127f2		
+  0x1239f		4c39c3			CMPQ R8, BX		
+  0x123a2		0f8d4a040000		JGE 0x127f2		
+		cr, sz := rune(r[i]), 1
+  0x123a8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x123ad		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x123b6		4181fa80000000		CMPL $0x80, R10		
+  0x123bd		0f8d48040000		JGE 0x1280b		
+  0x123c3		b901000000		MOVL $0x1, CX		
+		if false || cr == 116 {
+  0x123c8		4183fa74		CMPL $0x74, R10		
+  0x123cc		0f8520040000		JNE 0x127f2		
+			i += sz
+  0x123d2		4801cb			ADDQ CX, BX		
+  0x123d5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x123d6		4885db			TESTQ BX, BX		
+  0x123d9		0f8c83030000		JL 0x12762		
+  0x123df		4c39c3			CMPQ R8, BX		
+  0x123e2		0f8d7a030000		JGE 0x12762		
+		cr, sz := rune(r[i]), 1
+  0x123e8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x123ed		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x123f6		4181fa80000000		CMPL $0x80, R10		
+  0x123fd		0f8d78030000		JGE 0x1277b		
+  0x12403		b901000000		MOVL $0x1, CX		
+		if false || cr == 97 {
+  0x12408		4183fa61		CMPL $0x61, R10		
+  0x1240c		0f8550030000		JNE 0x12762		
+			i += sz
+  0x12412		4801cb			ADDQ CX, BX		
+  0x12415		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x12416		4885db			TESTQ BX, BX		
+  0x12419		0f8cb3020000		JL 0x126d2		
+  0x1241f		4c39c3			CMPQ R8, BX		
+  0x12422		0f8daa020000		JGE 0x126d2		
+		cr, sz := rune(r[i]), 1
+  0x12428		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1242d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x12436		4181fa80000000		CMPL $0x80, R10		
+  0x1243d		0f8da8020000		JGE 0x126eb		
+  0x12443		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x12448		4183fa63		CMPL $0x63, R10		
+  0x1244c		0f8580020000		JNE 0x126d2		
+			i += sz
+  0x12452		4801cb			ADDQ CX, BX		
+  0x12455		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x12456		4885db			TESTQ BX, BX		
+  0x12459		0f8ce3010000		JL 0x12642		
+  0x1245f		4c39c3			CMPQ R8, BX		
+  0x12462		0f8dda010000		JGE 0x12642		
+		cr, sz := rune(r[i]), 1
+  0x12468		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x1246d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x12476		4181fa80000000		CMPL $0x80, R10		
+  0x1247d		0f8dd8010000		JGE 0x1265b		
+  0x12483		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x12488		4183fa63		CMPL $0x63, R10		
+  0x1248c		0f85b0010000		JNE 0x12642		
+			i += sz
+  0x12492		4801cb			ADDQ CX, BX		
+  0x12495		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x12496		4885db			TESTQ BX, BX		
+  0x12499		0f8c13010000		JL 0x125b2		
+  0x1249f		4c39c3			CMPQ R8, BX		
+  0x124a2		0f8d0a010000		JGE 0x125b2		
+		cr, sz := rune(r[i]), 1
+  0x124a8		450fb61419		MOVZX 0(R9)(BX*1), R10	
+  0x124ad		660f1f840000000000	NOPW 0(AX)(AX*1)	
+		if cr >= utf8.RuneSelf {
+  0x124b6		4181fa80000000		CMPL $0x80, R10		
+  0x124bd		0f8d08010000		JGE 0x125cb		
+  0x124c3		b901000000		MOVL $0x1, CX		
+		if false || cr == 99 {
+  0x124c8		4183fa63		CMPL $0x63, R10		
+  0x124cc		0f85e0000000		JNE 0x125b2		
+			i += sz
+  0x124d2		4801cb			ADDQ CX, BX		
+  0x124d5		90			NOPL			
+	if i >= 0 && i < len(r) {
+  0x124d6		4885db			TESTQ BX, BX		
+  0x124d9		7c21			JL 0x124fc		
+  0x124db		4c39c3			CMPQ R8, BX		
+  0x124de		7d1c			JGE 0x124fc		
+		cr, sz := rune(r[i]), 1
+  0x124e0		450fb61419		MOVZX 0(R9)(BX*1), R10	
+		if cr >= utf8.RuneSelf {
+  0x124e5		4181fa80000000		CMPL $0x80, R10		
+  0x124ec		7d4d			JGE 0x1253b		
+  0x124ee		b901000000		MOVL $0x1, CX		
+  0x124f3		0f1f00			NOPL 0(AX)		
+		if false || cr == 116 {
+  0x124f6		4183fa74		CMPL $0x74, R10		
+  0x124fa		7419			JE 0x12515		
+  0x124fc		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x12502		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x12505		4889f9			MOVQ DI, CX		
+  0x12508		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x1250b		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x12510		e9c188ffff		JMP 0xadd6		
+			i += sz
+  0x12515		4801cb			ADDQ CX, BX		
+	c[19] = i
+  0x12518		48899c24c8050000	MOVQ BX, 0x5c8(SP)	
+  0x12520		41ba11000000		MOVL $0x11, R10		
+	goto inst180
+  0x12526		4989db			MOVQ BX, R11		
+  0x12529		4889f9			MOVQ DI, CX		
+  0x1252c		4c89e3			MOVQ R12, BX		
+		if i <= len(r) && len(bt) > 0 {
+  0x1252f		4489ee			MOVL R13, SI		
+  0x12532		0f1f4000		NOPL 0(AX)		
+	goto inst180
+  0x12536		e92488ffff		JMP 0xad5f		
+			i += sz
+  0x1253b		48899c2418010000	MOVQ BX, 0x118(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12543		4929d8			SUBQ BX, R8		
+  0x12546		4c89c1			MOVQ R8, CX		
+  0x12549		49f7d8			NEGQ R8			
+  0x1254c		49c1f83f		SARQ $0x3f, R8		
+  0x12550		4921d8			ANDQ BX, R8		
+  0x12553		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12557		48891424		MOVQ DX, 0(SP)		
+  0x1255b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12560		e800000000		CALL 0x12565		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12565		448b542410		MOVL 0x10(SP), R10	
+  0x1256a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1256f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x12577		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0x1257f		488b9c2418010000	MOVQ 0x118(SP), BX	
+	goto inst161
+  0x12587		488bbc2420050000	MOVQ 0x520(SP), DI	
+		if i <= len(r) && len(bt) > 0 {
+  0x1258f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12597		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1259f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x125a7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x125ad		e944ffffff		JMP 0x124f6		
+		if false || cr == 99 {
+  0x125b2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x125b8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x125bb		4889f9			MOVQ DI, CX		
+  0x125be		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x125c1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x125c6		e90b88ffff		JMP 0xadd6		
+			i += sz
+  0x125cb		48899c2410010000	MOVQ BX, 0x110(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x125d3		4929d8			SUBQ BX, R8		
+  0x125d6		4c89c1			MOVQ R8, CX		
+  0x125d9		49f7d8			NEGQ R8			
+  0x125dc		49c1f83f		SARQ $0x3f, R8		
+  0x125e0		4921d8			ANDQ BX, R8		
+  0x125e3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x125e7		48891424		MOVQ DX, 0(SP)		
+  0x125eb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x125f0		e800000000		CALL 0x125f5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x125f5		448b542410		MOVL 0x10(SP), R10	
+  0x125fa		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x125ff		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x12607		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1260f		488b9c2410010000	MOVQ 0x110(SP), BX	
+	goto inst161
+  0x12617		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1261f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12627		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1262f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x12637		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1263d		e986feffff		JMP 0x124c8		
+		if false || cr == 99 {
+  0x12642		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x12648		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1264b		4889f9			MOVQ DI, CX		
+  0x1264e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x12651		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x12656		e97b87ffff		JMP 0xadd6		
+			i += sz
+  0x1265b		48899c2408010000	MOVQ BX, 0x108(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12663		4929d8			SUBQ BX, R8		
+  0x12666		4c89c1			MOVQ R8, CX		
+  0x12669		49f7d8			NEGQ R8			
+  0x1266c		49c1f83f		SARQ $0x3f, R8		
+  0x12670		4921d8			ANDQ BX, R8		
+  0x12673		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12677		48891424		MOVQ DX, 0(SP)		
+  0x1267b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12680		e800000000		CALL 0x12685		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12685		448b542410		MOVL 0x10(SP), R10	
+  0x1268a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1268f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x12697		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1269f		488b9c2408010000	MOVQ 0x108(SP), BX	
+	goto inst161
+  0x126a7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x126af		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x126b7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x126bf		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x126c7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x126cd		e9b6fdffff		JMP 0x12488		
+		if false || cr == 99 {
+  0x126d2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x126d8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x126db		4889f9			MOVQ DI, CX		
+  0x126de		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x126e1		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x126e6		e9eb86ffff		JMP 0xadd6		
+			i += sz
+  0x126eb		48899c2400010000	MOVQ BX, 0x100(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x126f3		4929d8			SUBQ BX, R8		
+  0x126f6		4c89c1			MOVQ R8, CX		
+  0x126f9		49f7d8			NEGQ R8			
+  0x126fc		49c1f83f		SARQ $0x3f, R8		
+  0x12700		4921d8			ANDQ BX, R8		
+  0x12703		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12707		48891424		MOVQ DX, 0(SP)		
+  0x1270b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12710		e800000000		CALL 0x12715		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12715		448b542410		MOVL 0x10(SP), R10	
+  0x1271a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1271f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x12727		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1272f		488b9c2400010000	MOVQ 0x100(SP), BX	
+	goto inst161
+  0x12737		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1273f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12747		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1274f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x12757		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1275d		e9e6fcffff		JMP 0x12448		
+		if false || cr == 97 {
+  0x12762		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x12768		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1276b		4889f9			MOVQ DI, CX		
+  0x1276e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x12771		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x12776		e95b86ffff		JMP 0xadd6		
+			i += sz
+  0x1277b		48899c24f8000000	MOVQ BX, 0xf8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12783		4929d8			SUBQ BX, R8		
+  0x12786		4c89c1			MOVQ R8, CX		
+  0x12789		49f7d8			NEGQ R8			
+  0x1278c		49c1f83f		SARQ $0x3f, R8		
+  0x12790		4921d8			ANDQ BX, R8		
+  0x12793		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12797		48891424		MOVQ DX, 0(SP)		
+  0x1279b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x127a0		e800000000		CALL 0x127a5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x127a5		448b542410		MOVL 0x10(SP), R10	
+  0x127aa		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x127af		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x127b7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x127bf		488b9c24f8000000	MOVQ 0xf8(SP), BX	
+	goto inst161
+  0x127c7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x127cf		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x127d7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x127df		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x127e7		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x127ed		e916fcffff		JMP 0x12408		
+		if false || cr == 116 {
+  0x127f2		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x127f8		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x127fb		4889f9			MOVQ DI, CX		
+  0x127fe		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x12801		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x12806		e9cb85ffff		JMP 0xadd6		
+			i += sz
+  0x1280b		48899c24f0000000	MOVQ BX, 0xf0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12813		4929d8			SUBQ BX, R8		
+  0x12816		4c89c1			MOVQ R8, CX		
+  0x12819		49f7d8			NEGQ R8			
+  0x1281c		49c1f83f		SARQ $0x3f, R8		
+  0x12820		4921d8			ANDQ BX, R8		
+  0x12823		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12827		48891424		MOVQ DX, 0(SP)		
+  0x1282b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12830		e800000000		CALL 0x12835		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12835		448b542410		MOVL 0x10(SP), R10	
+  0x1283a		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x1283f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x12847		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x1284f		488b9c24f0000000	MOVQ 0xf0(SP), BX	
+	goto inst161
+  0x12857		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x1285f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12867		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x1286f		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x12877		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1287d		e946fbffff		JMP 0x123c8		
+		if false || cr == 116 {
+  0x12882		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x12888		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1288b		4889f9			MOVQ DI, CX		
+  0x1288e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x12891		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x12896		e93b85ffff		JMP 0xadd6		
+				i += sz
+  0x1289b		48899c24e8000000	MOVQ BX, 0xe8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x128a3		4929d8			SUBQ BX, R8		
+  0x128a6		4c89c1			MOVQ R8, CX		
+  0x128a9		49f7d8			NEGQ R8			
+  0x128ac		49c1f83f		SARQ $0x3f, R8		
+  0x128b0		4921d8			ANDQ BX, R8		
+  0x128b3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x128b7		48891424		MOVQ DX, 0(SP)		
+  0x128bb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x128c0		e800000000		CALL 0x128c5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x128c5		448b542410		MOVL 0x10(SP), R10	
+  0x128ca		488b4c2418		MOVQ 0x18(SP), CX	
+	goto inst161
+  0x128cf		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+		if len(r[si:]) != 0 {
+  0x128d7		488b942428050000	MOVQ 0x528(SP), DX	
+			i += sz
+  0x128df		488b9c24e8000000	MOVQ 0xe8(SP), BX	
+	goto inst161
+  0x128e7		488bbc2420050000	MOVQ 0x520(SP), DI	
+	if i >= 0 && i < len(r) {
+  0x128ef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x128f7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto inst161
+  0x128ff		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x12907		440fb66c2447		MOVZX 0x47(SP), R13	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1290d		e976faffff		JMP 0x12388		
+  0x12912		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x12918		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1291b		4889f9			MOVQ DI, CX		
+  0x1291e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x12921		0fb6742447		MOVZX 0x47(SP), SI	
+			goto fail
+  0x12926		e9ab84ffff		JMP 0xadd6		
+				goto inst148
+  0x1292b		4989dd			MOVQ BX, R13		
+	goto inst161
+  0x1292e		4c89e3			MOVQ R12, BX		
+	goto fail
+  0x12931		0fb6742447		MOVZX 0x47(SP), SI	
+	goto fail
+  0x12936		e99b84ffff		JMP 0xadd6		
+		c, i = bt[n].c, bt[n].i
+  0x1293b		48899c24e0000000	MOVQ BX, 0xe0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12943		4929d8			SUBQ BX, R8		
+  0x12946		4c89c1			MOVQ R8, CX		
+  0x12949		49f7d8			NEGQ R8			
+  0x1294c		49c1f83f		SARQ $0x3f, R8		
+  0x12950		4921d8			ANDQ BX, R8		
+  0x12953		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12957		48891424		MOVQ DX, 0(SP)		
+  0x1295b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12960		e800000000		CALL 0x12965		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12965		448b5c2410		MOVL 0x10(SP), R11	
+  0x1296a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1296f		488b8424281f0000	MOVQ 0x1f28(SP), AX	
+  0x12977		488b8c2420050000	MOVQ 0x520(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1297f		488b942428050000	MOVQ 0x528(SP), DX	
+				goto inst148
+  0x12987		488b9c24e0000000	MOVQ 0xe0(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x1298f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12997		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1299f		41ba11000000		MOVL $0x11, R10		
+	goto inst161
+  0x129a5		4c8ba42410050000	MOVQ 0x510(SP), R12	
+	goto fail
+  0x129ad		440fb66c2447		MOVZX 0x47(SP), R13	
+  0x129b3		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x129b6		e92df9ffff		JMP 0x122e8		
+	case 179:
+  0x129bb		4981fdb3000000		CMPQ $0xb3, R13		
+  0x129c2		0f8520130000		JNE 0x13ce8		
+		c, i = bt[n].c, bt[n].i
+  0x129c8		4e8b6c18e8		MOVQ -0x18(AX)(R11*1), R13	
+  0x129cd		4c89ac2410050000	MOVQ R13, 0x510(SP)		
+  0x129d5		4e8d3418		LEAQ 0(AX)(R11*1), R14		
+  0x129d9		4d8db648ffffff		LEAQ 0xffffff48(R14), R14	
+  0x129e0		488dbc2430050000	LEAQ 0x530(SP), DI		
+	goto fail
+  0x129e8		4189f7			MOVL SI, R15		
+		c, i = bt[n].c, bt[n].i
+  0x129eb		4c89f6			MOVQ R14, SI		
+  0x129ee		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0x129f6		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x129fb		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x12a00		e800000000		CALL 0x12a05		[1:5]R_CALL:runtime.duffcopy+756	
+  0x12a05		488b6d00		MOVQ 0(BP), BP		
+	c[18] = i
+  0x12a09		4c89ac24c0050000	MOVQ R13, 0x5c0(SP)	
+	bt = append(bt, state{c, i, 177, 0})
+  0x12a11		48c784242807000000000000	MOVQ $0x0, 0x728(SP)		
+  0x12a1d		488dbc2430070000		LEAQ 0x730(SP), DI		
+  0x12a25		0f57c0				XORPS X0, X0			
+  0x12a28		488d7ff0			LEAQ -0x10(DI), DI		
+  0x12a2c		660f1f840000000000		NOPW 0(AX)(AX*1)		
+  0x12a35		90				NOPL				
+  0x12a36		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x12a3b		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x12a40		e800000000			CALL 0x12a45			[1:5]R_CALL:runtime.duffzero+250	
+  0x12a45		488b6d00			MOVQ 0(BP), BP			
+  0x12a49		488dbc2428070000		LEAQ 0x728(SP), DI		
+  0x12a51		488db42430050000		LEAQ 0x530(SP), SI		
+  0x12a59		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x12a5e		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x12a63		e800000000			CALL 0x12a68			[1:5]R_CALL:runtime.duffcopy+756	
+  0x12a68		488b6d00			MOVQ 0(BP), BP			
+  0x12a6c		4c89ac24c8070000		MOVQ R13, 0x7c8(SP)		
+  0x12a74		48c78424d0070000b1000000	MOVQ $0xb1, 0x7d0(SP)		
+  0x12a80		48c78424d807000000000000	MOVQ $0x0, 0x7d8(SP)		
+  0x12a8c		4839d9				CMPQ BX, CX			
+  0x12a8f		0f821b070000			JB 0x131b0			
+  0x12a95		4c8ba42428070000		MOVQ 0x728(SP), R12		
+  0x12a9d		4d89a40348ffffff		MOVQ R12, 0xffffff48(R11)(AX*1)	
+  0x12aa5		4a8d3c18			LEAQ 0(AX)(R11*1), DI		
+  0x12aa9		488dbf50ffffff			LEAQ 0xffffff50(DI), DI		
+  0x12ab0		488db42430070000		LEAQ 0x730(SP), SI		
+  0x12ab8		48896c24f0			MOVQ BP, -0x10(SP)		
+  0x12abd		488d6c24f0			LEAQ -0x10(SP), BP		
+  0x12ac2		e800000000			CALL 0x12ac7			[1:5]R_CALL:runtime.duffcopy+742	
+  0x12ac7		488b6d00			MOVQ 0(BP), BP			
+	if i >= 0 && i < len(r) {
+  0x12acb		4d85ed			TESTQ R13, R13		
+  0x12ace		0f8c5a060000		JL 0x1312e		
+  0x12ad4		6690			NOPW			
+  0x12ad6		4d39c5			CMPQ R8, R13		
+  0x12ad9		0f8d4f060000		JGE 0x1312e		
+	bt = append(bt, state{c, i, 177, 0})
+  0x12adf		48898424e81e0000	MOVQ AX, 0x1ee8(SP)	
+  0x12ae7		48899c24d8000000	MOVQ BX, 0xd8(SP)	
+  0x12aef		48898c24d0000000	MOVQ CX, 0xd0(SP)	
+		cr, sz := rune(r[i]), 1
+  0x12af7		470fb61c29		MOVZX 0(R9)(R13*1), R11	
+		if cr >= utf8.RuneSelf {
+  0x12afc		4181fb80000000		CMPL $0x80, R11		
+  0x12b03		0f8d32060000		JGE 0x1313b		
+  0x12b09		be01000000		MOVL $0x1, SI		
+  0x12b0e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+		if false || cr == 97 {
+  0x12b16		4183fb61		CMPL $0x61, R11		
+  0x12b1a		0f850e060000		JNE 0x1312e		
+			i += sz
+  0x12b20		4e8d1c2e		LEAQ 0(SI)(R13*1), R11	
+	if i >= 0 && i < len(r) {
+  0x12b24		4d85db			TESTQ R11, R11		
+  0x12b27		0f8c76050000		JL 0x130a3		
+  0x12b2d		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x12b36		4d39c3			CMPQ R8, R11		
+  0x12b39		0f8d64050000		JGE 0x130a3		
+		cr, sz := rune(r[i]), 1
+  0x12b3f		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x12b44		4181fc80000000		CMPL $0x80, R12		
+  0x12b4b		0f8d5d050000		JGE 0x130ae		
+  0x12b51		be01000000		MOVL $0x1, SI		
+		if false || cr == 103 {
+  0x12b56		4183fc67		CMPL $0x67, R12		
+  0x12b5a		0f8543050000		JNE 0x130a3		
+			i += sz
+  0x12b60		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x12b63		4d85db			TESTQ R11, R11		
+  0x12b66		0f8caf040000		JL 0x1301b		
+  0x12b6c		4d39c3			CMPQ R8, R11		
+  0x12b6f		0f8da6040000		JGE 0x1301b		
+		cr, sz := rune(r[i]), 1
+  0x12b75		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x12b7a		4181fc80000000		CMPL $0x80, R12		
+  0x12b81		0f8d9f040000		JGE 0x13026		
+  0x12b87		be01000000		MOVL $0x1, SI		
+  0x12b8c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x12b95		90			NOPL			
+		if false || cr == 103 {
+  0x12b96		4183fc67		CMPL $0x67, R12		
+  0x12b9a		0f857b040000		JNE 0x1301b		
+			i += sz
+  0x12ba0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x12ba3		4d85db			TESTQ R11, R11		
+  0x12ba6		0f8ce2030000		JL 0x12f8e		
+  0x12bac		4d39c3			CMPQ R8, R11		
+  0x12baf		0f8dd9030000		JGE 0x12f8e		
+		cr, sz := rune(r[i]), 1
+  0x12bb5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x12bba		4181fc80000000		CMPL $0x80, R12		
+  0x12bc1		0f8dd4030000		JGE 0x12f9b		
+  0x12bc7		be01000000		MOVL $0x1, SI		
+  0x12bcc		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x12bd5		90			NOPL			
+		if false || cr == 103 {
+  0x12bd6		4183fc67		CMPL $0x67, R12		
+  0x12bda		0f85ae030000		JNE 0x12f8e		
+			i += sz
+  0x12be0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x12be3		4d85db			TESTQ R11, R11		
+  0x12be6		0f8c17030000		JL 0x12f03		
+  0x12bec		4d39c3			CMPQ R8, R11		
+  0x12bef		0f8d0e030000		JGE 0x12f03		
+		cr, sz := rune(r[i]), 1
+  0x12bf5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x12bfa		4181fc80000000		CMPL $0x80, R12		
+  0x12c01		0f8d07030000		JGE 0x12f0e		
+  0x12c07		be01000000		MOVL $0x1, SI		
+  0x12c0c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x12c15		90			NOPL			
+		if false || cr == 116 {
+  0x12c16		4183fc74		CMPL $0x74, R12		
+  0x12c1a		0f85e3020000		JNE 0x12f03		
+			i += sz
+  0x12c20		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x12c23		4d85db			TESTQ R11, R11		
+  0x12c26		0f8c4f020000		JL 0x12e7b		
+  0x12c2c		4d39c3			CMPQ R8, R11		
+  0x12c2f		0f8d46020000		JGE 0x12e7b		
+		cr, sz := rune(r[i]), 1
+  0x12c35		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x12c3a		4181fc80000000		CMPL $0x80, R12		
+  0x12c41		0f8d3f020000		JGE 0x12e86		
+  0x12c47		be01000000		MOVL $0x1, SI		
+  0x12c4c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x12c55		90			NOPL			
+		if false || cr == 97 {
+  0x12c56		4183fc61		CMPL $0x61, R12		
+  0x12c5a		0f851b020000		JNE 0x12e7b		
+			i += sz
+  0x12c60		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x12c63		4d85db			TESTQ R11, R11		
+  0x12c66		0f8c84010000		JL 0x12df0		
+  0x12c6c		4d39c3			CMPQ R8, R11		
+  0x12c6f		0f8d7b010000		JGE 0x12df0		
+		cr, sz := rune(r[i]), 1
+  0x12c75		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x12c7a		4181fc80000000		CMPL $0x80, R12		
+  0x12c81		0f8d74010000		JGE 0x12dfb		
+  0x12c87		be01000000		MOVL $0x1, SI		
+  0x12c8c		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x12c95		90			NOPL			
+		if false || cr == 97 {
+  0x12c96		4183fc61		CMPL $0x61, R12		
+  0x12c9a		0f8550010000		JNE 0x12df0		
+			i += sz
+  0x12ca0		4901f3			ADDQ SI, R11		
+	if i >= 0 && i < len(r) {
+  0x12ca3		4d85db			TESTQ R11, R11		
+  0x12ca6		0f8cbc000000		JL 0x12d68		
+  0x12cac		4d39c3			CMPQ R8, R11		
+  0x12caf		0f8db3000000		JGE 0x12d68		
+		cr, sz := rune(r[i]), 1
+  0x12cb5		470fb62419		MOVZX 0(R9)(R11*1), R12	
+		if cr >= utf8.RuneSelf {
+  0x12cba		4181fc80000000		CMPL $0x80, R12		
+  0x12cc1		0f8dac000000		JGE 0x12d73		
+  0x12cc7		be01000000		MOVL $0x1, SI		
+  0x12ccc		660f1f840000000000	NOPW 0(AX)(AX*1)	
+  0x12cd5		90			NOPL			
+		if cr < 128 {
+  0x12cd6		4181fc80000000		CMPL $0x80, R12		
+  0x12cdd		0f8d85000000		JGE 0x12d68		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x12ce3		4589e5			MOVL R12, R13			
+  0x12ce6		41c1fc1f		SARL $0x1f, R12			
+  0x12cea		41c1ec1d		SHRL $0x1d, R12			
+  0x12cee		4501ec			ADDL R13, R12			
+  0x12cf1		41c1fc03		SARL $0x3, R12			
+  0x12cf5		4d63f4			MOVSXD R12, R14			
+  0x12cf8		4983fe10		CMPQ $0x10, R14			
+  0x12cfc		0f8319100000		JAE 0x13d1b			
+  0x12d02		4c8d1500000000		LEAQ 0(IP), R10			[3:7]R_PCREL:go.string."\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"	
+  0x12d09		470fb61416		MOVZX 0(R14)(R10*1), R10	
+  0x12d0e		41c1e403		SHLL $0x3, R12			
+  0x12d12		4529e5			SUBL R12, R13			
+  0x12d15		90			NOPL				
+  0x12d16		4585ed			TESTL R13, R13			
+  0x12d19		0f8cf70f0000		JL 0x13d16			
+  0x12d1f		4183fd20		CMPL $0x20, R13			
+  0x12d23		4519e4			SBBL R12, R12			
+	bt = append(bt, state{c, i, 177, 0})
+  0x12d26		4889cf			MOVQ CX, DI		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x12d29		4489e9			MOVL R13, CX		
+  0x12d2c		41be01000000		MOVL $0x1, R14		
+  0x12d32		41d3e6			SHLL CL, R14		
+  0x12d35		4521e6			ANDL R12, R14		
+  0x12d38		4584d6			TESTL R10, R14		
+  0x12d3b		7514			JNE 0x12d51		
+  0x12d3d		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x12d43		4d89dd			MOVQ R11, R13		
+	goto inst161
+  0x12d46		4889f9			MOVQ DI, CX		
+	goto fail
+  0x12d49		4489fe			MOVL R15, SI		
+			goto fail
+  0x12d4c		e98580ffff		JMP 0xadd6		
+				i += sz
+  0x12d51		4e8d141e		LEAQ 0(SI)(R11*1), R10	
+		if i <= len(r) && len(bt) > 0 {
+  0x12d55		4589fd			MOVL R15, R13		
+				goto inst178
+  0x12d58		4c89d3			MOVQ R10, BX		
+	goto inst161
+  0x12d5b		4c8ba424d8000000	MOVQ 0xd8(SP), R12	
+				goto inst178
+  0x12d63		e9b0f7ffff		JMP 0x12518		
+				goto inst148
+  0x12d68		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x12d6b		4489fe			MOVL R15, SI		
+	goto fail
+  0x12d6e		e96380ffff		JMP 0xadd6		
+			i += sz
+  0x12d73		4c899c24c8000000	MOVQ R11, 0xc8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12d7b		4d29d8			SUBQ R11, R8		
+  0x12d7e		4c89c1			MOVQ R8, CX		
+  0x12d81		49f7d8			NEGQ R8			
+  0x12d84		49c1f83f		SARQ $0x3f, R8		
+  0x12d88		4d21d8			ANDQ R11, R8		
+  0x12d8b		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12d8f		48891424		MOVQ DX, 0(SP)		
+  0x12d93		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12d98		e800000000		CALL 0x12d9d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12d9d		448b642410		MOVL 0x10(SP), R12	
+  0x12da2		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x12da7		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x12daf		488b8c24d0000000	MOVQ 0xd0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x12db7		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x12dbf		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x12dc7		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12dcf		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x12dd7		41ba11000000		MOVL $0x11, R10		
+				goto inst148
+  0x12ddd		4c8b9c24c8000000	MOVQ 0xc8(SP), R11	
+	goto fail
+  0x12de5		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12deb		e9e6feffff		JMP 0x12cd6		
+				goto inst148
+  0x12df0		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x12df3		4489fe			MOVL R15, SI		
+	goto fail
+  0x12df6		e9db7fffff		JMP 0xadd6		
+			i += sz
+  0x12dfb		4c899c24c0000000	MOVQ R11, 0xc0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12e03		4d29d8			SUBQ R11, R8		
+  0x12e06		4c89c1			MOVQ R8, CX		
+  0x12e09		49f7d8			NEGQ R8			
+  0x12e0c		49c1f83f		SARQ $0x3f, R8		
+  0x12e10		4d21d8			ANDQ R11, R8		
+  0x12e13		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12e17		48891424		MOVQ DX, 0(SP)		
+  0x12e1b		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12e20		e800000000		CALL 0x12e25		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12e25		448b642410		MOVL 0x10(SP), R12	
+  0x12e2a		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x12e2f		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x12e37		488b8c24d0000000	MOVQ 0xd0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x12e3f		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x12e47		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x12e4f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12e57		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x12e5f		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x12e65		4c8b9c24c0000000	MOVQ 0xc0(SP), R11	
+	goto fail
+  0x12e6d		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x12e73		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12e76		e91bfeffff		JMP 0x12c96		
+				goto inst148
+  0x12e7b		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x12e7e		4489fe			MOVL R15, SI		
+	goto fail
+  0x12e81		e9507fffff		JMP 0xadd6		
+			i += sz
+  0x12e86		4c899c24b8000000	MOVQ R11, 0xb8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12e8e		4d29d8			SUBQ R11, R8		
+  0x12e91		4c89c1			MOVQ R8, CX		
+  0x12e94		49f7d8			NEGQ R8			
+  0x12e97		49c1f83f		SARQ $0x3f, R8		
+  0x12e9b		4d21d8			ANDQ R11, R8		
+  0x12e9e		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12ea2		48891424		MOVQ DX, 0(SP)		
+  0x12ea6		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12eab		e800000000		CALL 0x12eb0		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12eb0		448b642410		MOVL 0x10(SP), R12	
+  0x12eb5		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x12eba		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x12ec2		488b8c24d0000000	MOVQ 0xd0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x12eca		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x12ed2		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x12eda		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12ee2		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x12eea		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x12ef0		4c8b9c24b8000000	MOVQ 0xb8(SP), R11	
+	goto fail
+  0x12ef8		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12efe		e953fdffff		JMP 0x12c56		
+				goto inst148
+  0x12f03		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x12f06		4489fe			MOVL R15, SI		
+	goto fail
+  0x12f09		e9c87effff		JMP 0xadd6		
+			i += sz
+  0x12f0e		4c899c24b0000000	MOVQ R11, 0xb0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12f16		4d29d8			SUBQ R11, R8		
+  0x12f19		4c89c1			MOVQ R8, CX		
+  0x12f1c		49f7d8			NEGQ R8			
+  0x12f1f		49c1f83f		SARQ $0x3f, R8		
+  0x12f23		4d21d8			ANDQ R11, R8		
+  0x12f26		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12f2a		48891424		MOVQ DX, 0(SP)		
+  0x12f2e		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12f33		0f1f00			NOPL 0(AX)		
+  0x12f36		e800000000		CALL 0x12f3b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12f3b		448b642410		MOVL 0x10(SP), R12	
+  0x12f40		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x12f45		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x12f4d		488b8c24d0000000	MOVQ 0xd0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x12f55		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x12f5d		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x12f65		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12f6d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x12f75		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x12f7b		4c8b9c24b0000000	MOVQ 0xb0(SP), R11	
+	goto fail
+  0x12f83		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12f89		e988fcffff		JMP 0x12c16		
+				goto inst148
+  0x12f8e		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x12f91		4489fe			MOVL R15, SI		
+  0x12f94		6690			NOPW			
+	goto fail
+  0x12f96		e93b7effff		JMP 0xadd6		
+			i += sz
+  0x12f9b		4c899c24a8000000	MOVQ R11, 0xa8(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x12fa3		4d29d8			SUBQ R11, R8		
+  0x12fa6		4c89c1			MOVQ R8, CX		
+  0x12fa9		49f7d8			NEGQ R8			
+  0x12fac		49c1f83f		SARQ $0x3f, R8		
+  0x12fb0		4d21d8			ANDQ R11, R8		
+  0x12fb3		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x12fb7		48891424		MOVQ DX, 0(SP)		
+  0x12fbb		48894c2408		MOVQ CX, 0x8(SP)	
+  0x12fc0		e800000000		CALL 0x12fc5		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x12fc5		448b642410		MOVL 0x10(SP), R12	
+  0x12fca		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x12fcf		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x12fd7		488b8c24d0000000	MOVQ 0xd0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x12fdf		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x12fe7		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x12fef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x12ff7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x12fff		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x13005		4c8b9c24a8000000	MOVQ 0xa8(SP), R11	
+	goto fail
+  0x1300d		440fb67c2447		MOVZX 0x47(SP), R15	
+  0x13013		0f1f00			NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x13016		e9bbfbffff		JMP 0x12bd6		
+				goto inst148
+  0x1301b		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x1301e		4489fe			MOVL R15, SI		
+	goto fail
+  0x13021		e9b07dffff		JMP 0xadd6		
+			i += sz
+  0x13026		4c899c24a0000000	MOVQ R11, 0xa0(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1302e		4d29d8			SUBQ R11, R8		
+  0x13031		4c89c1			MOVQ R8, CX		
+  0x13034		49f7d8			NEGQ R8			
+  0x13037		49c1f83f		SARQ $0x3f, R8		
+  0x1303b		4d21d8			ANDQ R11, R8		
+  0x1303e		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x13042		48891424		MOVQ DX, 0(SP)		
+  0x13046		48894c2408		MOVQ CX, 0x8(SP)	
+  0x1304b		e800000000		CALL 0x13050		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x13050		448b642410		MOVL 0x10(SP), R12	
+  0x13055		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x1305a		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x13062		488b8c24d0000000	MOVQ 0xd0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1306a		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x13072		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1307a		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x13082		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1308a		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x13090		4c8b9c24a0000000	MOVQ 0xa0(SP), R11	
+	goto fail
+  0x13098		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1309e		e9f3faffff		JMP 0x12b96		
+				goto inst148
+  0x130a3		4d89dd			MOVQ R11, R13		
+	goto fail
+  0x130a6		4489fe			MOVL R15, SI		
+	goto fail
+  0x130a9		e9287dffff		JMP 0xadd6		
+			i += sz
+  0x130ae		4c899c2498000000	MOVQ R11, 0x98(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x130b6		4d29d8			SUBQ R11, R8		
+  0x130b9		4c89c1			MOVQ R8, CX		
+  0x130bc		49f7d8			NEGQ R8			
+  0x130bf		49c1f83f		SARQ $0x3f, R8		
+  0x130c3		4d21d8			ANDQ R11, R8		
+  0x130c6		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x130ca		48891424		MOVQ DX, 0(SP)		
+  0x130ce		48894c2408		MOVQ CX, 0x8(SP)	
+  0x130d3		0f1f00			NOPL 0(AX)		
+  0x130d6		e800000000		CALL 0x130db		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x130db		448b642410		MOVL 0x10(SP), R12	
+  0x130e0		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x130e5		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x130ed		488b8c24d0000000	MOVQ 0xd0(SP), CX	
+		if len(r[si:]) != 0 {
+  0x130f5		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x130fd		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x13105		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1310d		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
   0x13115		41ba11000000		MOVL $0x11, R10		
-  0x1311b		4889d1			MOVQ DX, CX		
-	bt = append(bt, state{c, i, 59, 0})
-  0x1311e		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 79, 0})
-  0x13126		e9c4f5ffff		JMP 0x126ef		
-	bt = append(bt, state{c, i, 119, 0})
-  0x1312b		4c898c2418050000	MOVQ R9, 0x518(SP)	
-	bt = append(bt, state{c, i, 99, 0})
-  0x13133		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x1313a		48891424		MOVQ DX, 0(SP)		
-  0x1313e		4889442408		MOVQ AX, 0x8(SP)	
-  0x13143		4c894c2410		MOVQ R9, 0x10(SP)	
-  0x13148		48894c2418		MOVQ CX, 0x18(SP)	
-  0x1314d		48895c2420		MOVQ BX, 0x20(SP)	
-  0x13152		e800000000		CALL 0x13157		[1:5]R_CALL:runtime.growslice	
-  0x13157		488b442428		MOVQ 0x28(SP), AX	
-  0x1315c		488b4c2430		MOVQ 0x30(SP), CX	
-  0x13161		488b542438		MOVQ 0x38(SP), DX	
-  0x13166		488d5901		LEAQ 0x1(CX), BX	
-  0x1316a		4c8b8c2418050000	MOVQ 0x518(SP), R9	
-  0x13172		41ba11000000		MOVL $0x11, R10		
-  0x13178		4889d1			MOVQ DX, CX		
-	bt = append(bt, state{c, i, 79, 0})
-  0x1317b		488b942420050000	MOVQ 0x520(SP), DX	
-  0x13183		0f1f00			NOPL 0(AX)		
-	bt = append(bt, state{c, i, 99, 0})
-  0x13186		e9a4f4ffff		JMP 0x1262f		
-	bt = append(bt, state{c, i, 119, 0})
-  0x1318b		488d0500000000		LEAQ 0(IP), AX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
-  0x13192		48890424		MOVQ AX, 0(SP)		
-  0x13196		4c89442408		MOVQ R8, 0x8(SP)	
-  0x1319b		48895c2410		MOVQ BX, 0x10(SP)	
-  0x131a0		4c89542418		MOVQ R10, 0x18(SP)	
-  0x131a5		4c894c2420		MOVQ R9, 0x20(SP)	
-  0x131aa		e800000000		CALL 0x131af		[1:5]R_CALL:runtime.growslice	
-  0x131af		488b442428		MOVQ 0x28(SP), AX	
-  0x131b4		488b4c2430		MOVQ 0x30(SP), CX	
-  0x131b9		488b542438		MOVQ 0x38(SP), DX	
-  0x131be		4c8d4901		LEAQ 0x1(CX), R9	
-	bt = append(bt, state{c, i, 139, 0})
-  0x131c2		bb03000000		MOVL $0x3, BX		
-  0x131c7		41ba11000000		MOVL $0x11, R10		
-	bt = append(bt, state{c, i, 119, 0})
-  0x131cd		4889d1			MOVQ DX, CX		
-	bt = append(bt, state{c, i, 99, 0})
-  0x131d0		488b942420050000	MOVQ 0x520(SP), DX	
-	bt = append(bt, state{c, i, 119, 0})
-  0x131d8		e984f3ffff		JMP 0x12561		
-		m[9] = r[c[18]:c[19]]
-  0x131dd		e800000000		CALL 0x131e2		[1:5]R_CALL:runtime.panicSliceB	
-  0x131e2		4c89c2			MOVQ R8, DX		
-  0x131e5		90			NOPL			
-  0x131e6		e800000000		CALL 0x131eb		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[8] = r[c[16]:c[17]]
-  0x131eb		e800000000		CALL 0x131f0		[1:5]R_CALL:runtime.panicSliceB	
-  0x131f0		4c89c2			MOVQ R8, DX		
-  0x131f3		e800000000		CALL 0x131f8		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[7] = r[c[14]:c[15]]
-  0x131f8		e800000000		CALL 0x131fd		[1:5]R_CALL:runtime.panicSliceB	
-  0x131fd		4c89c2			MOVQ R8, DX		
-  0x13200		e800000000		CALL 0x13205		[1:5]R_CALL:runtime.panicSliceAlen	
-  0x13205		90			NOPL			
-		m[6] = r[c[12]:c[13]]
-  0x13206		e800000000		CALL 0x1320b		[1:5]R_CALL:runtime.panicSliceB	
-  0x1320b		4c89c2			MOVQ R8, DX		
-  0x1320e		e800000000		CALL 0x13213		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[5] = r[c[10]:c[11]]
-  0x13213		e800000000		CALL 0x13218		[1:5]R_CALL:runtime.panicSliceB	
-  0x13218		4c89c2			MOVQ R8, DX		
-  0x1321b		e800000000		CALL 0x13220		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[4] = r[c[8]:c[9]]
-  0x13220		e800000000		CALL 0x13225		[1:5]R_CALL:runtime.panicSliceB	
-  0x13225		4c89c2			MOVQ R8, DX		
-  0x13228		e800000000		CALL 0x1322d		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[3] = r[c[6]:c[7]]
-  0x1322d		e800000000		CALL 0x13232		[1:5]R_CALL:runtime.panicSliceB	
-  0x13232		4c89c2			MOVQ R8, DX		
-  0x13235		e800000000		CALL 0x1323a		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[2] = r[c[4]:c[5]]
-  0x1323a		e800000000		CALL 0x1323f		[1:5]R_CALL:runtime.panicSliceB	
-  0x1323f		4c89c2			MOVQ R8, DX		
-  0x13242		0f1f4000		NOPL 0(AX)		
-  0x13246		e800000000		CALL 0x1324b		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[1] = r[c[2]:c[3]]
-  0x1324b		e800000000		CALL 0x13250		[1:5]R_CALL:runtime.panicSliceB	
-  0x13250		4c89c2			MOVQ R8, DX		
-  0x13253		e800000000		CALL 0x13258		[1:5]R_CALL:runtime.panicSliceAlen	
-		m[0] = r[c[0]:c[1]]
-  0x13258		e800000000		CALL 0x1325d		[1:5]R_CALL:runtime.panicSliceB	
-  0x1325d		4c89c2			MOVQ R8, DX		
-  0x13260		e800000000		CALL 0x13265		[1:5]R_CALL:runtime.panicSliceAlen	
-			cr, sz := rune(r[i]), 1
-  0x13265		4889d0			MOVQ DX, AX		
-  0x13268		e800000000		CALL 0x1326d		[1:5]R_CALL:runtime.panicIndex	
+			i += sz
+  0x1311b		4c8b9c2498000000	MOVQ 0x98(SP), R11	
+	goto fail
+  0x13123		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x13129		e928faffff		JMP 0x12b56		
+	goto fail
+  0x1312e		4489fe			MOVL R15, SI		
+  0x13131		0f1f440000		NOPL 0(AX)(AX*1)	
+	goto fail
+  0x13136		e99b7cffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1313b		4d29e8			SUBQ R13, R8		
+  0x1313e		4c89c1			MOVQ R8, CX		
+  0x13141		49f7d8			NEGQ R8			
+  0x13144		49c1f83f		SARQ $0x3f, R8		
+  0x13148		4d21e8			ANDQ R13, R8		
+  0x1314b		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x1314f		48891424		MOVQ DX, 0(SP)		
+  0x13153		48894c2408		MOVQ CX, 0x8(SP)	
+  0x13158		e800000000		CALL 0x1315d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1315d		448b5c2410		MOVL 0x10(SP), R11	
+  0x13162		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x13167		488b8424e81e0000	MOVQ 0x1ee8(SP), AX	
+  0x1316f		488b8c24d0000000	MOVQ 0xd0(SP), CX	
 		if len(r[si:]) != 0 {
-  0x1326d		4889d0			MOVQ DX, AX		
-  0x13270		4c89c1			MOVQ R8, CX		
-  0x13273		e800000000		CALL 0x13278		[1:5]R_CALL:runtime.panicSliceB	
-		panic(bt[len(bt)-1].pc)
-  0x13278		4c892c24		MOVQ R13, 0(SP)		
-  0x1327c		e800000000		CALL 0x13281		[1:5]R_CALL:runtime.convT64	
-  0x13281		488d0500000000		LEAQ 0(IP), AX		[3:7]R_PCREL:type.int		
-  0x13288		48890424		MOVQ AX, 0(SP)		
-  0x1328c		e800000000		CALL 0x13291		[1:5]R_CALL:runtime.gopanic	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x13291		e800000000		CALL 0x13296		[1:5]R_CALL:runtime.panicshift	
-  0x13296		4c89f0			MOVQ R14, AX		
-  0x13299		b910000000		MOVL $0x10, CX		
-  0x1329e		e800000000		CALL 0x132a3		[1:5]R_CALL:runtime.panicIndex	
-  0x132a3		0f1f00			NOPL 0(AX)		
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x132a6		e800000000		CALL 0x132ab		[1:5]R_CALL:runtime.panicshift	
-  0x132ab		4c89f0			MOVQ R14, AX		
-  0x132ae		b910000000		MOVL $0x10, CX		
-  0x132b3		e800000000		CALL 0x132b8		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x132b8		e800000000		CALL 0x132bd		[1:5]R_CALL:runtime.panicshift	
-  0x132bd		4c89f0			MOVQ R14, AX		
-  0x132c0		b910000000		MOVL $0x10, CX		
-  0x132c5		90			NOPL			
-  0x132c6		e800000000		CALL 0x132cb		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x132cb		e800000000		CALL 0x132d0		[1:5]R_CALL:runtime.panicshift	
-  0x132d0		4c89f0			MOVQ R14, AX		
-  0x132d3		b910000000		MOVL $0x10, CX		
-  0x132d8		e800000000		CALL 0x132dd		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x132dd		e800000000		CALL 0x132e2		[1:5]R_CALL:runtime.panicshift	
-  0x132e2		4c89f0			MOVQ R14, AX		
-  0x132e5		b910000000		MOVL $0x10, CX		
-  0x132ea		e800000000		CALL 0x132ef		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x132ef		e800000000		CALL 0x132f4		[1:5]R_CALL:runtime.panicshift	
-  0x132f4		4c89f0			MOVQ R14, AX		
-  0x132f7		b910000000		MOVL $0x10, CX		
-  0x132fc		e800000000		CALL 0x13301		[1:5]R_CALL:runtime.panicIndex	
-  0x13301		0f1f440000		NOPL 0(AX)(AX*1)	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x13306		e800000000		CALL 0x1330b		[1:5]R_CALL:runtime.panicshift	
-  0x1330b		4c89f0			MOVQ R14, AX		
-  0x1330e		b910000000		MOVL $0x10, CX		
-  0x13313		e800000000		CALL 0x13318		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x13318		e800000000		CALL 0x1331d		[1:5]R_CALL:runtime.panicshift	
-  0x1331d		4c89f0			MOVQ R14, AX		
-  0x13320		b910000000		MOVL $0x10, CX		
-  0x13325		90			NOPL			
-  0x13326		e800000000		CALL 0x1332b		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x1332b		e800000000		CALL 0x13330		[1:5]R_CALL:runtime.panicshift	
-  0x13330		4c89f0			MOVQ R14, AX		
-  0x13333		b910000000		MOVL $0x10, CX		
-  0x13338		e800000000		CALL 0x1333d		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x1333d		e800000000		CALL 0x13342		[1:5]R_CALL:runtime.panicshift	
-  0x13342		4c89f0			MOVQ R14, AX		
-  0x13345		b910000000		MOVL $0x10, CX		
-  0x1334a		e800000000		CALL 0x1334f		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x1334f		e800000000		CALL 0x13354		[1:5]R_CALL:runtime.panicshift	
-  0x13354		4c89f0			MOVQ R14, AX		
-  0x13357		b910000000		MOVL $0x10, CX		
-  0x1335c		e800000000		CALL 0x13361		[1:5]R_CALL:runtime.panicIndex	
-  0x13361		0f1f440000		NOPL 0(AX)(AX*1)	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x13366		e800000000		CALL 0x1336b		[1:5]R_CALL:runtime.panicshift	
-  0x1336b		4c89f0			MOVQ R14, AX		
-  0x1336e		b910000000		MOVL $0x10, CX		
-  0x13373		e800000000		CALL 0x13378		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x13378		e800000000		CALL 0x1337d		[1:5]R_CALL:runtime.panicshift	
-  0x1337d		4c89f0			MOVQ R14, AX		
-  0x13380		b910000000		MOVL $0x10, CX		
-  0x13385		90			NOPL			
-  0x13386		e800000000		CALL 0x1338b		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x1338b		e800000000		CALL 0x13390		[1:5]R_CALL:runtime.panicshift	
-  0x13390		4c89f0			MOVQ R14, AX		
-  0x13393		b910000000		MOVL $0x10, CX		
-  0x13398		e800000000		CALL 0x1339d		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x1339d		e800000000		CALL 0x133a2		[1:5]R_CALL:runtime.panicshift	
-  0x133a2		4c89f0			MOVQ R14, AX		
-  0x133a5		b910000000		MOVL $0x10, CX		
-  0x133aa		e800000000		CALL 0x133af		[1:5]R_CALL:runtime.panicIndex	
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
-  0x133af		e800000000		CALL 0x133b4		[1:5]R_CALL:runtime.panicshift	
-  0x133b4		4c89f0			MOVQ R14, AX		
-  0x133b7		b910000000		MOVL $0x10, CX		
-  0x133bc		e800000000		CALL 0x133c1		[1:5]R_CALL:runtime.panicIndex	
-  0x133c1		90			NOPL			
+  0x13177		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1317f		488b9c24d8000000	MOVQ 0xd8(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x13187		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1318f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x13197		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x1319d		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x131a5		440fb67c2447		MOVZX 0x47(SP), R15	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x131ab		e966f9ffff		JMP 0x12b16		
+	bt = append(bt, state{c, i, 177, 0})
+  0x131b0		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x131b7		48891424		MOVQ DX, 0(SP)		
+  0x131bb		4889442408		MOVQ AX, 0x8(SP)	
+  0x131c0		4c89642410		MOVQ R12, 0x10(SP)	
+  0x131c5		48894c2418		MOVQ CX, 0x18(SP)	
+  0x131ca		48895c2420		MOVQ BX, 0x20(SP)	
+  0x131cf		e800000000		CALL 0x131d4		[1:5]R_CALL:runtime.growslice	
+  0x131d4		488b442428		MOVQ 0x28(SP), AX	
+  0x131d9		488b4c2430		MOVQ 0x30(SP), CX	
+  0x131de		488b542438		MOVQ 0x38(SP), DX	
+  0x131e3		488d5901		LEAQ 0x1(CX), BX	
+	if i >= 0 && i < len(r) {
+  0x131e7		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x131ef		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x131f7		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 177, 0})
+  0x131fd		4c8b9c2418050000	MOVQ 0x518(SP), R11	
+	if i >= 0 && i < len(r) {
+  0x13205		4c8bac2410050000	MOVQ 0x510(SP), R13	
+	goto fail
+  0x1320d		440fb67c2447		MOVZX 0x47(SP), R15	
+	bt = append(bt, state{c, i, 177, 0})
+  0x13213		4889d1			MOVQ DX, CX		
+		if len(r[si:]) != 0 {
+  0x13216		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 177, 0})
+  0x1321e		e972f8ffff		JMP 0x12a95		
+	goto fail
+  0x13223		4084f6			TESTL SI, SI		
+		if matched {
+  0x13226		0f85e1000000		JNE 0x1330d		
+		if len(r[si:]) != 0 {
+  0x1322c		4939d0			CMPQ DX, R8		
+  0x1322f		0f82200a0000		JB 0x13c55		
+  0x13235		4c89c1			MOVQ R8, CX		
+  0x13238		4929d0			SUBQ DX, R8		
+  0x1323b		4c89c3			MOVQ R8, BX		
+  0x1323e		49f7d8			NEGQ R8			
+  0x13241		49c1f83f		SARQ $0x3f, R8		
+  0x13245		4921d0			ANDQ DX, R8		
+  0x13248		4d01c8			ADDQ R9, R8		
+  0x1324b		4885db			TESTQ BX, BX		
+  0x1324e		7460			JE 0x132b0		
+  0x13250		660f1f440000		NOPW 0(AX)(AX*1)	
+  0x13256		4839d1			CMPQ DX, CX		
+			cr, sz := rune(r[i]), 1
+  0x13259		0f86ee090000		JBE 0x13c4d		
+  0x1325f		460fb61c0a		MOVZX 0(DX)(R9*1), R11	
+			if cr >= utf8.RuneSelf {
+  0x13264		4181fb80000000		CMPL $0x80, R11		
+  0x1326b		7d10			JGE 0x1327d		
+  0x1326d		b801000000		MOVL $0x1, AX		
+			si += sz
+  0x13272		4801d0			ADDQ DX, AX		
 func Match(r string) ([10]string, bool) {
-  0x133c2		0f1f4000		NOPL 0(AX)						
-  0x133c6		e800000000		CALL 0x133cb						[1:5]R_CALL:runtime.morestack_noctxt	
-  0x133cb		e9f66effff		JMP github.com/CAFxX/regexp2go/examples/dna.Match(SB)	
+  0x13275		0f57c0			XORPS X0, X0		
+			goto restart
+  0x13278		e96e71ffff		JMP 0xa3eb		
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1327d		4c890424		MOVQ R8, 0(SP)		
+  0x13281		48895c2408		MOVQ BX, 0x8(SP)	
+  0x13286		e800000000		CALL 0x1328b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1328b		488b442418		MOVQ 0x18(SP), AX	
+	if i >= 0 && i < len(r) {
+  0x13290		488b8c2488200000	MOVQ 0x2088(SP), CX	
+			si += sz
+  0x13298		488b942428050000	MOVQ 0x528(SP), DX	
+		cr, sz := rune(r[i]), 1
+  0x132a0		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x132a8		41ba11000000		MOVL $0x11, R10		
+				cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x132ae		ebc2			JMP 0x13272		
+		var m [10]string
+  0x132b0		488dbc24301f0000	LEAQ 0x1f30(SP), DI	
+  0x132b8		0f57c0			XORPS X0, X0		
+  0x132bb		488d7fe0		LEAQ -0x20(DI), DI	
+  0x132bf		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x132c4		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x132c9		e800000000		CALL 0x132ce		[1:5]R_CALL:runtime.duffzero+254	
+  0x132ce		488b6d00		MOVQ 0(BP), BP		
+		return m, false
+  0x132d2		488dbc2490200000	LEAQ 0x2090(SP), DI	
+  0x132da		488db424301f0000	LEAQ 0x1f30(SP), SI	
+  0x132e2		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x132e7		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x132ec		e800000000		CALL 0x132f1		[1:5]R_CALL:runtime.duffcopy+756	
+  0x132f1		488b6d00		MOVQ 0(BP), BP		
+  0x132f5		c684243021000000	MOVB $0x0, 0x2130(SP)	
+  0x132fd		488bac2470200000	MOVQ 0x2070(SP), BP	
+  0x13305		4881c478200000		ADDQ $0x2078, SP	
+  0x1330c		c3			RET			
+			var m [10]string
+  0x1330d		488dbc24d01f0000	LEAQ 0x1fd0(SP), DI	
+  0x13315		0f57c0			XORPS X0, X0		
+  0x13318		488d7fe0		LEAQ -0x20(DI), DI	
+  0x1331c		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x13321		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x13326		e800000000		CALL 0x1332b		[1:5]R_CALL:runtime.duffzero+254	
+  0x1332b		488b6d00		MOVQ 0(BP), BP		
+			m[0] = r[bc[0]:bc[1]]
+  0x1332f		488b8424d0050000	MOVQ 0x5d0(SP), AX	
+  0x13337		488b8c24d8050000	MOVQ 0x5d8(SP), CX	
+  0x1333f		4c39c1			CMPQ R8, CX		
+  0x13342		0f8798090000		JA 0x13ce0		
+  0x13348		4839c8			CMPQ CX, AX		
+  0x1334b		0f878a090000		JA 0x13cdb		
+  0x13351		4829c1			SUBQ AX, CX		
+  0x13354		4889cb			MOVQ CX, BX		
+  0x13357		48f7d9			NEGQ CX			
+  0x1335a		48c1f93f		SARQ $0x3f, CX		
+  0x1335e		4821c8			ANDQ CX, AX		
+  0x13361		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x13365		4c899424d01f0000	MOVQ R10, 0x1fd0(SP)	
+  0x1336d		48899c24d81f0000	MOVQ BX, 0x1fd8(SP)	
+			m[1] = r[bc[2]:bc[3]]
+  0x13375		488b8424e0050000	MOVQ 0x5e0(SP), AX	
+  0x1337d		488b8c24e8050000	MOVQ 0x5e8(SP), CX	
+  0x13385		4c39c1			CMPQ R8, CX		
+  0x13388		0f8741090000		JA 0x13ccf		
+  0x1338e		0f1f840000000000	NOPL 0(AX)(AX*1)	
+  0x13396		4839c8			CMPQ CX, AX		
+  0x13399		0f872b090000		JA 0x13cca		
+  0x1339f		4829c1			SUBQ AX, CX		
+  0x133a2		4889cb			MOVQ CX, BX		
+  0x133a5		48f7d9			NEGQ CX			
+  0x133a8		48c1f93f		SARQ $0x3f, CX		
+  0x133ac		4821c8			ANDQ CX, AX		
+  0x133af		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x133b3		4c899424e01f0000	MOVQ R10, 0x1fe0(SP)	
+  0x133bb		48899c24e81f0000	MOVQ BX, 0x1fe8(SP)	
+			m[2] = r[bc[4]:bc[5]]
+  0x133c3		488b8424f0050000	MOVQ 0x5f0(SP), AX	
+  0x133cb		488b8c24f8050000	MOVQ 0x5f8(SP), CX	
+  0x133d3		0f1f00			NOPL 0(AX)		
+  0x133d6		4c39c1			CMPQ R8, CX		
+  0x133d9		0f87e3080000		JA 0x13cc2		
+  0x133df		4839c8			CMPQ CX, AX		
+  0x133e2		0f87d5080000		JA 0x13cbd		
+  0x133e8		4829c1			SUBQ AX, CX		
+  0x133eb		4889cb			MOVQ CX, BX		
+  0x133ee		48f7d9			NEGQ CX			
+  0x133f1		48c1f93f		SARQ $0x3f, CX		
+  0x133f5		4821c8			ANDQ CX, AX		
+  0x133f8		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x133fc		4c899424f01f0000	MOVQ R10, 0x1ff0(SP)	
+  0x13404		48899c24f81f0000	MOVQ BX, 0x1ff8(SP)	
+			m[3] = r[bc[6]:bc[7]]
+  0x1340c		488b842400060000	MOVQ 0x600(SP), AX	
+  0x13414		488b8c2408060000	MOVQ 0x608(SP), CX	
+  0x1341c		4c39c1			CMPQ R8, CX		
+  0x1341f		0f8790080000		JA 0x13cb5		
+  0x13425		4839c8			CMPQ CX, AX		
+  0x13428		0f8782080000		JA 0x13cb0		
+  0x1342e		4829c1			SUBQ AX, CX		
+  0x13431		4889cb			MOVQ CX, BX		
+  0x13434		48f7d9			NEGQ CX			
+  0x13437		48c1f93f		SARQ $0x3f, CX		
+  0x1343b		4821c8			ANDQ CX, AX		
+  0x1343e		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x13442		4c89942400200000	MOVQ R10, 0x2000(SP)	
+  0x1344a		48899c2408200000	MOVQ BX, 0x2008(SP)	
+			m[4] = r[bc[8]:bc[9]]
+  0x13452		488b842410060000	MOVQ 0x610(SP), AX	
+  0x1345a		488b8c2418060000	MOVQ 0x618(SP), CX	
+  0x13462		4c39c1			CMPQ R8, CX		
+  0x13465		0f873d080000		JA 0x13ca8		
+  0x1346b		4839c8			CMPQ CX, AX		
+  0x1346e		0f872f080000		JA 0x13ca3		
+  0x13474		4829c1			SUBQ AX, CX		
+  0x13477		4889cb			MOVQ CX, BX		
+  0x1347a		48f7d9			NEGQ CX			
+  0x1347d		48c1f93f		SARQ $0x3f, CX		
+  0x13481		4821c8			ANDQ CX, AX		
+  0x13484		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x13488		4c89942410200000	MOVQ R10, 0x2010(SP)	
+  0x13490		48899c2418200000	MOVQ BX, 0x2018(SP)	
+			m[5] = r[bc[10]:bc[11]]
+  0x13498		488b842420060000	MOVQ 0x620(SP), AX	
+  0x134a0		488b8c2428060000	MOVQ 0x628(SP), CX	
+  0x134a8		4c39c1			CMPQ R8, CX		
+  0x134ab		0f87ea070000		JA 0x13c9b		
+  0x134b1		0f1f440000		NOPL 0(AX)(AX*1)	
+  0x134b6		4839c8			CMPQ CX, AX		
+  0x134b9		0f87d7070000		JA 0x13c96		
+  0x134bf		4829c1			SUBQ AX, CX		
+  0x134c2		4889cb			MOVQ CX, BX		
+  0x134c5		48f7d9			NEGQ CX			
+  0x134c8		48c1f93f		SARQ $0x3f, CX		
+  0x134cc		4821c8			ANDQ CX, AX		
+  0x134cf		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x134d3		4c89942420200000	MOVQ R10, 0x2020(SP)	
+  0x134db		48899c2428200000	MOVQ BX, 0x2028(SP)	
+			m[6] = r[bc[12]:bc[13]]
+  0x134e3		488b842430060000	MOVQ 0x630(SP), AX	
+  0x134eb		488b8c2438060000	MOVQ 0x638(SP), CX	
+  0x134f3		0f1f00			NOPL 0(AX)		
+  0x134f6		4c39c1			CMPQ R8, CX		
+  0x134f9		0f878e070000		JA 0x13c8d		
+  0x134ff		4839c8			CMPQ CX, AX		
+  0x13502		0f8780070000		JA 0x13c88		
+  0x13508		4829c1			SUBQ AX, CX		
+  0x1350b		4889cb			MOVQ CX, BX		
+  0x1350e		48f7d9			NEGQ CX			
+  0x13511		48c1f93f		SARQ $0x3f, CX		
+  0x13515		4821c8			ANDQ CX, AX		
+  0x13518		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x1351c		4c89942430200000	MOVQ R10, 0x2030(SP)	
+  0x13524		48899c2438200000	MOVQ BX, 0x2038(SP)	
+			m[7] = r[bc[14]:bc[15]]
+  0x1352c		488b842440060000	MOVQ 0x640(SP), AX	
+  0x13534		488b8c2448060000	MOVQ 0x648(SP), CX	
+  0x1353c		4c39c1			CMPQ R8, CX		
+  0x1353f		0f873b070000		JA 0x13c80		
+  0x13545		4839c8			CMPQ CX, AX		
+  0x13548		0f872d070000		JA 0x13c7b		
+  0x1354e		4829c1			SUBQ AX, CX		
+  0x13551		4889cb			MOVQ CX, BX		
+  0x13554		48f7d9			NEGQ CX			
+  0x13557		48c1f93f		SARQ $0x3f, CX		
+  0x1355b		4821c8			ANDQ CX, AX		
+  0x1355e		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x13562		4c89942440200000	MOVQ R10, 0x2040(SP)	
+  0x1356a		48899c2448200000	MOVQ BX, 0x2048(SP)	
+			m[8] = r[bc[16]:bc[17]]
+  0x13572		488b842450060000	MOVQ 0x650(SP), AX	
+  0x1357a		488b8c2458060000	MOVQ 0x658(SP), CX	
+  0x13582		4c39c1			CMPQ R8, CX		
+  0x13585		0f87e7060000		JA 0x13c72		
+  0x1358b		4839c8			CMPQ CX, AX		
+  0x1358e		0f87d9060000		JA 0x13c6d		
+  0x13594		4829c1			SUBQ AX, CX		
+  0x13597		4889cb			MOVQ CX, BX		
+  0x1359a		48f7d9			NEGQ CX			
+  0x1359d		48c1f93f		SARQ $0x3f, CX		
+  0x135a1		4821c8			ANDQ CX, AX		
+  0x135a4		4d8d1401		LEAQ 0(R9)(AX*1), R10	
+  0x135a8		4c89942450200000	MOVQ R10, 0x2050(SP)	
+  0x135b0		48899c2458200000	MOVQ BX, 0x2058(SP)	
+			m[9] = r[bc[18]:bc[19]]
+  0x135b8		488b842460060000	MOVQ 0x660(SP), AX	
+  0x135c0		488b8c2468060000	MOVQ 0x668(SP), CX	
+  0x135c8		4c39c1			CMPQ R8, CX		
+  0x135cb		0f8794060000		JA 0x13c65		
+  0x135d1		0f1f440000		NOPL 0(AX)(AX*1)	
+  0x135d6		4839c8			CMPQ CX, AX		
+  0x135d9		0f8781060000		JA 0x13c60		
+  0x135df		4829c1			SUBQ AX, CX		
+  0x135e2		4889ca			MOVQ CX, DX		
+  0x135e5		48f7d9			NEGQ CX			
+  0x135e8		48c1f93f		SARQ $0x3f, CX		
+  0x135ec		4821c8			ANDQ CX, AX		
+  0x135ef		4c01c8			ADDQ R9, AX		
+  0x135f2		4889842460200000	MOVQ AX, 0x2060(SP)	
+  0x135fa		4889942468200000	MOVQ DX, 0x2068(SP)	
+			return m, true
+  0x13602		488dbc2490200000	LEAQ 0x2090(SP), DI	
+  0x1360a		488db424d01f0000	LEAQ 0x1fd0(SP), SI	
+  0x13612		0f1f4000		NOPL 0(AX)		
+  0x13616		48896c24f0		MOVQ BP, -0x10(SP)	
+  0x1361b		488d6c24f0		LEAQ -0x10(SP), BP	
+  0x13620		e800000000		CALL 0x13625		[1:5]R_CALL:runtime.duffcopy+756	
+  0x13625		488b6d00		MOVQ 0(BP), BP		
+  0x13629		c684243021000001	MOVB $0x1, 0x2130(SP)	
+  0x13631		488bac2470200000	MOVQ 0x2070(SP), BP	
+  0x13639		4881c478200000		ADDQ $0x2078, SP	
+  0x13640		c3			RET			
+				goto inst148
+  0x13641		4d89dd			MOVQ R11, R13		
+	if !matched || c[1]-c[0] > bc[1]-bc[0] {
+  0x13644		e94a77ffff		JMP 0xad93		
+				goto inst148
+  0x13649		4d89dd			MOVQ R11, R13		
+  0x1364c		31f6			XORL SI, SI		
+	goto fail
+  0x1364e		e98377ffff		JMP 0xadd6		
+			i += sz
+  0x13653		4c899c2490000000	MOVQ R11, 0x90(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1365b		4d29d8			SUBQ R11, R8		
+  0x1365e		4c89c1			MOVQ R8, CX		
+  0x13661		49f7d8			NEGQ R8			
+  0x13664		49c1f83f		SARQ $0x3f, R8		
+  0x13668		4d21d8			ANDQ R11, R8		
+  0x1366b		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x1366f		48891424		MOVQ DX, 0(SP)		
+  0x13673		48894c2408		MOVQ CX, 0x8(SP)	
+  0x13678		e800000000		CALL 0x1367d		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1367d		448b642410		MOVL 0x10(SP), R12	
+  0x13682		488b742418		MOVQ 0x18(SP), SI	
+		goto inst10
+  0x13687		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x1368f		488b4c2458		MOVQ 0x58(SP), CX	
+		if len(r[si:]) != 0 {
+  0x13694		488b942428050000	MOVQ 0x528(SP), DX	
+		goto inst10
+  0x1369c		488b5c2450		MOVQ 0x50(SP), BX	
+		if i <= len(r) && len(bt) > 0 {
+  0x136a1		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x136a9		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x136b1		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x136b7		4c8b9c2490000000	MOVQ 0x90(SP), R11	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x136bf		e98476ffff		JMP 0xad48		
+				goto inst148
+  0x136c4		4d89dd			MOVQ R11, R13		
+  0x136c7		31f6			XORL SI, SI		
+	goto fail
+  0x136c9		e90877ffff		JMP 0xadd6		
+			i += sz
+  0x136ce		4c899c2488000000	MOVQ R11, 0x88(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x136d6		4d29d8			SUBQ R11, R8		
+  0x136d9		4c89c1			MOVQ R8, CX		
+  0x136dc		49f7d8			NEGQ R8			
+  0x136df		49c1f83f		SARQ $0x3f, R8		
+  0x136e3		4d21d8			ANDQ R11, R8		
+  0x136e6		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x136ea		48891424		MOVQ DX, 0(SP)		
+  0x136ee		48894c2408		MOVQ CX, 0x8(SP)	
+  0x136f3		0f1f00			NOPL 0(AX)		
+  0x136f6		e800000000		CALL 0x136fb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x136fb		448b642410		MOVL 0x10(SP), R12	
+  0x13700		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x13705		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x1370d		488b4c2458		MOVQ 0x58(SP), CX	
+		if len(r[si:]) != 0 {
+  0x13712		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1371a		488b5c2450		MOVQ 0x50(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1371f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x13727		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1372f		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x13735		4c8b9c2488000000	MOVQ 0x88(SP), R11	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1373d		e9c675ffff		JMP 0xad08		
+				goto inst148
+  0x13742		4d89dd			MOVQ R11, R13		
+  0x13745		31f6			XORL SI, SI		
+	goto fail
+  0x13747		e98a76ffff		JMP 0xadd6		
+			i += sz
+  0x1374c		4c899c2480000000	MOVQ R11, 0x80(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x13754		4d29d8			SUBQ R11, R8		
+  0x13757		4c89c1			MOVQ R8, CX		
+  0x1375a		49f7d8			NEGQ R8			
+  0x1375d		49c1f83f		SARQ $0x3f, R8		
+  0x13761		4d21d8			ANDQ R11, R8		
+  0x13764		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x13768		48891424		MOVQ DX, 0(SP)		
+  0x1376c		48894c2408		MOVQ CX, 0x8(SP)	
+  0x13771		0f1f440000		NOPL 0(AX)(AX*1)	
+  0x13776		e800000000		CALL 0x1377b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1377b		448b642410		MOVL 0x10(SP), R12	
+  0x13780		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x13785		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x1378d		488b4c2458		MOVQ 0x58(SP), CX	
+		if len(r[si:]) != 0 {
+  0x13792		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1379a		488b5c2450		MOVQ 0x50(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1379f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x137a7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x137af		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x137b5		4c8b9c2480000000	MOVQ 0x80(SP), R11	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x137bd		e90675ffff		JMP 0xacc8		
+				goto inst148
+  0x137c2		4d89dd			MOVQ R11, R13		
+  0x137c5		31f6			XORL SI, SI		
+	goto fail
+  0x137c7		e90a76ffff		JMP 0xadd6		
+			i += sz
+  0x137cc		4c895c2478		MOVQ R11, 0x78(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x137d1		4d29d8			SUBQ R11, R8		
+  0x137d4		4c89c1			MOVQ R8, CX		
+  0x137d7		49f7d8			NEGQ R8			
+  0x137da		49c1f83f		SARQ $0x3f, R8		
+  0x137de		4d21d8			ANDQ R11, R8		
+  0x137e1		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x137e5		48891424		MOVQ DX, 0(SP)		
+  0x137e9		48894c2408		MOVQ CX, 0x8(SP)	
+  0x137ee		e800000000		CALL 0x137f3		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x137f3		448b642410		MOVL 0x10(SP), R12	
+  0x137f8		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x137fd		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x13805		488b4c2458		MOVQ 0x58(SP), CX	
+		if len(r[si:]) != 0 {
+  0x1380a		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x13812		488b5c2450		MOVQ 0x50(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x13817		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1381f		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x13827		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x1382d		4c8b5c2478		MOVQ 0x78(SP), R11	
+  0x13832		0f1f4000		NOPL 0(AX)		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x13836		e94d74ffff		JMP 0xac88		
+				goto inst148
+  0x1383b		4d89dd			MOVQ R11, R13		
+  0x1383e		31f6			XORL SI, SI		
+	goto fail
+  0x13840		e99175ffff		JMP 0xadd6		
+			i += sz
+  0x13845		4c895c2470		MOVQ R11, 0x70(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1384a		4d29d8			SUBQ R11, R8		
+  0x1384d		4c89c1			MOVQ R8, CX		
+  0x13850		49f7d8			NEGQ R8			
+  0x13853		49c1f83f		SARQ $0x3f, R8		
+  0x13857		4d21d8			ANDQ R11, R8		
+  0x1385a		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x1385e		48891424		MOVQ DX, 0(SP)		
+  0x13862		48894c2408		MOVQ CX, 0x8(SP)	
+  0x13867		e800000000		CALL 0x1386c		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1386c		448b642410		MOVL 0x10(SP), R12	
+  0x13871		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x13876		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x1387e		488b4c2458		MOVQ 0x58(SP), CX	
+		if len(r[si:]) != 0 {
+  0x13883		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1388b		488b5c2450		MOVQ 0x50(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x13890		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x13898		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x138a0		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x138a6		4c8b5c2470		MOVQ 0x70(SP), R11	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x138ab		e99873ffff		JMP 0xac48		
+				goto inst148
+  0x138b0		4d89dd			MOVQ R11, R13		
+  0x138b3		31f6			XORL SI, SI		
+  0x138b5		90			NOPL			
+	goto fail
+  0x138b6		e91b75ffff		JMP 0xadd6		
+			i += sz
+  0x138bb		4c895c2468		MOVQ R11, 0x68(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x138c0		4d29d8			SUBQ R11, R8		
+  0x138c3		4c89c1			MOVQ R8, CX		
+  0x138c6		49f7d8			NEGQ R8			
+  0x138c9		49c1f83f		SARQ $0x3f, R8		
+  0x138cd		4d21d8			ANDQ R11, R8		
+  0x138d0		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x138d4		48891424		MOVQ DX, 0(SP)		
+  0x138d8		48894c2408		MOVQ CX, 0x8(SP)	
+  0x138dd		e800000000		CALL 0x138e2		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x138e2		448b642410		MOVL 0x10(SP), R12	
+  0x138e7		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x138ec		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x138f4		488b4c2458		MOVQ 0x58(SP), CX	
+		if len(r[si:]) != 0 {
+  0x138f9		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x13901		488b5c2450		MOVQ 0x50(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x13906		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x1390e		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x13916		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x1391c		4c8b5c2468		MOVQ 0x68(SP), R11	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x13921		e9e272ffff		JMP 0xac08		
+				goto inst148
+  0x13926		4d89dd			MOVQ R11, R13		
+  0x13929		31f6			XORL SI, SI		
+	goto fail
+  0x1392b		e9a674ffff		JMP 0xadd6		
+			i += sz
+  0x13930		4c895c2460		MOVQ R11, 0x60(SP)	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x13935		4d29d8			SUBQ R11, R8		
+  0x13938		4c89c1			MOVQ R8, CX		
+  0x1393b		49f7d8			NEGQ R8			
+  0x1393e		49c1f83f		SARQ $0x3f, R8		
+  0x13942		4d21d8			ANDQ R11, R8		
+  0x13945		4b8d1401		LEAQ 0(R9)(R8*1), DX	
+  0x13949		48891424		MOVQ DX, 0(SP)		
+  0x1394d		48894c2408		MOVQ CX, 0x8(SP)	
+  0x13952		0f1f4000		NOPL 0(AX)		
+  0x13956		e800000000		CALL 0x1395b		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x1395b		448b642410		MOVL 0x10(SP), R12	
+  0x13960		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x13965		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x1396d		488b4c2458		MOVQ 0x58(SP), CX	
+		if len(r[si:]) != 0 {
+  0x13972		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x1397a		488b5c2450		MOVQ 0x50(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x1397f		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x13987		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x1398f		41ba11000000		MOVL $0x11, R10		
+			i += sz
+  0x13995		4c8b5c2460		MOVQ 0x60(SP), R11	
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x1399a		e92972ffff		JMP 0xabc8		
+				goto inst148
+  0x1399f		4989d5			MOVQ DX, R13		
+  0x139a2		31f6			XORL SI, SI		
+	goto fail
+  0x139a4		e92d74ffff		JMP 0xadd6		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x139a9		4929d0			SUBQ DX, R8		
+  0x139ac		4c89c1			MOVQ R8, CX		
+  0x139af		49f7d8			NEGQ R8			
+  0x139b2		49c1f83f		SARQ $0x3f, R8		
+  0x139b6		4921d0			ANDQ DX, R8		
+  0x139b9		4b8d1c01		LEAQ 0(R9)(R8*1), BX	
+  0x139bd		48891c24		MOVQ BX, 0(SP)		
+  0x139c1		48894c2408		MOVQ CX, 0x8(SP)	
+  0x139c6		e800000000		CALL 0x139cb		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
+  0x139cb		448b5c2410		MOVL 0x10(SP), R11	
+  0x139d0		488b742418		MOVQ 0x18(SP), SI	
+	goto inst161
+  0x139d5		488b8424e01e0000	MOVQ 0x1ee0(SP), AX	
+  0x139dd		488b4c2458		MOVQ 0x58(SP), CX	
+			i += sz
+  0x139e2		488b942428050000	MOVQ 0x528(SP), DX	
+	goto inst161
+  0x139ea		488b5c2450		MOVQ 0x50(SP), BX	
+	if i >= 0 && i < len(r) {
+  0x139ef		4c8b842488200000	MOVQ 0x2088(SP), R8	
+		cr, sz := rune(r[i]), 1
+  0x139f7		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+  0x139ff		41ba11000000		MOVL $0x11, R10		
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+  0x13a05		e97e71ffff		JMP 0xab88		
+		cr, sz := rune(r[i]), 1
+  0x13a0a		4c8b8c2480200000	MOVQ 0x2080(SP), R9	
+	goto fail
+  0x13a12		eb8b			JMP 0x1399f		
+		if i <= len(r) && len(bt) > 0 {
+  0x13a14		4c8b842488200000	MOVQ 0x2088(SP), R8	
+	if i >= 0 && i < len(r) {
+  0x13a1c		ebec			JMP 0x13a0a		
+	bt = append(bt, state{c, i, 39, 0})
+  0x13a1e		4c89842420050000	MOVQ R8, 0x520(SP)	
+	bt = append(bt, state{c, i, 18, 0})
+  0x13a26		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x13a2d		48891424		MOVQ DX, 0(SP)		
+  0x13a31		4889442408		MOVQ AX, 0x8(SP)	
+  0x13a36		4c89442410		MOVQ R8, 0x10(SP)	
+  0x13a3b		48894c2418		MOVQ CX, 0x18(SP)	
+  0x13a40		48895c2420		MOVQ BX, 0x20(SP)	
+  0x13a45		e800000000		CALL 0x13a4a		[1:5]R_CALL:runtime.growslice	
+  0x13a4a		488b442428		MOVQ 0x28(SP), AX	
+  0x13a4f		488b4c2430		MOVQ 0x30(SP), CX	
+  0x13a54		488b542438		MOVQ 0x38(SP), DX	
+  0x13a59		488d5901		LEAQ 0x1(CX), BX	
+  0x13a5d		4c8b842420050000	MOVQ 0x520(SP), R8	
+  0x13a65		41ba11000000		MOVL $0x11, R10		
+  0x13a6b		4889d1			MOVQ DX, CX		
+	if i >= 0 && i < len(r) {
+  0x13a6e		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 18, 0})
+  0x13a76		e98470ffff		JMP 0xaaff		
+	bt = append(bt, state{c, i, 59, 0})
+  0x13a7b		48899c2420050000	MOVQ BX, 0x520(SP)	
+	bt = append(bt, state{c, i, 39, 0})
+  0x13a83		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x13a8a		48891424		MOVQ DX, 0(SP)		
+  0x13a8e		4889442408		MOVQ AX, 0x8(SP)	
+  0x13a93		48895c2410		MOVQ BX, 0x10(SP)	
+  0x13a98		48894c2418		MOVQ CX, 0x18(SP)	
+  0x13a9d		4c89442420		MOVQ R8, 0x20(SP)	
+  0x13aa2		e800000000		CALL 0x13aa7		[1:5]R_CALL:runtime.growslice	
+  0x13aa7		488b442428		MOVQ 0x28(SP), AX	
+  0x13aac		488b4c2430		MOVQ 0x30(SP), CX	
+  0x13ab1		488b542438		MOVQ 0x38(SP), DX	
+  0x13ab6		4c8d4101		LEAQ 0x1(CX), R8	
+  0x13aba		488b9c2420050000	MOVQ 0x520(SP), BX	
+  0x13ac2		41ba11000000		MOVL $0x11, R10		
+  0x13ac8		4889d1			MOVQ DX, CX		
+	c[2] = i
+  0x13acb		488b942428050000	MOVQ 0x528(SP), DX	
+  0x13ad3		0f1f00			NOPL 0(AX)		
+	bt = append(bt, state{c, i, 39, 0})
+  0x13ad6		e9646fffff		JMP 0xaa3f		
+	bt = append(bt, state{c, i, 79, 0})
+  0x13adb		4c89842420050000	MOVQ R8, 0x520(SP)	
+	bt = append(bt, state{c, i, 59, 0})
+  0x13ae3		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x13aea		48891424		MOVQ DX, 0(SP)		
+  0x13aee		4889442408		MOVQ AX, 0x8(SP)	
+  0x13af3		4c89442410		MOVQ R8, 0x10(SP)	
+  0x13af8		48894c2418		MOVQ CX, 0x18(SP)	
+  0x13afd		48895c2420		MOVQ BX, 0x20(SP)	
+  0x13b02		e800000000		CALL 0x13b07		[1:5]R_CALL:runtime.growslice	
+  0x13b07		488b442428		MOVQ 0x28(SP), AX	
+  0x13b0c		488b4c2430		MOVQ 0x30(SP), CX	
+  0x13b11		488b542438		MOVQ 0x38(SP), DX	
+  0x13b16		488d5901		LEAQ 0x1(CX), BX	
+  0x13b1a		4c8b842420050000	MOVQ 0x520(SP), R8	
+  0x13b22		41ba11000000		MOVL $0x11, R10		
+  0x13b28		4889d1			MOVQ DX, CX		
+	bt = append(bt, state{c, i, 39, 0})
+  0x13b2b		488b942428050000	MOVQ 0x528(SP), DX	
+  0x13b33		0f1f00			NOPL 0(AX)		
+	bt = append(bt, state{c, i, 59, 0})
+  0x13b36		e9446effff		JMP 0xa97f		
+	bt = append(bt, state{c, i, 99, 0})
+  0x13b3b		48899c2420050000	MOVQ BX, 0x520(SP)	
+	bt = append(bt, state{c, i, 79, 0})
+  0x13b43		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x13b4a		48891424		MOVQ DX, 0(SP)		
+  0x13b4e		4889442408		MOVQ AX, 0x8(SP)	
+  0x13b53		48895c2410		MOVQ BX, 0x10(SP)	
+  0x13b58		48894c2418		MOVQ CX, 0x18(SP)	
+  0x13b5d		4c89442420		MOVQ R8, 0x20(SP)	
+  0x13b62		e800000000		CALL 0x13b67		[1:5]R_CALL:runtime.growslice	
+  0x13b67		488b442428		MOVQ 0x28(SP), AX	
+  0x13b6c		488b4c2430		MOVQ 0x30(SP), CX	
+  0x13b71		488b542438		MOVQ 0x38(SP), DX	
+  0x13b76		4c8d4101		LEAQ 0x1(CX), R8	
+  0x13b7a		488b9c2420050000	MOVQ 0x520(SP), BX	
+  0x13b82		41ba11000000		MOVL $0x11, R10		
+  0x13b88		4889d1			MOVQ DX, CX		
+	bt = append(bt, state{c, i, 59, 0})
+  0x13b8b		488b942428050000	MOVQ 0x528(SP), DX	
+  0x13b93		0f1f00			NOPL 0(AX)		
+	bt = append(bt, state{c, i, 79, 0})
+  0x13b96		e9246dffff		JMP 0xa8bf		
+	bt = append(bt, state{c, i, 119, 0})
+  0x13b9b		4c898c2420050000	MOVQ R9, 0x520(SP)	
+	bt = append(bt, state{c, i, 99, 0})
+  0x13ba3		488d1500000000		LEAQ 0(IP), DX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x13baa		48891424		MOVQ DX, 0(SP)		
+  0x13bae		4889442408		MOVQ AX, 0x8(SP)	
+  0x13bb3		4c894c2410		MOVQ R9, 0x10(SP)	
+  0x13bb8		48894c2418		MOVQ CX, 0x18(SP)	
+  0x13bbd		48895c2420		MOVQ BX, 0x20(SP)	
+  0x13bc2		e800000000		CALL 0x13bc7		[1:5]R_CALL:runtime.growslice	
+  0x13bc7		488b442428		MOVQ 0x28(SP), AX	
+  0x13bcc		488b4c2430		MOVQ 0x30(SP), CX	
+  0x13bd1		488b542438		MOVQ 0x38(SP), DX	
+  0x13bd6		488d5901		LEAQ 0x1(CX), BX	
+  0x13bda		4c8b8c2420050000	MOVQ 0x520(SP), R9	
+  0x13be2		41ba11000000		MOVL $0x11, R10		
+  0x13be8		4889d1			MOVQ DX, CX		
+	bt = append(bt, state{c, i, 79, 0})
+  0x13beb		488b942428050000	MOVQ 0x528(SP), DX	
+  0x13bf3		0f1f00			NOPL 0(AX)		
+	bt = append(bt, state{c, i, 99, 0})
+  0x13bf6		e9046cffff		JMP 0xa7ff		
+	bt = append(bt, state{c, i, 119, 0})
+  0x13bfb		488d0500000000		LEAQ 0(IP), AX		[3:7]R_PCREL:type.github.com/CAFxX/regexp2go/examples/dna.state	
+  0x13c02		48890424		MOVQ AX, 0(SP)		
+  0x13c06		4c89442408		MOVQ R8, 0x8(SP)	
+  0x13c0b		48895c2410		MOVQ BX, 0x10(SP)	
+  0x13c10		4c89542418		MOVQ R10, 0x18(SP)	
+  0x13c15		4c894c2420		MOVQ R9, 0x20(SP)	
+  0x13c1a		e800000000		CALL 0x13c1f		[1:5]R_CALL:runtime.growslice	
+  0x13c1f		488b442428		MOVQ 0x28(SP), AX	
+  0x13c24		488b4c2430		MOVQ 0x30(SP), CX	
+  0x13c29		488b542438		MOVQ 0x38(SP), DX	
+  0x13c2e		4c8d4901		LEAQ 0x1(CX), R9	
+	bt = append(bt, state{c, i, 139, 0})
+  0x13c32		bb03000000		MOVL $0x3, BX		
+  0x13c37		41ba11000000		MOVL $0x11, R10		
+	bt = append(bt, state{c, i, 119, 0})
+  0x13c3d		4889d1			MOVQ DX, CX		
+	bt = append(bt, state{c, i, 99, 0})
+  0x13c40		488b942428050000	MOVQ 0x528(SP), DX	
+	bt = append(bt, state{c, i, 119, 0})
+  0x13c48		e9e46affff		JMP 0xa731		
+			cr, sz := rune(r[i]), 1
+  0x13c4d		4889d0			MOVQ DX, AX		
+  0x13c50		e800000000		CALL 0x13c55		[1:5]R_CALL:runtime.panicIndex	
+		if len(r[si:]) != 0 {
+  0x13c55		4889d0			MOVQ DX, AX		
+  0x13c58		4c89c1			MOVQ R8, CX		
+  0x13c5b		e800000000		CALL 0x13c60		[1:5]R_CALL:runtime.panicSliceB	
+			m[9] = r[bc[18]:bc[19]]
+  0x13c60		e800000000		CALL 0x13c65		[1:5]R_CALL:runtime.panicSliceB	
+  0x13c65		4c89c2			MOVQ R8, DX		
+  0x13c68		e800000000		CALL 0x13c6d		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[8] = r[bc[16]:bc[17]]
+  0x13c6d		e800000000		CALL 0x13c72		[1:5]R_CALL:runtime.panicSliceB	
+  0x13c72		4c89c2			MOVQ R8, DX		
+  0x13c75		90			NOPL			
+  0x13c76		e800000000		CALL 0x13c7b		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[7] = r[bc[14]:bc[15]]
+  0x13c7b		e800000000		CALL 0x13c80		[1:5]R_CALL:runtime.panicSliceB	
+  0x13c80		4c89c2			MOVQ R8, DX		
+  0x13c83		e800000000		CALL 0x13c88		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[6] = r[bc[12]:bc[13]]
+  0x13c88		e800000000		CALL 0x13c8d		[1:5]R_CALL:runtime.panicSliceB	
+  0x13c8d		4c89c2			MOVQ R8, DX		
+  0x13c90		e800000000		CALL 0x13c95		[1:5]R_CALL:runtime.panicSliceAlen	
+  0x13c95		90			NOPL			
+			m[5] = r[bc[10]:bc[11]]
+  0x13c96		e800000000		CALL 0x13c9b		[1:5]R_CALL:runtime.panicSliceB	
+  0x13c9b		4c89c2			MOVQ R8, DX		
+  0x13c9e		e800000000		CALL 0x13ca3		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[4] = r[bc[8]:bc[9]]
+  0x13ca3		e800000000		CALL 0x13ca8		[1:5]R_CALL:runtime.panicSliceB	
+  0x13ca8		4c89c2			MOVQ R8, DX		
+  0x13cab		e800000000		CALL 0x13cb0		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[3] = r[bc[6]:bc[7]]
+  0x13cb0		e800000000		CALL 0x13cb5		[1:5]R_CALL:runtime.panicSliceB	
+  0x13cb5		4c89c2			MOVQ R8, DX		
+  0x13cb8		e800000000		CALL 0x13cbd		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[2] = r[bc[4]:bc[5]]
+  0x13cbd		e800000000		CALL 0x13cc2		[1:5]R_CALL:runtime.panicSliceB	
+  0x13cc2		4c89c2			MOVQ R8, DX		
+  0x13cc5		e800000000		CALL 0x13cca		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[1] = r[bc[2]:bc[3]]
+  0x13cca		e800000000		CALL 0x13ccf		[1:5]R_CALL:runtime.panicSliceB	
+  0x13ccf		4c89c2			MOVQ R8, DX		
+  0x13cd2		0f1f4000		NOPL 0(AX)		
+  0x13cd6		e800000000		CALL 0x13cdb		[1:5]R_CALL:runtime.panicSliceAlen	
+			m[0] = r[bc[0]:bc[1]]
+  0x13cdb		e800000000		CALL 0x13ce0		[1:5]R_CALL:runtime.panicSliceB	
+  0x13ce0		4c89c2			MOVQ R8, DX		
+  0x13ce3		e800000000		CALL 0x13ce8		[1:5]R_CALL:runtime.panicSliceAlen	
+		panic(bt[len(bt)-1].pc)
+  0x13ce8		4c892c24		MOVQ R13, 0(SP)		
+  0x13cec		e800000000		CALL 0x13cf1		[1:5]R_CALL:runtime.convT64	
+  0x13cf1		488d0500000000		LEAQ 0(IP), AX		[3:7]R_PCREL:type.int		
+  0x13cf8		48890424		MOVQ AX, 0(SP)		
+  0x13cfc		e800000000		CALL 0x13d01		[1:5]R_CALL:runtime.gopanic	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d01		e800000000		CALL 0x13d06		[1:5]R_CALL:runtime.panicshift	
+  0x13d06		4c89f8			MOVQ R15, AX		
+  0x13d09		b910000000		MOVL $0x10, CX		
+  0x13d0e		e800000000		CALL 0x13d13		[1:5]R_CALL:runtime.panicIndex	
+  0x13d13		0f1f00			NOPL 0(AX)		
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d16		e800000000		CALL 0x13d1b		[1:5]R_CALL:runtime.panicshift	
+  0x13d1b		4c89f0			MOVQ R14, AX		
+  0x13d1e		b910000000		MOVL $0x10, CX		
+  0x13d23		e800000000		CALL 0x13d28		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d28		e800000000		CALL 0x13d2d		[1:5]R_CALL:runtime.panicshift	
+  0x13d2d		4c89f8			MOVQ R15, AX		
+  0x13d30		b910000000		MOVL $0x10, CX		
+  0x13d35		90			NOPL			
+  0x13d36		e800000000		CALL 0x13d3b		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d3b		e800000000		CALL 0x13d40		[1:5]R_CALL:runtime.panicshift	
+  0x13d40		4c89f0			MOVQ R14, AX		
+  0x13d43		b910000000		MOVL $0x10, CX		
+  0x13d48		e800000000		CALL 0x13d4d		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d4d		e800000000		CALL 0x13d52		[1:5]R_CALL:runtime.panicshift	
+  0x13d52		4c89f8			MOVQ R15, AX		
+  0x13d55		b910000000		MOVL $0x10, CX		
+  0x13d5a		e800000000		CALL 0x13d5f		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d5f		e800000000		CALL 0x13d64		[1:5]R_CALL:runtime.panicshift	
+  0x13d64		4c89f0			MOVQ R14, AX		
+  0x13d67		b910000000		MOVL $0x10, CX		
+  0x13d6c		e800000000		CALL 0x13d71		[1:5]R_CALL:runtime.panicIndex	
+  0x13d71		0f1f440000		NOPL 0(AX)(AX*1)	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d76		e800000000		CALL 0x13d7b		[1:5]R_CALL:runtime.panicshift	
+  0x13d7b		4c89f8			MOVQ R15, AX		
+  0x13d7e		b910000000		MOVL $0x10, CX		
+  0x13d83		e800000000		CALL 0x13d88		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d88		e800000000		CALL 0x13d8d		[1:5]R_CALL:runtime.panicshift	
+  0x13d8d		4c89f0			MOVQ R14, AX		
+  0x13d90		b910000000		MOVL $0x10, CX		
+  0x13d95		90			NOPL			
+  0x13d96		e800000000		CALL 0x13d9b		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13d9b		e800000000		CALL 0x13da0		[1:5]R_CALL:runtime.panicshift	
+  0x13da0		4c89f8			MOVQ R15, AX		
+  0x13da3		b910000000		MOVL $0x10, CX		
+  0x13da8		e800000000		CALL 0x13dad		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13dad		e800000000		CALL 0x13db2		[1:5]R_CALL:runtime.panicshift	
+  0x13db2		4c89f0			MOVQ R14, AX		
+  0x13db5		b910000000		MOVL $0x10, CX		
+  0x13dba		e800000000		CALL 0x13dbf		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13dbf		e800000000		CALL 0x13dc4		[1:5]R_CALL:runtime.panicshift	
+  0x13dc4		4c89f8			MOVQ R15, AX		
+  0x13dc7		b910000000		MOVL $0x10, CX		
+  0x13dcc		e800000000		CALL 0x13dd1		[1:5]R_CALL:runtime.panicIndex	
+  0x13dd1		0f1f440000		NOPL 0(AX)(AX*1)	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13dd6		e800000000		CALL 0x13ddb		[1:5]R_CALL:runtime.panicshift	
+  0x13ddb		4c89f0			MOVQ R14, AX		
+  0x13dde		b910000000		MOVL $0x10, CX		
+  0x13de3		e800000000		CALL 0x13de8		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13de8		e800000000		CALL 0x13ded		[1:5]R_CALL:runtime.panicshift	
+  0x13ded		4c89f8			MOVQ R15, AX		
+  0x13df0		b910000000		MOVL $0x10, CX		
+  0x13df5		90			NOPL			
+  0x13df6		e800000000		CALL 0x13dfb		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13dfb		e800000000		CALL 0x13e00		[1:5]R_CALL:runtime.panicshift	
+  0x13e00		4c89f0			MOVQ R14, AX		
+  0x13e03		b910000000		MOVL $0x10, CX		
+  0x13e08		e800000000		CALL 0x13e0d		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13e0d		e800000000		CALL 0x13e12		[1:5]R_CALL:runtime.panicshift	
+  0x13e12		4c89f8			MOVQ R15, AX		
+  0x13e15		b910000000		MOVL $0x10, CX		
+  0x13e1a		e800000000		CALL 0x13e1f		[1:5]R_CALL:runtime.panicIndex	
+			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+  0x13e1f		e800000000		CALL 0x13e24		[1:5]R_CALL:runtime.panicshift	
+  0x13e24		4c89f0			MOVQ R14, AX		
+  0x13e27		b910000000		MOVL $0x10, CX		
+  0x13e2c		e800000000		CALL 0x13e31		[1:5]R_CALL:runtime.panicIndex	
+  0x13e31		90			NOPL			
+func Match(r string) ([10]string, bool) {
+  0x13e32		0f1f4000		NOPL 0(AX)						
+  0x13e36		e800000000		CALL 0x13e3b						[1:5]R_CALL:runtime.morestack_noctxt	
+  0x13e3b		e93665ffff		JMP github.com/CAFxX/regexp2go/examples/dna.Match(SB)	
 
 TEXT type..eq.[10]string(SB) gofile..<autogenerated>
 
-  0x23cdb		64488b0c2500000000	MOVQ FS:0, CX			[5:9]R_TLS_LE		
-  0x23ce4		483b6110		CMPQ 0x10(CX), SP		
-  0x23ce8		0f86b7000000		JBE 0x23da5			
-  0x23cee		4883ec30		SUBQ $0x30, SP			
-  0x23cf2		48896c2428		MOVQ BP, 0x28(SP)		
-  0x23cf7		488d6c2428		LEAQ 0x28(SP), BP		
-  0x23cfc		488b442438		MOVQ 0x38(SP), AX		
-  0x23d01		488b4c2440		MOVQ 0x40(SP), CX		
-  0x23d06		31d2			XORL DX, DX			
-  0x23d08		eb04			JMP 0x23d0e			
-  0x23d0a		488d5301		LEAQ 0x1(BX), DX		
-  0x23d0e		4883fa0a		CMPQ $0xa, DX			
-  0x23d12		7d25			JGE 0x23d39			
-  0x23d14		4889d3			MOVQ DX, BX			
-  0x23d17		48c1e204		SHLQ $0x4, DX			
-  0x23d1b		488b741108		MOVQ 0x8(CX)(DX*1), SI		
-  0x23d20		488b541008		MOVQ 0x8(AX)(DX*1), DX		
-  0x23d25		4839d6			CMPQ DX, SI			
-  0x23d28		74e0			JE 0x23d0a			
-  0x23d2a		c644244800		MOVB $0x0, 0x48(SP)		
-  0x23d2f		488b6c2428		MOVQ 0x28(SP), BP		
-  0x23d34		4883c430		ADDQ $0x30, SP			
-  0x23d38		c3			RET				
-  0x23d39		31d2			XORL DX, DX			
-  0x23d3b		eb13			JMP 0x23d50			
-  0x23d3d		488b5c2420		MOVQ 0x20(SP), BX		
-  0x23d42		488d5301		LEAQ 0x1(BX), DX		
-  0x23d46		488b442438		MOVQ 0x38(SP), AX		
-  0x23d4b		488b4c2440		MOVQ 0x40(SP), CX		
-  0x23d50		4883fa0a		CMPQ $0xa, DX			
-  0x23d54		7d40			JGE 0x23d96			
-  0x23d56		4889542420		MOVQ DX, 0x20(SP)		
-  0x23d5b		48c1e204		SHLQ $0x4, DX			
-  0x23d5f		488b3411		MOVQ 0(CX)(DX*1), SI		
-  0x23d63		488b3c10		MOVQ 0(AX)(DX*1), DI		
-  0x23d67		488b541008		MOVQ 0x8(AX)(DX*1), DX		
-  0x23d6c		48893c24		MOVQ DI, 0(SP)			
-  0x23d70		4889742408		MOVQ SI, 0x8(SP)		
-  0x23d75		4889542410		MOVQ DX, 0x10(SP)		
-  0x23d7a		90			NOPL				
-  0x23d7b		e800000000		CALL 0x23d80			[1:5]R_CALL:runtime.memequal	
-  0x23d80		807c241800		CMPB $0x0, 0x18(SP)		
-  0x23d85		75b6			JNE 0x23d3d			
-  0x23d87		c644244800		MOVB $0x0, 0x48(SP)		
-  0x23d8c		488b6c2428		MOVQ 0x28(SP), BP		
-  0x23d91		4883c430		ADDQ $0x30, SP			
-  0x23d95		c3			RET				
-  0x23d96		c644244801		MOVB $0x1, 0x48(SP)		
-  0x23d9b		488b6c2428		MOVQ 0x28(SP), BP		
-  0x23da0		4883c430		ADDQ $0x30, SP			
-  0x23da4		c3			RET				
-  0x23da5		e800000000		CALL 0x23daa			[1:5]R_CALL:runtime.morestack_noctxt	
-  0x23daa		e92cffffff		JMP type..eq.[10]string(SB)	
+  0x25ed0		64488b0c2500000000	MOVQ FS:0, CX			[5:9]R_TLS_LE		
+  0x25ed9		483b6110		CMPQ 0x10(CX), SP		
+  0x25edd		0f86b7000000		JBE 0x25f9a			
+  0x25ee3		4883ec30		SUBQ $0x30, SP			
+  0x25ee7		48896c2428		MOVQ BP, 0x28(SP)		
+  0x25eec		488d6c2428		LEAQ 0x28(SP), BP		
+  0x25ef1		488b442438		MOVQ 0x38(SP), AX		
+  0x25ef6		488b4c2440		MOVQ 0x40(SP), CX		
+  0x25efb		31d2			XORL DX, DX			
+  0x25efd		eb04			JMP 0x25f03			
+  0x25eff		488d5301		LEAQ 0x1(BX), DX		
+  0x25f03		4883fa0a		CMPQ $0xa, DX			
+  0x25f07		7d25			JGE 0x25f2e			
+  0x25f09		4889d3			MOVQ DX, BX			
+  0x25f0c		48c1e204		SHLQ $0x4, DX			
+  0x25f10		488b741108		MOVQ 0x8(CX)(DX*1), SI		
+  0x25f15		488b541008		MOVQ 0x8(AX)(DX*1), DX		
+  0x25f1a		4839d6			CMPQ DX, SI			
+  0x25f1d		74e0			JE 0x25eff			
+  0x25f1f		c644244800		MOVB $0x0, 0x48(SP)		
+  0x25f24		488b6c2428		MOVQ 0x28(SP), BP		
+  0x25f29		4883c430		ADDQ $0x30, SP			
+  0x25f2d		c3			RET				
+  0x25f2e		31d2			XORL DX, DX			
+  0x25f30		eb13			JMP 0x25f45			
+  0x25f32		488b5c2420		MOVQ 0x20(SP), BX		
+  0x25f37		488d5301		LEAQ 0x1(BX), DX		
+  0x25f3b		488b442438		MOVQ 0x38(SP), AX		
+  0x25f40		488b4c2440		MOVQ 0x40(SP), CX		
+  0x25f45		4883fa0a		CMPQ $0xa, DX			
+  0x25f49		7d40			JGE 0x25f8b			
+  0x25f4b		4889542420		MOVQ DX, 0x20(SP)		
+  0x25f50		48c1e204		SHLQ $0x4, DX			
+  0x25f54		488b3411		MOVQ 0(CX)(DX*1), SI		
+  0x25f58		488b3c10		MOVQ 0(AX)(DX*1), DI		
+  0x25f5c		488b541008		MOVQ 0x8(AX)(DX*1), DX		
+  0x25f61		48893c24		MOVQ DI, 0(SP)			
+  0x25f65		4889742408		MOVQ SI, 0x8(SP)		
+  0x25f6a		4889542410		MOVQ DX, 0x10(SP)		
+  0x25f6f		90			NOPL				
+  0x25f70		e800000000		CALL 0x25f75			[1:5]R_CALL:runtime.memequal	
+  0x25f75		807c241800		CMPB $0x0, 0x18(SP)		
+  0x25f7a		75b6			JNE 0x25f32			
+  0x25f7c		c644244800		MOVB $0x0, 0x48(SP)		
+  0x25f81		488b6c2428		MOVQ 0x28(SP), BP		
+  0x25f86		4883c430		ADDQ $0x30, SP			
+  0x25f8a		c3			RET				
+  0x25f8b		c644244801		MOVB $0x1, 0x48(SP)		
+  0x25f90		488b6c2428		MOVQ 0x28(SP), BP		
+  0x25f95		4883c430		ADDQ $0x30, SP			
+  0x25f99		c3			RET				
+  0x25f9a		e800000000		CALL 0x25f9f			[1:5]R_CALL:runtime.morestack_noctxt	
+  0x25f9f		e92cffffff		JMP type..eq.[10]string(SB)	

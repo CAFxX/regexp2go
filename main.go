@@ -111,6 +111,8 @@ func main() {
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  var _bt [%d]state // static storage for backtracking state \n bt := _bt[:0] // backtracking state ", numSt)
 	out("  var c [%d]int // captures ", p.NumCap)
+	out("var bc [%d]int // captures for the longest match so far", p.NumCap)
+	out("matched := false")
 	out("  i := si // current byte index ")
 	if len(prefix) > 0 {
 		// TODO: jump directly into the instruction at the end of the prefix
@@ -336,6 +338,15 @@ func main() {
 			if i <= len(r) && len(bt) > 0 { 
 				goto backtrack 
 			}
+			if matched {
+				var m [%d]string`,
+		p.NumCap/2,
+	)
+	for i := 0; i < p.NumCap/2; i++ {
+		out("m[%d] = r[bc[%d]:bc[%d]]", i, i*2, i*2+1)
+	}
+	out(`		return m, true
+			}
 			if len(r[si:]) != 0 {
 				i = si
 				`+outcr+`
@@ -349,18 +360,15 @@ func main() {
 		p.NumCap/2,
 	)
 
-	// TODO: search for the longest match starting at si, not just for the first match
 	out(`
 		goto unreachable
 		goto match
-		match: { 
-			var m [%d]string`,
-		p.NumCap/2,
-	)
-	for i := 0; i < p.NumCap/2; i++ {
-		out("m[%d] = r[c[%d]:c[%d]]", i, i*2, i*2+1)
-	}
-	out("return m, true \n }")
+		match:
+			if !matched || c[1] - c[0] > bc[1] - bc[0] {
+				bc = c
+				matched = true
+			}
+			goto fail`)
 
 	out(`
 	goto unreachable

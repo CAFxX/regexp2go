@@ -28,9 +28,11 @@ restart:
 	var _bt [17]state // static storage for backtracking state
 	bt := _bt[:0]     // backtracking state
 	var c [20]int     // captures
-	i := si           // current byte index
-	c[0] = i          // start of match
-	goto inst179      // initial instruction
+	var bc [20]int    // captures for the longest match so far
+	matched := false
+	i := si      // current byte index
+	c[0] = i     // start of match
+	goto inst179 // initial instruction
 
 	goto unreachable
 	goto inst0
@@ -2981,6 +2983,20 @@ fail:
 		if i <= len(r) && len(bt) > 0 {
 			goto backtrack
 		}
+		if matched {
+			var m [10]string
+			m[0] = r[bc[0]:bc[1]]
+			m[1] = r[bc[2]:bc[3]]
+			m[2] = r[bc[4]:bc[5]]
+			m[3] = r[bc[6]:bc[7]]
+			m[4] = r[bc[8]:bc[9]]
+			m[5] = r[bc[10]:bc[11]]
+			m[6] = r[bc[12]:bc[13]]
+			m[7] = r[bc[14]:bc[15]]
+			m[8] = r[bc[16]:bc[17]]
+			m[9] = r[bc[18]:bc[19]]
+			return m, true
+		}
 		if len(r[si:]) != 0 {
 			i = si
 
@@ -3000,20 +3016,11 @@ fail:
 	goto unreachable
 	goto match
 match:
-	{
-		var m [10]string
-		m[0] = r[c[0]:c[1]]
-		m[1] = r[c[2]:c[3]]
-		m[2] = r[c[4]:c[5]]
-		m[3] = r[c[6]:c[7]]
-		m[4] = r[c[8]:c[9]]
-		m[5] = r[c[10]:c[11]]
-		m[6] = r[c[12]:c[13]]
-		m[7] = r[c[14]:c[15]]
-		m[8] = r[c[16]:c[17]]
-		m[9] = r[c[18]:c[19]]
-		return m, true
+	if !matched || c[1]-c[0] > bc[1]-bc[0] {
+		bc = c
+		matched = true
 	}
+	goto fail
 
 	goto unreachable
 unreachable:
