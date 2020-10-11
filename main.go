@@ -244,6 +244,7 @@ func main() {
 			fallthrough
 		case syntax.InstRune:
 			// TODO: turn sequences of InstRune* into an optimized substring search, when possible
+			// TODO: instead of decoding and then comparing the rune, encode the rune and compare the bytes (similar to substring search above, but for single runes)
 			if len(inst.Rune) == 0 {
 				panic("empty rune")
 			}
@@ -274,6 +275,7 @@ func main() {
 			runeMask := runeMask(runes, max)
 			useRuneMask := false
 			// TODO: use a threshold on the number of ranges actually covered by the runeMask
+			// TODO: implement a succint encoding that allows fast O(1) set membership queries for the case of sparse non-ASCII rune ranges
 			if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
 				useRuneMask = true
 				outn(`if cr < %d { 
