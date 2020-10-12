@@ -49,37 +49,27 @@ inst0: // fail
 
 	goto unreachable
 	goto inst1
-inst1: // rune1 "\u79c1" -> 2
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 31169 {
-			i += sz
-			goto inst2
-		}
+inst1: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "私は" {
+		goto fail
+	}
+	i += 6
+	goto inst3
 
 	goto unreachable
 	goto inst2
-inst2: // rune1 "\u306f" -> 3
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 12399 {
-			i += sz
-			goto inst3
-		}
+inst2: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "は" {
+		goto fail
+	}
+	i += 3
+	goto inst3
 
 	goto unreachable
 	goto inst3
@@ -141,37 +131,27 @@ inst6: // cap 3 -> 7
 
 	goto unreachable
 	goto inst7
-inst7: // rune1 "\u3067" -> 8
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 12391 {
-			i += sz
-			goto inst8
-		}
+inst7: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "です" {
+		goto fail
+	}
+	i += 6
+	goto inst9
 
 	goto unreachable
 	goto inst8
-inst8: // rune1 "\u3059" -> 9
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 12377 {
-			i += sz
-			goto inst9
-		}
+inst8: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "す" {
+		goto fail
+	}
+	i += 3
+	goto inst9
 
 	goto unreachable
 	goto inst9

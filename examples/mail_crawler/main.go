@@ -132,20 +132,15 @@ inst5: // cap 3 -> 6
 
 	goto unreachable
 	goto inst6
-inst6: // rune1 "@" -> 7
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 64 {
-			i += sz
-			goto inst7
-		}
+inst6: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "@" {
+		goto fail
+	}
+	i += 1
+	goto inst7
 
 	goto unreachable
 	goto inst7
@@ -208,20 +203,15 @@ inst9_alt:
 
 	goto unreachable
 	goto inst10
-inst10: // rune1 "." -> 11
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 46 {
-			i += sz
-			goto inst11
-		}
+inst10: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "." {
+		goto fail
+	}
+	i += 1
+	goto inst11
 
 	goto unreachable
 	goto inst11

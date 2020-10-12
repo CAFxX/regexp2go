@@ -45,6 +45,9 @@ func main() {
 
 	prefix, _ := p.Prefix()
 
+	// optimization passes
+	optString(p)
+
 	numSt := 0
 	for _, inst := range p.Inst {
 		if inst.Op == syntax.InstAlt {
@@ -287,6 +290,7 @@ func main() {
 						goto fail 
 					} else `, max, runeMask, inst.Out)
 			}
+			// TODO: expand the ranges as lists of runes, and use a switch instead; see if the compiler is smart enough to build a search tree
 			outn("if false ")
 			for i := 0; i < len(runes); i += 2 {
 				if useRuneMask && runes[i+1] < max {
@@ -319,6 +323,11 @@ func main() {
 			out("if cr == rune('\\n') { goto fail }")
 			out("i+=sz \n goto inst%d", inst.Out)
 			out(`}`)
+		case instString:
+			out("if i < 0 || i+%d > len(r) { goto fail }", len(string(inst.Rune)))
+			out("if r[i:i+%d] != %q { goto fail }", len(string(inst.Rune)), string(inst.Rune))
+			out("i += %d", len(string(inst.Rune)))
+			out("goto inst%d", inst.Out)
 		default:
 			panic("unknown op")
 		}
@@ -423,4 +432,34 @@ func runeMask(runes []rune, max rune) string {
 		}
 	}
 	return string(mask)
+}
+
+const (
+	instString syntax.InstOp = 64 + iota
+)
+
+func optString(p *syntax.Prog) {
+	for i, inst := range p.Inst {
+		var r []rune
+		var out uint32
+		for {
+			if inst.Op != syntax.InstRune1 {
+				break
+			}
+			if foldCase := syntax.Flags(inst.Arg)&syntax.FoldCase != 0; foldCase {
+				break
+			}
+			r = append(r, inst.Rune[0])
+			out = inst.Out
+			inst = p.Inst[inst.Out]
+		}
+		if len(r) == 0 {
+			continue
+		}
+		p.Inst[i] = syntax.Inst{
+			Op:   instString,
+			Out:  out,
+			Rune: r,
+		}
+	}
 }

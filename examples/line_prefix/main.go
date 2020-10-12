@@ -59,20 +59,15 @@ inst1: // empty 1 -> 2
 
 	goto unreachable
 	goto inst2
-inst2: // rune1 ">" -> 3
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 62 {
-			i += sz
-			goto inst3
-		}
+inst2: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != ">" {
+		goto fail
+	}
+	i += 1
+	goto inst3
 
 	goto unreachable
 	goto inst3

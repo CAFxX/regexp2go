@@ -47,275 +47,195 @@ inst1: // cap 2 -> 18
 
 	goto unreachable
 	goto inst2
-inst2: // rune1 "a" -> 3
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst3
-		}
+inst2: //
+	if i < 0 || i+8 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+8] != "agggtaaa" {
+		goto fail
+	}
+	i += 8
+	goto inst19
 
 	goto unreachable
 	goto inst3
-inst3: // rune1 "g" -> 4
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst4
-		}
+inst3: //
+	if i < 0 || i+7 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+7] != "gggtaaa" {
+		goto fail
+	}
+	i += 7
+	goto inst19
 
 	goto unreachable
 	goto inst4
-inst4: // rune1 "g" -> 5
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst5
-		}
+inst4: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "ggtaaa" {
+		goto fail
+	}
+	i += 6
+	goto inst19
 
 	goto unreachable
 	goto inst5
-inst5: // rune1 "g" -> 6
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst6
-		}
+inst5: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "gtaaa" {
+		goto fail
+	}
+	i += 5
+	goto inst19
 
 	goto unreachable
 	goto inst6
-inst6: // rune1 "t" -> 7
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst7
-		}
+inst6: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "taaa" {
+		goto fail
+	}
+	i += 4
+	goto inst19
 
 	goto unreachable
 	goto inst7
-inst7: // rune1 "a" -> 8
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst8
-		}
+inst7: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "aaa" {
+		goto fail
+	}
+	i += 3
+	goto inst19
 
 	goto unreachable
 	goto inst8
-inst8: // rune1 "a" -> 9
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst9
-		}
+inst8: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst19
 
 	goto unreachable
 	goto inst9
-inst9: // rune1 "a" -> 19
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst19
-		}
+inst9: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst19
 
 	goto unreachable
 	goto inst10
-inst10: // rune1 "t" -> 11
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst11
-		}
+inst10: //
+	if i < 0 || i+8 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+8] != "tttaccct" {
+		goto fail
+	}
+	i += 8
+	goto inst19
 
 	goto unreachable
 	goto inst11
-inst11: // rune1 "t" -> 12
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst12
-		}
+inst11: //
+	if i < 0 || i+7 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+7] != "ttaccct" {
+		goto fail
+	}
+	i += 7
+	goto inst19
 
 	goto unreachable
 	goto inst12
-inst12: // rune1 "t" -> 13
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst13
-		}
+inst12: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "taccct" {
+		goto fail
+	}
+	i += 6
+	goto inst19
 
 	goto unreachable
 	goto inst13
-inst13: // rune1 "a" -> 14
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst14
-		}
+inst13: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "accct" {
+		goto fail
+	}
+	i += 5
+	goto inst19
 
 	goto unreachable
 	goto inst14
-inst14: // rune1 "c" -> 15
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst15
-		}
+inst14: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ccct" {
+		goto fail
+	}
+	i += 4
+	goto inst19
 
 	goto unreachable
 	goto inst15
-inst15: // rune1 "c" -> 16
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst16
-		}
+inst15: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "cct" {
+		goto fail
+	}
+	i += 3
+	goto inst19
 
 	goto unreachable
 	goto inst16
-inst16: // rune1 "c" -> 17
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst17
-		}
+inst16: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ct" {
+		goto fail
+	}
+	i += 2
+	goto inst19
 
 	goto unreachable
 	goto inst17
-inst17: // rune1 "t" -> 19
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst19
-		}
+inst17: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst19
 
 	goto unreachable
 	goto inst18
@@ -368,241 +288,171 @@ inst21: // rune "ccggtt" -> 22
 
 	goto unreachable
 	goto inst22
-inst22: // rune1 "g" -> 23
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst23
-		}
+inst22: //
+	if i < 0 || i+7 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+7] != "gggtaaa" {
+		goto fail
+	}
+	i += 7
+	goto inst38
 
 	goto unreachable
 	goto inst23
-inst23: // rune1 "g" -> 24
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst24
-		}
+inst23: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "ggtaaa" {
+		goto fail
+	}
+	i += 6
+	goto inst38
 
 	goto unreachable
 	goto inst24
-inst24: // rune1 "g" -> 25
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst25
-		}
+inst24: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "gtaaa" {
+		goto fail
+	}
+	i += 5
+	goto inst38
 
 	goto unreachable
 	goto inst25
-inst25: // rune1 "t" -> 26
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst26
-		}
+inst25: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "taaa" {
+		goto fail
+	}
+	i += 4
+	goto inst38
 
 	goto unreachable
 	goto inst26
-inst26: // rune1 "a" -> 27
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst27
-		}
+inst26: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "aaa" {
+		goto fail
+	}
+	i += 3
+	goto inst38
 
 	goto unreachable
 	goto inst27
-inst27: // rune1 "a" -> 28
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst28
-		}
+inst27: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst38
 
 	goto unreachable
 	goto inst28
-inst28: // rune1 "a" -> 38
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst38
-		}
+inst28: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst38
 
 	goto unreachable
 	goto inst29
-inst29: // rune1 "t" -> 30
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst30
-		}
+inst29: //
+	if i < 0 || i+7 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+7] != "tttaccc" {
+		goto fail
+	}
+	i += 7
+	goto inst36
 
 	goto unreachable
 	goto inst30
-inst30: // rune1 "t" -> 31
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst31
-		}
+inst30: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "ttaccc" {
+		goto fail
+	}
+	i += 6
+	goto inst36
 
 	goto unreachable
 	goto inst31
-inst31: // rune1 "t" -> 32
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst32
-		}
+inst31: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "taccc" {
+		goto fail
+	}
+	i += 5
+	goto inst36
 
 	goto unreachable
 	goto inst32
-inst32: // rune1 "a" -> 33
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst33
-		}
+inst32: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "accc" {
+		goto fail
+	}
+	i += 4
+	goto inst36
 
 	goto unreachable
 	goto inst33
-inst33: // rune1 "c" -> 34
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst34
-		}
+inst33: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "ccc" {
+		goto fail
+	}
+	i += 3
+	goto inst36
 
 	goto unreachable
 	goto inst34
-inst34: // rune1 "c" -> 35
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst35
-		}
+inst34: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "cc" {
+		goto fail
+	}
+	i += 2
+	goto inst36
 
 	goto unreachable
 	goto inst35
-inst35: // rune1 "c" -> 36
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst36
-		}
+inst35: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "c" {
+		goto fail
+	}
+	i += 1
+	goto inst36
 
 	goto unreachable
 	goto inst36
@@ -668,20 +518,15 @@ inst40: // cap 6 -> 57
 
 	goto unreachable
 	goto inst41
-inst41: // rune1 "a" -> 42
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst42
-		}
+inst41: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst42
 
 	goto unreachable
 	goto inst42
@@ -709,207 +554,147 @@ inst42: // rune "aacctt" -> 43
 
 	goto unreachable
 	goto inst43
-inst43: // rune1 "g" -> 44
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst44
-		}
+inst43: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "ggtaaa" {
+		goto fail
+	}
+	i += 6
+	goto inst58
 
 	goto unreachable
 	goto inst44
-inst44: // rune1 "g" -> 45
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst45
-		}
+inst44: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "gtaaa" {
+		goto fail
+	}
+	i += 5
+	goto inst58
 
 	goto unreachable
 	goto inst45
-inst45: // rune1 "t" -> 46
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst46
-		}
+inst45: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "taaa" {
+		goto fail
+	}
+	i += 4
+	goto inst58
 
 	goto unreachable
 	goto inst46
-inst46: // rune1 "a" -> 47
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst47
-		}
+inst46: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "aaa" {
+		goto fail
+	}
+	i += 3
+	goto inst58
 
 	goto unreachable
 	goto inst47
-inst47: // rune1 "a" -> 48
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst48
-		}
+inst47: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst58
 
 	goto unreachable
 	goto inst48
-inst48: // rune1 "a" -> 58
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst58
-		}
+inst48: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst58
 
 	goto unreachable
 	goto inst49
-inst49: // rune1 "t" -> 50
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst50
-		}
+inst49: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "tttacc" {
+		goto fail
+	}
+	i += 6
+	goto inst55
 
 	goto unreachable
 	goto inst50
-inst50: // rune1 "t" -> 51
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst51
-		}
+inst50: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "ttacc" {
+		goto fail
+	}
+	i += 5
+	goto inst55
 
 	goto unreachable
 	goto inst51
-inst51: // rune1 "t" -> 52
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst52
-		}
+inst51: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "tacc" {
+		goto fail
+	}
+	i += 4
+	goto inst55
 
 	goto unreachable
 	goto inst52
-inst52: // rune1 "a" -> 53
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst53
-		}
+inst52: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "acc" {
+		goto fail
+	}
+	i += 3
+	goto inst55
 
 	goto unreachable
 	goto inst53
-inst53: // rune1 "c" -> 54
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst54
-		}
+inst53: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "cc" {
+		goto fail
+	}
+	i += 2
+	goto inst55
 
 	goto unreachable
 	goto inst54
-inst54: // rune1 "c" -> 55
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst55
-		}
+inst54: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "c" {
+		goto fail
+	}
+	i += 1
+	goto inst55
 
 	goto unreachable
 	goto inst55
@@ -937,20 +722,15 @@ inst55: // rune "aaggtt" -> 56
 
 	goto unreachable
 	goto inst56
-inst56: // rune1 "t" -> 58
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst58
-		}
+inst56: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst58
 
 	goto unreachable
 	goto inst57
@@ -992,37 +772,27 @@ inst60: // cap 8 -> 77
 
 	goto unreachable
 	goto inst61
-inst61: // rune1 "a" -> 62
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst62
-		}
+inst61: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ag" {
+		goto fail
+	}
+	i += 2
+	goto inst63
 
 	goto unreachable
 	goto inst62
-inst62: // rune1 "g" -> 63
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst63
-		}
+inst62: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "g" {
+		goto fail
+	}
+	i += 1
+	goto inst63
 
 	goto unreachable
 	goto inst63
@@ -1050,173 +820,123 @@ inst63: // rune "aacctt" -> 64
 
 	goto unreachable
 	goto inst64
-inst64: // rune1 "g" -> 65
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst65
-		}
+inst64: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "gtaaa" {
+		goto fail
+	}
+	i += 5
+	goto inst78
 
 	goto unreachable
 	goto inst65
-inst65: // rune1 "t" -> 66
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst66
-		}
+inst65: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "taaa" {
+		goto fail
+	}
+	i += 4
+	goto inst78
 
 	goto unreachable
 	goto inst66
-inst66: // rune1 "a" -> 67
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst67
-		}
+inst66: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "aaa" {
+		goto fail
+	}
+	i += 3
+	goto inst78
 
 	goto unreachable
 	goto inst67
-inst67: // rune1 "a" -> 68
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst68
-		}
+inst67: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst78
 
 	goto unreachable
 	goto inst68
-inst68: // rune1 "a" -> 78
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst78
-		}
+inst68: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst78
 
 	goto unreachable
 	goto inst69
-inst69: // rune1 "t" -> 70
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst70
-		}
+inst69: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "tttac" {
+		goto fail
+	}
+	i += 5
+	goto inst74
 
 	goto unreachable
 	goto inst70
-inst70: // rune1 "t" -> 71
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst71
-		}
+inst70: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ttac" {
+		goto fail
+	}
+	i += 4
+	goto inst74
 
 	goto unreachable
 	goto inst71
-inst71: // rune1 "t" -> 72
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst72
-		}
+inst71: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "tac" {
+		goto fail
+	}
+	i += 3
+	goto inst74
 
 	goto unreachable
 	goto inst72
-inst72: // rune1 "a" -> 73
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst73
-		}
+inst72: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ac" {
+		goto fail
+	}
+	i += 2
+	goto inst74
 
 	goto unreachable
 	goto inst73
-inst73: // rune1 "c" -> 74
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst74
-		}
+inst73: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "c" {
+		goto fail
+	}
+	i += 1
+	goto inst74
 
 	goto unreachable
 	goto inst74
@@ -1244,37 +964,27 @@ inst74: // rune "aaggtt" -> 75
 
 	goto unreachable
 	goto inst75
-inst75: // rune1 "c" -> 76
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst76
-		}
+inst75: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ct" {
+		goto fail
+	}
+	i += 2
+	goto inst78
 
 	goto unreachable
 	goto inst76
-inst76: // rune1 "t" -> 78
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst78
-		}
+inst76: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst78
 
 	goto unreachable
 	goto inst77
@@ -1316,54 +1026,39 @@ inst80: // cap 10 -> 97
 
 	goto unreachable
 	goto inst81
-inst81: // rune1 "a" -> 82
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst82
-		}
+inst81: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "agg" {
+		goto fail
+	}
+	i += 3
+	goto inst84
 
 	goto unreachable
 	goto inst82
-inst82: // rune1 "g" -> 83
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst83
-		}
+inst82: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "gg" {
+		goto fail
+	}
+	i += 2
+	goto inst84
 
 	goto unreachable
 	goto inst83
-inst83: // rune1 "g" -> 84
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst84
-		}
+inst83: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "g" {
+		goto fail
+	}
+	i += 1
+	goto inst84
 
 	goto unreachable
 	goto inst84
@@ -1391,139 +1086,99 @@ inst84: // rune "aacctt" -> 85
 
 	goto unreachable
 	goto inst85
-inst85: // rune1 "t" -> 86
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst86
-		}
+inst85: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "taaa" {
+		goto fail
+	}
+	i += 4
+	goto inst98
 
 	goto unreachable
 	goto inst86
-inst86: // rune1 "a" -> 87
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst87
-		}
+inst86: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "aaa" {
+		goto fail
+	}
+	i += 3
+	goto inst98
 
 	goto unreachable
 	goto inst87
-inst87: // rune1 "a" -> 88
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst88
-		}
+inst87: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst98
 
 	goto unreachable
 	goto inst88
-inst88: // rune1 "a" -> 98
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst98
-		}
+inst88: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst98
 
 	goto unreachable
 	goto inst89
-inst89: // rune1 "t" -> 90
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst90
-		}
+inst89: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ttta" {
+		goto fail
+	}
+	i += 4
+	goto inst93
 
 	goto unreachable
 	goto inst90
-inst90: // rune1 "t" -> 91
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst91
-		}
+inst90: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "tta" {
+		goto fail
+	}
+	i += 3
+	goto inst93
 
 	goto unreachable
 	goto inst91
-inst91: // rune1 "t" -> 92
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst92
-		}
+inst91: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ta" {
+		goto fail
+	}
+	i += 2
+	goto inst93
 
 	goto unreachable
 	goto inst92
-inst92: // rune1 "a" -> 93
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst93
-		}
+inst92: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst93
 
 	goto unreachable
 	goto inst93
@@ -1551,54 +1206,39 @@ inst93: // rune "aaggtt" -> 94
 
 	goto unreachable
 	goto inst94
-inst94: // rune1 "c" -> 95
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst95
-		}
+inst94: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "cct" {
+		goto fail
+	}
+	i += 3
+	goto inst98
 
 	goto unreachable
 	goto inst95
-inst95: // rune1 "c" -> 96
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst96
-		}
+inst95: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ct" {
+		goto fail
+	}
+	i += 2
+	goto inst98
 
 	goto unreachable
 	goto inst96
-inst96: // rune1 "t" -> 98
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst98
-		}
+inst96: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst98
 
 	goto unreachable
 	goto inst97
@@ -1640,71 +1280,51 @@ inst100: // cap 12 -> 117
 
 	goto unreachable
 	goto inst101
-inst101: // rune1 "a" -> 102
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst102
-		}
+inst101: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "aggg" {
+		goto fail
+	}
+	i += 4
+	goto inst105
 
 	goto unreachable
 	goto inst102
-inst102: // rune1 "g" -> 103
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst103
-		}
+inst102: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "ggg" {
+		goto fail
+	}
+	i += 3
+	goto inst105
 
 	goto unreachable
 	goto inst103
-inst103: // rune1 "g" -> 104
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst104
-		}
+inst103: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "gg" {
+		goto fail
+	}
+	i += 2
+	goto inst105
 
 	goto unreachable
 	goto inst104
-inst104: // rune1 "g" -> 105
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst105
-		}
+inst104: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "g" {
+		goto fail
+	}
+	i += 1
+	goto inst105
 
 	goto unreachable
 	goto inst105
@@ -1732,105 +1352,75 @@ inst105: // rune "aaccgg" -> 106
 
 	goto unreachable
 	goto inst106
-inst106: // rune1 "a" -> 107
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst107
-		}
+inst106: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "aaa" {
+		goto fail
+	}
+	i += 3
+	goto inst118
 
 	goto unreachable
 	goto inst107
-inst107: // rune1 "a" -> 108
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst108
-		}
+inst107: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst118
 
 	goto unreachable
 	goto inst108
-inst108: // rune1 "a" -> 118
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst118
-		}
+inst108: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst118
 
 	goto unreachable
 	goto inst109
-inst109: // rune1 "t" -> 110
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst110
-		}
+inst109: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "ttt" {
+		goto fail
+	}
+	i += 3
+	goto inst112
 
 	goto unreachable
 	goto inst110
-inst110: // rune1 "t" -> 111
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst111
-		}
+inst110: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "tt" {
+		goto fail
+	}
+	i += 2
+	goto inst112
 
 	goto unreachable
 	goto inst111
-inst111: // rune1 "t" -> 112
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst112
-		}
+inst111: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst112
 
 	goto unreachable
 	goto inst112
@@ -1858,71 +1448,51 @@ inst112: // rune "ccggtt" -> 113
 
 	goto unreachable
 	goto inst113
-inst113: // rune1 "c" -> 114
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst114
-		}
+inst113: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ccct" {
+		goto fail
+	}
+	i += 4
+	goto inst118
 
 	goto unreachable
 	goto inst114
-inst114: // rune1 "c" -> 115
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst115
-		}
+inst114: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "cct" {
+		goto fail
+	}
+	i += 3
+	goto inst118
 
 	goto unreachable
 	goto inst115
-inst115: // rune1 "c" -> 116
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst116
-		}
+inst115: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ct" {
+		goto fail
+	}
+	i += 2
+	goto inst118
 
 	goto unreachable
 	goto inst116
-inst116: // rune1 "t" -> 118
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst118
-		}
+inst116: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst118
 
 	goto unreachable
 	goto inst117
@@ -1964,88 +1534,63 @@ inst120: // cap 14 -> 137
 
 	goto unreachable
 	goto inst121
-inst121: // rune1 "a" -> 122
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst122
-		}
+inst121: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "agggt" {
+		goto fail
+	}
+	i += 5
+	goto inst126
 
 	goto unreachable
 	goto inst122
-inst122: // rune1 "g" -> 123
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst123
-		}
+inst122: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "gggt" {
+		goto fail
+	}
+	i += 4
+	goto inst126
 
 	goto unreachable
 	goto inst123
-inst123: // rune1 "g" -> 124
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst124
-		}
+inst123: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "ggt" {
+		goto fail
+	}
+	i += 3
+	goto inst126
 
 	goto unreachable
 	goto inst124
-inst124: // rune1 "g" -> 125
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst125
-		}
+inst124: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "gt" {
+		goto fail
+	}
+	i += 2
+	goto inst126
 
 	goto unreachable
 	goto inst125
-inst125: // rune1 "t" -> 126
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst126
-		}
+inst125: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst126
 
 	goto unreachable
 	goto inst126
@@ -2073,71 +1618,51 @@ inst126: // rune "ccggtt" -> 127
 
 	goto unreachable
 	goto inst127
-inst127: // rune1 "a" -> 128
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst128
-		}
+inst127: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst138
 
 	goto unreachable
 	goto inst128
-inst128: // rune1 "a" -> 138
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst138
-		}
+inst128: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst138
 
 	goto unreachable
 	goto inst129
-inst129: // rune1 "t" -> 130
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst130
-		}
+inst129: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "tt" {
+		goto fail
+	}
+	i += 2
+	goto inst131
 
 	goto unreachable
 	goto inst130
-inst130: // rune1 "t" -> 131
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst131
-		}
+inst130: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst131
 
 	goto unreachable
 	goto inst131
@@ -2165,88 +1690,63 @@ inst131: // rune "aaccgg" -> 132
 
 	goto unreachable
 	goto inst132
-inst132: // rune1 "a" -> 133
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst133
-		}
+inst132: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "accct" {
+		goto fail
+	}
+	i += 5
+	goto inst138
 
 	goto unreachable
 	goto inst133
-inst133: // rune1 "c" -> 134
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst134
-		}
+inst133: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ccct" {
+		goto fail
+	}
+	i += 4
+	goto inst138
 
 	goto unreachable
 	goto inst134
-inst134: // rune1 "c" -> 135
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst135
-		}
+inst134: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "cct" {
+		goto fail
+	}
+	i += 3
+	goto inst138
 
 	goto unreachable
 	goto inst135
-inst135: // rune1 "c" -> 136
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst136
-		}
+inst135: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ct" {
+		goto fail
+	}
+	i += 2
+	goto inst138
 
 	goto unreachable
 	goto inst136
-inst136: // rune1 "t" -> 138
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst138
-		}
+inst136: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst138
 
 	goto unreachable
 	goto inst137
@@ -2288,105 +1788,75 @@ inst140: // cap 16 -> 157
 
 	goto unreachable
 	goto inst141
-inst141: // rune1 "a" -> 142
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst142
-		}
+inst141: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "agggta" {
+		goto fail
+	}
+	i += 6
+	goto inst147
 
 	goto unreachable
 	goto inst142
-inst142: // rune1 "g" -> 143
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst143
-		}
+inst142: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "gggta" {
+		goto fail
+	}
+	i += 5
+	goto inst147
 
 	goto unreachable
 	goto inst143
-inst143: // rune1 "g" -> 144
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst144
-		}
+inst143: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ggta" {
+		goto fail
+	}
+	i += 4
+	goto inst147
 
 	goto unreachable
 	goto inst144
-inst144: // rune1 "g" -> 145
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst145
-		}
+inst144: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "gta" {
+		goto fail
+	}
+	i += 3
+	goto inst147
 
 	goto unreachable
 	goto inst145
-inst145: // rune1 "t" -> 146
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst146
-		}
+inst145: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ta" {
+		goto fail
+	}
+	i += 2
+	goto inst147
 
 	goto unreachable
 	goto inst146
-inst146: // rune1 "a" -> 147
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst147
-		}
+inst146: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst147
 
 	goto unreachable
 	goto inst147
@@ -2414,37 +1884,27 @@ inst147: // rune "ccggtt" -> 148
 
 	goto unreachable
 	goto inst148
-inst148: // rune1 "a" -> 158
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst158
-		}
+inst148: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst158
 
 	goto unreachable
 	goto inst149
-inst149: // rune1 "t" -> 150
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst150
-		}
+inst149: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst150
 
 	goto unreachable
 	goto inst150
@@ -2472,105 +1932,75 @@ inst150: // rune "aaccgg" -> 151
 
 	goto unreachable
 	goto inst151
-inst151: // rune1 "t" -> 152
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst152
-		}
+inst151: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "taccct" {
+		goto fail
+	}
+	i += 6
+	goto inst158
 
 	goto unreachable
 	goto inst152
-inst152: // rune1 "a" -> 153
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst153
-		}
+inst152: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "accct" {
+		goto fail
+	}
+	i += 5
+	goto inst158
 
 	goto unreachable
 	goto inst153
-inst153: // rune1 "c" -> 154
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst154
-		}
+inst153: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ccct" {
+		goto fail
+	}
+	i += 4
+	goto inst158
 
 	goto unreachable
 	goto inst154
-inst154: // rune1 "c" -> 155
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst155
-		}
+inst154: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "cct" {
+		goto fail
+	}
+	i += 3
+	goto inst158
 
 	goto unreachable
 	goto inst155
-inst155: // rune1 "c" -> 156
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst156
-		}
+inst155: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ct" {
+		goto fail
+	}
+	i += 2
+	goto inst158
 
 	goto unreachable
 	goto inst156
-inst156: // rune1 "t" -> 158
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst158
-		}
+inst156: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst158
 
 	goto unreachable
 	goto inst157
@@ -2612,122 +2042,87 @@ inst160: // cap 18 -> 177
 
 	goto unreachable
 	goto inst161
-inst161: // rune1 "a" -> 162
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst162
-		}
+inst161: //
+	if i < 0 || i+7 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+7] != "agggtaa" {
+		goto fail
+	}
+	i += 7
+	goto inst168
 
 	goto unreachable
 	goto inst162
-inst162: // rune1 "g" -> 163
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst163
-		}
+inst162: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "gggtaa" {
+		goto fail
+	}
+	i += 6
+	goto inst168
 
 	goto unreachable
 	goto inst163
-inst163: // rune1 "g" -> 164
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst164
-		}
+inst163: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "ggtaa" {
+		goto fail
+	}
+	i += 5
+	goto inst168
 
 	goto unreachable
 	goto inst164
-inst164: // rune1 "g" -> 165
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 103 {
-			i += sz
-			goto inst165
-		}
+inst164: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "gtaa" {
+		goto fail
+	}
+	i += 4
+	goto inst168
 
 	goto unreachable
 	goto inst165
-inst165: // rune1 "t" -> 166
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst166
-		}
+inst165: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "taa" {
+		goto fail
+	}
+	i += 3
+	goto inst168
 
 	goto unreachable
 	goto inst166
-inst166: // rune1 "a" -> 167
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst167
-		}
+inst166: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "aa" {
+		goto fail
+	}
+	i += 2
+	goto inst168
 
 	goto unreachable
 	goto inst167
-inst167: // rune1 "a" -> 168
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst168
-		}
+inst167: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "a" {
+		goto fail
+	}
+	i += 1
+	goto inst168
 
 	goto unreachable
 	goto inst168
@@ -2779,122 +2174,87 @@ inst169: // rune "aaccgg" -> 170
 
 	goto unreachable
 	goto inst170
-inst170: // rune1 "t" -> 171
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst171
-		}
+inst170: //
+	if i < 0 || i+7 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+7] != "ttaccct" {
+		goto fail
+	}
+	i += 7
+	goto inst178
 
 	goto unreachable
 	goto inst171
-inst171: // rune1 "t" -> 172
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst172
-		}
+inst171: //
+	if i < 0 || i+6 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+6] != "taccct" {
+		goto fail
+	}
+	i += 6
+	goto inst178
 
 	goto unreachable
 	goto inst172
-inst172: // rune1 "a" -> 173
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 97 {
-			i += sz
-			goto inst173
-		}
+inst172: //
+	if i < 0 || i+5 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+5] != "accct" {
+		goto fail
+	}
+	i += 5
+	goto inst178
 
 	goto unreachable
 	goto inst173
-inst173: // rune1 "c" -> 174
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst174
-		}
+inst173: //
+	if i < 0 || i+4 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+4] != "ccct" {
+		goto fail
+	}
+	i += 4
+	goto inst178
 
 	goto unreachable
 	goto inst174
-inst174: // rune1 "c" -> 175
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst175
-		}
+inst174: //
+	if i < 0 || i+3 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+3] != "cct" {
+		goto fail
+	}
+	i += 3
+	goto inst178
 
 	goto unreachable
 	goto inst175
-inst175: // rune1 "c" -> 176
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 99 {
-			i += sz
-			goto inst176
-		}
+inst175: //
+	if i < 0 || i+2 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+2] != "ct" {
+		goto fail
+	}
+	i += 2
+	goto inst178
 
 	goto unreachable
 	goto inst176
-inst176: // rune1 "t" -> 178
-	if i >= 0 && i < len(r) {
-
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || cr == 116 {
-			i += sz
-			goto inst178
-		}
+inst176: //
+	if i < 0 || i+1 > len(r) {
+		goto fail
 	}
-	goto fail
+	if r[i:i+1] != "t" {
+		goto fail
+	}
+	i += 1
+	goto inst178
 
 	goto unreachable
 	goto inst177
