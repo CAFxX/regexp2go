@@ -34,10 +34,7 @@ restart:
 	c[0] = i     // start of match
 	goto inst179 // initial instruction
 
-	goto unreachable
-	goto inst0
-inst0: // fail
-	goto fail
+	// inst0 unreacheable
 
 	goto unreachable
 	goto inst1
@@ -57,89 +54,19 @@ inst2: //
 	i += 8
 	goto inst19
 
-	goto unreachable
-	goto inst3
-inst3: //
-	if i < 0 || i+7 > len(r) {
-		goto fail
-	}
-	if r[i:i+7] != "gggtaaa" {
-		goto fail
-	}
-	i += 7
-	goto inst19
+	// inst3 unreacheable
 
-	goto unreachable
-	goto inst4
-inst4: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
-	}
-	if r[i:i+6] != "ggtaaa" {
-		goto fail
-	}
-	i += 6
-	goto inst19
+	// inst4 unreacheable
 
-	goto unreachable
-	goto inst5
-inst5: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "gtaaa" {
-		goto fail
-	}
-	i += 5
-	goto inst19
+	// inst5 unreacheable
 
-	goto unreachable
-	goto inst6
-inst6: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "taaa" {
-		goto fail
-	}
-	i += 4
-	goto inst19
+	// inst6 unreacheable
 
-	goto unreachable
-	goto inst7
-inst7: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "aaa" {
-		goto fail
-	}
-	i += 3
-	goto inst19
+	// inst7 unreacheable
 
-	goto unreachable
-	goto inst8
-inst8: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst19
+	// inst8 unreacheable
 
-	goto unreachable
-	goto inst9
-inst9: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst19
+	// inst9 unreacheable
 
 	goto unreachable
 	goto inst10
@@ -153,89 +80,19 @@ inst10: //
 	i += 8
 	goto inst19
 
-	goto unreachable
-	goto inst11
-inst11: //
-	if i < 0 || i+7 > len(r) {
-		goto fail
-	}
-	if r[i:i+7] != "ttaccct" {
-		goto fail
-	}
-	i += 7
-	goto inst19
+	// inst11 unreacheable
 
-	goto unreachable
-	goto inst12
-inst12: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
-	}
-	if r[i:i+6] != "taccct" {
-		goto fail
-	}
-	i += 6
-	goto inst19
+	// inst12 unreacheable
 
-	goto unreachable
-	goto inst13
-inst13: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "accct" {
-		goto fail
-	}
-	i += 5
-	goto inst19
+	// inst13 unreacheable
 
-	goto unreachable
-	goto inst14
-inst14: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "ccct" {
-		goto fail
-	}
-	i += 4
-	goto inst19
+	// inst14 unreacheable
 
-	goto unreachable
-	goto inst15
-inst15: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "cct" {
-		goto fail
-	}
-	i += 3
-	goto inst19
+	// inst15 unreacheable
 
-	goto unreachable
-	goto inst16
-inst16: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ct" {
-		goto fail
-	}
-	i += 2
-	goto inst19
+	// inst16 unreacheable
 
-	goto unreachable
-	goto inst17
-inst17: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst19
+	// inst17 unreacheable
 
 	goto unreachable
 	goto inst18
@@ -298,77 +155,17 @@ inst22: //
 	i += 7
 	goto inst38
 
-	goto unreachable
-	goto inst23
-inst23: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
-	}
-	if r[i:i+6] != "ggtaaa" {
-		goto fail
-	}
-	i += 6
-	goto inst38
+	// inst23 unreacheable
 
-	goto unreachable
-	goto inst24
-inst24: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "gtaaa" {
-		goto fail
-	}
-	i += 5
-	goto inst38
+	// inst24 unreacheable
 
-	goto unreachable
-	goto inst25
-inst25: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "taaa" {
-		goto fail
-	}
-	i += 4
-	goto inst38
+	// inst25 unreacheable
 
-	goto unreachable
-	goto inst26
-inst26: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "aaa" {
-		goto fail
-	}
-	i += 3
-	goto inst38
+	// inst26 unreacheable
 
-	goto unreachable
-	goto inst27
-inst27: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst38
+	// inst27 unreacheable
 
-	goto unreachable
-	goto inst28
-inst28: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst38
+	// inst28 unreacheable
 
 	goto unreachable
 	goto inst29
@@ -382,77 +179,17 @@ inst29: //
 	i += 7
 	goto inst36
 
-	goto unreachable
-	goto inst30
-inst30: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
-	}
-	if r[i:i+6] != "ttaccc" {
-		goto fail
-	}
-	i += 6
-	goto inst36
+	// inst30 unreacheable
 
-	goto unreachable
-	goto inst31
-inst31: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "taccc" {
-		goto fail
-	}
-	i += 5
-	goto inst36
+	// inst31 unreacheable
 
-	goto unreachable
-	goto inst32
-inst32: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "accc" {
-		goto fail
-	}
-	i += 4
-	goto inst36
+	// inst32 unreacheable
 
-	goto unreachable
-	goto inst33
-inst33: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "ccc" {
-		goto fail
-	}
-	i += 3
-	goto inst36
+	// inst33 unreacheable
 
-	goto unreachable
-	goto inst34
-inst34: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "cc" {
-		goto fail
-	}
-	i += 2
-	goto inst36
+	// inst34 unreacheable
 
-	goto unreachable
-	goto inst35
-inst35: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "c" {
-		goto fail
-	}
-	i += 1
-	goto inst36
+	// inst35 unreacheable
 
 	goto unreachable
 	goto inst36
@@ -564,65 +301,15 @@ inst43: //
 	i += 6
 	goto inst58
 
-	goto unreachable
-	goto inst44
-inst44: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "gtaaa" {
-		goto fail
-	}
-	i += 5
-	goto inst58
+	// inst44 unreacheable
 
-	goto unreachable
-	goto inst45
-inst45: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "taaa" {
-		goto fail
-	}
-	i += 4
-	goto inst58
+	// inst45 unreacheable
 
-	goto unreachable
-	goto inst46
-inst46: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "aaa" {
-		goto fail
-	}
-	i += 3
-	goto inst58
+	// inst46 unreacheable
 
-	goto unreachable
-	goto inst47
-inst47: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst58
+	// inst47 unreacheable
 
-	goto unreachable
-	goto inst48
-inst48: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst58
+	// inst48 unreacheable
 
 	goto unreachable
 	goto inst49
@@ -636,65 +323,15 @@ inst49: //
 	i += 6
 	goto inst55
 
-	goto unreachable
-	goto inst50
-inst50: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "ttacc" {
-		goto fail
-	}
-	i += 5
-	goto inst55
+	// inst50 unreacheable
 
-	goto unreachable
-	goto inst51
-inst51: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "tacc" {
-		goto fail
-	}
-	i += 4
-	goto inst55
+	// inst51 unreacheable
 
-	goto unreachable
-	goto inst52
-inst52: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "acc" {
-		goto fail
-	}
-	i += 3
-	goto inst55
+	// inst52 unreacheable
 
-	goto unreachable
-	goto inst53
-inst53: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "cc" {
-		goto fail
-	}
-	i += 2
-	goto inst55
+	// inst53 unreacheable
 
-	goto unreachable
-	goto inst54
-inst54: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "c" {
-		goto fail
-	}
-	i += 1
-	goto inst55
+	// inst54 unreacheable
 
 	goto unreachable
 	goto inst55
@@ -782,17 +419,7 @@ inst61: //
 	i += 2
 	goto inst63
 
-	goto unreachable
-	goto inst62
-inst62: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "g" {
-		goto fail
-	}
-	i += 1
-	goto inst63
+	// inst62 unreacheable
 
 	goto unreachable
 	goto inst63
@@ -830,53 +457,13 @@ inst64: //
 	i += 5
 	goto inst78
 
-	goto unreachable
-	goto inst65
-inst65: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "taaa" {
-		goto fail
-	}
-	i += 4
-	goto inst78
+	// inst65 unreacheable
 
-	goto unreachable
-	goto inst66
-inst66: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "aaa" {
-		goto fail
-	}
-	i += 3
-	goto inst78
+	// inst66 unreacheable
 
-	goto unreachable
-	goto inst67
-inst67: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst78
+	// inst67 unreacheable
 
-	goto unreachable
-	goto inst68
-inst68: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst78
+	// inst68 unreacheable
 
 	goto unreachable
 	goto inst69
@@ -890,53 +477,13 @@ inst69: //
 	i += 5
 	goto inst74
 
-	goto unreachable
-	goto inst70
-inst70: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "ttac" {
-		goto fail
-	}
-	i += 4
-	goto inst74
+	// inst70 unreacheable
 
-	goto unreachable
-	goto inst71
-inst71: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "tac" {
-		goto fail
-	}
-	i += 3
-	goto inst74
+	// inst71 unreacheable
 
-	goto unreachable
-	goto inst72
-inst72: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ac" {
-		goto fail
-	}
-	i += 2
-	goto inst74
+	// inst72 unreacheable
 
-	goto unreachable
-	goto inst73
-inst73: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "c" {
-		goto fail
-	}
-	i += 1
-	goto inst74
+	// inst73 unreacheable
 
 	goto unreachable
 	goto inst74
@@ -974,17 +521,7 @@ inst75: //
 	i += 2
 	goto inst78
 
-	goto unreachable
-	goto inst76
-inst76: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst78
+	// inst76 unreacheable
 
 	goto unreachable
 	goto inst77
@@ -1036,29 +573,9 @@ inst81: //
 	i += 3
 	goto inst84
 
-	goto unreachable
-	goto inst82
-inst82: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "gg" {
-		goto fail
-	}
-	i += 2
-	goto inst84
+	// inst82 unreacheable
 
-	goto unreachable
-	goto inst83
-inst83: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "g" {
-		goto fail
-	}
-	i += 1
-	goto inst84
+	// inst83 unreacheable
 
 	goto unreachable
 	goto inst84
@@ -1096,41 +613,11 @@ inst85: //
 	i += 4
 	goto inst98
 
-	goto unreachable
-	goto inst86
-inst86: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "aaa" {
-		goto fail
-	}
-	i += 3
-	goto inst98
+	// inst86 unreacheable
 
-	goto unreachable
-	goto inst87
-inst87: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst98
+	// inst87 unreacheable
 
-	goto unreachable
-	goto inst88
-inst88: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst98
+	// inst88 unreacheable
 
 	goto unreachable
 	goto inst89
@@ -1144,41 +631,11 @@ inst89: //
 	i += 4
 	goto inst93
 
-	goto unreachable
-	goto inst90
-inst90: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "tta" {
-		goto fail
-	}
-	i += 3
-	goto inst93
+	// inst90 unreacheable
 
-	goto unreachable
-	goto inst91
-inst91: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ta" {
-		goto fail
-	}
-	i += 2
-	goto inst93
+	// inst91 unreacheable
 
-	goto unreachable
-	goto inst92
-inst92: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst93
+	// inst92 unreacheable
 
 	goto unreachable
 	goto inst93
@@ -1216,29 +673,9 @@ inst94: //
 	i += 3
 	goto inst98
 
-	goto unreachable
-	goto inst95
-inst95: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ct" {
-		goto fail
-	}
-	i += 2
-	goto inst98
+	// inst95 unreacheable
 
-	goto unreachable
-	goto inst96
-inst96: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst98
+	// inst96 unreacheable
 
 	goto unreachable
 	goto inst97
@@ -1290,41 +727,11 @@ inst101: //
 	i += 4
 	goto inst105
 
-	goto unreachable
-	goto inst102
-inst102: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "ggg" {
-		goto fail
-	}
-	i += 3
-	goto inst105
+	// inst102 unreacheable
 
-	goto unreachable
-	goto inst103
-inst103: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "gg" {
-		goto fail
-	}
-	i += 2
-	goto inst105
+	// inst103 unreacheable
 
-	goto unreachable
-	goto inst104
-inst104: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "g" {
-		goto fail
-	}
-	i += 1
-	goto inst105
+	// inst104 unreacheable
 
 	goto unreachable
 	goto inst105
@@ -1362,29 +769,9 @@ inst106: //
 	i += 3
 	goto inst118
 
-	goto unreachable
-	goto inst107
-inst107: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst118
+	// inst107 unreacheable
 
-	goto unreachable
-	goto inst108
-inst108: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst118
+	// inst108 unreacheable
 
 	goto unreachable
 	goto inst109
@@ -1398,29 +785,9 @@ inst109: //
 	i += 3
 	goto inst112
 
-	goto unreachable
-	goto inst110
-inst110: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "tt" {
-		goto fail
-	}
-	i += 2
-	goto inst112
+	// inst110 unreacheable
 
-	goto unreachable
-	goto inst111
-inst111: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst112
+	// inst111 unreacheable
 
 	goto unreachable
 	goto inst112
@@ -1458,41 +825,11 @@ inst113: //
 	i += 4
 	goto inst118
 
-	goto unreachable
-	goto inst114
-inst114: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "cct" {
-		goto fail
-	}
-	i += 3
-	goto inst118
+	// inst114 unreacheable
 
-	goto unreachable
-	goto inst115
-inst115: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ct" {
-		goto fail
-	}
-	i += 2
-	goto inst118
+	// inst115 unreacheable
 
-	goto unreachable
-	goto inst116
-inst116: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst118
+	// inst116 unreacheable
 
 	goto unreachable
 	goto inst117
@@ -1544,53 +881,13 @@ inst121: //
 	i += 5
 	goto inst126
 
-	goto unreachable
-	goto inst122
-inst122: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "gggt" {
-		goto fail
-	}
-	i += 4
-	goto inst126
+	// inst122 unreacheable
 
-	goto unreachable
-	goto inst123
-inst123: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "ggt" {
-		goto fail
-	}
-	i += 3
-	goto inst126
+	// inst123 unreacheable
 
-	goto unreachable
-	goto inst124
-inst124: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "gt" {
-		goto fail
-	}
-	i += 2
-	goto inst126
+	// inst124 unreacheable
 
-	goto unreachable
-	goto inst125
-inst125: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst126
+	// inst125 unreacheable
 
 	goto unreachable
 	goto inst126
@@ -1628,17 +925,7 @@ inst127: //
 	i += 2
 	goto inst138
 
-	goto unreachable
-	goto inst128
-inst128: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst138
+	// inst128 unreacheable
 
 	goto unreachable
 	goto inst129
@@ -1652,17 +939,7 @@ inst129: //
 	i += 2
 	goto inst131
 
-	goto unreachable
-	goto inst130
-inst130: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst131
+	// inst130 unreacheable
 
 	goto unreachable
 	goto inst131
@@ -1700,53 +977,13 @@ inst132: //
 	i += 5
 	goto inst138
 
-	goto unreachable
-	goto inst133
-inst133: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "ccct" {
-		goto fail
-	}
-	i += 4
-	goto inst138
+	// inst133 unreacheable
 
-	goto unreachable
-	goto inst134
-inst134: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "cct" {
-		goto fail
-	}
-	i += 3
-	goto inst138
+	// inst134 unreacheable
 
-	goto unreachable
-	goto inst135
-inst135: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ct" {
-		goto fail
-	}
-	i += 2
-	goto inst138
+	// inst135 unreacheable
 
-	goto unreachable
-	goto inst136
-inst136: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst138
+	// inst136 unreacheable
 
 	goto unreachable
 	goto inst137
@@ -1798,65 +1035,15 @@ inst141: //
 	i += 6
 	goto inst147
 
-	goto unreachable
-	goto inst142
-inst142: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "gggta" {
-		goto fail
-	}
-	i += 5
-	goto inst147
+	// inst142 unreacheable
 
-	goto unreachable
-	goto inst143
-inst143: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "ggta" {
-		goto fail
-	}
-	i += 4
-	goto inst147
+	// inst143 unreacheable
 
-	goto unreachable
-	goto inst144
-inst144: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "gta" {
-		goto fail
-	}
-	i += 3
-	goto inst147
+	// inst144 unreacheable
 
-	goto unreachable
-	goto inst145
-inst145: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ta" {
-		goto fail
-	}
-	i += 2
-	goto inst147
+	// inst145 unreacheable
 
-	goto unreachable
-	goto inst146
-inst146: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst147
+	// inst146 unreacheable
 
 	goto unreachable
 	goto inst147
@@ -1942,65 +1129,15 @@ inst151: //
 	i += 6
 	goto inst158
 
-	goto unreachable
-	goto inst152
-inst152: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "accct" {
-		goto fail
-	}
-	i += 5
-	goto inst158
+	// inst152 unreacheable
 
-	goto unreachable
-	goto inst153
-inst153: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "ccct" {
-		goto fail
-	}
-	i += 4
-	goto inst158
+	// inst153 unreacheable
 
-	goto unreachable
-	goto inst154
-inst154: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "cct" {
-		goto fail
-	}
-	i += 3
-	goto inst158
+	// inst154 unreacheable
 
-	goto unreachable
-	goto inst155
-inst155: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ct" {
-		goto fail
-	}
-	i += 2
-	goto inst158
+	// inst155 unreacheable
 
-	goto unreachable
-	goto inst156
-inst156: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst158
+	// inst156 unreacheable
 
 	goto unreachable
 	goto inst157
@@ -2052,77 +1189,17 @@ inst161: //
 	i += 7
 	goto inst168
 
-	goto unreachable
-	goto inst162
-inst162: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
-	}
-	if r[i:i+6] != "gggtaa" {
-		goto fail
-	}
-	i += 6
-	goto inst168
+	// inst162 unreacheable
 
-	goto unreachable
-	goto inst163
-inst163: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "ggtaa" {
-		goto fail
-	}
-	i += 5
-	goto inst168
+	// inst163 unreacheable
 
-	goto unreachable
-	goto inst164
-inst164: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "gtaa" {
-		goto fail
-	}
-	i += 4
-	goto inst168
+	// inst164 unreacheable
 
-	goto unreachable
-	goto inst165
-inst165: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "taa" {
-		goto fail
-	}
-	i += 3
-	goto inst168
+	// inst165 unreacheable
 
-	goto unreachable
-	goto inst166
-inst166: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst168
+	// inst166 unreacheable
 
-	goto unreachable
-	goto inst167
-inst167: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst168
+	// inst167 unreacheable
 
 	goto unreachable
 	goto inst168
@@ -2184,77 +1261,17 @@ inst170: //
 	i += 7
 	goto inst178
 
-	goto unreachable
-	goto inst171
-inst171: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
-	}
-	if r[i:i+6] != "taccct" {
-		goto fail
-	}
-	i += 6
-	goto inst178
+	// inst171 unreacheable
 
-	goto unreachable
-	goto inst172
-inst172: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "accct" {
-		goto fail
-	}
-	i += 5
-	goto inst178
+	// inst172 unreacheable
 
-	goto unreachable
-	goto inst173
-inst173: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "ccct" {
-		goto fail
-	}
-	i += 4
-	goto inst178
+	// inst173 unreacheable
 
-	goto unreachable
-	goto inst174
-inst174: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "cct" {
-		goto fail
-	}
-	i += 3
-	goto inst178
+	// inst174 unreacheable
 
-	goto unreachable
-	goto inst175
-inst175: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "ct" {
-		goto fail
-	}
-	i += 2
-	goto inst178
+	// inst175 unreacheable
 
-	goto unreachable
-	goto inst176
-inst176: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst178
+	// inst176 unreacheable
 
 	goto unreachable
 	goto inst177

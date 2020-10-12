@@ -34,10 +34,7 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
-	goto unreachable
-	goto inst0
-inst0: // fail
-	goto fail
+	// inst0 unreacheable
 
 	goto unreachable
 	goto inst1
@@ -69,101 +66,21 @@ inst2: //
 	i += 9
 	goto inst11
 
-	goto unreachable
-	goto inst3
-inst3: //
-	if i < 0 || i+8 > len(r) {
-		goto fail
-	}
-	if r[i:i+8] != "NFO res=" {
-		goto fail
-	}
-	i += 8
-	goto inst11
+	// inst3 unreacheable
 
-	goto unreachable
-	goto inst4
-inst4: //
-	if i < 0 || i+7 > len(r) {
-		goto fail
-	}
-	if r[i:i+7] != "FO res=" {
-		goto fail
-	}
-	i += 7
-	goto inst11
+	// inst4 unreacheable
 
-	goto unreachable
-	goto inst5
-inst5: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
-	}
-	if r[i:i+6] != "O res=" {
-		goto fail
-	}
-	i += 6
-	goto inst11
+	// inst5 unreacheable
 
-	goto unreachable
-	goto inst6
-inst6: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != " res=" {
-		goto fail
-	}
-	i += 5
-	goto inst11
+	// inst6 unreacheable
 
-	goto unreachable
-	goto inst7
-inst7: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "res=" {
-		goto fail
-	}
-	i += 4
-	goto inst11
+	// inst7 unreacheable
 
-	goto unreachable
-	goto inst8
-inst8: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "es=" {
-		goto fail
-	}
-	i += 3
-	goto inst11
+	// inst8 unreacheable
 
-	goto unreachable
-	goto inst9
-inst9: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "s=" {
-		goto fail
-	}
-	i += 2
-	goto inst11
+	// inst9 unreacheable
 
-	goto unreachable
-	goto inst10
-inst10: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "=" {
-		goto fail
-	}
-	i += 1
-	goto inst11
+	// inst10 unreacheable
 
 	goto unreachable
 	goto inst11
@@ -235,53 +152,13 @@ inst15: //
 	i += 5
 	goto inst20
 
-	goto unreachable
-	goto inst16
-inst16: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "msg=" {
-		goto fail
-	}
-	i += 4
-	goto inst20
+	// inst16 unreacheable
 
-	goto unreachable
-	goto inst17
-inst17: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "sg=" {
-		goto fail
-	}
-	i += 3
-	goto inst20
+	// inst17 unreacheable
 
-	goto unreachable
-	goto inst18
-inst18: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "g=" {
-		goto fail
-	}
-	i += 2
-	goto inst20
+	// inst18 unreacheable
 
-	goto unreachable
-	goto inst19
-inst19: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != "=" {
-		goto fail
-	}
-	i += 1
-	goto inst20
+	// inst19 unreacheable
 
 	goto unreachable
 	goto inst20

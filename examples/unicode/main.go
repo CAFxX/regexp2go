@@ -42,10 +42,7 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
-	goto unreachable
-	goto inst0
-inst0: // fail
-	goto fail
+	// inst0 unreacheable
 
 	goto unreachable
 	goto inst1
@@ -59,17 +56,7 @@ inst1: //
 	i += 6
 	goto inst3
 
-	goto unreachable
-	goto inst2
-inst2: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "は" {
-		goto fail
-	}
-	i += 3
-	goto inst3
+	// inst2 unreacheable
 
 	goto unreachable
 	goto inst3
@@ -141,17 +128,7 @@ inst7: //
 	i += 6
 	goto inst9
 
-	goto unreachable
-	goto inst8
-inst8: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "す" {
-		goto fail
-	}
-	i += 3
-	goto inst9
+	// inst8 unreacheable
 
 	goto unreachable
 	goto inst9

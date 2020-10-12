@@ -408,7 +408,7 @@ func Match(r string) ([10]string, bool) {
   0x4e63		7d13			JGE 0x4e78		
 		if len(r[si:]) != 0 {
   0x4e65		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x4e68		4889da			MOVQ BX, DX		
 	goto inst161
   0x4e6b		4c89e3			MOVQ R12, BX		
@@ -431,7 +431,7 @@ func Match(r string) ([10]string, bool) {
   0x4ea5		7413			JE 0x4eba			
 		if len(r[si:]) != 0 {
   0x4ea7		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x4eaa		4889da			MOVQ BX, DX		
 	goto inst161
   0x4ead		4c89e3			MOVQ R12, BX		
@@ -468,11 +468,11 @@ func Match(r string) ([10]string, bool) {
   0x4f1c		4c89e3			MOVQ R12, BX		
 	goto fail
   0x4f1f		89d7			MOVL DX, DI		
-				goto inst148
+				goto inst127
   0x4f21		4c89f2			MOVQ R14, DX		
 	goto fail
   0x4f24		e997feffff		JMP 0x4dc0		
-				goto inst148
+				goto inst127
   0x4f29		4d89de			MOVQ R11, R14		
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
   0x4f2c		ebc3			JMP 0x4ef1		
@@ -502,7 +502,7 @@ func Match(r string) ([10]string, bool) {
   0x4f76		7d13			JGE 0x4f8b		
 		if len(r[si:]) != 0 {
   0x4f78		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x4f7b		4889da			MOVQ BX, DX		
 	goto inst161
   0x4f7e		4c89e3			MOVQ R12, BX		
@@ -524,7 +524,7 @@ func Match(r string) ([10]string, bool) {
   0x4fb4		7413			JE 0x4fc9		
 		if len(r[si:]) != 0 {
   0x4fb6		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x4fb9		4889da			MOVQ BX, DX		
 	goto inst161
   0x4fbc		4c89e3			MOVQ R12, BX		
@@ -588,7 +588,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x5079		4889fe			MOVQ DI, SI		
   0x507c		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5082		4c89da			MOVQ R11, DX		
 	goto inst161
   0x5085		4c89f1			MOVQ R14, CX		
@@ -614,7 +614,7 @@ func Match(r string) ([10]string, bool) {
   0x50c3		e9fafdffff		JMP 0x4ec2		
 		if len(r[si:]) != 0 {
   0x50c8		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x50cb		4c89da			MOVQ R11, DX		
 	goto inst161
   0x50ce		4c89e3			MOVQ R12, BX		
@@ -648,7 +648,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x512e		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x5136		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x513c		4c8b9c2488010000	MOVQ 0x188(SP), R11	
 	goto inst161
   0x5144		4c8b642450		MOVQ 0x50(SP), R12	
@@ -762,7 +762,7 @@ func Match(r string) ([10]string, bool) {
   0x5312		7d19			JGE 0x532d		
 		if len(r[si:]) != 0 {
   0x5314		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x5317		4c89d2			MOVQ R10, DX		
 	goto inst161
   0x531a		4889f9			MOVQ DI, CX		
@@ -786,7 +786,7 @@ func Match(r string) ([10]string, bool) {
   0x535a		7419			JE 0x5375		
 		if len(r[si:]) != 0 {
   0x535c		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x535f		4c89d2			MOVQ R10, DX		
 	goto inst161
   0x5362		4889f9			MOVQ DI, CX		
@@ -814,7 +814,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x53a5		4c89fe			MOVQ R15, SI		
   0x53a8		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x53ae		4c89ea			MOVQ R13, DX		
 	goto inst161
   0x53b1		4889f9			MOVQ DI, CX		
@@ -824,7 +824,7 @@ func Match(r string) ([10]string, bool) {
   0x53b9		e902faffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x53be		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x53c1		4c89ea			MOVQ R13, DX		
 	goto fail
   0x53c4		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -858,7 +858,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+7] != "gggtaaa" {
   0x5437		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x543f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5445		4c8bac2480010000	MOVQ 0x180(SP), R13	
 		if len(r[si:]) != 0 {
   0x544d		4c8bbc2498010000	MOVQ 0x198(SP), R15	
@@ -920,7 +920,7 @@ func Match(r string) ([10]string, bool) {
   0x5516		7d13			JGE 0x552b		
 		if len(r[si:]) != 0 {
   0x5518		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x551b		4889da			MOVQ BX, DX		
 	goto inst161
   0x551e		4c89e3			MOVQ R12, BX		
@@ -942,7 +942,7 @@ func Match(r string) ([10]string, bool) {
   0x5554		7413			JE 0x5569		
 		if len(r[si:]) != 0 {
   0x5556		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x5559		4889da			MOVQ BX, DX		
 	goto inst161
   0x555c		4c89e3			MOVQ R12, BX		
@@ -1008,7 +1008,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x5623		4889fe			MOVQ DI, SI		
   0x5626		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x562c		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x562f		4c89f1			MOVQ R14, CX		
@@ -1044,7 +1044,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x568e		4889fe			MOVQ DI, SI		
   0x5691		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5697		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x569a		4c89f1			MOVQ R14, CX		
@@ -1081,7 +1081,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x56fa		4d89e9			MOVQ R13, R9		
   0x56fd		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5703		4c89da			MOVQ R11, DX		
 	goto inst161
   0x5706		4c89f1			MOVQ R14, CX		
@@ -1092,7 +1092,7 @@ func Match(r string) ([10]string, bool) {
   0x5711		e9aaf6ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x5716		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x5719		4c89da			MOVQ R11, DX		
 	goto inst161
   0x571c		4c89e3			MOVQ R12, BX		
@@ -1128,7 +1128,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+1] != "t" {
   0x5787		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x578f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5795		4c8b9c2468010000	MOVQ 0x168(SP), R11	
 	goto inst161
   0x579d		4c8b642450		MOVQ 0x50(SP), R12	
@@ -1201,7 +1201,7 @@ func Match(r string) ([10]string, bool) {
   0x58d8		7d10			JGE 0x58ea		
 		if len(r[si:]) != 0 {
   0x58da		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x58dd		4c89ea			MOVQ R13, DX		
 	goto fail
   0x58e0		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -1221,7 +1221,7 @@ func Match(r string) ([10]string, bool) {
   0x5912		7411			JE 0x5925		
 		if len(r[si:]) != 0 {
   0x5914		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x5917		4c89ea			MOVQ R13, DX		
 	goto fail
   0x591a		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -1283,7 +1283,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x59d4		4889fe			MOVQ DI, SI		
   0x59d7		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x59dd		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x59e0		4c89f9			MOVQ R15, CX		
@@ -1316,7 +1316,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x5a30		4889fe			MOVQ DI, SI		
   0x5a33		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5a39		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x5a3c		4c89f9			MOVQ R15, CX		
@@ -1351,7 +1351,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x5a93		4d89e1			MOVQ R12, R9		
   0x5a96		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5a9c		4c89da			MOVQ R11, DX		
 	goto inst161
   0x5a9f		4c89f9			MOVQ R15, CX		
@@ -1361,7 +1361,7 @@ func Match(r string) ([10]string, bool) {
   0x5aa7		e914f3ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x5aac		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x5aaf		4c89da			MOVQ R11, DX		
 	goto fail
   0x5ab2		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -1397,7 +1397,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+6] != "ggtaaa" {
   0x5b2d		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x5b35		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5b3b		4c8b9c2458010000	MOVQ 0x158(SP), R11	
 				i += sz
   0x5b43		4c8bac2480010000	MOVQ 0x180(SP), R13	
@@ -1461,7 +1461,7 @@ func Match(r string) ([10]string, bool) {
   0x5c16		7d13			JGE 0x5c2b		
 		if len(r[si:]) != 0 {
   0x5c18		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x5c1b		4889da			MOVQ BX, DX		
 	goto inst161
   0x5c1e		4c89e3			MOVQ R12, BX		
@@ -1483,7 +1483,7 @@ func Match(r string) ([10]string, bool) {
   0x5c54		7413			JE 0x5c69		
 		if len(r[si:]) != 0 {
   0x5c56		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x5c59		4889da			MOVQ BX, DX		
 	goto inst161
   0x5c5c		4c89e3			MOVQ R12, BX		
@@ -1550,7 +1550,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x5d22		4889fe			MOVQ DI, SI		
   0x5d25		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5d2b		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x5d2e		4c89f1			MOVQ R14, CX		
@@ -1586,7 +1586,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x5d8e		4889fe			MOVQ DI, SI		
   0x5d91		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5d97		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x5d9a		4c89f1			MOVQ R14, CX		
@@ -1623,7 +1623,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x5dfc		4d89e9			MOVQ R13, R9		
   0x5dff		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5e05		4c89da			MOVQ R11, DX		
 	goto inst161
   0x5e08		4c89f1			MOVQ R14, CX		
@@ -1634,7 +1634,7 @@ func Match(r string) ([10]string, bool) {
   0x5e13		e9a8efffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x5e18		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x5e1b		4c89da			MOVQ R11, DX		
 	goto inst161
   0x5e1e		4c89e3			MOVQ R12, BX		
@@ -1670,7 +1670,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+2] != "ct" {
   0x5e89		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x5e91		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x5e97		4c8b9c2440010000	MOVQ 0x140(SP), R11	
 	goto inst161
   0x5e9f		4c8b642450		MOVQ 0x50(SP), R12	
@@ -1735,7 +1735,7 @@ func Match(r string) ([10]string, bool) {
   0x5fb8		7d10			JGE 0x5fca		
 		if len(r[si:]) != 0 {
   0x5fba		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x5fbd		4c89ea			MOVQ R13, DX		
 	goto fail
   0x5fc0		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -1755,7 +1755,7 @@ func Match(r string) ([10]string, bool) {
   0x5ff4		7410			JE 0x6006								
 		if len(r[si:]) != 0 {
   0x5ff6		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x5ff9		4c89ea			MOVQ R13, DX		
 	goto fail
   0x5ffc		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -1816,7 +1816,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x60b4		4889fe			MOVQ DI, SI		
   0x60b7		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x60bd		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x60c0		4c89f9			MOVQ R15, CX		
@@ -1849,7 +1849,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x6110		4889fe			MOVQ DI, SI		
   0x6113		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6119		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x611c		4c89f9			MOVQ R15, CX		
@@ -1884,7 +1884,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x6171		4d89e1			MOVQ R12, R9		
   0x6174		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x617a		4c89da			MOVQ R11, DX		
 	goto inst161
   0x617d		4c89f9			MOVQ R15, CX		
@@ -1894,7 +1894,7 @@ func Match(r string) ([10]string, bool) {
   0x6185		e936ecffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x618a		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x618d		4c89da			MOVQ R11, DX		
 	goto fail
   0x6190		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -1930,7 +1930,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+5] != "gtaaa" {
   0x620b		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x6213		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6219		4c8b9c2430010000	MOVQ 0x130(SP), R11	
 				i += sz
   0x6221		4c8bac2480010000	MOVQ 0x180(SP), R13	
@@ -1994,7 +1994,7 @@ func Match(r string) ([10]string, bool) {
   0x62f6		7d13			JGE 0x630b		
 		if len(r[si:]) != 0 {
   0x62f8		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x62fb		4889da			MOVQ BX, DX		
 	goto inst161
   0x62fe		4c89e3			MOVQ R12, BX		
@@ -2016,7 +2016,7 @@ func Match(r string) ([10]string, bool) {
   0x6334		7413			JE 0x6349		
 		if len(r[si:]) != 0 {
   0x6336		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x6339		4889da			MOVQ BX, DX		
 	goto inst161
   0x633c		4c89e3			MOVQ R12, BX		
@@ -2078,7 +2078,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x63f4		4889fe			MOVQ DI, SI		
   0x63f7		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x63fd		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x6400		4c89f1			MOVQ R14, CX		
@@ -2112,7 +2112,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x6455		4889fe			MOVQ DI, SI		
   0x6458		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x645e		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x6461		4c89f1			MOVQ R14, CX		
@@ -2151,7 +2151,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x64c9		4d89e9			MOVQ R13, R9		
   0x64cc		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x64d2		4c89da			MOVQ R11, DX		
 	goto inst161
   0x64d5		4c89f1			MOVQ R14, CX		
@@ -2162,7 +2162,7 @@ func Match(r string) ([10]string, bool) {
   0x64e0		e9dbe8ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x64e5		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x64e8		4c89da			MOVQ R11, DX		
 	goto inst161
   0x64eb		4c89e3			MOVQ R12, BX		
@@ -2198,7 +2198,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+3] != "cct" {
   0x6556		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x655e		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6564		4c8b9c2418010000	MOVQ 0x118(SP), R11	
 	goto inst161
   0x656c		4c8b642450		MOVQ 0x50(SP), R12	
@@ -2276,7 +2276,7 @@ func Match(r string) ([10]string, bool) {
   0x66b8		7d10			JGE 0x66ca		
 		if len(r[si:]) != 0 {
   0x66ba		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x66bd		4c89ea			MOVQ R13, DX		
 	goto fail
   0x66c0		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -2296,7 +2296,7 @@ func Match(r string) ([10]string, bool) {
   0x66f4		7410			JE 0x6706								
 		if len(r[si:]) != 0 {
   0x66f6		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x66f9		4c89ea			MOVQ R13, DX		
 	goto fail
   0x66fc		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -2347,8 +2347,8 @@ func Match(r string) ([10]string, bool) {
   0x6795		4489f1			MOVL R14, CX		
   0x6798		41b901000000		MOVL $0x1, R9		
   0x679e		41d3e1			SHLL CL, R9		
-  0x67a1		4521e1			ANDL R12, R9		
-  0x67a4		4584ca			TESTL R9, R10		
+  0x67a1		4521cc			ANDL R9, R12		
+  0x67a4		4584e2			TESTL R12, R10		
   0x67a7		0f84b0000000		JE 0x685d		
 				i += sz
   0x67ad		4e8d0c2e		LEAQ 0(SI)(R13*1), R9	
@@ -2361,7 +2361,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x67c2		4889fe			MOVQ DI, SI		
   0x67c5		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x67cb		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x67ce		4c89f9			MOVQ R15, CX		
@@ -2393,7 +2393,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x681b		4889fe			MOVQ DI, SI		
   0x681e		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6824		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x6827		4c89f9			MOVQ R15, CX		
@@ -2424,7 +2424,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x6868		4d89e1			MOVQ R12, R9		
   0x686b		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6871		4c89da			MOVQ R11, DX		
 	goto inst161
   0x6874		4c89f9			MOVQ R15, CX		
@@ -2435,7 +2435,7 @@ func Match(r string) ([10]string, bool) {
   0x6880		e93be5ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x6885		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x6888		4c89da			MOVQ R11, DX		
 	goto fail
   0x688b		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -2471,7 +2471,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+4] != "taaa" {
   0x6906		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x690e		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6914		4c8b9c2408010000	MOVQ 0x108(SP), R11	
 				i += sz
   0x691c		4c8bac2480010000	MOVQ 0x180(SP), R13	
@@ -2536,7 +2536,7 @@ func Match(r string) ([10]string, bool) {
   0x69f6		7d13			JGE 0x6a0b		
 		if len(r[si:]) != 0 {
   0x69f8		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x69fb		4889da			MOVQ BX, DX		
 	goto inst161
   0x69fe		4c89e3			MOVQ R12, BX		
@@ -2558,7 +2558,7 @@ func Match(r string) ([10]string, bool) {
   0x6a34		7413			JE 0x6a49								
 		if len(r[si:]) != 0 {
   0x6a36		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x6a39		4889da			MOVQ BX, DX		
 	goto inst161
   0x6a3c		4c89e3			MOVQ R12, BX		
@@ -2625,7 +2625,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x6b02		4889fe			MOVQ DI, SI		
   0x6b05		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6b0b		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x6b0e		4c89f1			MOVQ R14, CX		
@@ -2661,7 +2661,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x6b6e		4889fe			MOVQ DI, SI		
   0x6b71		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6b77		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x6b7a		4c89f1			MOVQ R14, CX		
@@ -2698,7 +2698,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x6bdd		4d89e9			MOVQ R13, R9		
   0x6be0		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6be6		4c89da			MOVQ R11, DX		
 	goto inst161
   0x6be9		4c89f1			MOVQ R14, CX		
@@ -2709,7 +2709,7 @@ func Match(r string) ([10]string, bool) {
   0x6bf4		e9c7e1ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x6bf9		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x6bfc		4c89da			MOVQ R11, DX		
 	goto inst161
   0x6bff		4c89e3			MOVQ R12, BX		
@@ -2745,7 +2745,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+4] != "ccct" {
   0x6c6a		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x6c72		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6c78		4c8b9c24f0000000	MOVQ 0xf0(SP), R11	
 	goto inst161
   0x6c80		4c8b642450		MOVQ 0x50(SP), R12	
@@ -2810,7 +2810,7 @@ func Match(r string) ([10]string, bool) {
   0x6d98		7d10			JGE 0x6daa		
 		if len(r[si:]) != 0 {
   0x6d9a		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x6d9d		4c89ea			MOVQ R13, DX		
 	goto fail
   0x6da0		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -2830,7 +2830,7 @@ func Match(r string) ([10]string, bool) {
   0x6dd4		7410			JE 0x6de6		
 		if len(r[si:]) != 0 {
   0x6dd6		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x6dd9		4c89ea			MOVQ R13, DX		
 	goto fail
   0x6ddc		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -2891,7 +2891,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x6e94		4889fe			MOVQ DI, SI		
   0x6e97		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6e9d		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x6ea0		4c89f9			MOVQ R15, CX		
@@ -2924,7 +2924,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x6ef0		4889fe			MOVQ DI, SI		
   0x6ef3		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6ef9		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x6efc		4c89f9			MOVQ R15, CX		
@@ -2959,7 +2959,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x6f50		4d89e1			MOVQ R12, R9		
   0x6f53		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6f59		4c89da			MOVQ R11, DX		
 	goto inst161
   0x6f5c		4c89f9			MOVQ R15, CX		
@@ -2969,7 +2969,7 @@ func Match(r string) ([10]string, bool) {
   0x6f64		e957deffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x6f69		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x6f6c		4c89da			MOVQ R11, DX		
 	goto fail
   0x6f6f		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -3005,7 +3005,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+3] != "aaa" {
   0x6fea		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x6ff2		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x6ff8		4c8b9c24e0000000	MOVQ 0xe0(SP), R11	
 				i += sz
   0x7000		4c8bac2480010000	MOVQ 0x180(SP), R13	
@@ -3069,7 +3069,7 @@ func Match(r string) ([10]string, bool) {
   0x70d6		7d13			JGE 0x70eb		
 		if len(r[si:]) != 0 {
   0x70d8		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x70db		4889da			MOVQ BX, DX		
 	goto inst161
   0x70de		4c89e3			MOVQ R12, BX		
@@ -3091,7 +3091,7 @@ func Match(r string) ([10]string, bool) {
   0x7114		7413			JE 0x7129								
 		if len(r[si:]) != 0 {
   0x7116		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x7119		4889da			MOVQ BX, DX		
 	goto inst161
   0x711c		4c89e3			MOVQ R12, BX		
@@ -3153,7 +3153,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x71d4		4889fe			MOVQ DI, SI		
   0x71d7		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x71dd		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x71e0		4c89f1			MOVQ R14, CX		
@@ -3187,7 +3187,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x7235		4889fe			MOVQ DI, SI		
   0x7238		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x723e		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x7241		4c89f1			MOVQ R14, CX		
@@ -3226,7 +3226,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x72a9		4d89e9			MOVQ R13, R9		
   0x72ac		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x72b2		4c89da			MOVQ R11, DX		
 	goto inst161
   0x72b5		4c89f1			MOVQ R14, CX		
@@ -3237,7 +3237,7 @@ func Match(r string) ([10]string, bool) {
   0x72c0		e9fbdaffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x72c5		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x72c8		4c89da			MOVQ R11, DX		
 	goto inst161
   0x72cb		4c89e3			MOVQ R12, BX		
@@ -3273,7 +3273,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+5] != "accct" {
   0x7336		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x733e		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7344		4c8b9c24c8000000	MOVQ 0xc8(SP), R11	
 	goto inst161
   0x734c		4c8b642450		MOVQ 0x50(SP), R12	
@@ -3343,7 +3343,7 @@ func Match(r string) ([10]string, bool) {
   0x7478		7d10			JGE 0x748a		
 		if len(r[si:]) != 0 {
   0x747a		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x747d		4c89ea			MOVQ R13, DX		
 	goto fail
   0x7480		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -3363,7 +3363,7 @@ func Match(r string) ([10]string, bool) {
   0x74b4		7410			JE 0x74c6		
 		if len(r[si:]) != 0 {
   0x74b6		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x74b9		4c89ea			MOVQ R13, DX		
 	goto fail
   0x74bc		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -3428,7 +3428,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x7582		4889fe			MOVQ DI, SI		
   0x7585		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x758b		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x758e		4c89f9			MOVQ R15, CX		
@@ -3460,7 +3460,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x75db		4889fe			MOVQ DI, SI		
   0x75de		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x75e4		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x75e7		4c89f9			MOVQ R15, CX		
@@ -3491,7 +3491,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x7628		4d89e1			MOVQ R12, R9		
   0x762b		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7631		4c89da			MOVQ R11, DX		
 	goto inst161
   0x7634		4c89f9			MOVQ R15, CX		
@@ -3502,7 +3502,7 @@ func Match(r string) ([10]string, bool) {
   0x7640		e97bd7ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x7645		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x7648		4c89da			MOVQ R11, DX		
 	goto fail
   0x764b		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -3538,7 +3538,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+2] != "aa" {
   0x76c6		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x76ce		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x76d4		4c8b9c24b8000000	MOVQ 0xb8(SP), R11	
 				i += sz
   0x76dc		4c8bac2480010000	MOVQ 0x180(SP), R13	
@@ -3603,7 +3603,7 @@ func Match(r string) ([10]string, bool) {
   0x77b6		7d13			JGE 0x77cb		
 		if len(r[si:]) != 0 {
   0x77b8		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x77bb		4889da			MOVQ BX, DX		
 	goto inst161
   0x77be		4c89e3			MOVQ R12, BX		
@@ -3625,7 +3625,7 @@ func Match(r string) ([10]string, bool) {
   0x77f2		7413			JE 0x7807		
 		if len(r[si:]) != 0 {
   0x77f4		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x77f7		4889da			MOVQ BX, DX		
 	goto inst161
   0x77fa		4c89e3			MOVQ R12, BX		
@@ -3688,7 +3688,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x78b4		4889fe			MOVQ DI, SI		
   0x78b7		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x78bd		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x78c0		4c89f1			MOVQ R14, CX		
@@ -3722,7 +3722,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x7915		4889fe			MOVQ DI, SI		
   0x7918		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x791e		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x7921		4c89f1			MOVQ R14, CX		
@@ -3762,7 +3762,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x7990		4d89e9			MOVQ R13, R9		
   0x7993		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7999		4c89da			MOVQ R11, DX		
 	goto inst161
   0x799c		4c89f1			MOVQ R14, CX		
@@ -3773,7 +3773,7 @@ func Match(r string) ([10]string, bool) {
   0x79a7		e914d4ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x79ac		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x79af		4c89da			MOVQ R11, DX		
 	goto inst161
   0x79b2		4c89e3			MOVQ R12, BX		
@@ -3809,7 +3809,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+6] != "taccct" {
   0x7a1d		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x7a25		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7a2b		4c8b9c24a0000000	MOVQ 0xa0(SP), R11	
 	goto inst161
   0x7a33		4c8b642450		MOVQ 0x50(SP), R12	
@@ -3876,7 +3876,7 @@ func Match(r string) ([10]string, bool) {
   0x7b58		7d10			JGE 0x7b6a		
 		if len(r[si:]) != 0 {
   0x7b5a		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x7b5d		4c89ea			MOVQ R13, DX		
 	goto fail
   0x7b60		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -3896,7 +3896,7 @@ func Match(r string) ([10]string, bool) {
   0x7b94		7410			JE 0x7ba6		
 		if len(r[si:]) != 0 {
   0x7b96		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x7b99		4c89ea			MOVQ R13, DX		
 	goto fail
   0x7b9c		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -3961,7 +3961,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x7c62		4889fe			MOVQ DI, SI		
   0x7c65		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7c6b		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x7c6e		4c89f9			MOVQ R15, CX		
@@ -3993,7 +3993,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x7cbb		4889fe			MOVQ DI, SI		
   0x7cbe		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7cc4		4c89ca			MOVQ R9, DX		
 	goto inst161
   0x7cc7		4c89f9			MOVQ R15, CX		
@@ -4024,7 +4024,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x7d06		4d89e1			MOVQ R12, R9		
   0x7d09		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7d0f		4c89da			MOVQ R11, DX		
 	goto inst161
   0x7d12		4c89f9			MOVQ R15, CX		
@@ -4034,7 +4034,7 @@ func Match(r string) ([10]string, bool) {
   0x7d1a		e9a1d0ffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x7d1f		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x7d22		4c89da			MOVQ R11, DX		
 	goto fail
   0x7d25		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -4070,7 +4070,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+1] != "a" {
   0x7da0		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x7da8		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7dae		4c8b9c2490000000	MOVQ 0x90(SP), R11	
 				i += sz
   0x7db6		4c8bac2480010000	MOVQ 0x180(SP), R13	
@@ -4169,8 +4169,8 @@ func Match(r string) ([10]string, bool) {
   0x7f13		4489f1			MOVL R14, CX		
   0x7f16		41bf01000000		MOVL $0x1, R15		
   0x7f1c		41d3e7			SHLL CL, R15		
-  0x7f1f		4521fb			ANDL R15, R11		
-  0x7f22		4584da			TESTL R11, R10		
+  0x7f1f		4521df			ANDL R11, R15		
+  0x7f22		4584fa			TESTL R15, R10		
   0x7f25		0f84aa000000		JE 0x7fd5		
 				i += sz
   0x7f2b		4c8d141e		LEAQ 0(SI)(BX*1), R10	
@@ -4179,7 +4179,7 @@ func Match(r string) ([10]string, bool) {
   0x7f32		7d1c			JGE 0x7f50		
 		if len(r[si:]) != 0 {
   0x7f34		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x7f37		4c89d2			MOVQ R10, DX		
 	goto inst161
   0x7f3a		4889f9			MOVQ DI, CX		
@@ -4204,7 +4204,7 @@ func Match(r string) ([10]string, bool) {
   0x7f79		741c			JE 0x7f97		
 		if len(r[si:]) != 0 {
   0x7f7b		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x7f7e		4c89d2			MOVQ R10, DX		
 	goto inst161
   0x7f81		4889f9			MOVQ DI, CX		
@@ -4233,7 +4233,7 @@ func Match(r string) ([10]string, bool) {
 		if len(r[si:]) != 0 {
   0x7fd5		4c89ee			MOVQ R13, SI		
   0x7fd8		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x7fde		4889da			MOVQ BX, DX		
 	goto inst161
   0x7fe1		4889f9			MOVQ DI, CX		
@@ -4244,7 +4244,7 @@ func Match(r string) ([10]string, bool) {
   0x7fec		e9cfcdffff		JMP 0x4dc0		
 		if len(r[si:]) != 0 {
   0x7ff1		4c89ee			MOVQ R13, SI		
-				goto inst148
+				goto inst127
   0x7ff4		4889da			MOVQ BX, DX		
 	goto inst161
   0x7ff7		4c89e3			MOVQ R12, BX		
@@ -4272,7 +4272,7 @@ func Match(r string) ([10]string, bool) {
   0x803e		488b4c2458		MOVQ 0x58(SP), CX	
 	goto fail
   0x8043		0fb6542447		MOVZX 0x47(SP), DX	
-				goto inst148
+				goto inst127
   0x8048		488b5c2478		MOVQ 0x78(SP), BX	
 		if i <= len(r) && len(bt) > 0 {
   0x804d		4c8b8424f01c0000	MOVQ 0x1cf0(SP), R8	
@@ -4347,7 +4347,7 @@ func Match(r string) ([10]string, bool) {
   0x8198		7d10			JGE 0x81aa		
 		if len(r[si:]) != 0 {
   0x819a		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x819d		4c89ea			MOVQ R13, DX		
 	goto fail
   0x81a0		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -4367,7 +4367,7 @@ func Match(r string) ([10]string, bool) {
   0x81d4		7410			JE 0x81e6		
 		if len(r[si:]) != 0 {
   0x81d6		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x81d9		4c89ea			MOVQ R13, DX		
 	goto fail
   0x81dc		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -4422,13 +4422,13 @@ func Match(r string) ([10]string, bool) {
   0x8287		4489f1			MOVL R14, CX		
   0x828a		41bd01000000		MOVL $0x1, R13		
   0x8290		41d3e5			SHLL CL, R13		
-  0x8293		4521e5			ANDL R12, R13		
-  0x8296		4584ea			TESTL R13, R10		
+  0x8293		4521ec			ANDL R13, R12		
+  0x8296		4584e2			TESTL R12, R10		
   0x8299		7519			JNE 0x82b4		
 		if len(r[si:]) != 0 {
   0x829b		4889fe			MOVQ DI, SI		
   0x829e		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x82a4		4c89da			MOVQ R11, DX		
 	goto inst161
   0x82a7		4c89f9			MOVQ R15, CX		
@@ -4449,7 +4449,7 @@ func Match(r string) ([10]string, bool) {
   0x82cd		e9e0fcffff		JMP 0x7fb2		
 		if len(r[si:]) != 0 {
   0x82d2		4c89fe			MOVQ R15, SI		
-				goto inst148
+				goto inst127
   0x82d5		4c89da			MOVQ R11, DX		
 	goto fail
   0x82d8		0fb67c2447		MOVZX 0x47(SP), DI	
@@ -4486,7 +4486,7 @@ func Match(r string) ([10]string, bool) {
 	if r[i:i+8] != "tttaccct" {
   0x8347		4c8b8c24e81c0000	MOVQ 0x1ce8(SP), R9	
   0x834f		41ba11000000		MOVL $0x11, R10		
-				goto inst148
+				goto inst127
   0x8355		4c8b5c2470		MOVQ 0x70(SP), R11	
 				i += sz
   0x835a		4c8bac2480010000	MOVQ 0x180(SP), R13	
@@ -5283,56 +5283,56 @@ func Match(r string) ([10]string, bool) {
 
 TEXT type..eq.[10]string(SB) gofile..<autogenerated>
 
-  0xf0e6		64488b0c2500000000	MOVQ FS:0, CX			[5:9]R_TLS_LE		
-  0xf0ef		483b6110		CMPQ 0x10(CX), SP		
-  0xf0f3		0f86b7000000		JBE 0xf1b0			
-  0xf0f9		4883ec30		SUBQ $0x30, SP			
-  0xf0fd		48896c2428		MOVQ BP, 0x28(SP)		
-  0xf102		488d6c2428		LEAQ 0x28(SP), BP		
-  0xf107		488b442438		MOVQ 0x38(SP), AX		
-  0xf10c		488b4c2440		MOVQ 0x40(SP), CX		
-  0xf111		31d2			XORL DX, DX			
-  0xf113		eb04			JMP 0xf119			
-  0xf115		488d5301		LEAQ 0x1(BX), DX		
-  0xf119		4883fa0a		CMPQ $0xa, DX			
-  0xf11d		7d25			JGE 0xf144			
-  0xf11f		4889d3			MOVQ DX, BX			
-  0xf122		48c1e204		SHLQ $0x4, DX			
-  0xf126		488b741108		MOVQ 0x8(CX)(DX*1), SI		
-  0xf12b		488b541008		MOVQ 0x8(AX)(DX*1), DX		
-  0xf130		4839d6			CMPQ DX, SI			
-  0xf133		74e0			JE 0xf115			
-  0xf135		c644244800		MOVB $0x0, 0x48(SP)		
-  0xf13a		488b6c2428		MOVQ 0x28(SP), BP		
-  0xf13f		4883c430		ADDQ $0x30, SP			
-  0xf143		c3			RET				
-  0xf144		31d2			XORL DX, DX			
-  0xf146		eb13			JMP 0xf15b			
-  0xf148		488b5c2420		MOVQ 0x20(SP), BX		
-  0xf14d		488d5301		LEAQ 0x1(BX), DX		
-  0xf151		488b442438		MOVQ 0x38(SP), AX		
-  0xf156		488b4c2440		MOVQ 0x40(SP), CX		
-  0xf15b		4883fa0a		CMPQ $0xa, DX			
-  0xf15f		7d40			JGE 0xf1a1			
-  0xf161		4889542420		MOVQ DX, 0x20(SP)		
-  0xf166		48c1e204		SHLQ $0x4, DX			
-  0xf16a		488b3411		MOVQ 0(CX)(DX*1), SI		
-  0xf16e		488b3c10		MOVQ 0(AX)(DX*1), DI		
-  0xf172		488b541008		MOVQ 0x8(AX)(DX*1), DX		
-  0xf177		48893c24		MOVQ DI, 0(SP)			
-  0xf17b		4889742408		MOVQ SI, 0x8(SP)		
-  0xf180		4889542410		MOVQ DX, 0x10(SP)		
-  0xf185		90			NOPL				
-  0xf186		e800000000		CALL 0xf18b			[1:5]R_CALL:runtime.memequal	
-  0xf18b		807c241800		CMPB $0x0, 0x18(SP)		
-  0xf190		75b6			JNE 0xf148			
-  0xf192		c644244800		MOVB $0x0, 0x48(SP)		
-  0xf197		488b6c2428		MOVQ 0x28(SP), BP		
-  0xf19c		4883c430		ADDQ $0x30, SP			
-  0xf1a0		c3			RET				
-  0xf1a1		c644244801		MOVB $0x1, 0x48(SP)		
-  0xf1a6		488b6c2428		MOVQ 0x28(SP), BP		
-  0xf1ab		4883c430		ADDQ $0x30, SP			
-  0xf1af		c3			RET				
-  0xf1b0		e800000000		CALL 0xf1b5			[1:5]R_CALL:runtime.morestack_noctxt	
-  0xf1b5		e92cffffff		JMP type..eq.[10]string(SB)	
+  0xf09d		64488b0c2500000000	MOVQ FS:0, CX			[5:9]R_TLS_LE		
+  0xf0a6		483b6110		CMPQ 0x10(CX), SP		
+  0xf0aa		0f86b7000000		JBE 0xf167			
+  0xf0b0		4883ec30		SUBQ $0x30, SP			
+  0xf0b4		48896c2428		MOVQ BP, 0x28(SP)		
+  0xf0b9		488d6c2428		LEAQ 0x28(SP), BP		
+  0xf0be		488b442438		MOVQ 0x38(SP), AX		
+  0xf0c3		488b4c2440		MOVQ 0x40(SP), CX		
+  0xf0c8		31d2			XORL DX, DX			
+  0xf0ca		eb04			JMP 0xf0d0			
+  0xf0cc		488d5301		LEAQ 0x1(BX), DX		
+  0xf0d0		4883fa0a		CMPQ $0xa, DX			
+  0xf0d4		7d25			JGE 0xf0fb			
+  0xf0d6		4889d3			MOVQ DX, BX			
+  0xf0d9		48c1e204		SHLQ $0x4, DX			
+  0xf0dd		488b741108		MOVQ 0x8(CX)(DX*1), SI		
+  0xf0e2		488b541008		MOVQ 0x8(AX)(DX*1), DX		
+  0xf0e7		4839d6			CMPQ DX, SI			
+  0xf0ea		74e0			JE 0xf0cc			
+  0xf0ec		c644244800		MOVB $0x0, 0x48(SP)		
+  0xf0f1		488b6c2428		MOVQ 0x28(SP), BP		
+  0xf0f6		4883c430		ADDQ $0x30, SP			
+  0xf0fa		c3			RET				
+  0xf0fb		31d2			XORL DX, DX			
+  0xf0fd		eb13			JMP 0xf112			
+  0xf0ff		488b5c2420		MOVQ 0x20(SP), BX		
+  0xf104		488d5301		LEAQ 0x1(BX), DX		
+  0xf108		488b442438		MOVQ 0x38(SP), AX		
+  0xf10d		488b4c2440		MOVQ 0x40(SP), CX		
+  0xf112		4883fa0a		CMPQ $0xa, DX			
+  0xf116		7d40			JGE 0xf158			
+  0xf118		4889542420		MOVQ DX, 0x20(SP)		
+  0xf11d		48c1e204		SHLQ $0x4, DX			
+  0xf121		488b3411		MOVQ 0(CX)(DX*1), SI		
+  0xf125		488b3c10		MOVQ 0(AX)(DX*1), DI		
+  0xf129		488b541008		MOVQ 0x8(AX)(DX*1), DX		
+  0xf12e		48893c24		MOVQ DI, 0(SP)			
+  0xf132		4889742408		MOVQ SI, 0x8(SP)		
+  0xf137		4889542410		MOVQ DX, 0x10(SP)		
+  0xf13c		90			NOPL				
+  0xf13d		e800000000		CALL 0xf142			[1:5]R_CALL:runtime.memequal	
+  0xf142		807c241800		CMPB $0x0, 0x18(SP)		
+  0xf147		75b6			JNE 0xf0ff			
+  0xf149		c644244800		MOVB $0x0, 0x48(SP)		
+  0xf14e		488b6c2428		MOVQ 0x28(SP), BP		
+  0xf153		4883c430		ADDQ $0x30, SP			
+  0xf157		c3			RET				
+  0xf158		c644244801		MOVB $0x1, 0x48(SP)		
+  0xf15d		488b6c2428		MOVQ 0x28(SP), BP		
+  0xf162		4883c430		ADDQ $0x30, SP			
+  0xf166		c3			RET				
+  0xf167		e800000000		CALL 0xf16c			[1:5]R_CALL:runtime.morestack_noctxt	
+  0xf16c		e92cffffff		JMP type..eq.[10]string(SB)	

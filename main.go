@@ -47,6 +47,7 @@ func main() {
 
 	// optimization passes
 	optString(p)
+	optDeadInst(p)
 
 	numSt := 0
 	for _, inst := range p.Inst {
@@ -136,6 +137,10 @@ func main() {
 
 	// TODO: sort instructions to maximize instruction locality
 	for pc, inst := range p.Inst {
+		if inst.Op == instDead {
+			out("\n // inst%d unreacheable", pc)
+			continue
+		}
 		out("\n goto unreachable \n goto inst%d \n inst%d: // %s ", pc, pc, inst.String())
 		// out("fmt.Println(i, %d, %q)", pc, inst.String())
 		switch inst.Op {
@@ -436,6 +441,7 @@ func runeMask(runes []rune, max rune) string {
 
 const (
 	instString syntax.InstOp = 64 + iota
+	instDead
 )
 
 func optString(p *syntax.Prog) {
@@ -460,6 +466,34 @@ func optString(p *syntax.Prog) {
 			Op:   instString,
 			Out:  out,
 			Rune: r,
+		}
+	}
+}
+
+func optDeadInst(p *syntax.Prog) {
+	reachable := map[uint32]struct{}{}
+	var visit func(uint32)
+	visit = func(pc uint32) {
+		if _, visited := reachable[pc]; visited {
+			return
+		}
+		reachable[pc] = struct{}{}
+		switch p.Inst[pc].Op {
+		case syntax.InstMatch, syntax.InstFail:
+			return
+		case syntax.InstAltMatch:
+			panic("not implemented")
+		case syntax.InstAlt:
+			visit(p.Inst[pc].Arg)
+		}
+		visit(p.Inst[pc].Out)
+	}
+	visit(uint32(p.Start))
+	for i := range p.Inst {
+		if _, visited := reachable[uint32(i)]; !visited {
+			p.Inst[i] = syntax.Inst{
+				Op: instDead,
+			}
 		}
 	}
 }

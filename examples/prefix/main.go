@@ -42,10 +42,7 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
-	goto unreachable
-	goto inst0
-inst0: // fail
-	goto fail
+	// inst0 unreacheable
 
 	goto unreachable
 	goto inst1
@@ -59,65 +56,15 @@ inst1: //
 	i += 6
 	goto inst7
 
-	goto unreachable
-	goto inst2
-inst2: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
-	}
-	if r[i:i+5] != "ello " {
-		goto fail
-	}
-	i += 5
-	goto inst7
+	// inst2 unreacheable
 
-	goto unreachable
-	goto inst3
-inst3: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
-	}
-	if r[i:i+4] != "llo " {
-		goto fail
-	}
-	i += 4
-	goto inst7
+	// inst3 unreacheable
 
-	goto unreachable
-	goto inst4
-inst4: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
-	}
-	if r[i:i+3] != "lo " {
-		goto fail
-	}
-	i += 3
-	goto inst7
+	// inst4 unreacheable
 
-	goto unreachable
-	goto inst5
-inst5: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
-	}
-	if r[i:i+2] != "o " {
-		goto fail
-	}
-	i += 2
-	goto inst7
+	// inst5 unreacheable
 
-	goto unreachable
-	goto inst6
-inst6: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
-	}
-	if r[i:i+1] != " " {
-		goto fail
-	}
-	i += 1
-	goto inst7
+	// inst6 unreacheable
 
 	goto unreachable
 	goto inst7

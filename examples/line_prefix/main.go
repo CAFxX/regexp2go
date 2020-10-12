@@ -34,10 +34,7 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
-	goto unreachable
-	goto inst0
-inst0: // fail
-	goto fail
+	// inst0 unreacheable
 
 	goto unreachable
 	goto inst1

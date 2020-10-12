@@ -12,14 +12,14 @@ func Match(r string) ([2]string, bool) {
   0x24ac		0f11842480010000	MOVUPS X0, 0x180(SP)	
   0x24b4		31c0			XORL AX, AX		
 restart:
-  0x24b6		e94f010000		JMP 0x260a		
+  0x24b6		e959010000		JMP 0x2614		
 		if i <= len(r) && len(bt) > 0 {
-  0x24bb		4c89ce			MOVQ R9, SI		
+  0x24bb		4c89d6			MOVQ R10, SI		
   0x24be		4839fe			CMPQ DI, SI		
-  0x24c1		0f8f08010000		JG 0x25cf		
+  0x24c1		0f8f0e010000		JG 0x25d5		
   0x24c7		0f1f840000000000	NOPL 0(AX)(AX*1)	
   0x24cf		4885c9			TESTQ CX, CX		
-  0x24d2		0f8ef7000000		JLE 0x25cf		
+  0x24d2		0f8efd000000		JLE 0x25d5		
 	switch bt[len(bt)-1].pc {
   0x24d8		486bf138		IMULQ $0x38, CX, SI		
   0x24dc		4c8b4c06f0		MOVQ -0x10(SI)(AX*1), R9	
@@ -39,7 +39,7 @@ restart:
 		if ps.cnt > 0 {
   0x2515		4c8b5406f8		MOVQ -0x8(SI)(AX*1), R10	
   0x251a		4d85d2			TESTQ R10, R10			
-  0x251d		0f8ea0000000		JLE 0x25c3			
+  0x251d		0f8eaa000000		JLE 0x25cd			
 			ps.i -= 1
   0x2523		48ff4c06e8		DECQ -0x18(SI)(AX*1)	
 			ps.cnt--
@@ -48,133 +48,136 @@ restart:
   0x252d		4c898c2488000000	MOVQ R9, 0x88(SP)	
 	if i < 0 || i+1 > len(r) {
   0x2535		4d85c9			TESTQ R9, R9		
-  0x2538		7c81			JL 0x24bb		
-  0x253a		498d7101		LEAQ 0x1(R9), SI	
-  0x253e		4839fe			CMPQ DI, SI		
-  0x2541		0f8f74ffffff		JG 0x24bb		
+  0x2538		7d08			JGE 0x2542		
+		if i <= len(r) && len(bt) > 0 {
+  0x253a		4c89ce			MOVQ R9, SI		
+		goto fail
+  0x253d		e97cffffff		JMP 0x24be		
+	if i < 0 || i+1 > len(r) {
+  0x2542		498d7101		LEAQ 0x1(R9), SI	
+  0x2546		4839fe			CMPQ DI, SI		
+  0x2549		7fef			JG 0x253a		
+  0x254b		0f1f4000		NOPL 0(AX)		
 	if r[i:i+1] != "!" {
-  0x2547		0f8718060000		JA 0x2b65		
-  0x254d		6690			NOPW			
-  0x254f		4939f1			CMPQ SI, R9		
-  0x2552		0f8702060000		JA 0x2b5a		
-  0x2558		470fb61408		MOVZX 0(R8)(R9*1), R10	
-  0x255d		4180fa21		CMPL $0x21, R10		
-  0x2561		7408			JE 0x256b		
+  0x254f		0f8710060000		JA 0x2b65		
+  0x2555		4939f1			CMPQ SI, R9		
+  0x2558		0f87fc050000		JA 0x2b5a		
+  0x255e		470fb61408		MOVZX 0(R8)(R9*1), R10	
+  0x2563		4180fa21		CMPL $0x21, R10		
+  0x2567		740b			JE 0x2574		
 		if i <= len(r) && len(bt) > 0 {
-  0x2563		4c89ce			MOVQ R9, SI		
+  0x2569		4c89ce			MOVQ R9, SI		
+  0x256c		0f1f00			NOPL 0(AX)		
 		goto fail
-  0x2566		e953ffffff		JMP 0x24be		
+  0x256f		e94affffff		JMP 0x24be		
 	c[1] = i // end of match
-  0x256b		4889742478		MOVQ SI, 0x78(SP)	
+  0x2574		4889742478		MOVQ SI, 0x78(SP)	
 		if matched {
-  0x2570		84d2			TESTL DL, DL		
+  0x2579		84d2			TESTL DL, DL		
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
-  0x2572		744a			JE 0x25be		
-  0x2574		4c8b4c2470		MOVQ 0x70(SP), R9	
-  0x2579		4989f2			MOVQ SI, R10		
-  0x257c		4c29ce			SUBQ R9, SI		
-  0x257f		4c8b8c2498000000	MOVQ 0x98(SP), R9	
-  0x2587		4c2b8c2490000000	SUBQ 0x90(SP), R9	
-  0x258f		4c39ce			CMPQ R9, SI		
-  0x2592		7e22			JLE 0x25b6		
+  0x257b		744b			JE 0x25c8		
+  0x257d		4c8b4c2470		MOVQ 0x70(SP), R9	
+  0x2582		4989f2			MOVQ SI, R10		
+  0x2585		4c29ce			SUBQ R9, SI		
+  0x2588		4c8b8c2498000000	MOVQ 0x98(SP), R9	
+  0x2590		4c2b8c2490000000	SUBQ 0x90(SP), R9	
+  0x2598		4c39ce			CMPQ R9, SI		
+  0x259b		0f8e1affffff		JLE 0x24bb		
 		bc = c
-  0x2594		0f10442470		MOVUPS 0x70(SP), X0	
-  0x2599		0f11842490000000	MOVUPS X0, 0x90(SP)	
-  0x25a1		0f10842480000000	MOVUPS 0x80(SP), X0	
-  0x25a9		0f118424a0000000	MOVUPS X0, 0xa0(SP)	
-  0x25b1		ba01000000		MOVL $0x1, DX		
+  0x25a1		0f10442470		MOVUPS 0x70(SP), X0	
+  0x25a6		0f11842490000000	MOVUPS X0, 0x90(SP)	
+  0x25ae		0f10842480000000	MOVUPS 0x80(SP), X0	
+  0x25b6		0f118424a0000000	MOVUPS X0, 0xa0(SP)	
+  0x25be		ba01000000		MOVL $0x1, DX		
+		matched = true
+  0x25c3		e9f3feffff		JMP 0x24bb		
 		if i <= len(r) && len(bt) > 0 {
-  0x25b6		4c89d6			MOVQ R10, SI		
-	goto fail
-  0x25b9		e900ffffff		JMP 0x24be		
-		if i <= len(r) && len(bt) > 0 {
-  0x25be		4989f2			MOVQ SI, R10		
+  0x25c8		4989f2			MOVQ SI, R10		
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
-  0x25c1		ebd1			JMP 0x2594		
+  0x25cb		ebd4			JMP 0x25a1		
 	switch bt[len(bt)-1].pc {
-  0x25c3		48ffc9			DECQ CX			
+  0x25cd		48ffc9			DECQ CX			
 			bt = bt[:n]
-  0x25c6		e962ffffff		JMP 0x252d		
-  0x25cb		0f1f4000		NOPL 0(AX)		
+  0x25d0		e958ffffff		JMP 0x252d		
 		if matched {
-  0x25cf		84d2			TESTL DL, DL		
-  0x25d1		0f85a8010000		JNE 0x277f		
+  0x25d5		84d2			TESTL DL, DL		
+  0x25d7		0f85a2010000		JNE 0x277f		
 		if len(r[si:]) != 0 {
-  0x25d7		488b542468		MOVQ 0x68(SP), DX	
-  0x25dc		4885d2			TESTQ DX, DX		
-  0x25df		0f844f010000		JE 0x2734		
+  0x25dd		488b542468		MOVQ 0x68(SP), DX	
+  0x25e2		4885d2			TESTQ DX, DX		
+  0x25e5		0f8449010000		JE 0x2734		
+  0x25eb		0f1f4000		NOPL 0(AX)		
 	if idx := strings.Index(r[si:], "Hello "); idx > 0 {
-  0x25e5		4839df			CMPQ BX, DI		
+  0x25ef		4839df			CMPQ BX, DI		
 			cr, sz := rune(r[i]), 1
-  0x25e8		0f862d050000		JBE 0x2b1b		
-  0x25ee		420fb63403		MOVZX 0(BX)(R8*1), SI	
+  0x25f2		0f8623050000		JBE 0x2b1b		
+  0x25f8		420fb63403		MOVZX 0(BX)(R8*1), SI	
 			if cr >= utf8.RuneSelf {
-  0x25f3		81fe80000000		CMPL $0x80, SI		
-  0x25f9		0f8dfa000000		JGE 0x26f9		
-  0x25ff		b801000000		MOVL $0x1, AX		
+  0x25fd		81fe80000000		CMPL $0x80, SI		
+  0x2603		0f8df3000000		JGE 0x26fc		
+  0x2609		b801000000		MOVL $0x1, AX		
 			si += sz
-  0x2604		4801d8			ADDQ BX, AX		
+  0x260e		4801d8			ADDQ BX, AX		
 func Match(r string) ([2]string, bool) {
-  0x2607		0f57c0			XORPS X0, X0		
+  0x2611		0f57c0			XORPS X0, X0		
 	var _bt [1]state // static storage for backtracking state
-  0x260a		48c78424b000000000000000	MOVQ $0x0, 0xb0(SP)	
-  0x2616		0f118424b8000000		MOVUPS X0, 0xb8(SP)	
-  0x261e		0f118424c8000000		MOVUPS X0, 0xc8(SP)	
-  0x2626		0f118424d8000000		MOVUPS X0, 0xd8(SP)	
+  0x2614		48c78424b000000000000000	MOVQ $0x0, 0xb0(SP)	
+  0x2620		0f118424b8000000		MOVUPS X0, 0xb8(SP)	
+  0x2628		0f118424c8000000		MOVUPS X0, 0xc8(SP)	
+  0x2630		0f118424d8000000		MOVUPS X0, 0xd8(SP)	
 	var c [4]int     // captures
-  0x262e		0f11442470		MOVUPS X0, 0x70(SP)	
-  0x2633		0f11842480000000	MOVUPS X0, 0x80(SP)	
+  0x2638		0f11442470		MOVUPS X0, 0x70(SP)	
+  0x263d		0f11842480000000	MOVUPS X0, 0x80(SP)	
 	var bc [4]int    // captures for the longest match so far
-  0x263b		0f11842490000000	MOVUPS X0, 0x90(SP)	
-  0x2643		0f118424a0000000	MOVUPS X0, 0xa0(SP)	
+  0x2645		0f11842490000000	MOVUPS X0, 0x90(SP)	
+  0x264d		0f118424a0000000	MOVUPS X0, 0xa0(SP)	
 	if idx := strings.Index(r[si:], "Hello "); idx > 0 {
-  0x264b		488b8c2468010000	MOVQ 0x168(SP), CX	
-  0x2653		4839c1			CMPQ AX, CX		
-  0x2656		0f8225050000		JB 0x2b81		
+  0x2655		488b8c2468010000	MOVQ 0x168(SP), CX	
+  0x265d		4839c1			CMPQ AX, CX		
+  0x2660		0f821b050000		JB 0x2b81		
 	i := si // current byte index
-  0x265c		4889442440		MOVQ AX, 0x40(SP)	
+  0x2666		4889442440		MOVQ AX, 0x40(SP)	
 	if idx := strings.Index(r[si:], "Hello "); idx > 0 {
-  0x2661		4829c1			SUBQ AX, CX		
-  0x2664		48894c2468		MOVQ CX, 0x68(SP)	
-  0x2669		4889cb			MOVQ CX, BX		
-  0x266c		48f7d9			NEGQ CX			
-  0x266f		48c1f93f		SARQ $0x3f, CX		
-  0x2673		4821c1			ANDQ AX, CX		
-  0x2676		488bb42460010000	MOVQ 0x160(SP), SI	
-  0x267e		4801f1			ADDQ SI, CX		
-  0x2681		48898c2428010000	MOVQ CX, 0x128(SP)	
-  0x2689		48890c24		MOVQ CX, 0(SP)		
-  0x268d		48895c2408		MOVQ BX, 0x8(SP)	
-  0x2692		488d3d00000000		LEAQ 0(IP), DI		[3:7]R_PCREL:go.string."Hello "	
-  0x2699		48897c2410		MOVQ DI, 0x10(SP)	
-  0x269e		48c744241806000000	MOVQ $0x6, 0x18(SP)	
-  0x26a7		e800000000		CALL 0x26ac		[1:5]R_CALL:strings.Index	
-  0x26ac		488b442420		MOVQ 0x20(SP), AX	
-  0x26b1		4885c0			TESTQ AX, AX		
-  0x26b4		0f8e3a040000		JLE 0x2af4		
+  0x266b		4829c1			SUBQ AX, CX		
+  0x266e		48894c2468		MOVQ CX, 0x68(SP)	
+  0x2673		4889cb			MOVQ CX, BX		
+  0x2676		48f7d9			NEGQ CX			
+  0x2679		48c1f93f		SARQ $0x3f, CX		
+  0x267d		4821c1			ANDQ AX, CX		
+  0x2680		488bb42460010000	MOVQ 0x160(SP), SI	
+  0x2688		4801f1			ADDQ SI, CX		
+  0x268b		48898c2428010000	MOVQ CX, 0x128(SP)	
+  0x2693		48890c24		MOVQ CX, 0(SP)		
+  0x2697		48895c2408		MOVQ BX, 0x8(SP)	
+  0x269c		488d3d00000000		LEAQ 0(IP), DI		[3:7]R_PCREL:go.string."Hello "	
+  0x26a3		48897c2410		MOVQ DI, 0x10(SP)	
+  0x26a8		48c744241806000000	MOVQ $0x6, 0x18(SP)	
+  0x26b1		e800000000		CALL 0x26b6		[1:5]R_CALL:strings.Index	
+  0x26b6		488b442420		MOVQ 0x20(SP), AX	
+  0x26bb		4885c0			TESTQ AX, AX		
+  0x26be		0f8e30040000		JLE 0x2af4		
 		i += idx // prefix found, skip to it
-  0x26ba		488b5c2440		MOVQ 0x40(SP), BX	
-  0x26bf		488d3403		LEAQ 0(BX)(AX*1), SI	
+  0x26c4		488b5c2440		MOVQ 0x40(SP), BX	
+  0x26c9		488d3403		LEAQ 0(BX)(AX*1), SI	
 	c[0] = i   // start of match
-  0x26c3		4889742470		MOVQ SI, 0x70(SP)	
-  0x26c8		0f1f8000000000		NOPL 0(AX)		
+  0x26cd		4889742470		MOVQ SI, 0x70(SP)	
 	if i < 0 || i+6 > len(r) {
-  0x26cf		4885f6			TESTQ SI, SI		
-  0x26d2		0f8d4b010000		JGE 0x2823		
+  0x26d2		4885f6			TESTQ SI, SI		
+  0x26d5		0f8d48010000		JGE 0x2823		
 		goto fail
-  0x26d8		488bbc2468010000	MOVQ 0x168(SP), DI	
-  0x26e0		4c8b842460010000	MOVQ 0x160(SP), R8	
+  0x26db		488bbc2468010000	MOVQ 0x168(SP), DI	
+  0x26e3		4c8b842460010000	MOVQ 0x160(SP), R8	
 	bt := _bt[:0]    // backtracking state
-  0x26e8		488d8424b0000000	LEAQ 0xb0(SP), AX	
-  0x26f0		31c9			XORL CX, CX		
-  0x26f2		31d2			XORL DX, DX		
+  0x26eb		488d8424b0000000	LEAQ 0xb0(SP), AX	
+  0x26f3		31c9			XORL CX, CX		
+  0x26f5		31d2			XORL DX, DX		
 		goto fail
-  0x26f4		e9c5fdffff		JMP 0x24be		
+  0x26f7		e9c2fdffff		JMP 0x24be		
 				cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x26f9		488b842428010000	MOVQ 0x128(SP), AX	
-  0x2701		48890424		MOVQ AX, 0(SP)		
-  0x2705		4889542408		MOVQ DX, 0x8(SP)	
-  0x270a		0f1f440000		NOPL 0(AX)(AX*1)	
+  0x26fc		488b842428010000	MOVQ 0x128(SP), AX	
+  0x2704		48890424		MOVQ AX, 0(SP)		
+  0x2708		4889542408		MOVQ DX, 0x8(SP)	
+  0x270d		6690			NOPW			
   0x270f		e800000000		CALL 0x2714		[1:5]R_CALL:unicode/utf8.DecodeRuneInString	
   0x2714		488b442418		MOVQ 0x18(SP), AX	
 			si += sz
@@ -184,7 +187,7 @@ func Match(r string) ([2]string, bool) {
   0x2726		4c8b842460010000	MOVQ 0x160(SP), R8	
   0x272e		90			NOPL			
 				cr, sz = utf8.DecodeRuneInString(r[i:])
-  0x272f		e9d0feffff		JMP 0x2604		
+  0x272f		e9dafeffff		JMP 0x260e		
 		var m [2]string
   0x2734		0f57c0			XORPS X0, X0		
   0x2737		0f11842430010000	MOVUPS X0, 0x130(SP)	
@@ -240,7 +243,7 @@ func Match(r string) ([2]string, bool) {
   0x2823		488d4e06		LEAQ 0x6(SI), CX	
   0x2827		488b942468010000	MOVQ 0x168(SP), DX	
   0x282f		4839d1			CMPQ DX, CX		
-  0x2832		0f8fa0feffff		JG 0x26d8		
+  0x2832		0f8fa3feffff		JG 0x26db		
 	if r[i:i+6] != "Hello " {
   0x2838		0f873e030000		JA 0x2b7c		
   0x283e		4839ce			CMPQ CX, SI		
@@ -401,8 +404,8 @@ func Match(r string) ([2]string, bool) {
 	if i >= 0 && i < len(r) {
   0x2a83		48894c2458		MOVQ CX, 0x58(SP)	
 		if i <= len(r) && len(bt) > 0 {
-  0x2a88		4c89442450		MOVQ R8, 0x50(SP)	
-  0x2a8d		4889b42420010000	MOVQ SI, 0x120(SP)	
+  0x2a88		4889b42420010000	MOVQ SI, 0x120(SP)	
+  0x2a90		4c89442450		MOVQ R8, 0x50(SP)	
 			cr, sz = utf8.DecodeRuneInString(r[i:])
   0x2a95		4829ca			SUBQ CX, DX		
   0x2a98		4889d3			MOVQ DX, BX		
@@ -440,7 +443,7 @@ func Match(r string) ([2]string, bool) {
   0x2b00		488d3418		LEAQ 0(AX)(BX*1), SI	
 	if idx := strings.Index(r[si:], "Hello "); idx > 0 {
   0x2b04		4889c3			MOVQ AX, BX		
-  0x2b07		e9b7fbffff		JMP 0x26c3		
+  0x2b07		e9c1fbffff		JMP 0x26cd		
   0x2b0c		488b442440		MOVQ 0x40(SP), AX	
 		if len(r[si:]) != 0 {
   0x2b11		488b5c2468		MOVQ 0x68(SP), BX	
@@ -489,51 +492,51 @@ func Match(r string) ([2]string, bool) {
 
 TEXT type..eq.[2]string(SB) gofile..<autogenerated>
 
-  0x3ad5		64488b0c2500000000	MOVQ FS:0, CX			[5:9]R_TLS_LE		
-  0x3ade		483b6110		CMPQ 0x10(CX), SP		
-  0x3ae2		0f86a6000000		JBE 0x3b8e			
-  0x3ae8		4883ec30		SUBQ $0x30, SP			
-  0x3aec		48896c2428		MOVQ BP, 0x28(SP)		
-  0x3af1		488d6c2428		LEAQ 0x28(SP), BP		
-  0x3af6		488b442438		MOVQ 0x38(SP), AX		
-  0x3afb		488b4808		MOVQ 0x8(AX), CX		
-  0x3aff		488b542440		MOVQ 0x40(SP), DX		
-  0x3b04		48394a08		CMPQ CX, 0x8(DX)		
-  0x3b08		7575			JNE 0x3b7f			
-  0x3b0a		488b4a18		MOVQ 0x18(DX), CX		
-  0x3b0e		48394818		CMPQ CX, 0x18(AX)		
-  0x3b12		756b			JNE 0x3b7f			
-  0x3b14		31c9			XORL CX, CX			
-  0x3b16		eb13			JMP 0x3b2b			
-  0x3b18		488b5c2420		MOVQ 0x20(SP), BX		
-  0x3b1d		488d4b01		LEAQ 0x1(BX), CX		
-  0x3b21		488b442438		MOVQ 0x38(SP), AX		
-  0x3b26		488b542440		MOVQ 0x40(SP), DX		
-  0x3b2b		4883f902		CMPQ $0x2, CX			
-  0x3b2f		7d3f			JGE 0x3b70			
-  0x3b31		48894c2420		MOVQ CX, 0x20(SP)		
-  0x3b36		48c1e104		SHLQ $0x4, CX			
-  0x3b3a		488b3411		MOVQ 0(CX)(DX*1), SI		
-  0x3b3e		488b3c01		MOVQ 0(CX)(AX*1), DI		
-  0x3b42		488b4c0808		MOVQ 0x8(AX)(CX*1), CX		
-  0x3b47		48893c24		MOVQ DI, 0(SP)			
-  0x3b4b		4889742408		MOVQ SI, 0x8(SP)		
-  0x3b50		48894c2410		MOVQ CX, 0x10(SP)		
-  0x3b55		e800000000		CALL 0x3b5a			[1:5]R_CALL:runtime.memequal	
-  0x3b5a		807c241800		CMPB $0x0, 0x18(SP)		
-  0x3b5f		75b7			JNE 0x3b18			
-  0x3b61		c644244800		MOVB $0x0, 0x48(SP)		
-  0x3b66		488b6c2428		MOVQ 0x28(SP), BP		
-  0x3b6b		4883c430		ADDQ $0x30, SP			
-  0x3b6f		c3			RET				
-  0x3b70		c644244801		MOVB $0x1, 0x48(SP)		
-  0x3b75		488b6c2428		MOVQ 0x28(SP), BP		
-  0x3b7a		4883c430		ADDQ $0x30, SP			
-  0x3b7e		c3			RET				
-  0x3b7f		c644244800		MOVB $0x0, 0x48(SP)		
-  0x3b84		488b6c2428		MOVQ 0x28(SP), BP		
-  0x3b89		4883c430		ADDQ $0x30, SP			
-  0x3b8d		c3			RET				
-  0x3b8e		e800000000		CALL 0x3b93			[1:5]R_CALL:runtime.morestack_noctxt	
-  0x3b93		6690			NOPW				
-  0x3b95		e93bffffff		JMP type..eq.[2]string(SB)	
+  0x3ab4		64488b0c2500000000	MOVQ FS:0, CX			[5:9]R_TLS_LE		
+  0x3abd		483b6110		CMPQ 0x10(CX), SP		
+  0x3ac1		0f86a6000000		JBE 0x3b6d			
+  0x3ac7		4883ec30		SUBQ $0x30, SP			
+  0x3acb		48896c2428		MOVQ BP, 0x28(SP)		
+  0x3ad0		488d6c2428		LEAQ 0x28(SP), BP		
+  0x3ad5		488b442438		MOVQ 0x38(SP), AX		
+  0x3ada		488b4808		MOVQ 0x8(AX), CX		
+  0x3ade		488b542440		MOVQ 0x40(SP), DX		
+  0x3ae3		48394a08		CMPQ CX, 0x8(DX)		
+  0x3ae7		7575			JNE 0x3b5e			
+  0x3ae9		488b4a18		MOVQ 0x18(DX), CX		
+  0x3aed		48394818		CMPQ CX, 0x18(AX)		
+  0x3af1		756b			JNE 0x3b5e			
+  0x3af3		31c9			XORL CX, CX			
+  0x3af5		eb13			JMP 0x3b0a			
+  0x3af7		488b5c2420		MOVQ 0x20(SP), BX		
+  0x3afc		488d4b01		LEAQ 0x1(BX), CX		
+  0x3b00		488b442438		MOVQ 0x38(SP), AX		
+  0x3b05		488b542440		MOVQ 0x40(SP), DX		
+  0x3b0a		4883f902		CMPQ $0x2, CX			
+  0x3b0e		7d3f			JGE 0x3b4f			
+  0x3b10		48894c2420		MOVQ CX, 0x20(SP)		
+  0x3b15		48c1e104		SHLQ $0x4, CX			
+  0x3b19		488b3411		MOVQ 0(CX)(DX*1), SI		
+  0x3b1d		488b3c01		MOVQ 0(CX)(AX*1), DI		
+  0x3b21		488b4c0808		MOVQ 0x8(AX)(CX*1), CX		
+  0x3b26		48893c24		MOVQ DI, 0(SP)			
+  0x3b2a		4889742408		MOVQ SI, 0x8(SP)		
+  0x3b2f		48894c2410		MOVQ CX, 0x10(SP)		
+  0x3b34		e800000000		CALL 0x3b39			[1:5]R_CALL:runtime.memequal	
+  0x3b39		807c241800		CMPB $0x0, 0x18(SP)		
+  0x3b3e		75b7			JNE 0x3af7			
+  0x3b40		c644244800		MOVB $0x0, 0x48(SP)		
+  0x3b45		488b6c2428		MOVQ 0x28(SP), BP		
+  0x3b4a		4883c430		ADDQ $0x30, SP			
+  0x3b4e		c3			RET				
+  0x3b4f		c644244801		MOVB $0x1, 0x48(SP)		
+  0x3b54		488b6c2428		MOVQ 0x28(SP), BP		
+  0x3b59		4883c430		ADDQ $0x30, SP			
+  0x3b5d		c3			RET				
+  0x3b5e		c644244800		MOVB $0x0, 0x48(SP)		
+  0x3b63		488b6c2428		MOVQ 0x28(SP), BP		
+  0x3b68		4883c430		ADDQ $0x30, SP			
+  0x3b6c		c3			RET				
+  0x3b6d		e800000000		CALL 0x3b72			[1:5]R_CALL:runtime.morestack_noctxt	
+  0x3b72		6690			NOPW				
+  0x3b74		e93bffffff		JMP type..eq.[2]string(SB)	
