@@ -119,15 +119,21 @@ func main() {
 	out("matched := false")
 	out("  i := si // current byte index ")
 	if len(prefix) > 0 {
-		// TODO: jump directly into the instruction at the end of the prefix
 		out(`
 		// fast prefix search %q
-		if idx := strings.Index(r[si:], %q); idx > 0 {
-			i += idx // prefix found, skip to it
-		} else if idx < 0 {
-			i+=len(r[si:]) // no prefix found, skip to the end of the rune slice
+		if idx := strings.Index(r[si:], %q); idx >= 0 {
+			i += idx // prefix found, skip to it`,
+			prefix, prefix)
+		if p.Inst[p.Start].Op == instString && prefix == string(p.Inst[p.Start].Rune) {
+			// jump directly into the instruction at the end of the prefix
+			out("c[0] = i // start of match")
+			out("i += %d // prefix length", len(prefix))
+			out("goto inst%d // instruction after prefix", p.Inst[p.Start].Out)
 		}
-		`, prefix, prefix)
+		out(`
+		}
+		i+=len(r[si:]) // no prefix found, skip to the end of the rune slice
+		`)
 	}
 	// TODO: extend the fast search above to zero-width assertions (e.g. find newlines for the case (?m)^...)
 	// TODO: extend the fast search above to look for suffix or infix strings, if we have a bound on the maximum length of the variable part before the suffix/infix
