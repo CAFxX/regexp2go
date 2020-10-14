@@ -58,6 +58,10 @@ function that implements the regular expression.
 
 :warning: These are preliminary results since not all features are implemented, and some edge cases are not handled yet. At the same time, there are many possible optimizations that haven't been implemented yet. See the TODOs in the code for details.
 
+![Benchmark result](benchmark/chart.svg)
+
+In the chart above the results are normalized to the regexp time. Lower is better.
+
 | Benchmark   | regexp2go | regexp |
 | ----------- | --------: | -----: |
 | Prefix      |    0.70µs | 1.10µs |
