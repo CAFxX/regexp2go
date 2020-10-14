@@ -58,9 +58,9 @@ function that implements the regular expression.
 
 :warning: These are preliminary results since not all features are implemented, and some edge cases are not handled yet. At the same time, there are many possible optimizations that haven't been implemented yet. See the TODOs in the code for details.
 
-| Benchmark   | regexp2go | regexp  |
-| ----------- | --------- | ------- |
-| Prefix      | 0.70µs    | 1.10 µs |
-| Dna         | 427µs     | 481µs   |
-| MailCrawler | 1.51µs    | 6.53µs  |
-| LogParse    | 0.38µs    | 1.68µs  |
+| Benchmark   | regexp2go | regexp |
+| ----------- | --------: | -----: |
+| Prefix      |    0.70µs | 1.10µs |
+| Dna         |     427µs |  481µs |
+| MailCrawler |    1.51µs | 6.53µs |
+| LogParse    |    0.38µs | 1.68µs |
