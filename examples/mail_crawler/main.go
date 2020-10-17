@@ -324,25 +324,20 @@ inst16: // match
 	goto match
 
 	goto unreachable
-	goto backtrack
-backtrack:
-	switch bt[len(bt)-1].pc {
-	default:
-		panic(bt[len(bt)-1].pc)
-	case 4:
-		goto inst4_alt
-	case 9:
-		goto inst9_alt
-	case 13:
-		goto inst13_alt
-	}
-
-	goto unreachable
 	goto fail
 fail:
 	{
 		if i <= len(r) && len(bt) > 0 {
-			goto backtrack
+			switch bt[len(bt)-1].pc {
+			default:
+				panic(bt[len(bt)-1].pc)
+			case 4:
+				goto inst4_alt
+			case 9:
+				goto inst9_alt
+			case 13:
+				goto inst13_alt
+			}
 		}
 		if matched {
 			var m [3]string

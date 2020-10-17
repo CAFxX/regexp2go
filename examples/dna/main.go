@@ -1282,53 +1282,48 @@ inst180: // match
 	goto match
 
 	goto unreachable
-	goto backtrack
-backtrack:
-	switch bt[len(bt)-1].pc {
-	default:
-		panic(bt[len(bt)-1].pc)
-	case 18:
-		goto inst18_alt
-	case 37:
-		goto inst37_alt
-	case 39:
-		goto inst39_alt
-	case 57:
-		goto inst57_alt
-	case 59:
-		goto inst59_alt
-	case 77:
-		goto inst77_alt
-	case 79:
-		goto inst79_alt
-	case 97:
-		goto inst97_alt
-	case 99:
-		goto inst99_alt
-	case 117:
-		goto inst117_alt
-	case 119:
-		goto inst119_alt
-	case 137:
-		goto inst137_alt
-	case 139:
-		goto inst139_alt
-	case 157:
-		goto inst157_alt
-	case 159:
-		goto inst159_alt
-	case 177:
-		goto inst177_alt
-	case 179:
-		goto inst179_alt
-	}
-
-	goto unreachable
 	goto fail
 fail:
 	{
 		if i <= len(r) && len(bt) > 0 {
-			goto backtrack
+			switch bt[len(bt)-1].pc {
+			default:
+				panic(bt[len(bt)-1].pc)
+			case 18:
+				goto inst18_alt
+			case 37:
+				goto inst37_alt
+			case 39:
+				goto inst39_alt
+			case 57:
+				goto inst57_alt
+			case 59:
+				goto inst59_alt
+			case 77:
+				goto inst77_alt
+			case 79:
+				goto inst79_alt
+			case 97:
+				goto inst97_alt
+			case 99:
+				goto inst99_alt
+			case 117:
+				goto inst117_alt
+			case 119:
+				goto inst119_alt
+			case 137:
+				goto inst137_alt
+			case 139:
+				goto inst139_alt
+			case 157:
+				goto inst157_alt
+			case 159:
+				goto inst159_alt
+			case 177:
+				goto inst177_alt
+			case 179:
+				goto inst179_alt
+			}
 		}
 		if matched {
 			var m [10]string

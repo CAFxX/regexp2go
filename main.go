@@ -349,21 +349,15 @@ func main() {
 
 	out(`
 		goto unreachable
-		goto backtrack
-		backtrack:
-			switch bt[len(bt)-1].pc {
-			default: panic(bt[len(bt)-1].pc)`)
-	for _, pc := range tgt {
-		out("case %d: goto inst%d_alt", pc, pc) // computed goto would really help here
-	}
-	out("}")
-
-	out(`
-		goto unreachable
 		goto fail
 		fail: {
 			if i <= len(r) && len(bt) > 0 { 
-				goto backtrack 
+				switch bt[len(bt)-1].pc {
+					default: panic(bt[len(bt)-1].pc)`)
+	for _, pc := range tgt {
+		out("case %d: goto inst%d_alt", pc, pc) // computed goto would really help here
+	}
+	out(`		}
 			}
 			if matched {
 				var m [%d]string`,

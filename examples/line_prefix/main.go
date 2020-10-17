@@ -151,21 +151,16 @@ inst8: // match
 	goto match
 
 	goto unreachable
-	goto backtrack
-backtrack:
-	switch bt[len(bt)-1].pc {
-	default:
-		panic(bt[len(bt)-1].pc)
-	case 5:
-		goto inst5_alt
-	}
-
-	goto unreachable
 	goto fail
 fail:
 	{
 		if i <= len(r) && len(bt) > 0 {
-			goto backtrack
+			switch bt[len(bt)-1].pc {
+			default:
+				panic(bt[len(bt)-1].pc)
+			case 5:
+				goto inst5_alt
+			}
 		}
 		if matched {
 			var m [2]string
