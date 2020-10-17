@@ -22,7 +22,7 @@ type state struct {
 // Match implements the regular expression
 // (?i)\b([a-z0-9._%+-]+)@([a-z0-9.-]+\.[a-z]{2,})\b
 // with flags 212
-func Match(r string) ([3]string, bool) {
+func Match(r string) ([3]string, int, bool) {
 	si := 0 // starting byte index
 restart:
 	var _bt [3]state // static storage for backtracking state
@@ -344,7 +344,7 @@ fail:
 			m[0] = r[bc[0]:bc[1]]
 			m[1] = r[bc[2]:bc[3]]
 			m[2] = r[bc[4]:bc[5]]
-			return m, true
+			return m, si, true
 		}
 		if len(r[si:]) != 0 {
 			i = si
@@ -359,7 +359,7 @@ fail:
 			goto restart
 		}
 		var m [3]string
-		return m, false
+		return m, len(r), false
 	}
 
 	goto unreachable

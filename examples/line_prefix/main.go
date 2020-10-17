@@ -22,7 +22,7 @@ type state struct {
 // Match implements the regular expression
 // (?m)^>(.*)$
 // with flags 212
-func Match(r string) ([2]string, bool) {
+func Match(r string) ([2]string, int, bool) {
 	si := 0 // starting byte index
 restart:
 	var _bt [1]state // static storage for backtracking state
@@ -166,7 +166,7 @@ fail:
 			var m [2]string
 			m[0] = r[bc[0]:bc[1]]
 			m[1] = r[bc[2]:bc[3]]
-			return m, true
+			return m, si, true
 		}
 		if len(r[si:]) != 0 {
 			i = si
@@ -181,7 +181,7 @@ fail:
 			goto restart
 		}
 		var m [2]string
-		return m, false
+		return m, len(r), false
 	}
 
 	goto unreachable

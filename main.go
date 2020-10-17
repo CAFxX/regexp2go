@@ -92,7 +92,7 @@ func main() {
 			import "fmt"
 			import "os"
 			func main() {
-				m, found := %s(os.Args[1])
+				m, _, found := %s(os.Args[1])
 				if !found {
 					os.Exit(-1)
 				}
@@ -108,8 +108,7 @@ func main() {
 	out("var _ = strings.Index")
 	out("type state struct { c [%d]int; i int; pc int; cnt int }", p.NumCap)
 	out("// %s implements the regular expression\n// %v\n// with flags %d", *fn, regex, *flags)
-	// TODO: return also si
-	out("func %s(r string) ([%d]string, bool) {", *fn, p.NumCap/2)
+	out("func %s(r string) ([%d]string, int, bool) {", *fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
@@ -366,7 +365,7 @@ func main() {
 	for i := 0; i < p.NumCap/2; i++ {
 		out("m[%d] = r[bc[%d]:bc[%d]]", i, i*2, i*2+1)
 	}
-	out(`		return m, true
+	out(`		return m, si, true
 			}
 			if len(r[si:]) != 0 {
 				i = si
@@ -376,7 +375,7 @@ func main() {
 				goto restart
 			}
 			var m [%d]string
-			return m, false
+			return m, len(r), false
 		}`,
 		p.NumCap/2,
 	)

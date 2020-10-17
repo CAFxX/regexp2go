@@ -22,7 +22,7 @@ type state struct {
 // Match implements the regular expression
 // (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
 // with flags 212
-func Match(r string) ([10]string, bool) {
+func Match(r string) ([10]string, int, bool) {
 	si := 0 // starting byte index
 restart:
 	var _bt [17]state // static storage for backtracking state
@@ -1337,7 +1337,7 @@ fail:
 			m[7] = r[bc[14]:bc[15]]
 			m[8] = r[bc[16]:bc[17]]
 			m[9] = r[bc[18]:bc[19]]
-			return m, true
+			return m, si, true
 		}
 		if len(r[si:]) != 0 {
 			i = si
@@ -1352,7 +1352,7 @@ fail:
 			goto restart
 		}
 		var m [10]string
-		return m, false
+		return m, len(r), false
 	}
 
 	goto unreachable
