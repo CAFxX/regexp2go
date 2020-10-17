@@ -50,14 +50,13 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "Hello " {
+			i += 6
+			goto inst7
+		}
 	}
-	if r[i:i+6] != "Hello " {
-		goto fail
-	}
-	i += 6
-	goto inst7
+	goto fail
 
 	// inst2 unreacheable
 
@@ -130,14 +129,13 @@ inst10: // cap 3 -> 11
 	goto unreachable
 	goto inst11
 inst11: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "!" {
+			i += 1
+			goto inst12
+		}
 	}
-	if r[i:i+1] != "!" {
-		goto fail
-	}
-	i += 1
-	goto inst12
+	goto fail
 
 	goto unreachable
 	goto inst12

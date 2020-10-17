@@ -57,14 +57,13 @@ inst1: // empty 1 -> 2
 	goto unreachable
 	goto inst2
 inst2: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ">" {
+			i += 1
+			goto inst3
+		}
 	}
-	if r[i:i+1] != ">" {
-		goto fail
-	}
-	i += 1
-	goto inst3
+	goto fail
 
 	goto unreachable
 	goto inst3

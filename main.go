@@ -335,10 +335,13 @@ func main() {
 			out("i+=sz \n goto inst%d", inst.Out)
 			out(`}`)
 		case instString:
-			out("if i < 0 || i+%d > len(r) { goto fail }", len(string(inst.Rune)))
-			out("if r[i:i+%d] != %q { goto fail }", len(string(inst.Rune)), string(inst.Rune))
+			out("if i >= 0 && i+%d <= len(r) {", len(string(inst.Rune)))
+			out("if r[i:i+%d] == %q {", len(string(inst.Rune)), string(inst.Rune))
 			out("i += %d", len(string(inst.Rune)))
 			out("goto inst%d", inst.Out)
+			out("}")
+			out("}")
+			out("goto fail")
 		default:
 			panic("unknown op")
 		}

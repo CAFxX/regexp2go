@@ -57,14 +57,13 @@ inst1: // empty 1 -> 2
 	goto unreachable
 	goto inst2
 inst2: //
-	if i < 0 || i+9 > len(r) {
-		goto fail
+	if i >= 0 && i+9 <= len(r) {
+		if r[i:i+9] == "INFO res=" {
+			i += 9
+			goto inst11
+		}
 	}
-	if r[i:i+9] != "INFO res=" {
-		goto fail
-	}
-	i += 9
-	goto inst11
+	goto fail
 
 	// inst3 unreacheable
 
@@ -143,14 +142,13 @@ inst14: // cap 3 -> 15
 	goto unreachable
 	goto inst15
 inst15: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
+	if i >= 0 && i+5 <= len(r) {
+		if r[i:i+5] == " msg=" {
+			i += 5
+			goto inst20
+		}
 	}
-	if r[i:i+5] != " msg=" {
-		goto fail
-	}
-	i += 5
-	goto inst20
+	goto fail
 
 	// inst16 unreacheable
 

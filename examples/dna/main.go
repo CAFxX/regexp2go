@@ -45,14 +45,13 @@ inst1: // cap 2 -> 18
 	goto unreachable
 	goto inst2
 inst2: //
-	if i < 0 || i+8 > len(r) {
-		goto fail
+	if i >= 0 && i+8 <= len(r) {
+		if r[i:i+8] == "agggtaaa" {
+			i += 8
+			goto inst19
+		}
 	}
-	if r[i:i+8] != "agggtaaa" {
-		goto fail
-	}
-	i += 8
-	goto inst19
+	goto fail
 
 	// inst3 unreacheable
 
@@ -71,14 +70,13 @@ inst2: //
 	goto unreachable
 	goto inst10
 inst10: //
-	if i < 0 || i+8 > len(r) {
-		goto fail
+	if i >= 0 && i+8 <= len(r) {
+		if r[i:i+8] == "tttaccct" {
+			i += 8
+			goto inst19
+		}
 	}
-	if r[i:i+8] != "tttaccct" {
-		goto fail
-	}
-	i += 8
-	goto inst19
+	goto fail
 
 	// inst11 unreacheable
 
@@ -146,14 +144,13 @@ inst21: // rune "ccggtt" -> 22
 	goto unreachable
 	goto inst22
 inst22: //
-	if i < 0 || i+7 > len(r) {
-		goto fail
+	if i >= 0 && i+7 <= len(r) {
+		if r[i:i+7] == "gggtaaa" {
+			i += 7
+			goto inst38
+		}
 	}
-	if r[i:i+7] != "gggtaaa" {
-		goto fail
-	}
-	i += 7
-	goto inst38
+	goto fail
 
 	// inst23 unreacheable
 
@@ -170,14 +167,13 @@ inst22: //
 	goto unreachable
 	goto inst29
 inst29: //
-	if i < 0 || i+7 > len(r) {
-		goto fail
+	if i >= 0 && i+7 <= len(r) {
+		if r[i:i+7] == "tttaccc" {
+			i += 7
+			goto inst36
+		}
 	}
-	if r[i:i+7] != "tttaccc" {
-		goto fail
-	}
-	i += 7
-	goto inst36
+	goto fail
 
 	// inst30 unreacheable
 
@@ -256,14 +252,13 @@ inst40: // cap 6 -> 57
 	goto unreachable
 	goto inst41
 inst41: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "a" {
+			i += 1
+			goto inst42
+		}
 	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst42
+	goto fail
 
 	goto unreachable
 	goto inst42
@@ -292,14 +287,13 @@ inst42: // rune "aacctt" -> 43
 	goto unreachable
 	goto inst43
 inst43: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "ggtaaa" {
+			i += 6
+			goto inst58
+		}
 	}
-	if r[i:i+6] != "ggtaaa" {
-		goto fail
-	}
-	i += 6
-	goto inst58
+	goto fail
 
 	// inst44 unreacheable
 
@@ -314,14 +308,13 @@ inst43: //
 	goto unreachable
 	goto inst49
 inst49: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "tttacc" {
+			i += 6
+			goto inst55
+		}
 	}
-	if r[i:i+6] != "tttacc" {
-		goto fail
-	}
-	i += 6
-	goto inst55
+	goto fail
 
 	// inst50 unreacheable
 
@@ -360,14 +353,13 @@ inst55: // rune "aaggtt" -> 56
 	goto unreachable
 	goto inst56
 inst56: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "t" {
+			i += 1
+			goto inst58
+		}
 	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst58
+	goto fail
 
 	goto unreachable
 	goto inst57
@@ -410,14 +402,13 @@ inst60: // cap 8 -> 77
 	goto unreachable
 	goto inst61
 inst61: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "ag" {
+			i += 2
+			goto inst63
+		}
 	}
-	if r[i:i+2] != "ag" {
-		goto fail
-	}
-	i += 2
-	goto inst63
+	goto fail
 
 	// inst62 unreacheable
 
@@ -448,14 +439,13 @@ inst63: // rune "aacctt" -> 64
 	goto unreachable
 	goto inst64
 inst64: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
+	if i >= 0 && i+5 <= len(r) {
+		if r[i:i+5] == "gtaaa" {
+			i += 5
+			goto inst78
+		}
 	}
-	if r[i:i+5] != "gtaaa" {
-		goto fail
-	}
-	i += 5
-	goto inst78
+	goto fail
 
 	// inst65 unreacheable
 
@@ -468,14 +458,13 @@ inst64: //
 	goto unreachable
 	goto inst69
 inst69: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
+	if i >= 0 && i+5 <= len(r) {
+		if r[i:i+5] == "tttac" {
+			i += 5
+			goto inst74
+		}
 	}
-	if r[i:i+5] != "tttac" {
-		goto fail
-	}
-	i += 5
-	goto inst74
+	goto fail
 
 	// inst70 unreacheable
 
@@ -512,14 +501,13 @@ inst74: // rune "aaggtt" -> 75
 	goto unreachable
 	goto inst75
 inst75: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "ct" {
+			i += 2
+			goto inst78
+		}
 	}
-	if r[i:i+2] != "ct" {
-		goto fail
-	}
-	i += 2
-	goto inst78
+	goto fail
 
 	// inst76 unreacheable
 
@@ -564,14 +552,13 @@ inst80: // cap 10 -> 97
 	goto unreachable
 	goto inst81
 inst81: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
+	if i >= 0 && i+3 <= len(r) {
+		if r[i:i+3] == "agg" {
+			i += 3
+			goto inst84
+		}
 	}
-	if r[i:i+3] != "agg" {
-		goto fail
-	}
-	i += 3
-	goto inst84
+	goto fail
 
 	// inst82 unreacheable
 
@@ -604,14 +591,13 @@ inst84: // rune "aacctt" -> 85
 	goto unreachable
 	goto inst85
 inst85: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
+	if i >= 0 && i+4 <= len(r) {
+		if r[i:i+4] == "taaa" {
+			i += 4
+			goto inst98
+		}
 	}
-	if r[i:i+4] != "taaa" {
-		goto fail
-	}
-	i += 4
-	goto inst98
+	goto fail
 
 	// inst86 unreacheable
 
@@ -622,14 +608,13 @@ inst85: //
 	goto unreachable
 	goto inst89
 inst89: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
+	if i >= 0 && i+4 <= len(r) {
+		if r[i:i+4] == "ttta" {
+			i += 4
+			goto inst93
+		}
 	}
-	if r[i:i+4] != "ttta" {
-		goto fail
-	}
-	i += 4
-	goto inst93
+	goto fail
 
 	// inst90 unreacheable
 
@@ -664,14 +649,13 @@ inst93: // rune "aaggtt" -> 94
 	goto unreachable
 	goto inst94
 inst94: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
+	if i >= 0 && i+3 <= len(r) {
+		if r[i:i+3] == "cct" {
+			i += 3
+			goto inst98
+		}
 	}
-	if r[i:i+3] != "cct" {
-		goto fail
-	}
-	i += 3
-	goto inst98
+	goto fail
 
 	// inst95 unreacheable
 
@@ -718,14 +702,13 @@ inst100: // cap 12 -> 117
 	goto unreachable
 	goto inst101
 inst101: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
+	if i >= 0 && i+4 <= len(r) {
+		if r[i:i+4] == "aggg" {
+			i += 4
+			goto inst105
+		}
 	}
-	if r[i:i+4] != "aggg" {
-		goto fail
-	}
-	i += 4
-	goto inst105
+	goto fail
 
 	// inst102 unreacheable
 
@@ -760,14 +743,13 @@ inst105: // rune "aaccgg" -> 106
 	goto unreachable
 	goto inst106
 inst106: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
+	if i >= 0 && i+3 <= len(r) {
+		if r[i:i+3] == "aaa" {
+			i += 3
+			goto inst118
+		}
 	}
-	if r[i:i+3] != "aaa" {
-		goto fail
-	}
-	i += 3
-	goto inst118
+	goto fail
 
 	// inst107 unreacheable
 
@@ -776,14 +758,13 @@ inst106: //
 	goto unreachable
 	goto inst109
 inst109: //
-	if i < 0 || i+3 > len(r) {
-		goto fail
+	if i >= 0 && i+3 <= len(r) {
+		if r[i:i+3] == "ttt" {
+			i += 3
+			goto inst112
+		}
 	}
-	if r[i:i+3] != "ttt" {
-		goto fail
-	}
-	i += 3
-	goto inst112
+	goto fail
 
 	// inst110 unreacheable
 
@@ -816,14 +797,13 @@ inst112: // rune "ccggtt" -> 113
 	goto unreachable
 	goto inst113
 inst113: //
-	if i < 0 || i+4 > len(r) {
-		goto fail
+	if i >= 0 && i+4 <= len(r) {
+		if r[i:i+4] == "ccct" {
+			i += 4
+			goto inst118
+		}
 	}
-	if r[i:i+4] != "ccct" {
-		goto fail
-	}
-	i += 4
-	goto inst118
+	goto fail
 
 	// inst114 unreacheable
 
@@ -872,14 +852,13 @@ inst120: // cap 14 -> 137
 	goto unreachable
 	goto inst121
 inst121: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
+	if i >= 0 && i+5 <= len(r) {
+		if r[i:i+5] == "agggt" {
+			i += 5
+			goto inst126
+		}
 	}
-	if r[i:i+5] != "agggt" {
-		goto fail
-	}
-	i += 5
-	goto inst126
+	goto fail
 
 	// inst122 unreacheable
 
@@ -916,28 +895,26 @@ inst126: // rune "ccggtt" -> 127
 	goto unreachable
 	goto inst127
 inst127: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "aa" {
+			i += 2
+			goto inst138
+		}
 	}
-	if r[i:i+2] != "aa" {
-		goto fail
-	}
-	i += 2
-	goto inst138
+	goto fail
 
 	// inst128 unreacheable
 
 	goto unreachable
 	goto inst129
 inst129: //
-	if i < 0 || i+2 > len(r) {
-		goto fail
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "tt" {
+			i += 2
+			goto inst131
+		}
 	}
-	if r[i:i+2] != "tt" {
-		goto fail
-	}
-	i += 2
-	goto inst131
+	goto fail
 
 	// inst130 unreacheable
 
@@ -968,14 +945,13 @@ inst131: // rune "aaccgg" -> 132
 	goto unreachable
 	goto inst132
 inst132: //
-	if i < 0 || i+5 > len(r) {
-		goto fail
+	if i >= 0 && i+5 <= len(r) {
+		if r[i:i+5] == "accct" {
+			i += 5
+			goto inst138
+		}
 	}
-	if r[i:i+5] != "accct" {
-		goto fail
-	}
-	i += 5
-	goto inst138
+	goto fail
 
 	// inst133 unreacheable
 
@@ -1026,14 +1002,13 @@ inst140: // cap 16 -> 157
 	goto unreachable
 	goto inst141
 inst141: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "agggta" {
+			i += 6
+			goto inst147
+		}
 	}
-	if r[i:i+6] != "agggta" {
-		goto fail
-	}
-	i += 6
-	goto inst147
+	goto fail
 
 	// inst142 unreacheable
 
@@ -1072,26 +1047,24 @@ inst147: // rune "ccggtt" -> 148
 	goto unreachable
 	goto inst148
 inst148: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "a" {
+			i += 1
+			goto inst158
+		}
 	}
-	if r[i:i+1] != "a" {
-		goto fail
-	}
-	i += 1
-	goto inst158
+	goto fail
 
 	goto unreachable
 	goto inst149
 inst149: //
-	if i < 0 || i+1 > len(r) {
-		goto fail
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "t" {
+			i += 1
+			goto inst150
+		}
 	}
-	if r[i:i+1] != "t" {
-		goto fail
-	}
-	i += 1
-	goto inst150
+	goto fail
 
 	goto unreachable
 	goto inst150
@@ -1120,14 +1093,13 @@ inst150: // rune "aaccgg" -> 151
 	goto unreachable
 	goto inst151
 inst151: //
-	if i < 0 || i+6 > len(r) {
-		goto fail
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "taccct" {
+			i += 6
+			goto inst158
+		}
 	}
-	if r[i:i+6] != "taccct" {
-		goto fail
-	}
-	i += 6
-	goto inst158
+	goto fail
 
 	// inst152 unreacheable
 
@@ -1180,14 +1152,13 @@ inst160: // cap 18 -> 177
 	goto unreachable
 	goto inst161
 inst161: //
-	if i < 0 || i+7 > len(r) {
-		goto fail
+	if i >= 0 && i+7 <= len(r) {
+		if r[i:i+7] == "agggtaa" {
+			i += 7
+			goto inst168
+		}
 	}
-	if r[i:i+7] != "agggtaa" {
-		goto fail
-	}
-	i += 7
-	goto inst168
+	goto fail
 
 	// inst162 unreacheable
 
@@ -1252,14 +1223,13 @@ inst169: // rune "aaccgg" -> 170
 	goto unreachable
 	goto inst170
 inst170: //
-	if i < 0 || i+7 > len(r) {
-		goto fail
+	if i >= 0 && i+7 <= len(r) {
+		if r[i:i+7] == "ttaccct" {
+			i += 7
+			goto inst178
+		}
 	}
-	if r[i:i+7] != "ttaccct" {
-		goto fail
-	}
-	i += 7
-	goto inst178
+	goto fail
 
 	// inst171 unreacheable
 

@@ -405,13 +405,13 @@ func Match(r string) ([3]string, bool) {
   0x38df		4aff4ccfe8		DECQ -0x18(DI)(R9*8)	
 			ps.cnt--
   0x38e4		4aff4ccff8		DECQ -0x8(DI)(R9*8)	
-	if i < 0 || i+1 > len(r) {
+	if i >= 0 && i+1 <= len(r) {
   0x38e9		4885c0			TESTQ AX, AX		
   0x38ec		0f8c34060000		JL 0x3f26		
   0x38f2		4c8d4801		LEAQ 0x1(AX), R9	
   0x38f6		4939f1			CMPQ SI, R9		
   0x38f9		0f8f27060000		JG 0x3f26		
-	if r[i:i+1] != "." {
+		if r[i:i+1] == "." {
   0x38ff		0f1f4000		NOPL 0(AX)		
   0x3903		0f87ec0d0000		JA 0x46f5		
   0x3909		4c39c8			CMPQ R9, AX		
@@ -420,7 +420,7 @@ func Match(r string) ([3]string, bool) {
   0x3917		4180fa2e		CMPL $0x2e, R10		
   0x391b		0f8505060000		JNE 0x3f26		
   0x3921		6690			NOPW			
-	if i < 0 || i+1 > len(r) {
+	if i >= 0 && i+1 <= len(r) {
   0x3923		4939f1			CMPQ SI, R9		
 	if i >= 0 && i < len(r) {
   0x3926		0f8de0030000		JGE 0x3d0c		
@@ -456,8 +456,8 @@ func Match(r string) ([3]string, bool) {
   0x3997		4489e1			MOVL R12, CX		
   0x399a		41bd01000000		MOVL $0x1, R13		
   0x39a0		41d3e5			SHLL CL, R13		
-  0x39a3		4521ea			ANDL R13, R10		
-  0x39a6		4584f2			TESTL R14, R10		
+  0x39a3		4521d5			ANDL R10, R13		
+  0x39a6		4584f5			TESTL R14, R13		
   0x39a9		0f841b030000		JE 0x3cca		
 				i += sz
   0x39af		4d8d0c03		LEAQ 0(R11)(AX*1), R9	
@@ -521,8 +521,8 @@ func Match(r string) ([3]string, bool) {
   0x3a9f		4519d2			SBBL R10, R10			
   0x3aa2		41bc01000000		MOVL $0x1, R12			
   0x3aa8		41d3e4			SHLL CL, R12			
-  0x3aab		4521d4			ANDL R10, R12			
-  0x3aae		4584dc			TESTL R11, R12			
+  0x3aab		4521e2			ANDL R12, R10			
+  0x3aae		4584da			TESTL R11, R10			
   0x3ab1		0f8452010000		JE 0x3c09			
 				i += sz
   0x3ab7		4901c1			ADDQ AX, R9		
@@ -690,12 +690,12 @@ func Match(r string) ([3]string, bool) {
   0x3d0c		4c89c8			MOVQ R9, AX		
 	goto fail
   0x3d0f		e912020000		JMP 0x3f26		
-		c, i = ps.c, ps.i
-  0x3d14		4889842480000000	MOVQ AX, 0x80(SP)	
-	if i < 0 || i+1 > len(r) {
-  0x3d1c		4c894c2478		MOVQ R9, 0x78(SP)	
 		if i <= len(r) && len(bt) > 0 {
-  0x3d21		48899424c8000000	MOVQ DX, 0xc8(SP)	
+  0x3d14		4889942480000000	MOVQ DX, 0x80(SP)	
+		c, i = ps.c, ps.i
+  0x3d1c		4889442478		MOVQ AX, 0x78(SP)	
+	if i >= 0 && i+1 <= len(r) {
+  0x3d21		4c898c24c8000000	MOVQ R9, 0xc8(SP)	
 			cr, sz = utf8.DecodeRuneInString(r[i:])
   0x3d29		4c29ce			SUBQ R9, SI		
   0x3d2c		4889f1			MOVQ SI, CX		
@@ -709,19 +709,19 @@ func Match(r string) ([3]string, bool) {
   0x3d4b		448b542410		MOVL 0x10(SP), R10	
   0x3d50		4c8b5c2418		MOVQ 0x18(SP), R11	
 			i += sz
-  0x3d55		488b842480000000	MOVQ 0x80(SP), AX	
+  0x3d55		488b442478		MOVQ 0x78(SP), AX	
 		if matched {
-  0x3d5d		0fb64c2447		MOVZX 0x47(SP), CX	
+  0x3d5a		0fb64c2447		MOVZX 0x47(SP), CX	
 		if i <= len(r) && len(bt) > 0 {
-  0x3d62		488b9424c8000000	MOVQ 0xc8(SP), DX	
+  0x3d5f		488b942480000000	MOVQ 0x80(SP), DX	
 		cr, sz := rune(r[i]), 1
-  0x3d6a		488b9c2470030000	MOVQ 0x370(SP), BX	
+  0x3d67		488b9c2470030000	MOVQ 0x370(SP), BX	
 	if i >= 0 && i < len(r) {
-  0x3d72		488bb42478030000	MOVQ 0x378(SP), SI	
+  0x3d6f		488bb42478030000	MOVQ 0x378(SP), SI	
 		if i <= len(r) && len(bt) > 0 {
-  0x3d7a		488bbc24e8020000	MOVQ 0x2e8(SP), DI	
-  0x3d82		4c8b8424a0000000	MOVQ 0xa0(SP), R8	
-  0x3d8a		4c8b4c2478		MOVQ 0x78(SP), R9	
+  0x3d77		488bbc24e8020000	MOVQ 0x2e8(SP), DI	
+  0x3d7f		4c8b8424a0000000	MOVQ 0xa0(SP), R8	
+  0x3d87		4c8b8c24c8000000	MOVQ 0xc8(SP), R9	
 		if len(r[si:]) != 0 {
   0x3d8f		4c8b6c2460		MOVQ 0x60(SP), R13	
 func Match(r string) ([3]string, bool) {
@@ -863,14 +863,14 @@ func Match(r string) ([3]string, bool) {
   0x3fa7		4aff4ccff8		DECQ -0x8(DI)(R9*8)	
 	c[3] = i
   0x3fac		48898424e8000000	MOVQ AX, 0xe8(SP)	
-	if i < 0 || i+1 > len(r) {
+	if i >= 0 && i+1 <= len(r) {
   0x3fb4		4885c0			TESTQ AX, AX		
   0x3fb7		0f8c69ffffff		JL 0x3f26		
   0x3fbd		4c8d4801		LEAQ 0x1(AX), R9	
   0x3fc1		6690			NOPW			
   0x3fc3		4939f1			CMPQ SI, R9		
   0x3fc6		0f8f5affffff		JG 0x3f26		
-	if r[i:i+1] != "@" {
+		if r[i:i+1] == "@" {
   0x3fcc		0f874b070000		JA 0x471d		
   0x3fd2		4c39c8			CMPQ R9, AX		
   0x3fd5		0f873a070000		JA 0x4715		
@@ -932,7 +932,7 @@ func Match(r string) ([3]string, bool) {
   0x4094		0fb64c2447		MOVZX 0x47(SP), CX	
 		if i <= len(r) && len(bt) > 0 {
   0x4099		488b9424b0000000	MOVQ 0xb0(SP), DX	
-	if r[i:i+1] != "@" {
+		if r[i:i+1] == "@" {
   0x40a1		488b9c2470030000	MOVQ 0x370(SP), BX	
 		if i <= len(r) && len(bt) > 0 {
   0x40a9		488bb42478030000	MOVQ 0x378(SP), SI	
@@ -1352,7 +1352,7 @@ func Match(r string) ([3]string, bool) {
   0x46e0		4c89f0			MOVQ R14, AX		
   0x46e3		b910000000		MOVL $0x10, CX		
   0x46e8		e800000000		CALL 0x46ed		[1:5]R_CALL:runtime.panicIndex	
-	if r[i:i+1] != "." {
+		if r[i:i+1] == "." {
   0x46ed		4c89c9			MOVQ R9, CX		
   0x46f0		e800000000		CALL 0x46f5		[1:5]R_CALL:runtime.panicSliceB	
   0x46f5		4c89c9			MOVQ R9, CX		
@@ -1364,7 +1364,7 @@ func Match(r string) ([3]string, bool) {
   0x4708		4c89e0			MOVQ R12, AX		
   0x470b		b910000000		MOVL $0x10, CX		
   0x4710		e800000000		CALL 0x4715		[1:5]R_CALL:runtime.panicIndex	
-	if r[i:i+1] != "@" {
+		if r[i:i+1] == "@" {
   0x4715		4c89c9			MOVQ R9, CX		
   0x4718		e800000000		CALL 0x471d		[1:5]R_CALL:runtime.panicSliceB	
   0x471d		4c89c9			MOVQ R9, CX		
