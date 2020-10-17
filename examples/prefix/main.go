@@ -12,7 +12,7 @@ const MatchRegexp = "Hello ([^!]+)!"
 var _ = syntax.IsWordChar
 var _ = strings.Index
 
-type state struct {
+type stateMatch struct {
 	c   [4]int
 	i   int
 	pc  int
@@ -25,10 +25,10 @@ type state struct {
 func Match(r string) ([2]string, int, bool) {
 	si := 0 // starting byte index
 restart:
-	var _bt [1]state // static storage for backtracking state
-	bt := _bt[:0]    // backtracking state
-	var c [4]int     // captures
-	var bc [4]int    // captures for the longest match so far
+	var _bt [1]stateMatch // static storage for backtracking state
+	bt := _bt[:0]         // backtracking state
+	var c [4]int          // captures
+	var bc [4]int         // captures for the longest match so far
 	matched := false
 	i := si // current byte index
 
@@ -103,7 +103,7 @@ inst9: // alt -> 8, 10
 			goto inst8
 		}
 	}
-	bt = append(bt, state{c, i, 9, 0})
+	bt = append(bt, stateMatch{c, i, 9, 0})
 	goto inst8
 inst9_alt:
 	{

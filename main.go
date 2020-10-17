@@ -106,13 +106,13 @@ func main() {
 	}
 	out("var _ = syntax.IsWordChar")
 	out("var _ = strings.Index")
-	out("type state struct { c [%d]int; i int; pc int; cnt int }", p.NumCap)
+	out("type state%s struct { c [%d]int; i int; pc int; cnt int }", *fn, p.NumCap)
 	out("// %s implements the regular expression\n// %v\n// with flags %d", *fn, regex, *flags)
 	out("func %s(r string) ([%d]string, int, bool) {", *fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
-	out("  var _bt [%d]state // static storage for backtracking state \n bt := _bt[:0] // backtracking state ", numSt)
+	out("  var _bt [%d]state%s // static storage for backtracking state \n bt := _bt[:0] // backtracking state ", numSt, *fn)
 	out("  var c [%d]int // captures ", p.NumCap)
 	out("var bc [%d]int // captures for the longest match so far", p.NumCap)
 	out("matched := false")
@@ -162,11 +162,11 @@ func main() {
 							goto inst%d
 						}
 					}
-					bt = append(bt, state{c, i, %d, 0})
+					bt = append(bt, state%s{c, i, %d, 0})
 					goto inst%d`,
 					pc, steps,
 					inst.Out,
-					pc,
+					*fn, pc,
 					inst.Out,
 				)
 				out(
@@ -190,9 +190,9 @@ func main() {
 				)
 			} else {
 				out(
-					`bt = append(bt, state{c, i, %d, 0})
+					`bt = append(bt, state%s{c, i, %d, 0})
 					goto inst%d`,
-					pc,
+					*fn, pc,
 					inst.Out,
 				)
 				out(

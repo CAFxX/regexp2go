@@ -12,7 +12,7 @@ const MatchRegexp = "(?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]g
 var _ = syntax.IsWordChar
 var _ = strings.Index
 
-type state struct {
+type stateMatch struct {
 	c   [20]int
 	i   int
 	pc  int
@@ -25,10 +25,10 @@ type state struct {
 func Match(r string) ([10]string, int, bool) {
 	si := 0 // starting byte index
 restart:
-	var _bt [17]state // static storage for backtracking state
-	bt := _bt[:0]     // backtracking state
-	var c [20]int     // captures
-	var bc [20]int    // captures for the longest match so far
+	var _bt [17]stateMatch // static storage for backtracking state
+	bt := _bt[:0]          // backtracking state
+	var c [20]int          // captures
+	var bc [20]int         // captures for the longest match so far
 	matched := false
 	i := si      // current byte index
 	c[0] = i     // start of match
@@ -95,7 +95,7 @@ inst10: //
 	goto unreachable
 	goto inst18
 inst18: // alt -> 2, 10
-	bt = append(bt, state{c, i, 18, 0})
+	bt = append(bt, stateMatch{c, i, 18, 0})
 	goto inst2
 inst18_alt:
 	{
@@ -214,7 +214,7 @@ inst36: // rune "aaccgg" -> 38
 	goto unreachable
 	goto inst37
 inst37: // alt -> 21, 29
-	bt = append(bt, state{c, i, 37, 0})
+	bt = append(bt, stateMatch{c, i, 37, 0})
 	goto inst21
 inst37_alt:
 	{
@@ -233,7 +233,7 @@ inst38: // cap 5 -> 180
 	goto unreachable
 	goto inst39
 inst39: // alt -> 1, 20
-	bt = append(bt, state{c, i, 39, 0})
+	bt = append(bt, stateMatch{c, i, 39, 0})
 	goto inst1
 inst39_alt:
 	{
@@ -364,7 +364,7 @@ inst56: //
 	goto unreachable
 	goto inst57
 inst57: // alt -> 41, 49
-	bt = append(bt, state{c, i, 57, 0})
+	bt = append(bt, stateMatch{c, i, 57, 0})
 	goto inst41
 inst57_alt:
 	{
@@ -383,7 +383,7 @@ inst58: // cap 7 -> 180
 	goto unreachable
 	goto inst59
 inst59: // alt -> 39, 40
-	bt = append(bt, state{c, i, 59, 0})
+	bt = append(bt, stateMatch{c, i, 59, 0})
 	goto inst39
 inst59_alt:
 	{
@@ -514,7 +514,7 @@ inst75: //
 	goto unreachable
 	goto inst77
 inst77: // alt -> 61, 69
-	bt = append(bt, state{c, i, 77, 0})
+	bt = append(bt, stateMatch{c, i, 77, 0})
 	goto inst61
 inst77_alt:
 	{
@@ -533,7 +533,7 @@ inst78: // cap 9 -> 180
 	goto unreachable
 	goto inst79
 inst79: // alt -> 59, 60
-	bt = append(bt, state{c, i, 79, 0})
+	bt = append(bt, stateMatch{c, i, 79, 0})
 	goto inst59
 inst79_alt:
 	{
@@ -664,7 +664,7 @@ inst94: //
 	goto unreachable
 	goto inst97
 inst97: // alt -> 81, 89
-	bt = append(bt, state{c, i, 97, 0})
+	bt = append(bt, stateMatch{c, i, 97, 0})
 	goto inst81
 inst97_alt:
 	{
@@ -683,7 +683,7 @@ inst98: // cap 11 -> 180
 	goto unreachable
 	goto inst99
 inst99: // alt -> 79, 80
-	bt = append(bt, state{c, i, 99, 0})
+	bt = append(bt, stateMatch{c, i, 99, 0})
 	goto inst79
 inst99_alt:
 	{
@@ -814,7 +814,7 @@ inst113: //
 	goto unreachable
 	goto inst117
 inst117: // alt -> 101, 109
-	bt = append(bt, state{c, i, 117, 0})
+	bt = append(bt, stateMatch{c, i, 117, 0})
 	goto inst101
 inst117_alt:
 	{
@@ -833,7 +833,7 @@ inst118: // cap 13 -> 180
 	goto unreachable
 	goto inst119
 inst119: // alt -> 99, 100
-	bt = append(bt, state{c, i, 119, 0})
+	bt = append(bt, stateMatch{c, i, 119, 0})
 	goto inst99
 inst119_alt:
 	{
@@ -964,7 +964,7 @@ inst132: //
 	goto unreachable
 	goto inst137
 inst137: // alt -> 121, 129
-	bt = append(bt, state{c, i, 137, 0})
+	bt = append(bt, stateMatch{c, i, 137, 0})
 	goto inst121
 inst137_alt:
 	{
@@ -983,7 +983,7 @@ inst138: // cap 15 -> 180
 	goto unreachable
 	goto inst139
 inst139: // alt -> 119, 120
-	bt = append(bt, state{c, i, 139, 0})
+	bt = append(bt, stateMatch{c, i, 139, 0})
 	goto inst119
 inst139_alt:
 	{
@@ -1114,7 +1114,7 @@ inst151: //
 	goto unreachable
 	goto inst157
 inst157: // alt -> 141, 149
-	bt = append(bt, state{c, i, 157, 0})
+	bt = append(bt, stateMatch{c, i, 157, 0})
 	goto inst141
 inst157_alt:
 	{
@@ -1133,7 +1133,7 @@ inst158: // cap 17 -> 180
 	goto unreachable
 	goto inst159
 inst159: // alt -> 139, 140
-	bt = append(bt, state{c, i, 159, 0})
+	bt = append(bt, stateMatch{c, i, 159, 0})
 	goto inst139
 inst159_alt:
 	{
@@ -1246,7 +1246,7 @@ inst170: //
 	goto unreachable
 	goto inst177
 inst177: // alt -> 161, 169
-	bt = append(bt, state{c, i, 177, 0})
+	bt = append(bt, stateMatch{c, i, 177, 0})
 	goto inst161
 inst177_alt:
 	{
@@ -1265,7 +1265,7 @@ inst178: // cap 19 -> 180
 	goto unreachable
 	goto inst179
 inst179: // alt -> 159, 160
-	bt = append(bt, state{c, i, 179, 0})
+	bt = append(bt, stateMatch{c, i, 179, 0})
 	goto inst159
 inst179_alt:
 	{

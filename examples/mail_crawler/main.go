@@ -12,7 +12,7 @@ const MatchRegexp = "(?i)\\b([a-z0-9._%+-]+)@([a-z0-9.-]+\\.[a-z]{2,})\\b"
 var _ = syntax.IsWordChar
 var _ = strings.Index
 
-type state struct {
+type stateMatch struct {
 	c   [6]int
 	i   int
 	pc  int
@@ -25,10 +25,10 @@ type state struct {
 func Match(r string) ([3]string, int, bool) {
 	si := 0 // starting byte index
 restart:
-	var _bt [3]state // static storage for backtracking state
-	bt := _bt[:0]    // backtracking state
-	var c [6]int     // captures
-	var bc [6]int    // captures for the longest match so far
+	var _bt [3]stateMatch // static storage for backtracking state
+	bt := _bt[:0]         // backtracking state
+	var c [6]int          // captures
+	var bc [6]int         // captures for the longest match so far
 	matched := false
 	i := si    // current byte index
 	c[0] = i   // start of match
@@ -104,7 +104,7 @@ inst4: // alt -> 3, 5
 			goto inst3
 		}
 	}
-	bt = append(bt, state{c, i, 4, 0})
+	bt = append(bt, stateMatch{c, i, 4, 0})
 	goto inst3
 inst4_alt:
 	{
@@ -180,7 +180,7 @@ inst9: // alt -> 8, 10
 			goto inst8
 		}
 	}
-	bt = append(bt, state{c, i, 9, 0})
+	bt = append(bt, stateMatch{c, i, 9, 0})
 	goto inst8
 inst9_alt:
 	{
@@ -268,7 +268,7 @@ inst13: // alt -> 12, 14
 			goto inst12
 		}
 	}
-	bt = append(bt, state{c, i, 13, 0})
+	bt = append(bt, stateMatch{c, i, 13, 0})
 	goto inst12
 inst13_alt:
 	{
