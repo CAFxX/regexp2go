@@ -6,6 +6,7 @@ package pathological
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "sync"
 import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(a*)*b"
@@ -24,12 +25,6 @@ type stateMatch struct {
 // (a*)*b
 // with flags 212
 func Match(r string) (matches [2]string, pos int, ok bool) {
-	var bt [2]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
-	return
-}
-
-func doMatch(r string, bt []stateMatch) ([2]string, int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*2 + 7) / 8)
@@ -43,8 +38,13 @@ func doMatch(r string, bt []stateMatch) ([2]string, int, bool) {
 	pi := *ppi
 	_ = pi
 
+	var st stackMatch
+	{
+		seg := getMatch()
+		st.first, st.last = seg, seg
+	}
+	defer st.drain()
 restart:
-	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [4]int     // captures
 	var bc [4]int    // captures for the longest match so far
 	matched := false // succesful match flag
@@ -73,8 +73,8 @@ inst2: // string "a" -> 3
 	goto unreachable
 	goto inst2_fail
 inst2_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 3:
@@ -93,13 +93,14 @@ inst3: // alt -> 2, 4
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 3, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 3, 0}
+	st.last.len++
 	goto inst2
 inst3_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst4
 	}
 
@@ -119,13 +120,14 @@ inst5: // alt -> 1, 6
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 5, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 5, 0}
+	st.last.len++
 	goto inst1
 inst5_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst6
 	}
 
@@ -154,10 +156,10 @@ inst7: // match
 	goto fail
 fail:
 	{
-		if i <= len(r) && len(bt) > 0 {
-			switch bt[len(bt)-1].pc {
+		if ps, ok := st.peek(); i <= len(r) && ok {
+			switch ps.pc {
 			default:
-				panic(bt[len(bt)-1].pc)
+				panic(ps.pc)
 			case 3:
 				goto inst3_alt
 			case 5:
@@ -179,6 +181,7 @@ fail:
 
 			si += sz
 			_ = cr
+			st.reset()
 			goto restart
 		}
 		var m [2]string
@@ -197,4 +200,96 @@ match:
 	goto unreachable
 unreachable:
 	panic("unreachable")
+}
+
+var poolMatch = sync.Pool{New: func() interface{} { return &segmentMatch{} }}
+
+type segmentMatch struct {
+	state [256]stateMatch // states
+	len   uint16          // how many elements of state are populated
+	next  *segmentMatch   // next segment
+	prev  *segmentMatch   // previous segment
+}
+
+func getMatch() *segmentMatch {
+	return poolMatch.Get().(*segmentMatch)
+}
+
+func putMatch(s *segmentMatch) {
+	s.next, s.prev, s.len = nil, nil, 0
+	poolMatch.Put(s)
+}
+
+type stackMatch struct {
+	// first segment in the stack; this is just used to simplify drain()
+	first *segmentMatch
+	// currently active segment: this is the segment where push/peek/pop operate;
+	// note that additional empty segments may be already be allocated and linked
+	// after the last segment
+	last *segmentMatch
+}
+
+func (st *stackMatch) push() {
+	if int(st.last.len) == cap(st.last.state) {
+		st.pushSlow()
+	}
+}
+
+func (st *stackMatch) pushSlow() {
+	if st.last.next != nil {
+		st.last = st.last.next
+	} else {
+		seg := getMatch()
+		st.last.next = seg
+		seg.prev = st.last
+		st.last = seg
+	}
+}
+
+func (st *stackMatch) peek() (*stateMatch, bool) {
+	if st.last.len > 0 {
+		return &st.last.state[st.last.len-1], true
+	}
+	return st.peekSlow()
+}
+
+func (st *stackMatch) peekSlow() (*stateMatch, bool) {
+	if st.last.prev != nil {
+		st.last = st.last.prev
+	} else {
+		return nil, false
+	}
+	return &st.last.state[st.last.len-1], true
+}
+
+func (st *stackMatch) pop() (*stateMatch, bool) {
+	sp, ok := st.peek()
+	if ok {
+		st.last.len--
+	}
+	return sp, ok
+}
+
+// drain puts all stack segments back into the segment pool
+func (st *stackMatch) drain() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		putMatch(seg)
+		seg = next
+	}
+	st.first, st.last = nil, nil
+}
+
+// reset resets the stack without returning the segments to the segment pool
+func (st *stackMatch) reset() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		if seg.len == 0 {
+			return
+		}
+		seg.len = 0
+		seg = next
+	}
 }

@@ -6,6 +6,7 @@ package dna
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "sync"
 import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))"
@@ -24,12 +25,6 @@ type stateMatch struct {
 // (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
 // with flags 212
 func Match(r string) (matches [10]string, pos int, ok bool) {
-	var bt [17]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
-	return
-}
-
-func doMatch(r string, bt []stateMatch) ([10]string, int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*17 + 7) / 8)
@@ -43,8 +38,13 @@ func doMatch(r string, bt []stateMatch) ([10]string, int, bool) {
 	pi := *ppi
 	_ = pi
 
+	var st stackMatch
+	{
+		seg := getMatch()
+		st.first, st.last = seg, seg
+	}
+	defer st.drain()
 restart:
-	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [20]int    // captures
 	var bc [20]int   // captures for the longest match so far
 	matched := false // succesful match flag
@@ -79,8 +79,8 @@ inst2: // string "agggtaaa" -> 19
 	goto unreachable
 	goto inst2_fail
 inst2_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 18:
@@ -99,13 +99,14 @@ inst18: // alt -> 2, 10
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 18, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 18, 0}
+	st.last.len++
 	goto inst2
 inst18_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst10
 	}
 
@@ -122,8 +123,8 @@ inst10: // string "tttaccct" -> 19
 	goto unreachable
 	goto inst10_fail
 inst10_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 39:
@@ -183,8 +184,8 @@ inst21: // rune "ccggtt" -> 22
 	goto unreachable
 	goto inst21_fail
 inst21_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 37:
@@ -203,13 +204,14 @@ inst37: // alt -> 21, 29
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 37, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 37, 0}
+	st.last.len++
 	goto inst21
 inst37_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst29
 	}
 
@@ -232,8 +234,8 @@ inst22: // string "gggtaaa" -> 38
 	goto unreachable
 	goto inst22_fail
 inst22_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 37:
@@ -257,8 +259,8 @@ inst29: // string "tttaccc" -> 36
 	goto unreachable
 	goto inst29_fail
 inst29_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 59:
@@ -293,13 +295,14 @@ inst39: // alt -> 1, 20
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 39, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 39, 0}
+	st.last.len++
 	goto inst1
 inst39_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst20
 	}
 
@@ -324,8 +327,8 @@ inst36: // rune "aaccgg" -> 38
 	goto unreachable
 	goto inst36_fail
 inst36_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 59:
@@ -352,13 +355,14 @@ inst59: // alt -> 39, 40
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 59, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 59, 0}
+	st.last.len++
 	goto inst39
 inst59_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
@@ -378,13 +382,14 @@ inst57: // alt -> 41, 49
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 57, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 57, 0}
+	st.last.len++
 	goto inst41
 inst57_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst49
 	}
 
@@ -401,8 +406,8 @@ inst41: // string "a" -> 42
 	goto unreachable
 	goto inst41_fail
 inst41_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 57:
@@ -432,8 +437,8 @@ inst42: // rune "aacctt" -> 43
 	goto unreachable
 	goto inst42_fail
 inst42_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 57:
@@ -455,8 +460,8 @@ inst43: // string "ggtaaa" -> 58
 	goto unreachable
 	goto inst43_fail
 inst43_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 57:
@@ -486,8 +491,8 @@ inst49: // string "tttacc" -> 55
 	goto unreachable
 	goto inst49_fail
 inst49_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 79:
@@ -527,8 +532,8 @@ inst55: // rune "aaggtt" -> 56
 	goto unreachable
 	goto inst55_fail
 inst55_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 79:
@@ -550,8 +555,8 @@ inst56: // string "t" -> 58
 	goto unreachable
 	goto inst56_fail
 inst56_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 79:
@@ -576,13 +581,14 @@ inst79: // alt -> 59, 60
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 79, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 79, 0}
+	st.last.len++
 	goto inst59
 inst79_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst60
 	}
 
@@ -602,13 +608,14 @@ inst77: // alt -> 61, 69
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 77, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 77, 0}
+	st.last.len++
 	goto inst61
 inst77_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst69
 	}
 
@@ -625,8 +632,8 @@ inst61: // string "ag" -> 63
 	goto unreachable
 	goto inst61_fail
 inst61_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 77:
@@ -658,8 +665,8 @@ inst63: // rune "aacctt" -> 64
 	goto unreachable
 	goto inst63_fail
 inst63_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 77:
@@ -681,8 +688,8 @@ inst64: // string "gtaaa" -> 78
 	goto unreachable
 	goto inst64_fail
 inst64_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 77:
@@ -712,8 +719,8 @@ inst69: // string "tttac" -> 74
 	goto unreachable
 	goto inst69_fail
 inst69_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 99:
@@ -751,8 +758,8 @@ inst74: // rune "aaggtt" -> 75
 	goto unreachable
 	goto inst74_fail
 inst74_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 99:
@@ -774,8 +781,8 @@ inst75: // string "ct" -> 78
 	goto unreachable
 	goto inst75_fail
 inst75_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 99:
@@ -802,13 +809,14 @@ inst99: // alt -> 79, 80
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 99, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 99, 0}
+	st.last.len++
 	goto inst79
 inst99_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst80
 	}
 
@@ -828,13 +836,14 @@ inst97: // alt -> 81, 89
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 97, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 97, 0}
+	st.last.len++
 	goto inst81
 inst97_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst89
 	}
 
@@ -851,8 +860,8 @@ inst81: // string "agg" -> 84
 	goto unreachable
 	goto inst81_fail
 inst81_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 97:
@@ -886,8 +895,8 @@ inst84: // rune "aacctt" -> 85
 	goto unreachable
 	goto inst84_fail
 inst84_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 97:
@@ -909,8 +918,8 @@ inst85: // string "taaa" -> 98
 	goto unreachable
 	goto inst85_fail
 inst85_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 97:
@@ -942,8 +951,8 @@ inst89: // string "ttta" -> 93
 	goto unreachable
 	goto inst89_fail
 inst89_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 119:
@@ -971,8 +980,8 @@ inst94: // string "cct" -> 98
 	goto unreachable
 	goto inst94_fail
 inst94_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 119:
@@ -1004,8 +1013,8 @@ inst93: // rune "aaggtt" -> 94
 	goto unreachable
 	goto inst93_fail
 inst93_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 119:
@@ -1034,13 +1043,14 @@ inst119: // alt -> 99, 100
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 119, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 119, 0}
+	st.last.len++
 	goto inst99
 inst119_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst100
 	}
 
@@ -1064,13 +1074,14 @@ inst117: // alt -> 101, 109
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 117, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 117, 0}
+	st.last.len++
 	goto inst101
 inst117_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst109
 	}
 
@@ -1087,8 +1098,8 @@ inst101: // string "aggg" -> 105
 	goto unreachable
 	goto inst101_fail
 inst101_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 117:
@@ -1118,8 +1129,8 @@ inst105: // rune "aaccgg" -> 106
 	goto unreachable
 	goto inst105_fail
 inst105_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 117:
@@ -1141,8 +1152,8 @@ inst106: // string "aaa" -> 118
 	goto unreachable
 	goto inst106_fail
 inst106_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 117:
@@ -1170,8 +1181,8 @@ inst113: // string "ccct" -> 118
 	goto unreachable
 	goto inst113_fail
 inst113_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 139:
@@ -1193,8 +1204,8 @@ inst109: // string "ttt" -> 112
 	goto unreachable
 	goto inst109_fail
 inst109_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 139:
@@ -1228,8 +1239,8 @@ inst112: // rune "ccggtt" -> 113
 	goto unreachable
 	goto inst112_fail
 inst112_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 139:
@@ -1258,13 +1269,14 @@ inst139: // alt -> 119, 120
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 139, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 139, 0}
+	st.last.len++
 	goto inst119
 inst139_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst120
 	}
 
@@ -1286,13 +1298,14 @@ inst137: // alt -> 121, 129
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 137, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 137, 0}
+	st.last.len++
 	goto inst121
 inst137_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst129
 	}
 
@@ -1309,8 +1322,8 @@ inst121: // string "agggt" -> 126
 	goto unreachable
 	goto inst121_fail
 inst121_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 137:
@@ -1332,8 +1345,8 @@ inst127: // string "aa" -> 138
 	goto unreachable
 	goto inst127_fail
 inst127_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 137:
@@ -1361,8 +1374,8 @@ inst129: // string "tt" -> 131
 	goto unreachable
 	goto inst129_fail
 inst129_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 159:
@@ -1392,8 +1405,8 @@ inst126: // rune "ccggtt" -> 127
 	goto unreachable
 	goto inst126_fail
 inst126_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 137:
@@ -1415,8 +1428,8 @@ inst132: // string "accct" -> 138
 	goto unreachable
 	goto inst132_fail
 inst132_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 159:
@@ -1446,8 +1459,8 @@ inst131: // rune "aaccgg" -> 132
 	goto unreachable
 	goto inst131_fail
 inst131_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 159:
@@ -1479,8 +1492,8 @@ inst151: // string "taccct" -> 158
 	goto unreachable
 	goto inst151_fail
 inst151_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 179:
@@ -1518,8 +1531,8 @@ inst150: // rune "aaccgg" -> 151
 	goto unreachable
 	goto inst150_fail
 inst150_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 179:
@@ -1541,8 +1554,8 @@ inst149: // string "t" -> 150
 	goto unreachable
 	goto inst149_fail
 inst149_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 179:
@@ -1561,13 +1574,14 @@ inst159: // alt -> 139, 140
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 159, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 159, 0}
+	st.last.len++
 	goto inst139
 inst159_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst140
 	}
 
@@ -1587,13 +1601,14 @@ inst157: // alt -> 141, 149
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 157, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 157, 0}
+	st.last.len++
 	goto inst141
 inst157_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst149
 	}
 
@@ -1612,8 +1627,8 @@ inst141: // string "agggta" -> 147
 	goto unreachable
 	goto inst141_fail
 inst141_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 157:
@@ -1635,8 +1650,8 @@ inst148: // string "a" -> 158
 	goto unreachable
 	goto inst148_fail
 inst148_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 157:
@@ -1666,8 +1681,8 @@ inst147: // rune "ccggtt" -> 148
 	goto unreachable
 	goto inst147_fail
 inst147_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 157:
@@ -1698,13 +1713,14 @@ inst179: // alt -> 159, 160
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 179, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 179, 0}
+	st.last.len++
 	goto inst159
 inst179_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst160
 	}
 
@@ -1726,13 +1742,14 @@ inst177: // alt -> 161, 169
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 177, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 177, 0}
+	st.last.len++
 	goto inst161
 inst177_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst169
 	}
 
@@ -1749,8 +1766,8 @@ inst161: // string "agggtaa" -> 168
 	goto unreachable
 	goto inst161_fail
 inst161_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 177:
@@ -1780,8 +1797,8 @@ inst168: // rune "ccggtt" -> 178
 	goto unreachable
 	goto inst168_fail
 inst168_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 177:
@@ -1878,10 +1895,10 @@ inst169_fail:
 	goto fail
 fail:
 	{
-		if i <= len(r) && len(bt) > 0 {
-			switch bt[len(bt)-1].pc {
+		if ps, ok := st.peek(); i <= len(r) && ok {
+			switch ps.pc {
 			default:
-				panic(bt[len(bt)-1].pc)
+				panic(ps.pc)
 			case 18:
 				goto inst18_alt
 			case 37:
@@ -1941,6 +1958,7 @@ fail:
 
 			si += sz
 			_ = cr
+			st.reset()
 			goto restart
 		}
 		var m [10]string
@@ -1959,4 +1977,96 @@ match:
 	goto unreachable
 unreachable:
 	panic("unreachable")
+}
+
+var poolMatch = sync.Pool{New: func() interface{} { return &segmentMatch{} }}
+
+type segmentMatch struct {
+	state [256]stateMatch // states
+	len   uint16          // how many elements of state are populated
+	next  *segmentMatch   // next segment
+	prev  *segmentMatch   // previous segment
+}
+
+func getMatch() *segmentMatch {
+	return poolMatch.Get().(*segmentMatch)
+}
+
+func putMatch(s *segmentMatch) {
+	s.next, s.prev, s.len = nil, nil, 0
+	poolMatch.Put(s)
+}
+
+type stackMatch struct {
+	// first segment in the stack; this is just used to simplify drain()
+	first *segmentMatch
+	// currently active segment: this is the segment where push/peek/pop operate;
+	// note that additional empty segments may be already be allocated and linked
+	// after the last segment
+	last *segmentMatch
+}
+
+func (st *stackMatch) push() {
+	if int(st.last.len) == cap(st.last.state) {
+		st.pushSlow()
+	}
+}
+
+func (st *stackMatch) pushSlow() {
+	if st.last.next != nil {
+		st.last = st.last.next
+	} else {
+		seg := getMatch()
+		st.last.next = seg
+		seg.prev = st.last
+		st.last = seg
+	}
+}
+
+func (st *stackMatch) peek() (*stateMatch, bool) {
+	if st.last.len > 0 {
+		return &st.last.state[st.last.len-1], true
+	}
+	return st.peekSlow()
+}
+
+func (st *stackMatch) peekSlow() (*stateMatch, bool) {
+	if st.last.prev != nil {
+		st.last = st.last.prev
+	} else {
+		return nil, false
+	}
+	return &st.last.state[st.last.len-1], true
+}
+
+func (st *stackMatch) pop() (*stateMatch, bool) {
+	sp, ok := st.peek()
+	if ok {
+		st.last.len--
+	}
+	return sp, ok
+}
+
+// drain puts all stack segments back into the segment pool
+func (st *stackMatch) drain() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		putMatch(seg)
+		seg = next
+	}
+	st.first, st.last = nil, nil
+}
+
+// reset resets the stack without returning the segments to the segment pool
+func (st *stackMatch) reset() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		if seg.len == 0 {
+			return
+		}
+		seg.len = 0
+		seg = next
+	}
 }

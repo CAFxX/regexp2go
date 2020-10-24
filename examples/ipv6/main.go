@@ -6,6 +6,7 @@ package ipv6
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "sync"
 import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
@@ -24,12 +25,6 @@ type stateMatch struct {
 // (?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
 // with flags 212
 func Match(r string) (matches [1]string, pos int, ok bool) {
-	var bt [319]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
-	return
-}
-
-func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*319 + 7) / 8)
@@ -43,8 +38,13 @@ func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
 	pi := *ppi
 	_ = pi
 
+	var st stackMatch
+	{
+		seg := getMatch()
+		st.first, st.last = seg, seg
+	}
+	defer st.drain()
 restart:
-	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [2]int     // captures
 	var bc [2]int    // captures for the longest match so far
 	matched := false // succesful match flag
@@ -75,8 +75,8 @@ inst2: // rune "09AFaf" -> 6
 	goto unreachable
 	goto inst2_fail
 inst2_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 7:
@@ -95,13 +95,14 @@ inst7: // alt -> 2, 8
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 7, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 7, 0}
+	st.last.len++
 	goto inst2
 inst7_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst8
 	}
 
@@ -115,13 +116,14 @@ inst6: // alt -> 3, 8
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 6, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 6, 0}
+	st.last.len++
 	goto inst3
 inst6_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst8
 	}
 
@@ -146,8 +148,8 @@ inst3: // rune "09AFaf" -> 5
 	goto unreachable
 	goto inst3_fail
 inst3_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 6:
@@ -166,13 +168,14 @@ inst5: // alt -> 4, 8
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 5, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 5, 0}
+	st.last.len++
 	goto inst4
 inst5_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst8
 	}
 
@@ -189,8 +192,8 @@ inst8: // string ":" -> 9
 	goto unreachable
 	goto inst8_fail
 inst8_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -226,8 +229,8 @@ inst4: // rune "09AFaf" -> 8
 	goto unreachable
 	goto inst4_fail
 inst4_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -257,8 +260,8 @@ inst9: // rune "09AFaf" -> 15
 	goto unreachable
 	goto inst9_fail
 inst9_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -283,13 +286,14 @@ inst15: // alt -> 10, 16
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 15, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 15, 0}
+	st.last.len++
 	goto inst10
 inst15_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst16
 	}
 
@@ -314,8 +318,8 @@ inst10: // rune "09AFaf" -> 14
 	goto unreachable
 	goto inst10_fail
 inst10_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 15:
@@ -334,13 +338,14 @@ inst14: // alt -> 11, 16
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 14, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 14, 0}
+	st.last.len++
 	goto inst11
 inst14_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst16
 	}
 
@@ -365,8 +370,8 @@ inst11: // rune "09AFaf" -> 13
 	goto unreachable
 	goto inst11_fail
 inst11_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 14:
@@ -385,13 +390,14 @@ inst13: // alt -> 12, 16
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 13, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 13, 0}
+	st.last.len++
 	goto inst12
 inst13_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst16
 	}
 
@@ -408,8 +414,8 @@ inst16: // string ":" -> 17
 	goto unreachable
 	goto inst16_fail
 inst16_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -451,8 +457,8 @@ inst12: // rune "09AFaf" -> 16
 	goto unreachable
 	goto inst12_fail
 inst12_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 13:
@@ -482,8 +488,8 @@ inst17: // rune "09AFaf" -> 23
 	goto unreachable
 	goto inst17_fail
 inst17_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -514,13 +520,14 @@ inst23: // alt -> 18, 24
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 23, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 23, 0}
+	st.last.len++
 	goto inst18
 inst23_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst24
 	}
 
@@ -545,8 +552,8 @@ inst18: // rune "09AFaf" -> 22
 	goto unreachable
 	goto inst18_fail
 inst18_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 23:
@@ -565,13 +572,14 @@ inst22: // alt -> 19, 24
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 22, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 22, 0}
+	st.last.len++
 	goto inst19
 inst22_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst24
 	}
 
@@ -596,8 +604,8 @@ inst19: // rune "09AFaf" -> 21
 	goto unreachable
 	goto inst19_fail
 inst19_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 22:
@@ -616,13 +624,14 @@ inst21: // alt -> 20, 24
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 21, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 21, 0}
+	st.last.len++
 	goto inst20
 inst21_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst24
 	}
 
@@ -639,8 +648,8 @@ inst24: // string ":" -> 25
 	goto unreachable
 	goto inst24_fail
 inst24_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -688,8 +697,8 @@ inst20: // rune "09AFaf" -> 24
 	goto unreachable
 	goto inst20_fail
 inst20_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 21:
@@ -719,8 +728,8 @@ inst25: // rune "09AFaf" -> 31
 	goto unreachable
 	goto inst25_fail
 inst25_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -757,13 +766,14 @@ inst31: // alt -> 26, 32
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 31, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 31, 0}
+	st.last.len++
 	goto inst26
 inst31_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst32
 	}
 
@@ -788,8 +798,8 @@ inst26: // rune "09AFaf" -> 30
 	goto unreachable
 	goto inst26_fail
 inst26_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 31:
@@ -808,13 +818,14 @@ inst30: // alt -> 27, 32
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 30, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 30, 0}
+	st.last.len++
 	goto inst27
 inst30_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst32
 	}
 
@@ -839,8 +850,8 @@ inst27: // rune "09AFaf" -> 29
 	goto unreachable
 	goto inst27_fail
 inst27_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 30:
@@ -859,13 +870,14 @@ inst29: // alt -> 28, 32
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 29, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 29, 0}
+	st.last.len++
 	goto inst28
 inst29_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst32
 	}
 
@@ -882,8 +894,8 @@ inst32: // string ":" -> 33
 	goto unreachable
 	goto inst32_fail
 inst32_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -937,8 +949,8 @@ inst28: // rune "09AFaf" -> 32
 	goto unreachable
 	goto inst28_fail
 inst28_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 29:
@@ -968,8 +980,8 @@ inst33: // rune "09AFaf" -> 39
 	goto unreachable
 	goto inst33_fail
 inst33_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -1012,13 +1024,14 @@ inst39: // alt -> 34, 40
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 39, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 39, 0}
+	st.last.len++
 	goto inst34
 inst39_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
@@ -1043,8 +1056,8 @@ inst34: // rune "09AFaf" -> 38
 	goto unreachable
 	goto inst34_fail
 inst34_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 39:
@@ -1063,13 +1076,14 @@ inst38: // alt -> 35, 40
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 38, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 38, 0}
+	st.last.len++
 	goto inst35
 inst38_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
@@ -1094,8 +1108,8 @@ inst35: // rune "09AFaf" -> 37
 	goto unreachable
 	goto inst35_fail
 inst35_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 38:
@@ -1114,13 +1128,14 @@ inst37: // alt -> 36, 40
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 37, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 37, 0}
+	st.last.len++
 	goto inst36
 inst37_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
@@ -1137,8 +1152,8 @@ inst40: // string ":" -> 41
 	goto unreachable
 	goto inst40_fail
 inst40_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -1198,8 +1213,8 @@ inst36: // rune "09AFaf" -> 40
 	goto unreachable
 	goto inst36_fail
 inst36_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 37:
@@ -1229,8 +1244,8 @@ inst41: // rune "09AFaf" -> 47
 	goto unreachable
 	goto inst41_fail
 inst41_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -1279,13 +1294,14 @@ inst47: // alt -> 42, 48
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 47, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 47, 0}
+	st.last.len++
 	goto inst42
 inst47_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst48
 	}
 
@@ -1310,8 +1326,8 @@ inst42: // rune "09AFaf" -> 46
 	goto unreachable
 	goto inst42_fail
 inst42_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 47:
@@ -1330,13 +1346,14 @@ inst46: // alt -> 43, 48
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 46, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 46, 0}
+	st.last.len++
 	goto inst43
 inst46_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst48
 	}
 
@@ -1361,8 +1378,8 @@ inst43: // rune "09AFaf" -> 45
 	goto unreachable
 	goto inst43_fail
 inst43_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 46:
@@ -1381,13 +1398,14 @@ inst45: // alt -> 44, 48
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 45, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 45, 0}
+	st.last.len++
 	goto inst44
 inst45_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst48
 	}
 
@@ -1404,8 +1422,8 @@ inst48: // string ":" -> 49
 	goto unreachable
 	goto inst48_fail
 inst48_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -1471,8 +1489,8 @@ inst44: // rune "09AFaf" -> 48
 	goto unreachable
 	goto inst44_fail
 inst44_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 45:
@@ -1502,8 +1520,8 @@ inst49: // rune "09AFaf" -> 55
 	goto unreachable
 	goto inst49_fail
 inst49_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -1558,13 +1576,14 @@ inst55: // alt -> 50, 56
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 55, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 55, 0}
+	st.last.len++
 	goto inst50
 inst55_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst56
 	}
 
@@ -1589,8 +1608,8 @@ inst50: // rune "09AFaf" -> 54
 	goto unreachable
 	goto inst50_fail
 inst50_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 55:
@@ -1609,13 +1628,14 @@ inst54: // alt -> 51, 56
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 54, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 54, 0}
+	st.last.len++
 	goto inst51
 inst54_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst56
 	}
 
@@ -1640,8 +1660,8 @@ inst51: // rune "09AFaf" -> 53
 	goto unreachable
 	goto inst51_fail
 inst51_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 54:
@@ -1660,13 +1680,14 @@ inst53: // alt -> 52, 56
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 53, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 53, 0}
+	st.last.len++
 	goto inst52
 inst53_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst56
 	}
 
@@ -1683,8 +1704,8 @@ inst56: // string ":" -> 57
 	goto unreachable
 	goto inst56_fail
 inst56_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -1756,8 +1777,8 @@ inst52: // rune "09AFaf" -> 56
 	goto unreachable
 	goto inst52_fail
 inst52_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 53:
@@ -1787,8 +1808,8 @@ inst57: // rune "09AFaf" -> 63
 	goto unreachable
 	goto inst57_fail
 inst57_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 5:
@@ -1849,13 +1870,14 @@ inst63: // alt -> 58, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 63, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 63, 0}
+	st.last.len++
 	goto inst58
 inst63_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -1880,8 +1902,8 @@ inst58: // rune "09AFaf" -> 62
 	goto unreachable
 	goto inst58_fail
 inst58_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 63:
@@ -1911,8 +1933,8 @@ inst1: // rune "09AFaf" -> 7
 	goto unreachable
 	goto inst1_fail
 inst1_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 127:
@@ -1931,13 +1953,14 @@ inst62: // alt -> 59, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 62, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 62, 0}
+	st.last.len++
 	goto inst59
 inst62_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -1962,8 +1985,8 @@ inst59: // rune "09AFaf" -> 61
 	goto unreachable
 	goto inst59_fail
 inst59_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 62:
@@ -1993,8 +2016,8 @@ inst66: // rune "09AFaf" -> 68
 	goto unreachable
 	goto inst66_fail
 inst66_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 69:
@@ -2013,13 +2036,14 @@ inst68: // alt -> 67, 71
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 68, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 68, 0}
+	st.last.len++
 	goto inst67
 inst68_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst71
 	}
 
@@ -2044,8 +2068,8 @@ inst67: // rune "09AFaf" -> 71
 	goto unreachable
 	goto inst67_fail
 inst67_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 68:
@@ -2067,8 +2091,8 @@ inst71: // string ":" -> 125
 	goto unreachable
 	goto inst71_fail
 inst71_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 68:
@@ -2093,13 +2117,14 @@ inst69: // alt -> 66, 71
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 69, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 69, 0}
+	st.last.len++
 	goto inst66
 inst69_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst71
 	}
 
@@ -2124,8 +2149,8 @@ inst65: // rune "09AFaf" -> 69
 	goto unreachable
 	goto inst65_fail
 inst65_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 70:
@@ -2144,13 +2169,14 @@ inst70: // alt -> 65, 71
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 70, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 70, 0}
+	st.last.len++
 	goto inst65
 inst70_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst71
 	}
 
@@ -2175,8 +2201,8 @@ inst64: // rune "09AFaf" -> 70
 	goto unreachable
 	goto inst64_fail
 inst64_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 189:
@@ -2195,13 +2221,14 @@ inst127: // alt -> 1, 64
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 127, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 127, 0}
+	st.last.len++
 	goto inst1
 inst127_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst64
 	}
 
@@ -2226,8 +2253,8 @@ inst74: // rune "09AFaf" -> 76
 	goto unreachable
 	goto inst74_fail
 inst74_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 77:
@@ -2246,13 +2273,14 @@ inst76: // alt -> 75, 79
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 76, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 76, 0}
+	st.last.len++
 	goto inst75
 inst76_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst79
 	}
 
@@ -2277,8 +2305,8 @@ inst75: // rune "09AFaf" -> 79
 	goto unreachable
 	goto inst75_fail
 inst75_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 76:
@@ -2297,13 +2325,14 @@ inst77: // alt -> 74, 79
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 77, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 77, 0}
+	st.last.len++
 	goto inst74
 inst77_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst79
 	}
 
@@ -2320,8 +2349,8 @@ inst79: // string ":" -> 124
 	goto unreachable
 	goto inst79_fail
 inst79_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 76:
@@ -2357,8 +2386,8 @@ inst73: // rune "09AFaf" -> 77
 	goto unreachable
 	goto inst73_fail
 inst73_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 78:
@@ -2377,13 +2406,14 @@ inst78: // alt -> 73, 79
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 78, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 78, 0}
+	st.last.len++
 	goto inst73
 inst78_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst79
 	}
 
@@ -2408,8 +2438,8 @@ inst80: // rune "09AFaf" -> 86
 	goto unreachable
 	goto inst80_fail
 inst80_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 124:
@@ -2428,13 +2458,14 @@ inst86: // alt -> 81, 87
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 86, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 86, 0}
+	st.last.len++
 	goto inst81
 inst86_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst87
 	}
 
@@ -2459,8 +2490,8 @@ inst81: // rune "09AFaf" -> 85
 	goto unreachable
 	goto inst81_fail
 inst81_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 86:
@@ -2479,13 +2510,14 @@ inst85: // alt -> 82, 87
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 85, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 85, 0}
+	st.last.len++
 	goto inst82
 inst85_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst87
 	}
 
@@ -2510,8 +2542,8 @@ inst82: // rune "09AFaf" -> 84
 	goto unreachable
 	goto inst82_fail
 inst82_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 85:
@@ -2530,13 +2562,14 @@ inst84: // alt -> 83, 87
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 84, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 84, 0}
+	st.last.len++
 	goto inst83
 inst84_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst87
 	}
 
@@ -2553,8 +2586,8 @@ inst87: // string ":" -> 123
 	goto unreachable
 	goto inst87_fail
 inst87_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 84:
@@ -2590,8 +2623,8 @@ inst83: // rune "09AFaf" -> 87
 	goto unreachable
 	goto inst83_fail
 inst83_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 84:
@@ -2610,13 +2643,14 @@ inst124: // alt -> 80, 126
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 124, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 124, 0}
+	st.last.len++
 	goto inst80
 inst124_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
@@ -2641,8 +2675,8 @@ inst91: // rune "09AFaf" -> 95
 	goto unreachable
 	goto inst91_fail
 inst91_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 92:
@@ -2661,13 +2695,14 @@ inst92: // alt -> 91, 95
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 92, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 92, 0}
+	st.last.len++
 	goto inst91
 inst92_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst95
 	}
 
@@ -2692,8 +2727,8 @@ inst90: // rune "09AFaf" -> 92
 	goto unreachable
 	goto inst90_fail
 inst90_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 93:
@@ -2712,13 +2747,14 @@ inst93: // alt -> 90, 95
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 93, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 93, 0}
+	st.last.len++
 	goto inst90
 inst93_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst95
 	}
 
@@ -2735,8 +2771,8 @@ inst95: // string ":" -> 122
 	goto unreachable
 	goto inst95_fail
 inst95_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 92:
@@ -2772,8 +2808,8 @@ inst89: // rune "09AFaf" -> 93
 	goto unreachable
 	goto inst89_fail
 inst89_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 94:
@@ -2792,13 +2828,14 @@ inst94: // alt -> 89, 95
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 94, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 94, 0}
+	st.last.len++
 	goto inst89
 inst94_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst95
 	}
 
@@ -2823,8 +2860,8 @@ inst98: // rune "09AFaf" -> 100
 	goto unreachable
 	goto inst98_fail
 inst98_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 101:
@@ -2843,13 +2880,14 @@ inst100: // alt -> 99, 103
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 100, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 100, 0}
+	st.last.len++
 	goto inst99
 inst100_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst103
 	}
 
@@ -2874,8 +2912,8 @@ inst99: // rune "09AFaf" -> 103
 	goto unreachable
 	goto inst99_fail
 inst99_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 100:
@@ -2897,8 +2935,8 @@ inst103: // string ":" -> 121
 	goto unreachable
 	goto inst103_fail
 inst103_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 100:
@@ -2923,13 +2961,14 @@ inst101: // alt -> 98, 103
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 101, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 101, 0}
+	st.last.len++
 	goto inst98
 inst101_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst103
 	}
 
@@ -2954,8 +2993,8 @@ inst97: // rune "09AFaf" -> 101
 	goto unreachable
 	goto inst97_fail
 inst97_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 102:
@@ -2974,13 +3013,14 @@ inst102: // alt -> 97, 103
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 102, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 102, 0}
+	st.last.len++
 	goto inst97
 inst102_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst103
 	}
 
@@ -2994,13 +3034,14 @@ inst121: // alt -> 104, 126
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 121, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 121, 0}
+	st.last.len++
 	goto inst104
 inst121_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
@@ -3025,8 +3066,8 @@ inst104: // rune "09AFaf" -> 110
 	goto unreachable
 	goto inst104_fail
 inst104_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 121:
@@ -3045,13 +3086,14 @@ inst110: // alt -> 105, 111
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 110, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 110, 0}
+	st.last.len++
 	goto inst105
 inst110_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst111
 	}
 
@@ -3076,8 +3118,8 @@ inst105: // rune "09AFaf" -> 109
 	goto unreachable
 	goto inst105_fail
 inst105_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 110:
@@ -3107,8 +3149,8 @@ inst72: // rune "09AFaf" -> 78
 	goto unreachable
 	goto inst72_fail
 inst72_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 125:
@@ -3127,13 +3169,14 @@ inst125: // alt -> 72, 126
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 125, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 125, 0}
+	st.last.len++
 	goto inst72
 inst125_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
@@ -3147,13 +3190,14 @@ inst109: // alt -> 106, 111
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 109, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 109, 0}
+	st.last.len++
 	goto inst106
 inst109_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst111
 	}
 
@@ -3170,8 +3214,8 @@ inst111: // string ":" -> 120
 	goto unreachable
 	goto inst111_fail
 inst111_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 108:
@@ -3207,8 +3251,8 @@ inst107: // rune "09AFaf" -> 111
 	goto unreachable
 	goto inst107_fail
 inst107_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 108:
@@ -3227,13 +3271,14 @@ inst108: // alt -> 107, 111
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 108, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 108, 0}
+	st.last.len++
 	goto inst107
 inst108_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst111
 	}
 
@@ -3258,8 +3303,8 @@ inst106: // rune "09AFaf" -> 108
 	goto unreachable
 	goto inst106_fail
 inst106_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 109:
@@ -3289,8 +3334,8 @@ inst88: // rune "09AFaf" -> 94
 	goto unreachable
 	goto inst88_fail
 inst88_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 123:
@@ -3309,13 +3354,14 @@ inst123: // alt -> 88, 126
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 123, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 123, 0}
+	st.last.len++
 	goto inst88
 inst123_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
@@ -3332,8 +3378,8 @@ inst126: // string ":" -> 772
 	goto unreachable
 	goto inst126_fail
 inst126_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 68:
@@ -3398,13 +3444,14 @@ inst120: // alt -> 112, 126
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 120, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 120, 0}
+	st.last.len++
 	goto inst112
 inst120_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
@@ -3418,13 +3465,14 @@ inst122: // alt -> 96, 126
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 122, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 122, 0}
+	st.last.len++
 	goto inst96
 inst122_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
@@ -3449,8 +3497,8 @@ inst96: // rune "09AFaf" -> 102
 	goto unreachable
 	goto inst96_fail
 inst96_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 122:
@@ -3480,8 +3528,8 @@ inst112: // rune "09AFaf" -> 118
 	goto unreachable
 	goto inst112_fail
 inst112_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 120:
@@ -3500,13 +3548,14 @@ inst118: // alt -> 113, 119
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 118, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 118, 0}
+	st.last.len++
 	goto inst113
 inst118_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst119
 	}
 
@@ -3531,8 +3580,8 @@ inst113: // rune "09AFaf" -> 117
 	goto unreachable
 	goto inst113_fail
 inst113_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 118:
@@ -3551,13 +3600,14 @@ inst117: // alt -> 114, 119
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 117, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 117, 0}
+	st.last.len++
 	goto inst114
 inst117_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst119
 	}
 
@@ -3582,8 +3632,8 @@ inst114: // rune "09AFaf" -> 116
 	goto unreachable
 	goto inst114_fail
 inst114_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 117:
@@ -3605,8 +3655,8 @@ inst119: // string "::" -> 772
 	goto unreachable
 	goto inst119_fail
 inst119_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 116:
@@ -3631,13 +3681,14 @@ inst116: // alt -> 115, 119
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 116, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 116, 0}
+	st.last.len++
 	goto inst115
 inst116_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst119
 	}
 
@@ -3662,8 +3713,8 @@ inst115: // rune "09AFaf" -> 119
 	goto unreachable
 	goto inst115_fail
 inst115_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 116:
@@ -3693,8 +3744,8 @@ inst130: // rune "09AFaf" -> 132
 	goto unreachable
 	goto inst130_fail
 inst130_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 133:
@@ -3713,13 +3764,14 @@ inst132: // alt -> 131, 135
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 132, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 132, 0}
+	st.last.len++
 	goto inst131
 inst132_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst135
 	}
 
@@ -3744,8 +3796,8 @@ inst131: // rune "09AFaf" -> 135
 	goto unreachable
 	goto inst131_fail
 inst131_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 132:
@@ -3767,8 +3819,8 @@ inst135: // string ":" -> 180
 	goto unreachable
 	goto inst135_fail
 inst135_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 132:
@@ -3793,13 +3845,14 @@ inst133: // alt -> 130, 135
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 133, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 133, 0}
+	st.last.len++
 	goto inst130
 inst133_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst135
 	}
 
@@ -3824,8 +3877,8 @@ inst129: // rune "09AFaf" -> 133
 	goto unreachable
 	goto inst129_fail
 inst129_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 134:
@@ -3844,13 +3897,14 @@ inst134: // alt -> 129, 135
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 134, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 134, 0}
+	st.last.len++
 	goto inst129
 inst134_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst135
 	}
 
@@ -3875,8 +3929,8 @@ inst128: // rune "09AFaf" -> 134
 	goto unreachable
 	goto inst128_fail
 inst128_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 251:
@@ -3895,13 +3949,14 @@ inst189: // alt -> 127, 128
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 189, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 189, 0}
+	st.last.len++
 	goto inst127
 inst189_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst128
 	}
 
@@ -3926,8 +3981,8 @@ inst138: // rune "09AFaf" -> 140
 	goto unreachable
 	goto inst138_fail
 inst138_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 141:
@@ -3946,13 +4001,14 @@ inst141: // alt -> 138, 143
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 141, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 141, 0}
+	st.last.len++
 	goto inst138
 inst141_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst143
 	}
 
@@ -3966,13 +4022,14 @@ inst140: // alt -> 139, 143
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 140, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 140, 0}
+	st.last.len++
 	goto inst139
 inst140_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst143
 	}
 
@@ -3997,8 +4054,8 @@ inst139: // rune "09AFaf" -> 143
 	goto unreachable
 	goto inst139_fail
 inst139_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 140:
@@ -4020,8 +4077,8 @@ inst143: // string ":" -> 179
 	goto unreachable
 	goto inst143_fail
 inst143_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 140:
@@ -4057,8 +4114,8 @@ inst137: // rune "09AFaf" -> 141
 	goto unreachable
 	goto inst137_fail
 inst137_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 142:
@@ -4077,13 +4134,14 @@ inst142: // alt -> 137, 143
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 142, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 142, 0}
+	st.last.len++
 	goto inst137
 inst142_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst143
 	}
 
@@ -4108,8 +4166,8 @@ inst144: // rune "09AFaf" -> 150
 	goto unreachable
 	goto inst144_fail
 inst144_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 179:
@@ -4128,13 +4186,14 @@ inst150: // alt -> 145, 151
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 150, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 150, 0}
+	st.last.len++
 	goto inst145
 inst150_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst151
 	}
 
@@ -4159,8 +4218,8 @@ inst145: // rune "09AFaf" -> 149
 	goto unreachable
 	goto inst145_fail
 inst145_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 150:
@@ -4179,13 +4238,14 @@ inst149: // alt -> 146, 151
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 149, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 149, 0}
+	st.last.len++
 	goto inst146
 inst149_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst151
 	}
 
@@ -4210,8 +4270,8 @@ inst146: // rune "09AFaf" -> 148
 	goto unreachable
 	goto inst146_fail
 inst146_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 149:
@@ -4230,13 +4290,14 @@ inst148: // alt -> 147, 151
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 148, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 148, 0}
+	st.last.len++
 	goto inst147
 inst148_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst151
 	}
 
@@ -4253,8 +4314,8 @@ inst151: // string ":" -> 178
 	goto unreachable
 	goto inst151_fail
 inst151_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 148:
@@ -4290,8 +4351,8 @@ inst147: // rune "09AFaf" -> 151
 	goto unreachable
 	goto inst147_fail
 inst147_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 148:
@@ -4310,13 +4371,14 @@ inst179: // alt -> 144, 181
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 179, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 179, 0}
+	st.last.len++
 	goto inst144
 inst179_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
@@ -4341,8 +4403,8 @@ inst155: // rune "09AFaf" -> 159
 	goto unreachable
 	goto inst155_fail
 inst155_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 156:
@@ -4361,13 +4423,14 @@ inst156: // alt -> 155, 159
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 156, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 156, 0}
+	st.last.len++
 	goto inst155
 inst156_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst159
 	}
 
@@ -4392,8 +4455,8 @@ inst154: // rune "09AFaf" -> 156
 	goto unreachable
 	goto inst154_fail
 inst154_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 157:
@@ -4412,13 +4475,14 @@ inst157: // alt -> 154, 159
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 157, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 157, 0}
+	st.last.len++
 	goto inst154
 inst157_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst159
 	}
 
@@ -4435,8 +4499,8 @@ inst159: // string ":" -> 177
 	goto unreachable
 	goto inst159_fail
 inst159_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 156:
@@ -4472,8 +4536,8 @@ inst153: // rune "09AFaf" -> 157
 	goto unreachable
 	goto inst153_fail
 inst153_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 158:
@@ -4492,13 +4556,14 @@ inst158: // alt -> 153, 159
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 158, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 158, 0}
+	st.last.len++
 	goto inst153
 inst158_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst159
 	}
 
@@ -4523,8 +4588,8 @@ inst136: // rune "09AFaf" -> 142
 	goto unreachable
 	goto inst136_fail
 inst136_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 180:
@@ -4543,13 +4608,14 @@ inst180: // alt -> 136, 181
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 180, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 180, 0}
+	st.last.len++
 	goto inst136
 inst180_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
@@ -4574,8 +4640,8 @@ inst161: // rune "09AFaf" -> 165
 	goto unreachable
 	goto inst161_fail
 inst161_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 166:
@@ -4594,13 +4660,14 @@ inst165: // alt -> 162, 167
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 165, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 165, 0}
+	st.last.len++
 	goto inst162
 inst165_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst167
 	}
 
@@ -4625,8 +4692,8 @@ inst162: // rune "09AFaf" -> 164
 	goto unreachable
 	goto inst162_fail
 inst162_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 165:
@@ -4645,13 +4712,14 @@ inst164: // alt -> 163, 167
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 164, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 164, 0}
+	st.last.len++
 	goto inst163
 inst164_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst167
 	}
 
@@ -4676,8 +4744,8 @@ inst163: // rune "09AFaf" -> 167
 	goto unreachable
 	goto inst163_fail
 inst163_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 164:
@@ -4699,8 +4767,8 @@ inst167: // string ":" -> 176
 	goto unreachable
 	goto inst167_fail
 inst167_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 164:
@@ -4725,13 +4793,14 @@ inst166: // alt -> 161, 167
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 166, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 166, 0}
+	st.last.len++
 	goto inst161
 inst166_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst167
 	}
 
@@ -4756,8 +4825,8 @@ inst160: // rune "09AFaf" -> 166
 	goto unreachable
 	goto inst160_fail
 inst160_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 177:
@@ -4776,13 +4845,14 @@ inst177: // alt -> 160, 181
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 177, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 177, 0}
+	st.last.len++
 	goto inst160
 inst177_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
@@ -4799,8 +4869,8 @@ inst181: // string ":" -> 182
 	goto unreachable
 	goto inst181_fail
 inst181_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 132:
@@ -4857,13 +4927,14 @@ inst178: // alt -> 152, 181
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 178, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 178, 0}
+	st.last.len++
 	goto inst152
 inst178_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
@@ -4888,8 +4959,8 @@ inst152: // rune "09AFaf" -> 158
 	goto unreachable
 	goto inst152_fail
 inst152_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 178:
@@ -4908,13 +4979,14 @@ inst176: // alt -> 168, 181
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 176, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 176, 0}
+	st.last.len++
 	goto inst168
 inst176_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
@@ -4939,8 +5011,8 @@ inst168: // rune "09AFaf" -> 174
 	goto unreachable
 	goto inst168_fail
 inst168_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 176:
@@ -4959,13 +5031,14 @@ inst174: // alt -> 169, 175
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 174, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 174, 0}
+	st.last.len++
 	goto inst169
 inst174_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst175
 	}
 
@@ -4990,8 +5063,8 @@ inst182: // rune "09AFaf" -> 188
 	goto unreachable
 	goto inst182_fail
 inst182_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 132:
@@ -5059,8 +5132,8 @@ inst175: // string "::" -> 182
 	goto unreachable
 	goto inst175_fail
 inst175_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 172:
@@ -5096,8 +5169,8 @@ inst171: // rune "09AFaf" -> 175
 	goto unreachable
 	goto inst171_fail
 inst171_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 172:
@@ -5116,13 +5189,14 @@ inst172: // alt -> 171, 175
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 172, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 172, 0}
+	st.last.len++
 	goto inst171
 inst172_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst175
 	}
 
@@ -5147,8 +5221,8 @@ inst170: // rune "09AFaf" -> 172
 	goto unreachable
 	goto inst170_fail
 inst170_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 173:
@@ -5167,13 +5241,14 @@ inst173: // alt -> 170, 175
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 173, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 173, 0}
+	st.last.len++
 	goto inst170
 inst173_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst175
 	}
 
@@ -5198,8 +5273,8 @@ inst169: // rune "09AFaf" -> 173
 	goto unreachable
 	goto inst169_fail
 inst169_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 174:
@@ -5218,13 +5293,14 @@ inst251: // alt -> 189, 190
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 251, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 251, 0}
+	st.last.len++
 	goto inst189
 inst251_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst190
 	}
 
@@ -5249,8 +5325,8 @@ inst190: // rune "09AFaf" -> 196
 	goto unreachable
 	goto inst190_fail
 inst190_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 313:
@@ -5269,13 +5345,14 @@ inst188: // alt -> 183, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 188, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 188, 0}
+	st.last.len++
 	goto inst183
 inst188_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -5300,8 +5377,8 @@ inst183: // rune "09AFaf" -> 187
 	goto unreachable
 	goto inst183_fail
 inst183_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 188:
@@ -5320,13 +5397,14 @@ inst196: // alt -> 191, 197
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 196, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 196, 0}
+	st.last.len++
 	goto inst191
 inst196_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst197
 	}
 
@@ -5351,8 +5429,8 @@ inst191: // rune "09AFaf" -> 195
 	goto unreachable
 	goto inst191_fail
 inst191_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 196:
@@ -5371,13 +5449,14 @@ inst195: // alt -> 192, 197
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 195, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 195, 0}
+	st.last.len++
 	goto inst192
 inst195_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst197
 	}
 
@@ -5402,8 +5481,8 @@ inst192: // rune "09AFaf" -> 194
 	goto unreachable
 	goto inst192_fail
 inst192_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 195:
@@ -5425,8 +5504,8 @@ inst197: // string ":" -> 233
 	goto unreachable
 	goto inst197_fail
 inst197_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 194:
@@ -5451,13 +5530,14 @@ inst194: // alt -> 193, 197
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 194, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 194, 0}
+	st.last.len++
 	goto inst193
 inst194_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst197
 	}
 
@@ -5482,8 +5562,8 @@ inst193: // rune "09AFaf" -> 197
 	goto unreachable
 	goto inst193_fail
 inst193_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 194:
@@ -5502,13 +5582,14 @@ inst233: // alt -> 198, 234
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 233, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 233, 0}
+	st.last.len++
 	goto inst198
 inst233_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
@@ -5533,8 +5614,8 @@ inst198: // rune "09AFaf" -> 204
 	goto unreachable
 	goto inst198_fail
 inst198_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 233:
@@ -5553,13 +5634,14 @@ inst204: // alt -> 199, 205
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 204, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 204, 0}
+	st.last.len++
 	goto inst199
 inst204_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst205
 	}
 
@@ -5584,8 +5666,8 @@ inst199: // rune "09AFaf" -> 203
 	goto unreachable
 	goto inst199_fail
 inst199_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 204:
@@ -5604,13 +5686,14 @@ inst203: // alt -> 200, 205
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 203, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 203, 0}
+	st.last.len++
 	goto inst200
 inst203_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst205
 	}
 
@@ -5635,8 +5718,8 @@ inst200: // rune "09AFaf" -> 202
 	goto unreachable
 	goto inst200_fail
 inst200_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 203:
@@ -5658,8 +5741,8 @@ inst205: // string ":" -> 232
 	goto unreachable
 	goto inst205_fail
 inst205_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 202:
@@ -5684,13 +5767,14 @@ inst202: // alt -> 201, 205
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 202, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 202, 0}
+	st.last.len++
 	goto inst201
 inst202_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst205
 	}
 
@@ -5715,8 +5799,8 @@ inst201: // rune "09AFaf" -> 205
 	goto unreachable
 	goto inst201_fail
 inst201_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 202:
@@ -5746,8 +5830,8 @@ inst209: // rune "09AFaf" -> 213
 	goto unreachable
 	goto inst209_fail
 inst209_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 210:
@@ -5766,13 +5850,14 @@ inst210: // alt -> 209, 213
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 210, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 210, 0}
+	st.last.len++
 	goto inst209
 inst210_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst213
 	}
 
@@ -5797,8 +5882,8 @@ inst208: // rune "09AFaf" -> 210
 	goto unreachable
 	goto inst208_fail
 inst208_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 211:
@@ -5820,8 +5905,8 @@ inst213: // string ":" -> 231
 	goto unreachable
 	goto inst213_fail
 inst213_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 210:
@@ -5846,13 +5931,14 @@ inst211: // alt -> 208, 213
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 211, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 211, 0}
+	st.last.len++
 	goto inst208
 inst211_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst213
 	}
 
@@ -5877,8 +5963,8 @@ inst207: // rune "09AFaf" -> 211
 	goto unreachable
 	goto inst207_fail
 inst207_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 212:
@@ -5897,13 +5983,14 @@ inst212: // alt -> 207, 213
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 212, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 212, 0}
+	st.last.len++
 	goto inst207
 inst212_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst213
 	}
 
@@ -5928,8 +6015,8 @@ inst206: // rune "09AFaf" -> 212
 	goto unreachable
 	goto inst206_fail
 inst206_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 232:
@@ -5948,13 +6035,14 @@ inst232: // alt -> 206, 234
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 232, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 232, 0}
+	st.last.len++
 	goto inst206
 inst232_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
@@ -5979,8 +6067,8 @@ inst217: // rune "09AFaf" -> 221
 	goto unreachable
 	goto inst217_fail
 inst217_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 218:
@@ -5999,13 +6087,14 @@ inst218: // alt -> 217, 221
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 218, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 218, 0}
+	st.last.len++
 	goto inst217
 inst218_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst221
 	}
 
@@ -6030,8 +6119,8 @@ inst216: // rune "09AFaf" -> 218
 	goto unreachable
 	goto inst216_fail
 inst216_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 219:
@@ -6050,13 +6139,14 @@ inst219: // alt -> 216, 221
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 219, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 219, 0}
+	st.last.len++
 	goto inst216
 inst219_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst221
 	}
 
@@ -6073,8 +6163,8 @@ inst221: // string ":" -> 230
 	goto unreachable
 	goto inst221_fail
 inst221_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 218:
@@ -6099,13 +6189,14 @@ inst231: // alt -> 214, 234
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 231, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 231, 0}
+	st.last.len++
 	goto inst214
 inst231_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
@@ -6122,8 +6213,8 @@ inst234: // string ":" -> 235
 	goto unreachable
 	goto inst234_fail
 inst234_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 194:
@@ -6183,8 +6274,8 @@ inst214: // rune "09AFaf" -> 220
 	goto unreachable
 	goto inst214_fail
 inst214_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 231:
@@ -6203,13 +6294,14 @@ inst220: // alt -> 215, 221
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 220, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 220, 0}
+	st.last.len++
 	goto inst215
 inst220_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst221
 	}
 
@@ -6234,8 +6326,8 @@ inst215: // rune "09AFaf" -> 219
 	goto unreachable
 	goto inst215_fail
 inst215_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 220:
@@ -6254,13 +6346,14 @@ inst230: // alt -> 222, 234
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 230, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 230, 0}
+	st.last.len++
 	goto inst222
 inst230_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
@@ -6285,8 +6378,8 @@ inst222: // rune "09AFaf" -> 228
 	goto unreachable
 	goto inst222_fail
 inst222_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 230:
@@ -6305,13 +6398,14 @@ inst228: // alt -> 223, 229
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 228, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 228, 0}
+	st.last.len++
 	goto inst223
 inst228_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst229
 	}
 
@@ -6336,8 +6430,8 @@ inst223: // rune "09AFaf" -> 227
 	goto unreachable
 	goto inst223_fail
 inst223_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 228:
@@ -6356,13 +6450,14 @@ inst227: // alt -> 224, 229
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 227, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 227, 0}
+	st.last.len++
 	goto inst224
 inst227_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst229
 	}
 
@@ -6387,8 +6482,8 @@ inst235: // rune "09AFaf" -> 241
 	goto unreachable
 	goto inst235_fail
 inst235_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 194:
@@ -6448,8 +6543,8 @@ inst229: // string "::" -> 235
 	goto unreachable
 	goto inst229_fail
 inst229_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 226:
@@ -6485,8 +6580,8 @@ inst224: // rune "09AFaf" -> 226
 	goto unreachable
 	goto inst224_fail
 inst224_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 227:
@@ -6505,13 +6600,14 @@ inst226: // alt -> 225, 229
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 226, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 226, 0}
+	st.last.len++
 	goto inst225
 inst226_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst229
 	}
 
@@ -6536,8 +6632,8 @@ inst225: // rune "09AFaf" -> 229
 	goto unreachable
 	goto inst225_fail
 inst225_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 226:
@@ -6556,13 +6652,14 @@ inst241: // alt -> 236, 250
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 241, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 241, 0}
+	st.last.len++
 	goto inst236
 inst241_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst250
 	}
 
@@ -6587,8 +6684,8 @@ inst236: // rune "09AFaf" -> 240
 	goto unreachable
 	goto inst236_fail
 inst236_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 241:
@@ -6607,13 +6704,14 @@ inst240: // alt -> 237, 250
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 240, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 240, 0}
+	st.last.len++
 	goto inst237
 inst240_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst250
 	}
 
@@ -6638,8 +6736,8 @@ inst237: // rune "09AFaf" -> 239
 	goto unreachable
 	goto inst237_fail
 inst237_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 240:
@@ -6658,13 +6756,14 @@ inst239: // alt -> 238, 250
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 239, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 239, 0}
+	st.last.len++
 	goto inst238
 inst239_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst250
 	}
 
@@ -6678,13 +6777,14 @@ inst250: // alt -> 242, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 250, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 250, 0}
+	st.last.len++
 	goto inst242
 inst250_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -6709,8 +6809,8 @@ inst238: // rune "09AFaf" -> 250
 	goto unreachable
 	goto inst238_fail
 inst238_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 239:
@@ -6732,8 +6832,8 @@ inst242: // string ":" -> 243
 	goto unreachable
 	goto inst242_fail
 inst242_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 250:
@@ -6754,13 +6854,14 @@ inst313: // alt -> 251, 252
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 313, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 313, 0}
+	st.last.len++
 	goto inst251
 inst313_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst252
 	}
 
@@ -6785,8 +6886,8 @@ inst252: // rune "09AFaf" -> 258
 	goto unreachable
 	goto inst252_fail
 inst252_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 375:
@@ -6816,8 +6917,8 @@ inst243: // rune "09AFaf" -> 249
 	goto unreachable
 	goto inst243_fail
 inst243_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 250:
@@ -6836,13 +6937,14 @@ inst187: // alt -> 184, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 187, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 187, 0}
+	st.last.len++
 	goto inst184
 inst187_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -6867,8 +6969,8 @@ inst184: // rune "09AFaf" -> 186
 	goto unreachable
 	goto inst184_fail
 inst184_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 187:
@@ -6887,13 +6989,14 @@ inst258: // alt -> 253, 259
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 258, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 258, 0}
+	st.last.len++
 	goto inst253
 inst258_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst259
 	}
 
@@ -6918,8 +7021,8 @@ inst253: // rune "09AFaf" -> 257
 	goto unreachable
 	goto inst253_fail
 inst253_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 258:
@@ -6938,13 +7041,14 @@ inst257: // alt -> 254, 259
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 257, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 257, 0}
+	st.last.len++
 	goto inst254
 inst257_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst259
 	}
 
@@ -6969,8 +7073,8 @@ inst254: // rune "09AFaf" -> 256
 	goto unreachable
 	goto inst254_fail
 inst254_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 257:
@@ -6989,13 +7093,14 @@ inst249: // alt -> 244, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 249, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 249, 0}
+	st.last.len++
 	goto inst244
 inst249_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -7020,8 +7125,8 @@ inst244: // rune "09AFaf" -> 248
 	goto unreachable
 	goto inst244_fail
 inst244_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 249:
@@ -7043,8 +7148,8 @@ inst259: // string ":" -> 286
 	goto unreachable
 	goto inst259_fail
 inst259_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 256:
@@ -7069,13 +7174,14 @@ inst256: // alt -> 255, 259
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 256, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 256, 0}
+	st.last.len++
 	goto inst255
 inst256_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst259
 	}
 
@@ -7100,8 +7206,8 @@ inst255: // rune "09AFaf" -> 259
 	goto unreachable
 	goto inst255_fail
 inst255_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 256:
@@ -7120,13 +7226,14 @@ inst248: // alt -> 245, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 248, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 248, 0}
+	st.last.len++
 	goto inst245
 inst248_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -7151,8 +7258,8 @@ inst263: // rune "09AFaf" -> 267
 	goto unreachable
 	goto inst263_fail
 inst263_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 264:
@@ -7171,13 +7278,14 @@ inst264: // alt -> 263, 267
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 264, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 264, 0}
+	st.last.len++
 	goto inst263
 inst264_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst267
 	}
 
@@ -7202,8 +7310,8 @@ inst262: // rune "09AFaf" -> 264
 	goto unreachable
 	goto inst262_fail
 inst262_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 265:
@@ -7225,8 +7333,8 @@ inst267: // string ":" -> 285
 	goto unreachable
 	goto inst267_fail
 inst267_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 264:
@@ -7251,13 +7359,14 @@ inst265: // alt -> 262, 267
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 265, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 265, 0}
+	st.last.len++
 	goto inst262
 inst265_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst267
 	}
 
@@ -7282,8 +7391,8 @@ inst245: // rune "09AFaf" -> 247
 	goto unreachable
 	goto inst245_fail
 inst245_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 248:
@@ -7313,8 +7422,8 @@ inst261: // rune "09AFaf" -> 265
 	goto unreachable
 	goto inst261_fail
 inst261_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 266:
@@ -7333,13 +7442,14 @@ inst266: // alt -> 261, 267
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 266, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 266, 0}
+	st.last.len++
 	goto inst261
 inst266_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst267
 	}
 
@@ -7364,8 +7474,8 @@ inst270: // rune "09AFaf" -> 272
 	goto unreachable
 	goto inst270_fail
 inst270_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 273:
@@ -7384,13 +7494,14 @@ inst272: // alt -> 271, 275
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 272, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 272, 0}
+	st.last.len++
 	goto inst271
 inst272_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst275
 	}
 
@@ -7415,8 +7526,8 @@ inst271: // rune "09AFaf" -> 275
 	goto unreachable
 	goto inst271_fail
 inst271_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 272:
@@ -7435,13 +7546,14 @@ inst273: // alt -> 270, 275
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 273, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 273, 0}
+	st.last.len++
 	goto inst270
 inst273_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst275
 	}
 
@@ -7458,8 +7570,8 @@ inst275: // string ":" -> 284
 	goto unreachable
 	goto inst275_fail
 inst275_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 272:
@@ -7495,8 +7607,8 @@ inst269: // rune "09AFaf" -> 273
 	goto unreachable
 	goto inst269_fail
 inst269_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 274:
@@ -7515,13 +7627,14 @@ inst274: // alt -> 269, 275
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 274, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 274, 0}
+	st.last.len++
 	goto inst269
 inst274_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst275
 	}
 
@@ -7546,8 +7659,8 @@ inst268: // rune "09AFaf" -> 274
 	goto unreachable
 	goto inst268_fail
 inst268_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 285:
@@ -7566,13 +7679,14 @@ inst285: // alt -> 268, 287
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 285, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 285, 0}
+	st.last.len++
 	goto inst268
 inst285_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst287
 	}
 
@@ -7597,8 +7711,8 @@ inst260: // rune "09AFaf" -> 266
 	goto unreachable
 	goto inst260_fail
 inst260_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 286:
@@ -7617,13 +7731,14 @@ inst286: // alt -> 260, 287
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 286, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 286, 0}
+	st.last.len++
 	goto inst260
 inst286_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst287
 	}
 
@@ -7640,8 +7755,8 @@ inst287: // string ":" -> 288
 	goto unreachable
 	goto inst287_fail
 inst287_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 256:
@@ -7682,13 +7797,14 @@ inst284: // alt -> 276, 287
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 284, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 284, 0}
+	st.last.len++
 	goto inst276
 inst284_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst287
 	}
 
@@ -7713,8 +7829,8 @@ inst276: // rune "09AFaf" -> 282
 	goto unreachable
 	goto inst276_fail
 inst276_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 284:
@@ -7733,13 +7849,14 @@ inst282: // alt -> 277, 283
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 282, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 282, 0}
+	st.last.len++
 	goto inst277
 inst282_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst283
 	}
 
@@ -7764,8 +7881,8 @@ inst288: // rune "09AFaf" -> 294
 	goto unreachable
 	goto inst288_fail
 inst288_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 256:
@@ -7817,8 +7934,8 @@ inst283: // string "::" -> 288
 	goto unreachable
 	goto inst283_fail
 inst283_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 280:
@@ -7854,8 +7971,8 @@ inst279: // rune "09AFaf" -> 283
 	goto unreachable
 	goto inst279_fail
 inst279_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 280:
@@ -7874,13 +7991,14 @@ inst280: // alt -> 279, 283
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 280, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 280, 0}
+	st.last.len++
 	goto inst279
 inst280_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst283
 	}
 
@@ -7905,8 +8023,8 @@ inst277: // rune "09AFaf" -> 281
 	goto unreachable
 	goto inst277_fail
 inst277_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 282:
@@ -7925,13 +8043,14 @@ inst281: // alt -> 278, 283
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 281, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 281, 0}
+	st.last.len++
 	goto inst278
 inst281_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst283
 	}
 
@@ -7956,8 +8075,8 @@ inst278: // rune "09AFaf" -> 280
 	goto unreachable
 	goto inst278_fail
 inst278_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 281:
@@ -7987,8 +8106,8 @@ inst291: // rune "09AFaf" -> 312
 	goto unreachable
 	goto inst291_fail
 inst291_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 292:
@@ -8007,13 +8126,14 @@ inst292: // alt -> 291, 312
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 292, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 292, 0}
+	st.last.len++
 	goto inst291
 inst292_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst312
 	}
 
@@ -8038,8 +8158,8 @@ inst290: // rune "09AFaf" -> 292
 	goto unreachable
 	goto inst290_fail
 inst290_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 293:
@@ -8058,13 +8178,14 @@ inst294: // alt -> 289, 312
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 294, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 294, 0}
+	st.last.len++
 	goto inst289
 inst294_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst312
 	}
 
@@ -8078,13 +8199,14 @@ inst312: // alt -> 295, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 312, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 312, 0}
+	st.last.len++
 	goto inst295
 inst312_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -8098,13 +8220,14 @@ inst293: // alt -> 290, 312
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 293, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 293, 0}
+	st.last.len++
 	goto inst290
 inst293_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst312
 	}
 
@@ -8129,8 +8252,8 @@ inst289: // rune "09AFaf" -> 293
 	goto unreachable
 	goto inst289_fail
 inst289_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 294:
@@ -8152,8 +8275,8 @@ inst295: // string ":" -> 296
 	goto unreachable
 	goto inst295_fail
 inst295_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 312:
@@ -8183,8 +8306,8 @@ inst296: // rune "09AFaf" -> 302
 	goto unreachable
 	goto inst296_fail
 inst296_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 312:
@@ -8203,13 +8326,14 @@ inst247: // alt -> 246, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 247, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 247, 0}
+	st.last.len++
 	goto inst246
 inst247_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -8234,8 +8358,8 @@ inst246: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst246_fail
 inst246_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 247:
@@ -8254,13 +8378,14 @@ inst302: // alt -> 297, 311
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 302, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 302, 0}
+	st.last.len++
 	goto inst297
 inst302_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst311
 	}
 
@@ -8285,8 +8410,8 @@ inst297: // rune "09AFaf" -> 301
 	goto unreachable
 	goto inst297_fail
 inst297_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 302:
@@ -8305,13 +8430,14 @@ inst301: // alt -> 298, 311
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 301, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 301, 0}
+	st.last.len++
 	goto inst298
 inst301_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst311
 	}
 
@@ -8336,8 +8462,8 @@ inst298: // rune "09AFaf" -> 300
 	goto unreachable
 	goto inst298_fail
 inst298_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 301:
@@ -8356,13 +8482,14 @@ inst300: // alt -> 299, 311
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 300, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 300, 0}
+	st.last.len++
 	goto inst299
 inst300_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst311
 	}
 
@@ -8376,13 +8503,14 @@ inst311: // alt -> 303, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 311, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 311, 0}
+	st.last.len++
 	goto inst303
 inst311_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -8407,8 +8535,8 @@ inst299: // rune "09AFaf" -> 311
 	goto unreachable
 	goto inst299_fail
 inst299_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 300:
@@ -8430,8 +8558,8 @@ inst303: // string ":" -> 304
 	goto unreachable
 	goto inst303_fail
 inst303_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 311:
@@ -8461,8 +8589,8 @@ inst304: // rune "09AFaf" -> 310
 	goto unreachable
 	goto inst304_fail
 inst304_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 311:
@@ -8481,13 +8609,14 @@ inst310: // alt -> 305, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 310, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 310, 0}
+	st.last.len++
 	goto inst305
 inst310_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -8512,8 +8641,8 @@ inst305: // rune "09AFaf" -> 309
 	goto unreachable
 	goto inst305_fail
 inst305_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 310:
@@ -8532,13 +8661,14 @@ inst309: // alt -> 306, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 309, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 309, 0}
+	st.last.len++
 	goto inst306
 inst309_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -8563,8 +8693,8 @@ inst306: // rune "09AFaf" -> 308
 	goto unreachable
 	goto inst306_fail
 inst306_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 309:
@@ -8583,13 +8713,14 @@ inst375: // alt -> 313, 314
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 375, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 375, 0}
+	st.last.len++
 	goto inst313
 inst375_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst314
 	}
 
@@ -8614,8 +8745,8 @@ inst314: // rune "09AFaf" -> 320
 	goto unreachable
 	goto inst314_fail
 inst314_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 437:
@@ -8634,13 +8765,14 @@ inst320: // alt -> 315, 321
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 320, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 320, 0}
+	st.last.len++
 	goto inst315
 inst320_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst321
 	}
 
@@ -8665,8 +8797,8 @@ inst315: // rune "09AFaf" -> 319
 	goto unreachable
 	goto inst315_fail
 inst315_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 320:
@@ -8685,13 +8817,14 @@ inst319: // alt -> 316, 321
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 319, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 319, 0}
+	st.last.len++
 	goto inst316
 inst319_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst321
 	}
 
@@ -8716,8 +8849,8 @@ inst316: // rune "09AFaf" -> 318
 	goto unreachable
 	goto inst316_fail
 inst316_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 319:
@@ -8736,13 +8869,14 @@ inst318: // alt -> 317, 321
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 318, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 318, 0}
+	st.last.len++
 	goto inst317
 inst318_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst321
 	}
 
@@ -8759,8 +8893,8 @@ inst321: // string ":" -> 339
 	goto unreachable
 	goto inst321_fail
 inst321_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 318:
@@ -8796,8 +8930,8 @@ inst317: // rune "09AFaf" -> 321
 	goto unreachable
 	goto inst317_fail
 inst317_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 318:
@@ -8816,13 +8950,14 @@ inst339: // alt -> 322, 340
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 339, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 339, 0}
+	st.last.len++
 	goto inst322
 inst339_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst340
 	}
 
@@ -8847,8 +8982,8 @@ inst322: // rune "09AFaf" -> 328
 	goto unreachable
 	goto inst322_fail
 inst322_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 339:
@@ -8867,13 +9002,14 @@ inst328: // alt -> 323, 329
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 328, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 328, 0}
+	st.last.len++
 	goto inst323
 inst328_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst329
 	}
 
@@ -8898,8 +9034,8 @@ inst323: // rune "09AFaf" -> 327
 	goto unreachable
 	goto inst323_fail
 inst323_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 328:
@@ -8918,13 +9054,14 @@ inst327: // alt -> 324, 329
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 327, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 327, 0}
+	st.last.len++
 	goto inst324
 inst327_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst329
 	}
 
@@ -8949,8 +9086,8 @@ inst324: // rune "09AFaf" -> 326
 	goto unreachable
 	goto inst324_fail
 inst324_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 327:
@@ -8972,8 +9109,8 @@ inst329: // string ":" -> 338
 	goto unreachable
 	goto inst329_fail
 inst329_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 326:
@@ -8998,13 +9135,14 @@ inst326: // alt -> 325, 329
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 326, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 326, 0}
+	st.last.len++
 	goto inst325
 inst326_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst329
 	}
 
@@ -9029,8 +9167,8 @@ inst325: // rune "09AFaf" -> 329
 	goto unreachable
 	goto inst325_fail
 inst325_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 326:
@@ -9060,8 +9198,8 @@ inst331: // rune "09AFaf" -> 335
 	goto unreachable
 	goto inst331_fail
 inst331_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 336:
@@ -9080,13 +9218,14 @@ inst335: // alt -> 332, 337
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 335, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 335, 0}
+	st.last.len++
 	goto inst332
 inst335_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst337
 	}
 
@@ -9111,8 +9250,8 @@ inst332: // rune "09AFaf" -> 334
 	goto unreachable
 	goto inst332_fail
 inst332_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 335:
@@ -9131,13 +9270,14 @@ inst334: // alt -> 333, 337
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 334, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 334, 0}
+	st.last.len++
 	goto inst333
 inst334_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst337
 	}
 
@@ -9162,8 +9302,8 @@ inst333: // rune "09AFaf" -> 337
 	goto unreachable
 	goto inst333_fail
 inst333_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 334:
@@ -9185,8 +9325,8 @@ inst337: // string "::" -> 341
 	goto unreachable
 	goto inst337_fail
 inst337_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 334:
@@ -9211,13 +9351,14 @@ inst336: // alt -> 331, 337
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 336, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 336, 0}
+	st.last.len++
 	goto inst331
 inst336_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst337
 	}
 
@@ -9234,8 +9375,8 @@ inst340: // string ":" -> 341
 	goto unreachable
 	goto inst340_fail
 inst340_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 318:
@@ -9279,8 +9420,8 @@ inst341: // rune "09AFaf" -> 347
 	goto unreachable
 	goto inst341_fail
 inst341_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 318:
@@ -9321,13 +9462,14 @@ inst338: // alt -> 330, 340
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 338, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 338, 0}
+	st.last.len++
 	goto inst330
 inst338_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst340
 	}
 
@@ -9352,8 +9494,8 @@ inst330: // rune "09AFaf" -> 336
 	goto unreachable
 	goto inst330_fail
 inst330_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 338:
@@ -9372,13 +9514,14 @@ inst347: // alt -> 342, 374
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 347, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 347, 0}
+	st.last.len++
 	goto inst342
 inst347_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst374
 	}
 
@@ -9403,8 +9546,8 @@ inst342: // rune "09AFaf" -> 346
 	goto unreachable
 	goto inst342_fail
 inst342_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 347:
@@ -9423,13 +9566,14 @@ inst346: // alt -> 343, 374
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 346, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 346, 0}
+	st.last.len++
 	goto inst343
 inst346_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst374
 	}
 
@@ -9454,8 +9598,8 @@ inst343: // rune "09AFaf" -> 345
 	goto unreachable
 	goto inst343_fail
 inst343_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 346:
@@ -9474,13 +9618,14 @@ inst345: // alt -> 344, 374
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 345, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 345, 0}
+	st.last.len++
 	goto inst344
 inst345_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst374
 	}
 
@@ -9494,13 +9639,14 @@ inst374: // alt -> 348, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 374, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 374, 0}
+	st.last.len++
 	goto inst348
 inst374_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -9525,8 +9671,8 @@ inst344: // rune "09AFaf" -> 374
 	goto unreachable
 	goto inst344_fail
 inst344_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 345:
@@ -9548,8 +9694,8 @@ inst348: // string ":" -> 349
 	goto unreachable
 	goto inst348_fail
 inst348_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 374:
@@ -9579,8 +9725,8 @@ inst349: // rune "09AFaf" -> 355
 	goto unreachable
 	goto inst349_fail
 inst349_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 374:
@@ -9610,8 +9756,8 @@ inst351: // rune "09AFaf" -> 353
 	goto unreachable
 	goto inst351_fail
 inst351_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 354:
@@ -9630,13 +9776,14 @@ inst353: // alt -> 352, 373
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 353, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 353, 0}
+	st.last.len++
 	goto inst352
 inst353_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst373
 	}
 
@@ -9661,8 +9808,8 @@ inst352: // rune "09AFaf" -> 373
 	goto unreachable
 	goto inst352_fail
 inst352_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 353:
@@ -9681,13 +9828,14 @@ inst355: // alt -> 350, 373
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 355, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 355, 0}
+	st.last.len++
 	goto inst350
 inst355_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst373
 	}
 
@@ -9712,8 +9860,8 @@ inst350: // rune "09AFaf" -> 354
 	goto unreachable
 	goto inst350_fail
 inst350_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 355:
@@ -9732,13 +9880,14 @@ inst354: // alt -> 351, 373
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 354, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 354, 0}
+	st.last.len++
 	goto inst351
 inst354_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst373
 	}
 
@@ -9752,13 +9901,14 @@ inst373: // alt -> 356, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 373, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 373, 0}
+	st.last.len++
 	goto inst356
 inst373_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -9775,8 +9925,8 @@ inst356: // string ":" -> 357
 	goto unreachable
 	goto inst356_fail
 inst356_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 373:
@@ -9806,8 +9956,8 @@ inst357: // rune "09AFaf" -> 363
 	goto unreachable
 	goto inst357_fail
 inst357_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 373:
@@ -9826,13 +9976,14 @@ inst363: // alt -> 358, 372
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 363, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 363, 0}
+	st.last.len++
 	goto inst358
 inst363_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst372
 	}
 
@@ -9857,8 +10008,8 @@ inst358: // rune "09AFaf" -> 362
 	goto unreachable
 	goto inst358_fail
 inst358_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 363:
@@ -9877,13 +10028,14 @@ inst362: // alt -> 359, 372
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 362, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 362, 0}
+	st.last.len++
 	goto inst359
 inst362_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst372
 	}
 
@@ -9908,8 +10060,8 @@ inst359: // rune "09AFaf" -> 361
 	goto unreachable
 	goto inst359_fail
 inst359_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 362:
@@ -9928,13 +10080,14 @@ inst361: // alt -> 360, 372
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 361, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 361, 0}
+	st.last.len++
 	goto inst360
 inst361_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst372
 	}
 
@@ -9948,13 +10101,14 @@ inst372: // alt -> 364, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 372, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 372, 0}
+	st.last.len++
 	goto inst364
 inst372_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -9979,8 +10133,8 @@ inst360: // rune "09AFaf" -> 372
 	goto unreachable
 	goto inst360_fail
 inst360_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 361:
@@ -10002,8 +10156,8 @@ inst364: // string ":" -> 365
 	goto unreachable
 	goto inst364_fail
 inst364_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 372:
@@ -10033,8 +10187,8 @@ inst397: // rune "09AFaf" -> 436
 	goto unreachable
 	goto inst397_fail
 inst397_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 398:
@@ -10053,13 +10207,14 @@ inst398: // alt -> 397, 436
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 398, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 398, 0}
+	st.last.len++
 	goto inst397
 inst398_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst436
 	}
 
@@ -10073,13 +10228,14 @@ inst436: // alt -> 401, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 436, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 436, 0}
+	st.last.len++
 	goto inst401
 inst436_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -10104,8 +10260,8 @@ inst365: // rune "09AFaf" -> 371
 	goto unreachable
 	goto inst365_fail
 inst365_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 372:
@@ -10127,8 +10283,8 @@ inst401: // string ":" -> 402
 	goto unreachable
 	goto inst401_fail
 inst401_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 436:
@@ -10147,13 +10303,14 @@ inst400: // alt -> 395, 436
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 400, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 400, 0}
+	st.last.len++
 	goto inst395
 inst400_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst436
 	}
 
@@ -10178,8 +10335,8 @@ inst378: // rune "09AFaf" -> 380
 	goto unreachable
 	goto inst378_fail
 inst378_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 381:
@@ -10198,13 +10355,14 @@ inst381: // alt -> 378, 383
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 381, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 381, 0}
+	st.last.len++
 	goto inst378
 inst381_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst383
 	}
 
@@ -10229,8 +10387,8 @@ inst377: // rune "09AFaf" -> 381
 	goto unreachable
 	goto inst377_fail
 inst377_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 382:
@@ -10249,13 +10407,14 @@ inst382: // alt -> 377, 383
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 382, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 382, 0}
+	st.last.len++
 	goto inst377
 inst382_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst383
 	}
 
@@ -10280,8 +10439,8 @@ inst376: // rune "09AFaf" -> 382
 	goto unreachable
 	goto inst376_fail
 inst376_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 499:
@@ -10300,13 +10459,14 @@ inst437: // alt -> 375, 376
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 437, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 437, 0}
+	st.last.len++
 	goto inst375
 inst437_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst376
 	}
 
@@ -10323,8 +10483,8 @@ inst383: // string ":" -> 392
 	goto unreachable
 	goto inst383_fail
 inst383_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 380:
@@ -10349,13 +10509,14 @@ inst380: // alt -> 379, 383
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 380, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 380, 0}
+	st.last.len++
 	goto inst379
 inst380_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst383
 	}
 
@@ -10380,8 +10541,8 @@ inst379: // rune "09AFaf" -> 383
 	goto unreachable
 	goto inst379_fail
 inst379_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 380:
@@ -10411,8 +10572,8 @@ inst386: // rune "09AFaf" -> 388
 	goto unreachable
 	goto inst386_fail
 inst386_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 389:
@@ -10431,13 +10592,14 @@ inst388: // alt -> 387, 391
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 388, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 388, 0}
+	st.last.len++
 	goto inst387
 inst388_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst391
 	}
 
@@ -10462,8 +10624,8 @@ inst387: // rune "09AFaf" -> 391
 	goto unreachable
 	goto inst387_fail
 inst387_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 388:
@@ -10482,13 +10644,14 @@ inst389: // alt -> 386, 391
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 389, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 389, 0}
+	st.last.len++
 	goto inst386
 inst389_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst391
 	}
 
@@ -10513,8 +10676,8 @@ inst385: // rune "09AFaf" -> 389
 	goto unreachable
 	goto inst385_fail
 inst385_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 390:
@@ -10544,8 +10707,8 @@ inst384: // rune "09AFaf" -> 390
 	goto unreachable
 	goto inst384_fail
 inst384_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 392:
@@ -10564,13 +10727,14 @@ inst390: // alt -> 385, 391
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 390, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 390, 0}
+	st.last.len++
 	goto inst385
 inst390_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst391
 	}
 
@@ -10587,8 +10751,8 @@ inst391: // string "::" -> 394
 	goto unreachable
 	goto inst391_fail
 inst391_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 388:
@@ -10613,13 +10777,14 @@ inst392: // alt -> 384, 393
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 392, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 392, 0}
+	st.last.len++
 	goto inst384
 inst392_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst393
 	}
 
@@ -10636,8 +10801,8 @@ inst393: // string ":" -> 394
 	goto unreachable
 	goto inst393_fail
 inst393_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 380:
@@ -10673,8 +10838,8 @@ inst394: // rune "09AFaf" -> 400
 	goto unreachable
 	goto inst394_fail
 inst394_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 380:
@@ -10718,8 +10883,8 @@ inst395: // rune "09AFaf" -> 399
 	goto unreachable
 	goto inst395_fail
 inst395_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 400:
@@ -10749,8 +10914,8 @@ inst402: // rune "09AFaf" -> 408
 	goto unreachable
 	goto inst402_fail
 inst402_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 436:
@@ -10780,8 +10945,8 @@ inst396: // rune "09AFaf" -> 398
 	goto unreachable
 	goto inst396_fail
 inst396_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 399:
@@ -10800,13 +10965,14 @@ inst399: // alt -> 396, 436
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 399, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 399, 0}
+	st.last.len++
 	goto inst396
 inst399_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst436
 	}
 
@@ -10820,13 +10986,14 @@ inst371: // alt -> 366, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 371, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 371, 0}
+	st.last.len++
 	goto inst366
 inst371_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -10851,8 +11018,8 @@ inst366: // rune "09AFaf" -> 370
 	goto unreachable
 	goto inst366_fail
 inst366_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 371:
@@ -10871,13 +11038,14 @@ inst370: // alt -> 367, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 370, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 370, 0}
+	st.last.len++
 	goto inst367
 inst370_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -10891,13 +11059,14 @@ inst499: // alt -> 437, 438
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 499, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 499, 0}
+	st.last.len++
 	goto inst437
 inst499_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst438
 	}
 
@@ -10922,8 +11091,8 @@ inst367: // rune "09AFaf" -> 369
 	goto unreachable
 	goto inst367_fail
 inst367_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 370:
@@ -10942,13 +11111,14 @@ inst369: // alt -> 368, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 369, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 369, 0}
+	st.last.len++
 	goto inst368
 inst369_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -10973,8 +11143,8 @@ inst368: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst368_fail
 inst368_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 369:
@@ -11004,8 +11174,8 @@ inst404: // rune "09AFaf" -> 406
 	goto unreachable
 	goto inst404_fail
 inst404_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 407:
@@ -11035,8 +11205,8 @@ inst405: // rune "09AFaf" -> 435
 	goto unreachable
 	goto inst405_fail
 inst405_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 406:
@@ -11066,8 +11236,8 @@ inst403: // rune "09AFaf" -> 407
 	goto unreachable
 	goto inst403_fail
 inst403_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 408:
@@ -11086,13 +11256,14 @@ inst406: // alt -> 405, 435
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 406, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 406, 0}
+	st.last.len++
 	goto inst405
 inst406_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst435
 	}
 
@@ -11106,13 +11277,14 @@ inst407: // alt -> 404, 435
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 407, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 407, 0}
+	st.last.len++
 	goto inst404
 inst407_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst435
 	}
 
@@ -11126,13 +11298,14 @@ inst408: // alt -> 403, 435
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 408, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 408, 0}
+	st.last.len++
 	goto inst403
 inst408_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst435
 	}
 
@@ -11149,8 +11322,8 @@ inst409: // string ":" -> 410
 	goto unreachable
 	goto inst409_fail
 inst409_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 435:
@@ -11180,8 +11353,8 @@ inst410: // rune "09AFaf" -> 416
 	goto unreachable
 	goto inst410_fail
 inst410_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 435:
@@ -11211,8 +11384,8 @@ inst411: // rune "09AFaf" -> 415
 	goto unreachable
 	goto inst411_fail
 inst411_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 416:
@@ -11242,8 +11415,8 @@ inst412: // rune "09AFaf" -> 414
 	goto unreachable
 	goto inst412_fail
 inst412_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 415:
@@ -11273,8 +11446,8 @@ inst413: // rune "09AFaf" -> 434
 	goto unreachable
 	goto inst413_fail
 inst413_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 414:
@@ -11293,13 +11466,14 @@ inst414: // alt -> 413, 434
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 414, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 414, 0}
+	st.last.len++
 	goto inst413
 inst414_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst434
 	}
 
@@ -11313,13 +11487,14 @@ inst415: // alt -> 412, 434
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 415, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 415, 0}
+	st.last.len++
 	goto inst412
 inst415_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst434
 	}
 
@@ -11333,13 +11508,14 @@ inst416: // alt -> 411, 434
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 416, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 416, 0}
+	st.last.len++
 	goto inst411
 inst416_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst434
 	}
 
@@ -11356,8 +11532,8 @@ inst417: // string ":" -> 418
 	goto unreachable
 	goto inst417_fail
 inst417_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 434:
@@ -11387,8 +11563,8 @@ inst418: // rune "09AFaf" -> 424
 	goto unreachable
 	goto inst418_fail
 inst418_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 434:
@@ -11418,8 +11594,8 @@ inst419: // rune "09AFaf" -> 423
 	goto unreachable
 	goto inst419_fail
 inst419_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 424:
@@ -11449,8 +11625,8 @@ inst420: // rune "09AFaf" -> 422
 	goto unreachable
 	goto inst420_fail
 inst420_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 423:
@@ -11480,8 +11656,8 @@ inst421: // rune "09AFaf" -> 433
 	goto unreachable
 	goto inst421_fail
 inst421_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 422:
@@ -11500,13 +11676,14 @@ inst422: // alt -> 421, 433
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 422, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 422, 0}
+	st.last.len++
 	goto inst421
 inst422_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst433
 	}
 
@@ -11520,13 +11697,14 @@ inst423: // alt -> 420, 433
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 423, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 423, 0}
+	st.last.len++
 	goto inst420
 inst423_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst433
 	}
 
@@ -11540,13 +11718,14 @@ inst424: // alt -> 419, 433
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 424, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 424, 0}
+	st.last.len++
 	goto inst419
 inst424_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst433
 	}
 
@@ -11563,8 +11742,8 @@ inst425: // string ":" -> 426
 	goto unreachable
 	goto inst425_fail
 inst425_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 433:
@@ -11594,8 +11773,8 @@ inst426: // rune "09AFaf" -> 432
 	goto unreachable
 	goto inst426_fail
 inst426_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 433:
@@ -11625,8 +11804,8 @@ inst427: // rune "09AFaf" -> 431
 	goto unreachable
 	goto inst427_fail
 inst427_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 432:
@@ -11656,8 +11835,8 @@ inst428: // rune "09AFaf" -> 430
 	goto unreachable
 	goto inst428_fail
 inst428_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 431:
@@ -11676,13 +11855,14 @@ inst432: // alt -> 427, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 432, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 432, 0}
+	st.last.len++
 	goto inst427
 inst432_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -11696,13 +11876,14 @@ inst431: // alt -> 428, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 431, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 431, 0}
+	st.last.len++
 	goto inst428
 inst431_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -11716,13 +11897,14 @@ inst433: // alt -> 425, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 433, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 433, 0}
+	st.last.len++
 	goto inst425
 inst433_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -11736,13 +11918,14 @@ inst434: // alt -> 417, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 434, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 434, 0}
+	st.last.len++
 	goto inst417
 inst434_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -11756,13 +11939,14 @@ inst435: // alt -> 409, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 435, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 435, 0}
+	st.last.len++
 	goto inst409
 inst435_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -11787,8 +11971,8 @@ inst438: // rune "09AFaf" -> 444
 	goto unreachable
 	goto inst438_fail
 inst438_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 565:
@@ -11818,8 +12002,8 @@ inst439: // rune "09AFaf" -> 443
 	goto unreachable
 	goto inst439_fail
 inst439_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 444:
@@ -11841,8 +12025,8 @@ inst445: // string "::" -> 447
 	goto unreachable
 	goto inst445_fail
 inst445_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 442:
@@ -11878,8 +12062,8 @@ inst440: // rune "09AFaf" -> 442
 	goto unreachable
 	goto inst440_fail
 inst440_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 443:
@@ -11898,13 +12082,14 @@ inst453: // alt -> 448, 498
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 453, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 453, 0}
+	st.last.len++
 	goto inst448
 inst453_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst498
 	}
 
@@ -11929,8 +12114,8 @@ inst449: // rune "09AFaf" -> 451
 	goto unreachable
 	goto inst449_fail
 inst449_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 452:
@@ -11949,13 +12134,14 @@ inst451: // alt -> 450, 498
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 451, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 451, 0}
+	st.last.len++
 	goto inst450
 inst451_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst498
 	}
 
@@ -11980,8 +12166,8 @@ inst441: // rune "09AFaf" -> 445
 	goto unreachable
 	goto inst441_fail
 inst441_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 442:
@@ -12000,13 +12186,14 @@ inst442: // alt -> 441, 445
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 442, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 442, 0}
+	st.last.len++
 	goto inst441
 inst442_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst445
 	}
 
@@ -12020,13 +12207,14 @@ inst443: // alt -> 440, 445
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 443, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 443, 0}
+	st.last.len++
 	goto inst440
 inst443_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst445
 	}
 
@@ -12040,13 +12228,14 @@ inst444: // alt -> 439, 445
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 444, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 444, 0}
+	st.last.len++
 	goto inst439
 inst444_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst445
 	}
 
@@ -12071,8 +12260,8 @@ inst447: // rune "09AFaf" -> 453
 	goto unreachable
 	goto inst447_fail
 inst447_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 442:
@@ -12108,8 +12297,8 @@ inst448: // rune "09AFaf" -> 452
 	goto unreachable
 	goto inst448_fail
 inst448_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 453:
@@ -12128,13 +12317,14 @@ inst498: // alt -> 454, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 498, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 498, 0}
+	st.last.len++
 	goto inst454
 inst498_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -12159,8 +12349,8 @@ inst450: // rune "09AFaf" -> 498
 	goto unreachable
 	goto inst450_fail
 inst450_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 451:
@@ -12179,13 +12369,14 @@ inst452: // alt -> 449, 498
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 452, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 452, 0}
+	st.last.len++
 	goto inst449
 inst452_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst498
 	}
 
@@ -12205,13 +12396,14 @@ inst308: // alt -> 307, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 308, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 308, 0}
+	st.last.len++
 	goto inst307
 inst308_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -12236,8 +12428,8 @@ inst307: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst307_fail
 inst307_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 308:
@@ -12256,13 +12448,14 @@ inst61: // alt -> 60, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 61, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 61, 0}
+	st.last.len++
 	goto inst60
 inst61_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -12287,8 +12480,8 @@ inst60: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst60_fail
 inst60_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 61:
@@ -12307,13 +12500,14 @@ inst430: // alt -> 429, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 430, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 430, 0}
+	st.last.len++
 	goto inst429
 inst430_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -12338,8 +12532,8 @@ inst429: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst429_fail
 inst429_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 430:
@@ -12358,13 +12552,14 @@ inst186: // alt -> 185, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 186, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 186, 0}
+	st.last.len++
 	goto inst185
 inst186_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -12389,8 +12584,8 @@ inst185: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst185_fail
 inst185_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 186:
@@ -12420,8 +12615,8 @@ inst465: // rune "09AFaf" -> 467
 	goto unreachable
 	goto inst465_fail
 inst465_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 468:
@@ -12440,13 +12635,14 @@ inst461: // alt -> 456, 497
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 461, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 461, 0}
+	st.last.len++
 	goto inst456
 inst461_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst497
 	}
 
@@ -12471,8 +12667,8 @@ inst464: // rune "09AFaf" -> 468
 	goto unreachable
 	goto inst464_fail
 inst464_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 469:
@@ -12502,8 +12698,8 @@ inst466: // rune "09AFaf" -> 496
 	goto unreachable
 	goto inst466_fail
 inst466_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 467:
@@ -12522,13 +12718,14 @@ inst467: // alt -> 466, 496
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 467, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 467, 0}
+	st.last.len++
 	goto inst466
 inst467_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst496
 	}
 
@@ -12542,13 +12739,14 @@ inst468: // alt -> 465, 496
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 468, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 468, 0}
+	st.last.len++
 	goto inst465
 inst468_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst496
 	}
 
@@ -12562,13 +12760,14 @@ inst496: // alt -> 470, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 496, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 496, 0}
+	st.last.len++
 	goto inst470
 inst496_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -12582,13 +12781,14 @@ inst469: // alt -> 464, 496
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 469, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 469, 0}
+	st.last.len++
 	goto inst464
 inst469_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst496
 	}
 
@@ -12605,8 +12805,8 @@ inst470: // string ":" -> 471
 	goto unreachable
 	goto inst470_fail
 inst470_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 496:
@@ -12636,8 +12836,8 @@ inst472: // rune "09AFaf" -> 476
 	goto unreachable
 	goto inst472_fail
 inst472_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 477:
@@ -12667,8 +12867,8 @@ inst473: // rune "09AFaf" -> 475
 	goto unreachable
 	goto inst473_fail
 inst473_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 476:
@@ -12687,13 +12887,14 @@ inst476: // alt -> 473, 495
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 476, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 476, 0}
+	st.last.len++
 	goto inst473
 inst476_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst495
 	}
 
@@ -12707,13 +12908,14 @@ inst459: // alt -> 458, 497
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 459, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 459, 0}
+	st.last.len++
 	goto inst458
 inst459_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst497
 	}
 
@@ -12730,8 +12932,8 @@ inst478: // string ":" -> 479
 	goto unreachable
 	goto inst478_fail
 inst478_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 495:
@@ -12761,8 +12963,8 @@ inst479: // rune "09AFaf" -> 485
 	goto unreachable
 	goto inst479_fail
 inst479_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 495:
@@ -12792,8 +12994,8 @@ inst457: // rune "09AFaf" -> 459
 	goto unreachable
 	goto inst457_fail
 inst457_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 460:
@@ -12823,8 +13025,8 @@ inst456: // rune "09AFaf" -> 460
 	goto unreachable
 	goto inst456_fail
 inst456_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 461:
@@ -12843,13 +13045,14 @@ inst460: // alt -> 457, 497
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 460, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 460, 0}
+	st.last.len++
 	goto inst457
 inst460_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst497
 	}
 
@@ -12874,8 +13077,8 @@ inst455: // rune "09AFaf" -> 461
 	goto unreachable
 	goto inst455_fail
 inst455_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 498:
@@ -12897,8 +13100,8 @@ inst486: // string ":" -> 487
 	goto unreachable
 	goto inst486_fail
 inst486_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 494:
@@ -12917,13 +13120,14 @@ inst497: // alt -> 462, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 497, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 497, 0}
+	st.last.len++
 	goto inst462
 inst497_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -12937,13 +13141,14 @@ inst485: // alt -> 480, 494
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 485, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 485, 0}
+	st.last.len++
 	goto inst480
 inst485_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst494
 	}
 
@@ -12968,8 +13173,8 @@ inst458: // rune "09AFaf" -> 497
 	goto unreachable
 	goto inst458_fail
 inst458_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 459:
@@ -12988,13 +13193,14 @@ inst492: // alt -> 489, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 492, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 492, 0}
+	st.last.len++
 	goto inst489
 inst492_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -13008,13 +13214,14 @@ inst493: // alt -> 488, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 493, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 493, 0}
+	st.last.len++
 	goto inst488
 inst493_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -13039,8 +13246,8 @@ inst487: // rune "09AFaf" -> 493
 	goto unreachable
 	goto inst487_fail
 inst487_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 494:
@@ -13070,8 +13277,8 @@ inst488: // rune "09AFaf" -> 492
 	goto unreachable
 	goto inst488_fail
 inst488_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 493:
@@ -13101,8 +13308,8 @@ inst489: // rune "09AFaf" -> 491
 	goto unreachable
 	goto inst489_fail
 inst489_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 492:
@@ -13132,8 +13339,8 @@ inst490: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst490_fail
 inst490_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 491:
@@ -13152,13 +13359,14 @@ inst491: // alt -> 490, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 491, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 491, 0}
+	st.last.len++
 	goto inst490
 inst491_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -13172,13 +13380,14 @@ inst494: // alt -> 486, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 494, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 494, 0}
+	st.last.len++
 	goto inst486
 inst494_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -13195,8 +13404,8 @@ inst454: // string ":" -> 455
 	goto unreachable
 	goto inst454_fail
 inst454_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 498:
@@ -13226,8 +13435,8 @@ inst471: // rune "09AFaf" -> 477
 	goto unreachable
 	goto inst471_fail
 inst471_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 496:
@@ -13246,13 +13455,14 @@ inst495: // alt -> 478, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 495, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 495, 0}
+	st.last.len++
 	goto inst478
 inst495_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -13269,8 +13479,8 @@ inst462: // string ":" -> 463
 	goto unreachable
 	goto inst462_fail
 inst462_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 497:
@@ -13289,13 +13499,14 @@ inst475: // alt -> 474, 495
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 475, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 475, 0}
+	st.last.len++
 	goto inst474
 inst475_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst495
 	}
 
@@ -13309,13 +13520,14 @@ inst477: // alt -> 472, 495
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 477, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 477, 0}
+	st.last.len++
 	goto inst472
 inst477_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst495
 	}
 
@@ -13340,8 +13552,8 @@ inst463: // rune "09AFaf" -> 469
 	goto unreachable
 	goto inst463_fail
 inst463_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 497:
@@ -13360,13 +13572,14 @@ inst560: // alt -> 525, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 560, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 560, 0}
+	st.last.len++
 	goto inst525
 inst560_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -13391,8 +13604,8 @@ inst474: // rune "09AFaf" -> 495
 	goto unreachable
 	goto inst474_fail
 inst474_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 475:
@@ -13422,8 +13635,8 @@ inst504: // rune "09AFaf" -> 506
 	goto unreachable
 	goto inst504_fail
 inst504_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 507:
@@ -13442,13 +13655,14 @@ inst484: // alt -> 481, 494
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 484, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 484, 0}
+	st.last.len++
 	goto inst481
 inst484_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst494
 	}
 
@@ -13462,13 +13676,14 @@ inst483: // alt -> 482, 494
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 483, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 483, 0}
+	st.last.len++
 	goto inst482
 inst483_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst494
 	}
 
@@ -13482,13 +13697,14 @@ inst506: // alt -> 505, 562
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 506, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 506, 0}
+	st.last.len++
 	goto inst505
 inst506_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst562
 	}
 
@@ -13513,8 +13729,8 @@ inst480: // rune "09AFaf" -> 484
 	goto unreachable
 	goto inst480_fail
 inst480_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 485:
@@ -13544,8 +13760,8 @@ inst505: // rune "09AFaf" -> 562
 	goto unreachable
 	goto inst505_fail
 inst505_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 506:
@@ -13575,8 +13791,8 @@ inst521: // rune "09AFaf" -> 560
 	goto unreachable
 	goto inst521_fail
 inst521_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 522:
@@ -13606,8 +13822,8 @@ inst482: // rune "09AFaf" -> 494
 	goto unreachable
 	goto inst482_fail
 inst482_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 483:
@@ -13626,13 +13842,14 @@ inst561: // alt -> 517, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 561, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 561, 0}
+	st.last.len++
 	goto inst517
 inst561_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -13657,8 +13874,8 @@ inst510: // rune "09AFaf" -> 516
 	goto unreachable
 	goto inst510_fail
 inst510_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 562:
@@ -13688,8 +13905,8 @@ inst511: // rune "09AFaf" -> 515
 	goto unreachable
 	goto inst511_fail
 inst511_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 516:
@@ -13708,13 +13925,14 @@ inst514: // alt -> 513, 561
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 514, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 514, 0}
+	st.last.len++
 	goto inst513
 inst514_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst561
 	}
 
@@ -13739,8 +13957,8 @@ inst512: // rune "09AFaf" -> 514
 	goto unreachable
 	goto inst512_fail
 inst512_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 515:
@@ -13770,8 +13988,8 @@ inst513: // rune "09AFaf" -> 561
 	goto unreachable
 	goto inst513_fail
 inst513_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 514:
@@ -13790,13 +14008,14 @@ inst515: // alt -> 512, 561
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 515, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 515, 0}
+	st.last.len++
 	goto inst512
 inst515_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst561
 	}
 
@@ -13810,13 +14029,14 @@ inst516: // alt -> 511, 561
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 516, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 516, 0}
+	st.last.len++
 	goto inst511
 inst516_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst561
 	}
 
@@ -13833,8 +14053,8 @@ inst517: // string ":" -> 518
 	goto unreachable
 	goto inst517_fail
 inst517_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 561:
@@ -13864,8 +14084,8 @@ inst518: // rune "09AFaf" -> 524
 	goto unreachable
 	goto inst518_fail
 inst518_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 561:
@@ -13895,8 +14115,8 @@ inst519: // rune "09AFaf" -> 523
 	goto unreachable
 	goto inst519_fail
 inst519_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 524:
@@ -13915,13 +14135,14 @@ inst524: // alt -> 519, 560
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 524, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 524, 0}
+	st.last.len++
 	goto inst519
 inst524_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst560
 	}
 
@@ -13946,8 +14167,8 @@ inst520: // rune "09AFaf" -> 522
 	goto unreachable
 	goto inst520_fail
 inst520_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 523:
@@ -13966,13 +14187,14 @@ inst548: // alt -> 543, 557
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 548, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 548, 0}
+	st.last.len++
 	goto inst543
 inst548_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst557
 	}
 
@@ -13986,13 +14208,14 @@ inst522: // alt -> 521, 560
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 522, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 522, 0}
+	st.last.len++
 	goto inst521
 inst522_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst560
 	}
 
@@ -14006,13 +14229,14 @@ inst523: // alt -> 520, 560
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 523, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 523, 0}
+	st.last.len++
 	goto inst520
 inst523_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst560
 	}
 
@@ -14029,8 +14253,8 @@ inst525: // string ":" -> 526
 	goto unreachable
 	goto inst525_fail
 inst525_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 560:
@@ -14049,13 +14273,14 @@ inst532: // alt -> 527, 559
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 532, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 532, 0}
+	st.last.len++
 	goto inst527
 inst532_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst559
 	}
 
@@ -14080,8 +14305,8 @@ inst526: // rune "09AFaf" -> 532
 	goto unreachable
 	goto inst526_fail
 inst526_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 560:
@@ -14111,8 +14336,8 @@ inst527: // rune "09AFaf" -> 531
 	goto unreachable
 	goto inst527_fail
 inst527_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 532:
@@ -14131,13 +14356,14 @@ inst559: // alt -> 533, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 559, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 559, 0}
+	st.last.len++
 	goto inst533
 inst559_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -14162,8 +14388,8 @@ inst528: // rune "09AFaf" -> 530
 	goto unreachable
 	goto inst528_fail
 inst528_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 531:
@@ -14193,8 +14419,8 @@ inst529: // rune "09AFaf" -> 559
 	goto unreachable
 	goto inst529_fail
 inst529_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 530:
@@ -14213,13 +14439,14 @@ inst530: // alt -> 529, 559
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 530, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 530, 0}
+	st.last.len++
 	goto inst529
 inst530_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst559
 	}
 
@@ -14233,13 +14460,14 @@ inst531: // alt -> 528, 559
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 531, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 531, 0}
+	st.last.len++
 	goto inst528
 inst531_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst559
 	}
 
@@ -14264,8 +14492,8 @@ inst542: // rune "09AFaf" -> 548
 	goto unreachable
 	goto inst542_fail
 inst542_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 558:
@@ -14287,8 +14515,8 @@ inst533: // string ":" -> 534
 	goto unreachable
 	goto inst533_fail
 inst533_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 559:
@@ -14318,8 +14546,8 @@ inst534: // rune "09AFaf" -> 540
 	goto unreachable
 	goto inst534_fail
 inst534_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 559:
@@ -14349,8 +14577,8 @@ inst536: // rune "09AFaf" -> 538
 	goto unreachable
 	goto inst536_fail
 inst536_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 539:
@@ -14369,13 +14597,14 @@ inst554: // alt -> 553, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 554, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 554, 0}
+	st.last.len++
 	goto inst553
 inst554_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -14389,13 +14618,14 @@ inst538: // alt -> 537, 558
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 538, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 538, 0}
+	st.last.len++
 	goto inst537
 inst538_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst558
 	}
 
@@ -14409,13 +14639,14 @@ inst539: // alt -> 536, 558
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 539, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 539, 0}
+	st.last.len++
 	goto inst536
 inst539_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst558
 	}
 
@@ -14429,13 +14660,14 @@ inst540: // alt -> 535, 558
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 540, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 540, 0}
+	st.last.len++
 	goto inst535
 inst540_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst558
 	}
 
@@ -14460,8 +14692,8 @@ inst553: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst553_fail
 inst553_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 554:
@@ -14483,8 +14715,8 @@ inst541: // string ":" -> 542
 	goto unreachable
 	goto inst541_fail
 inst541_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 558:
@@ -14514,8 +14746,8 @@ inst543: // rune "09AFaf" -> 547
 	goto unreachable
 	goto inst543_fail
 inst543_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 548:
@@ -14545,8 +14777,8 @@ inst544: // rune "09AFaf" -> 546
 	goto unreachable
 	goto inst544_fail
 inst544_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 547:
@@ -14576,8 +14808,8 @@ inst545: // rune "09AFaf" -> 557
 	goto unreachable
 	goto inst545_fail
 inst545_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 546:
@@ -14596,13 +14828,14 @@ inst546: // alt -> 545, 557
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 546, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 546, 0}
+	st.last.len++
 	goto inst545
 inst546_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst557
 	}
 
@@ -14616,13 +14849,14 @@ inst547: // alt -> 544, 557
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 547, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 547, 0}
+	st.last.len++
 	goto inst544
 inst547_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst557
 	}
 
@@ -14636,13 +14870,14 @@ inst507: // alt -> 504, 562
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 507, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 507, 0}
+	st.last.len++
 	goto inst504
 inst507_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst562
 	}
 
@@ -14656,13 +14891,14 @@ inst556: // alt -> 551, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 556, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 556, 0}
+	st.last.len++
 	goto inst551
 inst556_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -14687,8 +14923,8 @@ inst535: // rune "09AFaf" -> 539
 	goto unreachable
 	goto inst535_fail
 inst535_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 540:
@@ -14718,8 +14954,8 @@ inst550: // rune "09AFaf" -> 556
 	goto unreachable
 	goto inst550_fail
 inst550_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 557:
@@ -14749,8 +14985,8 @@ inst551: // rune "09AFaf" -> 555
 	goto unreachable
 	goto inst551_fail
 inst551_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 556:
@@ -14780,8 +15016,8 @@ inst552: // rune "09AFaf" -> 554
 	goto unreachable
 	goto inst552_fail
 inst552_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 555:
@@ -14800,13 +15036,14 @@ inst555: // alt -> 552, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 555, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 555, 0}
+	st.last.len++
 	goto inst552
 inst555_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -14823,8 +15060,8 @@ inst549: // string ":" -> 550
 	goto unreachable
 	goto inst549_fail
 inst549_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 557:
@@ -14843,13 +15080,14 @@ inst557: // alt -> 549, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 557, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 557, 0}
+	st.last.len++
 	goto inst549
 inst557_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -14863,13 +15101,14 @@ inst558: // alt -> 541, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 558, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 558, 0}
+	st.last.len++
 	goto inst541
 inst558_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -14894,8 +15133,8 @@ inst537: // rune "09AFaf" -> 558
 	goto unreachable
 	goto inst537_fail
 inst537_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 538:
@@ -14914,13 +15153,14 @@ inst562: // alt -> 509, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 562, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 562, 0}
+	st.last.len++
 	goto inst509
 inst562_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -14945,8 +15185,8 @@ inst481: // rune "09AFaf" -> 483
 	goto unreachable
 	goto inst481_fail
 inst481_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 484:
@@ -14965,13 +15205,14 @@ inst609: // alt -> 580, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 609, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 609, 0}
+	st.last.len++
 	goto inst580
 inst609_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -14988,8 +15229,8 @@ inst563: // string ":" -> 772
 	goto unreachable
 	goto inst563_fail
 inst563_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 614:
@@ -15008,13 +15249,14 @@ inst564: // alt -> 501, 563
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 564, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 564, 0}
+	st.last.len++
 	goto inst501
 inst564_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst563
 	}
 
@@ -15028,13 +15270,14 @@ inst565: // alt -> 499, 500
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 565, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 565, 0}
+	st.last.len++
 	goto inst499
 inst565_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst500
 	}
 
@@ -15051,8 +15294,8 @@ inst500: // string ":" -> 564
 	goto unreachable
 	goto inst500_fail
 inst500_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 614:
@@ -15084,8 +15327,8 @@ inst503: // rune "09AFaf" -> 507
 	goto unreachable
 	goto inst503_fail
 inst503_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 508:
@@ -15109,8 +15352,8 @@ inst509: // string ":" -> 510
 	goto unreachable
 	goto inst509_fail
 inst509_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 562:
@@ -15132,8 +15375,8 @@ inst571: // string ":" -> 579
 	goto unreachable
 	goto inst571_fail
 inst571_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 610:
@@ -15163,8 +15406,8 @@ inst572: // rune "09AFaf" -> 578
 	goto unreachable
 	goto inst572_fail
 inst572_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 579:
@@ -15194,8 +15437,8 @@ inst573: // rune "09AFaf" -> 577
 	goto unreachable
 	goto inst573_fail
 inst573_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 578:
@@ -15214,13 +15457,14 @@ inst578: // alt -> 573, 609
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 578, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 578, 0}
+	st.last.len++
 	goto inst573
 inst578_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
@@ -15245,8 +15489,8 @@ inst574: // rune "09AFaf" -> 576
 	goto unreachable
 	goto inst574_fail
 inst574_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 577:
@@ -15276,8 +15520,8 @@ inst575: // rune "09AFaf" -> 609
 	goto unreachable
 	goto inst575_fail
 inst575_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 576:
@@ -15296,13 +15540,14 @@ inst576: // alt -> 575, 609
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 576, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 576, 0}
+	st.last.len++
 	goto inst575
 inst576_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
@@ -15316,13 +15561,14 @@ inst577: // alt -> 574, 609
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 577, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 577, 0}
+	st.last.len++
 	goto inst574
 inst577_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
@@ -15336,13 +15582,14 @@ inst579: // alt -> 572, 609
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 579, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 579, 0}
+	st.last.len++
 	goto inst572
 inst579_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
@@ -15359,8 +15606,8 @@ inst580: // string ":" -> 588
 	goto unreachable
 	goto inst580_fail
 inst580_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 609:
@@ -15390,8 +15637,8 @@ inst581: // rune "09AFaf" -> 587
 	goto unreachable
 	goto inst581_fail
 inst581_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 588:
@@ -15421,8 +15668,8 @@ inst582: // rune "09AFaf" -> 586
 	goto unreachable
 	goto inst582_fail
 inst582_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 587:
@@ -15441,13 +15688,14 @@ inst586: // alt -> 583, 608
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 586, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 586, 0}
+	st.last.len++
 	goto inst583
 inst586_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
@@ -15472,8 +15720,8 @@ inst590: // rune "09AFaf" -> 596
 	goto unreachable
 	goto inst590_fail
 inst590_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 597:
@@ -15503,8 +15751,8 @@ inst584: // rune "09AFaf" -> 608
 	goto unreachable
 	goto inst584_fail
 inst584_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 585:
@@ -15523,13 +15771,14 @@ inst585: // alt -> 584, 608
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 585, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 585, 0}
+	st.last.len++
 	goto inst584
 inst585_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
@@ -15554,8 +15803,8 @@ inst583: // rune "09AFaf" -> 585
 	goto unreachable
 	goto inst583_fail
 inst583_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 586:
@@ -15574,13 +15823,14 @@ inst587: // alt -> 582, 608
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 587, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 587, 0}
+	st.last.len++
 	goto inst582
 inst587_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
@@ -15594,13 +15844,14 @@ inst588: // alt -> 581, 608
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 588, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 588, 0}
+	st.last.len++
 	goto inst581
 inst588_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
@@ -15617,8 +15868,8 @@ inst589: // string ":" -> 597
 	goto unreachable
 	goto inst589_fail
 inst589_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 608:
@@ -15648,8 +15899,8 @@ inst591: // rune "09AFaf" -> 595
 	goto unreachable
 	goto inst591_fail
 inst591_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 596:
@@ -15679,8 +15930,8 @@ inst600: // rune "09AFaf" -> 604
 	goto unreachable
 	goto inst600_fail
 inst600_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 605:
@@ -15710,8 +15961,8 @@ inst592: // rune "09AFaf" -> 594
 	goto unreachable
 	goto inst592_fail
 inst592_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 595:
@@ -15743,8 +15994,8 @@ inst601: // rune "09AFaf" -> 603
 	goto unreachable
 	goto inst601_fail
 inst601_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 604:
@@ -15763,13 +16014,14 @@ inst595: // alt -> 592, 607
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 595, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 595, 0}
+	st.last.len++
 	goto inst592
 inst595_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
@@ -15783,13 +16035,14 @@ inst596: // alt -> 591, 607
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 596, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 596, 0}
+	st.last.len++
 	goto inst591
 inst596_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
@@ -15803,13 +16056,14 @@ inst597: // alt -> 590, 607
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 597, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 597, 0}
+	st.last.len++
 	goto inst590
 inst597_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
@@ -15826,8 +16080,8 @@ inst598: // string ":" -> 606
 	goto unreachable
 	goto inst598_fail
 inst598_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 607:
@@ -15857,8 +16111,8 @@ inst599: // rune "09AFaf" -> 605
 	goto unreachable
 	goto inst599_fail
 inst599_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 606:
@@ -15877,13 +16131,14 @@ inst608: // alt -> 589, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 608, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 608, 0}
+	st.last.len++
 	goto inst589
 inst608_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -15900,8 +16155,8 @@ inst501: // string ":" -> 502
 	goto unreachable
 	goto inst501_fail
 inst501_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 564:
@@ -15931,8 +16186,8 @@ inst602: // rune "09AFaf" -> 611
 	goto unreachable
 	goto inst602_fail
 inst602_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 603:
@@ -15951,13 +16206,14 @@ inst603: // alt -> 602, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 603, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 603, 0}
+	st.last.len++
 	goto inst602
 inst603_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -15971,13 +16227,14 @@ inst604: // alt -> 601, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 604, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 604, 0}
+	st.last.len++
 	goto inst601
 inst604_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -15991,13 +16248,14 @@ inst605: // alt -> 600, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 605, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 605, 0}
+	st.last.len++
 	goto inst600
 inst605_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -16011,13 +16269,14 @@ inst606: // alt -> 599, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 606, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 606, 0}
+	st.last.len++
 	goto inst599
 inst606_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -16031,13 +16290,14 @@ inst607: // alt -> 598, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 607, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 607, 0}
+	st.last.len++
 	goto inst598
 inst607_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -16051,13 +16311,14 @@ inst594: // alt -> 593, 607
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 594, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 594, 0}
+	st.last.len++
 	goto inst593
 inst594_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
@@ -16071,13 +16332,14 @@ inst610: // alt -> 571, 611
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 610, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 610, 0}
+	st.last.len++
 	goto inst571
 inst610_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -16094,8 +16356,8 @@ inst611: // string "%" -> 612
 	goto unreachable
 	goto inst611_fail
 inst611_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 576:
@@ -16165,8 +16427,8 @@ inst612: // rune "09AZaz" -> 613
 	goto unreachable
 	goto inst612_fail
 inst612_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 576:
@@ -16225,8 +16487,7 @@ inst613: // alt -> 612, 772
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	if len(bt) > 0 {
-		ps := &bt[len(bt)-1]
+	if ps, ok := st.peek(); ok {
 		if ps.pc == 613 && i-ps.i == 1 {
 			// simple loop
 			ps.i = i
@@ -16234,19 +16495,20 @@ inst613: // alt -> 612, 772
 			goto inst612
 		}
 	}
-	bt = append(bt, stateMatch{c, i, 613, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 613, 0}
+	st.last.len++
 	goto inst612
 inst613_alt:
 	{
-		n := len(bt) - 1
-		ps := &bt[n]
+		ps, _ := st.peek()
 		c, i = ps.c, ps.i
 		if ps.cnt > 0 {
 			// simple loop
 			ps.i -= 1
 			ps.cnt--
 		} else {
-			bt = bt[:n]
+			st.pop()
 		}
 		goto inst772
 	}
@@ -16264,8 +16526,8 @@ inst617: // string "ffff" -> 629
 	goto unreachable
 	goto inst617_fail
 inst617_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 631:
@@ -16287,8 +16549,8 @@ inst637: // string "1" -> 639
 	goto unreachable
 	goto inst637_fail
 inst637_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 638:
@@ -16307,13 +16569,14 @@ inst614: // alt -> 565, 566
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 614, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 614, 0}
+	st.last.len++
 	goto inst565
 inst614_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst566
 	}
 
@@ -16330,8 +16593,8 @@ inst615: // string "::" -> 631
 	goto unreachable
 	goto inst615_fail
 inst615_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 771:
@@ -16353,8 +16616,8 @@ inst624: // string "0" -> 626
 	goto unreachable
 	goto inst624_fail
 inst624_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 627:
@@ -16378,8 +16641,8 @@ inst621: // string ":0" -> 628
 	goto unreachable
 	goto inst621_fail
 inst621_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 629:
@@ -16400,13 +16663,14 @@ inst643: // alt -> 632, 641
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 643, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 643, 0}
+	st.last.len++
 	goto inst632
 inst643_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst641
 	}
 
@@ -16423,8 +16687,8 @@ inst623: // string "0" -> 627
 	goto unreachable
 	goto inst623_fail
 inst623_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 628:
@@ -16446,8 +16710,8 @@ inst625: // string "0:" -> 643
 	goto unreachable
 	goto inst625_fail
 inst625_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -16471,8 +16735,8 @@ inst630: // string ":" -> 643
 	goto unreachable
 	goto inst630_fail
 inst630_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 627:
@@ -16497,13 +16761,14 @@ inst626: // alt -> 625, 630
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 626, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 626, 0}
+	st.last.len++
 	goto inst625
 inst626_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
@@ -16517,13 +16782,14 @@ inst627: // alt -> 624, 630
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 627, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 627, 0}
+	st.last.len++
 	goto inst624
 inst627_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
@@ -16537,13 +16803,14 @@ inst628: // alt -> 623, 630
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 628, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 628, 0}
+	st.last.len++
 	goto inst623
 inst628_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
@@ -16557,13 +16824,14 @@ inst629: // alt -> 621, 630
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 629, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 629, 0}
+	st.last.len++
 	goto inst621
 inst629_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
@@ -16577,13 +16845,14 @@ inst631: // alt -> 617, 643
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 631, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 631, 0}
+	st.last.len++
 	goto inst617
 inst631_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst643
 	}
 
@@ -16600,8 +16869,8 @@ inst632: // string "25" -> 634
 	goto unreachable
 	goto inst632_fail
 inst632_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 643:
@@ -16625,8 +16894,8 @@ inst635: // string "2" -> 636
 	goto unreachable
 	goto inst635_fail
 inst635_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 640:
@@ -16648,8 +16917,8 @@ inst566: // string "fe80:" -> 610
 	goto unreachable
 	goto inst566_fail
 inst566_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 683:
@@ -16672,8 +16941,8 @@ inst634: // rune "05" -> 644
 	goto unreachable
 	goto inst634_fail
 inst634_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 643:
@@ -16696,8 +16965,8 @@ inst636: // rune "04" -> 642
 	goto unreachable
 	goto inst636_fail
 inst636_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 640:
@@ -16729,8 +16998,8 @@ inst502: // rune "09AFaf" -> 508
 	goto unreachable
 	goto inst502_fail
 inst502_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 564:
@@ -16749,13 +17018,14 @@ inst683: // alt -> 614, 615
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 683, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 683, 0}
+	st.last.len++
 	goto inst614
 inst683_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst615
 	}
 
@@ -16773,8 +17043,8 @@ inst639: // rune "09" -> 642
 	goto unreachable
 	goto inst639_fail
 inst639_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 638:
@@ -16795,13 +17065,14 @@ inst640: // alt -> 635, 638
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 640, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 640, 0}
+	st.last.len++
 	goto inst635
 inst640_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst638
 	}
 
@@ -16815,13 +17086,14 @@ inst641: // alt -> 640, 642
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 641, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 641, 0}
+	st.last.len++
 	goto inst640
 inst641_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst642
 	}
 
@@ -16839,8 +17111,8 @@ inst642: // rune "09" -> 644
 	goto unreachable
 	goto inst642_fail
 inst642_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -16878,8 +17150,8 @@ inst645: // string "25" -> 647
 	goto unreachable
 	goto inst645_fail
 inst645_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 656:
@@ -16901,8 +17173,8 @@ inst644: // string "." -> 656
 	goto unreachable
 	goto inst644_fail
 inst644_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -16945,8 +17217,8 @@ inst673: // rune "05" -> 772
 	goto unreachable
 	goto inst673_fail
 inst673_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 682:
@@ -16965,13 +17237,14 @@ inst638: // alt -> 637, 639
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 638, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 638, 0}
+	st.last.len++
 	goto inst637
 inst638_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst639
 	}
 
@@ -16989,8 +17262,8 @@ inst649: // rune "04" -> 655
 	goto unreachable
 	goto inst649_fail
 inst649_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 653:
@@ -17012,8 +17285,8 @@ inst658: // string "25" -> 660
 	goto unreachable
 	goto inst658_fail
 inst658_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 669:
@@ -17035,8 +17308,8 @@ inst650: // string "1" -> 652
 	goto unreachable
 	goto inst650_fail
 inst650_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 651:
@@ -17059,8 +17332,8 @@ inst647: // rune "05" -> 657
 	goto unreachable
 	goto inst647_fail
 inst647_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 656:
@@ -17079,13 +17352,14 @@ inst651: // alt -> 650, 652
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 651, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 651, 0}
+	st.last.len++
 	goto inst650
 inst651_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst652
 	}
 
@@ -17103,8 +17377,8 @@ inst652: // rune "09" -> 655
 	goto unreachable
 	goto inst652_fail
 inst652_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 651:
@@ -17125,13 +17399,14 @@ inst653: // alt -> 648, 651
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 653, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 653, 0}
+	st.last.len++
 	goto inst648
 inst653_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst651
 	}
 
@@ -17145,13 +17420,14 @@ inst654: // alt -> 653, 655
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 654, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 654, 0}
+	st.last.len++
 	goto inst653
 inst654_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst655
 	}
 
@@ -17169,8 +17445,8 @@ inst655: // rune "09" -> 657
 	goto unreachable
 	goto inst655_fail
 inst655_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -17213,13 +17489,14 @@ inst656: // alt -> 645, 654
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 656, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 656, 0}
+	st.last.len++
 	goto inst645
 inst656_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst654
 	}
 
@@ -17236,8 +17513,8 @@ inst648: // string "2" -> 649
 	goto unreachable
 	goto inst648_fail
 inst648_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 653:
@@ -17256,13 +17533,14 @@ inst508: // alt -> 503, 562
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 508, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 508, 0}
+	st.last.len++
 	goto inst503
 inst508_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst562
 	}
 
@@ -17280,8 +17558,8 @@ inst660: // rune "05" -> 670
 	goto unreachable
 	goto inst660_fail
 inst660_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 669:
@@ -17303,8 +17581,8 @@ inst661: // string "2" -> 662
 	goto unreachable
 	goto inst661_fail
 inst661_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 666:
@@ -17326,8 +17604,8 @@ inst670: // string "." -> 682
 	goto unreachable
 	goto inst670_fail
 inst670_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -17384,8 +17662,8 @@ inst662: // rune "04" -> 668
 	goto unreachable
 	goto inst662_fail
 inst662_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 666:
@@ -17407,8 +17685,8 @@ inst663: // string "1" -> 665
 	goto unreachable
 	goto inst663_fail
 inst663_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 664:
@@ -17427,13 +17705,14 @@ inst664: // alt -> 663, 665
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 664, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 664, 0}
+	st.last.len++
 	goto inst663
 inst664_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst665
 	}
 
@@ -17451,8 +17730,8 @@ inst665: // rune "09" -> 668
 	goto unreachable
 	goto inst665_fail
 inst665_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 664:
@@ -17473,13 +17752,14 @@ inst666: // alt -> 661, 664
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 666, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 666, 0}
+	st.last.len++
 	goto inst661
 inst666_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst664
 	}
 
@@ -17493,13 +17773,14 @@ inst667: // alt -> 666, 668
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 667, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 667, 0}
+	st.last.len++
 	goto inst666
 inst667_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst668
 	}
 
@@ -17517,8 +17798,8 @@ inst668: // rune "09" -> 670
 	goto unreachable
 	goto inst668_fail
 inst668_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -17569,13 +17850,14 @@ inst669: // alt -> 658, 667
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 669, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 669, 0}
+	st.last.len++
 	goto inst658
 inst669_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst667
 	}
 
@@ -17592,8 +17874,8 @@ inst671: // string "25" -> 673
 	goto unreachable
 	goto inst671_fail
 inst671_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 682:
@@ -17612,13 +17894,14 @@ inst682: // alt -> 671, 680
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 682, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 682, 0}
+	st.last.len++
 	goto inst671
 inst682_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst680
 	}
 
@@ -17637,8 +17920,8 @@ inst674: // string "2" -> 675
 	goto unreachable
 	goto inst674_fail
 inst674_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 679:
@@ -17668,8 +17951,8 @@ inst593: // rune "09AFaf" -> 607
 	goto unreachable
 	goto inst593_fail
 inst593_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 594:
@@ -17692,8 +17975,8 @@ inst675: // rune "04" -> 681
 	goto unreachable
 	goto inst675_fail
 inst675_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 679:
@@ -17715,8 +17998,8 @@ inst676: // string "1" -> 678
 	goto unreachable
 	goto inst676_fail
 inst676_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 677:
@@ -17735,13 +18018,14 @@ inst677: // alt -> 676, 678
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 677, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 677, 0}
+	st.last.len++
 	goto inst676
 inst677_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst678
 	}
 
@@ -17759,8 +18043,8 @@ inst678: // rune "09" -> 681
 	goto unreachable
 	goto inst678_fail
 inst678_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 677:
@@ -17781,13 +18065,14 @@ inst679: // alt -> 674, 677
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 679, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 679, 0}
+	st.last.len++
 	goto inst674
 inst679_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst677
 	}
 
@@ -17801,13 +18086,14 @@ inst680: // alt -> 679, 681
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 680, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 680, 0}
+	st.last.len++
 	goto inst679
 inst680_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst681
 	}
 
@@ -17825,8 +18111,8 @@ inst681: // rune "09" -> 772
 	goto unreachable
 	goto inst681_fail
 inst681_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -17890,8 +18176,8 @@ inst657: // string "." -> 669
 	goto unreachable
 	goto inst657_fail
 inst657_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 626:
@@ -17939,8 +18225,8 @@ inst691: // string ":" -> 718
 	goto unreachable
 	goto inst691_fail
 inst691_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -17974,8 +18260,8 @@ inst685: // rune "09AFaf" -> 689
 	goto unreachable
 	goto inst685_fail
 inst685_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 690:
@@ -18005,8 +18291,8 @@ inst686: // rune "09AFaf" -> 688
 	goto unreachable
 	goto inst686_fail
 inst686_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 689:
@@ -18036,8 +18322,8 @@ inst687: // rune "09AFaf" -> 691
 	goto unreachable
 	goto inst687_fail
 inst687_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -18056,13 +18342,14 @@ inst688: // alt -> 687, 691
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 688, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 688, 0}
+	st.last.len++
 	goto inst687
 inst688_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst691
 	}
 
@@ -18076,13 +18363,14 @@ inst689: // alt -> 686, 691
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 689, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 689, 0}
+	st.last.len++
 	goto inst686
 inst689_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst691
 	}
 
@@ -18096,13 +18384,14 @@ inst690: // alt -> 685, 691
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 690, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 690, 0}
+	st.last.len++
 	goto inst685
 inst690_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst691
 	}
 
@@ -18127,8 +18416,8 @@ inst692: // rune "09AFaf" -> 698
 	goto unreachable
 	goto inst692_fail
 inst692_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 718:
@@ -18150,8 +18439,8 @@ inst699: // string ":" -> 717
 	goto unreachable
 	goto inst699_fail
 inst699_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 696:
@@ -18187,8 +18476,8 @@ inst693: // rune "09AFaf" -> 697
 	goto unreachable
 	goto inst693_fail
 inst693_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 698:
@@ -18218,8 +18507,8 @@ inst694: // rune "09AFaf" -> 696
 	goto unreachable
 	goto inst694_fail
 inst694_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 697:
@@ -18249,8 +18538,8 @@ inst695: // rune "09AFaf" -> 699
 	goto unreachable
 	goto inst695_fail
 inst695_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 696:
@@ -18269,13 +18558,14 @@ inst696: // alt -> 695, 699
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 696, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 696, 0}
+	st.last.len++
 	goto inst695
 inst696_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst699
 	}
 
@@ -18289,13 +18579,14 @@ inst697: // alt -> 694, 699
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 697, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 697, 0}
+	st.last.len++
 	goto inst694
 inst697_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst699
 	}
 
@@ -18309,13 +18600,14 @@ inst698: // alt -> 693, 699
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 698, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 698, 0}
+	st.last.len++
 	goto inst693
 inst698_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst699
 	}
 
@@ -18340,8 +18632,8 @@ inst703: // rune "09AFaf" -> 707
 	goto unreachable
 	goto inst703_fail
 inst703_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 704:
@@ -18363,8 +18655,8 @@ inst707: // string ":" -> 716
 	goto unreachable
 	goto inst707_fail
 inst707_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 704:
@@ -18400,8 +18692,8 @@ inst701: // rune "09AFaf" -> 705
 	goto unreachable
 	goto inst701_fail
 inst701_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 706:
@@ -18431,8 +18723,8 @@ inst702: // rune "09AFaf" -> 704
 	goto unreachable
 	goto inst702_fail
 inst702_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 705:
@@ -18451,13 +18743,14 @@ inst704: // alt -> 703, 707
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 704, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 704, 0}
+	st.last.len++
 	goto inst703
 inst704_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst707
 	}
 
@@ -18471,13 +18764,14 @@ inst705: // alt -> 702, 707
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 705, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 705, 0}
+	st.last.len++
 	goto inst702
 inst705_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst707
 	}
 
@@ -18491,13 +18785,14 @@ inst706: // alt -> 701, 707
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 706, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 706, 0}
+	st.last.len++
 	goto inst701
 inst706_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst707
 	}
 
@@ -18524,8 +18819,8 @@ inst708: // rune "09AFaf" -> 714
 	goto unreachable
 	goto inst708_fail
 inst708_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 716:
@@ -18544,13 +18839,14 @@ inst714: // alt -> 709, 715
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 714, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 714, 0}
+	st.last.len++
 	goto inst709
 inst714_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst715
 	}
 
@@ -18575,8 +18871,8 @@ inst709: // rune "09AFaf" -> 713
 	goto unreachable
 	goto inst709_fail
 inst709_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 714:
@@ -18606,8 +18902,8 @@ inst710: // rune "09AFaf" -> 712
 	goto unreachable
 	goto inst710_fail
 inst710_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 713:
@@ -18637,8 +18933,8 @@ inst700: // rune "09AFaf" -> 706
 	goto unreachable
 	goto inst700_fail
 inst700_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 717:
@@ -18668,8 +18964,8 @@ inst711: // rune "09AFaf" -> 715
 	goto unreachable
 	goto inst711_fail
 inst711_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 712:
@@ -18688,13 +18984,14 @@ inst712: // alt -> 711, 715
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 712, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 712, 0}
+	st.last.len++
 	goto inst711
 inst712_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst715
 	}
 
@@ -18708,13 +19005,14 @@ inst713: // alt -> 710, 715
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 713, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 713, 0}
+	st.last.len++
 	goto inst710
 inst713_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst715
 	}
 
@@ -18731,8 +19029,8 @@ inst715: // string "::" -> 731
 	goto unreachable
 	goto inst715_fail
 inst715_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 712:
@@ -18757,13 +19055,14 @@ inst716: // alt -> 708, 719
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 716, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 716, 0}
+	st.last.len++
 	goto inst708
 inst716_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst719
 	}
 
@@ -18777,13 +19076,14 @@ inst717: // alt -> 700, 719
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 717, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 717, 0}
+	st.last.len++
 	goto inst700
 inst717_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst719
 	}
 
@@ -18797,13 +19097,14 @@ inst718: // alt -> 692, 719
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 718, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 718, 0}
+	st.last.len++
 	goto inst692
 inst718_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst719
 	}
 
@@ -18820,8 +19121,8 @@ inst719: // string ":" -> 731
 	goto unreachable
 	goto inst719_fail
 inst719_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -18860,13 +19161,14 @@ inst731: // alt -> 720, 729
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 731, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 731, 0}
+	st.last.len++
 	goto inst720
 inst731_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst729
 	}
 
@@ -18883,8 +19185,8 @@ inst720: // string "25" -> 722
 	goto unreachable
 	goto inst720_fail
 inst720_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 731:
@@ -18909,8 +19211,8 @@ inst722: // rune "05" -> 732
 	goto unreachable
 	goto inst722_fail
 inst722_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 731:
@@ -18932,8 +19234,8 @@ inst723: // string "2" -> 724
 	goto unreachable
 	goto inst723_fail
 inst723_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 728:
@@ -18956,8 +19258,8 @@ inst724: // rune "04" -> 730
 	goto unreachable
 	goto inst724_fail
 inst724_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 728:
@@ -18979,8 +19281,8 @@ inst725: // string "1" -> 727
 	goto unreachable
 	goto inst725_fail
 inst725_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 726:
@@ -18999,13 +19301,14 @@ inst726: // alt -> 725, 727
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 726, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 726, 0}
+	st.last.len++
 	goto inst725
 inst726_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst727
 	}
 
@@ -19023,8 +19326,8 @@ inst727: // rune "09" -> 730
 	goto unreachable
 	goto inst727_fail
 inst727_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 726:
@@ -19045,13 +19348,14 @@ inst728: // alt -> 723, 726
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 728, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 728, 0}
+	st.last.len++
 	goto inst723
 inst728_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst726
 	}
 
@@ -19065,13 +19369,14 @@ inst729: // alt -> 728, 730
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 729, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 729, 0}
+	st.last.len++
 	goto inst728
 inst729_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst730
 	}
 
@@ -19089,8 +19394,8 @@ inst730: // rune "09" -> 732
 	goto unreachable
 	goto inst730_fail
 inst730_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -19146,8 +19451,8 @@ inst732: // string "." -> 744
 	goto unreachable
 	goto inst732_fail
 inst732_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -19202,13 +19507,14 @@ inst744: // alt -> 733, 742
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 744, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 744, 0}
+	st.last.len++
 	goto inst733
 inst744_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst742
 	}
 
@@ -19225,8 +19531,8 @@ inst733: // string "25" -> 735
 	goto unreachable
 	goto inst733_fail
 inst733_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 744:
@@ -19251,8 +19557,8 @@ inst735: // rune "05" -> 745
 	goto unreachable
 	goto inst735_fail
 inst735_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 744:
@@ -19274,8 +19580,8 @@ inst736: // string "2" -> 737
 	goto unreachable
 	goto inst736_fail
 inst736_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 741:
@@ -19298,8 +19604,8 @@ inst737: // rune "04" -> 743
 	goto unreachable
 	goto inst737_fail
 inst737_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 741:
@@ -19321,8 +19627,8 @@ inst738: // string "1" -> 740
 	goto unreachable
 	goto inst738_fail
 inst738_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 739:
@@ -19347,8 +19653,8 @@ inst740: // rune "09" -> 743
 	goto unreachable
 	goto inst740_fail
 inst740_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 739:
@@ -19369,13 +19675,14 @@ inst741: // alt -> 736, 739
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 741, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 741, 0}
+	st.last.len++
 	goto inst736
 inst741_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst739
 	}
 
@@ -19389,13 +19696,14 @@ inst742: // alt -> 741, 743
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 742, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 742, 0}
+	st.last.len++
 	goto inst741
 inst742_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst743
 	}
 
@@ -19413,8 +19721,8 @@ inst743: // rune "09" -> 745
 	goto unreachable
 	goto inst743_fail
 inst743_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -19478,8 +19786,8 @@ inst745: // string "." -> 757
 	goto unreachable
 	goto inst745_fail
 inst745_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -19542,13 +19850,14 @@ inst757: // alt -> 746, 755
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 757, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 757, 0}
+	st.last.len++
 	goto inst746
 inst757_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst755
 	}
 
@@ -19565,8 +19874,8 @@ inst746: // string "25" -> 748
 	goto unreachable
 	goto inst746_fail
 inst746_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 757:
@@ -19591,8 +19900,8 @@ inst748: // rune "05" -> 758
 	goto unreachable
 	goto inst748_fail
 inst748_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 757:
@@ -19614,8 +19923,8 @@ inst749: // string "2" -> 750
 	goto unreachable
 	goto inst749_fail
 inst749_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 754:
@@ -19638,8 +19947,8 @@ inst750: // rune "04" -> 756
 	goto unreachable
 	goto inst750_fail
 inst750_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 754:
@@ -19661,8 +19970,8 @@ inst751: // string "1" -> 753
 	goto unreachable
 	goto inst751_fail
 inst751_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 752:
@@ -19681,13 +19990,14 @@ inst752: // alt -> 751, 753
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 752, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 752, 0}
+	st.last.len++
 	goto inst751
 inst752_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst753
 	}
 
@@ -19705,8 +20015,8 @@ inst753: // rune "09" -> 756
 	goto unreachable
 	goto inst753_fail
 inst753_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 752:
@@ -19727,13 +20037,14 @@ inst754: // alt -> 749, 752
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 754, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 754, 0}
+	st.last.len++
 	goto inst749
 inst754_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst752
 	}
 
@@ -19747,13 +20058,14 @@ inst755: // alt -> 754, 756
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 755, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 755, 0}
+	st.last.len++
 	goto inst754
 inst755_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst756
 	}
 
@@ -19771,8 +20083,8 @@ inst756: // rune "09" -> 758
 	goto unreachable
 	goto inst756_fail
 inst756_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -19844,8 +20156,8 @@ inst758: // string "." -> 770
 	goto unreachable
 	goto inst758_fail
 inst758_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -19916,13 +20228,14 @@ inst770: // alt -> 759, 768
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 770, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 770, 0}
+	st.last.len++
 	goto inst759
 inst770_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst768
 	}
 
@@ -19939,8 +20252,8 @@ inst759: // string "25" -> 761
 	goto unreachable
 	goto inst759_fail
 inst759_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 770:
@@ -19986,8 +20299,8 @@ inst761: // rune "05" -> 772
 	goto unreachable
 	goto inst761_fail
 inst761_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 770:
@@ -20009,8 +20322,8 @@ inst762: // string "2" -> 763
 	goto unreachable
 	goto inst762_fail
 inst762_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 767:
@@ -20033,8 +20346,8 @@ inst763: // rune "04" -> 769
 	goto unreachable
 	goto inst763_fail
 inst763_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 767:
@@ -20056,8 +20369,8 @@ inst764: // string "1" -> 766
 	goto unreachable
 	goto inst764_fail
 inst764_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 765:
@@ -20076,13 +20389,14 @@ inst765: // alt -> 764, 766
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 765, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 765, 0}
+	st.last.len++
 	goto inst764
 inst765_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst766
 	}
 
@@ -20100,8 +20414,8 @@ inst766: // rune "09" -> 769
 	goto unreachable
 	goto inst766_fail
 inst766_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 765:
@@ -20122,13 +20436,14 @@ inst767: // alt -> 762, 765
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 767, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 767, 0}
+	st.last.len++
 	goto inst762
 inst767_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst765
 	}
 
@@ -20142,13 +20457,14 @@ inst768: // alt -> 767, 769
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 768, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 768, 0}
+	st.last.len++
 	goto inst767
 inst768_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst769
 	}
 
@@ -20166,8 +20482,8 @@ inst769: // rune "09" -> 772
 	goto unreachable
 	goto inst769_fail
 inst769_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
+	if ps, ok := st.peek(); i <= len(r) && ok {
+		switch ps.pc {
 		default:
 			goto unreachable
 		case 688:
@@ -20244,13 +20560,14 @@ inst771: // alt -> 683, 684
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 771, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 771, 0}
+	st.last.len++
 	goto inst683
 inst771_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst684
 	}
 
@@ -20266,13 +20583,14 @@ inst739: // alt -> 738, 740
 		}
 		pi[idx/8] |= byte(1) << (idx % 8)
 	}
-	bt = append(bt, stateMatch{c, i, 739, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 739, 0}
+	st.last.len++
 	goto inst738
 inst739_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst740
 	}
 
@@ -20280,10 +20598,10 @@ inst739_alt:
 	goto fail
 fail:
 	{
-		if i <= len(r) && len(bt) > 0 {
-			switch bt[len(bt)-1].pc {
+		if ps, ok := st.peek(); i <= len(r) && ok {
+			switch ps.pc {
 			default:
-				panic(bt[len(bt)-1].pc)
+				panic(ps.pc)
 			case 7:
 				goto inst7_alt
 			case 6:
@@ -20938,6 +21256,7 @@ fail:
 
 			si += sz
 			_ = cr
+			st.reset()
 			goto restart
 		}
 		var m [1]string
@@ -20956,4 +21275,96 @@ match:
 	goto unreachable
 unreachable:
 	panic("unreachable")
+}
+
+var poolMatch = sync.Pool{New: func() interface{} { return &segmentMatch{} }}
+
+type segmentMatch struct {
+	state [256]stateMatch // states
+	len   uint16          // how many elements of state are populated
+	next  *segmentMatch   // next segment
+	prev  *segmentMatch   // previous segment
+}
+
+func getMatch() *segmentMatch {
+	return poolMatch.Get().(*segmentMatch)
+}
+
+func putMatch(s *segmentMatch) {
+	s.next, s.prev, s.len = nil, nil, 0
+	poolMatch.Put(s)
+}
+
+type stackMatch struct {
+	// first segment in the stack; this is just used to simplify drain()
+	first *segmentMatch
+	// currently active segment: this is the segment where push/peek/pop operate;
+	// note that additional empty segments may be already be allocated and linked
+	// after the last segment
+	last *segmentMatch
+}
+
+func (st *stackMatch) push() {
+	if int(st.last.len) == cap(st.last.state) {
+		st.pushSlow()
+	}
+}
+
+func (st *stackMatch) pushSlow() {
+	if st.last.next != nil {
+		st.last = st.last.next
+	} else {
+		seg := getMatch()
+		st.last.next = seg
+		seg.prev = st.last
+		st.last = seg
+	}
+}
+
+func (st *stackMatch) peek() (*stateMatch, bool) {
+	if st.last.len > 0 {
+		return &st.last.state[st.last.len-1], true
+	}
+	return st.peekSlow()
+}
+
+func (st *stackMatch) peekSlow() (*stateMatch, bool) {
+	if st.last.prev != nil {
+		st.last = st.last.prev
+	} else {
+		return nil, false
+	}
+	return &st.last.state[st.last.len-1], true
+}
+
+func (st *stackMatch) pop() (*stateMatch, bool) {
+	sp, ok := st.peek()
+	if ok {
+		st.last.len--
+	}
+	return sp, ok
+}
+
+// drain puts all stack segments back into the segment pool
+func (st *stackMatch) drain() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		putMatch(seg)
+		seg = next
+	}
+	st.first, st.last = nil, nil
+}
+
+// reset resets the stack without returning the segments to the segment pool
+func (st *stackMatch) reset() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		if seg.len == 0 {
+			return
+		}
+		seg.len = 0
+		seg = next
+	}
 }
