@@ -137,6 +137,10 @@ func main() {
 	// TODO: extend the fast search above to zero-width assertions (e.g. find newlines for the case (?m)^...)
 	// TODO: extend the fast search above to look for suffix or infix strings, if we have a bound on the maximum length of the variable part before the suffix/infix
 	// TODO: extend the fast search above to look for multiple alternate runes, e.g. by `cr & mask == %d`, even just as an approximation
+	// TODO: while evaluating instructions, keep track of the earliest position at which the next candidate match could start, so that when we restart we can jump ahead to the next candidate
+	//       e.g. if the regexp starts with [0-9] record where the first [0-9] appears after si, and the jump to that position after restart.
+	//       This may require duplicating the FSM, with one copy doing this extra check, and the second without. When the first copy finds the first candidate
+	//       it jumps to the second copy.
 	out("  c[0] = i // start of match ")
 	out("  goto inst%d // initial instruction", p.Start)
 

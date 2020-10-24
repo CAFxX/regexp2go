@@ -9,6 +9,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/log_parse"
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
 	"github.com/CAFxX/regexp2go/examples/prefix"
+	"github.com/CAFxX/regexp2go/examples/suffix"
 	"github.com/CAFxX/regexp2go/examples/unicode"
 )
 
@@ -86,6 +87,21 @@ func BenchmarkUnicode(b *testing.B) {
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			unicode.Match(s)
+		}
+	})
+	b.Run("regexp", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			re.FindStringSubmatch(s)
+		}
+	})
+}
+
+func BenchmarkSuffix(b *testing.B) {
+	re := regexp.MustCompile(suffix.MatchRegexp)
+	s := `ohvrun cbab cek aifrba     afur483hf, wjfbhjrbr ej frjebhrbiebfr frebfrvej rekhbrsfr fbrkhvbrkesf rf rbjkefbhrhfbhbrhebbrbfr jgrhh`
+	b.Run("regexp2go", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			suffix.Match(s)
 		}
 	})
 	b.Run("regexp", func(b *testing.B) {
