@@ -6,6 +6,7 @@ package ipv6
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "sync"
 
 const MatchRegexp = "(?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
 
@@ -23,14 +24,14 @@ type stateMatch struct {
 // (?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
 // with flags 212
 func Match(r string) (matches [1]string, pos int, ok bool) {
-	var bt [319]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
-	return
-}
-func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
 	si := 0 // starting byte index
+	var st stackMatch
+	{
+		seg := getMatch()
+		st.first, st.last = seg, seg
+	}
+	defer st.drain()
 restart:
-	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [2]int     // captures
 	var bc [2]int    // captures for the longest match so far
 	matched := false // succesful match flag
@@ -119,39 +120,42 @@ inst4: // rune "09AFaf" -> 8
 	goto unreachable
 	goto inst5
 inst5: // alt -> 4, 8
-	bt = append(bt, stateMatch{c, i, 5, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 5, 0}
+	st.last.len++
 	goto inst4
 inst5_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst8
 	}
 
 	goto unreachable
 	goto inst6
 inst6: // alt -> 3, 8
-	bt = append(bt, stateMatch{c, i, 6, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 6, 0}
+	st.last.len++
 	goto inst3
 inst6_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst8
 	}
 
 	goto unreachable
 	goto inst7
 inst7: // alt -> 2, 8
-	bt = append(bt, stateMatch{c, i, 7, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 7, 0}
+	st.last.len++
 	goto inst2
 inst7_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst8
 	}
 
@@ -245,39 +249,42 @@ inst12: // rune "09AFaf" -> 16
 	goto unreachable
 	goto inst13
 inst13: // alt -> 12, 16
-	bt = append(bt, stateMatch{c, i, 13, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 13, 0}
+	st.last.len++
 	goto inst12
 inst13_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst16
 	}
 
 	goto unreachable
 	goto inst14
 inst14: // alt -> 11, 16
-	bt = append(bt, stateMatch{c, i, 14, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 14, 0}
+	st.last.len++
 	goto inst11
 inst14_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst16
 	}
 
 	goto unreachable
 	goto inst15
 inst15: // alt -> 10, 16
-	bt = append(bt, stateMatch{c, i, 15, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 15, 0}
+	st.last.len++
 	goto inst10
 inst15_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst16
 	}
 
@@ -371,39 +378,42 @@ inst20: // rune "09AFaf" -> 24
 	goto unreachable
 	goto inst21
 inst21: // alt -> 20, 24
-	bt = append(bt, stateMatch{c, i, 21, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 21, 0}
+	st.last.len++
 	goto inst20
 inst21_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst24
 	}
 
 	goto unreachable
 	goto inst22
 inst22: // alt -> 19, 24
-	bt = append(bt, stateMatch{c, i, 22, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 22, 0}
+	st.last.len++
 	goto inst19
 inst22_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst24
 	}
 
 	goto unreachable
 	goto inst23
 inst23: // alt -> 18, 24
-	bt = append(bt, stateMatch{c, i, 23, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 23, 0}
+	st.last.len++
 	goto inst18
 inst23_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst24
 	}
 
@@ -497,39 +507,42 @@ inst28: // rune "09AFaf" -> 32
 	goto unreachable
 	goto inst29
 inst29: // alt -> 28, 32
-	bt = append(bt, stateMatch{c, i, 29, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 29, 0}
+	st.last.len++
 	goto inst28
 inst29_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst32
 	}
 
 	goto unreachable
 	goto inst30
 inst30: // alt -> 27, 32
-	bt = append(bt, stateMatch{c, i, 30, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 30, 0}
+	st.last.len++
 	goto inst27
 inst30_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst32
 	}
 
 	goto unreachable
 	goto inst31
 inst31: // alt -> 26, 32
-	bt = append(bt, stateMatch{c, i, 31, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 31, 0}
+	st.last.len++
 	goto inst26
 inst31_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst32
 	}
 
@@ -623,39 +636,42 @@ inst36: // rune "09AFaf" -> 40
 	goto unreachable
 	goto inst37
 inst37: // alt -> 36, 40
-	bt = append(bt, stateMatch{c, i, 37, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 37, 0}
+	st.last.len++
 	goto inst36
 inst37_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
 	goto unreachable
 	goto inst38
 inst38: // alt -> 35, 40
-	bt = append(bt, stateMatch{c, i, 38, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 38, 0}
+	st.last.len++
 	goto inst35
 inst38_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
 	goto unreachable
 	goto inst39
 inst39: // alt -> 34, 40
-	bt = append(bt, stateMatch{c, i, 39, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 39, 0}
+	st.last.len++
 	goto inst34
 inst39_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
@@ -749,39 +765,42 @@ inst44: // rune "09AFaf" -> 48
 	goto unreachable
 	goto inst45
 inst45: // alt -> 44, 48
-	bt = append(bt, stateMatch{c, i, 45, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 45, 0}
+	st.last.len++
 	goto inst44
 inst45_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst48
 	}
 
 	goto unreachable
 	goto inst46
 inst46: // alt -> 43, 48
-	bt = append(bt, stateMatch{c, i, 46, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 46, 0}
+	st.last.len++
 	goto inst43
 inst46_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst48
 	}
 
 	goto unreachable
 	goto inst47
 inst47: // alt -> 42, 48
-	bt = append(bt, stateMatch{c, i, 47, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 47, 0}
+	st.last.len++
 	goto inst42
 inst47_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst48
 	}
 
@@ -875,39 +894,42 @@ inst52: // rune "09AFaf" -> 56
 	goto unreachable
 	goto inst53
 inst53: // alt -> 52, 56
-	bt = append(bt, stateMatch{c, i, 53, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 53, 0}
+	st.last.len++
 	goto inst52
 inst53_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst56
 	}
 
 	goto unreachable
 	goto inst54
 inst54: // alt -> 51, 56
-	bt = append(bt, stateMatch{c, i, 54, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 54, 0}
+	st.last.len++
 	goto inst51
 inst54_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst56
 	}
 
 	goto unreachable
 	goto inst55
 inst55: // alt -> 50, 56
-	bt = append(bt, stateMatch{c, i, 55, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 55, 0}
+	st.last.len++
 	goto inst50
 inst55_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst56
 	}
 
@@ -1001,39 +1023,42 @@ inst60: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst61
 inst61: // alt -> 60, 772
-	bt = append(bt, stateMatch{c, i, 61, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 61, 0}
+	st.last.len++
 	goto inst60
 inst61_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst62
 inst62: // alt -> 59, 772
-	bt = append(bt, stateMatch{c, i, 62, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 62, 0}
+	st.last.len++
 	goto inst59
 inst62_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst63
 inst63: // alt -> 58, 772
-	bt = append(bt, stateMatch{c, i, 63, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 63, 0}
+	st.last.len++
 	goto inst58
 inst63_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -1116,39 +1141,42 @@ inst67: // rune "09AFaf" -> 71
 	goto unreachable
 	goto inst68
 inst68: // alt -> 67, 71
-	bt = append(bt, stateMatch{c, i, 68, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 68, 0}
+	st.last.len++
 	goto inst67
 inst68_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst71
 	}
 
 	goto unreachable
 	goto inst69
 inst69: // alt -> 66, 71
-	bt = append(bt, stateMatch{c, i, 69, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 69, 0}
+	st.last.len++
 	goto inst66
 inst69_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst71
 	}
 
 	goto unreachable
 	goto inst70
 inst70: // alt -> 65, 71
-	bt = append(bt, stateMatch{c, i, 70, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 70, 0}
+	st.last.len++
 	goto inst65
 inst70_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst71
 	}
 
@@ -1242,39 +1270,42 @@ inst75: // rune "09AFaf" -> 79
 	goto unreachable
 	goto inst76
 inst76: // alt -> 75, 79
-	bt = append(bt, stateMatch{c, i, 76, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 76, 0}
+	st.last.len++
 	goto inst75
 inst76_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst79
 	}
 
 	goto unreachable
 	goto inst77
 inst77: // alt -> 74, 79
-	bt = append(bt, stateMatch{c, i, 77, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 77, 0}
+	st.last.len++
 	goto inst74
 inst77_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst79
 	}
 
 	goto unreachable
 	goto inst78
 inst78: // alt -> 73, 79
-	bt = append(bt, stateMatch{c, i, 78, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 78, 0}
+	st.last.len++
 	goto inst73
 inst78_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst79
 	}
 
@@ -1368,39 +1399,42 @@ inst83: // rune "09AFaf" -> 87
 	goto unreachable
 	goto inst84
 inst84: // alt -> 83, 87
-	bt = append(bt, stateMatch{c, i, 84, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 84, 0}
+	st.last.len++
 	goto inst83
 inst84_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst87
 	}
 
 	goto unreachable
 	goto inst85
 inst85: // alt -> 82, 87
-	bt = append(bt, stateMatch{c, i, 85, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 85, 0}
+	st.last.len++
 	goto inst82
 inst85_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst87
 	}
 
 	goto unreachable
 	goto inst86
 inst86: // alt -> 81, 87
-	bt = append(bt, stateMatch{c, i, 86, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 86, 0}
+	st.last.len++
 	goto inst81
 inst86_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst87
 	}
 
@@ -1494,39 +1528,42 @@ inst91: // rune "09AFaf" -> 95
 	goto unreachable
 	goto inst92
 inst92: // alt -> 91, 95
-	bt = append(bt, stateMatch{c, i, 92, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 92, 0}
+	st.last.len++
 	goto inst91
 inst92_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst95
 	}
 
 	goto unreachable
 	goto inst93
 inst93: // alt -> 90, 95
-	bt = append(bt, stateMatch{c, i, 93, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 93, 0}
+	st.last.len++
 	goto inst90
 inst93_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst95
 	}
 
 	goto unreachable
 	goto inst94
 inst94: // alt -> 89, 95
-	bt = append(bt, stateMatch{c, i, 94, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 94, 0}
+	st.last.len++
 	goto inst89
 inst94_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst95
 	}
 
@@ -1620,39 +1657,42 @@ inst99: // rune "09AFaf" -> 103
 	goto unreachable
 	goto inst100
 inst100: // alt -> 99, 103
-	bt = append(bt, stateMatch{c, i, 100, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 100, 0}
+	st.last.len++
 	goto inst99
 inst100_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst103
 	}
 
 	goto unreachable
 	goto inst101
 inst101: // alt -> 98, 103
-	bt = append(bt, stateMatch{c, i, 101, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 101, 0}
+	st.last.len++
 	goto inst98
 inst101_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst103
 	}
 
 	goto unreachable
 	goto inst102
 inst102: // alt -> 97, 103
-	bt = append(bt, stateMatch{c, i, 102, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 102, 0}
+	st.last.len++
 	goto inst97
 inst102_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst103
 	}
 
@@ -1746,39 +1786,42 @@ inst107: // rune "09AFaf" -> 111
 	goto unreachable
 	goto inst108
 inst108: // alt -> 107, 111
-	bt = append(bt, stateMatch{c, i, 108, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 108, 0}
+	st.last.len++
 	goto inst107
 inst108_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst111
 	}
 
 	goto unreachable
 	goto inst109
 inst109: // alt -> 106, 111
-	bt = append(bt, stateMatch{c, i, 109, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 109, 0}
+	st.last.len++
 	goto inst106
 inst109_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst111
 	}
 
 	goto unreachable
 	goto inst110
 inst110: // alt -> 105, 111
-	bt = append(bt, stateMatch{c, i, 110, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 110, 0}
+	st.last.len++
 	goto inst105
 inst110_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst111
 	}
 
@@ -1872,39 +1915,42 @@ inst115: // rune "09AFaf" -> 119
 	goto unreachable
 	goto inst116
 inst116: // alt -> 115, 119
-	bt = append(bt, stateMatch{c, i, 116, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 116, 0}
+	st.last.len++
 	goto inst115
 inst116_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst119
 	}
 
 	goto unreachable
 	goto inst117
 inst117: // alt -> 114, 119
-	bt = append(bt, stateMatch{c, i, 117, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 117, 0}
+	st.last.len++
 	goto inst114
 inst117_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst119
 	}
 
 	goto unreachable
 	goto inst118
 inst118: // alt -> 113, 119
-	bt = append(bt, stateMatch{c, i, 118, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 118, 0}
+	st.last.len++
 	goto inst113
 inst118_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst119
 	}
 
@@ -1922,78 +1968,84 @@ inst119: //
 	goto unreachable
 	goto inst120
 inst120: // alt -> 112, 126
-	bt = append(bt, stateMatch{c, i, 120, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 120, 0}
+	st.last.len++
 	goto inst112
 inst120_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
 	goto unreachable
 	goto inst121
 inst121: // alt -> 104, 126
-	bt = append(bt, stateMatch{c, i, 121, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 121, 0}
+	st.last.len++
 	goto inst104
 inst121_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
 	goto unreachable
 	goto inst122
 inst122: // alt -> 96, 126
-	bt = append(bt, stateMatch{c, i, 122, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 122, 0}
+	st.last.len++
 	goto inst96
 inst122_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
 	goto unreachable
 	goto inst123
 inst123: // alt -> 88, 126
-	bt = append(bt, stateMatch{c, i, 123, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 123, 0}
+	st.last.len++
 	goto inst88
 inst123_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
 	goto unreachable
 	goto inst124
 inst124: // alt -> 80, 126
-	bt = append(bt, stateMatch{c, i, 124, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 124, 0}
+	st.last.len++
 	goto inst80
 inst124_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
 	goto unreachable
 	goto inst125
 inst125: // alt -> 72, 126
-	bt = append(bt, stateMatch{c, i, 125, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 125, 0}
+	st.last.len++
 	goto inst72
 inst125_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst126
 	}
 
@@ -2011,13 +2063,14 @@ inst126: //
 	goto unreachable
 	goto inst127
 inst127: // alt -> 1, 64
-	bt = append(bt, stateMatch{c, i, 127, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 127, 0}
+	st.last.len++
 	goto inst1
 inst127_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst64
 	}
 
@@ -2100,39 +2153,42 @@ inst131: // rune "09AFaf" -> 135
 	goto unreachable
 	goto inst132
 inst132: // alt -> 131, 135
-	bt = append(bt, stateMatch{c, i, 132, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 132, 0}
+	st.last.len++
 	goto inst131
 inst132_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst135
 	}
 
 	goto unreachable
 	goto inst133
 inst133: // alt -> 130, 135
-	bt = append(bt, stateMatch{c, i, 133, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 133, 0}
+	st.last.len++
 	goto inst130
 inst133_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst135
 	}
 
 	goto unreachable
 	goto inst134
 inst134: // alt -> 129, 135
-	bt = append(bt, stateMatch{c, i, 134, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 134, 0}
+	st.last.len++
 	goto inst129
 inst134_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst135
 	}
 
@@ -2226,39 +2282,42 @@ inst139: // rune "09AFaf" -> 143
 	goto unreachable
 	goto inst140
 inst140: // alt -> 139, 143
-	bt = append(bt, stateMatch{c, i, 140, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 140, 0}
+	st.last.len++
 	goto inst139
 inst140_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst143
 	}
 
 	goto unreachable
 	goto inst141
 inst141: // alt -> 138, 143
-	bt = append(bt, stateMatch{c, i, 141, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 141, 0}
+	st.last.len++
 	goto inst138
 inst141_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst143
 	}
 
 	goto unreachable
 	goto inst142
 inst142: // alt -> 137, 143
-	bt = append(bt, stateMatch{c, i, 142, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 142, 0}
+	st.last.len++
 	goto inst137
 inst142_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst143
 	}
 
@@ -2352,39 +2411,42 @@ inst147: // rune "09AFaf" -> 151
 	goto unreachable
 	goto inst148
 inst148: // alt -> 147, 151
-	bt = append(bt, stateMatch{c, i, 148, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 148, 0}
+	st.last.len++
 	goto inst147
 inst148_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst151
 	}
 
 	goto unreachable
 	goto inst149
 inst149: // alt -> 146, 151
-	bt = append(bt, stateMatch{c, i, 149, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 149, 0}
+	st.last.len++
 	goto inst146
 inst149_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst151
 	}
 
 	goto unreachable
 	goto inst150
 inst150: // alt -> 145, 151
-	bt = append(bt, stateMatch{c, i, 150, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 150, 0}
+	st.last.len++
 	goto inst145
 inst150_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst151
 	}
 
@@ -2478,39 +2540,42 @@ inst155: // rune "09AFaf" -> 159
 	goto unreachable
 	goto inst156
 inst156: // alt -> 155, 159
-	bt = append(bt, stateMatch{c, i, 156, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 156, 0}
+	st.last.len++
 	goto inst155
 inst156_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst159
 	}
 
 	goto unreachable
 	goto inst157
 inst157: // alt -> 154, 159
-	bt = append(bt, stateMatch{c, i, 157, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 157, 0}
+	st.last.len++
 	goto inst154
 inst157_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst159
 	}
 
 	goto unreachable
 	goto inst158
 inst158: // alt -> 153, 159
-	bt = append(bt, stateMatch{c, i, 158, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 158, 0}
+	st.last.len++
 	goto inst153
 inst158_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst159
 	}
 
@@ -2604,39 +2669,42 @@ inst163: // rune "09AFaf" -> 167
 	goto unreachable
 	goto inst164
 inst164: // alt -> 163, 167
-	bt = append(bt, stateMatch{c, i, 164, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 164, 0}
+	st.last.len++
 	goto inst163
 inst164_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst167
 	}
 
 	goto unreachable
 	goto inst165
 inst165: // alt -> 162, 167
-	bt = append(bt, stateMatch{c, i, 165, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 165, 0}
+	st.last.len++
 	goto inst162
 inst165_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst167
 	}
 
 	goto unreachable
 	goto inst166
 inst166: // alt -> 161, 167
-	bt = append(bt, stateMatch{c, i, 166, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 166, 0}
+	st.last.len++
 	goto inst161
 inst166_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst167
 	}
 
@@ -2730,39 +2798,42 @@ inst171: // rune "09AFaf" -> 175
 	goto unreachable
 	goto inst172
 inst172: // alt -> 171, 175
-	bt = append(bt, stateMatch{c, i, 172, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 172, 0}
+	st.last.len++
 	goto inst171
 inst172_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst175
 	}
 
 	goto unreachable
 	goto inst173
 inst173: // alt -> 170, 175
-	bt = append(bt, stateMatch{c, i, 173, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 173, 0}
+	st.last.len++
 	goto inst170
 inst173_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst175
 	}
 
 	goto unreachable
 	goto inst174
 inst174: // alt -> 169, 175
-	bt = append(bt, stateMatch{c, i, 174, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 174, 0}
+	st.last.len++
 	goto inst169
 inst174_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst175
 	}
 
@@ -2780,65 +2851,70 @@ inst175: //
 	goto unreachable
 	goto inst176
 inst176: // alt -> 168, 181
-	bt = append(bt, stateMatch{c, i, 176, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 176, 0}
+	st.last.len++
 	goto inst168
 inst176_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
 	goto unreachable
 	goto inst177
 inst177: // alt -> 160, 181
-	bt = append(bt, stateMatch{c, i, 177, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 177, 0}
+	st.last.len++
 	goto inst160
 inst177_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
 	goto unreachable
 	goto inst178
 inst178: // alt -> 152, 181
-	bt = append(bt, stateMatch{c, i, 178, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 178, 0}
+	st.last.len++
 	goto inst152
 inst178_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
 	goto unreachable
 	goto inst179
 inst179: // alt -> 144, 181
-	bt = append(bt, stateMatch{c, i, 179, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 179, 0}
+	st.last.len++
 	goto inst144
 inst179_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
 	goto unreachable
 	goto inst180
 inst180: // alt -> 136, 181
-	bt = append(bt, stateMatch{c, i, 180, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 180, 0}
+	st.last.len++
 	goto inst136
 inst180_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst181
 	}
 
@@ -2932,52 +3008,56 @@ inst185: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst186
 inst186: // alt -> 185, 772
-	bt = append(bt, stateMatch{c, i, 186, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 186, 0}
+	st.last.len++
 	goto inst185
 inst186_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst187
 inst187: // alt -> 184, 772
-	bt = append(bt, stateMatch{c, i, 187, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 187, 0}
+	st.last.len++
 	goto inst184
 inst187_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst188
 inst188: // alt -> 183, 772
-	bt = append(bt, stateMatch{c, i, 188, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 188, 0}
+	st.last.len++
 	goto inst183
 inst188_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst189
 inst189: // alt -> 127, 128
-	bt = append(bt, stateMatch{c, i, 189, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 189, 0}
+	st.last.len++
 	goto inst127
 inst189_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst128
 	}
 
@@ -3060,39 +3140,42 @@ inst193: // rune "09AFaf" -> 197
 	goto unreachable
 	goto inst194
 inst194: // alt -> 193, 197
-	bt = append(bt, stateMatch{c, i, 194, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 194, 0}
+	st.last.len++
 	goto inst193
 inst194_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst197
 	}
 
 	goto unreachable
 	goto inst195
 inst195: // alt -> 192, 197
-	bt = append(bt, stateMatch{c, i, 195, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 195, 0}
+	st.last.len++
 	goto inst192
 inst195_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst197
 	}
 
 	goto unreachable
 	goto inst196
 inst196: // alt -> 191, 197
-	bt = append(bt, stateMatch{c, i, 196, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 196, 0}
+	st.last.len++
 	goto inst191
 inst196_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst197
 	}
 
@@ -3186,39 +3269,42 @@ inst201: // rune "09AFaf" -> 205
 	goto unreachable
 	goto inst202
 inst202: // alt -> 201, 205
-	bt = append(bt, stateMatch{c, i, 202, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 202, 0}
+	st.last.len++
 	goto inst201
 inst202_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst205
 	}
 
 	goto unreachable
 	goto inst203
 inst203: // alt -> 200, 205
-	bt = append(bt, stateMatch{c, i, 203, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 203, 0}
+	st.last.len++
 	goto inst200
 inst203_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst205
 	}
 
 	goto unreachable
 	goto inst204
 inst204: // alt -> 199, 205
-	bt = append(bt, stateMatch{c, i, 204, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 204, 0}
+	st.last.len++
 	goto inst199
 inst204_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst205
 	}
 
@@ -3312,39 +3398,42 @@ inst209: // rune "09AFaf" -> 213
 	goto unreachable
 	goto inst210
 inst210: // alt -> 209, 213
-	bt = append(bt, stateMatch{c, i, 210, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 210, 0}
+	st.last.len++
 	goto inst209
 inst210_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst213
 	}
 
 	goto unreachable
 	goto inst211
 inst211: // alt -> 208, 213
-	bt = append(bt, stateMatch{c, i, 211, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 211, 0}
+	st.last.len++
 	goto inst208
 inst211_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst213
 	}
 
 	goto unreachable
 	goto inst212
 inst212: // alt -> 207, 213
-	bt = append(bt, stateMatch{c, i, 212, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 212, 0}
+	st.last.len++
 	goto inst207
 inst212_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst213
 	}
 
@@ -3438,39 +3527,42 @@ inst217: // rune "09AFaf" -> 221
 	goto unreachable
 	goto inst218
 inst218: // alt -> 217, 221
-	bt = append(bt, stateMatch{c, i, 218, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 218, 0}
+	st.last.len++
 	goto inst217
 inst218_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst221
 	}
 
 	goto unreachable
 	goto inst219
 inst219: // alt -> 216, 221
-	bt = append(bt, stateMatch{c, i, 219, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 219, 0}
+	st.last.len++
 	goto inst216
 inst219_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst221
 	}
 
 	goto unreachable
 	goto inst220
 inst220: // alt -> 215, 221
-	bt = append(bt, stateMatch{c, i, 220, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 220, 0}
+	st.last.len++
 	goto inst215
 inst220_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst221
 	}
 
@@ -3564,39 +3656,42 @@ inst225: // rune "09AFaf" -> 229
 	goto unreachable
 	goto inst226
 inst226: // alt -> 225, 229
-	bt = append(bt, stateMatch{c, i, 226, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 226, 0}
+	st.last.len++
 	goto inst225
 inst226_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst229
 	}
 
 	goto unreachable
 	goto inst227
 inst227: // alt -> 224, 229
-	bt = append(bt, stateMatch{c, i, 227, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 227, 0}
+	st.last.len++
 	goto inst224
 inst227_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst229
 	}
 
 	goto unreachable
 	goto inst228
 inst228: // alt -> 223, 229
-	bt = append(bt, stateMatch{c, i, 228, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 228, 0}
+	st.last.len++
 	goto inst223
 inst228_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst229
 	}
 
@@ -3614,52 +3709,56 @@ inst229: //
 	goto unreachable
 	goto inst230
 inst230: // alt -> 222, 234
-	bt = append(bt, stateMatch{c, i, 230, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 230, 0}
+	st.last.len++
 	goto inst222
 inst230_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
 	goto unreachable
 	goto inst231
 inst231: // alt -> 214, 234
-	bt = append(bt, stateMatch{c, i, 231, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 231, 0}
+	st.last.len++
 	goto inst214
 inst231_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
 	goto unreachable
 	goto inst232
 inst232: // alt -> 206, 234
-	bt = append(bt, stateMatch{c, i, 232, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 232, 0}
+	st.last.len++
 	goto inst206
 inst232_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
 	goto unreachable
 	goto inst233
 inst233: // alt -> 198, 234
-	bt = append(bt, stateMatch{c, i, 233, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 233, 0}
+	st.last.len++
 	goto inst198
 inst233_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst234
 	}
 
@@ -3753,39 +3852,42 @@ inst238: // rune "09AFaf" -> 250
 	goto unreachable
 	goto inst239
 inst239: // alt -> 238, 250
-	bt = append(bt, stateMatch{c, i, 239, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 239, 0}
+	st.last.len++
 	goto inst238
 inst239_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst250
 	}
 
 	goto unreachable
 	goto inst240
 inst240: // alt -> 237, 250
-	bt = append(bt, stateMatch{c, i, 240, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 240, 0}
+	st.last.len++
 	goto inst237
 inst240_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst250
 	}
 
 	goto unreachable
 	goto inst241
 inst241: // alt -> 236, 250
-	bt = append(bt, stateMatch{c, i, 241, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 241, 0}
+	st.last.len++
 	goto inst236
 inst241_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst250
 	}
 
@@ -3879,65 +3981,70 @@ inst246: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst247
 inst247: // alt -> 246, 772
-	bt = append(bt, stateMatch{c, i, 247, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 247, 0}
+	st.last.len++
 	goto inst246
 inst247_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst248
 inst248: // alt -> 245, 772
-	bt = append(bt, stateMatch{c, i, 248, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 248, 0}
+	st.last.len++
 	goto inst245
 inst248_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst249
 inst249: // alt -> 244, 772
-	bt = append(bt, stateMatch{c, i, 249, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 249, 0}
+	st.last.len++
 	goto inst244
 inst249_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst250
 inst250: // alt -> 242, 772
-	bt = append(bt, stateMatch{c, i, 250, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 250, 0}
+	st.last.len++
 	goto inst242
 inst250_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst251
 inst251: // alt -> 189, 190
-	bt = append(bt, stateMatch{c, i, 251, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 251, 0}
+	st.last.len++
 	goto inst189
 inst251_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst190
 	}
 
@@ -4020,39 +4127,42 @@ inst255: // rune "09AFaf" -> 259
 	goto unreachable
 	goto inst256
 inst256: // alt -> 255, 259
-	bt = append(bt, stateMatch{c, i, 256, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 256, 0}
+	st.last.len++
 	goto inst255
 inst256_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst259
 	}
 
 	goto unreachable
 	goto inst257
 inst257: // alt -> 254, 259
-	bt = append(bt, stateMatch{c, i, 257, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 257, 0}
+	st.last.len++
 	goto inst254
 inst257_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst259
 	}
 
 	goto unreachable
 	goto inst258
 inst258: // alt -> 253, 259
-	bt = append(bt, stateMatch{c, i, 258, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 258, 0}
+	st.last.len++
 	goto inst253
 inst258_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst259
 	}
 
@@ -4146,39 +4256,42 @@ inst263: // rune "09AFaf" -> 267
 	goto unreachable
 	goto inst264
 inst264: // alt -> 263, 267
-	bt = append(bt, stateMatch{c, i, 264, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 264, 0}
+	st.last.len++
 	goto inst263
 inst264_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst267
 	}
 
 	goto unreachable
 	goto inst265
 inst265: // alt -> 262, 267
-	bt = append(bt, stateMatch{c, i, 265, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 265, 0}
+	st.last.len++
 	goto inst262
 inst265_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst267
 	}
 
 	goto unreachable
 	goto inst266
 inst266: // alt -> 261, 267
-	bt = append(bt, stateMatch{c, i, 266, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 266, 0}
+	st.last.len++
 	goto inst261
 inst266_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst267
 	}
 
@@ -4272,39 +4385,42 @@ inst271: // rune "09AFaf" -> 275
 	goto unreachable
 	goto inst272
 inst272: // alt -> 271, 275
-	bt = append(bt, stateMatch{c, i, 272, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 272, 0}
+	st.last.len++
 	goto inst271
 inst272_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst275
 	}
 
 	goto unreachable
 	goto inst273
 inst273: // alt -> 270, 275
-	bt = append(bt, stateMatch{c, i, 273, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 273, 0}
+	st.last.len++
 	goto inst270
 inst273_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst275
 	}
 
 	goto unreachable
 	goto inst274
 inst274: // alt -> 269, 275
-	bt = append(bt, stateMatch{c, i, 274, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 274, 0}
+	st.last.len++
 	goto inst269
 inst274_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst275
 	}
 
@@ -4398,39 +4514,42 @@ inst279: // rune "09AFaf" -> 283
 	goto unreachable
 	goto inst280
 inst280: // alt -> 279, 283
-	bt = append(bt, stateMatch{c, i, 280, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 280, 0}
+	st.last.len++
 	goto inst279
 inst280_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst283
 	}
 
 	goto unreachable
 	goto inst281
 inst281: // alt -> 278, 283
-	bt = append(bt, stateMatch{c, i, 281, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 281, 0}
+	st.last.len++
 	goto inst278
 inst281_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst283
 	}
 
 	goto unreachable
 	goto inst282
 inst282: // alt -> 277, 283
-	bt = append(bt, stateMatch{c, i, 282, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 282, 0}
+	st.last.len++
 	goto inst277
 inst282_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst283
 	}
 
@@ -4448,39 +4567,42 @@ inst283: //
 	goto unreachable
 	goto inst284
 inst284: // alt -> 276, 287
-	bt = append(bt, stateMatch{c, i, 284, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 284, 0}
+	st.last.len++
 	goto inst276
 inst284_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst287
 	}
 
 	goto unreachable
 	goto inst285
 inst285: // alt -> 268, 287
-	bt = append(bt, stateMatch{c, i, 285, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 285, 0}
+	st.last.len++
 	goto inst268
 inst285_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst287
 	}
 
 	goto unreachable
 	goto inst286
 inst286: // alt -> 260, 287
-	bt = append(bt, stateMatch{c, i, 286, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 286, 0}
+	st.last.len++
 	goto inst260
 inst286_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst287
 	}
 
@@ -4574,39 +4696,42 @@ inst291: // rune "09AFaf" -> 312
 	goto unreachable
 	goto inst292
 inst292: // alt -> 291, 312
-	bt = append(bt, stateMatch{c, i, 292, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 292, 0}
+	st.last.len++
 	goto inst291
 inst292_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst312
 	}
 
 	goto unreachable
 	goto inst293
 inst293: // alt -> 290, 312
-	bt = append(bt, stateMatch{c, i, 293, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 293, 0}
+	st.last.len++
 	goto inst290
 inst293_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst312
 	}
 
 	goto unreachable
 	goto inst294
 inst294: // alt -> 289, 312
-	bt = append(bt, stateMatch{c, i, 294, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 294, 0}
+	st.last.len++
 	goto inst289
 inst294_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst312
 	}
 
@@ -4700,39 +4825,42 @@ inst299: // rune "09AFaf" -> 311
 	goto unreachable
 	goto inst300
 inst300: // alt -> 299, 311
-	bt = append(bt, stateMatch{c, i, 300, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 300, 0}
+	st.last.len++
 	goto inst299
 inst300_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst311
 	}
 
 	goto unreachable
 	goto inst301
 inst301: // alt -> 298, 311
-	bt = append(bt, stateMatch{c, i, 301, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 301, 0}
+	st.last.len++
 	goto inst298
 inst301_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst311
 	}
 
 	goto unreachable
 	goto inst302
 inst302: // alt -> 297, 311
-	bt = append(bt, stateMatch{c, i, 302, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 302, 0}
+	st.last.len++
 	goto inst297
 inst302_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst311
 	}
 
@@ -4826,78 +4954,84 @@ inst307: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst308
 inst308: // alt -> 307, 772
-	bt = append(bt, stateMatch{c, i, 308, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 308, 0}
+	st.last.len++
 	goto inst307
 inst308_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst309
 inst309: // alt -> 306, 772
-	bt = append(bt, stateMatch{c, i, 309, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 309, 0}
+	st.last.len++
 	goto inst306
 inst309_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst310
 inst310: // alt -> 305, 772
-	bt = append(bt, stateMatch{c, i, 310, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 310, 0}
+	st.last.len++
 	goto inst305
 inst310_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst311
 inst311: // alt -> 303, 772
-	bt = append(bt, stateMatch{c, i, 311, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 311, 0}
+	st.last.len++
 	goto inst303
 inst311_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst312
 inst312: // alt -> 295, 772
-	bt = append(bt, stateMatch{c, i, 312, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 312, 0}
+	st.last.len++
 	goto inst295
 inst312_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst313
 inst313: // alt -> 251, 252
-	bt = append(bt, stateMatch{c, i, 313, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 313, 0}
+	st.last.len++
 	goto inst251
 inst313_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst252
 	}
 
@@ -4980,39 +5114,42 @@ inst317: // rune "09AFaf" -> 321
 	goto unreachable
 	goto inst318
 inst318: // alt -> 317, 321
-	bt = append(bt, stateMatch{c, i, 318, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 318, 0}
+	st.last.len++
 	goto inst317
 inst318_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst321
 	}
 
 	goto unreachable
 	goto inst319
 inst319: // alt -> 316, 321
-	bt = append(bt, stateMatch{c, i, 319, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 319, 0}
+	st.last.len++
 	goto inst316
 inst319_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst321
 	}
 
 	goto unreachable
 	goto inst320
 inst320: // alt -> 315, 321
-	bt = append(bt, stateMatch{c, i, 320, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 320, 0}
+	st.last.len++
 	goto inst315
 inst320_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst321
 	}
 
@@ -5106,39 +5243,42 @@ inst325: // rune "09AFaf" -> 329
 	goto unreachable
 	goto inst326
 inst326: // alt -> 325, 329
-	bt = append(bt, stateMatch{c, i, 326, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 326, 0}
+	st.last.len++
 	goto inst325
 inst326_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst329
 	}
 
 	goto unreachable
 	goto inst327
 inst327: // alt -> 324, 329
-	bt = append(bt, stateMatch{c, i, 327, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 327, 0}
+	st.last.len++
 	goto inst324
 inst327_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst329
 	}
 
 	goto unreachable
 	goto inst328
 inst328: // alt -> 323, 329
-	bt = append(bt, stateMatch{c, i, 328, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 328, 0}
+	st.last.len++
 	goto inst323
 inst328_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst329
 	}
 
@@ -5232,39 +5372,42 @@ inst333: // rune "09AFaf" -> 337
 	goto unreachable
 	goto inst334
 inst334: // alt -> 333, 337
-	bt = append(bt, stateMatch{c, i, 334, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 334, 0}
+	st.last.len++
 	goto inst333
 inst334_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst337
 	}
 
 	goto unreachable
 	goto inst335
 inst335: // alt -> 332, 337
-	bt = append(bt, stateMatch{c, i, 335, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 335, 0}
+	st.last.len++
 	goto inst332
 inst335_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst337
 	}
 
 	goto unreachable
 	goto inst336
 inst336: // alt -> 331, 337
-	bt = append(bt, stateMatch{c, i, 336, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 336, 0}
+	st.last.len++
 	goto inst331
 inst336_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst337
 	}
 
@@ -5282,26 +5425,28 @@ inst337: //
 	goto unreachable
 	goto inst338
 inst338: // alt -> 330, 340
-	bt = append(bt, stateMatch{c, i, 338, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 338, 0}
+	st.last.len++
 	goto inst330
 inst338_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst340
 	}
 
 	goto unreachable
 	goto inst339
 inst339: // alt -> 322, 340
-	bt = append(bt, stateMatch{c, i, 339, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 339, 0}
+	st.last.len++
 	goto inst322
 inst339_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst340
 	}
 
@@ -5395,39 +5540,42 @@ inst344: // rune "09AFaf" -> 374
 	goto unreachable
 	goto inst345
 inst345: // alt -> 344, 374
-	bt = append(bt, stateMatch{c, i, 345, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 345, 0}
+	st.last.len++
 	goto inst344
 inst345_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst374
 	}
 
 	goto unreachable
 	goto inst346
 inst346: // alt -> 343, 374
-	bt = append(bt, stateMatch{c, i, 346, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 346, 0}
+	st.last.len++
 	goto inst343
 inst346_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst374
 	}
 
 	goto unreachable
 	goto inst347
 inst347: // alt -> 342, 374
-	bt = append(bt, stateMatch{c, i, 347, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 347, 0}
+	st.last.len++
 	goto inst342
 inst347_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst374
 	}
 
@@ -5521,39 +5669,42 @@ inst352: // rune "09AFaf" -> 373
 	goto unreachable
 	goto inst353
 inst353: // alt -> 352, 373
-	bt = append(bt, stateMatch{c, i, 353, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 353, 0}
+	st.last.len++
 	goto inst352
 inst353_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst373
 	}
 
 	goto unreachable
 	goto inst354
 inst354: // alt -> 351, 373
-	bt = append(bt, stateMatch{c, i, 354, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 354, 0}
+	st.last.len++
 	goto inst351
 inst354_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst373
 	}
 
 	goto unreachable
 	goto inst355
 inst355: // alt -> 350, 373
-	bt = append(bt, stateMatch{c, i, 355, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 355, 0}
+	st.last.len++
 	goto inst350
 inst355_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst373
 	}
 
@@ -5647,39 +5798,42 @@ inst360: // rune "09AFaf" -> 372
 	goto unreachable
 	goto inst361
 inst361: // alt -> 360, 372
-	bt = append(bt, stateMatch{c, i, 361, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 361, 0}
+	st.last.len++
 	goto inst360
 inst361_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst372
 	}
 
 	goto unreachable
 	goto inst362
 inst362: // alt -> 359, 372
-	bt = append(bt, stateMatch{c, i, 362, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 362, 0}
+	st.last.len++
 	goto inst359
 inst362_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst372
 	}
 
 	goto unreachable
 	goto inst363
 inst363: // alt -> 358, 372
-	bt = append(bt, stateMatch{c, i, 363, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 363, 0}
+	st.last.len++
 	goto inst358
 inst363_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst372
 	}
 
@@ -5773,91 +5927,98 @@ inst368: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst369
 inst369: // alt -> 368, 772
-	bt = append(bt, stateMatch{c, i, 369, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 369, 0}
+	st.last.len++
 	goto inst368
 inst369_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst370
 inst370: // alt -> 367, 772
-	bt = append(bt, stateMatch{c, i, 370, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 370, 0}
+	st.last.len++
 	goto inst367
 inst370_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst371
 inst371: // alt -> 366, 772
-	bt = append(bt, stateMatch{c, i, 371, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 371, 0}
+	st.last.len++
 	goto inst366
 inst371_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst372
 inst372: // alt -> 364, 772
-	bt = append(bt, stateMatch{c, i, 372, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 372, 0}
+	st.last.len++
 	goto inst364
 inst372_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst373
 inst373: // alt -> 356, 772
-	bt = append(bt, stateMatch{c, i, 373, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 373, 0}
+	st.last.len++
 	goto inst356
 inst373_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst374
 inst374: // alt -> 348, 772
-	bt = append(bt, stateMatch{c, i, 374, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 374, 0}
+	st.last.len++
 	goto inst348
 inst374_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst375
 inst375: // alt -> 313, 314
-	bt = append(bt, stateMatch{c, i, 375, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 375, 0}
+	st.last.len++
 	goto inst313
 inst375_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst314
 	}
 
@@ -5940,39 +6101,42 @@ inst379: // rune "09AFaf" -> 383
 	goto unreachable
 	goto inst380
 inst380: // alt -> 379, 383
-	bt = append(bt, stateMatch{c, i, 380, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 380, 0}
+	st.last.len++
 	goto inst379
 inst380_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst383
 	}
 
 	goto unreachable
 	goto inst381
 inst381: // alt -> 378, 383
-	bt = append(bt, stateMatch{c, i, 381, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 381, 0}
+	st.last.len++
 	goto inst378
 inst381_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst383
 	}
 
 	goto unreachable
 	goto inst382
 inst382: // alt -> 377, 383
-	bt = append(bt, stateMatch{c, i, 382, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 382, 0}
+	st.last.len++
 	goto inst377
 inst382_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst383
 	}
 
@@ -6066,39 +6230,42 @@ inst387: // rune "09AFaf" -> 391
 	goto unreachable
 	goto inst388
 inst388: // alt -> 387, 391
-	bt = append(bt, stateMatch{c, i, 388, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 388, 0}
+	st.last.len++
 	goto inst387
 inst388_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst391
 	}
 
 	goto unreachable
 	goto inst389
 inst389: // alt -> 386, 391
-	bt = append(bt, stateMatch{c, i, 389, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 389, 0}
+	st.last.len++
 	goto inst386
 inst389_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst391
 	}
 
 	goto unreachable
 	goto inst390
 inst390: // alt -> 385, 391
-	bt = append(bt, stateMatch{c, i, 390, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 390, 0}
+	st.last.len++
 	goto inst385
 inst390_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst391
 	}
 
@@ -6116,13 +6283,14 @@ inst391: //
 	goto unreachable
 	goto inst392
 inst392: // alt -> 384, 393
-	bt = append(bt, stateMatch{c, i, 392, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 392, 0}
+	st.last.len++
 	goto inst384
 inst392_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst393
 	}
 
@@ -6216,39 +6384,42 @@ inst397: // rune "09AFaf" -> 436
 	goto unreachable
 	goto inst398
 inst398: // alt -> 397, 436
-	bt = append(bt, stateMatch{c, i, 398, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 398, 0}
+	st.last.len++
 	goto inst397
 inst398_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst436
 	}
 
 	goto unreachable
 	goto inst399
 inst399: // alt -> 396, 436
-	bt = append(bt, stateMatch{c, i, 399, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 399, 0}
+	st.last.len++
 	goto inst396
 inst399_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst436
 	}
 
 	goto unreachable
 	goto inst400
 inst400: // alt -> 395, 436
-	bt = append(bt, stateMatch{c, i, 400, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 400, 0}
+	st.last.len++
 	goto inst395
 inst400_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst436
 	}
 
@@ -6342,39 +6513,42 @@ inst405: // rune "09AFaf" -> 435
 	goto unreachable
 	goto inst406
 inst406: // alt -> 405, 435
-	bt = append(bt, stateMatch{c, i, 406, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 406, 0}
+	st.last.len++
 	goto inst405
 inst406_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst435
 	}
 
 	goto unreachable
 	goto inst407
 inst407: // alt -> 404, 435
-	bt = append(bt, stateMatch{c, i, 407, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 407, 0}
+	st.last.len++
 	goto inst404
 inst407_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst435
 	}
 
 	goto unreachable
 	goto inst408
 inst408: // alt -> 403, 435
-	bt = append(bt, stateMatch{c, i, 408, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 408, 0}
+	st.last.len++
 	goto inst403
 inst408_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst435
 	}
 
@@ -6468,39 +6642,42 @@ inst413: // rune "09AFaf" -> 434
 	goto unreachable
 	goto inst414
 inst414: // alt -> 413, 434
-	bt = append(bt, stateMatch{c, i, 414, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 414, 0}
+	st.last.len++
 	goto inst413
 inst414_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst434
 	}
 
 	goto unreachable
 	goto inst415
 inst415: // alt -> 412, 434
-	bt = append(bt, stateMatch{c, i, 415, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 415, 0}
+	st.last.len++
 	goto inst412
 inst415_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst434
 	}
 
 	goto unreachable
 	goto inst416
 inst416: // alt -> 411, 434
-	bt = append(bt, stateMatch{c, i, 416, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 416, 0}
+	st.last.len++
 	goto inst411
 inst416_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst434
 	}
 
@@ -6594,39 +6771,42 @@ inst421: // rune "09AFaf" -> 433
 	goto unreachable
 	goto inst422
 inst422: // alt -> 421, 433
-	bt = append(bt, stateMatch{c, i, 422, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 422, 0}
+	st.last.len++
 	goto inst421
 inst422_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst433
 	}
 
 	goto unreachable
 	goto inst423
 inst423: // alt -> 420, 433
-	bt = append(bt, stateMatch{c, i, 423, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 423, 0}
+	st.last.len++
 	goto inst420
 inst423_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst433
 	}
 
 	goto unreachable
 	goto inst424
 inst424: // alt -> 419, 433
-	bt = append(bt, stateMatch{c, i, 424, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 424, 0}
+	st.last.len++
 	goto inst419
 inst424_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst433
 	}
 
@@ -6720,104 +6900,112 @@ inst429: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst430
 inst430: // alt -> 429, 772
-	bt = append(bt, stateMatch{c, i, 430, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 430, 0}
+	st.last.len++
 	goto inst429
 inst430_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst431
 inst431: // alt -> 428, 772
-	bt = append(bt, stateMatch{c, i, 431, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 431, 0}
+	st.last.len++
 	goto inst428
 inst431_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst432
 inst432: // alt -> 427, 772
-	bt = append(bt, stateMatch{c, i, 432, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 432, 0}
+	st.last.len++
 	goto inst427
 inst432_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst433
 inst433: // alt -> 425, 772
-	bt = append(bt, stateMatch{c, i, 433, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 433, 0}
+	st.last.len++
 	goto inst425
 inst433_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst434
 inst434: // alt -> 417, 772
-	bt = append(bt, stateMatch{c, i, 434, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 434, 0}
+	st.last.len++
 	goto inst417
 inst434_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst435
 inst435: // alt -> 409, 772
-	bt = append(bt, stateMatch{c, i, 435, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 435, 0}
+	st.last.len++
 	goto inst409
 inst435_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst436
 inst436: // alt -> 401, 772
-	bt = append(bt, stateMatch{c, i, 436, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 436, 0}
+	st.last.len++
 	goto inst401
 inst436_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst437
 inst437: // alt -> 375, 376
-	bt = append(bt, stateMatch{c, i, 437, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 437, 0}
+	st.last.len++
 	goto inst375
 inst437_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst376
 	}
 
@@ -6900,39 +7088,42 @@ inst441: // rune "09AFaf" -> 445
 	goto unreachable
 	goto inst442
 inst442: // alt -> 441, 445
-	bt = append(bt, stateMatch{c, i, 442, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 442, 0}
+	st.last.len++
 	goto inst441
 inst442_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst445
 	}
 
 	goto unreachable
 	goto inst443
 inst443: // alt -> 440, 445
-	bt = append(bt, stateMatch{c, i, 443, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 443, 0}
+	st.last.len++
 	goto inst440
 inst443_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst445
 	}
 
 	goto unreachable
 	goto inst444
 inst444: // alt -> 439, 445
-	bt = append(bt, stateMatch{c, i, 444, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 444, 0}
+	st.last.len++
 	goto inst439
 inst444_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst445
 	}
 
@@ -7028,39 +7219,42 @@ inst450: // rune "09AFaf" -> 498
 	goto unreachable
 	goto inst451
 inst451: // alt -> 450, 498
-	bt = append(bt, stateMatch{c, i, 451, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 451, 0}
+	st.last.len++
 	goto inst450
 inst451_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst498
 	}
 
 	goto unreachable
 	goto inst452
 inst452: // alt -> 449, 498
-	bt = append(bt, stateMatch{c, i, 452, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 452, 0}
+	st.last.len++
 	goto inst449
 inst452_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst498
 	}
 
 	goto unreachable
 	goto inst453
 inst453: // alt -> 448, 498
-	bt = append(bt, stateMatch{c, i, 453, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 453, 0}
+	st.last.len++
 	goto inst448
 inst453_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst498
 	}
 
@@ -7154,39 +7348,42 @@ inst458: // rune "09AFaf" -> 497
 	goto unreachable
 	goto inst459
 inst459: // alt -> 458, 497
-	bt = append(bt, stateMatch{c, i, 459, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 459, 0}
+	st.last.len++
 	goto inst458
 inst459_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst497
 	}
 
 	goto unreachable
 	goto inst460
 inst460: // alt -> 457, 497
-	bt = append(bt, stateMatch{c, i, 460, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 460, 0}
+	st.last.len++
 	goto inst457
 inst460_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst497
 	}
 
 	goto unreachable
 	goto inst461
 inst461: // alt -> 456, 497
-	bt = append(bt, stateMatch{c, i, 461, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 461, 0}
+	st.last.len++
 	goto inst456
 inst461_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst497
 	}
 
@@ -7280,39 +7477,42 @@ inst466: // rune "09AFaf" -> 496
 	goto unreachable
 	goto inst467
 inst467: // alt -> 466, 496
-	bt = append(bt, stateMatch{c, i, 467, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 467, 0}
+	st.last.len++
 	goto inst466
 inst467_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst496
 	}
 
 	goto unreachable
 	goto inst468
 inst468: // alt -> 465, 496
-	bt = append(bt, stateMatch{c, i, 468, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 468, 0}
+	st.last.len++
 	goto inst465
 inst468_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst496
 	}
 
 	goto unreachable
 	goto inst469
 inst469: // alt -> 464, 496
-	bt = append(bt, stateMatch{c, i, 469, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 469, 0}
+	st.last.len++
 	goto inst464
 inst469_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst496
 	}
 
@@ -7406,39 +7606,42 @@ inst474: // rune "09AFaf" -> 495
 	goto unreachable
 	goto inst475
 inst475: // alt -> 474, 495
-	bt = append(bt, stateMatch{c, i, 475, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 475, 0}
+	st.last.len++
 	goto inst474
 inst475_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst495
 	}
 
 	goto unreachable
 	goto inst476
 inst476: // alt -> 473, 495
-	bt = append(bt, stateMatch{c, i, 476, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 476, 0}
+	st.last.len++
 	goto inst473
 inst476_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst495
 	}
 
 	goto unreachable
 	goto inst477
 inst477: // alt -> 472, 495
-	bt = append(bt, stateMatch{c, i, 477, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 477, 0}
+	st.last.len++
 	goto inst472
 inst477_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst495
 	}
 
@@ -7532,39 +7735,42 @@ inst482: // rune "09AFaf" -> 494
 	goto unreachable
 	goto inst483
 inst483: // alt -> 482, 494
-	bt = append(bt, stateMatch{c, i, 483, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 483, 0}
+	st.last.len++
 	goto inst482
 inst483_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst494
 	}
 
 	goto unreachable
 	goto inst484
 inst484: // alt -> 481, 494
-	bt = append(bt, stateMatch{c, i, 484, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 484, 0}
+	st.last.len++
 	goto inst481
 inst484_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst494
 	}
 
 	goto unreachable
 	goto inst485
 inst485: // alt -> 480, 494
-	bt = append(bt, stateMatch{c, i, 485, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 485, 0}
+	st.last.len++
 	goto inst480
 inst485_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst494
 	}
 
@@ -7658,117 +7864,126 @@ inst490: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst491
 inst491: // alt -> 490, 772
-	bt = append(bt, stateMatch{c, i, 491, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 491, 0}
+	st.last.len++
 	goto inst490
 inst491_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst492
 inst492: // alt -> 489, 772
-	bt = append(bt, stateMatch{c, i, 492, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 492, 0}
+	st.last.len++
 	goto inst489
 inst492_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst493
 inst493: // alt -> 488, 772
-	bt = append(bt, stateMatch{c, i, 493, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 493, 0}
+	st.last.len++
 	goto inst488
 inst493_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst494
 inst494: // alt -> 486, 772
-	bt = append(bt, stateMatch{c, i, 494, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 494, 0}
+	st.last.len++
 	goto inst486
 inst494_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst495
 inst495: // alt -> 478, 772
-	bt = append(bt, stateMatch{c, i, 495, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 495, 0}
+	st.last.len++
 	goto inst478
 inst495_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst496
 inst496: // alt -> 470, 772
-	bt = append(bt, stateMatch{c, i, 496, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 496, 0}
+	st.last.len++
 	goto inst470
 inst496_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst497
 inst497: // alt -> 462, 772
-	bt = append(bt, stateMatch{c, i, 497, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 497, 0}
+	st.last.len++
 	goto inst462
 inst497_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst498
 inst498: // alt -> 454, 772
-	bt = append(bt, stateMatch{c, i, 498, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 498, 0}
+	st.last.len++
 	goto inst454
 inst498_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst499
 inst499: // alt -> 437, 438
-	bt = append(bt, stateMatch{c, i, 499, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 499, 0}
+	st.last.len++
 	goto inst437
 inst499_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst438
 	}
 
@@ -7873,39 +8088,42 @@ inst505: // rune "09AFaf" -> 562
 	goto unreachable
 	goto inst506
 inst506: // alt -> 505, 562
-	bt = append(bt, stateMatch{c, i, 506, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 506, 0}
+	st.last.len++
 	goto inst505
 inst506_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst562
 	}
 
 	goto unreachable
 	goto inst507
 inst507: // alt -> 504, 562
-	bt = append(bt, stateMatch{c, i, 507, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 507, 0}
+	st.last.len++
 	goto inst504
 inst507_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst562
 	}
 
 	goto unreachable
 	goto inst508
 inst508: // alt -> 503, 562
-	bt = append(bt, stateMatch{c, i, 508, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 508, 0}
+	st.last.len++
 	goto inst503
 inst508_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst562
 	}
 
@@ -7999,39 +8217,42 @@ inst513: // rune "09AFaf" -> 561
 	goto unreachable
 	goto inst514
 inst514: // alt -> 513, 561
-	bt = append(bt, stateMatch{c, i, 514, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 514, 0}
+	st.last.len++
 	goto inst513
 inst514_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst561
 	}
 
 	goto unreachable
 	goto inst515
 inst515: // alt -> 512, 561
-	bt = append(bt, stateMatch{c, i, 515, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 515, 0}
+	st.last.len++
 	goto inst512
 inst515_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst561
 	}
 
 	goto unreachable
 	goto inst516
 inst516: // alt -> 511, 561
-	bt = append(bt, stateMatch{c, i, 516, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 516, 0}
+	st.last.len++
 	goto inst511
 inst516_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst561
 	}
 
@@ -8125,39 +8346,42 @@ inst521: // rune "09AFaf" -> 560
 	goto unreachable
 	goto inst522
 inst522: // alt -> 521, 560
-	bt = append(bt, stateMatch{c, i, 522, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 522, 0}
+	st.last.len++
 	goto inst521
 inst522_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst560
 	}
 
 	goto unreachable
 	goto inst523
 inst523: // alt -> 520, 560
-	bt = append(bt, stateMatch{c, i, 523, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 523, 0}
+	st.last.len++
 	goto inst520
 inst523_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst560
 	}
 
 	goto unreachable
 	goto inst524
 inst524: // alt -> 519, 560
-	bt = append(bt, stateMatch{c, i, 524, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 524, 0}
+	st.last.len++
 	goto inst519
 inst524_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst560
 	}
 
@@ -8251,39 +8475,42 @@ inst529: // rune "09AFaf" -> 559
 	goto unreachable
 	goto inst530
 inst530: // alt -> 529, 559
-	bt = append(bt, stateMatch{c, i, 530, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 530, 0}
+	st.last.len++
 	goto inst529
 inst530_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst559
 	}
 
 	goto unreachable
 	goto inst531
 inst531: // alt -> 528, 559
-	bt = append(bt, stateMatch{c, i, 531, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 531, 0}
+	st.last.len++
 	goto inst528
 inst531_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst559
 	}
 
 	goto unreachable
 	goto inst532
 inst532: // alt -> 527, 559
-	bt = append(bt, stateMatch{c, i, 532, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 532, 0}
+	st.last.len++
 	goto inst527
 inst532_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst559
 	}
 
@@ -8377,39 +8604,42 @@ inst537: // rune "09AFaf" -> 558
 	goto unreachable
 	goto inst538
 inst538: // alt -> 537, 558
-	bt = append(bt, stateMatch{c, i, 538, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 538, 0}
+	st.last.len++
 	goto inst537
 inst538_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst558
 	}
 
 	goto unreachable
 	goto inst539
 inst539: // alt -> 536, 558
-	bt = append(bt, stateMatch{c, i, 539, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 539, 0}
+	st.last.len++
 	goto inst536
 inst539_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst558
 	}
 
 	goto unreachable
 	goto inst540
 inst540: // alt -> 535, 558
-	bt = append(bt, stateMatch{c, i, 540, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 540, 0}
+	st.last.len++
 	goto inst535
 inst540_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst558
 	}
 
@@ -8503,39 +8733,42 @@ inst545: // rune "09AFaf" -> 557
 	goto unreachable
 	goto inst546
 inst546: // alt -> 545, 557
-	bt = append(bt, stateMatch{c, i, 546, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 546, 0}
+	st.last.len++
 	goto inst545
 inst546_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst557
 	}
 
 	goto unreachable
 	goto inst547
 inst547: // alt -> 544, 557
-	bt = append(bt, stateMatch{c, i, 547, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 547, 0}
+	st.last.len++
 	goto inst544
 inst547_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst557
 	}
 
 	goto unreachable
 	goto inst548
 inst548: // alt -> 543, 557
-	bt = append(bt, stateMatch{c, i, 548, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 548, 0}
+	st.last.len++
 	goto inst543
 inst548_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst557
 	}
 
@@ -8629,117 +8862,126 @@ inst553: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst554
 inst554: // alt -> 553, 772
-	bt = append(bt, stateMatch{c, i, 554, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 554, 0}
+	st.last.len++
 	goto inst553
 inst554_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst555
 inst555: // alt -> 552, 772
-	bt = append(bt, stateMatch{c, i, 555, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 555, 0}
+	st.last.len++
 	goto inst552
 inst555_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst556
 inst556: // alt -> 551, 772
-	bt = append(bt, stateMatch{c, i, 556, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 556, 0}
+	st.last.len++
 	goto inst551
 inst556_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst557
 inst557: // alt -> 549, 772
-	bt = append(bt, stateMatch{c, i, 557, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 557, 0}
+	st.last.len++
 	goto inst549
 inst557_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst558
 inst558: // alt -> 541, 772
-	bt = append(bt, stateMatch{c, i, 558, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 558, 0}
+	st.last.len++
 	goto inst541
 inst558_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst559
 inst559: // alt -> 533, 772
-	bt = append(bt, stateMatch{c, i, 559, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 559, 0}
+	st.last.len++
 	goto inst533
 inst559_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst560
 inst560: // alt -> 525, 772
-	bt = append(bt, stateMatch{c, i, 560, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 560, 0}
+	st.last.len++
 	goto inst525
 inst560_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst561
 inst561: // alt -> 517, 772
-	bt = append(bt, stateMatch{c, i, 561, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 561, 0}
+	st.last.len++
 	goto inst517
 inst561_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
 	goto unreachable
 	goto inst562
 inst562: // alt -> 509, 772
-	bt = append(bt, stateMatch{c, i, 562, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 562, 0}
+	st.last.len++
 	goto inst509
 inst562_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst772
 	}
 
@@ -8757,26 +8999,28 @@ inst563: //
 	goto unreachable
 	goto inst564
 inst564: // alt -> 501, 563
-	bt = append(bt, stateMatch{c, i, 564, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 564, 0}
+	st.last.len++
 	goto inst501
 inst564_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst563
 	}
 
 	goto unreachable
 	goto inst565
 inst565: // alt -> 499, 500
-	bt = append(bt, stateMatch{c, i, 565, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 565, 0}
+	st.last.len++
 	goto inst499
 inst565_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst500
 	}
 
@@ -8889,52 +9133,56 @@ inst575: // rune "09AFaf" -> 609
 	goto unreachable
 	goto inst576
 inst576: // alt -> 575, 609
-	bt = append(bt, stateMatch{c, i, 576, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 576, 0}
+	st.last.len++
 	goto inst575
 inst576_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
 	goto unreachable
 	goto inst577
 inst577: // alt -> 574, 609
-	bt = append(bt, stateMatch{c, i, 577, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 577, 0}
+	st.last.len++
 	goto inst574
 inst577_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
 	goto unreachable
 	goto inst578
 inst578: // alt -> 573, 609
-	bt = append(bt, stateMatch{c, i, 578, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 578, 0}
+	st.last.len++
 	goto inst573
 inst578_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
 	goto unreachable
 	goto inst579
 inst579: // alt -> 572, 609
-	bt = append(bt, stateMatch{c, i, 579, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 579, 0}
+	st.last.len++
 	goto inst572
 inst579_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst609
 	}
 
@@ -9028,52 +9276,56 @@ inst584: // rune "09AFaf" -> 608
 	goto unreachable
 	goto inst585
 inst585: // alt -> 584, 608
-	bt = append(bt, stateMatch{c, i, 585, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 585, 0}
+	st.last.len++
 	goto inst584
 inst585_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
 	goto unreachable
 	goto inst586
 inst586: // alt -> 583, 608
-	bt = append(bt, stateMatch{c, i, 586, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 586, 0}
+	st.last.len++
 	goto inst583
 inst586_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
 	goto unreachable
 	goto inst587
 inst587: // alt -> 582, 608
-	bt = append(bt, stateMatch{c, i, 587, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 587, 0}
+	st.last.len++
 	goto inst582
 inst587_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
 	goto unreachable
 	goto inst588
 inst588: // alt -> 581, 608
-	bt = append(bt, stateMatch{c, i, 588, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 588, 0}
+	st.last.len++
 	goto inst581
 inst588_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst608
 	}
 
@@ -9167,52 +9419,56 @@ inst593: // rune "09AFaf" -> 607
 	goto unreachable
 	goto inst594
 inst594: // alt -> 593, 607
-	bt = append(bt, stateMatch{c, i, 594, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 594, 0}
+	st.last.len++
 	goto inst593
 inst594_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
 	goto unreachable
 	goto inst595
 inst595: // alt -> 592, 607
-	bt = append(bt, stateMatch{c, i, 595, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 595, 0}
+	st.last.len++
 	goto inst592
 inst595_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
 	goto unreachable
 	goto inst596
 inst596: // alt -> 591, 607
-	bt = append(bt, stateMatch{c, i, 596, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 596, 0}
+	st.last.len++
 	goto inst591
 inst596_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
 	goto unreachable
 	goto inst597
 inst597: // alt -> 590, 607
-	bt = append(bt, stateMatch{c, i, 597, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 597, 0}
+	st.last.len++
 	goto inst590
 inst597_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst607
 	}
 
@@ -9306,104 +9562,112 @@ inst602: // rune "09AFaf" -> 611
 	goto unreachable
 	goto inst603
 inst603: // alt -> 602, 611
-	bt = append(bt, stateMatch{c, i, 603, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 603, 0}
+	st.last.len++
 	goto inst602
 inst603_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
 	goto unreachable
 	goto inst604
 inst604: // alt -> 601, 611
-	bt = append(bt, stateMatch{c, i, 604, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 604, 0}
+	st.last.len++
 	goto inst601
 inst604_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
 	goto unreachable
 	goto inst605
 inst605: // alt -> 600, 611
-	bt = append(bt, stateMatch{c, i, 605, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 605, 0}
+	st.last.len++
 	goto inst600
 inst605_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
 	goto unreachable
 	goto inst606
 inst606: // alt -> 599, 611
-	bt = append(bt, stateMatch{c, i, 606, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 606, 0}
+	st.last.len++
 	goto inst599
 inst606_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
 	goto unreachable
 	goto inst607
 inst607: // alt -> 598, 611
-	bt = append(bt, stateMatch{c, i, 607, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 607, 0}
+	st.last.len++
 	goto inst598
 inst607_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
 	goto unreachable
 	goto inst608
 inst608: // alt -> 589, 611
-	bt = append(bt, stateMatch{c, i, 608, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 608, 0}
+	st.last.len++
 	goto inst589
 inst608_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
 	goto unreachable
 	goto inst609
 inst609: // alt -> 580, 611
-	bt = append(bt, stateMatch{c, i, 609, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 609, 0}
+	st.last.len++
 	goto inst580
 inst609_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
 	goto unreachable
 	goto inst610
 inst610: // alt -> 571, 611
-	bt = append(bt, stateMatch{c, i, 610, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 610, 0}
+	st.last.len++
 	goto inst571
 inst610_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst611
 	}
 
@@ -9440,8 +9704,7 @@ inst612: // rune "09AZaz" -> 613
 	goto unreachable
 	goto inst613
 inst613: // alt -> 612, 772
-	if len(bt) > 0 {
-		ps := &bt[len(bt)-1]
+	if ps, ok := st.peek(); ok {
 		if ps.pc == 613 && i-ps.i == 1 {
 			// simple loop
 			ps.i = i
@@ -9449,19 +9712,20 @@ inst613: // alt -> 612, 772
 			goto inst612
 		}
 	}
-	bt = append(bt, stateMatch{c, i, 613, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 613, 0}
+	st.last.len++
 	goto inst612
 inst613_alt:
 	{
-		n := len(bt) - 1
-		ps := &bt[n]
+		ps, _ := st.peek()
 		c, i = ps.c, ps.i
 		if ps.cnt > 0 {
 			// simple loop
 			ps.i -= 1
 			ps.cnt--
 		} else {
-			bt = bt[:n]
+			st.pop()
 		}
 		goto inst772
 	}
@@ -9469,13 +9733,14 @@ inst613_alt:
 	goto unreachable
 	goto inst614
 inst614: // alt -> 565, 566
-	bt = append(bt, stateMatch{c, i, 614, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 614, 0}
+	st.last.len++
 	goto inst565
 inst614_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst566
 	}
 
@@ -9558,52 +9823,56 @@ inst625: //
 	goto unreachable
 	goto inst626
 inst626: // alt -> 625, 630
-	bt = append(bt, stateMatch{c, i, 626, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 626, 0}
+	st.last.len++
 	goto inst625
 inst626_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
 	goto unreachable
 	goto inst627
 inst627: // alt -> 624, 630
-	bt = append(bt, stateMatch{c, i, 627, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 627, 0}
+	st.last.len++
 	goto inst624
 inst627_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
 	goto unreachable
 	goto inst628
 inst628: // alt -> 623, 630
-	bt = append(bt, stateMatch{c, i, 628, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 628, 0}
+	st.last.len++
 	goto inst623
 inst628_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
 	goto unreachable
 	goto inst629
 inst629: // alt -> 621, 630
-	bt = append(bt, stateMatch{c, i, 629, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 629, 0}
+	st.last.len++
 	goto inst621
 inst629_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst630
 	}
 
@@ -9621,13 +9890,14 @@ inst630: //
 	goto unreachable
 	goto inst631
 inst631: // alt -> 617, 643
-	bt = append(bt, stateMatch{c, i, 631, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 631, 0}
+	st.last.len++
 	goto inst617
 inst631_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst643
 	}
 
@@ -9693,13 +9963,14 @@ inst637: //
 	goto unreachable
 	goto inst638
 inst638: // alt -> 637, 639
-	bt = append(bt, stateMatch{c, i, 638, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 638, 0}
+	st.last.len++
 	goto inst637
 inst638_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst639
 	}
 
@@ -9718,26 +9989,28 @@ inst639: // rune "09" -> 642
 	goto unreachable
 	goto inst640
 inst640: // alt -> 635, 638
-	bt = append(bt, stateMatch{c, i, 640, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 640, 0}
+	st.last.len++
 	goto inst635
 inst640_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst638
 	}
 
 	goto unreachable
 	goto inst641
 inst641: // alt -> 640, 642
-	bt = append(bt, stateMatch{c, i, 641, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 641, 0}
+	st.last.len++
 	goto inst640
 inst641_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst642
 	}
 
@@ -9756,13 +10029,14 @@ inst642: // rune "09" -> 644
 	goto unreachable
 	goto inst643
 inst643: // alt -> 632, 641
-	bt = append(bt, stateMatch{c, i, 643, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 643, 0}
+	st.last.len++
 	goto inst632
 inst643_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst641
 	}
 
@@ -9839,13 +10113,14 @@ inst650: //
 	goto unreachable
 	goto inst651
 inst651: // alt -> 650, 652
-	bt = append(bt, stateMatch{c, i, 651, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 651, 0}
+	st.last.len++
 	goto inst650
 inst651_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst652
 	}
 
@@ -9864,26 +10139,28 @@ inst652: // rune "09" -> 655
 	goto unreachable
 	goto inst653
 inst653: // alt -> 648, 651
-	bt = append(bt, stateMatch{c, i, 653, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 653, 0}
+	st.last.len++
 	goto inst648
 inst653_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst651
 	}
 
 	goto unreachable
 	goto inst654
 inst654: // alt -> 653, 655
-	bt = append(bt, stateMatch{c, i, 654, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 654, 0}
+	st.last.len++
 	goto inst653
 inst654_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst655
 	}
 
@@ -9902,13 +10179,14 @@ inst655: // rune "09" -> 657
 	goto unreachable
 	goto inst656
 inst656: // alt -> 645, 654
-	bt = append(bt, stateMatch{c, i, 656, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 656, 0}
+	st.last.len++
 	goto inst645
 inst656_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst654
 	}
 
@@ -9985,13 +10263,14 @@ inst663: //
 	goto unreachable
 	goto inst664
 inst664: // alt -> 663, 665
-	bt = append(bt, stateMatch{c, i, 664, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 664, 0}
+	st.last.len++
 	goto inst663
 inst664_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst665
 	}
 
@@ -10010,26 +10289,28 @@ inst665: // rune "09" -> 668
 	goto unreachable
 	goto inst666
 inst666: // alt -> 661, 664
-	bt = append(bt, stateMatch{c, i, 666, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 666, 0}
+	st.last.len++
 	goto inst661
 inst666_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst664
 	}
 
 	goto unreachable
 	goto inst667
 inst667: // alt -> 666, 668
-	bt = append(bt, stateMatch{c, i, 667, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 667, 0}
+	st.last.len++
 	goto inst666
 inst667_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst668
 	}
 
@@ -10048,13 +10329,14 @@ inst668: // rune "09" -> 670
 	goto unreachable
 	goto inst669
 inst669: // alt -> 658, 667
-	bt = append(bt, stateMatch{c, i, 669, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 669, 0}
+	st.last.len++
 	goto inst658
 inst669_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst667
 	}
 
@@ -10131,13 +10413,14 @@ inst676: //
 	goto unreachable
 	goto inst677
 inst677: // alt -> 676, 678
-	bt = append(bt, stateMatch{c, i, 677, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 677, 0}
+	st.last.len++
 	goto inst676
 inst677_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst678
 	}
 
@@ -10156,26 +10439,28 @@ inst678: // rune "09" -> 681
 	goto unreachable
 	goto inst679
 inst679: // alt -> 674, 677
-	bt = append(bt, stateMatch{c, i, 679, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 679, 0}
+	st.last.len++
 	goto inst674
 inst679_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst677
 	}
 
 	goto unreachable
 	goto inst680
 inst680: // alt -> 679, 681
-	bt = append(bt, stateMatch{c, i, 680, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 680, 0}
+	st.last.len++
 	goto inst679
 inst680_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst681
 	}
 
@@ -10194,26 +10479,28 @@ inst681: // rune "09" -> 772
 	goto unreachable
 	goto inst682
 inst682: // alt -> 671, 680
-	bt = append(bt, stateMatch{c, i, 682, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 682, 0}
+	st.last.len++
 	goto inst671
 inst682_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst680
 	}
 
 	goto unreachable
 	goto inst683
 inst683: // alt -> 614, 615
-	bt = append(bt, stateMatch{c, i, 683, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 683, 0}
+	st.last.len++
 	goto inst614
 inst683_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst615
 	}
 
@@ -10296,39 +10583,42 @@ inst687: // rune "09AFaf" -> 691
 	goto unreachable
 	goto inst688
 inst688: // alt -> 687, 691
-	bt = append(bt, stateMatch{c, i, 688, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 688, 0}
+	st.last.len++
 	goto inst687
 inst688_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst691
 	}
 
 	goto unreachable
 	goto inst689
 inst689: // alt -> 686, 691
-	bt = append(bt, stateMatch{c, i, 689, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 689, 0}
+	st.last.len++
 	goto inst686
 inst689_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst691
 	}
 
 	goto unreachable
 	goto inst690
 inst690: // alt -> 685, 691
-	bt = append(bt, stateMatch{c, i, 690, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 690, 0}
+	st.last.len++
 	goto inst685
 inst690_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst691
 	}
 
@@ -10422,39 +10712,42 @@ inst695: // rune "09AFaf" -> 699
 	goto unreachable
 	goto inst696
 inst696: // alt -> 695, 699
-	bt = append(bt, stateMatch{c, i, 696, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 696, 0}
+	st.last.len++
 	goto inst695
 inst696_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst699
 	}
 
 	goto unreachable
 	goto inst697
 inst697: // alt -> 694, 699
-	bt = append(bt, stateMatch{c, i, 697, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 697, 0}
+	st.last.len++
 	goto inst694
 inst697_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst699
 	}
 
 	goto unreachable
 	goto inst698
 inst698: // alt -> 693, 699
-	bt = append(bt, stateMatch{c, i, 698, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 698, 0}
+	st.last.len++
 	goto inst693
 inst698_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst699
 	}
 
@@ -10548,39 +10841,42 @@ inst703: // rune "09AFaf" -> 707
 	goto unreachable
 	goto inst704
 inst704: // alt -> 703, 707
-	bt = append(bt, stateMatch{c, i, 704, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 704, 0}
+	st.last.len++
 	goto inst703
 inst704_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst707
 	}
 
 	goto unreachable
 	goto inst705
 inst705: // alt -> 702, 707
-	bt = append(bt, stateMatch{c, i, 705, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 705, 0}
+	st.last.len++
 	goto inst702
 inst705_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst707
 	}
 
 	goto unreachable
 	goto inst706
 inst706: // alt -> 701, 707
-	bt = append(bt, stateMatch{c, i, 706, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 706, 0}
+	st.last.len++
 	goto inst701
 inst706_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst707
 	}
 
@@ -10674,39 +10970,42 @@ inst711: // rune "09AFaf" -> 715
 	goto unreachable
 	goto inst712
 inst712: // alt -> 711, 715
-	bt = append(bt, stateMatch{c, i, 712, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 712, 0}
+	st.last.len++
 	goto inst711
 inst712_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst715
 	}
 
 	goto unreachable
 	goto inst713
 inst713: // alt -> 710, 715
-	bt = append(bt, stateMatch{c, i, 713, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 713, 0}
+	st.last.len++
 	goto inst710
 inst713_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst715
 	}
 
 	goto unreachable
 	goto inst714
 inst714: // alt -> 709, 715
-	bt = append(bt, stateMatch{c, i, 714, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 714, 0}
+	st.last.len++
 	goto inst709
 inst714_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst715
 	}
 
@@ -10724,39 +11023,42 @@ inst715: //
 	goto unreachable
 	goto inst716
 inst716: // alt -> 708, 719
-	bt = append(bt, stateMatch{c, i, 716, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 716, 0}
+	st.last.len++
 	goto inst708
 inst716_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst719
 	}
 
 	goto unreachable
 	goto inst717
 inst717: // alt -> 700, 719
-	bt = append(bt, stateMatch{c, i, 717, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 717, 0}
+	st.last.len++
 	goto inst700
 inst717_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst719
 	}
 
 	goto unreachable
 	goto inst718
 inst718: // alt -> 692, 719
-	bt = append(bt, stateMatch{c, i, 718, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 718, 0}
+	st.last.len++
 	goto inst692
 inst718_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst719
 	}
 
@@ -10833,13 +11135,14 @@ inst725: //
 	goto unreachable
 	goto inst726
 inst726: // alt -> 725, 727
-	bt = append(bt, stateMatch{c, i, 726, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 726, 0}
+	st.last.len++
 	goto inst725
 inst726_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst727
 	}
 
@@ -10858,26 +11161,28 @@ inst727: // rune "09" -> 730
 	goto unreachable
 	goto inst728
 inst728: // alt -> 723, 726
-	bt = append(bt, stateMatch{c, i, 728, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 728, 0}
+	st.last.len++
 	goto inst723
 inst728_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst726
 	}
 
 	goto unreachable
 	goto inst729
 inst729: // alt -> 728, 730
-	bt = append(bt, stateMatch{c, i, 729, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 729, 0}
+	st.last.len++
 	goto inst728
 inst729_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst730
 	}
 
@@ -10896,13 +11201,14 @@ inst730: // rune "09" -> 732
 	goto unreachable
 	goto inst731
 inst731: // alt -> 720, 729
-	bt = append(bt, stateMatch{c, i, 731, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 731, 0}
+	st.last.len++
 	goto inst720
 inst731_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst729
 	}
 
@@ -10979,13 +11285,14 @@ inst738: //
 	goto unreachable
 	goto inst739
 inst739: // alt -> 738, 740
-	bt = append(bt, stateMatch{c, i, 739, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 739, 0}
+	st.last.len++
 	goto inst738
 inst739_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst740
 	}
 
@@ -11004,26 +11311,28 @@ inst740: // rune "09" -> 743
 	goto unreachable
 	goto inst741
 inst741: // alt -> 736, 739
-	bt = append(bt, stateMatch{c, i, 741, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 741, 0}
+	st.last.len++
 	goto inst736
 inst741_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst739
 	}
 
 	goto unreachable
 	goto inst742
 inst742: // alt -> 741, 743
-	bt = append(bt, stateMatch{c, i, 742, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 742, 0}
+	st.last.len++
 	goto inst741
 inst742_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst743
 	}
 
@@ -11042,13 +11351,14 @@ inst743: // rune "09" -> 745
 	goto unreachable
 	goto inst744
 inst744: // alt -> 733, 742
-	bt = append(bt, stateMatch{c, i, 744, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 744, 0}
+	st.last.len++
 	goto inst733
 inst744_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst742
 	}
 
@@ -11125,13 +11435,14 @@ inst751: //
 	goto unreachable
 	goto inst752
 inst752: // alt -> 751, 753
-	bt = append(bt, stateMatch{c, i, 752, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 752, 0}
+	st.last.len++
 	goto inst751
 inst752_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst753
 	}
 
@@ -11150,26 +11461,28 @@ inst753: // rune "09" -> 756
 	goto unreachable
 	goto inst754
 inst754: // alt -> 749, 752
-	bt = append(bt, stateMatch{c, i, 754, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 754, 0}
+	st.last.len++
 	goto inst749
 inst754_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst752
 	}
 
 	goto unreachable
 	goto inst755
 inst755: // alt -> 754, 756
-	bt = append(bt, stateMatch{c, i, 755, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 755, 0}
+	st.last.len++
 	goto inst754
 inst755_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst756
 	}
 
@@ -11188,13 +11501,14 @@ inst756: // rune "09" -> 758
 	goto unreachable
 	goto inst757
 inst757: // alt -> 746, 755
-	bt = append(bt, stateMatch{c, i, 757, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 757, 0}
+	st.last.len++
 	goto inst746
 inst757_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst755
 	}
 
@@ -11271,13 +11585,14 @@ inst764: //
 	goto unreachable
 	goto inst765
 inst765: // alt -> 764, 766
-	bt = append(bt, stateMatch{c, i, 765, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 765, 0}
+	st.last.len++
 	goto inst764
 inst765_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst766
 	}
 
@@ -11296,26 +11611,28 @@ inst766: // rune "09" -> 769
 	goto unreachable
 	goto inst767
 inst767: // alt -> 762, 765
-	bt = append(bt, stateMatch{c, i, 767, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 767, 0}
+	st.last.len++
 	goto inst762
 inst767_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst765
 	}
 
 	goto unreachable
 	goto inst768
 inst768: // alt -> 767, 769
-	bt = append(bt, stateMatch{c, i, 768, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 768, 0}
+	st.last.len++
 	goto inst767
 inst768_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst769
 	}
 
@@ -11334,26 +11651,28 @@ inst769: // rune "09" -> 772
 	goto unreachable
 	goto inst770
 inst770: // alt -> 759, 768
-	bt = append(bt, stateMatch{c, i, 770, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 770, 0}
+	st.last.len++
 	goto inst759
 inst770_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst768
 	}
 
 	goto unreachable
 	goto inst771
 inst771: // alt -> 683, 684
-	bt = append(bt, stateMatch{c, i, 771, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 771, 0}
+	st.last.len++
 	goto inst683
 inst771_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst684
 	}
 
@@ -11367,10 +11686,10 @@ inst772: // match
 	goto fail
 fail:
 	{
-		if i <= len(r) && len(bt) > 0 {
-			switch bt[len(bt)-1].pc {
+		if ps, ok := st.peek(); i <= len(r) && ok {
+			switch ps.pc {
 			default:
-				panic(bt[len(bt)-1].pc)
+				panic(ps.pc)
 			case 5:
 				goto inst5_alt
 			case 6:
@@ -12025,6 +12344,7 @@ fail:
 
 			si += sz
 			_ = cr
+			st.reset()
 			goto restart
 		}
 		var m [1]string
@@ -12043,4 +12363,96 @@ match:
 	goto unreachable
 unreachable:
 	panic("unreachable")
+}
+
+var poolMatch = sync.Pool{New: func() interface{} { return &segmentMatch{} }}
+
+type segmentMatch struct {
+	state [256]stateMatch // states
+	len   uint16          // how many elements of state are populated
+	next  *segmentMatch   // next segment
+	prev  *segmentMatch   // previous segment
+}
+
+func getMatch() *segmentMatch {
+	return poolMatch.Get().(*segmentMatch)
+}
+
+func putMatch(s *segmentMatch) {
+	s.next, s.prev, s.len = nil, nil, 0
+	poolMatch.Put(s)
+}
+
+type stackMatch struct {
+	// first segment in the stack; this is just used to simplify drain()
+	first *segmentMatch
+	// currently active segment: this is the segment where push/peek/pop operate;
+	// note that additional empty segments may be already be allocated and linked
+	// after the last segment
+	last *segmentMatch
+}
+
+func (st *stackMatch) push() {
+	if int(st.last.len) == cap(st.last.state) {
+		st.pushSlow()
+	}
+}
+
+func (st *stackMatch) pushSlow() {
+	if st.last.next != nil {
+		st.last = st.last.next
+	} else {
+		seg := getMatch()
+		st.last.next = seg
+		seg.prev = st.last
+		st.last = seg
+	}
+}
+
+func (st *stackMatch) peek() (*stateMatch, bool) {
+	if st.last.len > 0 {
+		return &st.last.state[st.last.len-1], true
+	}
+	return st.peekSlow()
+}
+
+func (st *stackMatch) peekSlow() (*stateMatch, bool) {
+	if st.last.prev != nil {
+		st.last = st.last.prev
+	} else {
+		return nil, false
+	}
+	return &st.last.state[st.last.len-1], true
+}
+
+func (st *stackMatch) pop() (*stateMatch, bool) {
+	sp, ok := st.peek()
+	if ok {
+		st.last.len--
+	}
+	return sp, ok
+}
+
+// drain puts all stack segments back into the segment pool
+func (st *stackMatch) drain() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		putMatch(seg)
+		seg = next
+	}
+	st.first, st.last = nil, nil
+}
+
+// reset resets the stack without returning the segments to the segment pool
+func (st *stackMatch) reset() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		if seg.len == 0 {
+			return
+		}
+		seg.len = 0
+		seg = next
+	}
 }

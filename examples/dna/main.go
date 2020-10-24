@@ -6,6 +6,7 @@ package dna
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "sync"
 
 const MatchRegexp = "(?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))"
 
@@ -23,14 +24,14 @@ type stateMatch struct {
 // (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
 // with flags 212
 func Match(r string) (matches [10]string, pos int, ok bool) {
-	var bt [17]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
-	return
-}
-func doMatch(r string, bt []stateMatch) ([10]string, int, bool) {
 	si := 0 // starting byte index
+	var st stackMatch
+	{
+		seg := getMatch()
+		st.first, st.last = seg, seg
+	}
+	defer st.drain()
 restart:
-	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [20]int    // captures
 	var bc [20]int   // captures for the longest match so far
 	matched := false // succesful match flag
@@ -99,13 +100,14 @@ inst10: //
 	goto unreachable
 	goto inst18
 inst18: // alt -> 2, 10
-	bt = append(bt, stateMatch{c, i, 18, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 18, 0}
+	st.last.len++
 	goto inst2
 inst18_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst10
 	}
 
@@ -208,13 +210,14 @@ inst36: // rune "aaccgg" -> 38
 	goto unreachable
 	goto inst37
 inst37: // alt -> 21, 29
-	bt = append(bt, stateMatch{c, i, 37, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 37, 0}
+	st.last.len++
 	goto inst21
 inst37_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst29
 	}
 
@@ -227,13 +230,14 @@ inst38: // cap 5 -> 180
 	goto unreachable
 	goto inst39
 inst39: // alt -> 1, 20
-	bt = append(bt, stateMatch{c, i, 39, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 39, 0}
+	st.last.len++
 	goto inst1
 inst39_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst20
 	}
 
@@ -348,13 +352,14 @@ inst56: //
 	goto unreachable
 	goto inst57
 inst57: // alt -> 41, 49
-	bt = append(bt, stateMatch{c, i, 57, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 57, 0}
+	st.last.len++
 	goto inst41
 inst57_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst49
 	}
 
@@ -367,13 +372,14 @@ inst58: // cap 7 -> 180
 	goto unreachable
 	goto inst59
 inst59: // alt -> 39, 40
-	bt = append(bt, stateMatch{c, i, 59, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 59, 0}
+	st.last.len++
 	goto inst39
 inst59_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst40
 	}
 
@@ -488,13 +494,14 @@ inst75: //
 	goto unreachable
 	goto inst77
 inst77: // alt -> 61, 69
-	bt = append(bt, stateMatch{c, i, 77, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 77, 0}
+	st.last.len++
 	goto inst61
 inst77_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst69
 	}
 
@@ -507,13 +514,14 @@ inst78: // cap 9 -> 180
 	goto unreachable
 	goto inst79
 inst79: // alt -> 59, 60
-	bt = append(bt, stateMatch{c, i, 79, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 79, 0}
+	st.last.len++
 	goto inst59
 inst79_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst60
 	}
 
@@ -628,13 +636,14 @@ inst94: //
 	goto unreachable
 	goto inst97
 inst97: // alt -> 81, 89
-	bt = append(bt, stateMatch{c, i, 97, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 97, 0}
+	st.last.len++
 	goto inst81
 inst97_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst89
 	}
 
@@ -647,13 +656,14 @@ inst98: // cap 11 -> 180
 	goto unreachable
 	goto inst99
 inst99: // alt -> 79, 80
-	bt = append(bt, stateMatch{c, i, 99, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 99, 0}
+	st.last.len++
 	goto inst79
 inst99_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst80
 	}
 
@@ -768,13 +778,14 @@ inst113: //
 	goto unreachable
 	goto inst117
 inst117: // alt -> 101, 109
-	bt = append(bt, stateMatch{c, i, 117, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 117, 0}
+	st.last.len++
 	goto inst101
 inst117_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst109
 	}
 
@@ -787,13 +798,14 @@ inst118: // cap 13 -> 180
 	goto unreachable
 	goto inst119
 inst119: // alt -> 99, 100
-	bt = append(bt, stateMatch{c, i, 119, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 119, 0}
+	st.last.len++
 	goto inst99
 inst119_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst100
 	}
 
@@ -908,13 +920,14 @@ inst132: //
 	goto unreachable
 	goto inst137
 inst137: // alt -> 121, 129
-	bt = append(bt, stateMatch{c, i, 137, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 137, 0}
+	st.last.len++
 	goto inst121
 inst137_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst129
 	}
 
@@ -927,13 +940,14 @@ inst138: // cap 15 -> 180
 	goto unreachable
 	goto inst139
 inst139: // alt -> 119, 120
-	bt = append(bt, stateMatch{c, i, 139, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 139, 0}
+	st.last.len++
 	goto inst119
 inst139_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst120
 	}
 
@@ -1048,13 +1062,14 @@ inst151: //
 	goto unreachable
 	goto inst157
 inst157: // alt -> 141, 149
-	bt = append(bt, stateMatch{c, i, 157, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 157, 0}
+	st.last.len++
 	goto inst141
 inst157_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst149
 	}
 
@@ -1067,13 +1082,14 @@ inst158: // cap 17 -> 180
 	goto unreachable
 	goto inst159
 inst159: // alt -> 139, 140
-	bt = append(bt, stateMatch{c, i, 159, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 159, 0}
+	st.last.len++
 	goto inst139
 inst159_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst140
 	}
 
@@ -1170,13 +1186,14 @@ inst170: //
 	goto unreachable
 	goto inst177
 inst177: // alt -> 161, 169
-	bt = append(bt, stateMatch{c, i, 177, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 177, 0}
+	st.last.len++
 	goto inst161
 inst177_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst169
 	}
 
@@ -1189,13 +1206,14 @@ inst178: // cap 19 -> 180
 	goto unreachable
 	goto inst179
 inst179: // alt -> 159, 160
-	bt = append(bt, stateMatch{c, i, 179, 0})
+	st.push()
+	st.last.state[st.last.len] = stateMatch{c, i, 179, 0}
+	st.last.len++
 	goto inst159
 inst179_alt:
 	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
+		s, _ := st.pop()
+		c, i = s.c, s.i
 		goto inst160
 	}
 
@@ -1209,10 +1227,10 @@ inst180: // match
 	goto fail
 fail:
 	{
-		if i <= len(r) && len(bt) > 0 {
-			switch bt[len(bt)-1].pc {
+		if ps, ok := st.peek(); i <= len(r) && ok {
+			switch ps.pc {
 			default:
-				panic(bt[len(bt)-1].pc)
+				panic(ps.pc)
 			case 18:
 				goto inst18_alt
 			case 37:
@@ -1272,6 +1290,7 @@ fail:
 
 			si += sz
 			_ = cr
+			st.reset()
 			goto restart
 		}
 		var m [10]string
@@ -1290,4 +1309,96 @@ match:
 	goto unreachable
 unreachable:
 	panic("unreachable")
+}
+
+var poolMatch = sync.Pool{New: func() interface{} { return &segmentMatch{} }}
+
+type segmentMatch struct {
+	state [256]stateMatch // states
+	len   uint16          // how many elements of state are populated
+	next  *segmentMatch   // next segment
+	prev  *segmentMatch   // previous segment
+}
+
+func getMatch() *segmentMatch {
+	return poolMatch.Get().(*segmentMatch)
+}
+
+func putMatch(s *segmentMatch) {
+	s.next, s.prev, s.len = nil, nil, 0
+	poolMatch.Put(s)
+}
+
+type stackMatch struct {
+	// first segment in the stack; this is just used to simplify drain()
+	first *segmentMatch
+	// currently active segment: this is the segment where push/peek/pop operate;
+	// note that additional empty segments may be already be allocated and linked
+	// after the last segment
+	last *segmentMatch
+}
+
+func (st *stackMatch) push() {
+	if int(st.last.len) == cap(st.last.state) {
+		st.pushSlow()
+	}
+}
+
+func (st *stackMatch) pushSlow() {
+	if st.last.next != nil {
+		st.last = st.last.next
+	} else {
+		seg := getMatch()
+		st.last.next = seg
+		seg.prev = st.last
+		st.last = seg
+	}
+}
+
+func (st *stackMatch) peek() (*stateMatch, bool) {
+	if st.last.len > 0 {
+		return &st.last.state[st.last.len-1], true
+	}
+	return st.peekSlow()
+}
+
+func (st *stackMatch) peekSlow() (*stateMatch, bool) {
+	if st.last.prev != nil {
+		st.last = st.last.prev
+	} else {
+		return nil, false
+	}
+	return &st.last.state[st.last.len-1], true
+}
+
+func (st *stackMatch) pop() (*stateMatch, bool) {
+	sp, ok := st.peek()
+	if ok {
+		st.last.len--
+	}
+	return sp, ok
+}
+
+// drain puts all stack segments back into the segment pool
+func (st *stackMatch) drain() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		putMatch(seg)
+		seg = next
+	}
+	st.first, st.last = nil, nil
+}
+
+// reset resets the stack without returning the segments to the segment pool
+func (st *stackMatch) reset() {
+	seg := st.first
+	for seg != nil {
+		next := seg.next
+		if seg.len == 0 {
+			return
+		}
+		seg.len = 0
+		seg = next
+	}
 }
