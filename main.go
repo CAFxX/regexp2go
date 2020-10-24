@@ -292,9 +292,9 @@ func main() {
 			// TODO: implement a succint encoding that allows fast O(1) set membership queries for the case of sparse non-ASCII rune ranges
 			if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
 				useRuneMask = true
-				outn(`if cr < %d { 
+				outn(`if cru := uint(cr); cru < %d { 
 						const runeMask = %q
-						if runeMask[cr/8] & (1<<(cr%%8)) != 0 { 
+						if runeMask[cru/8] & (1<<(cru%%8)) != 0 { 
 							i+=sz
 							goto inst%d 
 						} 

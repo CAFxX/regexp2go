@@ -78,9 +78,9 @@ inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00 h\xff\x03\xfe\xff\xff\x87\xfe\xff\xff\a"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst4
 			}
@@ -154,9 +154,9 @@ inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00`\xff\x03\xfe\xff\xff\a\xfe\xff\xff\a"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst9
 			}
@@ -218,9 +218,9 @@ inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\a\xfe\xff\xff\a"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst12
 			}
@@ -242,9 +242,9 @@ inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\a\xfe\xff\xff\a"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst13
 			}

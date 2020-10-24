@@ -127,9 +127,9 @@ inst21: // rune "ccggtt" -> 22
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst22
 			}
@@ -197,9 +197,9 @@ inst36: // rune "aaccgg" -> 38
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst38
 			}
@@ -270,9 +270,9 @@ inst42: // rune "aacctt" -> 43
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst43
 			}
@@ -336,9 +336,9 @@ inst55: // rune "aaggtt" -> 56
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst56
 			}
@@ -422,9 +422,9 @@ inst63: // rune "aacctt" -> 64
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst64
 			}
@@ -484,9 +484,9 @@ inst74: // rune "aaggtt" -> 75
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst75
 			}
@@ -574,9 +574,9 @@ inst84: // rune "aacctt" -> 85
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst85
 			}
@@ -632,9 +632,9 @@ inst93: // rune "aaggtt" -> 94
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst94
 			}
@@ -726,9 +726,9 @@ inst105: // rune "aaccgg" -> 106
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst106
 			}
@@ -780,9 +780,9 @@ inst112: // rune "ccggtt" -> 113
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst113
 			}
@@ -878,9 +878,9 @@ inst126: // rune "ccggtt" -> 127
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst127
 			}
@@ -928,9 +928,9 @@ inst131: // rune "aaccgg" -> 132
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst132
 			}
@@ -1030,9 +1030,9 @@ inst147: // rune "ccggtt" -> 148
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst148
 			}
@@ -1076,9 +1076,9 @@ inst150: // rune "aaccgg" -> 151
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst151
 			}
@@ -1182,9 +1182,9 @@ inst168: // rune "ccggtt" -> 178
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst178
 			}
@@ -1206,9 +1206,9 @@ inst169: // rune "aaccgg" -> 170
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if cr < 128 {
+		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cr/8]&(1<<(cr%8)) != 0 {
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
 				goto inst170
 			}
