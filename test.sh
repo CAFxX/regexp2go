@@ -39,4 +39,6 @@ build unicode '私は((?:\p{Katakana}|\p{Hiragana}|\p{Han})+)です' 'それは�
 build suffix '[a-z]+$' 'ohvrun cbab cek aifrba  afur483hf, wjfbhjrbr ej frjebhrbiebfr frebfrvej rekhbrsfr fbrkhvbrkesf rf rbjkefbhrhfbhbrhebbrbfr jgrhh'
 
 echo "Running benchmarks"
-benchstat <(go test -bench=. -cpuprofile=cpu.prof -benchtime=0.1s -benchmem -count=5 -cpu=1 ./benchmark/)
+go test -c ./benchmark # build benchmark.test
+go test -bench=. -cpuprofile=cpu.prof -memprofile=mem.prof -benchtime=1s -cpu=1 -short ./benchmark/
+benchstat <(go test -bench=. -benchtime=0.1s -benchmem -count=5 -cpu=1 ./benchmark/)

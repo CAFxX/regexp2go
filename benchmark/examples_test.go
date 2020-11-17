@@ -23,6 +23,9 @@ func BenchmarkPrefix(b *testing.B) {
 			prefix.Match(s)
 		}
 	})
+	if testing.Short() {
+		return
+	}
 	b.Run("regexp", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			re.FindStringSubmatch(s)
@@ -38,6 +41,9 @@ func BenchmarkDna(b *testing.B) {
 			dna.Match(s)
 		}
 	})
+	if testing.Short() {
+		return
+	}
 	b.Run("regexp", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			re.FindStringSubmatch(s)
@@ -53,6 +59,9 @@ func BenchmarkMailCrawler(b *testing.B) {
 			mail_crawler.Match(s)
 		}
 	})
+	if testing.Short() {
+		return
+	}
 	b.Run("regexp", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			re.FindStringSubmatch(s)
@@ -74,6 +83,9 @@ ERR end
 			log_parse.Match(s)
 		}
 	})
+	if testing.Short() {
+		return
+	}
 	b.Run("regexp", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			re.FindStringSubmatch(s)
@@ -89,6 +101,9 @@ func BenchmarkUnicode(b *testing.B) {
 			unicode.Match(s)
 		}
 	})
+	if testing.Short() {
+		return
+	}
 	b.Run("regexp", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			re.FindStringSubmatch(s)
@@ -104,6 +119,9 @@ func BenchmarkSuffix(b *testing.B) {
 			suffix.Match(s)
 		}
 	})
+	if testing.Short() {
+		return
+	}
 	b.Run("regexp", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			re.FindStringSubmatch(s)
