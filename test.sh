@@ -11,13 +11,12 @@ function build() {
     mkdir -p "$dir"
     go run main.go "$regex" > "$dir/main.go"
     go build -o "$dir/main" "$dir/main.go"
+    go tool objdump -S -s "main.Match" "$dir/main" > "$dir/main.asm"
     "$dir/main" "$str"
 
     dir="examples/$pkg"
     mkdir -p "$dir"
     go run main.go -pkg "$pkg" "$regex" > "$dir/main.go"
-    go build -o "$dir/main" "./$dir"
-    go tool objdump -S "$dir/main" > "$dir/main.asm"
     rm -f "$dir/main"
 }
 
