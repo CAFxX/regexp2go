@@ -37,7 +37,9 @@ build prefix 'Hello ([^!]+)!' '> Hello world!'
 build unicode '私は((?:\p{Katakana}|\p{Hiragana}|\p{Han})+)です' 'それはちょっと。。。私は忙しいです！'
 build suffix '[a-z]+$' 'ohvrun cbab cek aifrba  afur483hf, wjfbhjrbr ej frjebhrbiebfr frebfrvej rekhbrsfr fbrkhvbrkesf rf rbjkefbhrhfbhbrhebbrbfr jgrhh'
 
-echo "Running benchmarks"
+echo "Gathering profiles"
 go test -c ./benchmark # build benchmark.test
-go test -bench=. -cpuprofile=cpu.prof -memprofile=mem.prof -benchtime=1s -cpu=1 -short ./benchmark/
+go test -bench=. -cpuprofile=cpu.prof -memprofile=mem.prof -benchtime=1s -cpu=1 -short ./benchmark/ >/dev/null
+
+echo "Running benchmarks"
 benchstat <(go test -bench=. -benchtime=0.1s -benchmem -count=5 -cpu=1 ./benchmark/)
