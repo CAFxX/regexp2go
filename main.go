@@ -108,6 +108,9 @@ func main() {
 	out("var _ = strings.Index")
 	out("type state%s struct { c [%d]int; i int; pc int; cnt int }", *fn, p.NumCap)
 	out("// %s implements the regular expression\n// %v\n// with flags %d", *fn, regex, *flags)
+	// TODO: create multiple versions of the function, each using different types for tracking offsets
+	//       (e.g. uint{8,16,32} instead of int) and dynamically dispatch to the different versions
+	//       based on the size of the input string r.
 	out("func %s(r string) ([%d]string, int, bool) {", *fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
 	out("restart:")

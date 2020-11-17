@@ -21,7 +21,7 @@ function build() {
     rm -f "$dir/main"
 }
 
-rm -rf gen examples
+rm -rf gen examples benchmark.test cpu.prof mem.prof
 
 build mail_crawler '(?i)\b([a-z0-9._%+-]+)@([a-z0-9.-]+\.[a-z]{2,})\b' ' dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com'
 build log_parse '(?m)^INFO res=([0-9]+) msg=(.*)$' "ERR x
