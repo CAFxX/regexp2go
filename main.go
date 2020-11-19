@@ -66,6 +66,7 @@ func main() {
 		outn(s, args...)
 		fmt.Fprintln(b, "")
 	}
+	// TODO: avoid decoding the runes and operate on raw bytes instead
 	outcr := `
 		cr, sz := rune(r[i]), 1 
 		if cr >= utf8.RuneSelf {
@@ -106,6 +107,7 @@ func main() {
 	}
 	out("var _ = syntax.IsWordChar")
 	out("var _ = strings.Index")
+	// TODO: instead of saving all captures, determine statically which captures to save at each InstAlt
 	out("type state%s struct { c [%d]int; i int; pc int; cnt int }", *fn, p.NumCap)
 	out("// %s implements the regular expression\n// %v\n// with flags %d", *fn, regex, *flags)
 	// TODO: create multiple versions of the function, each using different types for tracking offsets
