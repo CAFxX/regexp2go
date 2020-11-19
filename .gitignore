@@ -17,3 +17,4 @@ vendor/
 # Generated files
 gen/
 cpu.prof
+mem.prof
