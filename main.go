@@ -120,7 +120,7 @@ func main() {
 	out("  var _bt [%d]state%s // static storage for backtracking state \n bt := _bt[:0] // backtracking state ", numSt, *fn)
 	out("  var c [%d]int // captures ", p.NumCap)
 	out("var bc [%d]int // captures for the longest match so far", p.NumCap)
-	out("matched := false")
+	out("matched := false // succesful match flag")
 	out("  i := si // current byte index ")
 	if len(prefix) > 0 {
 		out(`

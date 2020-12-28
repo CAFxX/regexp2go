@@ -29,10 +29,10 @@ restart:
 	bt := _bt[:0]         // backtracking state
 	var c [6]int          // captures
 	var bc [6]int         // captures for the longest match so far
-	matched := false
-	i := si    // current byte index
-	c[0] = i   // start of match
-	goto inst1 // initial instruction
+	matched := false      // succesful match flag
+	i := si               // current byte index
+	c[0] = i              // start of match
+	goto inst1            // initial instruction
 
 	// inst0 unreacheable
 

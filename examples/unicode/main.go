@@ -29,8 +29,8 @@ restart:
 	bt := _bt[:0]         // backtracking state
 	var c [4]int          // captures
 	var bc [4]int         // captures for the longest match so far
-	matched := false
-	i := si // current byte index
+	matched := false      // succesful match flag
+	i := si               // current byte index
 
 	// fast prefix search "私は"
 	if idx := strings.Index(r[si:], "私は"); idx >= 0 {
