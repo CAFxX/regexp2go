@@ -161,6 +161,7 @@ func main() {
 		case syntax.InstAlt:
 			// TODO: use a pool of state segments to avoid copying (by linking the segments into a stack)
 			// TODO: open-code backtracking by keeping track of the predecessors
+			// TODO: when we have a set of known alternative (e.g. `(yadda|foo|bar)`) instead of pairways alt nodes use direct multiway dispatch on the first character of each alternative
 			if steps := isSimpleLoop(p, uint32(pc)); steps > 0 {
 				out(
 					`if len(bt) > 0 {
