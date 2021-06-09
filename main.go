@@ -317,6 +317,7 @@ func main() {
 				if useRuneMask && runes[i+1] < max {
 					continue
 				}
+				// TODO: if the runes are ASCII we don't need the outcr snippet and we can simply use the raw bytes and skip the if < RuneSelf
 				if runes[i] == runes[i+1] {
 					outn("|| cr == %d", runes[i])
 				} else if runes[i] == runes[i+1]-1 {
