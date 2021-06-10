@@ -50,6 +50,10 @@ inst1: // rune "az" -> 2
 			goto inst2
 		}
 	}
+	goto inst1_fail
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
 	goto fail
 
 	goto unreachable
@@ -80,6 +84,10 @@ inst2_alt:
 		}
 		goto inst3
 	}
+	goto unreachable
+	goto inst2_fail
+inst2_fail:
+	goto fail
 
 	goto unreachable
 	goto inst3
@@ -88,14 +96,22 @@ inst3: // empty 8 -> 4
 		if i >= len(r) {
 			goto inst4
 		}
-		goto fail
+		goto inst3_fail
 	}
+	goto unreachable
+	goto inst3_fail
+inst3_fail:
+	goto fail
 
 	goto unreachable
 	goto inst4
 inst4: // match
 	c[1] = i // end of match
 	goto match
+	goto unreachable
+	goto inst4_fail
+inst4_fail:
+	goto fail
 
 	goto unreachable
 	goto fail

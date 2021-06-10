@@ -49,6 +49,7 @@ func main() {
 	// optimization passes
 	optString(p)
 	optDeadInst(p)
+	optPreds(p)
 
 	numSt := 0
 	for _, inst := range p.Inst {
@@ -264,12 +265,12 @@ func main() {
 				panic("not implemented InstEmptyWidth")
 			}
 			out(" { goto inst%d }", inst.Out)
-			out("goto fail")
+			out("goto inst%d_fail", pc)
 			out("}")
 		case syntax.InstMatch:
 			out("c[1] = i // end of match \n goto match")
 		case syntax.InstFail:
-			out("goto fail ")
+			out("goto inst%d_fail", pc)
 		case syntax.InstNop:
 			out("goto inst%d ", inst.Out)
 		case syntax.InstRune1:
@@ -329,8 +330,8 @@ func main() {
 							i+=sz
 							goto inst%d 
 						} 
-						goto fail 
-					} else `, max, runeMask, inst.Out)
+						goto inst%d_fail 
+					} else `, max, runeMask, inst.Out, pc)
 			}
 			// TODO: expand the ranges as lists of runes, and use a switch instead; see if the compiler is smart enough to build a search tree
 			outn("if false ")
@@ -350,20 +351,20 @@ func main() {
 			}
 			out(" { i+=sz \n goto inst%d }", inst.Out)
 			out("}")
-			out("goto fail")
+			out("goto inst%d_fail", pc)
 		case syntax.InstRuneAny:
-			out("if i < 0 || i >= len(r) { goto fail }")
+			out("if i < 0 || i >= len(r) { goto inst%d_fail }", pc)
 			out(`{`)
 			// TODO: we don't need the parsed rune here, just the length
 			out(outcr)
 			out("i+=sz \n _ = cr \n goto inst%d", inst.Out)
 			out(`}`)
 		case syntax.InstRuneAnyNotNL:
-			out("if i < 0 || i >= len(r) { goto fail }")
+			out("if i < 0 || i >= len(r) { goto inst%d_fail }", pc)
 			out(`{`)
 			// TODO: we don't need the parsed rune here, just the length (\n is a single byte)
 			out(outcr)
-			out("if cr == rune('\\n') { goto fail }")
+			out("if cr == rune('\\n') { goto inst%d_fail }", pc)
 			out("i+=sz \n goto inst%d", inst.Out)
 			out(`}`)
 		case instString:
@@ -373,10 +374,26 @@ func main() {
 			out("goto inst%d", inst.Out)
 			out("}")
 			out("}")
-			out("goto fail")
+			out("goto inst%d_fail", pc)
 		default:
 			panic("unknown op")
 		}
+		// failure pad
+		out(`goto unreachable`)
+		out(`goto inst%d_fail`, pc)
+		out(`inst%d_fail:`, pc)
+		if pcpreds := preds[uint32(pc)]; len(pcpreds) > 0 {
+			out(`
+			if i <= len(r) && len(bt) > 0 {
+				switch bt[len(bt)-1].pc {
+				default: panic(bt[len(bt)-1].pc)`)
+			for pred := range pcpreds {
+				out("case %d: goto inst%d_alt", pred, pred) // computed goto would really help here
+			}
+			out(`}
+			}`)
+		}
+		out(`goto fail`)
 	}
 
 	// TODO: instead of embedding a single jump table here, embed a smaller jump table (or a direct jump) at every `goto fail` location that is known to only be able to jump to a subset of targets
@@ -532,4 +549,41 @@ func optDeadInst(p *syntax.Prog) {
 			}
 		}
 	}
+}
+
+var preds = map[uint32]map[uint32]struct{}{}
+
+func optPreds(p *syntax.Prog) {
+	const noPred = ^uint32(0)
+	visited := map[uint32]struct{}{}
+	var visit func(uint32, uint32)
+	visit = func(pc, pred uint32) {
+		if _, ok := visited[pc]; ok {
+			return
+		}
+		visited[pc] = struct{}{}
+		defer delete(visited, pc)
+
+		if pred != noPred {
+			pcpreds := preds[pc]
+			if pcpreds == nil {
+				pcpreds = map[uint32]struct{}{}
+				preds[pc] = pcpreds
+			}
+			pcpreds[pred] = struct{}{}
+		}
+
+		switch p.Inst[pc].Op {
+		case syntax.InstMatch, syntax.InstFail:
+			return
+		case syntax.InstAltMatch:
+			panic("not implemented")
+		case syntax.InstAlt:
+			visit(p.Inst[pc].Arg, pred)
+			visit(p.Inst[pc].Out, pc)
+		default:
+			visit(p.Inst[pc].Out, pred)
+		}
+	}
+	visit(uint32(p.Start), noPred)
 }

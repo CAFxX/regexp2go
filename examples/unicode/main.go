@@ -61,6 +61,10 @@ inst1: //
 			goto inst3
 		}
 	}
+	goto inst1_fail
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
 	goto fail
 
 	// inst2 unreacheable
@@ -70,6 +74,10 @@ inst1: //
 inst3: // cap 2 -> 4
 	c[2] = i
 	goto inst4
+	goto unreachable
+	goto inst3_fail
+inst3_fail:
+	goto fail
 
 	goto unreachable
 	goto inst4
@@ -85,6 +93,10 @@ inst4: // rune "\u2e80\u2e99\u2e9b\u2ef3\u2f00\u2fd5\u3005\u3005\u3007\u3007\u30
 			goto inst5
 		}
 	}
+	goto inst4_fail
+	goto unreachable
+	goto inst4_fail
+inst4_fail:
 	goto fail
 
 	goto unreachable
@@ -115,12 +127,20 @@ inst5_alt:
 		}
 		goto inst6
 	}
+	goto unreachable
+	goto inst5_fail
+inst5_fail:
+	goto fail
 
 	goto unreachable
 	goto inst6
 inst6: // cap 3 -> 7
 	c[3] = i
 	goto inst7
+	goto unreachable
+	goto inst6_fail
+inst6_fail:
+	goto fail
 
 	goto unreachable
 	goto inst7
@@ -131,6 +151,10 @@ inst7: //
 			goto inst9
 		}
 	}
+	goto inst7_fail
+	goto unreachable
+	goto inst7_fail
+inst7_fail:
 	goto fail
 
 	// inst8 unreacheable
@@ -140,6 +164,10 @@ inst7: //
 inst9: // match
 	c[1] = i // end of match
 	goto match
+	goto unreachable
+	goto inst9_fail
+inst9_fail:
+	goto fail
 
 	goto unreachable
 	goto fail

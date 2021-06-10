@@ -55,8 +55,12 @@ inst1: // empty 1 -> 2
 		if before == '\n' || before == -1 {
 			goto inst2
 		}
-		goto fail
+		goto inst1_fail
 	}
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
+	goto fail
 
 	goto unreachable
 	goto inst2
@@ -67,6 +71,10 @@ inst2: //
 			goto inst11
 		}
 	}
+	goto inst2_fail
+	goto unreachable
+	goto inst2_fail
+inst2_fail:
 	goto fail
 
 	// inst3 unreacheable
@@ -90,6 +98,10 @@ inst2: //
 inst11: // cap 2 -> 12
 	c[2] = i
 	goto inst12
+	goto unreachable
+	goto inst11_fail
+inst11_fail:
+	goto fail
 
 	goto unreachable
 	goto inst12
@@ -101,6 +113,10 @@ inst12: // rune "09" -> 13
 			goto inst13
 		}
 	}
+	goto inst12_fail
+	goto unreachable
+	goto inst12_fail
+inst12_fail:
 	goto fail
 
 	goto unreachable
@@ -131,12 +147,20 @@ inst13_alt:
 		}
 		goto inst14
 	}
+	goto unreachable
+	goto inst13_fail
+inst13_fail:
+	goto fail
 
 	goto unreachable
 	goto inst14
 inst14: // cap 3 -> 15
 	c[3] = i
 	goto inst15
+	goto unreachable
+	goto inst14_fail
+inst14_fail:
+	goto fail
 
 	goto unreachable
 	goto inst15
@@ -147,6 +171,10 @@ inst15: //
 			goto inst20
 		}
 	}
+	goto inst15_fail
+	goto unreachable
+	goto inst15_fail
+inst15_fail:
 	goto fail
 
 	// inst16 unreacheable
@@ -162,12 +190,16 @@ inst15: //
 inst20: // cap 4 -> 22
 	c[4] = i
 	goto inst22
+	goto unreachable
+	goto inst20_fail
+inst20_fail:
+	goto fail
 
 	goto unreachable
 	goto inst21
 inst21: // anynotnl -> 22
 	if i < 0 || i >= len(r) {
-		goto fail
+		goto inst21_fail
 	}
 	{
 		cr, sz := rune(r[i]), 1
@@ -176,11 +208,24 @@ inst21: // anynotnl -> 22
 		}
 
 		if cr == rune('\n') {
-			goto fail
+			goto inst21_fail
 		}
 		i += sz
 		goto inst22
 	}
+	goto unreachable
+	goto inst21_fail
+inst21_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 22:
+			goto inst22_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst22
@@ -210,12 +255,20 @@ inst22_alt:
 		}
 		goto inst23
 	}
+	goto unreachable
+	goto inst22_fail
+inst22_fail:
+	goto fail
 
 	goto unreachable
 	goto inst23
 inst23: // cap 5 -> 24
 	c[5] = i
 	goto inst24
+	goto unreachable
+	goto inst23_fail
+inst23_fail:
+	goto fail
 
 	goto unreachable
 	goto inst24
@@ -232,14 +285,22 @@ inst24: // empty 2 -> 25
 		if after == '\n' || after == -1 {
 			goto inst25
 		}
-		goto fail
+		goto inst24_fail
 	}
+	goto unreachable
+	goto inst24_fail
+inst24_fail:
+	goto fail
 
 	goto unreachable
 	goto inst25
 inst25: // match
 	c[1] = i // end of match
 	goto match
+	goto unreachable
+	goto inst25_fail
+inst25_fail:
+	goto fail
 
 	goto unreachable
 	goto fail

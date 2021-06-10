@@ -45,6 +45,19 @@ restart:
 inst1: // cap 2 -> 18
 	c[2] = i
 	goto inst18
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 39:
+			goto inst39_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst2
@@ -53,6 +66,19 @@ inst2: //
 		if r[i:i+8] == "agggtaaa" {
 			i += 8
 			goto inst19
+		}
+	}
+	goto inst2_fail
+	goto unreachable
+	goto inst2_fail
+inst2_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 18:
+			goto inst18_alt
 		}
 	}
 	goto fail
@@ -78,6 +104,19 @@ inst10: //
 		if r[i:i+8] == "tttaccct" {
 			i += 8
 			goto inst19
+		}
+	}
+	goto inst10_fail
+	goto unreachable
+	goto inst10_fail
+inst10_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 39:
+			goto inst39_alt
 		}
 	}
 	goto fail
@@ -108,18 +147,59 @@ inst18_alt:
 		bt = bt[:n]
 		goto inst10
 	}
+	goto unreachable
+	goto inst18_fail
+inst18_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 39:
+			goto inst39_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst19
 inst19: // cap 3 -> 180
 	c[3] = i
 	goto inst180
+	goto unreachable
+	goto inst19_fail
+inst19_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 39:
+			goto inst39_alt
+		case 18:
+			goto inst18_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst20
 inst20: // cap 4 -> 37
 	c[4] = i
 	goto inst37
+	goto unreachable
+	goto inst20_fail
+inst20_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 59:
+			goto inst59_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst21
@@ -132,10 +212,23 @@ inst21: // rune "ccggtt" -> 22
 				i += sz
 				goto inst22
 			}
-			goto fail
+			goto inst21_fail
 		} else if false {
 			i += sz
 			goto inst22
+		}
+	}
+	goto inst21_fail
+	goto unreachable
+	goto inst21_fail
+inst21_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 37:
+			goto inst37_alt
 		}
 	}
 	goto fail
@@ -147,6 +240,19 @@ inst22: //
 		if r[i:i+7] == "gggtaaa" {
 			i += 7
 			goto inst38
+		}
+	}
+	goto inst22_fail
+	goto unreachable
+	goto inst22_fail
+inst22_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 37:
+			goto inst37_alt
 		}
 	}
 	goto fail
@@ -170,6 +276,19 @@ inst29: //
 		if r[i:i+7] == "tttaccc" {
 			i += 7
 			goto inst36
+		}
+	}
+	goto inst29_fail
+	goto unreachable
+	goto inst29_fail
+inst29_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 59:
+			goto inst59_alt
 		}
 	}
 	goto fail
@@ -197,10 +316,23 @@ inst36: // rune "aaccgg" -> 38
 				i += sz
 				goto inst38
 			}
-			goto fail
+			goto inst36_fail
 		} else if false {
 			i += sz
 			goto inst38
+		}
+	}
+	goto inst36_fail
+	goto unreachable
+	goto inst36_fail
+inst36_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 59:
+			goto inst59_alt
 		}
 	}
 	goto fail
@@ -217,12 +349,40 @@ inst37_alt:
 		bt = bt[:n]
 		goto inst29
 	}
+	goto unreachable
+	goto inst37_fail
+inst37_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 59:
+			goto inst59_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst38
 inst38: // cap 5 -> 180
 	c[5] = i
 	goto inst180
+	goto unreachable
+	goto inst38_fail
+inst38_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 59:
+			goto inst59_alt
+		case 37:
+			goto inst37_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst39
@@ -236,12 +396,38 @@ inst39_alt:
 		bt = bt[:n]
 		goto inst20
 	}
+	goto unreachable
+	goto inst39_fail
+inst39_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 59:
+			goto inst59_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst40
 inst40: // cap 6 -> 57
 	c[6] = i
 	goto inst57
+	goto unreachable
+	goto inst40_fail
+inst40_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 79:
+			goto inst79_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst41
@@ -250,6 +436,19 @@ inst41: //
 		if r[i:i+1] == "a" {
 			i += 1
 			goto inst42
+		}
+	}
+	goto inst41_fail
+	goto unreachable
+	goto inst41_fail
+inst41_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 57:
+			goto inst57_alt
 		}
 	}
 	goto fail
@@ -265,10 +464,23 @@ inst42: // rune "aacctt" -> 43
 				i += sz
 				goto inst43
 			}
-			goto fail
+			goto inst42_fail
 		} else if false {
 			i += sz
 			goto inst43
+		}
+	}
+	goto inst42_fail
+	goto unreachable
+	goto inst42_fail
+inst42_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 57:
+			goto inst57_alt
 		}
 	}
 	goto fail
@@ -280,6 +492,19 @@ inst43: //
 		if r[i:i+6] == "ggtaaa" {
 			i += 6
 			goto inst58
+		}
+	}
+	goto inst43_fail
+	goto unreachable
+	goto inst43_fail
+inst43_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 57:
+			goto inst57_alt
 		}
 	}
 	goto fail
@@ -301,6 +526,19 @@ inst49: //
 		if r[i:i+6] == "tttacc" {
 			i += 6
 			goto inst55
+		}
+	}
+	goto inst49_fail
+	goto unreachable
+	goto inst49_fail
+inst49_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 79:
+			goto inst79_alt
 		}
 	}
 	goto fail
@@ -326,10 +564,23 @@ inst55: // rune "aaggtt" -> 56
 				i += sz
 				goto inst56
 			}
-			goto fail
+			goto inst55_fail
 		} else if false {
 			i += sz
 			goto inst56
+		}
+	}
+	goto inst55_fail
+	goto unreachable
+	goto inst55_fail
+inst55_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 79:
+			goto inst79_alt
 		}
 	}
 	goto fail
@@ -341,6 +592,19 @@ inst56: //
 		if r[i:i+1] == "t" {
 			i += 1
 			goto inst58
+		}
+	}
+	goto inst56_fail
+	goto unreachable
+	goto inst56_fail
+inst56_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 79:
+			goto inst79_alt
 		}
 	}
 	goto fail
@@ -357,12 +621,40 @@ inst57_alt:
 		bt = bt[:n]
 		goto inst49
 	}
+	goto unreachable
+	goto inst57_fail
+inst57_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 79:
+			goto inst79_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst58
 inst58: // cap 7 -> 180
 	c[7] = i
 	goto inst180
+	goto unreachable
+	goto inst58_fail
+inst58_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 79:
+			goto inst79_alt
+		case 57:
+			goto inst57_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst59
@@ -376,12 +668,38 @@ inst59_alt:
 		bt = bt[:n]
 		goto inst40
 	}
+	goto unreachable
+	goto inst59_fail
+inst59_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 79:
+			goto inst79_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst60
 inst60: // cap 8 -> 77
 	c[8] = i
 	goto inst77
+	goto unreachable
+	goto inst60_fail
+inst60_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 99:
+			goto inst99_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst61
@@ -390,6 +708,19 @@ inst61: //
 		if r[i:i+2] == "ag" {
 			i += 2
 			goto inst63
+		}
+	}
+	goto inst61_fail
+	goto unreachable
+	goto inst61_fail
+inst61_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 77:
+			goto inst77_alt
 		}
 	}
 	goto fail
@@ -407,10 +738,23 @@ inst63: // rune "aacctt" -> 64
 				i += sz
 				goto inst64
 			}
-			goto fail
+			goto inst63_fail
 		} else if false {
 			i += sz
 			goto inst64
+		}
+	}
+	goto inst63_fail
+	goto unreachable
+	goto inst63_fail
+inst63_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 77:
+			goto inst77_alt
 		}
 	}
 	goto fail
@@ -422,6 +766,19 @@ inst64: //
 		if r[i:i+5] == "gtaaa" {
 			i += 5
 			goto inst78
+		}
+	}
+	goto inst64_fail
+	goto unreachable
+	goto inst64_fail
+inst64_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 77:
+			goto inst77_alt
 		}
 	}
 	goto fail
@@ -441,6 +798,19 @@ inst69: //
 		if r[i:i+5] == "tttac" {
 			i += 5
 			goto inst74
+		}
+	}
+	goto inst69_fail
+	goto unreachable
+	goto inst69_fail
+inst69_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 99:
+			goto inst99_alt
 		}
 	}
 	goto fail
@@ -464,10 +834,23 @@ inst74: // rune "aaggtt" -> 75
 				i += sz
 				goto inst75
 			}
-			goto fail
+			goto inst74_fail
 		} else if false {
 			i += sz
 			goto inst75
+		}
+	}
+	goto inst74_fail
+	goto unreachable
+	goto inst74_fail
+inst74_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 99:
+			goto inst99_alt
 		}
 	}
 	goto fail
@@ -479,6 +862,19 @@ inst75: //
 		if r[i:i+2] == "ct" {
 			i += 2
 			goto inst78
+		}
+	}
+	goto inst75_fail
+	goto unreachable
+	goto inst75_fail
+inst75_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 99:
+			goto inst99_alt
 		}
 	}
 	goto fail
@@ -497,12 +893,40 @@ inst77_alt:
 		bt = bt[:n]
 		goto inst69
 	}
+	goto unreachable
+	goto inst77_fail
+inst77_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 99:
+			goto inst99_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst78
 inst78: // cap 9 -> 180
 	c[9] = i
 	goto inst180
+	goto unreachable
+	goto inst78_fail
+inst78_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 99:
+			goto inst99_alt
+		case 77:
+			goto inst77_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst79
@@ -516,12 +940,38 @@ inst79_alt:
 		bt = bt[:n]
 		goto inst60
 	}
+	goto unreachable
+	goto inst79_fail
+inst79_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 99:
+			goto inst99_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst80
 inst80: // cap 10 -> 97
 	c[10] = i
 	goto inst97
+	goto unreachable
+	goto inst80_fail
+inst80_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 119:
+			goto inst119_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst81
@@ -530,6 +980,19 @@ inst81: //
 		if r[i:i+3] == "agg" {
 			i += 3
 			goto inst84
+		}
+	}
+	goto inst81_fail
+	goto unreachable
+	goto inst81_fail
+inst81_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 97:
+			goto inst97_alt
 		}
 	}
 	goto fail
@@ -549,10 +1012,23 @@ inst84: // rune "aacctt" -> 85
 				i += sz
 				goto inst85
 			}
-			goto fail
+			goto inst84_fail
 		} else if false {
 			i += sz
 			goto inst85
+		}
+	}
+	goto inst84_fail
+	goto unreachable
+	goto inst84_fail
+inst84_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 97:
+			goto inst97_alt
 		}
 	}
 	goto fail
@@ -564,6 +1040,19 @@ inst85: //
 		if r[i:i+4] == "taaa" {
 			i += 4
 			goto inst98
+		}
+	}
+	goto inst85_fail
+	goto unreachable
+	goto inst85_fail
+inst85_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 97:
+			goto inst97_alt
 		}
 	}
 	goto fail
@@ -581,6 +1070,19 @@ inst89: //
 		if r[i:i+4] == "ttta" {
 			i += 4
 			goto inst93
+		}
+	}
+	goto inst89_fail
+	goto unreachable
+	goto inst89_fail
+inst89_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 119:
+			goto inst119_alt
 		}
 	}
 	goto fail
@@ -602,10 +1104,23 @@ inst93: // rune "aaggtt" -> 94
 				i += sz
 				goto inst94
 			}
-			goto fail
+			goto inst93_fail
 		} else if false {
 			i += sz
 			goto inst94
+		}
+	}
+	goto inst93_fail
+	goto unreachable
+	goto inst93_fail
+inst93_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 119:
+			goto inst119_alt
 		}
 	}
 	goto fail
@@ -617,6 +1132,19 @@ inst94: //
 		if r[i:i+3] == "cct" {
 			i += 3
 			goto inst98
+		}
+	}
+	goto inst94_fail
+	goto unreachable
+	goto inst94_fail
+inst94_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 119:
+			goto inst119_alt
 		}
 	}
 	goto fail
@@ -637,12 +1165,40 @@ inst97_alt:
 		bt = bt[:n]
 		goto inst89
 	}
+	goto unreachable
+	goto inst97_fail
+inst97_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 119:
+			goto inst119_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst98
 inst98: // cap 11 -> 180
 	c[11] = i
 	goto inst180
+	goto unreachable
+	goto inst98_fail
+inst98_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 119:
+			goto inst119_alt
+		case 97:
+			goto inst97_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst99
@@ -656,12 +1212,38 @@ inst99_alt:
 		bt = bt[:n]
 		goto inst80
 	}
+	goto unreachable
+	goto inst99_fail
+inst99_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 119:
+			goto inst119_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst100
 inst100: // cap 12 -> 117
 	c[12] = i
 	goto inst117
+	goto unreachable
+	goto inst100_fail
+inst100_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 139:
+			goto inst139_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst101
@@ -670,6 +1252,19 @@ inst101: //
 		if r[i:i+4] == "aggg" {
 			i += 4
 			goto inst105
+		}
+	}
+	goto inst101_fail
+	goto unreachable
+	goto inst101_fail
+inst101_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 117:
+			goto inst117_alt
 		}
 	}
 	goto fail
@@ -691,10 +1286,23 @@ inst105: // rune "aaccgg" -> 106
 				i += sz
 				goto inst106
 			}
-			goto fail
+			goto inst105_fail
 		} else if false {
 			i += sz
 			goto inst106
+		}
+	}
+	goto inst105_fail
+	goto unreachable
+	goto inst105_fail
+inst105_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 117:
+			goto inst117_alt
 		}
 	}
 	goto fail
@@ -706,6 +1314,19 @@ inst106: //
 		if r[i:i+3] == "aaa" {
 			i += 3
 			goto inst118
+		}
+	}
+	goto inst106_fail
+	goto unreachable
+	goto inst106_fail
+inst106_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 117:
+			goto inst117_alt
 		}
 	}
 	goto fail
@@ -721,6 +1342,19 @@ inst109: //
 		if r[i:i+3] == "ttt" {
 			i += 3
 			goto inst112
+		}
+	}
+	goto inst109_fail
+	goto unreachable
+	goto inst109_fail
+inst109_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 139:
+			goto inst139_alt
 		}
 	}
 	goto fail
@@ -740,10 +1374,23 @@ inst112: // rune "ccggtt" -> 113
 				i += sz
 				goto inst113
 			}
-			goto fail
+			goto inst112_fail
 		} else if false {
 			i += sz
 			goto inst113
+		}
+	}
+	goto inst112_fail
+	goto unreachable
+	goto inst112_fail
+inst112_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 139:
+			goto inst139_alt
 		}
 	}
 	goto fail
@@ -755,6 +1402,19 @@ inst113: //
 		if r[i:i+4] == "ccct" {
 			i += 4
 			goto inst118
+		}
+	}
+	goto inst113_fail
+	goto unreachable
+	goto inst113_fail
+inst113_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 139:
+			goto inst139_alt
 		}
 	}
 	goto fail
@@ -777,12 +1437,40 @@ inst117_alt:
 		bt = bt[:n]
 		goto inst109
 	}
+	goto unreachable
+	goto inst117_fail
+inst117_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 139:
+			goto inst139_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst118
 inst118: // cap 13 -> 180
 	c[13] = i
 	goto inst180
+	goto unreachable
+	goto inst118_fail
+inst118_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 139:
+			goto inst139_alt
+		case 117:
+			goto inst117_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst119
@@ -796,12 +1484,38 @@ inst119_alt:
 		bt = bt[:n]
 		goto inst100
 	}
+	goto unreachable
+	goto inst119_fail
+inst119_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 139:
+			goto inst139_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst120
 inst120: // cap 14 -> 137
 	c[14] = i
 	goto inst137
+	goto unreachable
+	goto inst120_fail
+inst120_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 159:
+			goto inst159_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst121
@@ -810,6 +1524,19 @@ inst121: //
 		if r[i:i+5] == "agggt" {
 			i += 5
 			goto inst126
+		}
+	}
+	goto inst121_fail
+	goto unreachable
+	goto inst121_fail
+inst121_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 137:
+			goto inst137_alt
 		}
 	}
 	goto fail
@@ -833,10 +1560,23 @@ inst126: // rune "ccggtt" -> 127
 				i += sz
 				goto inst127
 			}
-			goto fail
+			goto inst126_fail
 		} else if false {
 			i += sz
 			goto inst127
+		}
+	}
+	goto inst126_fail
+	goto unreachable
+	goto inst126_fail
+inst126_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 137:
+			goto inst137_alt
 		}
 	}
 	goto fail
@@ -850,6 +1590,19 @@ inst127: //
 			goto inst138
 		}
 	}
+	goto inst127_fail
+	goto unreachable
+	goto inst127_fail
+inst127_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 137:
+			goto inst137_alt
+		}
+	}
 	goto fail
 
 	// inst128 unreacheable
@@ -861,6 +1614,19 @@ inst129: //
 		if r[i:i+2] == "tt" {
 			i += 2
 			goto inst131
+		}
+	}
+	goto inst129_fail
+	goto unreachable
+	goto inst129_fail
+inst129_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 159:
+			goto inst159_alt
 		}
 	}
 	goto fail
@@ -878,10 +1644,23 @@ inst131: // rune "aaccgg" -> 132
 				i += sz
 				goto inst132
 			}
-			goto fail
+			goto inst131_fail
 		} else if false {
 			i += sz
 			goto inst132
+		}
+	}
+	goto inst131_fail
+	goto unreachable
+	goto inst131_fail
+inst131_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 159:
+			goto inst159_alt
 		}
 	}
 	goto fail
@@ -893,6 +1672,19 @@ inst132: //
 		if r[i:i+5] == "accct" {
 			i += 5
 			goto inst138
+		}
+	}
+	goto inst132_fail
+	goto unreachable
+	goto inst132_fail
+inst132_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 159:
+			goto inst159_alt
 		}
 	}
 	goto fail
@@ -917,12 +1709,40 @@ inst137_alt:
 		bt = bt[:n]
 		goto inst129
 	}
+	goto unreachable
+	goto inst137_fail
+inst137_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 159:
+			goto inst159_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst138
 inst138: // cap 15 -> 180
 	c[15] = i
 	goto inst180
+	goto unreachable
+	goto inst138_fail
+inst138_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 159:
+			goto inst159_alt
+		case 137:
+			goto inst137_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst139
@@ -936,12 +1756,38 @@ inst139_alt:
 		bt = bt[:n]
 		goto inst120
 	}
+	goto unreachable
+	goto inst139_fail
+inst139_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 159:
+			goto inst159_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst140
 inst140: // cap 16 -> 157
 	c[16] = i
 	goto inst157
+	goto unreachable
+	goto inst140_fail
+inst140_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 179:
+			goto inst179_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst141
@@ -950,6 +1796,19 @@ inst141: //
 		if r[i:i+6] == "agggta" {
 			i += 6
 			goto inst147
+		}
+	}
+	goto inst141_fail
+	goto unreachable
+	goto inst141_fail
+inst141_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 157:
+			goto inst157_alt
 		}
 	}
 	goto fail
@@ -975,10 +1834,23 @@ inst147: // rune "ccggtt" -> 148
 				i += sz
 				goto inst148
 			}
-			goto fail
+			goto inst147_fail
 		} else if false {
 			i += sz
 			goto inst148
+		}
+	}
+	goto inst147_fail
+	goto unreachable
+	goto inst147_fail
+inst147_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 157:
+			goto inst157_alt
 		}
 	}
 	goto fail
@@ -992,6 +1864,19 @@ inst148: //
 			goto inst158
 		}
 	}
+	goto inst148_fail
+	goto unreachable
+	goto inst148_fail
+inst148_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 157:
+			goto inst157_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -1001,6 +1886,19 @@ inst149: //
 		if r[i:i+1] == "t" {
 			i += 1
 			goto inst150
+		}
+	}
+	goto inst149_fail
+	goto unreachable
+	goto inst149_fail
+inst149_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 179:
+			goto inst179_alt
 		}
 	}
 	goto fail
@@ -1016,10 +1914,23 @@ inst150: // rune "aaccgg" -> 151
 				i += sz
 				goto inst151
 			}
-			goto fail
+			goto inst150_fail
 		} else if false {
 			i += sz
 			goto inst151
+		}
+	}
+	goto inst150_fail
+	goto unreachable
+	goto inst150_fail
+inst150_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 179:
+			goto inst179_alt
 		}
 	}
 	goto fail
@@ -1031,6 +1942,19 @@ inst151: //
 		if r[i:i+6] == "taccct" {
 			i += 6
 			goto inst158
+		}
+	}
+	goto inst151_fail
+	goto unreachable
+	goto inst151_fail
+inst151_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 179:
+			goto inst179_alt
 		}
 	}
 	goto fail
@@ -1057,12 +1981,40 @@ inst157_alt:
 		bt = bt[:n]
 		goto inst149
 	}
+	goto unreachable
+	goto inst157_fail
+inst157_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 179:
+			goto inst179_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst158
 inst158: // cap 17 -> 180
 	c[17] = i
 	goto inst180
+	goto unreachable
+	goto inst158_fail
+inst158_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 157:
+			goto inst157_alt
+		case 179:
+			goto inst179_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst159
@@ -1076,12 +2028,29 @@ inst159_alt:
 		bt = bt[:n]
 		goto inst140
 	}
+	goto unreachable
+	goto inst159_fail
+inst159_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 179:
+			goto inst179_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst160
 inst160: // cap 18 -> 177
 	c[18] = i
 	goto inst177
+	goto unreachable
+	goto inst160_fail
+inst160_fail:
+	goto fail
 
 	goto unreachable
 	goto inst161
@@ -1090,6 +2059,19 @@ inst161: //
 		if r[i:i+7] == "agggtaa" {
 			i += 7
 			goto inst168
+		}
+	}
+	goto inst161_fail
+	goto unreachable
+	goto inst161_fail
+inst161_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 177:
+			goto inst177_alt
 		}
 	}
 	goto fail
@@ -1117,10 +2099,23 @@ inst168: // rune "ccggtt" -> 178
 				i += sz
 				goto inst178
 			}
-			goto fail
+			goto inst168_fail
 		} else if false {
 			i += sz
 			goto inst178
+		}
+	}
+	goto inst168_fail
+	goto unreachable
+	goto inst168_fail
+inst168_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 177:
+			goto inst177_alt
 		}
 	}
 	goto fail
@@ -1136,12 +2131,16 @@ inst169: // rune "aaccgg" -> 170
 				i += sz
 				goto inst170
 			}
-			goto fail
+			goto inst169_fail
 		} else if false {
 			i += sz
 			goto inst170
 		}
 	}
+	goto inst169_fail
+	goto unreachable
+	goto inst169_fail
+inst169_fail:
 	goto fail
 
 	goto unreachable
@@ -1153,6 +2152,10 @@ inst170: //
 			goto inst178
 		}
 	}
+	goto inst170_fail
+	goto unreachable
+	goto inst170_fail
+inst170_fail:
 	goto fail
 
 	// inst171 unreacheable
@@ -1179,12 +2182,29 @@ inst177_alt:
 		bt = bt[:n]
 		goto inst169
 	}
+	goto unreachable
+	goto inst177_fail
+inst177_fail:
+	goto fail
 
 	goto unreachable
 	goto inst178
 inst178: // cap 19 -> 180
 	c[19] = i
 	goto inst180
+	goto unreachable
+	goto inst178_fail
+inst178_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 177:
+			goto inst177_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst179
@@ -1198,12 +2218,61 @@ inst179_alt:
 		bt = bt[:n]
 		goto inst160
 	}
+	goto unreachable
+	goto inst179_fail
+inst179_fail:
+	goto fail
 
 	goto unreachable
 	goto inst180
 inst180: // match
 	c[1] = i // end of match
 	goto match
+	goto unreachable
+	goto inst180_fail
+inst180_fail:
+
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			panic(bt[len(bt)-1].pc)
+		case 37:
+			goto inst37_alt
+		case 59:
+			goto inst59_alt
+		case 139:
+			goto inst139_alt
+		case 117:
+			goto inst117_alt
+		case 99:
+			goto inst99_alt
+		case 18:
+			goto inst18_alt
+		case 157:
+			goto inst157_alt
+		case 179:
+			goto inst179_alt
+		case 137:
+			goto inst137_alt
+		case 119:
+			goto inst119_alt
+		case 39:
+			goto inst39_alt
+		case 177:
+			goto inst177_alt
+		case 97:
+			goto inst97_alt
+		case 77:
+			goto inst77_alt
+		case 79:
+			goto inst79_alt
+		case 57:
+			goto inst57_alt
+		case 159:
+			goto inst159_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto fail
