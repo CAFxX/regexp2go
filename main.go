@@ -313,7 +313,7 @@ func main() {
 			runeMask := runeMask(runes, max)
 			useRuneMask := false
 			// TODO: use a threshold on the number of ranges actually covered by the runeMask
-			// TODO: implement a succint encoding that allows fast O(1) set membership queries for the case of sparse non-ASCII rune ranges
+			// TODO: implement a succint encoding that allows fast O(1) set membership queries for the case of sparse non-ASCII rune ranges (e.g. roaring bitmaps)
 			if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
 				useRuneMask = true
 				outn(`if cru := uint(cr); cru < %d { 
@@ -372,6 +372,7 @@ func main() {
 		}
 	}
 
+	// TODO: instead of embedding a single jump table here, embed a smaller jump table (or a direct jump) at every `goto fail` location that is known to only be able to jump to a subset of targets
 	out(`
 		goto unreachable
 		goto fail
