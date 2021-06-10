@@ -43,4 +43,4 @@ go test -c ./benchmark # build benchmark.test
 go test -bench=. -cpuprofile=cpu.prof -memprofile=mem.prof -benchtime=1s -cpu=1 -short ./benchmark/ >/dev/null
 
 echo "Running benchmarks"
-benchstat <(go test -bench=. -benchtime=0.1s -benchmem -count=5 -cpu=1 ./benchmark/)
+benchstat <(go test -bench=. -benchtime=0.1s -benchmem -count=10 -cpu=1 ./benchmark/)
