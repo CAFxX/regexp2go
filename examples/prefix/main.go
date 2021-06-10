@@ -78,7 +78,6 @@ inst7: // cap 2 -> 8
 	goto inst8
 inst8: // rune "\x00 \"\U0010ffff" -> 9
 	if i >= 0 && i < len(r) {
-
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
@@ -163,7 +162,6 @@ fail:
 		}
 		if len(r[si:]) != 0 {
 			i = si
-
 			cr, sz := rune(r[i]), 1
 			if cr >= utf8.RuneSelf {
 				cr, sz = utf8.DecodeRuneInString(r[i:])

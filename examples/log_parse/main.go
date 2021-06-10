@@ -91,12 +91,7 @@ inst11: // cap 2 -> 12
 	goto inst12
 inst12: // rune "09" -> 13
 	if i >= 0 && i < len(r) {
-
 		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
 		if false || (cr >= 48 && cr <= 57) {
 			i += sz
 			goto inst13
@@ -171,7 +166,6 @@ inst21: // anynotnl -> 22
 		goto fail
 	}
 	{
-
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
@@ -266,7 +260,6 @@ fail:
 		}
 		if len(r[si:]) != 0 {
 			i = si
-
 			cr, sz := rune(r[i]), 1
 			if cr >= utf8.RuneSelf {
 				cr, sz = utf8.DecodeRuneInString(r[i:])

@@ -78,7 +78,6 @@ inst4: // anynotnl -> 5
 		goto fail
 	}
 	{
-
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
@@ -170,7 +169,6 @@ fail:
 		}
 		if len(r[si:]) != 0 {
 			i = si
-
 			cr, sz := rune(r[i]), 1
 			if cr >= utf8.RuneSelf {
 				cr, sz = utf8.DecodeRuneInString(r[i:])

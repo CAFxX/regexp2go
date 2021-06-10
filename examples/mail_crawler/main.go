@@ -72,7 +72,6 @@ inst2: // cap 2 -> 3
 	goto inst3
 inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
 	if i >= 0 && i < len(r) {
-
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
@@ -148,7 +147,6 @@ inst7: // cap 4 -> 8
 	goto inst8
 inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
 	if i >= 0 && i < len(r) {
-
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
@@ -212,7 +210,6 @@ inst10: //
 	goto inst11
 inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 	if i >= 0 && i < len(r) {
-
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
@@ -236,7 +233,6 @@ inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 	goto inst12
 inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
 	if i >= 0 && i < len(r) {
-
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
@@ -348,7 +344,6 @@ fail:
 		}
 		if len(r[si:]) != 0 {
 			i = si
-
 			cr, sz := rune(r[i]), 1
 			if cr >= utf8.RuneSelf {
 				cr, sz = utf8.DecodeRuneInString(r[i:])

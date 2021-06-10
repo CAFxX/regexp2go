@@ -40,12 +40,7 @@ restart:
 	goto inst1
 inst1: // rune "az" -> 2
 	if i >= 0 && i < len(r) {
-
 		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
 		if false || (cr >= 97 && cr <= 122) {
 			i += sz
 			goto inst2
@@ -117,7 +112,6 @@ fail:
 		}
 		if len(r[si:]) != 0 {
 			i = si
-
 			cr, sz := rune(r[i]), 1
 			if cr >= utf8.RuneSelf {
 				cr, sz = utf8.DecodeRuneInString(r[i:])

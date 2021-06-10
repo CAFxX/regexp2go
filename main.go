@@ -9,6 +9,7 @@ import (
 	"regexp/syntax"
 	"strings"
 	"unicode"
+	"unicode/utf8"
 )
 
 var (
@@ -67,8 +68,8 @@ func main() {
 		fmt.Fprintln(b, "")
 	}
 	// TODO: avoid decoding the runes and operate on raw bytes instead
-	outcr := `
-		cr, sz := rune(r[i]), 1 
+	outcrASCII := `cr, sz := rune(r[i]), 1`
+	outcr := outcrASCII + `
 		if cr >= utf8.RuneSelf {
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
@@ -293,8 +294,21 @@ func main() {
 			if len(runes)%2 == 1 {
 				panic("odd runes")
 			}
+
+			allASCII := true
+			for _, r := range runes {
+				if r >= utf8.RuneSelf {
+					allASCII = false
+					break
+				}
+			}
+
 			out("if i >= 0 && i < len(r) { ")
-			out(outcr)
+			if allASCII {
+				out(outcrASCII)
+			} else {
+				out(outcr)
+			}
 			const max = 128
 			runeMask := runeMask(runes, max)
 			useRuneMask := false
