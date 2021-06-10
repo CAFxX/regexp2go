@@ -135,7 +135,7 @@ func BenchmarkIPv6(b *testing.B) {
 	s := `This is an IPv4: 127.1, whereas this is an IPv6: ::1.`
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			suffix.Match(s)
+			ipv6.Match(s)
 		}
 	})
 	if testing.Short() {
