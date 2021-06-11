@@ -115,10 +115,12 @@ func main() {
 	//       (e.g. uint{8,16,32} instead of int) and dynamically dispatch to the different versions
 	//       based on the size of the input string r.
 	out("func %s(r string) ([%d]string, int, bool) {", *fn, p.NumCap/2)
+	out("  var _bt [%d]state%s // static storage for backtracking state", numSt, *fn)
+	out("  bt := _bt[:0] // dynamic backtracking state")
 	out("  si := 0 // starting byte index ")
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
-	out("  var _bt [%d]state%s // static storage for backtracking state \n bt := _bt[:0] // backtracking state ", numSt, *fn)
+	out("  bt = bt[:0] // fast reset dynamic backtracking state")
 	out("  var c [%d]int // captures ", p.NumCap)
 	out("var bc [%d]int // captures for the longest match so far", p.NumCap)
 	out("matched := false // succesful match flag")

@@ -23,16 +23,17 @@ type stateMatch struct {
 // (?m)^INFO res=([0-9]+) msg=(.*)$
 // with flags 212
 func Match(r string) ([3]string, int, bool) {
-	si := 0 // starting byte index
-restart:
 	var _bt [2]stateMatch // static storage for backtracking state
-	bt := _bt[:0]         // backtracking state
-	var c [6]int          // captures
-	var bc [6]int         // captures for the longest match so far
-	matched := false      // succesful match flag
-	i := si               // current byte index
-	c[0] = i              // start of match
-	goto inst1            // initial instruction
+	bt := _bt[:0]         // dynamic backtracking state
+	si := 0               // starting byte index
+restart:
+	bt = bt[:0]      // fast reset dynamic backtracking state
+	var c [6]int     // captures
+	var bc [6]int    // captures for the longest match so far
+	matched := false // succesful match flag
+	i := si          // current byte index
+	c[0] = i         // start of match
+	goto inst1       // initial instruction
 
 	// inst0 unreacheable
 

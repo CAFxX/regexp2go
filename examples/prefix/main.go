@@ -23,14 +23,15 @@ type stateMatch struct {
 // Hello ([^!]+)!
 // with flags 212
 func Match(r string) ([2]string, int, bool) {
-	si := 0 // starting byte index
-restart:
 	var _bt [1]stateMatch // static storage for backtracking state
-	bt := _bt[:0]         // backtracking state
-	var c [4]int          // captures
-	var bc [4]int         // captures for the longest match so far
-	matched := false      // succesful match flag
-	i := si               // current byte index
+	bt := _bt[:0]         // dynamic backtracking state
+	si := 0               // starting byte index
+restart:
+	bt = bt[:0]      // fast reset dynamic backtracking state
+	var c [4]int     // captures
+	var bc [4]int    // captures for the longest match so far
+	matched := false // succesful match flag
+	i := si          // current byte index
 
 	// fast prefix search "Hello "
 	if idx := strings.Index(r[si:], "Hello "); idx >= 0 {
