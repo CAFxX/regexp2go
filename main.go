@@ -167,6 +167,7 @@ func main() {
 		}
 		out("\n goto unreachable \n goto inst%d \n inst%d: // %s ", pc, pc, inst.String())
 		// out("fmt.Println(i, %d, %q)", pc, inst.String())
+		failable := true
 		switch inst.Op {
 		case syntax.InstAlt:
 			// TODO: use a pool of state segments to avoid copying (by linking the segments into a stack)
@@ -229,11 +230,13 @@ func main() {
 				)
 			}
 			tgt = append(tgt, uint32(pc))
+			failable = false
 		case syntax.InstAltMatch:
 			// TODO: implement
 			panic("not implemented InstAltMatch")
 		case syntax.InstCapture:
 			out("c[%d] = i \n goto inst%d ", inst.Arg, inst.Out)
+			failable = false
 		case syntax.InstEmptyWidth:
 			out("{")
 			before := "before := rune(-1) \n if i := i-1; i >= 0 && i < len(r) { " + outcr + " before, _ = cr, sz } "
@@ -270,10 +273,12 @@ func main() {
 			out("}")
 		case syntax.InstMatch:
 			out("c[1] = i // end of match \n goto match")
+			failable = false
 		case syntax.InstFail:
 			out("goto inst%d_fail", pc)
 		case syntax.InstNop:
 			out("goto inst%d ", inst.Out)
+			failable = false
 		case syntax.InstRune1:
 			fallthrough
 		case syntax.InstRune:
@@ -380,20 +385,22 @@ func main() {
 			panic("unknown op")
 		}
 		// failure pad
-		out(`goto unreachable`)
-		out(`goto inst%d_fail`, pc)
-		out(`inst%d_fail:`, pc)
-		if pcpreds := preds[uint32(pc)]; len(pcpreds) > 0 {
-			out(`if i <= len(r) && len(bt) > 0 {`)
-			out(`	switch bt[len(bt)-1].pc {`)
-			out(`	default: goto unreachable`)
-			for _, pred := range sortSet(pcpreds) {
-				out("   case %d: goto inst%d_alt", pred, pred) // computed goto would really help here
+		if failable {
+			out(`goto unreachable`)
+			out(`goto inst%d_fail`, pc)
+			out(`inst%d_fail:`, pc)
+			if pcpreds := preds[uint32(pc)]; len(pcpreds) > 0 {
+				out(`if i <= len(r) && len(bt) > 0 {`)
+				out(`	switch bt[len(bt)-1].pc {`)
+				out(`	default: goto unreachable`)
+				for _, pred := range sortSet(pcpreds) {
+					out("   case %d: goto inst%d_alt", pred, pred) // computed goto would really help here
+				}
+				out(`   }`)
+				out(`}`)
 			}
-			out(`   }`)
-			out(`}`)
+			out(`goto fail`)
 		}
-		out(`goto fail`)
 	}
 
 	out(`

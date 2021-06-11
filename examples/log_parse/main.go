@@ -98,10 +98,6 @@ inst2_fail:
 inst11: // cap 2 -> 12
 	c[2] = i
 	goto inst12
-	goto unreachable
-	goto inst11_fail
-inst11_fail:
-	goto fail
 
 	goto unreachable
 	goto inst12
@@ -147,20 +143,12 @@ inst13_alt:
 		}
 		goto inst14
 	}
-	goto unreachable
-	goto inst13_fail
-inst13_fail:
-	goto fail
 
 	goto unreachable
 	goto inst14
 inst14: // cap 3 -> 15
 	c[3] = i
 	goto inst15
-	goto unreachable
-	goto inst14_fail
-inst14_fail:
-	goto fail
 
 	goto unreachable
 	goto inst15
@@ -190,10 +178,6 @@ inst15_fail:
 inst20: // cap 4 -> 22
 	c[4] = i
 	goto inst22
-	goto unreachable
-	goto inst20_fail
-inst20_fail:
-	goto fail
 
 	goto unreachable
 	goto inst21
@@ -254,20 +238,12 @@ inst22_alt:
 		}
 		goto inst23
 	}
-	goto unreachable
-	goto inst22_fail
-inst22_fail:
-	goto fail
 
 	goto unreachable
 	goto inst23
 inst23: // cap 5 -> 24
 	c[5] = i
 	goto inst24
-	goto unreachable
-	goto inst23_fail
-inst23_fail:
-	goto fail
 
 	goto unreachable
 	goto inst24
@@ -296,10 +272,6 @@ inst24_fail:
 inst25: // match
 	c[1] = i // end of match
 	goto match
-	goto unreachable
-	goto inst25_fail
-inst25_fail:
-	goto fail
 
 	goto unreachable
 	goto fail

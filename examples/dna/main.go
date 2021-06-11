@@ -45,18 +45,6 @@ restart:
 inst1: // cap 2 -> 18
 	c[2] = i
 	goto inst18
-	goto unreachable
-	goto inst1_fail
-inst1_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 39:
-			goto inst39_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst2
@@ -144,56 +132,18 @@ inst18_alt:
 		bt = bt[:n]
 		goto inst10
 	}
-	goto unreachable
-	goto inst18_fail
-inst18_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 39:
-			goto inst39_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst19
 inst19: // cap 3 -> 180
 	c[3] = i
 	goto inst180
-	goto unreachable
-	goto inst19_fail
-inst19_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 18:
-			goto inst18_alt
-		case 39:
-			goto inst39_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst20
 inst20: // cap 4 -> 37
 	c[4] = i
 	goto inst37
-	goto unreachable
-	goto inst20_fail
-inst20_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 59:
-			goto inst59_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst21
@@ -339,38 +289,12 @@ inst37_alt:
 		bt = bt[:n]
 		goto inst29
 	}
-	goto unreachable
-	goto inst37_fail
-inst37_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 59:
-			goto inst59_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst38
 inst38: // cap 5 -> 180
 	c[5] = i
 	goto inst180
-	goto unreachable
-	goto inst38_fail
-inst38_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 37:
-			goto inst37_alt
-		case 59:
-			goto inst59_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst39
@@ -384,36 +308,12 @@ inst39_alt:
 		bt = bt[:n]
 		goto inst20
 	}
-	goto unreachable
-	goto inst39_fail
-inst39_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 59:
-			goto inst59_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst40
 inst40: // cap 6 -> 57
 	c[6] = i
 	goto inst57
-	goto unreachable
-	goto inst40_fail
-inst40_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 79:
-			goto inst79_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst41
@@ -601,38 +501,12 @@ inst57_alt:
 		bt = bt[:n]
 		goto inst49
 	}
-	goto unreachable
-	goto inst57_fail
-inst57_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 79:
-			goto inst79_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst58
 inst58: // cap 7 -> 180
 	c[7] = i
 	goto inst180
-	goto unreachable
-	goto inst58_fail
-inst58_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 57:
-			goto inst57_alt
-		case 79:
-			goto inst79_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst59
@@ -646,36 +520,12 @@ inst59_alt:
 		bt = bt[:n]
 		goto inst40
 	}
-	goto unreachable
-	goto inst59_fail
-inst59_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 79:
-			goto inst79_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst60
 inst60: // cap 8 -> 77
 	c[8] = i
 	goto inst77
-	goto unreachable
-	goto inst60_fail
-inst60_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 99:
-			goto inst99_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst61
@@ -863,38 +713,12 @@ inst77_alt:
 		bt = bt[:n]
 		goto inst69
 	}
-	goto unreachable
-	goto inst77_fail
-inst77_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 99:
-			goto inst99_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst78
 inst78: // cap 9 -> 180
 	c[9] = i
 	goto inst180
-	goto unreachable
-	goto inst78_fail
-inst78_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 77:
-			goto inst77_alt
-		case 99:
-			goto inst99_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst79
@@ -908,36 +732,12 @@ inst79_alt:
 		bt = bt[:n]
 		goto inst60
 	}
-	goto unreachable
-	goto inst79_fail
-inst79_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 99:
-			goto inst99_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst80
 inst80: // cap 10 -> 97
 	c[10] = i
 	goto inst97
-	goto unreachable
-	goto inst80_fail
-inst80_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 119:
-			goto inst119_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst81
@@ -1125,38 +925,12 @@ inst97_alt:
 		bt = bt[:n]
 		goto inst89
 	}
-	goto unreachable
-	goto inst97_fail
-inst97_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 119:
-			goto inst119_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst98
 inst98: // cap 11 -> 180
 	c[11] = i
 	goto inst180
-	goto unreachable
-	goto inst98_fail
-inst98_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 97:
-			goto inst97_alt
-		case 119:
-			goto inst119_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst99
@@ -1170,36 +944,12 @@ inst99_alt:
 		bt = bt[:n]
 		goto inst80
 	}
-	goto unreachable
-	goto inst99_fail
-inst99_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 119:
-			goto inst119_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst100
 inst100: // cap 12 -> 117
 	c[12] = i
 	goto inst117
-	goto unreachable
-	goto inst100_fail
-inst100_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 139:
-			goto inst139_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst101
@@ -1387,38 +1137,12 @@ inst117_alt:
 		bt = bt[:n]
 		goto inst109
 	}
-	goto unreachable
-	goto inst117_fail
-inst117_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 139:
-			goto inst139_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst118
 inst118: // cap 13 -> 180
 	c[13] = i
 	goto inst180
-	goto unreachable
-	goto inst118_fail
-inst118_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 117:
-			goto inst117_alt
-		case 139:
-			goto inst139_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst119
@@ -1432,36 +1156,12 @@ inst119_alt:
 		bt = bt[:n]
 		goto inst100
 	}
-	goto unreachable
-	goto inst119_fail
-inst119_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 139:
-			goto inst139_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst120
 inst120: // cap 14 -> 137
 	c[14] = i
 	goto inst137
-	goto unreachable
-	goto inst120_fail
-inst120_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 159:
-			goto inst159_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst121
@@ -1649,38 +1349,12 @@ inst137_alt:
 		bt = bt[:n]
 		goto inst129
 	}
-	goto unreachable
-	goto inst137_fail
-inst137_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 159:
-			goto inst159_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst138
 inst138: // cap 15 -> 180
 	c[15] = i
 	goto inst180
-	goto unreachable
-	goto inst138_fail
-inst138_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 137:
-			goto inst137_alt
-		case 159:
-			goto inst159_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst139
@@ -1694,36 +1368,12 @@ inst139_alt:
 		bt = bt[:n]
 		goto inst120
 	}
-	goto unreachable
-	goto inst139_fail
-inst139_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 159:
-			goto inst159_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst140
 inst140: // cap 16 -> 157
 	c[16] = i
 	goto inst157
-	goto unreachable
-	goto inst140_fail
-inst140_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 179:
-			goto inst179_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst141
@@ -1911,38 +1561,12 @@ inst157_alt:
 		bt = bt[:n]
 		goto inst149
 	}
-	goto unreachable
-	goto inst157_fail
-inst157_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 179:
-			goto inst179_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst158
 inst158: // cap 17 -> 180
 	c[17] = i
 	goto inst180
-	goto unreachable
-	goto inst158_fail
-inst158_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 157:
-			goto inst157_alt
-		case 179:
-			goto inst179_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst159
@@ -1956,28 +1580,12 @@ inst159_alt:
 		bt = bt[:n]
 		goto inst140
 	}
-	goto unreachable
-	goto inst159_fail
-inst159_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 179:
-			goto inst179_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst160
 inst160: // cap 18 -> 177
 	c[18] = i
 	goto inst177
-	goto unreachable
-	goto inst160_fail
-inst160_fail:
-	goto fail
 
 	goto unreachable
 	goto inst161
@@ -2107,28 +1715,12 @@ inst177_alt:
 		bt = bt[:n]
 		goto inst169
 	}
-	goto unreachable
-	goto inst177_fail
-inst177_fail:
-	goto fail
 
 	goto unreachable
 	goto inst178
 inst178: // cap 19 -> 180
 	c[19] = i
 	goto inst180
-	goto unreachable
-	goto inst178_fail
-inst178_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 177:
-			goto inst177_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst179
@@ -2142,60 +1734,12 @@ inst179_alt:
 		bt = bt[:n]
 		goto inst160
 	}
-	goto unreachable
-	goto inst179_fail
-inst179_fail:
-	goto fail
 
 	goto unreachable
 	goto inst180
 inst180: // match
 	c[1] = i // end of match
 	goto match
-	goto unreachable
-	goto inst180_fail
-inst180_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 18:
-			goto inst18_alt
-		case 37:
-			goto inst37_alt
-		case 39:
-			goto inst39_alt
-		case 57:
-			goto inst57_alt
-		case 59:
-			goto inst59_alt
-		case 77:
-			goto inst77_alt
-		case 79:
-			goto inst79_alt
-		case 97:
-			goto inst97_alt
-		case 99:
-			goto inst99_alt
-		case 117:
-			goto inst117_alt
-		case 119:
-			goto inst119_alt
-		case 137:
-			goto inst137_alt
-		case 139:
-			goto inst139_alt
-		case 157:
-			goto inst157_alt
-		case 159:
-			goto inst159_alt
-		case 177:
-			goto inst177_alt
-		case 179:
-			goto inst179_alt
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto fail

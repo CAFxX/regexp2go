@@ -84,10 +84,6 @@ inst2_alt:
 		}
 		goto inst3
 	}
-	goto unreachable
-	goto inst2_fail
-inst2_fail:
-	goto fail
 
 	goto unreachable
 	goto inst3
@@ -108,10 +104,6 @@ inst3_fail:
 inst4: // match
 	c[1] = i // end of match
 	goto match
-	goto unreachable
-	goto inst4_fail
-inst4_fail:
-	goto fail
 
 	goto unreachable
 	goto fail
