@@ -3,21 +3,23 @@
 GOCMD=${GOCMD:-go}
 
 function build() {
-    pkg=$1
-    regex=$2
+    (
+        pkg=$1
+        regex=$2
 
-    echo "$pkg"
+        echo "$pkg"
 
-    dir="gen/$pkg"
-    mkdir -p "$dir"
-    $GOCMD run main.go "$regex" > "$dir/main.go"
-    $GOCMD build -o "$dir/main" "$dir/main.go"
-    $GOCMD tool objdump -S -s "main.Match" "$dir/main" > "$dir/main.asm"
+        dir="gen/$pkg"
+        mkdir -p "$dir"
+        $GOCMD run main.go "$regex" > "$dir/main.go"
+        $GOCMD build -o "$dir/main" "$dir/main.go"
+        $GOCMD tool objdump -S -s "main.Match" "$dir/main" > "$dir/main.asm"
 
-    dir="examples/$pkg"
-    mkdir -p "$dir"
-    $GOCMD run main.go -pkg "$pkg" "$regex" > "$dir/main.go"
-    rm -f "$dir/main"
+        dir="examples/$pkg"
+        mkdir -p "$dir"
+        $GOCMD run main.go -pkg "$pkg" "$regex" > "$dir/main.go"
+        rm -f "$dir/main"        
+    ) &
 }
 
 rm -rf gen examples benchmark.test cpu.prof mem.prof
@@ -31,6 +33,7 @@ build prefix 'Hello ([^!]+)!'
 build unicode '私は((?:\p{Katakana}|\p{Hiragana}|\p{Han})+)です'
 build suffix '[a-z]+$'
 build ipv6 '(?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))'
+wait
 
 echo "Testing"
 $GOCMD test .
