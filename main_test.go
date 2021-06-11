@@ -12,6 +12,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/log_parse"
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
 	"github.com/CAFxX/regexp2go/examples/prefix"
+	"github.com/CAFxX/regexp2go/examples/quoted"
 	"github.com/CAFxX/regexp2go/examples/suffix"
 	"github.com/CAFxX/regexp2go/examples/unicode"
 )
@@ -30,6 +31,7 @@ func TestRegexp2go(t *testing.T) {
 		"unicode":      {unicode.MatchRegexp, unicode.Match, []string{"それはちょっと。。。私は忙しいです！"}},
 		"line_prefix":  {line_prefix.MatchRegexp, line_prefix.Match, []string{"example\n>hello\n>world!\nend\n"}},
 		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match, []string{" dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com"}},
+		"quoted":       {quoted.MatchRegexp, quoted.Match, []string{`code:0 pub:true msg:"Hello World!" t:452`}},
 	}
 	for n, c := range cases {
 		c := c
@@ -51,9 +53,13 @@ func TestRegexp2go(t *testing.T) {
 					pos := res[1].Int()
 					ok := res[2].Bool()
 
+					t.Logf("matches: %#v", matches)
+					t.Logf("pos: %v", pos)
+					t.Logf("ok: %v", ok)
+
 					rematches := re.FindStringSubmatch(s)
 					if !reflect.DeepEqual(matches, rematches) {
-						t.Errorf("matches: got %v, expected %v", matches, rematches)
+						t.Errorf("matches: got %#v, expected %#v", matches, rematches)
 					}
 
 					reok := re.MatchString(s)

@@ -10,6 +10,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/log_parse"
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
 	"github.com/CAFxX/regexp2go/examples/prefix"
+	"github.com/CAFxX/regexp2go/examples/quoted"
 	"github.com/CAFxX/regexp2go/examples/suffix"
 	"github.com/CAFxX/regexp2go/examples/unicode"
 )
@@ -136,6 +137,24 @@ func BenchmarkIPv6(b *testing.B) {
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			ipv6.Match(s)
+		}
+	})
+	if testing.Short() {
+		return
+	}
+	b.Run("regexp", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			re.FindStringSubmatch(s)
+		}
+	})
+}
+
+func BenchmarkQuoted(b *testing.B) {
+	re := regexp.MustCompile(quoted.MatchRegexp)
+	s := `code:0 pub:true msg:"Hello World!" t:452`
+	b.Run("regexp2go", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			quoted.Match(s)
 		}
 	})
 	if testing.Short() {
