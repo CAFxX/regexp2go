@@ -114,16 +114,20 @@ func main() {
 	// TODO: create multiple versions of the function, each using different types for tracking offsets
 	//       (e.g. uint{8,16,32} instead of int) and dynamically dispatch to the different versions
 	//       based on the size of the input string r.
-	out("func %s(r string) ([%d]string, int, bool) {", *fn, p.NumCap/2)
-	out("  var _bt [%d]state%s // static storage for backtracking state", numSt, *fn)
-	out("  bt := _bt[:0] // dynamic backtracking state")
+	out("func %s(r string) (matches [%d]string, pos int, ok bool) {", *fn, p.NumCap/2)
+	out("  var bt [%d]state%s // static storage for backtracking state", numSt, *fn)
+	out("  matches, pos, ok = do%s(r, bt[:0])", *fn)
+	out("  return")
+	out("}")
+
+	out("func do%s(r string, bt []state%s) ([%d]string, int, bool) {", *fn, *fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  bt = bt[:0] // fast reset dynamic backtracking state")
 	out("  var c [%d]int // captures ", p.NumCap)
-	out("var bc [%d]int // captures for the longest match so far", p.NumCap)
-	out("matched := false // succesful match flag")
+	out("  var bc [%d]int // captures for the longest match so far", p.NumCap)
+	out("  matched := false // succesful match flag")
 	out("  i := si // current byte index ")
 	if len(prefix) > 0 {
 		out(`
@@ -149,6 +153,7 @@ func main() {
 	//       e.g. if the regexp starts with [0-9] record where the first [0-9] appears after si, and the jump to that position after restart.
 	//       This may require duplicating the FSM, with one copy doing this extra check, and the second without. When the first copy finds the first candidate
 	//       it jumps to the second copy.
+	out("  si = i") // if we skipped ahead, move also the start position
 	out("  c[0] = i // start of match ")
 	out("  goto inst%d // initial instruction", p.Start)
 

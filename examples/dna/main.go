@@ -22,18 +22,22 @@ type stateMatch struct {
 // Match implements the regular expression
 // (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
 // with flags 212
-func Match(r string) ([10]string, int, bool) {
-	var _bt [17]stateMatch // static storage for backtracking state
-	bt := _bt[:0]          // dynamic backtracking state
-	si := 0                // starting byte index
+func Match(r string) (matches [10]string, pos int, ok bool) {
+	var bt [17]stateMatch // static storage for backtracking state
+	matches, pos, ok = doMatch(r, bt[:0])
+	return
+}
+func doMatch(r string, bt []stateMatch) ([10]string, int, bool) {
+	si := 0 // starting byte index
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [20]int    // captures
 	var bc [20]int   // captures for the longest match so far
 	matched := false // succesful match flag
 	i := si          // current byte index
-	c[0] = i         // start of match
-	goto inst179     // initial instruction
+	si = i
+	c[0] = i     // start of match
+	goto inst179 // initial instruction
 
 	// inst0 unreacheable
 

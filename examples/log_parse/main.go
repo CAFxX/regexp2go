@@ -22,18 +22,22 @@ type stateMatch struct {
 // Match implements the regular expression
 // (?m)^INFO res=([0-9]+) msg=(.*)$
 // with flags 212
-func Match(r string) ([3]string, int, bool) {
-	var _bt [2]stateMatch // static storage for backtracking state
-	bt := _bt[:0]         // dynamic backtracking state
-	si := 0               // starting byte index
+func Match(r string) (matches [3]string, pos int, ok bool) {
+	var bt [2]stateMatch // static storage for backtracking state
+	matches, pos, ok = doMatch(r, bt[:0])
+	return
+}
+func doMatch(r string, bt []stateMatch) ([3]string, int, bool) {
+	si := 0 // starting byte index
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [6]int     // captures
 	var bc [6]int    // captures for the longest match so far
 	matched := false // succesful match flag
 	i := si          // current byte index
-	c[0] = i         // start of match
-	goto inst1       // initial instruction
+	si = i
+	c[0] = i   // start of match
+	goto inst1 // initial instruction
 
 	// inst0 unreacheable
 

@@ -22,18 +22,22 @@ type stateMatch struct {
 // Match implements the regular expression
 // (?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))
 // with flags 212
-func Match(r string) ([1]string, int, bool) {
-	var _bt [319]stateMatch // static storage for backtracking state
-	bt := _bt[:0]           // dynamic backtracking state
-	si := 0                 // starting byte index
+func Match(r string) (matches [1]string, pos int, ok bool) {
+	var bt [319]stateMatch // static storage for backtracking state
+	matches, pos, ok = doMatch(r, bt[:0])
+	return
+}
+func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
+	si := 0 // starting byte index
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [2]int     // captures
 	var bc [2]int    // captures for the longest match so far
 	matched := false // succesful match flag
 	i := si          // current byte index
-	c[0] = i         // start of match
-	goto inst771     // initial instruction
+	si = i
+	c[0] = i     // start of match
+	goto inst771 // initial instruction
 
 	// inst0 unreacheable
 
