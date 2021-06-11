@@ -19,7 +19,7 @@ function build() {
         mkdir -p "$dir"
         $GOCMD run main.go -pkg "$pkg" "$regex" > "$dir/main.go"
         rm -f "$dir/main"        
-    ) &
+    )
 }
 
 rm -rf gen examples benchmark.test cpu.prof mem.prof

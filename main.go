@@ -49,6 +49,7 @@ func main() {
 	// optimization passes
 	optString(p)
 	optDeadInst(p)
+	order := optReorder(p)
 
 	numSt := 0
 	for _, inst := range p.Inst {
@@ -158,7 +159,8 @@ func main() {
 	out("  goto inst%d // initial instruction", p.Start)
 
 	// TODO: sort instructions to maximize instruction locality
-	for pc, inst := range p.Inst {
+	for _, pc := range order {
+		inst := p.Inst[pc]
 		if inst.Op == instDead {
 			out("\n // inst%d unreacheable", pc)
 			continue
@@ -532,4 +534,91 @@ func optDeadInst(p *syntax.Prog) {
 			}
 		}
 	}
+}
+
+func optReorder(p *syntax.Prog) []int {
+	type inst struct {
+		in  []int
+		out []int
+		pos int
+	}
+
+	insts := make([]inst, len(p.Inst))
+
+	for pc := range p.Inst {
+		insts[pc].pos = pc
+		out, arg := p.Inst[pc].Out, p.Inst[pc].Arg
+		switch p.Inst[pc].Op {
+		case syntax.InstMatch, syntax.InstFail:
+			continue
+		case syntax.InstAltMatch:
+			panic("not implemented")
+		case syntax.InstAlt:
+			insts[pc].out = append(insts[pc].out, int(out), int(arg))
+			insts[out].in = append(insts[out].in, pc)
+			insts[arg].in = append(insts[arg].in, pc)
+		default:
+			insts[pc].out = append(insts[pc].out, int(out))
+			insts[out].in = append(insts[out].in, pc)
+		}
+	}
+
+	metric := func(pc int) (dd int) {
+		for _, in := range insts[pc].in {
+			d := insts[pc].pos - insts[in].pos
+			if d < 0 {
+				d = -d
+			}
+			dd += d
+		}
+		for _, out := range insts[pc].out {
+			d := insts[pc].pos - insts[out].pos
+			if d < 0 {
+				d = -d
+			}
+			dd += d
+		}
+		return
+	}
+
+	for iter, modified := 0, true; iter < 100 && modified; iter++ {
+		modified = false
+		tdd := 0
+		for i := range insts {
+			tdd += metric(i)
+		}
+		fmt.Fprintf(os.Stderr, "iter=%d, tdd=%d\n", iter, tdd)
+		for i := range insts {
+			ddi := metric(i)
+			for j := range insts[i+1:] {
+				ddj := metric(j)
+				insts[i].pos, insts[j].pos = insts[j].pos, insts[i].pos
+				dds := metric(i) + metric(j)
+				if ddi+ddj <= dds {
+					insts[j].pos, insts[i].pos = insts[i].pos, insts[j].pos
+				} else {
+					modified = true
+				}
+			}
+		}
+		if len(insts) < 3 {
+			continue
+		}
+		for i := range insts[:len(insts)-2] {
+			dd := metric(i) + metric(i+1) + metric(i+2)
+			insts[i].pos, insts[i+1].pos, insts[i+2].pos = insts[i+1].pos, insts[i+2].pos, insts[i].pos
+			dds := metric(i) + metric(i+1) + metric(i+2)
+			if dd <= dds {
+				insts[i+1].pos, insts[i+2].pos, insts[i].pos = insts[i].pos, insts[i+1].pos, insts[i+2].pos
+			} else {
+				modified = true
+			}
+		}
+	}
+
+	order := make([]int, len(p.Inst))
+	for pc := range insts {
+		order[insts[pc].pos] = pc
+	}
+	return order
 }

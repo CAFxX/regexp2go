@@ -50,22 +50,11 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
-	// inst0 unreacheable
-
-	goto unreachable
-	goto inst1
-inst1: //
-	if i >= 0 && i+6 <= len(r) {
-		if r[i:i+6] == "Hello " {
-			i += 6
-			goto inst7
-		}
-	}
-	goto fail
-
 	// inst2 unreacheable
 
 	// inst3 unreacheable
+
+	// inst0 unreacheable
 
 	// inst4 unreacheable
 
@@ -123,6 +112,17 @@ inst9_alt:
 		}
 		goto inst10
 	}
+
+	goto unreachable
+	goto inst1
+inst1: //
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "Hello " {
+			i += 6
+			goto inst7
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst10

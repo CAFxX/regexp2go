@@ -38,8 +38,6 @@ restart:
 	c[0] = i         // start of match
 	goto inst1       // initial instruction
 
-	// inst0 unreacheable
-
 	goto unreachable
 	goto inst1
 inst1: // empty 1 -> 2
@@ -69,9 +67,11 @@ inst2: //
 	}
 	goto fail
 
-	// inst3 unreacheable
-
-	// inst4 unreacheable
+	goto unreachable
+	goto inst11
+inst11: // cap 2 -> 12
+	c[2] = i
+	goto inst12
 
 	// inst5 unreacheable
 
@@ -85,11 +85,9 @@ inst2: //
 
 	// inst10 unreacheable
 
-	goto unreachable
-	goto inst11
-inst11: // cap 2 -> 12
-	c[2] = i
-	goto inst12
+	// inst0 unreacheable
+
+	// inst4 unreacheable
 
 	goto unreachable
 	goto inst12
@@ -132,11 +130,21 @@ inst13_alt:
 		goto inst14
 	}
 
+	// inst16 unreacheable
+
+	// inst3 unreacheable
+
 	goto unreachable
 	goto inst14
 inst14: // cap 3 -> 15
 	c[3] = i
 	goto inst15
+
+	// inst17 unreacheable
+
+	// inst18 unreacheable
+
+	// inst19 unreacheable
 
 	goto unreachable
 	goto inst15
@@ -148,14 +156,6 @@ inst15: //
 		}
 	}
 	goto fail
-
-	// inst16 unreacheable
-
-	// inst17 unreacheable
-
-	// inst18 unreacheable
-
-	// inst19 unreacheable
 
 	goto unreachable
 	goto inst20

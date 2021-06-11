@@ -50,8 +50,6 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
-	// inst0 unreacheable
-
 	goto unreachable
 	goto inst1
 inst1: //
@@ -62,8 +60,6 @@ inst1: //
 		}
 	}
 	goto fail
-
-	// inst2 unreacheable
 
 	goto unreachable
 	goto inst3
@@ -122,6 +118,12 @@ inst6: // cap 3 -> 7
 	c[3] = i
 	goto inst7
 
+	// inst2 unreacheable
+
+	// inst0 unreacheable
+
+	// inst8 unreacheable
+
 	goto unreachable
 	goto inst7
 inst7: //
@@ -132,8 +134,6 @@ inst7: //
 		}
 	}
 	goto fail
-
-	// inst8 unreacheable
 
 	goto unreachable
 	goto inst9
