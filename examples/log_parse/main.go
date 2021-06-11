@@ -216,11 +216,10 @@ inst21: // anynotnl -> 22
 	goto unreachable
 	goto inst21_fail
 inst21_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 22:
 			goto inst22_alt
 		}

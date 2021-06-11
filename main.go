@@ -7,6 +7,7 @@ import (
 	"go/format"
 	"os"
 	"regexp/syntax"
+	"sort"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -383,20 +384,18 @@ func main() {
 		out(`goto inst%d_fail`, pc)
 		out(`inst%d_fail:`, pc)
 		if pcpreds := preds[uint32(pc)]; len(pcpreds) > 0 {
-			out(`
-			if i <= len(r) && len(bt) > 0 {
-				switch bt[len(bt)-1].pc {
-				default: panic(bt[len(bt)-1].pc)`)
-			for pred := range pcpreds {
-				out("case %d: goto inst%d_alt", pred, pred) // computed goto would really help here
+			out(`if i <= len(r) && len(bt) > 0 {`)
+			out(`	switch bt[len(bt)-1].pc {`)
+			out(`	default: goto unreachable`)
+			for _, pred := range sortSet(pcpreds) {
+				out("   case %d: goto inst%d_alt", pred, pred) // computed goto would really help here
 			}
-			out(`}
-			}`)
+			out(`   }`)
+			out(`}`)
 		}
 		out(`goto fail`)
 	}
 
-	// TODO: instead of embedding a single jump table here, embed a smaller jump table (or a direct jump) at every `goto fail` location that is known to only be able to jump to a subset of targets
 	out(`
 		goto unreachable
 		goto fail
@@ -455,6 +454,17 @@ func main() {
 		os.Exit(-1)
 	}
 	os.Stdout.Write(gen)
+}
+
+func sortSet(m map[uint32]struct{}) []uint32 {
+	var s []uint32
+	for k := range m {
+		s = append(s, k)
+	}
+	sort.Slice(s, func(i, j int) bool {
+		return s[i] < s[j]
+	})
+	return s
 }
 
 func isSimpleLoop(p *syntax.Prog, pc uint32) int {

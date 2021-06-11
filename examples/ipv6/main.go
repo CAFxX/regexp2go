@@ -61,11 +61,10 @@ inst1: // rune "09AFaf" -> 7
 	goto unreachable
 	goto inst1_fail
 inst1_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 127:
 			goto inst127_alt
 		}
@@ -93,11 +92,10 @@ inst2: // rune "09AFaf" -> 6
 	goto unreachable
 	goto inst2_fail
 inst2_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 7:
 			goto inst7_alt
 		}
@@ -125,11 +123,10 @@ inst3: // rune "09AFaf" -> 5
 	goto unreachable
 	goto inst3_fail
 inst3_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 6:
 			goto inst6_alt
 		}
@@ -157,11 +154,10 @@ inst4: // rune "09AFaf" -> 8
 	goto unreachable
 	goto inst4_fail
 inst4_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 5:
 			goto inst5_alt
 		}
@@ -183,11 +179,10 @@ inst5_alt:
 	goto unreachable
 	goto inst5_fail
 inst5_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 6:
 			goto inst6_alt
 		}
@@ -209,11 +204,10 @@ inst6_alt:
 	goto unreachable
 	goto inst6_fail
 inst6_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 7:
 			goto inst7_alt
 		}
@@ -235,11 +229,10 @@ inst7_alt:
 	goto unreachable
 	goto inst7_fail
 inst7_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 127:
 			goto inst127_alt
 		}
@@ -259,19 +252,18 @@ inst8: //
 	goto unreachable
 	goto inst8_fail
 inst8_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 127:
-			goto inst127_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -297,19 +289,18 @@ inst9: // rune "09AFaf" -> 15
 	goto unreachable
 	goto inst9_fail
 inst9_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 127:
-			goto inst127_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -335,11 +326,10 @@ inst10: // rune "09AFaf" -> 14
 	goto unreachable
 	goto inst10_fail
 inst10_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 15:
 			goto inst15_alt
 		}
@@ -367,11 +357,10 @@ inst11: // rune "09AFaf" -> 13
 	goto unreachable
 	goto inst11_fail
 inst11_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 14:
 			goto inst14_alt
 		}
@@ -399,11 +388,10 @@ inst12: // rune "09AFaf" -> 16
 	goto unreachable
 	goto inst12_fail
 inst12_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 13:
 			goto inst13_alt
 		}
@@ -425,11 +413,10 @@ inst13_alt:
 	goto unreachable
 	goto inst13_fail
 inst13_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 14:
 			goto inst14_alt
 		}
@@ -451,11 +438,10 @@ inst14_alt:
 	goto unreachable
 	goto inst14_fail
 inst14_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 15:
 			goto inst15_alt
 		}
@@ -477,19 +463,18 @@ inst15_alt:
 	goto unreachable
 	goto inst15_fail
 inst15_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 127:
-			goto inst127_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -507,25 +492,24 @@ inst16: //
 	goto unreachable
 	goto inst16_fail
 inst16_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 14:
-			goto inst14_alt
-		case 13:
-			goto inst13_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 127:
-			goto inst127_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
 		case 15:
 			goto inst15_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -551,25 +535,24 @@ inst17: // rune "09AFaf" -> 23
 	goto unreachable
 	goto inst17_fail
 inst17_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 13:
-			goto inst13_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 127:
-			goto inst127_alt
-		case 15:
-			goto inst15_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
 		case 14:
 			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -595,11 +578,10 @@ inst18: // rune "09AFaf" -> 22
 	goto unreachable
 	goto inst18_fail
 inst18_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 23:
 			goto inst23_alt
 		}
@@ -627,11 +609,10 @@ inst19: // rune "09AFaf" -> 21
 	goto unreachable
 	goto inst19_fail
 inst19_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 22:
 			goto inst22_alt
 		}
@@ -659,11 +640,10 @@ inst20: // rune "09AFaf" -> 24
 	goto unreachable
 	goto inst20_fail
 inst20_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 21:
 			goto inst21_alt
 		}
@@ -685,11 +665,10 @@ inst21_alt:
 	goto unreachable
 	goto inst21_fail
 inst21_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 22:
 			goto inst22_alt
 		}
@@ -711,11 +690,10 @@ inst22_alt:
 	goto unreachable
 	goto inst22_fail
 inst22_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 23:
 			goto inst23_alt
 		}
@@ -737,25 +715,24 @@ inst23_alt:
 	goto unreachable
 	goto inst23_fail
 inst23_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 14:
-			goto inst14_alt
-		case 13:
-			goto inst13_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 127:
-			goto inst127_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
 		case 15:
 			goto inst15_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -773,31 +750,30 @@ inst24: //
 	goto unreachable
 	goto inst24_fail
 inst24_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 127:
-			goto inst127_alt
-		case 22:
-			goto inst22_alt
-		case 21:
-			goto inst21_alt
-		case 14:
-			goto inst14_alt
-		case 13:
-			goto inst13_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
-		case 23:
-			goto inst23_alt
-		case 15:
-			goto inst15_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -823,31 +799,30 @@ inst25: // rune "09AFaf" -> 31
 	goto unreachable
 	goto inst25_fail
 inst25_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 14:
-			goto inst14_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 23:
-			goto inst23_alt
-		case 22:
-			goto inst22_alt
-		case 15:
-			goto inst15_alt
-		case 13:
-			goto inst13_alt
+		case 6:
+			goto inst6_alt
 		case 7:
 			goto inst7_alt
-		case 127:
-			goto inst127_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
 		case 21:
 			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -873,11 +848,10 @@ inst26: // rune "09AFaf" -> 30
 	goto unreachable
 	goto inst26_fail
 inst26_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 31:
 			goto inst31_alt
 		}
@@ -905,11 +879,10 @@ inst27: // rune "09AFaf" -> 29
 	goto unreachable
 	goto inst27_fail
 inst27_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 30:
 			goto inst30_alt
 		}
@@ -937,11 +910,10 @@ inst28: // rune "09AFaf" -> 32
 	goto unreachable
 	goto inst28_fail
 inst28_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 29:
 			goto inst29_alt
 		}
@@ -963,11 +935,10 @@ inst29_alt:
 	goto unreachable
 	goto inst29_fail
 inst29_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 30:
 			goto inst30_alt
 		}
@@ -989,11 +960,10 @@ inst30_alt:
 	goto unreachable
 	goto inst30_fail
 inst30_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 31:
 			goto inst31_alt
 		}
@@ -1015,31 +985,30 @@ inst31_alt:
 	goto unreachable
 	goto inst31_fail
 inst31_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 15:
-			goto inst15_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
-		case 127:
-			goto inst127_alt
-		case 23:
-			goto inst23_alt
-		case 22:
-			goto inst22_alt
-		case 21:
-			goto inst21_alt
-		case 14:
-			goto inst14_alt
-		case 13:
-			goto inst13_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1057,37 +1026,36 @@ inst32: //
 	goto unreachable
 	goto inst32_fail
 inst32_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 29:
-			goto inst29_alt
-		case 22:
-			goto inst22_alt
-		case 14:
-			goto inst14_alt
+			goto unreachable
+		case 5:
+			goto inst5_alt
+		case 6:
+			goto inst6_alt
 		case 7:
 			goto inst7_alt
 		case 13:
 			goto inst13_alt
-		case 6:
-			goto inst6_alt
-		case 127:
-			goto inst127_alt
-		case 31:
-			goto inst31_alt
-		case 30:
-			goto inst30_alt
-		case 23:
-			goto inst23_alt
-		case 21:
-			goto inst21_alt
+		case 14:
+			goto inst14_alt
 		case 15:
 			goto inst15_alt
-		case 5:
-			goto inst5_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1113,37 +1081,36 @@ inst33: // rune "09AFaf" -> 39
 	goto unreachable
 	goto inst33_fail
 inst33_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 127:
-			goto inst127_alt
-		case 29:
-			goto inst29_alt
+			goto unreachable
+		case 5:
+			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
 		case 14:
 			goto inst14_alt
 		case 15:
 			goto inst15_alt
-		case 13:
-			goto inst13_alt
-		case 7:
-			goto inst7_alt
-		case 31:
-			goto inst31_alt
-		case 30:
-			goto inst30_alt
-		case 23:
-			goto inst23_alt
-		case 22:
-			goto inst22_alt
 		case 21:
 			goto inst21_alt
-		case 6:
-			goto inst6_alt
-		case 5:
-			goto inst5_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1169,11 +1136,10 @@ inst34: // rune "09AFaf" -> 38
 	goto unreachable
 	goto inst34_fail
 inst34_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 39:
 			goto inst39_alt
 		}
@@ -1201,11 +1167,10 @@ inst35: // rune "09AFaf" -> 37
 	goto unreachable
 	goto inst35_fail
 inst35_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 38:
 			goto inst38_alt
 		}
@@ -1233,11 +1198,10 @@ inst36: // rune "09AFaf" -> 40
 	goto unreachable
 	goto inst36_fail
 inst36_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 37:
 			goto inst37_alt
 		}
@@ -1259,11 +1223,10 @@ inst37_alt:
 	goto unreachable
 	goto inst37_fail
 inst37_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 38:
 			goto inst38_alt
 		}
@@ -1285,11 +1248,10 @@ inst38_alt:
 	goto unreachable
 	goto inst38_fail
 inst38_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 39:
 			goto inst39_alt
 		}
@@ -1311,35 +1273,34 @@ inst39_alt:
 	goto unreachable
 	goto inst39_fail
 inst39_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 30:
-			goto inst30_alt
-		case 29:
-			goto inst29_alt
-		case 22:
-			goto inst22_alt
-		case 14:
-			goto inst14_alt
-		case 7:
-			goto inst7_alt
-		case 31:
-			goto inst31_alt
-		case 23:
-			goto inst23_alt
-		case 21:
-			goto inst21_alt
-		case 15:
-			goto inst15_alt
-		case 13:
-			goto inst13_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
 		case 127:
 			goto inst127_alt
 		}
@@ -1359,43 +1320,42 @@ inst40: //
 	goto unreachable
 	goto inst40_fail
 inst40_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 14:
-			goto inst14_alt
+			goto unreachable
+		case 5:
+			goto inst5_alt
+		case 6:
+			goto inst6_alt
 		case 7:
 			goto inst7_alt
 		case 13:
 			goto inst13_alt
-		case 5:
-			goto inst5_alt
-		case 38:
-			goto inst38_alt
-		case 30:
-			goto inst30_alt
+		case 14:
+			goto inst14_alt
 		case 15:
 			goto inst15_alt
-		case 6:
-			goto inst6_alt
-		case 127:
-			goto inst127_alt
-		case 31:
-			goto inst31_alt
-		case 29:
-			goto inst29_alt
-		case 23:
-			goto inst23_alt
-		case 22:
-			goto inst22_alt
 		case 21:
 			goto inst21_alt
-		case 39:
-			goto inst39_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
 		case 37:
 			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1421,43 +1381,42 @@ inst41: // rune "09AFaf" -> 47
 	goto unreachable
 	goto inst41_fail
 inst41_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 31:
-			goto inst31_alt
-		case 23:
-			goto inst23_alt
-		case 22:
-			goto inst22_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 127:
-			goto inst127_alt
-		case 37:
-			goto inst37_alt
-		case 21:
-			goto inst21_alt
-		case 14:
-			goto inst14_alt
-		case 7:
-			goto inst7_alt
-		case 39:
-			goto inst39_alt
-		case 15:
-			goto inst15_alt
-		case 38:
-			goto inst38_alt
-		case 30:
-			goto inst30_alt
-		case 29:
-			goto inst29_alt
-		case 13:
-			goto inst13_alt
 		case 6:
 			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 37:
+			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1483,11 +1442,10 @@ inst42: // rune "09AFaf" -> 46
 	goto unreachable
 	goto inst42_fail
 inst42_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 47:
 			goto inst47_alt
 		}
@@ -1515,11 +1473,10 @@ inst43: // rune "09AFaf" -> 45
 	goto unreachable
 	goto inst43_fail
 inst43_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 46:
 			goto inst46_alt
 		}
@@ -1547,11 +1504,10 @@ inst44: // rune "09AFaf" -> 48
 	goto unreachable
 	goto inst44_fail
 inst44_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 45:
 			goto inst45_alt
 		}
@@ -1573,11 +1529,10 @@ inst45_alt:
 	goto unreachable
 	goto inst45_fail
 inst45_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 46:
 			goto inst46_alt
 		}
@@ -1599,11 +1554,10 @@ inst46_alt:
 	goto unreachable
 	goto inst46_fail
 inst46_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 47:
 			goto inst47_alt
 		}
@@ -1625,43 +1579,42 @@ inst47_alt:
 	goto unreachable
 	goto inst47_fail
 inst47_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 23:
-			goto inst23_alt
-		case 22:
-			goto inst22_alt
-		case 21:
-			goto inst21_alt
-		case 15:
-			goto inst15_alt
-		case 127:
-			goto inst127_alt
-		case 30:
-			goto inst30_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 29:
-			goto inst29_alt
+		case 6:
+			goto inst6_alt
 		case 7:
 			goto inst7_alt
 		case 13:
 			goto inst13_alt
-		case 37:
-			goto inst37_alt
 		case 14:
 			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
 		case 31:
 			goto inst31_alt
-		case 39:
-			goto inst39_alt
+		case 37:
+			goto inst37_alt
 		case 38:
 			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1679,49 +1632,48 @@ inst48: //
 	goto unreachable
 	goto inst48_fail
 inst48_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 46:
-			goto inst46_alt
-		case 45:
-			goto inst45_alt
-		case 31:
-			goto inst31_alt
-		case 22:
-			goto inst22_alt
-		case 21:
-			goto inst21_alt
-		case 13:
-			goto inst13_alt
-		case 127:
-			goto inst127_alt
-		case 37:
-			goto inst37_alt
-		case 29:
-			goto inst29_alt
-		case 23:
-			goto inst23_alt
-		case 15:
-			goto inst15_alt
-		case 14:
-			goto inst14_alt
-		case 7:
-			goto inst7_alt
-		case 47:
-			goto inst47_alt
-		case 39:
-			goto inst39_alt
-		case 38:
-			goto inst38_alt
-		case 30:
-			goto inst30_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 37:
+			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 45:
+			goto inst45_alt
+		case 46:
+			goto inst46_alt
+		case 47:
+			goto inst47_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1747,49 +1699,48 @@ inst49: // rune "09AFaf" -> 55
 	goto unreachable
 	goto inst49_fail
 inst49_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 13:
-			goto inst13_alt
-		case 46:
-			goto inst46_alt
-		case 37:
-			goto inst37_alt
-		case 21:
-			goto inst21_alt
-		case 15:
-			goto inst15_alt
-		case 30:
-			goto inst30_alt
-		case 22:
-			goto inst22_alt
-		case 14:
-			goto inst14_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 127:
-			goto inst127_alt
-		case 47:
-			goto inst47_alt
-		case 45:
-			goto inst45_alt
-		case 31:
-			goto inst31_alt
-		case 38:
-			goto inst38_alt
-		case 29:
-			goto inst29_alt
-		case 39:
-			goto inst39_alt
-		case 23:
-			goto inst23_alt
-		case 7:
-			goto inst7_alt
 		case 6:
 			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 37:
+			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 45:
+			goto inst45_alt
+		case 46:
+			goto inst46_alt
+		case 47:
+			goto inst47_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -1815,11 +1766,10 @@ inst50: // rune "09AFaf" -> 54
 	goto unreachable
 	goto inst50_fail
 inst50_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 55:
 			goto inst55_alt
 		}
@@ -1847,11 +1797,10 @@ inst51: // rune "09AFaf" -> 53
 	goto unreachable
 	goto inst51_fail
 inst51_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 54:
 			goto inst54_alt
 		}
@@ -1879,11 +1828,10 @@ inst52: // rune "09AFaf" -> 56
 	goto unreachable
 	goto inst52_fail
 inst52_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 53:
 			goto inst53_alt
 		}
@@ -1905,11 +1853,10 @@ inst53_alt:
 	goto unreachable
 	goto inst53_fail
 inst53_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 54:
 			goto inst54_alt
 		}
@@ -1931,11 +1878,10 @@ inst54_alt:
 	goto unreachable
 	goto inst54_fail
 inst54_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 55:
 			goto inst55_alt
 		}
@@ -1957,49 +1903,48 @@ inst55_alt:
 	goto unreachable
 	goto inst55_fail
 inst55_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 7:
-			goto inst7_alt
-		case 47:
-			goto inst47_alt
-		case 30:
-			goto inst30_alt
-		case 29:
-			goto inst29_alt
-		case 23:
-			goto inst23_alt
-		case 15:
-			goto inst15_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 37:
-			goto inst37_alt
-		case 46:
-			goto inst46_alt
-		case 45:
-			goto inst45_alt
-		case 39:
-			goto inst39_alt
-		case 38:
-			goto inst38_alt
-		case 31:
-			goto inst31_alt
-		case 22:
-			goto inst22_alt
-		case 21:
-			goto inst21_alt
-		case 127:
-			goto inst127_alt
-		case 13:
-			goto inst13_alt
 		case 6:
 			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
 		case 14:
 			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 37:
+			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 45:
+			goto inst45_alt
+		case 46:
+			goto inst46_alt
+		case 47:
+			goto inst47_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -2017,55 +1962,54 @@ inst56: //
 	goto unreachable
 	goto inst56_fail
 inst56_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 45:
-			goto inst45_alt
-		case 30:
-			goto inst30_alt
-		case 23:
-			goto inst23_alt
-		case 127:
-			goto inst127_alt
-		case 37:
-			goto inst37_alt
-		case 29:
-			goto inst29_alt
-		case 22:
-			goto inst22_alt
-		case 14:
-			goto inst14_alt
-		case 54:
-			goto inst54_alt
-		case 46:
-			goto inst46_alt
-		case 39:
-			goto inst39_alt
-		case 38:
-			goto inst38_alt
-		case 31:
-			goto inst31_alt
-		case 7:
-			goto inst7_alt
-		case 6:
-			goto inst6_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 53:
-			goto inst53_alt
-		case 47:
-			goto inst47_alt
-		case 21:
-			goto inst21_alt
-		case 15:
-			goto inst15_alt
+		case 6:
+			goto inst6_alt
+		case 7:
+			goto inst7_alt
 		case 13:
 			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 37:
+			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 45:
+			goto inst45_alt
+		case 46:
+			goto inst46_alt
+		case 47:
+			goto inst47_alt
+		case 53:
+			goto inst53_alt
+		case 54:
+			goto inst54_alt
 		case 55:
 			goto inst55_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -2091,55 +2035,54 @@ inst57: // rune "09AFaf" -> 63
 	goto unreachable
 	goto inst57_fail
 inst57_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 53:
-			goto inst53_alt
-		case 46:
-			goto inst46_alt
-		case 37:
-			goto inst37_alt
-		case 30:
-			goto inst30_alt
-		case 29:
-			goto inst29_alt
-		case 22:
-			goto inst22_alt
-		case 6:
-			goto inst6_alt
-		case 127:
-			goto inst127_alt
-		case 23:
-			goto inst23_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 13:
-			goto inst13_alt
-		case 55:
-			goto inst55_alt
-		case 54:
-			goto inst54_alt
-		case 47:
-			goto inst47_alt
-		case 45:
-			goto inst45_alt
-		case 31:
-			goto inst31_alt
-		case 21:
-			goto inst21_alt
-		case 15:
-			goto inst15_alt
+		case 6:
+			goto inst6_alt
 		case 7:
 			goto inst7_alt
-		case 39:
-			goto inst39_alt
-		case 38:
-			goto inst38_alt
+		case 13:
+			goto inst13_alt
 		case 14:
 			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 37:
+			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 45:
+			goto inst45_alt
+		case 46:
+			goto inst46_alt
+		case 47:
+			goto inst47_alt
+		case 53:
+			goto inst53_alt
+		case 54:
+			goto inst54_alt
+		case 55:
+			goto inst55_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -2165,11 +2108,10 @@ inst58: // rune "09AFaf" -> 62
 	goto unreachable
 	goto inst58_fail
 inst58_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 63:
 			goto inst63_alt
 		}
@@ -2197,11 +2139,10 @@ inst59: // rune "09AFaf" -> 61
 	goto unreachable
 	goto inst59_fail
 inst59_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 62:
 			goto inst62_alt
 		}
@@ -2229,11 +2170,10 @@ inst60: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst60_fail
 inst60_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 61:
 			goto inst61_alt
 		}
@@ -2255,11 +2195,10 @@ inst61_alt:
 	goto unreachable
 	goto inst61_fail
 inst61_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 62:
 			goto inst62_alt
 		}
@@ -2281,11 +2220,10 @@ inst62_alt:
 	goto unreachable
 	goto inst62_fail
 inst62_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 63:
 			goto inst63_alt
 		}
@@ -2307,55 +2245,54 @@ inst63_alt:
 	goto unreachable
 	goto inst63_fail
 inst63_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 13:
-			goto inst13_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 127:
-			goto inst127_alt
-		case 53:
-			goto inst53_alt
-		case 39:
-			goto inst39_alt
-		case 14:
-			goto inst14_alt
-		case 31:
-			goto inst31_alt
-		case 15:
-			goto inst15_alt
-		case 55:
-			goto inst55_alt
-		case 54:
-			goto inst54_alt
-		case 47:
-			goto inst47_alt
-		case 45:
-			goto inst45_alt
-		case 23:
-			goto inst23_alt
-		case 22:
-			goto inst22_alt
-		case 46:
-			goto inst46_alt
-		case 37:
-			goto inst37_alt
-		case 30:
-			goto inst30_alt
-		case 29:
-			goto inst29_alt
-		case 38:
-			goto inst38_alt
-		case 21:
-			goto inst21_alt
-		case 7:
-			goto inst7_alt
 		case 6:
 			goto inst6_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
+		case 37:
+			goto inst37_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 45:
+			goto inst45_alt
+		case 46:
+			goto inst46_alt
+		case 47:
+			goto inst47_alt
+		case 53:
+			goto inst53_alt
+		case 54:
+			goto inst54_alt
+		case 55:
+			goto inst55_alt
+		case 127:
+			goto inst127_alt
 		}
 	}
 	goto fail
@@ -2381,11 +2318,10 @@ inst64: // rune "09AFaf" -> 70
 	goto unreachable
 	goto inst64_fail
 inst64_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 189:
 			goto inst189_alt
 		}
@@ -2413,11 +2349,10 @@ inst65: // rune "09AFaf" -> 69
 	goto unreachable
 	goto inst65_fail
 inst65_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 70:
 			goto inst70_alt
 		}
@@ -2445,11 +2380,10 @@ inst66: // rune "09AFaf" -> 68
 	goto unreachable
 	goto inst66_fail
 inst66_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 69:
 			goto inst69_alt
 		}
@@ -2477,11 +2411,10 @@ inst67: // rune "09AFaf" -> 71
 	goto unreachable
 	goto inst67_fail
 inst67_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 68:
 			goto inst68_alt
 		}
@@ -2503,11 +2436,10 @@ inst68_alt:
 	goto unreachable
 	goto inst68_fail
 inst68_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 69:
 			goto inst69_alt
 		}
@@ -2529,11 +2461,10 @@ inst69_alt:
 	goto unreachable
 	goto inst69_fail
 inst69_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 70:
 			goto inst70_alt
 		}
@@ -2555,11 +2486,10 @@ inst70_alt:
 	goto unreachable
 	goto inst70_fail
 inst70_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 189:
 			goto inst189_alt
 		}
@@ -2579,19 +2509,18 @@ inst71: //
 	goto unreachable
 	goto inst71_fail
 inst71_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 189:
-			goto inst189_alt
-		case 70:
-			goto inst70_alt
-		case 69:
-			goto inst69_alt
+			goto unreachable
 		case 68:
 			goto inst68_alt
+		case 69:
+			goto inst69_alt
+		case 70:
+			goto inst70_alt
+		case 189:
+			goto inst189_alt
 		}
 	}
 	goto fail
@@ -2617,11 +2546,10 @@ inst72: // rune "09AFaf" -> 78
 	goto unreachable
 	goto inst72_fail
 inst72_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 125:
 			goto inst125_alt
 		}
@@ -2649,11 +2577,10 @@ inst73: // rune "09AFaf" -> 77
 	goto unreachable
 	goto inst73_fail
 inst73_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 78:
 			goto inst78_alt
 		}
@@ -2681,11 +2608,10 @@ inst74: // rune "09AFaf" -> 76
 	goto unreachable
 	goto inst74_fail
 inst74_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 77:
 			goto inst77_alt
 		}
@@ -2713,11 +2639,10 @@ inst75: // rune "09AFaf" -> 79
 	goto unreachable
 	goto inst75_fail
 inst75_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 76:
 			goto inst76_alt
 		}
@@ -2739,11 +2664,10 @@ inst76_alt:
 	goto unreachable
 	goto inst76_fail
 inst76_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 77:
 			goto inst77_alt
 		}
@@ -2765,11 +2689,10 @@ inst77_alt:
 	goto unreachable
 	goto inst77_fail
 inst77_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 78:
 			goto inst78_alt
 		}
@@ -2791,11 +2714,10 @@ inst78_alt:
 	goto unreachable
 	goto inst78_fail
 inst78_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 125:
 			goto inst125_alt
 		}
@@ -2815,19 +2737,18 @@ inst79: //
 	goto unreachable
 	goto inst79_fail
 inst79_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 125:
-			goto inst125_alt
-		case 78:
-			goto inst78_alt
-		case 77:
-			goto inst77_alt
+			goto unreachable
 		case 76:
 			goto inst76_alt
+		case 77:
+			goto inst77_alt
+		case 78:
+			goto inst78_alt
+		case 125:
+			goto inst125_alt
 		}
 	}
 	goto fail
@@ -2853,11 +2774,10 @@ inst80: // rune "09AFaf" -> 86
 	goto unreachable
 	goto inst80_fail
 inst80_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 124:
 			goto inst124_alt
 		}
@@ -2885,11 +2805,10 @@ inst81: // rune "09AFaf" -> 85
 	goto unreachable
 	goto inst81_fail
 inst81_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 86:
 			goto inst86_alt
 		}
@@ -2917,11 +2836,10 @@ inst82: // rune "09AFaf" -> 84
 	goto unreachable
 	goto inst82_fail
 inst82_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 85:
 			goto inst85_alt
 		}
@@ -2949,11 +2867,10 @@ inst83: // rune "09AFaf" -> 87
 	goto unreachable
 	goto inst83_fail
 inst83_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 84:
 			goto inst84_alt
 		}
@@ -2975,11 +2892,10 @@ inst84_alt:
 	goto unreachable
 	goto inst84_fail
 inst84_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 85:
 			goto inst85_alt
 		}
@@ -3001,11 +2917,10 @@ inst85_alt:
 	goto unreachable
 	goto inst85_fail
 inst85_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 86:
 			goto inst86_alt
 		}
@@ -3027,11 +2942,10 @@ inst86_alt:
 	goto unreachable
 	goto inst86_fail
 inst86_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 124:
 			goto inst124_alt
 		}
@@ -3051,19 +2965,18 @@ inst87: //
 	goto unreachable
 	goto inst87_fail
 inst87_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 124:
-			goto inst124_alt
-		case 86:
-			goto inst86_alt
-		case 85:
-			goto inst85_alt
+			goto unreachable
 		case 84:
 			goto inst84_alt
+		case 85:
+			goto inst85_alt
+		case 86:
+			goto inst86_alt
+		case 124:
+			goto inst124_alt
 		}
 	}
 	goto fail
@@ -3089,11 +3002,10 @@ inst88: // rune "09AFaf" -> 94
 	goto unreachable
 	goto inst88_fail
 inst88_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 123:
 			goto inst123_alt
 		}
@@ -3121,11 +3033,10 @@ inst89: // rune "09AFaf" -> 93
 	goto unreachable
 	goto inst89_fail
 inst89_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 94:
 			goto inst94_alt
 		}
@@ -3153,11 +3064,10 @@ inst90: // rune "09AFaf" -> 92
 	goto unreachable
 	goto inst90_fail
 inst90_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 93:
 			goto inst93_alt
 		}
@@ -3185,11 +3095,10 @@ inst91: // rune "09AFaf" -> 95
 	goto unreachable
 	goto inst91_fail
 inst91_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 92:
 			goto inst92_alt
 		}
@@ -3211,11 +3120,10 @@ inst92_alt:
 	goto unreachable
 	goto inst92_fail
 inst92_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 93:
 			goto inst93_alt
 		}
@@ -3237,11 +3145,10 @@ inst93_alt:
 	goto unreachable
 	goto inst93_fail
 inst93_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 94:
 			goto inst94_alt
 		}
@@ -3263,11 +3170,10 @@ inst94_alt:
 	goto unreachable
 	goto inst94_fail
 inst94_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 123:
 			goto inst123_alt
 		}
@@ -3287,19 +3193,18 @@ inst95: //
 	goto unreachable
 	goto inst95_fail
 inst95_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 93:
-			goto inst93_alt
+			goto unreachable
 		case 92:
 			goto inst92_alt
-		case 123:
-			goto inst123_alt
+		case 93:
+			goto inst93_alt
 		case 94:
 			goto inst94_alt
+		case 123:
+			goto inst123_alt
 		}
 	}
 	goto fail
@@ -3325,11 +3230,10 @@ inst96: // rune "09AFaf" -> 102
 	goto unreachable
 	goto inst96_fail
 inst96_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 122:
 			goto inst122_alt
 		}
@@ -3357,11 +3261,10 @@ inst97: // rune "09AFaf" -> 101
 	goto unreachable
 	goto inst97_fail
 inst97_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 102:
 			goto inst102_alt
 		}
@@ -3389,11 +3292,10 @@ inst98: // rune "09AFaf" -> 100
 	goto unreachable
 	goto inst98_fail
 inst98_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 101:
 			goto inst101_alt
 		}
@@ -3421,11 +3323,10 @@ inst99: // rune "09AFaf" -> 103
 	goto unreachable
 	goto inst99_fail
 inst99_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 100:
 			goto inst100_alt
 		}
@@ -3447,11 +3348,10 @@ inst100_alt:
 	goto unreachable
 	goto inst100_fail
 inst100_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 101:
 			goto inst101_alt
 		}
@@ -3473,11 +3373,10 @@ inst101_alt:
 	goto unreachable
 	goto inst101_fail
 inst101_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 102:
 			goto inst102_alt
 		}
@@ -3499,11 +3398,10 @@ inst102_alt:
 	goto unreachable
 	goto inst102_fail
 inst102_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 122:
 			goto inst122_alt
 		}
@@ -3523,19 +3421,18 @@ inst103: //
 	goto unreachable
 	goto inst103_fail
 inst103_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 122:
-			goto inst122_alt
-		case 102:
-			goto inst102_alt
-		case 101:
-			goto inst101_alt
+			goto unreachable
 		case 100:
 			goto inst100_alt
+		case 101:
+			goto inst101_alt
+		case 102:
+			goto inst102_alt
+		case 122:
+			goto inst122_alt
 		}
 	}
 	goto fail
@@ -3561,11 +3458,10 @@ inst104: // rune "09AFaf" -> 110
 	goto unreachable
 	goto inst104_fail
 inst104_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 121:
 			goto inst121_alt
 		}
@@ -3593,11 +3489,10 @@ inst105: // rune "09AFaf" -> 109
 	goto unreachable
 	goto inst105_fail
 inst105_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 110:
 			goto inst110_alt
 		}
@@ -3625,11 +3520,10 @@ inst106: // rune "09AFaf" -> 108
 	goto unreachable
 	goto inst106_fail
 inst106_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 109:
 			goto inst109_alt
 		}
@@ -3657,11 +3551,10 @@ inst107: // rune "09AFaf" -> 111
 	goto unreachable
 	goto inst107_fail
 inst107_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 108:
 			goto inst108_alt
 		}
@@ -3683,11 +3576,10 @@ inst108_alt:
 	goto unreachable
 	goto inst108_fail
 inst108_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 109:
 			goto inst109_alt
 		}
@@ -3709,11 +3601,10 @@ inst109_alt:
 	goto unreachable
 	goto inst109_fail
 inst109_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 110:
 			goto inst110_alt
 		}
@@ -3735,11 +3626,10 @@ inst110_alt:
 	goto unreachable
 	goto inst110_fail
 inst110_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 121:
 			goto inst121_alt
 		}
@@ -3759,19 +3649,18 @@ inst111: //
 	goto unreachable
 	goto inst111_fail
 inst111_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 121:
-			goto inst121_alt
-		case 110:
-			goto inst110_alt
-		case 109:
-			goto inst109_alt
+			goto unreachable
 		case 108:
 			goto inst108_alt
+		case 109:
+			goto inst109_alt
+		case 110:
+			goto inst110_alt
+		case 121:
+			goto inst121_alt
 		}
 	}
 	goto fail
@@ -3797,11 +3686,10 @@ inst112: // rune "09AFaf" -> 118
 	goto unreachable
 	goto inst112_fail
 inst112_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 120:
 			goto inst120_alt
 		}
@@ -3829,11 +3717,10 @@ inst113: // rune "09AFaf" -> 117
 	goto unreachable
 	goto inst113_fail
 inst113_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 118:
 			goto inst118_alt
 		}
@@ -3861,11 +3748,10 @@ inst114: // rune "09AFaf" -> 116
 	goto unreachable
 	goto inst114_fail
 inst114_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 117:
 			goto inst117_alt
 		}
@@ -3893,11 +3779,10 @@ inst115: // rune "09AFaf" -> 119
 	goto unreachable
 	goto inst115_fail
 inst115_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 116:
 			goto inst116_alt
 		}
@@ -3919,11 +3804,10 @@ inst116_alt:
 	goto unreachable
 	goto inst116_fail
 inst116_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 117:
 			goto inst117_alt
 		}
@@ -3945,11 +3829,10 @@ inst117_alt:
 	goto unreachable
 	goto inst117_fail
 inst117_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 118:
 			goto inst118_alt
 		}
@@ -3971,11 +3854,10 @@ inst118_alt:
 	goto unreachable
 	goto inst118_fail
 inst118_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 120:
 			goto inst120_alt
 		}
@@ -3995,17 +3877,16 @@ inst119: //
 	goto unreachable
 	goto inst119_fail
 inst119_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 118:
-			goto inst118_alt
-		case 117:
-			goto inst117_alt
+			goto unreachable
 		case 116:
 			goto inst116_alt
+		case 117:
+			goto inst117_alt
+		case 118:
+			goto inst118_alt
 		case 120:
 			goto inst120_alt
 		}
@@ -4027,17 +3908,16 @@ inst120_alt:
 	goto unreachable
 	goto inst120_fail
 inst120_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 110:
-			goto inst110_alt
-		case 109:
-			goto inst109_alt
+			goto unreachable
 		case 108:
 			goto inst108_alt
+		case 109:
+			goto inst109_alt
+		case 110:
+			goto inst110_alt
 		case 121:
 			goto inst121_alt
 		}
@@ -4059,19 +3939,18 @@ inst121_alt:
 	goto unreachable
 	goto inst121_fail
 inst121_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 122:
-			goto inst122_alt
-		case 102:
-			goto inst102_alt
-		case 101:
-			goto inst101_alt
+			goto unreachable
 		case 100:
 			goto inst100_alt
+		case 101:
+			goto inst101_alt
+		case 102:
+			goto inst102_alt
+		case 122:
+			goto inst122_alt
 		}
 	}
 	goto fail
@@ -4091,17 +3970,16 @@ inst122_alt:
 	goto unreachable
 	goto inst122_fail
 inst122_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 94:
-			goto inst94_alt
-		case 93:
-			goto inst93_alt
+			goto unreachable
 		case 92:
 			goto inst92_alt
+		case 93:
+			goto inst93_alt
+		case 94:
+			goto inst94_alt
 		case 123:
 			goto inst123_alt
 		}
@@ -4123,19 +4001,18 @@ inst123_alt:
 	goto unreachable
 	goto inst123_fail
 inst123_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 85:
-			goto inst85_alt
+			goto unreachable
 		case 84:
 			goto inst84_alt
-		case 124:
-			goto inst124_alt
+		case 85:
+			goto inst85_alt
 		case 86:
 			goto inst86_alt
+		case 124:
+			goto inst124_alt
 		}
 	}
 	goto fail
@@ -4155,19 +4032,18 @@ inst124_alt:
 	goto unreachable
 	goto inst124_fail
 inst124_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 125:
-			goto inst125_alt
-		case 78:
-			goto inst78_alt
-		case 77:
-			goto inst77_alt
+			goto unreachable
 		case 76:
 			goto inst76_alt
+		case 77:
+			goto inst77_alt
+		case 78:
+			goto inst78_alt
+		case 125:
+			goto inst125_alt
 		}
 	}
 	goto fail
@@ -4187,19 +4063,18 @@ inst125_alt:
 	goto unreachable
 	goto inst125_fail
 inst125_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 189:
-			goto inst189_alt
-		case 70:
-			goto inst70_alt
-		case 69:
-			goto inst69_alt
+			goto unreachable
 		case 68:
 			goto inst68_alt
+		case 69:
+			goto inst69_alt
+		case 70:
+			goto inst70_alt
+		case 189:
+			goto inst189_alt
 		}
 	}
 	goto fail
@@ -4217,59 +4092,58 @@ inst126: //
 	goto unreachable
 	goto inst126_fail
 inst126_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 70:
-			goto inst70_alt
+			goto unreachable
 		case 68:
 			goto inst68_alt
-		case 189:
-			goto inst189_alt
-		case 108:
-			goto inst108_alt
-		case 94:
-			goto inst94_alt
-		case 78:
-			goto inst78_alt
-		case 77:
-			goto inst77_alt
-		case 125:
-			goto inst125_alt
-		case 93:
-			goto inst93_alt
 		case 69:
 			goto inst69_alt
+		case 70:
+			goto inst70_alt
+		case 76:
+			goto inst76_alt
+		case 77:
+			goto inst77_alt
+		case 78:
+			goto inst78_alt
 		case 84:
 			goto inst84_alt
-		case 124:
-			goto inst124_alt
-		case 122:
-			goto inst122_alt
-		case 109:
-			goto inst109_alt
-		case 102:
-			goto inst102_alt
+		case 85:
+			goto inst85_alt
 		case 86:
 			goto inst86_alt
 		case 92:
 			goto inst92_alt
-		case 85:
-			goto inst85_alt
-		case 76:
-			goto inst76_alt
-		case 123:
-			goto inst123_alt
-		case 121:
-			goto inst121_alt
-		case 110:
-			goto inst110_alt
-		case 101:
-			goto inst101_alt
+		case 93:
+			goto inst93_alt
+		case 94:
+			goto inst94_alt
 		case 100:
 			goto inst100_alt
+		case 101:
+			goto inst101_alt
+		case 102:
+			goto inst102_alt
+		case 108:
+			goto inst108_alt
+		case 109:
+			goto inst109_alt
+		case 110:
+			goto inst110_alt
+		case 121:
+			goto inst121_alt
+		case 122:
+			goto inst122_alt
+		case 123:
+			goto inst123_alt
+		case 124:
+			goto inst124_alt
+		case 125:
+			goto inst125_alt
+		case 189:
+			goto inst189_alt
 		}
 	}
 	goto fail
@@ -4289,11 +4163,10 @@ inst127_alt:
 	goto unreachable
 	goto inst127_fail
 inst127_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 189:
 			goto inst189_alt
 		}
@@ -4321,11 +4194,10 @@ inst128: // rune "09AFaf" -> 134
 	goto unreachable
 	goto inst128_fail
 inst128_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 251:
 			goto inst251_alt
 		}
@@ -4353,11 +4225,10 @@ inst129: // rune "09AFaf" -> 133
 	goto unreachable
 	goto inst129_fail
 inst129_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 134:
 			goto inst134_alt
 		}
@@ -4385,11 +4256,10 @@ inst130: // rune "09AFaf" -> 132
 	goto unreachable
 	goto inst130_fail
 inst130_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 133:
 			goto inst133_alt
 		}
@@ -4417,11 +4287,10 @@ inst131: // rune "09AFaf" -> 135
 	goto unreachable
 	goto inst131_fail
 inst131_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 132:
 			goto inst132_alt
 		}
@@ -4443,11 +4312,10 @@ inst132_alt:
 	goto unreachable
 	goto inst132_fail
 inst132_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 133:
 			goto inst133_alt
 		}
@@ -4469,11 +4337,10 @@ inst133_alt:
 	goto unreachable
 	goto inst133_fail
 inst133_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 134:
 			goto inst134_alt
 		}
@@ -4495,11 +4362,10 @@ inst134_alt:
 	goto unreachable
 	goto inst134_fail
 inst134_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 251:
 			goto inst251_alt
 		}
@@ -4519,19 +4385,18 @@ inst135: //
 	goto unreachable
 	goto inst135_fail
 inst135_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 132:
 			goto inst132_alt
-		case 251:
-			goto inst251_alt
-		case 134:
-			goto inst134_alt
 		case 133:
 			goto inst133_alt
+		case 134:
+			goto inst134_alt
+		case 251:
+			goto inst251_alt
 		}
 	}
 	goto fail
@@ -4557,11 +4422,10 @@ inst136: // rune "09AFaf" -> 142
 	goto unreachable
 	goto inst136_fail
 inst136_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 180:
 			goto inst180_alt
 		}
@@ -4589,11 +4453,10 @@ inst137: // rune "09AFaf" -> 141
 	goto unreachable
 	goto inst137_fail
 inst137_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 142:
 			goto inst142_alt
 		}
@@ -4621,11 +4484,10 @@ inst138: // rune "09AFaf" -> 140
 	goto unreachable
 	goto inst138_fail
 inst138_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 141:
 			goto inst141_alt
 		}
@@ -4653,11 +4515,10 @@ inst139: // rune "09AFaf" -> 143
 	goto unreachable
 	goto inst139_fail
 inst139_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 140:
 			goto inst140_alt
 		}
@@ -4679,11 +4540,10 @@ inst140_alt:
 	goto unreachable
 	goto inst140_fail
 inst140_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 141:
 			goto inst141_alt
 		}
@@ -4705,11 +4565,10 @@ inst141_alt:
 	goto unreachable
 	goto inst141_fail
 inst141_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 142:
 			goto inst142_alt
 		}
@@ -4731,11 +4590,10 @@ inst142_alt:
 	goto unreachable
 	goto inst142_fail
 inst142_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 180:
 			goto inst180_alt
 		}
@@ -4755,19 +4613,18 @@ inst143: //
 	goto unreachable
 	goto inst143_fail
 inst143_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 180:
-			goto inst180_alt
-		case 142:
-			goto inst142_alt
-		case 141:
-			goto inst141_alt
+			goto unreachable
 		case 140:
 			goto inst140_alt
+		case 141:
+			goto inst141_alt
+		case 142:
+			goto inst142_alt
+		case 180:
+			goto inst180_alt
 		}
 	}
 	goto fail
@@ -4793,11 +4650,10 @@ inst144: // rune "09AFaf" -> 150
 	goto unreachable
 	goto inst144_fail
 inst144_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 179:
 			goto inst179_alt
 		}
@@ -4825,11 +4681,10 @@ inst145: // rune "09AFaf" -> 149
 	goto unreachable
 	goto inst145_fail
 inst145_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 150:
 			goto inst150_alt
 		}
@@ -4857,11 +4712,10 @@ inst146: // rune "09AFaf" -> 148
 	goto unreachable
 	goto inst146_fail
 inst146_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 149:
 			goto inst149_alt
 		}
@@ -4889,11 +4743,10 @@ inst147: // rune "09AFaf" -> 151
 	goto unreachable
 	goto inst147_fail
 inst147_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 148:
 			goto inst148_alt
 		}
@@ -4915,11 +4768,10 @@ inst148_alt:
 	goto unreachable
 	goto inst148_fail
 inst148_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 149:
 			goto inst149_alt
 		}
@@ -4941,11 +4793,10 @@ inst149_alt:
 	goto unreachable
 	goto inst149_fail
 inst149_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 150:
 			goto inst150_alt
 		}
@@ -4967,11 +4818,10 @@ inst150_alt:
 	goto unreachable
 	goto inst150_fail
 inst150_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 179:
 			goto inst179_alt
 		}
@@ -4991,19 +4841,18 @@ inst151: //
 	goto unreachable
 	goto inst151_fail
 inst151_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 179:
-			goto inst179_alt
-		case 150:
-			goto inst150_alt
-		case 149:
-			goto inst149_alt
+			goto unreachable
 		case 148:
 			goto inst148_alt
+		case 149:
+			goto inst149_alt
+		case 150:
+			goto inst150_alt
+		case 179:
+			goto inst179_alt
 		}
 	}
 	goto fail
@@ -5029,11 +4878,10 @@ inst152: // rune "09AFaf" -> 158
 	goto unreachable
 	goto inst152_fail
 inst152_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 178:
 			goto inst178_alt
 		}
@@ -5061,11 +4909,10 @@ inst153: // rune "09AFaf" -> 157
 	goto unreachable
 	goto inst153_fail
 inst153_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 158:
 			goto inst158_alt
 		}
@@ -5093,11 +4940,10 @@ inst154: // rune "09AFaf" -> 156
 	goto unreachable
 	goto inst154_fail
 inst154_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 157:
 			goto inst157_alt
 		}
@@ -5125,11 +4971,10 @@ inst155: // rune "09AFaf" -> 159
 	goto unreachable
 	goto inst155_fail
 inst155_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 156:
 			goto inst156_alt
 		}
@@ -5151,11 +4996,10 @@ inst156_alt:
 	goto unreachable
 	goto inst156_fail
 inst156_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 157:
 			goto inst157_alt
 		}
@@ -5177,11 +5021,10 @@ inst157_alt:
 	goto unreachable
 	goto inst157_fail
 inst157_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 158:
 			goto inst158_alt
 		}
@@ -5203,11 +5046,10 @@ inst158_alt:
 	goto unreachable
 	goto inst158_fail
 inst158_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 178:
 			goto inst178_alt
 		}
@@ -5227,19 +5069,18 @@ inst159: //
 	goto unreachable
 	goto inst159_fail
 inst159_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 157:
-			goto inst157_alt
+			goto unreachable
 		case 156:
 			goto inst156_alt
-		case 178:
-			goto inst178_alt
+		case 157:
+			goto inst157_alt
 		case 158:
 			goto inst158_alt
+		case 178:
+			goto inst178_alt
 		}
 	}
 	goto fail
@@ -5265,11 +5106,10 @@ inst160: // rune "09AFaf" -> 166
 	goto unreachable
 	goto inst160_fail
 inst160_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 177:
 			goto inst177_alt
 		}
@@ -5297,11 +5137,10 @@ inst161: // rune "09AFaf" -> 165
 	goto unreachable
 	goto inst161_fail
 inst161_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 166:
 			goto inst166_alt
 		}
@@ -5329,11 +5168,10 @@ inst162: // rune "09AFaf" -> 164
 	goto unreachable
 	goto inst162_fail
 inst162_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 165:
 			goto inst165_alt
 		}
@@ -5361,11 +5199,10 @@ inst163: // rune "09AFaf" -> 167
 	goto unreachable
 	goto inst163_fail
 inst163_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 164:
 			goto inst164_alt
 		}
@@ -5387,11 +5224,10 @@ inst164_alt:
 	goto unreachable
 	goto inst164_fail
 inst164_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 165:
 			goto inst165_alt
 		}
@@ -5413,11 +5249,10 @@ inst165_alt:
 	goto unreachable
 	goto inst165_fail
 inst165_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 166:
 			goto inst166_alt
 		}
@@ -5439,11 +5274,10 @@ inst166_alt:
 	goto unreachable
 	goto inst166_fail
 inst166_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 177:
 			goto inst177_alt
 		}
@@ -5463,19 +5297,18 @@ inst167: //
 	goto unreachable
 	goto inst167_fail
 inst167_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 177:
-			goto inst177_alt
-		case 166:
-			goto inst166_alt
-		case 165:
-			goto inst165_alt
+			goto unreachable
 		case 164:
 			goto inst164_alt
+		case 165:
+			goto inst165_alt
+		case 166:
+			goto inst166_alt
+		case 177:
+			goto inst177_alt
 		}
 	}
 	goto fail
@@ -5501,11 +5334,10 @@ inst168: // rune "09AFaf" -> 174
 	goto unreachable
 	goto inst168_fail
 inst168_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 176:
 			goto inst176_alt
 		}
@@ -5533,11 +5365,10 @@ inst169: // rune "09AFaf" -> 173
 	goto unreachable
 	goto inst169_fail
 inst169_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 174:
 			goto inst174_alt
 		}
@@ -5565,11 +5396,10 @@ inst170: // rune "09AFaf" -> 172
 	goto unreachable
 	goto inst170_fail
 inst170_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 173:
 			goto inst173_alt
 		}
@@ -5597,11 +5427,10 @@ inst171: // rune "09AFaf" -> 175
 	goto unreachable
 	goto inst171_fail
 inst171_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 172:
 			goto inst172_alt
 		}
@@ -5623,11 +5452,10 @@ inst172_alt:
 	goto unreachable
 	goto inst172_fail
 inst172_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 173:
 			goto inst173_alt
 		}
@@ -5649,11 +5477,10 @@ inst173_alt:
 	goto unreachable
 	goto inst173_fail
 inst173_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 174:
 			goto inst174_alt
 		}
@@ -5675,11 +5502,10 @@ inst174_alt:
 	goto unreachable
 	goto inst174_fail
 inst174_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 176:
 			goto inst176_alt
 		}
@@ -5699,19 +5525,18 @@ inst175: //
 	goto unreachable
 	goto inst175_fail
 inst175_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 176:
-			goto inst176_alt
-		case 174:
-			goto inst174_alt
-		case 173:
-			goto inst173_alt
+			goto unreachable
 		case 172:
 			goto inst172_alt
+		case 173:
+			goto inst173_alt
+		case 174:
+			goto inst174_alt
+		case 176:
+			goto inst176_alt
 		}
 	}
 	goto fail
@@ -5731,19 +5556,18 @@ inst176_alt:
 	goto unreachable
 	goto inst176_fail
 inst176_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 164:
 			goto inst164_alt
-		case 177:
-			goto inst177_alt
-		case 166:
-			goto inst166_alt
 		case 165:
 			goto inst165_alt
+		case 166:
+			goto inst166_alt
+		case 177:
+			goto inst177_alt
 		}
 	}
 	goto fail
@@ -5763,19 +5587,18 @@ inst177_alt:
 	goto unreachable
 	goto inst177_fail
 inst177_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 178:
-			goto inst178_alt
-		case 158:
-			goto inst158_alt
-		case 157:
-			goto inst157_alt
+			goto unreachable
 		case 156:
 			goto inst156_alt
+		case 157:
+			goto inst157_alt
+		case 158:
+			goto inst158_alt
+		case 178:
+			goto inst178_alt
 		}
 	}
 	goto fail
@@ -5795,19 +5618,18 @@ inst178_alt:
 	goto unreachable
 	goto inst178_fail
 inst178_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 179:
-			goto inst179_alt
-		case 150:
-			goto inst150_alt
-		case 149:
-			goto inst149_alt
+			goto unreachable
 		case 148:
 			goto inst148_alt
+		case 149:
+			goto inst149_alt
+		case 150:
+			goto inst150_alt
+		case 179:
+			goto inst179_alt
 		}
 	}
 	goto fail
@@ -5827,19 +5649,18 @@ inst179_alt:
 	goto unreachable
 	goto inst179_fail
 inst179_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 180:
-			goto inst180_alt
-		case 142:
-			goto inst142_alt
-		case 141:
-			goto inst141_alt
+			goto unreachable
 		case 140:
 			goto inst140_alt
+		case 141:
+			goto inst141_alt
+		case 142:
+			goto inst142_alt
+		case 180:
+			goto inst180_alt
 		}
 	}
 	goto fail
@@ -5859,19 +5680,18 @@ inst180_alt:
 	goto unreachable
 	goto inst180_fail
 inst180_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 251:
-			goto inst251_alt
-		case 134:
-			goto inst134_alt
-		case 133:
-			goto inst133_alt
+			goto unreachable
 		case 132:
 			goto inst132_alt
+		case 133:
+			goto inst133_alt
+		case 134:
+			goto inst134_alt
+		case 251:
+			goto inst251_alt
 		}
 	}
 	goto fail
@@ -5889,51 +5709,50 @@ inst181: //
 	goto unreachable
 	goto inst181_fail
 inst181_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 150:
-			goto inst150_alt
-		case 142:
-			goto inst142_alt
-		case 141:
-			goto inst141_alt
-		case 134:
-			goto inst134_alt
-		case 133:
-			goto inst133_alt
-		case 179:
-			goto inst179_alt
-		case 164:
-			goto inst164_alt
-		case 157:
-			goto inst157_alt
-		case 148:
-			goto inst148_alt
-		case 140:
-			goto inst140_alt
-		case 177:
-			goto inst177_alt
-		case 165:
-			goto inst165_alt
+			goto unreachable
 		case 132:
 			goto inst132_alt
-		case 251:
-			goto inst251_alt
-		case 180:
-			goto inst180_alt
-		case 178:
-			goto inst178_alt
-		case 166:
-			goto inst166_alt
-		case 158:
-			goto inst158_alt
-		case 156:
-			goto inst156_alt
+		case 133:
+			goto inst133_alt
+		case 134:
+			goto inst134_alt
+		case 140:
+			goto inst140_alt
+		case 141:
+			goto inst141_alt
+		case 142:
+			goto inst142_alt
+		case 148:
+			goto inst148_alt
 		case 149:
 			goto inst149_alt
+		case 150:
+			goto inst150_alt
+		case 156:
+			goto inst156_alt
+		case 157:
+			goto inst157_alt
+		case 158:
+			goto inst158_alt
+		case 164:
+			goto inst164_alt
+		case 165:
+			goto inst165_alt
+		case 166:
+			goto inst166_alt
+		case 177:
+			goto inst177_alt
+		case 178:
+			goto inst178_alt
+		case 179:
+			goto inst179_alt
+		case 180:
+			goto inst180_alt
+		case 251:
+			goto inst251_alt
 		}
 	}
 	goto fail
@@ -5959,59 +5778,58 @@ inst182: // rune "09AFaf" -> 188
 	goto unreachable
 	goto inst182_fail
 inst182_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 142:
-			goto inst142_alt
-		case 141:
-			goto inst141_alt
-		case 134:
-			goto inst134_alt
-		case 174:
-			goto inst174_alt
-		case 157:
-			goto inst157_alt
-		case 149:
-			goto inst149_alt
-		case 173:
-			goto inst173_alt
-		case 158:
-			goto inst158_alt
-		case 150:
-			goto inst150_alt
-		case 180:
-			goto inst180_alt
-		case 177:
-			goto inst177_alt
-		case 176:
-			goto inst176_alt
-		case 140:
-			goto inst140_alt
-		case 179:
-			goto inst179_alt
-		case 156:
-			goto inst156_alt
-		case 148:
-			goto inst148_alt
-		case 166:
-			goto inst166_alt
-		case 165:
-			goto inst165_alt
-		case 164:
-			goto inst164_alt
-		case 133:
-			goto inst133_alt
+			goto unreachable
 		case 132:
 			goto inst132_alt
-		case 251:
-			goto inst251_alt
-		case 178:
-			goto inst178_alt
+		case 133:
+			goto inst133_alt
+		case 134:
+			goto inst134_alt
+		case 140:
+			goto inst140_alt
+		case 141:
+			goto inst141_alt
+		case 142:
+			goto inst142_alt
+		case 148:
+			goto inst148_alt
+		case 149:
+			goto inst149_alt
+		case 150:
+			goto inst150_alt
+		case 156:
+			goto inst156_alt
+		case 157:
+			goto inst157_alt
+		case 158:
+			goto inst158_alt
+		case 164:
+			goto inst164_alt
+		case 165:
+			goto inst165_alt
+		case 166:
+			goto inst166_alt
 		case 172:
 			goto inst172_alt
+		case 173:
+			goto inst173_alt
+		case 174:
+			goto inst174_alt
+		case 176:
+			goto inst176_alt
+		case 177:
+			goto inst177_alt
+		case 178:
+			goto inst178_alt
+		case 179:
+			goto inst179_alt
+		case 180:
+			goto inst180_alt
+		case 251:
+			goto inst251_alt
 		}
 	}
 	goto fail
@@ -6037,11 +5855,10 @@ inst183: // rune "09AFaf" -> 187
 	goto unreachable
 	goto inst183_fail
 inst183_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 188:
 			goto inst188_alt
 		}
@@ -6069,11 +5886,10 @@ inst184: // rune "09AFaf" -> 186
 	goto unreachable
 	goto inst184_fail
 inst184_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 187:
 			goto inst187_alt
 		}
@@ -6101,11 +5917,10 @@ inst185: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst185_fail
 inst185_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 186:
 			goto inst186_alt
 		}
@@ -6127,11 +5942,10 @@ inst186_alt:
 	goto unreachable
 	goto inst186_fail
 inst186_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 187:
 			goto inst187_alt
 		}
@@ -6153,11 +5967,10 @@ inst187_alt:
 	goto unreachable
 	goto inst187_fail
 inst187_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 188:
 			goto inst188_alt
 		}
@@ -6179,59 +5992,58 @@ inst188_alt:
 	goto unreachable
 	goto inst188_fail
 inst188_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 133:
-			goto inst133_alt
-		case 177:
-			goto inst177_alt
-		case 150:
-			goto inst150_alt
-		case 142:
-			goto inst142_alt
-		case 140:
-			goto inst140_alt
-		case 157:
-			goto inst157_alt
-		case 156:
-			goto inst156_alt
-		case 141:
-			goto inst141_alt
-		case 134:
-			goto inst134_alt
-		case 180:
-			goto inst180_alt
-		case 178:
-			goto inst178_alt
-		case 165:
-			goto inst165_alt
-		case 158:
-			goto inst158_alt
+			goto unreachable
 		case 132:
 			goto inst132_alt
-		case 149:
-			goto inst149_alt
+		case 133:
+			goto inst133_alt
+		case 134:
+			goto inst134_alt
+		case 140:
+			goto inst140_alt
+		case 141:
+			goto inst141_alt
+		case 142:
+			goto inst142_alt
 		case 148:
 			goto inst148_alt
-		case 174:
-			goto inst174_alt
-		case 173:
-			goto inst173_alt
-		case 172:
-			goto inst172_alt
-		case 166:
-			goto inst166_alt
-		case 251:
-			goto inst251_alt
-		case 179:
-			goto inst179_alt
-		case 176:
-			goto inst176_alt
+		case 149:
+			goto inst149_alt
+		case 150:
+			goto inst150_alt
+		case 156:
+			goto inst156_alt
+		case 157:
+			goto inst157_alt
+		case 158:
+			goto inst158_alt
 		case 164:
 			goto inst164_alt
+		case 165:
+			goto inst165_alt
+		case 166:
+			goto inst166_alt
+		case 172:
+			goto inst172_alt
+		case 173:
+			goto inst173_alt
+		case 174:
+			goto inst174_alt
+		case 176:
+			goto inst176_alt
+		case 177:
+			goto inst177_alt
+		case 178:
+			goto inst178_alt
+		case 179:
+			goto inst179_alt
+		case 180:
+			goto inst180_alt
+		case 251:
+			goto inst251_alt
 		}
 	}
 	goto fail
@@ -6251,11 +6063,10 @@ inst189_alt:
 	goto unreachable
 	goto inst189_fail
 inst189_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 251:
 			goto inst251_alt
 		}
@@ -6283,11 +6094,10 @@ inst190: // rune "09AFaf" -> 196
 	goto unreachable
 	goto inst190_fail
 inst190_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 313:
 			goto inst313_alt
 		}
@@ -6315,11 +6125,10 @@ inst191: // rune "09AFaf" -> 195
 	goto unreachable
 	goto inst191_fail
 inst191_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 196:
 			goto inst196_alt
 		}
@@ -6347,11 +6156,10 @@ inst192: // rune "09AFaf" -> 194
 	goto unreachable
 	goto inst192_fail
 inst192_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 195:
 			goto inst195_alt
 		}
@@ -6379,11 +6187,10 @@ inst193: // rune "09AFaf" -> 197
 	goto unreachable
 	goto inst193_fail
 inst193_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 194:
 			goto inst194_alt
 		}
@@ -6405,11 +6212,10 @@ inst194_alt:
 	goto unreachable
 	goto inst194_fail
 inst194_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 195:
 			goto inst195_alt
 		}
@@ -6431,11 +6237,10 @@ inst195_alt:
 	goto unreachable
 	goto inst195_fail
 inst195_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 196:
 			goto inst196_alt
 		}
@@ -6457,11 +6262,10 @@ inst196_alt:
 	goto unreachable
 	goto inst196_fail
 inst196_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 313:
 			goto inst313_alt
 		}
@@ -6481,19 +6285,18 @@ inst197: //
 	goto unreachable
 	goto inst197_fail
 inst197_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 195:
-			goto inst195_alt
+			goto unreachable
 		case 194:
 			goto inst194_alt
-		case 313:
-			goto inst313_alt
+		case 195:
+			goto inst195_alt
 		case 196:
 			goto inst196_alt
+		case 313:
+			goto inst313_alt
 		}
 	}
 	goto fail
@@ -6519,11 +6322,10 @@ inst198: // rune "09AFaf" -> 204
 	goto unreachable
 	goto inst198_fail
 inst198_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 233:
 			goto inst233_alt
 		}
@@ -6551,11 +6353,10 @@ inst199: // rune "09AFaf" -> 203
 	goto unreachable
 	goto inst199_fail
 inst199_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 204:
 			goto inst204_alt
 		}
@@ -6583,11 +6384,10 @@ inst200: // rune "09AFaf" -> 202
 	goto unreachable
 	goto inst200_fail
 inst200_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 203:
 			goto inst203_alt
 		}
@@ -6615,11 +6415,10 @@ inst201: // rune "09AFaf" -> 205
 	goto unreachable
 	goto inst201_fail
 inst201_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 202:
 			goto inst202_alt
 		}
@@ -6641,11 +6440,10 @@ inst202_alt:
 	goto unreachable
 	goto inst202_fail
 inst202_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 203:
 			goto inst203_alt
 		}
@@ -6667,11 +6465,10 @@ inst203_alt:
 	goto unreachable
 	goto inst203_fail
 inst203_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 204:
 			goto inst204_alt
 		}
@@ -6693,11 +6490,10 @@ inst204_alt:
 	goto unreachable
 	goto inst204_fail
 inst204_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 233:
 			goto inst233_alt
 		}
@@ -6717,19 +6513,18 @@ inst205: //
 	goto unreachable
 	goto inst205_fail
 inst205_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 233:
-			goto inst233_alt
-		case 204:
-			goto inst204_alt
-		case 203:
-			goto inst203_alt
+			goto unreachable
 		case 202:
 			goto inst202_alt
+		case 203:
+			goto inst203_alt
+		case 204:
+			goto inst204_alt
+		case 233:
+			goto inst233_alt
 		}
 	}
 	goto fail
@@ -6755,11 +6550,10 @@ inst206: // rune "09AFaf" -> 212
 	goto unreachable
 	goto inst206_fail
 inst206_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 232:
 			goto inst232_alt
 		}
@@ -6787,11 +6581,10 @@ inst207: // rune "09AFaf" -> 211
 	goto unreachable
 	goto inst207_fail
 inst207_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 212:
 			goto inst212_alt
 		}
@@ -6819,11 +6612,10 @@ inst208: // rune "09AFaf" -> 210
 	goto unreachable
 	goto inst208_fail
 inst208_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 211:
 			goto inst211_alt
 		}
@@ -6851,11 +6643,10 @@ inst209: // rune "09AFaf" -> 213
 	goto unreachable
 	goto inst209_fail
 inst209_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 210:
 			goto inst210_alt
 		}
@@ -6877,11 +6668,10 @@ inst210_alt:
 	goto unreachable
 	goto inst210_fail
 inst210_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 211:
 			goto inst211_alt
 		}
@@ -6903,11 +6693,10 @@ inst211_alt:
 	goto unreachable
 	goto inst211_fail
 inst211_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 212:
 			goto inst212_alt
 		}
@@ -6929,11 +6718,10 @@ inst212_alt:
 	goto unreachable
 	goto inst212_fail
 inst212_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 232:
 			goto inst232_alt
 		}
@@ -6953,17 +6741,16 @@ inst213: //
 	goto unreachable
 	goto inst213_fail
 inst213_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 212:
-			goto inst212_alt
-		case 211:
-			goto inst211_alt
+			goto unreachable
 		case 210:
 			goto inst210_alt
+		case 211:
+			goto inst211_alt
+		case 212:
+			goto inst212_alt
 		case 232:
 			goto inst232_alt
 		}
@@ -6991,11 +6778,10 @@ inst214: // rune "09AFaf" -> 220
 	goto unreachable
 	goto inst214_fail
 inst214_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 231:
 			goto inst231_alt
 		}
@@ -7023,11 +6809,10 @@ inst215: // rune "09AFaf" -> 219
 	goto unreachable
 	goto inst215_fail
 inst215_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 220:
 			goto inst220_alt
 		}
@@ -7055,11 +6840,10 @@ inst216: // rune "09AFaf" -> 218
 	goto unreachable
 	goto inst216_fail
 inst216_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 219:
 			goto inst219_alt
 		}
@@ -7087,11 +6871,10 @@ inst217: // rune "09AFaf" -> 221
 	goto unreachable
 	goto inst217_fail
 inst217_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 218:
 			goto inst218_alt
 		}
@@ -7113,11 +6896,10 @@ inst218_alt:
 	goto unreachable
 	goto inst218_fail
 inst218_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 219:
 			goto inst219_alt
 		}
@@ -7139,11 +6921,10 @@ inst219_alt:
 	goto unreachable
 	goto inst219_fail
 inst219_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 220:
 			goto inst220_alt
 		}
@@ -7165,11 +6946,10 @@ inst220_alt:
 	goto unreachable
 	goto inst220_fail
 inst220_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 231:
 			goto inst231_alt
 		}
@@ -7189,19 +6969,18 @@ inst221: //
 	goto unreachable
 	goto inst221_fail
 inst221_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 231:
-			goto inst231_alt
-		case 220:
-			goto inst220_alt
-		case 219:
-			goto inst219_alt
+			goto unreachable
 		case 218:
 			goto inst218_alt
+		case 219:
+			goto inst219_alt
+		case 220:
+			goto inst220_alt
+		case 231:
+			goto inst231_alt
 		}
 	}
 	goto fail
@@ -7227,11 +7006,10 @@ inst222: // rune "09AFaf" -> 228
 	goto unreachable
 	goto inst222_fail
 inst222_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 230:
 			goto inst230_alt
 		}
@@ -7259,11 +7037,10 @@ inst223: // rune "09AFaf" -> 227
 	goto unreachable
 	goto inst223_fail
 inst223_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 228:
 			goto inst228_alt
 		}
@@ -7291,11 +7068,10 @@ inst224: // rune "09AFaf" -> 226
 	goto unreachable
 	goto inst224_fail
 inst224_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 227:
 			goto inst227_alt
 		}
@@ -7323,11 +7099,10 @@ inst225: // rune "09AFaf" -> 229
 	goto unreachable
 	goto inst225_fail
 inst225_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 226:
 			goto inst226_alt
 		}
@@ -7349,11 +7124,10 @@ inst226_alt:
 	goto unreachable
 	goto inst226_fail
 inst226_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 227:
 			goto inst227_alt
 		}
@@ -7375,11 +7149,10 @@ inst227_alt:
 	goto unreachable
 	goto inst227_fail
 inst227_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 228:
 			goto inst228_alt
 		}
@@ -7401,11 +7174,10 @@ inst228_alt:
 	goto unreachable
 	goto inst228_fail
 inst228_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 230:
 			goto inst230_alt
 		}
@@ -7425,19 +7197,18 @@ inst229: //
 	goto unreachable
 	goto inst229_fail
 inst229_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 226:
 			goto inst226_alt
-		case 230:
-			goto inst230_alt
-		case 228:
-			goto inst228_alt
 		case 227:
 			goto inst227_alt
+		case 228:
+			goto inst228_alt
+		case 230:
+			goto inst230_alt
 		}
 	}
 	goto fail
@@ -7457,19 +7228,18 @@ inst230_alt:
 	goto unreachable
 	goto inst230_fail
 inst230_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 231:
-			goto inst231_alt
-		case 220:
-			goto inst220_alt
-		case 219:
-			goto inst219_alt
+			goto unreachable
 		case 218:
 			goto inst218_alt
+		case 219:
+			goto inst219_alt
+		case 220:
+			goto inst220_alt
+		case 231:
+			goto inst231_alt
 		}
 	}
 	goto fail
@@ -7489,17 +7259,16 @@ inst231_alt:
 	goto unreachable
 	goto inst231_fail
 inst231_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 212:
-			goto inst212_alt
-		case 211:
-			goto inst211_alt
+			goto unreachable
 		case 210:
 			goto inst210_alt
+		case 211:
+			goto inst211_alt
+		case 212:
+			goto inst212_alt
 		case 232:
 			goto inst232_alt
 		}
@@ -7521,19 +7290,18 @@ inst232_alt:
 	goto unreachable
 	goto inst232_fail
 inst232_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 233:
-			goto inst233_alt
-		case 204:
-			goto inst204_alt
-		case 203:
-			goto inst203_alt
+			goto unreachable
 		case 202:
 			goto inst202_alt
+		case 203:
+			goto inst203_alt
+		case 204:
+			goto inst204_alt
+		case 233:
+			goto inst233_alt
 		}
 	}
 	goto fail
@@ -7553,19 +7321,18 @@ inst233_alt:
 	goto unreachable
 	goto inst233_fail
 inst233_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 313:
-			goto inst313_alt
-		case 196:
-			goto inst196_alt
-		case 195:
-			goto inst195_alt
+			goto unreachable
 		case 194:
 			goto inst194_alt
+		case 195:
+			goto inst195_alt
+		case 196:
+			goto inst196_alt
+		case 313:
+			goto inst313_alt
 		}
 	}
 	goto fail
@@ -7583,41 +7350,40 @@ inst234: //
 	goto unreachable
 	goto inst234_fail
 inst234_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 219:
-			goto inst219_alt
-		case 218:
-			goto inst218_alt
-		case 195:
-			goto inst195_alt
-		case 233:
-			goto inst233_alt
-		case 203:
-			goto inst203_alt
-		case 202:
-			goto inst202_alt
+			goto unreachable
 		case 194:
 			goto inst194_alt
-		case 212:
-			goto inst212_alt
-		case 204:
-			goto inst204_alt
+		case 195:
+			goto inst195_alt
 		case 196:
 			goto inst196_alt
-		case 220:
-			goto inst220_alt
-		case 232:
-			goto inst232_alt
-		case 231:
-			goto inst231_alt
-		case 211:
-			goto inst211_alt
+		case 202:
+			goto inst202_alt
+		case 203:
+			goto inst203_alt
+		case 204:
+			goto inst204_alt
 		case 210:
 			goto inst210_alt
+		case 211:
+			goto inst211_alt
+		case 212:
+			goto inst212_alt
+		case 218:
+			goto inst218_alt
+		case 219:
+			goto inst219_alt
+		case 220:
+			goto inst220_alt
+		case 231:
+			goto inst231_alt
+		case 232:
+			goto inst232_alt
+		case 233:
+			goto inst233_alt
 		case 313:
 			goto inst313_alt
 		}
@@ -7645,51 +7411,50 @@ inst235: // rune "09AFaf" -> 241
 	goto unreachable
 	goto inst235_fail
 inst235_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 211:
-			goto inst211_alt
-		case 210:
-			goto inst210_alt
+			goto unreachable
 		case 194:
 			goto inst194_alt
-		case 226:
-			goto inst226_alt
-		case 212:
-			goto inst212_alt
-		case 219:
-			goto inst219_alt
-		case 218:
-			goto inst218_alt
-		case 203:
-			goto inst203_alt
-		case 228:
-			goto inst228_alt
-		case 227:
-			goto inst227_alt
-		case 202:
-			goto inst202_alt
 		case 195:
 			goto inst195_alt
-		case 313:
-			goto inst313_alt
-		case 232:
-			goto inst232_alt
-		case 230:
-			goto inst230_alt
-		case 220:
-			goto inst220_alt
-		case 204:
-			goto inst204_alt
 		case 196:
 			goto inst196_alt
-		case 233:
-			goto inst233_alt
+		case 202:
+			goto inst202_alt
+		case 203:
+			goto inst203_alt
+		case 204:
+			goto inst204_alt
+		case 210:
+			goto inst210_alt
+		case 211:
+			goto inst211_alt
+		case 212:
+			goto inst212_alt
+		case 218:
+			goto inst218_alt
+		case 219:
+			goto inst219_alt
+		case 220:
+			goto inst220_alt
+		case 226:
+			goto inst226_alt
+		case 227:
+			goto inst227_alt
+		case 228:
+			goto inst228_alt
+		case 230:
+			goto inst230_alt
 		case 231:
 			goto inst231_alt
+		case 232:
+			goto inst232_alt
+		case 233:
+			goto inst233_alt
+		case 313:
+			goto inst313_alt
 		}
 	}
 	goto fail
@@ -7715,11 +7480,10 @@ inst236: // rune "09AFaf" -> 240
 	goto unreachable
 	goto inst236_fail
 inst236_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 241:
 			goto inst241_alt
 		}
@@ -7747,11 +7511,10 @@ inst237: // rune "09AFaf" -> 239
 	goto unreachable
 	goto inst237_fail
 inst237_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 240:
 			goto inst240_alt
 		}
@@ -7779,11 +7542,10 @@ inst238: // rune "09AFaf" -> 250
 	goto unreachable
 	goto inst238_fail
 inst238_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 239:
 			goto inst239_alt
 		}
@@ -7805,11 +7567,10 @@ inst239_alt:
 	goto unreachable
 	goto inst239_fail
 inst239_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 240:
 			goto inst240_alt
 		}
@@ -7831,11 +7592,10 @@ inst240_alt:
 	goto unreachable
 	goto inst240_fail
 inst240_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 241:
 			goto inst241_alt
 		}
@@ -7857,51 +7617,50 @@ inst241_alt:
 	goto unreachable
 	goto inst241_fail
 inst241_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 227:
-			goto inst227_alt
-		case 226:
-			goto inst226_alt
-		case 220:
-			goto inst220_alt
-		case 218:
-			goto inst218_alt
-		case 195:
-			goto inst195_alt
-		case 233:
-			goto inst233_alt
-		case 231:
-			goto inst231_alt
-		case 228:
-			goto inst228_alt
-		case 219:
-			goto inst219_alt
-		case 212:
-			goto inst212_alt
-		case 210:
-			goto inst210_alt
-		case 313:
-			goto inst313_alt
-		case 232:
-			goto inst232_alt
-		case 211:
-			goto inst211_alt
-		case 204:
-			goto inst204_alt
-		case 230:
-			goto inst230_alt
-		case 203:
-			goto inst203_alt
-		case 202:
-			goto inst202_alt
-		case 196:
-			goto inst196_alt
+			goto unreachable
 		case 194:
 			goto inst194_alt
+		case 195:
+			goto inst195_alt
+		case 196:
+			goto inst196_alt
+		case 202:
+			goto inst202_alt
+		case 203:
+			goto inst203_alt
+		case 204:
+			goto inst204_alt
+		case 210:
+			goto inst210_alt
+		case 211:
+			goto inst211_alt
+		case 212:
+			goto inst212_alt
+		case 218:
+			goto inst218_alt
+		case 219:
+			goto inst219_alt
+		case 220:
+			goto inst220_alt
+		case 226:
+			goto inst226_alt
+		case 227:
+			goto inst227_alt
+		case 228:
+			goto inst228_alt
+		case 230:
+			goto inst230_alt
+		case 231:
+			goto inst231_alt
+		case 232:
+			goto inst232_alt
+		case 233:
+			goto inst233_alt
+		case 313:
+			goto inst313_alt
 		}
 	}
 	goto fail
@@ -7919,11 +7678,10 @@ inst242: //
 	goto unreachable
 	goto inst242_fail
 inst242_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 250:
 			goto inst250_alt
 		}
@@ -7951,11 +7709,10 @@ inst243: // rune "09AFaf" -> 249
 	goto unreachable
 	goto inst243_fail
 inst243_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 250:
 			goto inst250_alt
 		}
@@ -7983,11 +7740,10 @@ inst244: // rune "09AFaf" -> 248
 	goto unreachable
 	goto inst244_fail
 inst244_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 249:
 			goto inst249_alt
 		}
@@ -8015,11 +7771,10 @@ inst245: // rune "09AFaf" -> 247
 	goto unreachable
 	goto inst245_fail
 inst245_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 248:
 			goto inst248_alt
 		}
@@ -8047,11 +7802,10 @@ inst246: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst246_fail
 inst246_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 247:
 			goto inst247_alt
 		}
@@ -8073,11 +7827,10 @@ inst247_alt:
 	goto unreachable
 	goto inst247_fail
 inst247_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 248:
 			goto inst248_alt
 		}
@@ -8099,11 +7852,10 @@ inst248_alt:
 	goto unreachable
 	goto inst248_fail
 inst248_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 249:
 			goto inst249_alt
 		}
@@ -8125,11 +7877,10 @@ inst249_alt:
 	goto unreachable
 	goto inst249_fail
 inst249_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 250:
 			goto inst250_alt
 		}
@@ -8151,55 +7902,54 @@ inst250_alt:
 	goto unreachable
 	goto inst250_fail
 inst250_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 239:
-			goto inst239_alt
-		case 227:
-			goto inst227_alt
-		case 211:
-			goto inst211_alt
-		case 210:
-			goto inst210_alt
-		case 196:
-			goto inst196_alt
-		case 240:
-			goto inst240_alt
-		case 231:
-			goto inst231_alt
-		case 230:
-			goto inst230_alt
-		case 226:
-			goto inst226_alt
-		case 219:
-			goto inst219_alt
-		case 212:
-			goto inst212_alt
-		case 241:
-			goto inst241_alt
-		case 228:
-			goto inst228_alt
-		case 218:
-			goto inst218_alt
-		case 204:
-			goto inst204_alt
-		case 203:
-			goto inst203_alt
+			goto unreachable
 		case 194:
 			goto inst194_alt
+		case 195:
+			goto inst195_alt
+		case 196:
+			goto inst196_alt
+		case 202:
+			goto inst202_alt
+		case 203:
+			goto inst203_alt
+		case 204:
+			goto inst204_alt
+		case 210:
+			goto inst210_alt
+		case 211:
+			goto inst211_alt
+		case 212:
+			goto inst212_alt
+		case 218:
+			goto inst218_alt
+		case 219:
+			goto inst219_alt
+		case 220:
+			goto inst220_alt
+		case 226:
+			goto inst226_alt
+		case 227:
+			goto inst227_alt
+		case 228:
+			goto inst228_alt
+		case 230:
+			goto inst230_alt
+		case 231:
+			goto inst231_alt
 		case 232:
 			goto inst232_alt
 		case 233:
 			goto inst233_alt
-		case 220:
-			goto inst220_alt
-		case 202:
-			goto inst202_alt
-		case 195:
-			goto inst195_alt
+		case 239:
+			goto inst239_alt
+		case 240:
+			goto inst240_alt
+		case 241:
+			goto inst241_alt
 		case 313:
 			goto inst313_alt
 		}
@@ -8221,11 +7971,10 @@ inst251_alt:
 	goto unreachable
 	goto inst251_fail
 inst251_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 313:
 			goto inst313_alt
 		}
@@ -8253,11 +8002,10 @@ inst252: // rune "09AFaf" -> 258
 	goto unreachable
 	goto inst252_fail
 inst252_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 375:
 			goto inst375_alt
 		}
@@ -8285,11 +8033,10 @@ inst253: // rune "09AFaf" -> 257
 	goto unreachable
 	goto inst253_fail
 inst253_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 258:
 			goto inst258_alt
 		}
@@ -8317,11 +8064,10 @@ inst254: // rune "09AFaf" -> 256
 	goto unreachable
 	goto inst254_fail
 inst254_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 257:
 			goto inst257_alt
 		}
@@ -8349,11 +8095,10 @@ inst255: // rune "09AFaf" -> 259
 	goto unreachable
 	goto inst255_fail
 inst255_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 256:
 			goto inst256_alt
 		}
@@ -8375,11 +8120,10 @@ inst256_alt:
 	goto unreachable
 	goto inst256_fail
 inst256_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 257:
 			goto inst257_alt
 		}
@@ -8401,11 +8145,10 @@ inst257_alt:
 	goto unreachable
 	goto inst257_fail
 inst257_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 258:
 			goto inst258_alt
 		}
@@ -8427,11 +8170,10 @@ inst258_alt:
 	goto unreachable
 	goto inst258_fail
 inst258_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 375:
 			goto inst375_alt
 		}
@@ -8451,19 +8193,18 @@ inst259: //
 	goto unreachable
 	goto inst259_fail
 inst259_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 375:
-			goto inst375_alt
-		case 258:
-			goto inst258_alt
-		case 257:
-			goto inst257_alt
+			goto unreachable
 		case 256:
 			goto inst256_alt
+		case 257:
+			goto inst257_alt
+		case 258:
+			goto inst258_alt
+		case 375:
+			goto inst375_alt
 		}
 	}
 	goto fail
@@ -8489,11 +8230,10 @@ inst260: // rune "09AFaf" -> 266
 	goto unreachable
 	goto inst260_fail
 inst260_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 286:
 			goto inst286_alt
 		}
@@ -8521,11 +8261,10 @@ inst261: // rune "09AFaf" -> 265
 	goto unreachable
 	goto inst261_fail
 inst261_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 266:
 			goto inst266_alt
 		}
@@ -8553,11 +8292,10 @@ inst262: // rune "09AFaf" -> 264
 	goto unreachable
 	goto inst262_fail
 inst262_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 265:
 			goto inst265_alt
 		}
@@ -8585,11 +8323,10 @@ inst263: // rune "09AFaf" -> 267
 	goto unreachable
 	goto inst263_fail
 inst263_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 264:
 			goto inst264_alt
 		}
@@ -8611,11 +8348,10 @@ inst264_alt:
 	goto unreachable
 	goto inst264_fail
 inst264_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 265:
 			goto inst265_alt
 		}
@@ -8637,11 +8373,10 @@ inst265_alt:
 	goto unreachable
 	goto inst265_fail
 inst265_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 266:
 			goto inst266_alt
 		}
@@ -8663,11 +8398,10 @@ inst266_alt:
 	goto unreachable
 	goto inst266_fail
 inst266_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 286:
 			goto inst286_alt
 		}
@@ -8687,19 +8421,18 @@ inst267: //
 	goto unreachable
 	goto inst267_fail
 inst267_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 264:
 			goto inst264_alt
-		case 286:
-			goto inst286_alt
-		case 266:
-			goto inst266_alt
 		case 265:
 			goto inst265_alt
+		case 266:
+			goto inst266_alt
+		case 286:
+			goto inst286_alt
 		}
 	}
 	goto fail
@@ -8725,11 +8458,10 @@ inst268: // rune "09AFaf" -> 274
 	goto unreachable
 	goto inst268_fail
 inst268_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 285:
 			goto inst285_alt
 		}
@@ -8757,11 +8489,10 @@ inst269: // rune "09AFaf" -> 273
 	goto unreachable
 	goto inst269_fail
 inst269_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 274:
 			goto inst274_alt
 		}
@@ -8789,11 +8520,10 @@ inst270: // rune "09AFaf" -> 272
 	goto unreachable
 	goto inst270_fail
 inst270_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 273:
 			goto inst273_alt
 		}
@@ -8821,11 +8551,10 @@ inst271: // rune "09AFaf" -> 275
 	goto unreachable
 	goto inst271_fail
 inst271_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 272:
 			goto inst272_alt
 		}
@@ -8847,11 +8576,10 @@ inst272_alt:
 	goto unreachable
 	goto inst272_fail
 inst272_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 273:
 			goto inst273_alt
 		}
@@ -8873,11 +8601,10 @@ inst273_alt:
 	goto unreachable
 	goto inst273_fail
 inst273_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 274:
 			goto inst274_alt
 		}
@@ -8899,11 +8626,10 @@ inst274_alt:
 	goto unreachable
 	goto inst274_fail
 inst274_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 285:
 			goto inst285_alt
 		}
@@ -8923,17 +8649,16 @@ inst275: //
 	goto unreachable
 	goto inst275_fail
 inst275_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 274:
-			goto inst274_alt
-		case 273:
-			goto inst273_alt
+			goto unreachable
 		case 272:
 			goto inst272_alt
+		case 273:
+			goto inst273_alt
+		case 274:
+			goto inst274_alt
 		case 285:
 			goto inst285_alt
 		}
@@ -8961,11 +8686,10 @@ inst276: // rune "09AFaf" -> 282
 	goto unreachable
 	goto inst276_fail
 inst276_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 284:
 			goto inst284_alt
 		}
@@ -8993,11 +8717,10 @@ inst277: // rune "09AFaf" -> 281
 	goto unreachable
 	goto inst277_fail
 inst277_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 282:
 			goto inst282_alt
 		}
@@ -9025,11 +8748,10 @@ inst278: // rune "09AFaf" -> 280
 	goto unreachable
 	goto inst278_fail
 inst278_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 281:
 			goto inst281_alt
 		}
@@ -9057,11 +8779,10 @@ inst279: // rune "09AFaf" -> 283
 	goto unreachable
 	goto inst279_fail
 inst279_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 280:
 			goto inst280_alt
 		}
@@ -9083,11 +8804,10 @@ inst280_alt:
 	goto unreachable
 	goto inst280_fail
 inst280_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 281:
 			goto inst281_alt
 		}
@@ -9109,11 +8829,10 @@ inst281_alt:
 	goto unreachable
 	goto inst281_fail
 inst281_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 282:
 			goto inst282_alt
 		}
@@ -9135,11 +8854,10 @@ inst282_alt:
 	goto unreachable
 	goto inst282_fail
 inst282_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 284:
 			goto inst284_alt
 		}
@@ -9159,19 +8877,18 @@ inst283: //
 	goto unreachable
 	goto inst283_fail
 inst283_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 281:
-			goto inst281_alt
+			goto unreachable
 		case 280:
 			goto inst280_alt
-		case 284:
-			goto inst284_alt
+		case 281:
+			goto inst281_alt
 		case 282:
 			goto inst282_alt
+		case 284:
+			goto inst284_alt
 		}
 	}
 	goto fail
@@ -9191,19 +8908,18 @@ inst284_alt:
 	goto unreachable
 	goto inst284_fail
 inst284_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 285:
-			goto inst285_alt
-		case 274:
-			goto inst274_alt
-		case 273:
-			goto inst273_alt
+			goto unreachable
 		case 272:
 			goto inst272_alt
+		case 273:
+			goto inst273_alt
+		case 274:
+			goto inst274_alt
+		case 285:
+			goto inst285_alt
 		}
 	}
 	goto fail
@@ -9223,19 +8939,18 @@ inst285_alt:
 	goto unreachable
 	goto inst285_fail
 inst285_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 286:
-			goto inst286_alt
-		case 266:
-			goto inst266_alt
-		case 265:
-			goto inst265_alt
+			goto unreachable
 		case 264:
 			goto inst264_alt
+		case 265:
+			goto inst265_alt
+		case 266:
+			goto inst266_alt
+		case 286:
+			goto inst286_alt
 		}
 	}
 	goto fail
@@ -9255,19 +8970,18 @@ inst286_alt:
 	goto unreachable
 	goto inst286_fail
 inst286_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 256:
 			goto inst256_alt
-		case 375:
-			goto inst375_alt
-		case 258:
-			goto inst258_alt
 		case 257:
 			goto inst257_alt
+		case 258:
+			goto inst258_alt
+		case 375:
+			goto inst375_alt
 		}
 	}
 	goto fail
@@ -9285,35 +8999,34 @@ inst287: //
 	goto unreachable
 	goto inst287_fail
 inst287_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 264:
-			goto inst264_alt
-		case 257:
-			goto inst257_alt
-		case 286:
-			goto inst286_alt
-		case 285:
-			goto inst285_alt
-		case 273:
-			goto inst273_alt
-		case 272:
-			goto inst272_alt
-		case 258:
-			goto inst258_alt
+			goto unreachable
 		case 256:
 			goto inst256_alt
-		case 375:
-			goto inst375_alt
-		case 274:
-			goto inst274_alt
-		case 266:
-			goto inst266_alt
+		case 257:
+			goto inst257_alt
+		case 258:
+			goto inst258_alt
+		case 264:
+			goto inst264_alt
 		case 265:
 			goto inst265_alt
+		case 266:
+			goto inst266_alt
+		case 272:
+			goto inst272_alt
+		case 273:
+			goto inst273_alt
+		case 274:
+			goto inst274_alt
+		case 285:
+			goto inst285_alt
+		case 286:
+			goto inst286_alt
+		case 375:
+			goto inst375_alt
 		}
 	}
 	goto fail
@@ -9339,43 +9052,42 @@ inst288: // rune "09AFaf" -> 294
 	goto unreachable
 	goto inst288_fail
 inst288_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 256:
 			goto inst256_alt
-		case 375:
-			goto inst375_alt
-		case 282:
-			goto inst282_alt
-		case 281:
-			goto inst281_alt
-		case 280:
-			goto inst280_alt
-		case 265:
-			goto inst265_alt
 		case 257:
 			goto inst257_alt
-		case 274:
-			goto inst274_alt
-		case 264:
-			goto inst264_alt
 		case 258:
 			goto inst258_alt
-		case 286:
-			goto inst286_alt
-		case 285:
-			goto inst285_alt
-		case 284:
-			goto inst284_alt
-		case 273:
-			goto inst273_alt
-		case 272:
-			goto inst272_alt
+		case 264:
+			goto inst264_alt
+		case 265:
+			goto inst265_alt
 		case 266:
 			goto inst266_alt
+		case 272:
+			goto inst272_alt
+		case 273:
+			goto inst273_alt
+		case 274:
+			goto inst274_alt
+		case 280:
+			goto inst280_alt
+		case 281:
+			goto inst281_alt
+		case 282:
+			goto inst282_alt
+		case 284:
+			goto inst284_alt
+		case 285:
+			goto inst285_alt
+		case 286:
+			goto inst286_alt
+		case 375:
+			goto inst375_alt
 		}
 	}
 	goto fail
@@ -9401,11 +9113,10 @@ inst289: // rune "09AFaf" -> 293
 	goto unreachable
 	goto inst289_fail
 inst289_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 294:
 			goto inst294_alt
 		}
@@ -9433,11 +9144,10 @@ inst290: // rune "09AFaf" -> 292
 	goto unreachable
 	goto inst290_fail
 inst290_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 293:
 			goto inst293_alt
 		}
@@ -9465,11 +9175,10 @@ inst291: // rune "09AFaf" -> 312
 	goto unreachable
 	goto inst291_fail
 inst291_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 292:
 			goto inst292_alt
 		}
@@ -9491,11 +9200,10 @@ inst292_alt:
 	goto unreachable
 	goto inst292_fail
 inst292_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 293:
 			goto inst293_alt
 		}
@@ -9517,11 +9225,10 @@ inst293_alt:
 	goto unreachable
 	goto inst293_fail
 inst293_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 294:
 			goto inst294_alt
 		}
@@ -9543,43 +9250,42 @@ inst294_alt:
 	goto unreachable
 	goto inst294_fail
 inst294_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 285:
-			goto inst285_alt
-		case 282:
-			goto inst282_alt
-		case 281:
-			goto inst281_alt
-		case 274:
-			goto inst274_alt
-		case 266:
-			goto inst266_alt
-		case 258:
-			goto inst258_alt
-		case 284:
-			goto inst284_alt
-		case 273:
-			goto inst273_alt
-		case 265:
-			goto inst265_alt
-		case 257:
-			goto inst257_alt
+			goto unreachable
 		case 256:
 			goto inst256_alt
-		case 286:
-			goto inst286_alt
-		case 272:
-			goto inst272_alt
-		case 375:
-			goto inst375_alt
-		case 280:
-			goto inst280_alt
+		case 257:
+			goto inst257_alt
+		case 258:
+			goto inst258_alt
 		case 264:
 			goto inst264_alt
+		case 265:
+			goto inst265_alt
+		case 266:
+			goto inst266_alt
+		case 272:
+			goto inst272_alt
+		case 273:
+			goto inst273_alt
+		case 274:
+			goto inst274_alt
+		case 280:
+			goto inst280_alt
+		case 281:
+			goto inst281_alt
+		case 282:
+			goto inst282_alt
+		case 284:
+			goto inst284_alt
+		case 285:
+			goto inst285_alt
+		case 286:
+			goto inst286_alt
+		case 375:
+			goto inst375_alt
 		}
 	}
 	goto fail
@@ -9597,11 +9303,10 @@ inst295: //
 	goto unreachable
 	goto inst295_fail
 inst295_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 312:
 			goto inst312_alt
 		}
@@ -9629,11 +9334,10 @@ inst296: // rune "09AFaf" -> 302
 	goto unreachable
 	goto inst296_fail
 inst296_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 312:
 			goto inst312_alt
 		}
@@ -9661,11 +9365,10 @@ inst297: // rune "09AFaf" -> 301
 	goto unreachable
 	goto inst297_fail
 inst297_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 302:
 			goto inst302_alt
 		}
@@ -9693,11 +9396,10 @@ inst298: // rune "09AFaf" -> 300
 	goto unreachable
 	goto inst298_fail
 inst298_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 301:
 			goto inst301_alt
 		}
@@ -9725,11 +9427,10 @@ inst299: // rune "09AFaf" -> 311
 	goto unreachable
 	goto inst299_fail
 inst299_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 300:
 			goto inst300_alt
 		}
@@ -9751,11 +9452,10 @@ inst300_alt:
 	goto unreachable
 	goto inst300_fail
 inst300_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 301:
 			goto inst301_alt
 		}
@@ -9777,11 +9477,10 @@ inst301_alt:
 	goto unreachable
 	goto inst301_fail
 inst301_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 302:
 			goto inst302_alt
 		}
@@ -9803,11 +9502,10 @@ inst302_alt:
 	goto unreachable
 	goto inst302_fail
 inst302_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 312:
 			goto inst312_alt
 		}
@@ -9827,11 +9525,10 @@ inst303: //
 	goto unreachable
 	goto inst303_fail
 inst303_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 311:
 			goto inst311_alt
 		}
@@ -9859,11 +9556,10 @@ inst304: // rune "09AFaf" -> 310
 	goto unreachable
 	goto inst304_fail
 inst304_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 311:
 			goto inst311_alt
 		}
@@ -9891,11 +9587,10 @@ inst305: // rune "09AFaf" -> 309
 	goto unreachable
 	goto inst305_fail
 inst305_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 310:
 			goto inst310_alt
 		}
@@ -9923,11 +9618,10 @@ inst306: // rune "09AFaf" -> 308
 	goto unreachable
 	goto inst306_fail
 inst306_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 309:
 			goto inst309_alt
 		}
@@ -9955,11 +9649,10 @@ inst307: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst307_fail
 inst307_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 308:
 			goto inst308_alt
 		}
@@ -9981,11 +9674,10 @@ inst308_alt:
 	goto unreachable
 	goto inst308_fail
 inst308_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 309:
 			goto inst309_alt
 		}
@@ -10007,11 +9699,10 @@ inst309_alt:
 	goto unreachable
 	goto inst309_fail
 inst309_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 310:
 			goto inst310_alt
 		}
@@ -10033,11 +9724,10 @@ inst310_alt:
 	goto unreachable
 	goto inst310_fail
 inst310_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 311:
 			goto inst311_alt
 		}
@@ -10059,19 +9749,18 @@ inst311_alt:
 	goto unreachable
 	goto inst311_fail
 inst311_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 312:
-			goto inst312_alt
-		case 302:
-			goto inst302_alt
-		case 301:
-			goto inst301_alt
+			goto unreachable
 		case 300:
 			goto inst300_alt
+		case 301:
+			goto inst301_alt
+		case 302:
+			goto inst302_alt
+		case 312:
+			goto inst312_alt
 		}
 	}
 	goto fail
@@ -10091,49 +9780,48 @@ inst312_alt:
 	goto unreachable
 	goto inst312_fail
 inst312_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 256:
 			goto inst256_alt
-		case 285:
-			goto inst285_alt
-		case 274:
-			goto inst274_alt
-		case 272:
-			goto inst272_alt
-		case 265:
-			goto inst265_alt
-		case 264:
-			goto inst264_alt
-		case 258:
-			goto inst258_alt
-		case 375:
-			goto inst375_alt
-		case 282:
-			goto inst282_alt
-		case 281:
-			goto inst281_alt
 		case 257:
 			goto inst257_alt
-		case 293:
-			goto inst293_alt
-		case 292:
-			goto inst292_alt
-		case 280:
-			goto inst280_alt
-		case 273:
-			goto inst273_alt
+		case 258:
+			goto inst258_alt
+		case 264:
+			goto inst264_alt
+		case 265:
+			goto inst265_alt
 		case 266:
 			goto inst266_alt
-		case 294:
-			goto inst294_alt
-		case 286:
-			goto inst286_alt
+		case 272:
+			goto inst272_alt
+		case 273:
+			goto inst273_alt
+		case 274:
+			goto inst274_alt
+		case 280:
+			goto inst280_alt
+		case 281:
+			goto inst281_alt
+		case 282:
+			goto inst282_alt
 		case 284:
 			goto inst284_alt
+		case 285:
+			goto inst285_alt
+		case 286:
+			goto inst286_alt
+		case 292:
+			goto inst292_alt
+		case 293:
+			goto inst293_alt
+		case 294:
+			goto inst294_alt
+		case 375:
+			goto inst375_alt
 		}
 	}
 	goto fail
@@ -10153,11 +9841,10 @@ inst313_alt:
 	goto unreachable
 	goto inst313_fail
 inst313_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 375:
 			goto inst375_alt
 		}
@@ -10185,11 +9872,10 @@ inst314: // rune "09AFaf" -> 320
 	goto unreachable
 	goto inst314_fail
 inst314_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 437:
 			goto inst437_alt
 		}
@@ -10217,11 +9903,10 @@ inst315: // rune "09AFaf" -> 319
 	goto unreachable
 	goto inst315_fail
 inst315_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 320:
 			goto inst320_alt
 		}
@@ -10249,11 +9934,10 @@ inst316: // rune "09AFaf" -> 318
 	goto unreachable
 	goto inst316_fail
 inst316_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 319:
 			goto inst319_alt
 		}
@@ -10281,11 +9965,10 @@ inst317: // rune "09AFaf" -> 321
 	goto unreachable
 	goto inst317_fail
 inst317_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 318:
 			goto inst318_alt
 		}
@@ -10307,11 +9990,10 @@ inst318_alt:
 	goto unreachable
 	goto inst318_fail
 inst318_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 319:
 			goto inst319_alt
 		}
@@ -10333,11 +10015,10 @@ inst319_alt:
 	goto unreachable
 	goto inst319_fail
 inst319_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 320:
 			goto inst320_alt
 		}
@@ -10359,11 +10040,10 @@ inst320_alt:
 	goto unreachable
 	goto inst320_fail
 inst320_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 437:
 			goto inst437_alt
 		}
@@ -10383,19 +10063,18 @@ inst321: //
 	goto unreachable
 	goto inst321_fail
 inst321_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 318:
 			goto inst318_alt
-		case 437:
-			goto inst437_alt
-		case 320:
-			goto inst320_alt
 		case 319:
 			goto inst319_alt
+		case 320:
+			goto inst320_alt
+		case 437:
+			goto inst437_alt
 		}
 	}
 	goto fail
@@ -10421,11 +10100,10 @@ inst322: // rune "09AFaf" -> 328
 	goto unreachable
 	goto inst322_fail
 inst322_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 339:
 			goto inst339_alt
 		}
@@ -10453,11 +10131,10 @@ inst323: // rune "09AFaf" -> 327
 	goto unreachable
 	goto inst323_fail
 inst323_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 328:
 			goto inst328_alt
 		}
@@ -10485,11 +10162,10 @@ inst324: // rune "09AFaf" -> 326
 	goto unreachable
 	goto inst324_fail
 inst324_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 327:
 			goto inst327_alt
 		}
@@ -10517,11 +10193,10 @@ inst325: // rune "09AFaf" -> 329
 	goto unreachable
 	goto inst325_fail
 inst325_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 326:
 			goto inst326_alt
 		}
@@ -10543,11 +10218,10 @@ inst326_alt:
 	goto unreachable
 	goto inst326_fail
 inst326_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 327:
 			goto inst327_alt
 		}
@@ -10569,11 +10243,10 @@ inst327_alt:
 	goto unreachable
 	goto inst327_fail
 inst327_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 328:
 			goto inst328_alt
 		}
@@ -10595,11 +10268,10 @@ inst328_alt:
 	goto unreachable
 	goto inst328_fail
 inst328_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 339:
 			goto inst339_alt
 		}
@@ -10619,17 +10291,16 @@ inst329: //
 	goto unreachable
 	goto inst329_fail
 inst329_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 328:
-			goto inst328_alt
-		case 327:
-			goto inst327_alt
+			goto unreachable
 		case 326:
 			goto inst326_alt
+		case 327:
+			goto inst327_alt
+		case 328:
+			goto inst328_alt
 		case 339:
 			goto inst339_alt
 		}
@@ -10657,11 +10328,10 @@ inst330: // rune "09AFaf" -> 336
 	goto unreachable
 	goto inst330_fail
 inst330_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 338:
 			goto inst338_alt
 		}
@@ -10689,11 +10359,10 @@ inst331: // rune "09AFaf" -> 335
 	goto unreachable
 	goto inst331_fail
 inst331_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 336:
 			goto inst336_alt
 		}
@@ -10721,11 +10390,10 @@ inst332: // rune "09AFaf" -> 334
 	goto unreachable
 	goto inst332_fail
 inst332_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 335:
 			goto inst335_alt
 		}
@@ -10753,11 +10421,10 @@ inst333: // rune "09AFaf" -> 337
 	goto unreachable
 	goto inst333_fail
 inst333_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 334:
 			goto inst334_alt
 		}
@@ -10779,11 +10446,10 @@ inst334_alt:
 	goto unreachable
 	goto inst334_fail
 inst334_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 335:
 			goto inst335_alt
 		}
@@ -10805,11 +10471,10 @@ inst335_alt:
 	goto unreachable
 	goto inst335_fail
 inst335_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 336:
 			goto inst336_alt
 		}
@@ -10831,11 +10496,10 @@ inst336_alt:
 	goto unreachable
 	goto inst336_fail
 inst336_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 338:
 			goto inst338_alt
 		}
@@ -10855,19 +10519,18 @@ inst337: //
 	goto unreachable
 	goto inst337_fail
 inst337_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 338:
-			goto inst338_alt
-		case 336:
-			goto inst336_alt
-		case 335:
-			goto inst335_alt
+			goto unreachable
 		case 334:
 			goto inst334_alt
+		case 335:
+			goto inst335_alt
+		case 336:
+			goto inst336_alt
+		case 338:
+			goto inst338_alt
 		}
 	}
 	goto fail
@@ -10887,19 +10550,18 @@ inst338_alt:
 	goto unreachable
 	goto inst338_fail
 inst338_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 339:
-			goto inst339_alt
-		case 328:
-			goto inst328_alt
-		case 327:
-			goto inst327_alt
+			goto unreachable
 		case 326:
 			goto inst326_alt
+		case 327:
+			goto inst327_alt
+		case 328:
+			goto inst328_alt
+		case 339:
+			goto inst339_alt
 		}
 	}
 	goto fail
@@ -10919,19 +10581,18 @@ inst339_alt:
 	goto unreachable
 	goto inst339_fail
 inst339_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 437:
-			goto inst437_alt
-		case 320:
-			goto inst320_alt
-		case 319:
-			goto inst319_alt
+			goto unreachable
 		case 318:
 			goto inst318_alt
+		case 319:
+			goto inst319_alt
+		case 320:
+			goto inst320_alt
+		case 437:
+			goto inst437_alt
 		}
 	}
 	goto fail
@@ -10949,25 +10610,24 @@ inst340: //
 	goto unreachable
 	goto inst340_fail
 inst340_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 339:
-			goto inst339_alt
-		case 328:
-			goto inst328_alt
-		case 327:
-			goto inst327_alt
-		case 326:
-			goto inst326_alt
-		case 320:
-			goto inst320_alt
-		case 319:
-			goto inst319_alt
+			goto unreachable
 		case 318:
 			goto inst318_alt
+		case 319:
+			goto inst319_alt
+		case 320:
+			goto inst320_alt
+		case 326:
+			goto inst326_alt
+		case 327:
+			goto inst327_alt
+		case 328:
+			goto inst328_alt
+		case 339:
+			goto inst339_alt
 		case 437:
 			goto inst437_alt
 		}
@@ -10995,35 +10655,34 @@ inst341: // rune "09AFaf" -> 347
 	goto unreachable
 	goto inst341_fail
 inst341_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 437:
-			goto inst437_alt
-		case 336:
-			goto inst336_alt
-		case 335:
-			goto inst335_alt
-		case 327:
-			goto inst327_alt
-		case 339:
-			goto inst339_alt
-		case 338:
-			goto inst338_alt
-		case 334:
-			goto inst334_alt
-		case 328:
-			goto inst328_alt
-		case 326:
-			goto inst326_alt
-		case 320:
-			goto inst320_alt
-		case 319:
-			goto inst319_alt
+			goto unreachable
 		case 318:
 			goto inst318_alt
+		case 319:
+			goto inst319_alt
+		case 320:
+			goto inst320_alt
+		case 326:
+			goto inst326_alt
+		case 327:
+			goto inst327_alt
+		case 328:
+			goto inst328_alt
+		case 334:
+			goto inst334_alt
+		case 335:
+			goto inst335_alt
+		case 336:
+			goto inst336_alt
+		case 338:
+			goto inst338_alt
+		case 339:
+			goto inst339_alt
+		case 437:
+			goto inst437_alt
 		}
 	}
 	goto fail
@@ -11049,11 +10708,10 @@ inst342: // rune "09AFaf" -> 346
 	goto unreachable
 	goto inst342_fail
 inst342_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 347:
 			goto inst347_alt
 		}
@@ -11081,11 +10739,10 @@ inst343: // rune "09AFaf" -> 345
 	goto unreachable
 	goto inst343_fail
 inst343_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 346:
 			goto inst346_alt
 		}
@@ -11113,11 +10770,10 @@ inst344: // rune "09AFaf" -> 374
 	goto unreachable
 	goto inst344_fail
 inst344_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 345:
 			goto inst345_alt
 		}
@@ -11139,11 +10795,10 @@ inst345_alt:
 	goto unreachable
 	goto inst345_fail
 inst345_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 346:
 			goto inst346_alt
 		}
@@ -11165,11 +10820,10 @@ inst346_alt:
 	goto unreachable
 	goto inst346_fail
 inst346_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 347:
 			goto inst347_alt
 		}
@@ -11191,35 +10845,34 @@ inst347_alt:
 	goto unreachable
 	goto inst347_fail
 inst347_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 327:
-			goto inst327_alt
-		case 326:
-			goto inst326_alt
-		case 320:
-			goto inst320_alt
-		case 338:
-			goto inst338_alt
-		case 334:
-			goto inst334_alt
-		case 336:
-			goto inst336_alt
-		case 335:
-			goto inst335_alt
-		case 328:
-			goto inst328_alt
-		case 319:
-			goto inst319_alt
+			goto unreachable
 		case 318:
 			goto inst318_alt
-		case 437:
-			goto inst437_alt
+		case 319:
+			goto inst319_alt
+		case 320:
+			goto inst320_alt
+		case 326:
+			goto inst326_alt
+		case 327:
+			goto inst327_alt
+		case 328:
+			goto inst328_alt
+		case 334:
+			goto inst334_alt
+		case 335:
+			goto inst335_alt
+		case 336:
+			goto inst336_alt
+		case 338:
+			goto inst338_alt
 		case 339:
 			goto inst339_alt
+		case 437:
+			goto inst437_alt
 		}
 	}
 	goto fail
@@ -11237,11 +10890,10 @@ inst348: //
 	goto unreachable
 	goto inst348_fail
 inst348_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 374:
 			goto inst374_alt
 		}
@@ -11269,11 +10921,10 @@ inst349: // rune "09AFaf" -> 355
 	goto unreachable
 	goto inst349_fail
 inst349_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 374:
 			goto inst374_alt
 		}
@@ -11301,11 +10952,10 @@ inst350: // rune "09AFaf" -> 354
 	goto unreachable
 	goto inst350_fail
 inst350_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 355:
 			goto inst355_alt
 		}
@@ -11333,11 +10983,10 @@ inst351: // rune "09AFaf" -> 353
 	goto unreachable
 	goto inst351_fail
 inst351_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 354:
 			goto inst354_alt
 		}
@@ -11365,11 +11014,10 @@ inst352: // rune "09AFaf" -> 373
 	goto unreachable
 	goto inst352_fail
 inst352_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 353:
 			goto inst353_alt
 		}
@@ -11391,11 +11039,10 @@ inst353_alt:
 	goto unreachable
 	goto inst353_fail
 inst353_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 354:
 			goto inst354_alt
 		}
@@ -11417,11 +11064,10 @@ inst354_alt:
 	goto unreachable
 	goto inst354_fail
 inst354_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 355:
 			goto inst355_alt
 		}
@@ -11443,11 +11089,10 @@ inst355_alt:
 	goto unreachable
 	goto inst355_fail
 inst355_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 374:
 			goto inst374_alt
 		}
@@ -11467,11 +11112,10 @@ inst356: //
 	goto unreachable
 	goto inst356_fail
 inst356_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 373:
 			goto inst373_alt
 		}
@@ -11499,11 +11143,10 @@ inst357: // rune "09AFaf" -> 363
 	goto unreachable
 	goto inst357_fail
 inst357_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 373:
 			goto inst373_alt
 		}
@@ -11531,11 +11174,10 @@ inst358: // rune "09AFaf" -> 362
 	goto unreachable
 	goto inst358_fail
 inst358_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 363:
 			goto inst363_alt
 		}
@@ -11563,11 +11205,10 @@ inst359: // rune "09AFaf" -> 361
 	goto unreachable
 	goto inst359_fail
 inst359_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 362:
 			goto inst362_alt
 		}
@@ -11595,11 +11236,10 @@ inst360: // rune "09AFaf" -> 372
 	goto unreachable
 	goto inst360_fail
 inst360_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 361:
 			goto inst361_alt
 		}
@@ -11621,11 +11261,10 @@ inst361_alt:
 	goto unreachable
 	goto inst361_fail
 inst361_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 362:
 			goto inst362_alt
 		}
@@ -11647,11 +11286,10 @@ inst362_alt:
 	goto unreachable
 	goto inst362_fail
 inst362_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 363:
 			goto inst363_alt
 		}
@@ -11673,11 +11311,10 @@ inst363_alt:
 	goto unreachable
 	goto inst363_fail
 inst363_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 373:
 			goto inst373_alt
 		}
@@ -11697,11 +11334,10 @@ inst364: //
 	goto unreachable
 	goto inst364_fail
 inst364_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 372:
 			goto inst372_alt
 		}
@@ -11729,11 +11365,10 @@ inst365: // rune "09AFaf" -> 371
 	goto unreachable
 	goto inst365_fail
 inst365_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 372:
 			goto inst372_alt
 		}
@@ -11761,11 +11396,10 @@ inst366: // rune "09AFaf" -> 370
 	goto unreachable
 	goto inst366_fail
 inst366_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 371:
 			goto inst371_alt
 		}
@@ -11793,11 +11427,10 @@ inst367: // rune "09AFaf" -> 369
 	goto unreachable
 	goto inst367_fail
 inst367_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 370:
 			goto inst370_alt
 		}
@@ -11825,11 +11458,10 @@ inst368: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst368_fail
 inst368_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 369:
 			goto inst369_alt
 		}
@@ -11851,11 +11483,10 @@ inst369_alt:
 	goto unreachable
 	goto inst369_fail
 inst369_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 370:
 			goto inst370_alt
 		}
@@ -11877,11 +11508,10 @@ inst370_alt:
 	goto unreachable
 	goto inst370_fail
 inst370_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 371:
 			goto inst371_alt
 		}
@@ -11903,11 +11533,10 @@ inst371_alt:
 	goto unreachable
 	goto inst371_fail
 inst371_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 372:
 			goto inst372_alt
 		}
@@ -11929,19 +11558,18 @@ inst372_alt:
 	goto unreachable
 	goto inst372_fail
 inst372_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 373:
-			goto inst373_alt
-		case 363:
-			goto inst363_alt
-		case 362:
-			goto inst362_alt
+			goto unreachable
 		case 361:
 			goto inst361_alt
+		case 362:
+			goto inst362_alt
+		case 363:
+			goto inst363_alt
+		case 373:
+			goto inst373_alt
 		}
 	}
 	goto fail
@@ -11961,19 +11589,18 @@ inst373_alt:
 	goto unreachable
 	goto inst373_fail
 inst373_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 374:
-			goto inst374_alt
-		case 355:
-			goto inst355_alt
-		case 354:
-			goto inst354_alt
+			goto unreachable
 		case 353:
 			goto inst353_alt
+		case 354:
+			goto inst354_alt
+		case 355:
+			goto inst355_alt
+		case 374:
+			goto inst374_alt
 		}
 	}
 	goto fail
@@ -11993,41 +11620,40 @@ inst374_alt:
 	goto unreachable
 	goto inst374_fail
 inst374_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 347:
-			goto inst347_alt
-		case 346:
-			goto inst346_alt
-		case 339:
-			goto inst339_alt
-		case 334:
-			goto inst334_alt
+			goto unreachable
 		case 318:
 			goto inst318_alt
-		case 335:
-			goto inst335_alt
-		case 328:
-			goto inst328_alt
-		case 320:
-			goto inst320_alt
 		case 319:
 			goto inst319_alt
-		case 338:
-			goto inst338_alt
-		case 336:
-			goto inst336_alt
-		case 437:
-			goto inst437_alt
-		case 345:
-			goto inst345_alt
-		case 327:
-			goto inst327_alt
+		case 320:
+			goto inst320_alt
 		case 326:
 			goto inst326_alt
+		case 327:
+			goto inst327_alt
+		case 328:
+			goto inst328_alt
+		case 334:
+			goto inst334_alt
+		case 335:
+			goto inst335_alt
+		case 336:
+			goto inst336_alt
+		case 338:
+			goto inst338_alt
+		case 339:
+			goto inst339_alt
+		case 345:
+			goto inst345_alt
+		case 346:
+			goto inst346_alt
+		case 347:
+			goto inst347_alt
+		case 437:
+			goto inst437_alt
 		}
 	}
 	goto fail
@@ -12047,11 +11673,10 @@ inst375_alt:
 	goto unreachable
 	goto inst375_fail
 inst375_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 437:
 			goto inst437_alt
 		}
@@ -12079,11 +11704,10 @@ inst376: // rune "09AFaf" -> 382
 	goto unreachable
 	goto inst376_fail
 inst376_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 499:
 			goto inst499_alt
 		}
@@ -12111,11 +11735,10 @@ inst377: // rune "09AFaf" -> 381
 	goto unreachable
 	goto inst377_fail
 inst377_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 382:
 			goto inst382_alt
 		}
@@ -12143,11 +11766,10 @@ inst378: // rune "09AFaf" -> 380
 	goto unreachable
 	goto inst378_fail
 inst378_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 381:
 			goto inst381_alt
 		}
@@ -12175,11 +11797,10 @@ inst379: // rune "09AFaf" -> 383
 	goto unreachable
 	goto inst379_fail
 inst379_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 380:
 			goto inst380_alt
 		}
@@ -12201,11 +11822,10 @@ inst380_alt:
 	goto unreachable
 	goto inst380_fail
 inst380_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 381:
 			goto inst381_alt
 		}
@@ -12227,11 +11847,10 @@ inst381_alt:
 	goto unreachable
 	goto inst381_fail
 inst381_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 382:
 			goto inst382_alt
 		}
@@ -12253,11 +11872,10 @@ inst382_alt:
 	goto unreachable
 	goto inst382_fail
 inst382_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 499:
 			goto inst499_alt
 		}
@@ -12277,19 +11895,18 @@ inst383: //
 	goto unreachable
 	goto inst383_fail
 inst383_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 499:
-			goto inst499_alt
-		case 382:
-			goto inst382_alt
-		case 381:
-			goto inst381_alt
+			goto unreachable
 		case 380:
 			goto inst380_alt
+		case 381:
+			goto inst381_alt
+		case 382:
+			goto inst382_alt
+		case 499:
+			goto inst499_alt
 		}
 	}
 	goto fail
@@ -12315,11 +11932,10 @@ inst384: // rune "09AFaf" -> 390
 	goto unreachable
 	goto inst384_fail
 inst384_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 392:
 			goto inst392_alt
 		}
@@ -12347,11 +11963,10 @@ inst385: // rune "09AFaf" -> 389
 	goto unreachable
 	goto inst385_fail
 inst385_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 390:
 			goto inst390_alt
 		}
@@ -12379,11 +11994,10 @@ inst386: // rune "09AFaf" -> 388
 	goto unreachable
 	goto inst386_fail
 inst386_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 389:
 			goto inst389_alt
 		}
@@ -12411,11 +12025,10 @@ inst387: // rune "09AFaf" -> 391
 	goto unreachable
 	goto inst387_fail
 inst387_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 388:
 			goto inst388_alt
 		}
@@ -12437,11 +12050,10 @@ inst388_alt:
 	goto unreachable
 	goto inst388_fail
 inst388_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 389:
 			goto inst389_alt
 		}
@@ -12463,11 +12075,10 @@ inst389_alt:
 	goto unreachable
 	goto inst389_fail
 inst389_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 390:
 			goto inst390_alt
 		}
@@ -12489,11 +12100,10 @@ inst390_alt:
 	goto unreachable
 	goto inst390_fail
 inst390_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 392:
 			goto inst392_alt
 		}
@@ -12513,19 +12123,18 @@ inst391: //
 	goto unreachable
 	goto inst391_fail
 inst391_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 392:
-			goto inst392_alt
-		case 390:
-			goto inst390_alt
-		case 389:
-			goto inst389_alt
+			goto unreachable
 		case 388:
 			goto inst388_alt
+		case 389:
+			goto inst389_alt
+		case 390:
+			goto inst390_alt
+		case 392:
+			goto inst392_alt
 		}
 	}
 	goto fail
@@ -12545,19 +12154,18 @@ inst392_alt:
 	goto unreachable
 	goto inst392_fail
 inst392_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 499:
-			goto inst499_alt
-		case 382:
-			goto inst382_alt
-		case 381:
-			goto inst381_alt
+			goto unreachable
 		case 380:
 			goto inst380_alt
+		case 381:
+			goto inst381_alt
+		case 382:
+			goto inst382_alt
+		case 499:
+			goto inst499_alt
 		}
 	}
 	goto fail
@@ -12575,19 +12183,18 @@ inst393: //
 	goto unreachable
 	goto inst393_fail
 inst393_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 381:
-			goto inst381_alt
+			goto unreachable
 		case 380:
 			goto inst380_alt
-		case 499:
-			goto inst499_alt
+		case 381:
+			goto inst381_alt
 		case 382:
 			goto inst382_alt
+		case 499:
+			goto inst499_alt
 		}
 	}
 	goto fail
@@ -12613,27 +12220,26 @@ inst394: // rune "09AFaf" -> 400
 	goto unreachable
 	goto inst394_fail
 inst394_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 389:
-			goto inst389_alt
-		case 388:
-			goto inst388_alt
-		case 382:
-			goto inst382_alt
-		case 381:
-			goto inst381_alt
+			goto unreachable
 		case 380:
 			goto inst380_alt
-		case 499:
-			goto inst499_alt
-		case 392:
-			goto inst392_alt
+		case 381:
+			goto inst381_alt
+		case 382:
+			goto inst382_alt
+		case 388:
+			goto inst388_alt
+		case 389:
+			goto inst389_alt
 		case 390:
 			goto inst390_alt
+		case 392:
+			goto inst392_alt
+		case 499:
+			goto inst499_alt
 		}
 	}
 	goto fail
@@ -12659,11 +12265,10 @@ inst395: // rune "09AFaf" -> 399
 	goto unreachable
 	goto inst395_fail
 inst395_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 400:
 			goto inst400_alt
 		}
@@ -12691,11 +12296,10 @@ inst396: // rune "09AFaf" -> 398
 	goto unreachable
 	goto inst396_fail
 inst396_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 399:
 			goto inst399_alt
 		}
@@ -12723,11 +12327,10 @@ inst397: // rune "09AFaf" -> 436
 	goto unreachable
 	goto inst397_fail
 inst397_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 398:
 			goto inst398_alt
 		}
@@ -12749,11 +12352,10 @@ inst398_alt:
 	goto unreachable
 	goto inst398_fail
 inst398_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 399:
 			goto inst399_alt
 		}
@@ -12775,11 +12377,10 @@ inst399_alt:
 	goto unreachable
 	goto inst399_fail
 inst399_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 400:
 			goto inst400_alt
 		}
@@ -12801,27 +12402,26 @@ inst400_alt:
 	goto unreachable
 	goto inst400_fail
 inst400_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 380:
 			goto inst380_alt
-		case 499:
-			goto inst499_alt
-		case 392:
-			goto inst392_alt
-		case 390:
-			goto inst390_alt
-		case 389:
-			goto inst389_alt
-		case 388:
-			goto inst388_alt
-		case 382:
-			goto inst382_alt
 		case 381:
 			goto inst381_alt
+		case 382:
+			goto inst382_alt
+		case 388:
+			goto inst388_alt
+		case 389:
+			goto inst389_alt
+		case 390:
+			goto inst390_alt
+		case 392:
+			goto inst392_alt
+		case 499:
+			goto inst499_alt
 		}
 	}
 	goto fail
@@ -12839,11 +12439,10 @@ inst401: //
 	goto unreachable
 	goto inst401_fail
 inst401_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 436:
 			goto inst436_alt
 		}
@@ -12871,11 +12470,10 @@ inst402: // rune "09AFaf" -> 408
 	goto unreachable
 	goto inst402_fail
 inst402_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 436:
 			goto inst436_alt
 		}
@@ -12903,11 +12501,10 @@ inst403: // rune "09AFaf" -> 407
 	goto unreachable
 	goto inst403_fail
 inst403_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 408:
 			goto inst408_alt
 		}
@@ -12935,11 +12532,10 @@ inst404: // rune "09AFaf" -> 406
 	goto unreachable
 	goto inst404_fail
 inst404_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 407:
 			goto inst407_alt
 		}
@@ -12967,11 +12563,10 @@ inst405: // rune "09AFaf" -> 435
 	goto unreachable
 	goto inst405_fail
 inst405_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 406:
 			goto inst406_alt
 		}
@@ -12993,11 +12588,10 @@ inst406_alt:
 	goto unreachable
 	goto inst406_fail
 inst406_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 407:
 			goto inst407_alt
 		}
@@ -13019,11 +12613,10 @@ inst407_alt:
 	goto unreachable
 	goto inst407_fail
 inst407_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 408:
 			goto inst408_alt
 		}
@@ -13045,11 +12638,10 @@ inst408_alt:
 	goto unreachable
 	goto inst408_fail
 inst408_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 436:
 			goto inst436_alt
 		}
@@ -13069,11 +12661,10 @@ inst409: //
 	goto unreachable
 	goto inst409_fail
 inst409_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 435:
 			goto inst435_alt
 		}
@@ -13101,11 +12692,10 @@ inst410: // rune "09AFaf" -> 416
 	goto unreachable
 	goto inst410_fail
 inst410_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 435:
 			goto inst435_alt
 		}
@@ -13133,11 +12723,10 @@ inst411: // rune "09AFaf" -> 415
 	goto unreachable
 	goto inst411_fail
 inst411_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 416:
 			goto inst416_alt
 		}
@@ -13165,11 +12754,10 @@ inst412: // rune "09AFaf" -> 414
 	goto unreachable
 	goto inst412_fail
 inst412_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 415:
 			goto inst415_alt
 		}
@@ -13197,11 +12785,10 @@ inst413: // rune "09AFaf" -> 434
 	goto unreachable
 	goto inst413_fail
 inst413_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 414:
 			goto inst414_alt
 		}
@@ -13223,11 +12810,10 @@ inst414_alt:
 	goto unreachable
 	goto inst414_fail
 inst414_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 415:
 			goto inst415_alt
 		}
@@ -13249,11 +12835,10 @@ inst415_alt:
 	goto unreachable
 	goto inst415_fail
 inst415_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 416:
 			goto inst416_alt
 		}
@@ -13275,11 +12860,10 @@ inst416_alt:
 	goto unreachable
 	goto inst416_fail
 inst416_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 435:
 			goto inst435_alt
 		}
@@ -13299,11 +12883,10 @@ inst417: //
 	goto unreachable
 	goto inst417_fail
 inst417_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 434:
 			goto inst434_alt
 		}
@@ -13331,11 +12914,10 @@ inst418: // rune "09AFaf" -> 424
 	goto unreachable
 	goto inst418_fail
 inst418_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 434:
 			goto inst434_alt
 		}
@@ -13363,11 +12945,10 @@ inst419: // rune "09AFaf" -> 423
 	goto unreachable
 	goto inst419_fail
 inst419_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 424:
 			goto inst424_alt
 		}
@@ -13395,11 +12976,10 @@ inst420: // rune "09AFaf" -> 422
 	goto unreachable
 	goto inst420_fail
 inst420_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 423:
 			goto inst423_alt
 		}
@@ -13427,11 +13007,10 @@ inst421: // rune "09AFaf" -> 433
 	goto unreachable
 	goto inst421_fail
 inst421_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 422:
 			goto inst422_alt
 		}
@@ -13453,11 +13032,10 @@ inst422_alt:
 	goto unreachable
 	goto inst422_fail
 inst422_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 423:
 			goto inst423_alt
 		}
@@ -13479,11 +13057,10 @@ inst423_alt:
 	goto unreachable
 	goto inst423_fail
 inst423_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 424:
 			goto inst424_alt
 		}
@@ -13505,11 +13082,10 @@ inst424_alt:
 	goto unreachable
 	goto inst424_fail
 inst424_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 434:
 			goto inst434_alt
 		}
@@ -13529,11 +13105,10 @@ inst425: //
 	goto unreachable
 	goto inst425_fail
 inst425_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 433:
 			goto inst433_alt
 		}
@@ -13561,11 +13136,10 @@ inst426: // rune "09AFaf" -> 432
 	goto unreachable
 	goto inst426_fail
 inst426_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 433:
 			goto inst433_alt
 		}
@@ -13593,11 +13167,10 @@ inst427: // rune "09AFaf" -> 431
 	goto unreachable
 	goto inst427_fail
 inst427_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 432:
 			goto inst432_alt
 		}
@@ -13625,11 +13198,10 @@ inst428: // rune "09AFaf" -> 430
 	goto unreachable
 	goto inst428_fail
 inst428_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 431:
 			goto inst431_alt
 		}
@@ -13657,11 +13229,10 @@ inst429: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst429_fail
 inst429_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 430:
 			goto inst430_alt
 		}
@@ -13683,11 +13254,10 @@ inst430_alt:
 	goto unreachable
 	goto inst430_fail
 inst430_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 431:
 			goto inst431_alt
 		}
@@ -13709,11 +13279,10 @@ inst431_alt:
 	goto unreachable
 	goto inst431_fail
 inst431_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 432:
 			goto inst432_alt
 		}
@@ -13735,11 +13304,10 @@ inst432_alt:
 	goto unreachable
 	goto inst432_fail
 inst432_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 433:
 			goto inst433_alt
 		}
@@ -13761,19 +13329,18 @@ inst433_alt:
 	goto unreachable
 	goto inst433_fail
 inst433_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 422:
 			goto inst422_alt
-		case 434:
-			goto inst434_alt
-		case 424:
-			goto inst424_alt
 		case 423:
 			goto inst423_alt
+		case 424:
+			goto inst424_alt
+		case 434:
+			goto inst434_alt
 		}
 	}
 	goto fail
@@ -13793,19 +13360,18 @@ inst434_alt:
 	goto unreachable
 	goto inst434_fail
 inst434_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 435:
-			goto inst435_alt
-		case 416:
-			goto inst416_alt
-		case 415:
-			goto inst415_alt
+			goto unreachable
 		case 414:
 			goto inst414_alt
+		case 415:
+			goto inst415_alt
+		case 416:
+			goto inst416_alt
+		case 435:
+			goto inst435_alt
 		}
 	}
 	goto fail
@@ -13825,19 +13391,18 @@ inst435_alt:
 	goto unreachable
 	goto inst435_fail
 inst435_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 436:
-			goto inst436_alt
-		case 408:
-			goto inst408_alt
-		case 407:
-			goto inst407_alt
+			goto unreachable
 		case 406:
 			goto inst406_alt
+		case 407:
+			goto inst407_alt
+		case 408:
+			goto inst408_alt
+		case 436:
+			goto inst436_alt
 		}
 	}
 	goto fail
@@ -13857,33 +13422,32 @@ inst436_alt:
 	goto unreachable
 	goto inst436_fail
 inst436_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 400:
-			goto inst400_alt
-		case 398:
-			goto inst398_alt
-		case 390:
-			goto inst390_alt
-		case 388:
-			goto inst388_alt
-		case 382:
-			goto inst382_alt
-		case 381:
-			goto inst381_alt
+			goto unreachable
 		case 380:
 			goto inst380_alt
-		case 499:
-			goto inst499_alt
-		case 399:
-			goto inst399_alt
-		case 392:
-			goto inst392_alt
+		case 381:
+			goto inst381_alt
+		case 382:
+			goto inst382_alt
+		case 388:
+			goto inst388_alt
 		case 389:
 			goto inst389_alt
+		case 390:
+			goto inst390_alt
+		case 392:
+			goto inst392_alt
+		case 398:
+			goto inst398_alt
+		case 399:
+			goto inst399_alt
+		case 400:
+			goto inst400_alt
+		case 499:
+			goto inst499_alt
 		}
 	}
 	goto fail
@@ -13903,11 +13467,10 @@ inst437_alt:
 	goto unreachable
 	goto inst437_fail
 inst437_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 499:
 			goto inst499_alt
 		}
@@ -13935,11 +13498,10 @@ inst438: // rune "09AFaf" -> 444
 	goto unreachable
 	goto inst438_fail
 inst438_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 565:
 			goto inst565_alt
 		}
@@ -13967,11 +13529,10 @@ inst439: // rune "09AFaf" -> 443
 	goto unreachable
 	goto inst439_fail
 inst439_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 444:
 			goto inst444_alt
 		}
@@ -13999,11 +13560,10 @@ inst440: // rune "09AFaf" -> 442
 	goto unreachable
 	goto inst440_fail
 inst440_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 443:
 			goto inst443_alt
 		}
@@ -14031,11 +13591,10 @@ inst441: // rune "09AFaf" -> 445
 	goto unreachable
 	goto inst441_fail
 inst441_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 442:
 			goto inst442_alt
 		}
@@ -14057,11 +13616,10 @@ inst442_alt:
 	goto unreachable
 	goto inst442_fail
 inst442_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 443:
 			goto inst443_alt
 		}
@@ -14083,11 +13641,10 @@ inst443_alt:
 	goto unreachable
 	goto inst443_fail
 inst443_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 444:
 			goto inst444_alt
 		}
@@ -14109,11 +13666,10 @@ inst444_alt:
 	goto unreachable
 	goto inst444_fail
 inst444_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 565:
 			goto inst565_alt
 		}
@@ -14133,19 +13689,18 @@ inst445: //
 	goto unreachable
 	goto inst445_fail
 inst445_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 442:
 			goto inst442_alt
-		case 565:
-			goto inst565_alt
-		case 444:
-			goto inst444_alt
 		case 443:
 			goto inst443_alt
+		case 444:
+			goto inst444_alt
+		case 565:
+			goto inst565_alt
 		}
 	}
 	goto fail
@@ -14173,19 +13728,18 @@ inst447: // rune "09AFaf" -> 453
 	goto unreachable
 	goto inst447_fail
 inst447_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 565:
-			goto inst565_alt
-		case 444:
-			goto inst444_alt
-		case 443:
-			goto inst443_alt
+			goto unreachable
 		case 442:
 			goto inst442_alt
+		case 443:
+			goto inst443_alt
+		case 444:
+			goto inst444_alt
+		case 565:
+			goto inst565_alt
 		}
 	}
 	goto fail
@@ -14211,11 +13765,10 @@ inst448: // rune "09AFaf" -> 452
 	goto unreachable
 	goto inst448_fail
 inst448_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 453:
 			goto inst453_alt
 		}
@@ -14243,11 +13796,10 @@ inst449: // rune "09AFaf" -> 451
 	goto unreachable
 	goto inst449_fail
 inst449_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 452:
 			goto inst452_alt
 		}
@@ -14275,11 +13827,10 @@ inst450: // rune "09AFaf" -> 498
 	goto unreachable
 	goto inst450_fail
 inst450_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 451:
 			goto inst451_alt
 		}
@@ -14301,11 +13852,10 @@ inst451_alt:
 	goto unreachable
 	goto inst451_fail
 inst451_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 452:
 			goto inst452_alt
 		}
@@ -14327,11 +13877,10 @@ inst452_alt:
 	goto unreachable
 	goto inst452_fail
 inst452_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 453:
 			goto inst453_alt
 		}
@@ -14353,19 +13902,18 @@ inst453_alt:
 	goto unreachable
 	goto inst453_fail
 inst453_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 443:
-			goto inst443_alt
+			goto unreachable
 		case 442:
 			goto inst442_alt
-		case 565:
-			goto inst565_alt
+		case 443:
+			goto inst443_alt
 		case 444:
 			goto inst444_alt
+		case 565:
+			goto inst565_alt
 		}
 	}
 	goto fail
@@ -14383,11 +13931,10 @@ inst454: //
 	goto unreachable
 	goto inst454_fail
 inst454_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 498:
 			goto inst498_alt
 		}
@@ -14415,11 +13962,10 @@ inst455: // rune "09AFaf" -> 461
 	goto unreachable
 	goto inst455_fail
 inst455_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 498:
 			goto inst498_alt
 		}
@@ -14447,11 +13993,10 @@ inst456: // rune "09AFaf" -> 460
 	goto unreachable
 	goto inst456_fail
 inst456_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 461:
 			goto inst461_alt
 		}
@@ -14479,11 +14024,10 @@ inst457: // rune "09AFaf" -> 459
 	goto unreachable
 	goto inst457_fail
 inst457_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 460:
 			goto inst460_alt
 		}
@@ -14511,11 +14055,10 @@ inst458: // rune "09AFaf" -> 497
 	goto unreachable
 	goto inst458_fail
 inst458_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 459:
 			goto inst459_alt
 		}
@@ -14537,11 +14080,10 @@ inst459_alt:
 	goto unreachable
 	goto inst459_fail
 inst459_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 460:
 			goto inst460_alt
 		}
@@ -14563,11 +14105,10 @@ inst460_alt:
 	goto unreachable
 	goto inst460_fail
 inst460_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 461:
 			goto inst461_alt
 		}
@@ -14589,11 +14130,10 @@ inst461_alt:
 	goto unreachable
 	goto inst461_fail
 inst461_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 498:
 			goto inst498_alt
 		}
@@ -14613,11 +14153,10 @@ inst462: //
 	goto unreachable
 	goto inst462_fail
 inst462_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 497:
 			goto inst497_alt
 		}
@@ -14645,11 +14184,10 @@ inst463: // rune "09AFaf" -> 469
 	goto unreachable
 	goto inst463_fail
 inst463_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 497:
 			goto inst497_alt
 		}
@@ -14677,11 +14215,10 @@ inst464: // rune "09AFaf" -> 468
 	goto unreachable
 	goto inst464_fail
 inst464_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 469:
 			goto inst469_alt
 		}
@@ -14709,11 +14246,10 @@ inst465: // rune "09AFaf" -> 467
 	goto unreachable
 	goto inst465_fail
 inst465_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 468:
 			goto inst468_alt
 		}
@@ -14741,11 +14277,10 @@ inst466: // rune "09AFaf" -> 496
 	goto unreachable
 	goto inst466_fail
 inst466_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 467:
 			goto inst467_alt
 		}
@@ -14767,11 +14302,10 @@ inst467_alt:
 	goto unreachable
 	goto inst467_fail
 inst467_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 468:
 			goto inst468_alt
 		}
@@ -14793,11 +14327,10 @@ inst468_alt:
 	goto unreachable
 	goto inst468_fail
 inst468_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 469:
 			goto inst469_alt
 		}
@@ -14819,11 +14352,10 @@ inst469_alt:
 	goto unreachable
 	goto inst469_fail
 inst469_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 497:
 			goto inst497_alt
 		}
@@ -14843,11 +14375,10 @@ inst470: //
 	goto unreachable
 	goto inst470_fail
 inst470_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 496:
 			goto inst496_alt
 		}
@@ -14875,11 +14406,10 @@ inst471: // rune "09AFaf" -> 477
 	goto unreachable
 	goto inst471_fail
 inst471_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 496:
 			goto inst496_alt
 		}
@@ -14907,11 +14437,10 @@ inst472: // rune "09AFaf" -> 476
 	goto unreachable
 	goto inst472_fail
 inst472_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 477:
 			goto inst477_alt
 		}
@@ -14939,11 +14468,10 @@ inst473: // rune "09AFaf" -> 475
 	goto unreachable
 	goto inst473_fail
 inst473_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 476:
 			goto inst476_alt
 		}
@@ -14971,11 +14499,10 @@ inst474: // rune "09AFaf" -> 495
 	goto unreachable
 	goto inst474_fail
 inst474_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 475:
 			goto inst475_alt
 		}
@@ -14997,11 +14524,10 @@ inst475_alt:
 	goto unreachable
 	goto inst475_fail
 inst475_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 476:
 			goto inst476_alt
 		}
@@ -15023,11 +14549,10 @@ inst476_alt:
 	goto unreachable
 	goto inst476_fail
 inst476_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 477:
 			goto inst477_alt
 		}
@@ -15049,11 +14574,10 @@ inst477_alt:
 	goto unreachable
 	goto inst477_fail
 inst477_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 496:
 			goto inst496_alt
 		}
@@ -15073,11 +14597,10 @@ inst478: //
 	goto unreachable
 	goto inst478_fail
 inst478_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 495:
 			goto inst495_alt
 		}
@@ -15105,11 +14628,10 @@ inst479: // rune "09AFaf" -> 485
 	goto unreachable
 	goto inst479_fail
 inst479_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 495:
 			goto inst495_alt
 		}
@@ -15137,11 +14659,10 @@ inst480: // rune "09AFaf" -> 484
 	goto unreachable
 	goto inst480_fail
 inst480_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 485:
 			goto inst485_alt
 		}
@@ -15169,11 +14690,10 @@ inst481: // rune "09AFaf" -> 483
 	goto unreachable
 	goto inst481_fail
 inst481_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 484:
 			goto inst484_alt
 		}
@@ -15201,11 +14721,10 @@ inst482: // rune "09AFaf" -> 494
 	goto unreachable
 	goto inst482_fail
 inst482_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 483:
 			goto inst483_alt
 		}
@@ -15227,11 +14746,10 @@ inst483_alt:
 	goto unreachable
 	goto inst483_fail
 inst483_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 484:
 			goto inst484_alt
 		}
@@ -15253,11 +14771,10 @@ inst484_alt:
 	goto unreachable
 	goto inst484_fail
 inst484_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 485:
 			goto inst485_alt
 		}
@@ -15279,11 +14796,10 @@ inst485_alt:
 	goto unreachable
 	goto inst485_fail
 inst485_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 495:
 			goto inst495_alt
 		}
@@ -15303,11 +14819,10 @@ inst486: //
 	goto unreachable
 	goto inst486_fail
 inst486_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 494:
 			goto inst494_alt
 		}
@@ -15335,11 +14850,10 @@ inst487: // rune "09AFaf" -> 493
 	goto unreachable
 	goto inst487_fail
 inst487_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 494:
 			goto inst494_alt
 		}
@@ -15367,11 +14881,10 @@ inst488: // rune "09AFaf" -> 492
 	goto unreachable
 	goto inst488_fail
 inst488_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 493:
 			goto inst493_alt
 		}
@@ -15399,11 +14912,10 @@ inst489: // rune "09AFaf" -> 491
 	goto unreachable
 	goto inst489_fail
 inst489_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 492:
 			goto inst492_alt
 		}
@@ -15431,11 +14943,10 @@ inst490: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst490_fail
 inst490_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 491:
 			goto inst491_alt
 		}
@@ -15457,11 +14968,10 @@ inst491_alt:
 	goto unreachable
 	goto inst491_fail
 inst491_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 492:
 			goto inst492_alt
 		}
@@ -15483,11 +14993,10 @@ inst492_alt:
 	goto unreachable
 	goto inst492_fail
 inst492_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 493:
 			goto inst493_alt
 		}
@@ -15509,11 +15018,10 @@ inst493_alt:
 	goto unreachable
 	goto inst493_fail
 inst493_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 494:
 			goto inst494_alt
 		}
@@ -15535,19 +15043,18 @@ inst494_alt:
 	goto unreachable
 	goto inst494_fail
 inst494_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 495:
-			goto inst495_alt
-		case 485:
-			goto inst485_alt
-		case 484:
-			goto inst484_alt
+			goto unreachable
 		case 483:
 			goto inst483_alt
+		case 484:
+			goto inst484_alt
+		case 485:
+			goto inst485_alt
+		case 495:
+			goto inst495_alt
 		}
 	}
 	goto fail
@@ -15567,17 +15074,16 @@ inst495_alt:
 	goto unreachable
 	goto inst495_fail
 inst495_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 477:
-			goto inst477_alt
-		case 476:
-			goto inst476_alt
+			goto unreachable
 		case 475:
 			goto inst475_alt
+		case 476:
+			goto inst476_alt
+		case 477:
+			goto inst477_alt
 		case 496:
 			goto inst496_alt
 		}
@@ -15599,19 +15105,18 @@ inst496_alt:
 	goto unreachable
 	goto inst496_fail
 inst496_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 497:
-			goto inst497_alt
-		case 469:
-			goto inst469_alt
-		case 468:
-			goto inst468_alt
+			goto unreachable
 		case 467:
 			goto inst467_alt
+		case 468:
+			goto inst468_alt
+		case 469:
+			goto inst469_alt
+		case 497:
+			goto inst497_alt
 		}
 	}
 	goto fail
@@ -15631,19 +15136,18 @@ inst497_alt:
 	goto unreachable
 	goto inst497_fail
 inst497_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 498:
-			goto inst498_alt
-		case 461:
-			goto inst461_alt
-		case 460:
-			goto inst460_alt
+			goto unreachable
 		case 459:
 			goto inst459_alt
+		case 460:
+			goto inst460_alt
+		case 461:
+			goto inst461_alt
+		case 498:
+			goto inst498_alt
 		}
 	}
 	goto fail
@@ -15663,25 +15167,24 @@ inst498_alt:
 	goto unreachable
 	goto inst498_fail
 inst498_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 442:
 			goto inst442_alt
-		case 565:
-			goto inst565_alt
-		case 453:
-			goto inst453_alt
-		case 452:
-			goto inst452_alt
-		case 451:
-			goto inst451_alt
-		case 444:
-			goto inst444_alt
 		case 443:
 			goto inst443_alt
+		case 444:
+			goto inst444_alt
+		case 451:
+			goto inst451_alt
+		case 452:
+			goto inst452_alt
+		case 453:
+			goto inst453_alt
+		case 565:
+			goto inst565_alt
 		}
 	}
 	goto fail
@@ -15701,11 +15204,10 @@ inst499_alt:
 	goto unreachable
 	goto inst499_fail
 inst499_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 565:
 			goto inst565_alt
 		}
@@ -15725,11 +15227,10 @@ inst500: //
 	goto unreachable
 	goto inst500_fail
 inst500_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 614:
 			goto inst614_alt
 		}
@@ -15749,11 +15250,10 @@ inst501: //
 	goto unreachable
 	goto inst501_fail
 inst501_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 564:
 			goto inst564_alt
 		}
@@ -15781,11 +15281,10 @@ inst502: // rune "09AFaf" -> 508
 	goto unreachable
 	goto inst502_fail
 inst502_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 564:
 			goto inst564_alt
 		}
@@ -15813,11 +15312,10 @@ inst503: // rune "09AFaf" -> 507
 	goto unreachable
 	goto inst503_fail
 inst503_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 508:
 			goto inst508_alt
 		}
@@ -15845,11 +15343,10 @@ inst504: // rune "09AFaf" -> 506
 	goto unreachable
 	goto inst504_fail
 inst504_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 507:
 			goto inst507_alt
 		}
@@ -15877,11 +15374,10 @@ inst505: // rune "09AFaf" -> 562
 	goto unreachable
 	goto inst505_fail
 inst505_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 506:
 			goto inst506_alt
 		}
@@ -15903,11 +15399,10 @@ inst506_alt:
 	goto unreachable
 	goto inst506_fail
 inst506_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 507:
 			goto inst507_alt
 		}
@@ -15929,11 +15424,10 @@ inst507_alt:
 	goto unreachable
 	goto inst507_fail
 inst507_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 508:
 			goto inst508_alt
 		}
@@ -15955,11 +15449,10 @@ inst508_alt:
 	goto unreachable
 	goto inst508_fail
 inst508_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 564:
 			goto inst564_alt
 		}
@@ -15979,11 +15472,10 @@ inst509: //
 	goto unreachable
 	goto inst509_fail
 inst509_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 562:
 			goto inst562_alt
 		}
@@ -16011,11 +15503,10 @@ inst510: // rune "09AFaf" -> 516
 	goto unreachable
 	goto inst510_fail
 inst510_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 562:
 			goto inst562_alt
 		}
@@ -16043,11 +15534,10 @@ inst511: // rune "09AFaf" -> 515
 	goto unreachable
 	goto inst511_fail
 inst511_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 516:
 			goto inst516_alt
 		}
@@ -16075,11 +15565,10 @@ inst512: // rune "09AFaf" -> 514
 	goto unreachable
 	goto inst512_fail
 inst512_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 515:
 			goto inst515_alt
 		}
@@ -16107,11 +15596,10 @@ inst513: // rune "09AFaf" -> 561
 	goto unreachable
 	goto inst513_fail
 inst513_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 514:
 			goto inst514_alt
 		}
@@ -16133,11 +15621,10 @@ inst514_alt:
 	goto unreachable
 	goto inst514_fail
 inst514_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 515:
 			goto inst515_alt
 		}
@@ -16159,11 +15646,10 @@ inst515_alt:
 	goto unreachable
 	goto inst515_fail
 inst515_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 516:
 			goto inst516_alt
 		}
@@ -16185,11 +15671,10 @@ inst516_alt:
 	goto unreachable
 	goto inst516_fail
 inst516_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 562:
 			goto inst562_alt
 		}
@@ -16209,11 +15694,10 @@ inst517: //
 	goto unreachable
 	goto inst517_fail
 inst517_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 561:
 			goto inst561_alt
 		}
@@ -16241,11 +15725,10 @@ inst518: // rune "09AFaf" -> 524
 	goto unreachable
 	goto inst518_fail
 inst518_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 561:
 			goto inst561_alt
 		}
@@ -16273,11 +15756,10 @@ inst519: // rune "09AFaf" -> 523
 	goto unreachable
 	goto inst519_fail
 inst519_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 524:
 			goto inst524_alt
 		}
@@ -16305,11 +15787,10 @@ inst520: // rune "09AFaf" -> 522
 	goto unreachable
 	goto inst520_fail
 inst520_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 523:
 			goto inst523_alt
 		}
@@ -16337,11 +15818,10 @@ inst521: // rune "09AFaf" -> 560
 	goto unreachable
 	goto inst521_fail
 inst521_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 522:
 			goto inst522_alt
 		}
@@ -16363,11 +15843,10 @@ inst522_alt:
 	goto unreachable
 	goto inst522_fail
 inst522_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 523:
 			goto inst523_alt
 		}
@@ -16389,11 +15868,10 @@ inst523_alt:
 	goto unreachable
 	goto inst523_fail
 inst523_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 524:
 			goto inst524_alt
 		}
@@ -16415,11 +15893,10 @@ inst524_alt:
 	goto unreachable
 	goto inst524_fail
 inst524_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 561:
 			goto inst561_alt
 		}
@@ -16439,11 +15916,10 @@ inst525: //
 	goto unreachable
 	goto inst525_fail
 inst525_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 560:
 			goto inst560_alt
 		}
@@ -16471,11 +15947,10 @@ inst526: // rune "09AFaf" -> 532
 	goto unreachable
 	goto inst526_fail
 inst526_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 560:
 			goto inst560_alt
 		}
@@ -16503,11 +15978,10 @@ inst527: // rune "09AFaf" -> 531
 	goto unreachable
 	goto inst527_fail
 inst527_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 532:
 			goto inst532_alt
 		}
@@ -16535,11 +16009,10 @@ inst528: // rune "09AFaf" -> 530
 	goto unreachable
 	goto inst528_fail
 inst528_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 531:
 			goto inst531_alt
 		}
@@ -16567,11 +16040,10 @@ inst529: // rune "09AFaf" -> 559
 	goto unreachable
 	goto inst529_fail
 inst529_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 530:
 			goto inst530_alt
 		}
@@ -16593,11 +16065,10 @@ inst530_alt:
 	goto unreachable
 	goto inst530_fail
 inst530_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 531:
 			goto inst531_alt
 		}
@@ -16619,11 +16090,10 @@ inst531_alt:
 	goto unreachable
 	goto inst531_fail
 inst531_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 532:
 			goto inst532_alt
 		}
@@ -16645,11 +16115,10 @@ inst532_alt:
 	goto unreachable
 	goto inst532_fail
 inst532_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 560:
 			goto inst560_alt
 		}
@@ -16669,11 +16138,10 @@ inst533: //
 	goto unreachable
 	goto inst533_fail
 inst533_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 559:
 			goto inst559_alt
 		}
@@ -16701,11 +16169,10 @@ inst534: // rune "09AFaf" -> 540
 	goto unreachable
 	goto inst534_fail
 inst534_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 559:
 			goto inst559_alt
 		}
@@ -16733,11 +16200,10 @@ inst535: // rune "09AFaf" -> 539
 	goto unreachable
 	goto inst535_fail
 inst535_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 540:
 			goto inst540_alt
 		}
@@ -16765,11 +16231,10 @@ inst536: // rune "09AFaf" -> 538
 	goto unreachable
 	goto inst536_fail
 inst536_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 539:
 			goto inst539_alt
 		}
@@ -16797,11 +16262,10 @@ inst537: // rune "09AFaf" -> 558
 	goto unreachable
 	goto inst537_fail
 inst537_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 538:
 			goto inst538_alt
 		}
@@ -16823,11 +16287,10 @@ inst538_alt:
 	goto unreachable
 	goto inst538_fail
 inst538_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 539:
 			goto inst539_alt
 		}
@@ -16849,11 +16312,10 @@ inst539_alt:
 	goto unreachable
 	goto inst539_fail
 inst539_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 540:
 			goto inst540_alt
 		}
@@ -16875,11 +16337,10 @@ inst540_alt:
 	goto unreachable
 	goto inst540_fail
 inst540_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 559:
 			goto inst559_alt
 		}
@@ -16899,11 +16360,10 @@ inst541: //
 	goto unreachable
 	goto inst541_fail
 inst541_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 558:
 			goto inst558_alt
 		}
@@ -16931,11 +16391,10 @@ inst542: // rune "09AFaf" -> 548
 	goto unreachable
 	goto inst542_fail
 inst542_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 558:
 			goto inst558_alt
 		}
@@ -16963,11 +16422,10 @@ inst543: // rune "09AFaf" -> 547
 	goto unreachable
 	goto inst543_fail
 inst543_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 548:
 			goto inst548_alt
 		}
@@ -16995,11 +16453,10 @@ inst544: // rune "09AFaf" -> 546
 	goto unreachable
 	goto inst544_fail
 inst544_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 547:
 			goto inst547_alt
 		}
@@ -17027,11 +16484,10 @@ inst545: // rune "09AFaf" -> 557
 	goto unreachable
 	goto inst545_fail
 inst545_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 546:
 			goto inst546_alt
 		}
@@ -17053,11 +16509,10 @@ inst546_alt:
 	goto unreachable
 	goto inst546_fail
 inst546_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 547:
 			goto inst547_alt
 		}
@@ -17079,11 +16534,10 @@ inst547_alt:
 	goto unreachable
 	goto inst547_fail
 inst547_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 548:
 			goto inst548_alt
 		}
@@ -17105,11 +16559,10 @@ inst548_alt:
 	goto unreachable
 	goto inst548_fail
 inst548_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 558:
 			goto inst558_alt
 		}
@@ -17129,11 +16582,10 @@ inst549: //
 	goto unreachable
 	goto inst549_fail
 inst549_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 557:
 			goto inst557_alt
 		}
@@ -17161,11 +16613,10 @@ inst550: // rune "09AFaf" -> 556
 	goto unreachable
 	goto inst550_fail
 inst550_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 557:
 			goto inst557_alt
 		}
@@ -17193,11 +16644,10 @@ inst551: // rune "09AFaf" -> 555
 	goto unreachable
 	goto inst551_fail
 inst551_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 556:
 			goto inst556_alt
 		}
@@ -17225,11 +16675,10 @@ inst552: // rune "09AFaf" -> 554
 	goto unreachable
 	goto inst552_fail
 inst552_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 555:
 			goto inst555_alt
 		}
@@ -17257,11 +16706,10 @@ inst553: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst553_fail
 inst553_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 554:
 			goto inst554_alt
 		}
@@ -17283,11 +16731,10 @@ inst554_alt:
 	goto unreachable
 	goto inst554_fail
 inst554_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 555:
 			goto inst555_alt
 		}
@@ -17309,11 +16756,10 @@ inst555_alt:
 	goto unreachable
 	goto inst555_fail
 inst555_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 556:
 			goto inst556_alt
 		}
@@ -17335,11 +16781,10 @@ inst556_alt:
 	goto unreachable
 	goto inst556_fail
 inst556_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 557:
 			goto inst557_alt
 		}
@@ -17361,19 +16806,18 @@ inst557_alt:
 	goto unreachable
 	goto inst557_fail
 inst557_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 558:
-			goto inst558_alt
-		case 548:
-			goto inst548_alt
-		case 547:
-			goto inst547_alt
+			goto unreachable
 		case 546:
 			goto inst546_alt
+		case 547:
+			goto inst547_alt
+		case 548:
+			goto inst548_alt
+		case 558:
+			goto inst558_alt
 		}
 	}
 	goto fail
@@ -17393,19 +16837,18 @@ inst558_alt:
 	goto unreachable
 	goto inst558_fail
 inst558_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 539:
-			goto inst539_alt
+			goto unreachable
 		case 538:
 			goto inst538_alt
-		case 559:
-			goto inst559_alt
+		case 539:
+			goto inst539_alt
 		case 540:
 			goto inst540_alt
+		case 559:
+			goto inst559_alt
 		}
 	}
 	goto fail
@@ -17425,19 +16868,18 @@ inst559_alt:
 	goto unreachable
 	goto inst559_fail
 inst559_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 560:
-			goto inst560_alt
-		case 532:
-			goto inst532_alt
-		case 531:
-			goto inst531_alt
+			goto unreachable
 		case 530:
 			goto inst530_alt
+		case 531:
+			goto inst531_alt
+		case 532:
+			goto inst532_alt
+		case 560:
+			goto inst560_alt
 		}
 	}
 	goto fail
@@ -17457,19 +16899,18 @@ inst560_alt:
 	goto unreachable
 	goto inst560_fail
 inst560_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 523:
-			goto inst523_alt
+			goto unreachable
 		case 522:
 			goto inst522_alt
-		case 561:
-			goto inst561_alt
+		case 523:
+			goto inst523_alt
 		case 524:
 			goto inst524_alt
+		case 561:
+			goto inst561_alt
 		}
 	}
 	goto fail
@@ -17489,19 +16930,18 @@ inst561_alt:
 	goto unreachable
 	goto inst561_fail
 inst561_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 562:
-			goto inst562_alt
-		case 516:
-			goto inst516_alt
-		case 515:
-			goto inst515_alt
+			goto unreachable
 		case 514:
 			goto inst514_alt
+		case 515:
+			goto inst515_alt
+		case 516:
+			goto inst516_alt
+		case 562:
+			goto inst562_alt
 		}
 	}
 	goto fail
@@ -17521,19 +16961,18 @@ inst562_alt:
 	goto unreachable
 	goto inst562_fail
 inst562_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 564:
-			goto inst564_alt
-		case 508:
-			goto inst508_alt
-		case 507:
-			goto inst507_alt
+			goto unreachable
 		case 506:
 			goto inst506_alt
+		case 507:
+			goto inst507_alt
+		case 508:
+			goto inst508_alt
+		case 564:
+			goto inst564_alt
 		}
 	}
 	goto fail
@@ -17551,11 +16990,10 @@ inst563: //
 	goto unreachable
 	goto inst563_fail
 inst563_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 614:
 			goto inst614_alt
 		}
@@ -17577,11 +17015,10 @@ inst564_alt:
 	goto unreachable
 	goto inst564_fail
 inst564_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 614:
 			goto inst614_alt
 		}
@@ -17603,11 +17040,10 @@ inst565_alt:
 	goto unreachable
 	goto inst565_fail
 inst565_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 614:
 			goto inst614_alt
 		}
@@ -17627,11 +17063,10 @@ inst566: //
 	goto unreachable
 	goto inst566_fail
 inst566_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 683:
 			goto inst683_alt
 		}
@@ -17659,11 +17094,10 @@ inst571: //
 	goto unreachable
 	goto inst571_fail
 inst571_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 610:
 			goto inst610_alt
 		}
@@ -17691,11 +17125,10 @@ inst572: // rune "09AFaf" -> 578
 	goto unreachable
 	goto inst572_fail
 inst572_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 579:
 			goto inst579_alt
 		}
@@ -17723,11 +17156,10 @@ inst573: // rune "09AFaf" -> 577
 	goto unreachable
 	goto inst573_fail
 inst573_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 578:
 			goto inst578_alt
 		}
@@ -17755,11 +17187,10 @@ inst574: // rune "09AFaf" -> 576
 	goto unreachable
 	goto inst574_fail
 inst574_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 577:
 			goto inst577_alt
 		}
@@ -17787,11 +17218,10 @@ inst575: // rune "09AFaf" -> 609
 	goto unreachable
 	goto inst575_fail
 inst575_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 576:
 			goto inst576_alt
 		}
@@ -17813,11 +17243,10 @@ inst576_alt:
 	goto unreachable
 	goto inst576_fail
 inst576_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 577:
 			goto inst577_alt
 		}
@@ -17839,11 +17268,10 @@ inst577_alt:
 	goto unreachable
 	goto inst577_fail
 inst577_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 578:
 			goto inst578_alt
 		}
@@ -17865,11 +17293,10 @@ inst578_alt:
 	goto unreachable
 	goto inst578_fail
 inst578_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 579:
 			goto inst579_alt
 		}
@@ -17891,11 +17318,10 @@ inst579_alt:
 	goto unreachable
 	goto inst579_fail
 inst579_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 610:
 			goto inst610_alt
 		}
@@ -17915,11 +17341,10 @@ inst580: //
 	goto unreachable
 	goto inst580_fail
 inst580_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 609:
 			goto inst609_alt
 		}
@@ -17947,11 +17372,10 @@ inst581: // rune "09AFaf" -> 587
 	goto unreachable
 	goto inst581_fail
 inst581_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 588:
 			goto inst588_alt
 		}
@@ -17979,11 +17403,10 @@ inst582: // rune "09AFaf" -> 586
 	goto unreachable
 	goto inst582_fail
 inst582_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 587:
 			goto inst587_alt
 		}
@@ -18011,11 +17434,10 @@ inst583: // rune "09AFaf" -> 585
 	goto unreachable
 	goto inst583_fail
 inst583_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 586:
 			goto inst586_alt
 		}
@@ -18043,11 +17465,10 @@ inst584: // rune "09AFaf" -> 608
 	goto unreachable
 	goto inst584_fail
 inst584_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 585:
 			goto inst585_alt
 		}
@@ -18069,11 +17490,10 @@ inst585_alt:
 	goto unreachable
 	goto inst585_fail
 inst585_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 586:
 			goto inst586_alt
 		}
@@ -18095,11 +17515,10 @@ inst586_alt:
 	goto unreachable
 	goto inst586_fail
 inst586_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 587:
 			goto inst587_alt
 		}
@@ -18121,11 +17540,10 @@ inst587_alt:
 	goto unreachable
 	goto inst587_fail
 inst587_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 588:
 			goto inst588_alt
 		}
@@ -18147,11 +17565,10 @@ inst588_alt:
 	goto unreachable
 	goto inst588_fail
 inst588_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 609:
 			goto inst609_alt
 		}
@@ -18171,11 +17588,10 @@ inst589: //
 	goto unreachable
 	goto inst589_fail
 inst589_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 608:
 			goto inst608_alt
 		}
@@ -18203,11 +17619,10 @@ inst590: // rune "09AFaf" -> 596
 	goto unreachable
 	goto inst590_fail
 inst590_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 597:
 			goto inst597_alt
 		}
@@ -18235,11 +17650,10 @@ inst591: // rune "09AFaf" -> 595
 	goto unreachable
 	goto inst591_fail
 inst591_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 596:
 			goto inst596_alt
 		}
@@ -18267,11 +17681,10 @@ inst592: // rune "09AFaf" -> 594
 	goto unreachable
 	goto inst592_fail
 inst592_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 595:
 			goto inst595_alt
 		}
@@ -18299,11 +17712,10 @@ inst593: // rune "09AFaf" -> 607
 	goto unreachable
 	goto inst593_fail
 inst593_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 594:
 			goto inst594_alt
 		}
@@ -18325,11 +17737,10 @@ inst594_alt:
 	goto unreachable
 	goto inst594_fail
 inst594_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 595:
 			goto inst595_alt
 		}
@@ -18351,11 +17762,10 @@ inst595_alt:
 	goto unreachable
 	goto inst595_fail
 inst595_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 596:
 			goto inst596_alt
 		}
@@ -18377,11 +17787,10 @@ inst596_alt:
 	goto unreachable
 	goto inst596_fail
 inst596_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 597:
 			goto inst597_alt
 		}
@@ -18403,11 +17812,10 @@ inst597_alt:
 	goto unreachable
 	goto inst597_fail
 inst597_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 608:
 			goto inst608_alt
 		}
@@ -18427,11 +17835,10 @@ inst598: //
 	goto unreachable
 	goto inst598_fail
 inst598_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 607:
 			goto inst607_alt
 		}
@@ -18459,11 +17866,10 @@ inst599: // rune "09AFaf" -> 605
 	goto unreachable
 	goto inst599_fail
 inst599_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 606:
 			goto inst606_alt
 		}
@@ -18491,11 +17897,10 @@ inst600: // rune "09AFaf" -> 604
 	goto unreachable
 	goto inst600_fail
 inst600_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 605:
 			goto inst605_alt
 		}
@@ -18523,11 +17928,10 @@ inst601: // rune "09AFaf" -> 603
 	goto unreachable
 	goto inst601_fail
 inst601_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 604:
 			goto inst604_alt
 		}
@@ -18555,11 +17959,10 @@ inst602: // rune "09AFaf" -> 611
 	goto unreachable
 	goto inst602_fail
 inst602_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 603:
 			goto inst603_alt
 		}
@@ -18581,11 +17984,10 @@ inst603_alt:
 	goto unreachable
 	goto inst603_fail
 inst603_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 604:
 			goto inst604_alt
 		}
@@ -18607,11 +18009,10 @@ inst604_alt:
 	goto unreachable
 	goto inst604_fail
 inst604_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 605:
 			goto inst605_alt
 		}
@@ -18633,11 +18034,10 @@ inst605_alt:
 	goto unreachable
 	goto inst605_fail
 inst605_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 606:
 			goto inst606_alt
 		}
@@ -18659,11 +18059,10 @@ inst606_alt:
 	goto unreachable
 	goto inst606_fail
 inst606_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 607:
 			goto inst607_alt
 		}
@@ -18685,21 +18084,20 @@ inst607_alt:
 	goto unreachable
 	goto inst607_fail
 inst607_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 608:
-			goto inst608_alt
-		case 597:
-			goto inst597_alt
-		case 596:
-			goto inst596_alt
-		case 595:
-			goto inst595_alt
+			goto unreachable
 		case 594:
 			goto inst594_alt
+		case 595:
+			goto inst595_alt
+		case 596:
+			goto inst596_alt
+		case 597:
+			goto inst597_alt
+		case 608:
+			goto inst608_alt
 		}
 	}
 	goto fail
@@ -18719,21 +18117,20 @@ inst608_alt:
 	goto unreachable
 	goto inst608_fail
 inst608_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 609:
-			goto inst609_alt
-		case 588:
-			goto inst588_alt
-		case 587:
-			goto inst587_alt
-		case 586:
-			goto inst586_alt
+			goto unreachable
 		case 585:
 			goto inst585_alt
+		case 586:
+			goto inst586_alt
+		case 587:
+			goto inst587_alt
+		case 588:
+			goto inst588_alt
+		case 609:
+			goto inst609_alt
 		}
 	}
 	goto fail
@@ -18753,21 +18150,20 @@ inst609_alt:
 	goto unreachable
 	goto inst609_fail
 inst609_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 576:
 			goto inst576_alt
-		case 610:
-			goto inst610_alt
-		case 579:
-			goto inst579_alt
-		case 578:
-			goto inst578_alt
 		case 577:
 			goto inst577_alt
+		case 578:
+			goto inst578_alt
+		case 579:
+			goto inst579_alt
+		case 610:
+			goto inst610_alt
 		}
 	}
 	goto fail
@@ -18787,11 +18183,10 @@ inst610_alt:
 	goto unreachable
 	goto inst610_fail
 inst610_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 683:
 			goto inst683_alt
 		}
@@ -18811,51 +18206,50 @@ inst611: //
 	goto unreachable
 	goto inst611_fail
 inst611_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 603:
-			goto inst603_alt
-		case 595:
-			goto inst595_alt
-		case 594:
-			goto inst594_alt
-		case 588:
-			goto inst588_alt
-		case 587:
-			goto inst587_alt
-		case 586:
-			goto inst586_alt
+			goto unreachable
+		case 576:
+			goto inst576_alt
+		case 577:
+			goto inst577_alt
 		case 578:
 			goto inst578_alt
-		case 610:
-			goto inst610_alt
+		case 579:
+			goto inst579_alt
+		case 585:
+			goto inst585_alt
+		case 586:
+			goto inst586_alt
+		case 587:
+			goto inst587_alt
+		case 588:
+			goto inst588_alt
+		case 594:
+			goto inst594_alt
+		case 595:
+			goto inst595_alt
+		case 596:
+			goto inst596_alt
+		case 597:
+			goto inst597_alt
+		case 603:
+			goto inst603_alt
+		case 604:
+			goto inst604_alt
 		case 605:
 			goto inst605_alt
 		case 606:
 			goto inst606_alt
-		case 579:
-			goto inst579_alt
-		case 577:
-			goto inst577_alt
-		case 576:
-			goto inst576_alt
+		case 607:
+			goto inst607_alt
 		case 608:
 			goto inst608_alt
 		case 609:
 			goto inst609_alt
-		case 607:
-			goto inst607_alt
-		case 604:
-			goto inst604_alt
-		case 597:
-			goto inst597_alt
-		case 596:
-			goto inst596_alt
-		case 585:
-			goto inst585_alt
+		case 610:
+			goto inst610_alt
 		case 683:
 			goto inst683_alt
 		}
@@ -18883,53 +18277,52 @@ inst612: // rune "09AZaz" -> 613
 	goto unreachable
 	goto inst612_fail
 inst612_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 683:
-			goto inst683_alt
-		case 597:
-			goto inst597_alt
-		case 596:
-			goto inst596_alt
-		case 578:
-			goto inst578_alt
+			goto unreachable
 		case 576:
 			goto inst576_alt
-		case 609:
-			goto inst609_alt
-		case 607:
-			goto inst607_alt
-		case 605:
-			goto inst605_alt
-		case 587:
-			goto inst587_alt
-		case 585:
-			goto inst585_alt
 		case 577:
 			goto inst577_alt
-		case 608:
-			goto inst608_alt
-		case 595:
-			goto inst595_alt
-		case 594:
-			goto inst594_alt
-		case 588:
-			goto inst588_alt
-		case 610:
-			goto inst610_alt
-		case 606:
-			goto inst606_alt
-		case 604:
-			goto inst604_alt
-		case 603:
-			goto inst603_alt
-		case 586:
-			goto inst586_alt
+		case 578:
+			goto inst578_alt
 		case 579:
 			goto inst579_alt
+		case 585:
+			goto inst585_alt
+		case 586:
+			goto inst586_alt
+		case 587:
+			goto inst587_alt
+		case 588:
+			goto inst588_alt
+		case 594:
+			goto inst594_alt
+		case 595:
+			goto inst595_alt
+		case 596:
+			goto inst596_alt
+		case 597:
+			goto inst597_alt
+		case 603:
+			goto inst603_alt
+		case 604:
+			goto inst604_alt
+		case 605:
+			goto inst605_alt
+		case 606:
+			goto inst606_alt
+		case 607:
+			goto inst607_alt
+		case 608:
+			goto inst608_alt
+		case 609:
+			goto inst609_alt
+		case 610:
+			goto inst610_alt
+		case 683:
+			goto inst683_alt
 		}
 	}
 	goto fail
@@ -18965,53 +18358,52 @@ inst613_alt:
 	goto unreachable
 	goto inst613_fail
 inst613_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 596:
-			goto inst596_alt
-		case 588:
-			goto inst588_alt
-		case 683:
-			goto inst683_alt
-		case 609:
-			goto inst609_alt
-		case 607:
-			goto inst607_alt
-		case 606:
-			goto inst606_alt
-		case 604:
-			goto inst604_alt
-		case 603:
-			goto inst603_alt
-		case 608:
-			goto inst608_alt
-		case 605:
-			goto inst605_alt
-		case 579:
-			goto inst579_alt
-		case 578:
-			goto inst578_alt
+			goto unreachable
 		case 576:
 			goto inst576_alt
-		case 585:
-			goto inst585_alt
-		case 610:
-			goto inst610_alt
-		case 597:
-			goto inst597_alt
-		case 595:
-			goto inst595_alt
-		case 594:
-			goto inst594_alt
-		case 587:
-			goto inst587_alt
-		case 586:
-			goto inst586_alt
 		case 577:
 			goto inst577_alt
+		case 578:
+			goto inst578_alt
+		case 579:
+			goto inst579_alt
+		case 585:
+			goto inst585_alt
+		case 586:
+			goto inst586_alt
+		case 587:
+			goto inst587_alt
+		case 588:
+			goto inst588_alt
+		case 594:
+			goto inst594_alt
+		case 595:
+			goto inst595_alt
+		case 596:
+			goto inst596_alt
+		case 597:
+			goto inst597_alt
+		case 603:
+			goto inst603_alt
+		case 604:
+			goto inst604_alt
+		case 605:
+			goto inst605_alt
+		case 606:
+			goto inst606_alt
+		case 607:
+			goto inst607_alt
+		case 608:
+			goto inst608_alt
+		case 609:
+			goto inst609_alt
+		case 610:
+			goto inst610_alt
+		case 683:
+			goto inst683_alt
 		}
 	}
 	goto fail
@@ -19031,11 +18423,10 @@ inst614_alt:
 	goto unreachable
 	goto inst614_fail
 inst614_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 683:
 			goto inst683_alt
 		}
@@ -19055,11 +18446,10 @@ inst615: //
 	goto unreachable
 	goto inst615_fail
 inst615_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 771:
 			goto inst771_alt
 		}
@@ -19081,11 +18471,10 @@ inst617: //
 	goto unreachable
 	goto inst617_fail
 inst617_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 631:
 			goto inst631_alt
 		}
@@ -19111,11 +18500,10 @@ inst621: //
 	goto unreachable
 	goto inst621_fail
 inst621_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 629:
 			goto inst629_alt
 		}
@@ -19137,11 +18525,10 @@ inst623: //
 	goto unreachable
 	goto inst623_fail
 inst623_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 628:
 			goto inst628_alt
 		}
@@ -19161,11 +18548,10 @@ inst624: //
 	goto unreachable
 	goto inst624_fail
 inst624_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 627:
 			goto inst627_alt
 		}
@@ -19185,11 +18571,10 @@ inst625: //
 	goto unreachable
 	goto inst625_fail
 inst625_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 626:
 			goto inst626_alt
 		}
@@ -19211,11 +18596,10 @@ inst626_alt:
 	goto unreachable
 	goto inst626_fail
 inst626_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 627:
 			goto inst627_alt
 		}
@@ -19237,11 +18621,10 @@ inst627_alt:
 	goto unreachable
 	goto inst627_fail
 inst627_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 628:
 			goto inst628_alt
 		}
@@ -19263,11 +18646,10 @@ inst628_alt:
 	goto unreachable
 	goto inst628_fail
 inst628_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 629:
 			goto inst629_alt
 		}
@@ -19289,11 +18671,10 @@ inst629_alt:
 	goto unreachable
 	goto inst629_fail
 inst629_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 631:
 			goto inst631_alt
 		}
@@ -19313,19 +18694,18 @@ inst630: //
 	goto unreachable
 	goto inst630_fail
 inst630_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 631:
-			goto inst631_alt
-		case 629:
-			goto inst629_alt
-		case 628:
-			goto inst628_alt
+			goto unreachable
 		case 627:
 			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
 		}
 	}
 	goto fail
@@ -19345,11 +18725,10 @@ inst631_alt:
 	goto unreachable
 	goto inst631_fail
 inst631_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 771:
 			goto inst771_alt
 		}
@@ -19369,11 +18748,10 @@ inst632: //
 	goto unreachable
 	goto inst632_fail
 inst632_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 643:
 			goto inst643_alt
 		}
@@ -19396,11 +18774,10 @@ inst634: // rune "05" -> 644
 	goto unreachable
 	goto inst634_fail
 inst634_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 643:
 			goto inst643_alt
 		}
@@ -19420,11 +18797,10 @@ inst635: //
 	goto unreachable
 	goto inst635_fail
 inst635_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 640:
 			goto inst640_alt
 		}
@@ -19445,11 +18821,10 @@ inst636: // rune "04" -> 642
 	goto unreachable
 	goto inst636_fail
 inst636_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 640:
 			goto inst640_alt
 		}
@@ -19469,11 +18844,10 @@ inst637: //
 	goto unreachable
 	goto inst637_fail
 inst637_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 638:
 			goto inst638_alt
 		}
@@ -19495,11 +18869,10 @@ inst638_alt:
 	goto unreachable
 	goto inst638_fail
 inst638_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 641:
 			goto inst641_alt
 		}
@@ -19520,15 +18893,14 @@ inst639: // rune "09" -> 642
 	goto unreachable
 	goto inst639_fail
 inst639_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 641:
-			goto inst641_alt
+			goto unreachable
 		case 638:
 			goto inst638_alt
+		case 641:
+			goto inst641_alt
 		}
 	}
 	goto fail
@@ -19548,11 +18920,10 @@ inst640_alt:
 	goto unreachable
 	goto inst640_fail
 inst640_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 641:
 			goto inst641_alt
 		}
@@ -19574,23 +18945,22 @@ inst641_alt:
 	goto unreachable
 	goto inst641_fail
 inst641_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 629:
-			goto inst629_alt
-		case 628:
-			goto inst628_alt
-		case 627:
-			goto inst627_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
-		case 771:
-			goto inst771_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
 		case 631:
 			goto inst631_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -19609,29 +18979,28 @@ inst642: // rune "09" -> 644
 	goto unreachable
 	goto inst642_fail
 inst642_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
 		case 629:
 			goto inst629_alt
-		case 771:
-			goto inst771_alt
+		case 631:
+			goto inst631_alt
 		case 638:
 			goto inst638_alt
 		case 640:
 			goto inst640_alt
-		case 627:
-			goto inst627_alt
-		case 626:
-			goto inst626_alt
 		case 641:
 			goto inst641_alt
-		case 631:
-			goto inst631_alt
-		case 628:
-			goto inst628_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -19651,23 +19020,22 @@ inst643_alt:
 	goto unreachable
 	goto inst643_fail
 inst643_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 771:
-			goto inst771_alt
-		case 631:
-			goto inst631_alt
-		case 629:
-			goto inst629_alt
-		case 628:
-			goto inst628_alt
-		case 627:
-			goto inst627_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -19685,31 +19053,30 @@ inst644: //
 	goto unreachable
 	goto inst644_fail
 inst644_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
 		case 638:
 			goto inst638_alt
 		case 640:
 			goto inst640_alt
-		case 631:
-			goto inst631_alt
-		case 629:
-			goto inst629_alt
-		case 628:
-			goto inst628_alt
-		case 627:
-			goto inst627_alt
-		case 626:
-			goto inst626_alt
-		case 771:
-			goto inst771_alt
 		case 641:
 			goto inst641_alt
 		case 643:
 			goto inst643_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -19727,11 +19094,10 @@ inst645: //
 	goto unreachable
 	goto inst645_fail
 inst645_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 656:
 			goto inst656_alt
 		}
@@ -19754,11 +19120,10 @@ inst647: // rune "05" -> 657
 	goto unreachable
 	goto inst647_fail
 inst647_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 656:
 			goto inst656_alt
 		}
@@ -19778,11 +19143,10 @@ inst648: //
 	goto unreachable
 	goto inst648_fail
 inst648_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 653:
 			goto inst653_alt
 		}
@@ -19803,11 +19167,10 @@ inst649: // rune "04" -> 655
 	goto unreachable
 	goto inst649_fail
 inst649_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 653:
 			goto inst653_alt
 		}
@@ -19827,11 +19190,10 @@ inst650: //
 	goto unreachable
 	goto inst650_fail
 inst650_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 651:
 			goto inst651_alt
 		}
@@ -19853,11 +19215,10 @@ inst651_alt:
 	goto unreachable
 	goto inst651_fail
 inst651_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 654:
 			goto inst654_alt
 		}
@@ -19878,15 +19239,14 @@ inst652: // rune "09" -> 655
 	goto unreachable
 	goto inst652_fail
 inst652_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 654:
-			goto inst654_alt
+			goto unreachable
 		case 651:
 			goto inst651_alt
+		case 654:
+			goto inst654_alt
 		}
 	}
 	goto fail
@@ -19906,11 +19266,10 @@ inst653_alt:
 	goto unreachable
 	goto inst653_fail
 inst653_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 654:
 			goto inst654_alt
 		}
@@ -19932,31 +19291,30 @@ inst654_alt:
 	goto unreachable
 	goto inst654_fail
 inst654_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 631:
-			goto inst631_alt
-		case 627:
-			goto inst627_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
 		case 638:
 			goto inst638_alt
 		case 640:
 			goto inst640_alt
-		case 643:
-			goto inst643_alt
-		case 628:
-			goto inst628_alt
-		case 771:
-			goto inst771_alt
 		case 641:
 			goto inst641_alt
-		case 629:
-			goto inst629_alt
+		case 643:
+			goto inst643_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -19975,37 +19333,36 @@ inst655: // rune "09" -> 657
 	goto unreachable
 	goto inst655_fail
 inst655_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 771:
-			goto inst771_alt
-		case 651:
-			goto inst651_alt
-		case 641:
-			goto inst641_alt
+			goto unreachable
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
 		case 638:
 			goto inst638_alt
 		case 640:
 			goto inst640_alt
+		case 641:
+			goto inst641_alt
 		case 643:
 			goto inst643_alt
-		case 631:
-			goto inst631_alt
-		case 628:
-			goto inst628_alt
-		case 627:
-			goto inst627_alt
-		case 626:
-			goto inst626_alt
-		case 654:
-			goto inst654_alt
+		case 651:
+			goto inst651_alt
 		case 653:
 			goto inst653_alt
-		case 629:
-			goto inst629_alt
+		case 654:
+			goto inst654_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20025,29 +19382,28 @@ inst656_alt:
 	goto unreachable
 	goto inst656_fail
 inst656_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 638:
-			goto inst638_alt
-		case 643:
-			goto inst643_alt
-		case 631:
-			goto inst631_alt
-		case 641:
-			goto inst641_alt
-		case 640:
-			goto inst640_alt
-		case 629:
-			goto inst629_alt
-		case 628:
-			goto inst628_alt
-		case 627:
-			goto inst627_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
+		case 638:
+			goto inst638_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
 		case 771:
 			goto inst771_alt
 		}
@@ -20067,39 +19423,38 @@ inst657: //
 	goto unreachable
 	goto inst657_fail
 inst657_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 653:
-			goto inst653_alt
-		case 643:
-			goto inst643_alt
-		case 654:
-			goto inst654_alt
-		case 651:
-			goto inst651_alt
-		case 638:
-			goto inst638_alt
-		case 631:
-			goto inst631_alt
-		case 656:
-			goto inst656_alt
-		case 640:
-			goto inst640_alt
-		case 627:
-			goto inst627_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
-		case 771:
-			goto inst771_alt
-		case 641:
-			goto inst641_alt
-		case 629:
-			goto inst629_alt
+		case 627:
+			goto inst627_alt
 		case 628:
 			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
+		case 638:
+			goto inst638_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
+		case 651:
+			goto inst651_alt
+		case 653:
+			goto inst653_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20117,11 +19472,10 @@ inst658: //
 	goto unreachable
 	goto inst658_fail
 inst658_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 669:
 			goto inst669_alt
 		}
@@ -20144,11 +19498,10 @@ inst660: // rune "05" -> 670
 	goto unreachable
 	goto inst660_fail
 inst660_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 669:
 			goto inst669_alt
 		}
@@ -20168,11 +19521,10 @@ inst661: //
 	goto unreachable
 	goto inst661_fail
 inst661_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 666:
 			goto inst666_alt
 		}
@@ -20193,11 +19545,10 @@ inst662: // rune "04" -> 668
 	goto unreachable
 	goto inst662_fail
 inst662_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 666:
 			goto inst666_alt
 		}
@@ -20217,11 +19568,10 @@ inst663: //
 	goto unreachable
 	goto inst663_fail
 inst663_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 664:
 			goto inst664_alt
 		}
@@ -20243,11 +19593,10 @@ inst664_alt:
 	goto unreachable
 	goto inst664_fail
 inst664_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 667:
 			goto inst667_alt
 		}
@@ -20268,15 +19617,14 @@ inst665: // rune "09" -> 668
 	goto unreachable
 	goto inst665_fail
 inst665_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 667:
-			goto inst667_alt
+			goto unreachable
 		case 664:
 			goto inst664_alt
+		case 667:
+			goto inst667_alt
 		}
 	}
 	goto fail
@@ -20296,11 +19644,10 @@ inst666_alt:
 	goto unreachable
 	goto inst666_fail
 inst666_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 667:
 			goto inst667_alt
 		}
@@ -20322,39 +19669,38 @@ inst667_alt:
 	goto unreachable
 	goto inst667_fail
 inst667_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 653:
-			goto inst653_alt
-		case 656:
-			goto inst656_alt
-		case 643:
-			goto inst643_alt
+			goto unreachable
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
 		case 628:
 			goto inst628_alt
-		case 641:
-			goto inst641_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
 		case 638:
 			goto inst638_alt
 		case 640:
 			goto inst640_alt
-		case 631:
-			goto inst631_alt
-		case 771:
-			goto inst771_alt
-		case 654:
-			goto inst654_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
 		case 651:
 			goto inst651_alt
-		case 629:
-			goto inst629_alt
-		case 627:
-			goto inst627_alt
-		case 626:
-			goto inst626_alt
+		case 653:
+			goto inst653_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20373,45 +19719,44 @@ inst668: // rune "09" -> 670
 	goto unreachable
 	goto inst668_fail
 inst668_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 771:
-			goto inst771_alt
-		case 667:
-			goto inst667_alt
-		case 651:
-			goto inst651_alt
-		case 640:
-			goto inst640_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
-		case 641:
-			goto inst641_alt
-		case 638:
-			goto inst638_alt
-		case 629:
-			goto inst629_alt
-		case 628:
-			goto inst628_alt
-		case 666:
-			goto inst666_alt
-		case 653:
-			goto inst653_alt
-		case 656:
-			goto inst656_alt
 		case 627:
 			goto inst627_alt
-		case 664:
-			goto inst664_alt
-		case 654:
-			goto inst654_alt
-		case 643:
-			goto inst643_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
 		case 631:
 			goto inst631_alt
+		case 638:
+			goto inst638_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
+		case 651:
+			goto inst651_alt
+		case 653:
+			goto inst653_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
+		case 664:
+			goto inst664_alt
+		case 666:
+			goto inst666_alt
+		case 667:
+			goto inst667_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20431,39 +19776,38 @@ inst669_alt:
 	goto unreachable
 	goto inst669_fail
 inst669_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 654:
-			goto inst654_alt
-		case 641:
-			goto inst641_alt
+			goto unreachable
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
 		case 638:
 			goto inst638_alt
 		case 640:
 			goto inst640_alt
-		case 626:
-			goto inst626_alt
-		case 771:
-			goto inst771_alt
-		case 628:
-			goto inst628_alt
+		case 641:
+			goto inst641_alt
 		case 643:
 			goto inst643_alt
-		case 629:
-			goto inst629_alt
-		case 656:
-			goto inst656_alt
-		case 653:
-			goto inst653_alt
-		case 631:
-			goto inst631_alt
-		case 627:
-			goto inst627_alt
 		case 651:
 			goto inst651_alt
+		case 653:
+			goto inst653_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20481,47 +19825,46 @@ inst670: //
 	goto unreachable
 	goto inst670_fail
 inst670_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 651:
-			goto inst651_alt
-		case 641:
-			goto inst641_alt
-		case 640:
-			goto inst640_alt
-		case 628:
-			goto inst628_alt
-		case 627:
-			goto inst627_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
-		case 667:
-			goto inst667_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
+		case 638:
+			goto inst638_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
+		case 651:
+			goto inst651_alt
+		case 653:
+			goto inst653_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
 		case 664:
 			goto inst664_alt
 		case 666:
 			goto inst666_alt
-		case 654:
-			goto inst654_alt
-		case 638:
-			goto inst638_alt
-		case 629:
-			goto inst629_alt
-		case 771:
-			goto inst771_alt
-		case 643:
-			goto inst643_alt
-		case 631:
-			goto inst631_alt
-		case 653:
-			goto inst653_alt
-		case 656:
-			goto inst656_alt
+		case 667:
+			goto inst667_alt
 		case 669:
 			goto inst669_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20539,11 +19882,10 @@ inst671: //
 	goto unreachable
 	goto inst671_fail
 inst671_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 682:
 			goto inst682_alt
 		}
@@ -20566,11 +19908,10 @@ inst673: // rune "05" -> 772
 	goto unreachable
 	goto inst673_fail
 inst673_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 682:
 			goto inst682_alt
 		}
@@ -20590,11 +19931,10 @@ inst674: //
 	goto unreachable
 	goto inst674_fail
 inst674_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 679:
 			goto inst679_alt
 		}
@@ -20615,11 +19955,10 @@ inst675: // rune "04" -> 681
 	goto unreachable
 	goto inst675_fail
 inst675_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 679:
 			goto inst679_alt
 		}
@@ -20639,11 +19978,10 @@ inst676: //
 	goto unreachable
 	goto inst676_fail
 inst676_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 677:
 			goto inst677_alt
 		}
@@ -20665,11 +20003,10 @@ inst677_alt:
 	goto unreachable
 	goto inst677_fail
 inst677_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 680:
 			goto inst680_alt
 		}
@@ -20690,15 +20027,14 @@ inst678: // rune "09" -> 681
 	goto unreachable
 	goto inst678_fail
 inst678_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 680:
-			goto inst680_alt
+			goto unreachable
 		case 677:
 			goto inst677_alt
+		case 680:
+			goto inst680_alt
 		}
 	}
 	goto fail
@@ -20718,11 +20054,10 @@ inst679_alt:
 	goto unreachable
 	goto inst679_fail
 inst679_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 680:
 			goto inst680_alt
 		}
@@ -20744,47 +20079,46 @@ inst680_alt:
 	goto unreachable
 	goto inst680_fail
 inst680_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 771:
-			goto inst771_alt
-		case 666:
-			goto inst666_alt
+			goto unreachable
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
+		case 638:
+			goto inst638_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
 		case 651:
 			goto inst651_alt
 		case 653:
 			goto inst653_alt
-		case 656:
-			goto inst656_alt
-		case 638:
-			goto inst638_alt
-		case 631:
-			goto inst631_alt
-		case 628:
-			goto inst628_alt
-		case 669:
-			goto inst669_alt
 		case 654:
 			goto inst654_alt
-		case 641:
-			goto inst641_alt
-		case 640:
-			goto inst640_alt
-		case 627:
-			goto inst627_alt
-		case 626:
-			goto inst626_alt
-		case 667:
-			goto inst667_alt
+		case 656:
+			goto inst656_alt
 		case 664:
 			goto inst664_alt
-		case 643:
-			goto inst643_alt
-		case 629:
-			goto inst629_alt
+		case 666:
+			goto inst666_alt
+		case 667:
+			goto inst667_alt
+		case 669:
+			goto inst669_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20803,53 +20137,52 @@ inst681: // rune "09" -> 772
 	goto unreachable
 	goto inst681_fail
 inst681_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 677:
-			goto inst677_alt
-		case 664:
-			goto inst664_alt
-		case 631:
-			goto inst631_alt
-		case 628:
-			goto inst628_alt
-		case 627:
-			goto inst627_alt
-		case 680:
-			goto inst680_alt
-		case 667:
-			goto inst667_alt
-		case 669:
-			goto inst669_alt
-		case 656:
-			goto inst656_alt
+			goto unreachable
 		case 626:
 			goto inst626_alt
-		case 666:
-			goto inst666_alt
-		case 654:
-			goto inst654_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
+		case 638:
+			goto inst638_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
 		case 651:
 			goto inst651_alt
 		case 653:
 			goto inst653_alt
-		case 641:
-			goto inst641_alt
-		case 638:
-			goto inst638_alt
-		case 771:
-			goto inst771_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
+		case 664:
+			goto inst664_alt
+		case 666:
+			goto inst666_alt
+		case 667:
+			goto inst667_alt
+		case 669:
+			goto inst669_alt
+		case 677:
+			goto inst677_alt
 		case 679:
 			goto inst679_alt
-		case 640:
-			goto inst640_alt
-		case 643:
-			goto inst643_alt
-		case 629:
-			goto inst629_alt
+		case 680:
+			goto inst680_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20869,47 +20202,46 @@ inst682_alt:
 	goto unreachable
 	goto inst682_fail
 inst682_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 771:
-			goto inst771_alt
-		case 667:
-			goto inst667_alt
-		case 640:
-			goto inst640_alt
-		case 643:
-			goto inst643_alt
+			goto unreachable
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
 		case 631:
 			goto inst631_alt
 		case 638:
 			goto inst638_alt
-		case 629:
-			goto inst629_alt
-		case 628:
-			goto inst628_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
+		case 651:
+			goto inst651_alt
+		case 653:
+			goto inst653_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
 		case 664:
 			goto inst664_alt
 		case 666:
 			goto inst666_alt
+		case 667:
+			goto inst667_alt
 		case 669:
 			goto inst669_alt
-		case 654:
-			goto inst654_alt
-		case 651:
-			goto inst651_alt
-		case 627:
-			goto inst627_alt
-		case 653:
-			goto inst653_alt
-		case 641:
-			goto inst641_alt
-		case 656:
-			goto inst656_alt
-		case 626:
-			goto inst626_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail
@@ -20929,11 +20261,10 @@ inst683_alt:
 	goto unreachable
 	goto inst683_fail
 inst683_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 771:
 			goto inst771_alt
 		}
@@ -20984,11 +20315,10 @@ inst685: // rune "09AFaf" -> 689
 	goto unreachable
 	goto inst685_fail
 inst685_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 690:
 			goto inst690_alt
 		}
@@ -21016,11 +20346,10 @@ inst686: // rune "09AFaf" -> 688
 	goto unreachable
 	goto inst686_fail
 inst686_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 689:
 			goto inst689_alt
 		}
@@ -21048,11 +20377,10 @@ inst687: // rune "09AFaf" -> 691
 	goto unreachable
 	goto inst687_fail
 inst687_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 688:
 			goto inst688_alt
 		}
@@ -21074,11 +20402,10 @@ inst688_alt:
 	goto unreachable
 	goto inst688_fail
 inst688_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 689:
 			goto inst689_alt
 		}
@@ -21100,11 +20427,10 @@ inst689_alt:
 	goto unreachable
 	goto inst689_fail
 inst689_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 690:
 			goto inst690_alt
 		}
@@ -21141,17 +20467,16 @@ inst691: //
 	goto unreachable
 	goto inst691_fail
 inst691_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 690:
-			goto inst690_alt
-		case 689:
-			goto inst689_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
 		}
 	}
 	goto fail
@@ -21177,11 +20502,10 @@ inst692: // rune "09AFaf" -> 698
 	goto unreachable
 	goto inst692_fail
 inst692_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 718:
 			goto inst718_alt
 		}
@@ -21209,11 +20533,10 @@ inst693: // rune "09AFaf" -> 697
 	goto unreachable
 	goto inst693_fail
 inst693_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 698:
 			goto inst698_alt
 		}
@@ -21241,11 +20564,10 @@ inst694: // rune "09AFaf" -> 696
 	goto unreachable
 	goto inst694_fail
 inst694_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 697:
 			goto inst697_alt
 		}
@@ -21273,11 +20595,10 @@ inst695: // rune "09AFaf" -> 699
 	goto unreachable
 	goto inst695_fail
 inst695_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 696:
 			goto inst696_alt
 		}
@@ -21299,11 +20620,10 @@ inst696_alt:
 	goto unreachable
 	goto inst696_fail
 inst696_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 697:
 			goto inst697_alt
 		}
@@ -21325,11 +20645,10 @@ inst697_alt:
 	goto unreachable
 	goto inst697_fail
 inst697_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 698:
 			goto inst698_alt
 		}
@@ -21351,11 +20670,10 @@ inst698_alt:
 	goto unreachable
 	goto inst698_fail
 inst698_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 718:
 			goto inst718_alt
 		}
@@ -21375,19 +20693,18 @@ inst699: //
 	goto unreachable
 	goto inst699_fail
 inst699_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 718:
-			goto inst718_alt
-		case 698:
-			goto inst698_alt
-		case 697:
-			goto inst697_alt
+			goto unreachable
 		case 696:
 			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 718:
+			goto inst718_alt
 		}
 	}
 	goto fail
@@ -21413,11 +20730,10 @@ inst700: // rune "09AFaf" -> 706
 	goto unreachable
 	goto inst700_fail
 inst700_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 717:
 			goto inst717_alt
 		}
@@ -21445,11 +20761,10 @@ inst701: // rune "09AFaf" -> 705
 	goto unreachable
 	goto inst701_fail
 inst701_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 706:
 			goto inst706_alt
 		}
@@ -21477,11 +20792,10 @@ inst702: // rune "09AFaf" -> 704
 	goto unreachable
 	goto inst702_fail
 inst702_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 705:
 			goto inst705_alt
 		}
@@ -21509,11 +20823,10 @@ inst703: // rune "09AFaf" -> 707
 	goto unreachable
 	goto inst703_fail
 inst703_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 704:
 			goto inst704_alt
 		}
@@ -21535,11 +20848,10 @@ inst704_alt:
 	goto unreachable
 	goto inst704_fail
 inst704_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 705:
 			goto inst705_alt
 		}
@@ -21561,11 +20873,10 @@ inst705_alt:
 	goto unreachable
 	goto inst705_fail
 inst705_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 706:
 			goto inst706_alt
 		}
@@ -21587,11 +20898,10 @@ inst706_alt:
 	goto unreachable
 	goto inst706_fail
 inst706_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 717:
 			goto inst717_alt
 		}
@@ -21611,19 +20921,18 @@ inst707: //
 	goto unreachable
 	goto inst707_fail
 inst707_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 704:
 			goto inst704_alt
-		case 717:
-			goto inst717_alt
-		case 706:
-			goto inst706_alt
 		case 705:
 			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 717:
+			goto inst717_alt
 		}
 	}
 	goto fail
@@ -21649,11 +20958,10 @@ inst708: // rune "09AFaf" -> 714
 	goto unreachable
 	goto inst708_fail
 inst708_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 716:
 			goto inst716_alt
 		}
@@ -21681,11 +20989,10 @@ inst709: // rune "09AFaf" -> 713
 	goto unreachable
 	goto inst709_fail
 inst709_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 714:
 			goto inst714_alt
 		}
@@ -21713,11 +21020,10 @@ inst710: // rune "09AFaf" -> 712
 	goto unreachable
 	goto inst710_fail
 inst710_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 713:
 			goto inst713_alt
 		}
@@ -21745,11 +21051,10 @@ inst711: // rune "09AFaf" -> 715
 	goto unreachable
 	goto inst711_fail
 inst711_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 712:
 			goto inst712_alt
 		}
@@ -21771,11 +21076,10 @@ inst712_alt:
 	goto unreachable
 	goto inst712_fail
 inst712_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 713:
 			goto inst713_alt
 		}
@@ -21797,11 +21101,10 @@ inst713_alt:
 	goto unreachable
 	goto inst713_fail
 inst713_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 714:
 			goto inst714_alt
 		}
@@ -21823,11 +21126,10 @@ inst714_alt:
 	goto unreachable
 	goto inst714_fail
 inst714_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 716:
 			goto inst716_alt
 		}
@@ -21847,19 +21149,18 @@ inst715: //
 	goto unreachable
 	goto inst715_fail
 inst715_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 716:
-			goto inst716_alt
-		case 714:
-			goto inst714_alt
-		case 713:
-			goto inst713_alt
+			goto unreachable
 		case 712:
 			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
 		}
 	}
 	goto fail
@@ -21879,19 +21180,18 @@ inst716_alt:
 	goto unreachable
 	goto inst716_fail
 inst716_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 717:
-			goto inst717_alt
-		case 706:
-			goto inst706_alt
-		case 705:
-			goto inst705_alt
+			goto unreachable
 		case 704:
 			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 717:
+			goto inst717_alt
 		}
 	}
 	goto fail
@@ -21911,19 +21211,18 @@ inst717_alt:
 	goto unreachable
 	goto inst717_fail
 inst717_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 718:
-			goto inst718_alt
-		case 698:
-			goto inst698_alt
-		case 697:
-			goto inst697_alt
+			goto unreachable
 		case 696:
 			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 718:
+			goto inst718_alt
 		}
 	}
 	goto fail
@@ -21943,17 +21242,16 @@ inst718_alt:
 	goto unreachable
 	goto inst718_fail
 inst718_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 690:
-			goto inst690_alt
-		case 689:
-			goto inst689_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
 		}
 	}
 	goto fail
@@ -21971,33 +21269,32 @@ inst719: //
 	goto unreachable
 	goto inst719_fail
 inst719_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 717:
-			goto inst717_alt
-		case 705:
-			goto inst705_alt
-		case 698:
-			goto inst698_alt
-		case 697:
-			goto inst697_alt
-		case 696:
-			goto inst696_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
-		case 718:
-			goto inst718_alt
-		case 706:
-			goto inst706_alt
-		case 704:
-			goto inst704_alt
-		case 690:
-			goto inst690_alt
 		case 689:
 			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		}
 	}
 	goto fail
@@ -22015,11 +21312,10 @@ inst720: //
 	goto unreachable
 	goto inst720_fail
 inst720_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 731:
 			goto inst731_alt
 		}
@@ -22042,11 +21338,10 @@ inst722: // rune "05" -> 732
 	goto unreachable
 	goto inst722_fail
 inst722_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 731:
 			goto inst731_alt
 		}
@@ -22066,11 +21361,10 @@ inst723: //
 	goto unreachable
 	goto inst723_fail
 inst723_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 728:
 			goto inst728_alt
 		}
@@ -22091,11 +21385,10 @@ inst724: // rune "04" -> 730
 	goto unreachable
 	goto inst724_fail
 inst724_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 728:
 			goto inst728_alt
 		}
@@ -22115,11 +21408,10 @@ inst725: //
 	goto unreachable
 	goto inst725_fail
 inst725_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 726:
 			goto inst726_alt
 		}
@@ -22141,11 +21433,10 @@ inst726_alt:
 	goto unreachable
 	goto inst726_fail
 inst726_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 729:
 			goto inst729_alt
 		}
@@ -22166,15 +21457,14 @@ inst727: // rune "09" -> 730
 	goto unreachable
 	goto inst727_fail
 inst727_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 729:
-			goto inst729_alt
+			goto unreachable
 		case 726:
 			goto inst726_alt
+		case 729:
+			goto inst729_alt
 		}
 	}
 	goto fail
@@ -22194,11 +21484,10 @@ inst728_alt:
 	goto unreachable
 	goto inst728_fail
 inst728_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 729:
 			goto inst729_alt
 		}
@@ -22220,41 +21509,40 @@ inst729_alt:
 	goto unreachable
 	goto inst729_fail
 inst729_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 706:
-			goto inst706_alt
-		case 696:
-			goto inst696_alt
-		case 689:
-			goto inst689_alt
-		case 718:
-			goto inst718_alt
-		case 716:
-			goto inst716_alt
-		case 697:
-			goto inst697_alt
-		case 704:
-			goto inst704_alt
-		case 717:
-			goto inst717_alt
-		case 714:
-			goto inst714_alt
-		case 712:
-			goto inst712_alt
-		case 690:
-			goto inst690_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
-		case 713:
-			goto inst713_alt
-		case 705:
-			goto inst705_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
 		case 698:
 			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		}
 	}
 	goto fail
@@ -22273,47 +21561,46 @@ inst730: // rune "09" -> 732
 	goto unreachable
 	goto inst730_fail
 inst730_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 718:
-			goto inst718_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
-		case 716:
-			goto inst716_alt
-		case 713:
-			goto inst713_alt
-		case 705:
-			goto inst705_alt
-		case 690:
-			goto inst690_alt
 		case 689:
 			goto inst689_alt
-		case 729:
-			goto inst729_alt
-		case 717:
-			goto inst717_alt
-		case 698:
-			goto inst698_alt
+		case 690:
+			goto inst690_alt
 		case 696:
 			goto inst696_alt
 		case 697:
 			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		case 726:
 			goto inst726_alt
 		case 728:
 			goto inst728_alt
-		case 714:
-			goto inst714_alt
-		case 712:
-			goto inst712_alt
-		case 706:
-			goto inst706_alt
-		case 704:
-			goto inst704_alt
+		case 729:
+			goto inst729_alt
 		}
 	}
 	goto fail
@@ -22333,41 +21620,40 @@ inst731_alt:
 	goto unreachable
 	goto inst731_fail
 inst731_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 716:
-			goto inst716_alt
-		case 714:
-			goto inst714_alt
-		case 713:
-			goto inst713_alt
-		case 712:
-			goto inst712_alt
-		case 705:
-			goto inst705_alt
-		case 718:
-			goto inst718_alt
-		case 717:
-			goto inst717_alt
-		case 706:
-			goto inst706_alt
-		case 704:
-			goto inst704_alt
-		case 696:
-			goto inst696_alt
-		case 689:
-			goto inst689_alt
-		case 698:
-			goto inst698_alt
-		case 697:
-			goto inst697_alt
-		case 690:
-			goto inst690_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		}
 	}
 	goto fail
@@ -22385,49 +21671,48 @@ inst732: //
 	goto unreachable
 	goto inst732_fail
 inst732_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 718:
-			goto inst718_alt
-		case 717:
-			goto inst717_alt
-		case 712:
-			goto inst712_alt
-		case 705:
-			goto inst705_alt
-		case 704:
-			goto inst704_alt
+			goto unreachable
+		case 688:
+			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
 		case 696:
 			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		case 726:
 			goto inst726_alt
 		case 728:
 			goto inst728_alt
-		case 731:
-			goto inst731_alt
-		case 714:
-			goto inst714_alt
-		case 697:
-			goto inst697_alt
-		case 689:
-			goto inst689_alt
 		case 729:
 			goto inst729_alt
-		case 716:
-			goto inst716_alt
-		case 713:
-			goto inst713_alt
-		case 706:
-			goto inst706_alt
-		case 698:
-			goto inst698_alt
-		case 690:
-			goto inst690_alt
-		case 688:
-			goto inst688_alt
+		case 731:
+			goto inst731_alt
 		}
 	}
 	goto fail
@@ -22445,11 +21730,10 @@ inst733: //
 	goto unreachable
 	goto inst733_fail
 inst733_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 744:
 			goto inst744_alt
 		}
@@ -22472,11 +21756,10 @@ inst735: // rune "05" -> 745
 	goto unreachable
 	goto inst735_fail
 inst735_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 744:
 			goto inst744_alt
 		}
@@ -22496,11 +21779,10 @@ inst736: //
 	goto unreachable
 	goto inst736_fail
 inst736_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 741:
 			goto inst741_alt
 		}
@@ -22521,11 +21803,10 @@ inst737: // rune "04" -> 743
 	goto unreachable
 	goto inst737_fail
 inst737_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 741:
 			goto inst741_alt
 		}
@@ -22545,11 +21826,10 @@ inst738: //
 	goto unreachable
 	goto inst738_fail
 inst738_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 739:
 			goto inst739_alt
 		}
@@ -22571,11 +21851,10 @@ inst739_alt:
 	goto unreachable
 	goto inst739_fail
 inst739_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 742:
 			goto inst742_alt
 		}
@@ -22596,15 +21875,14 @@ inst740: // rune "09" -> 743
 	goto unreachable
 	goto inst740_fail
 inst740_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 742:
-			goto inst742_alt
+			goto unreachable
 		case 739:
 			goto inst739_alt
+		case 742:
+			goto inst742_alt
 		}
 	}
 	goto fail
@@ -22624,11 +21902,10 @@ inst741_alt:
 	goto unreachable
 	goto inst741_fail
 inst741_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 742:
 			goto inst742_alt
 		}
@@ -22650,49 +21927,48 @@ inst742_alt:
 	goto unreachable
 	goto inst742_fail
 inst742_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 728:
-			goto inst728_alt
-		case 706:
-			goto inst706_alt
-		case 705:
-			goto inst705_alt
-		case 704:
-			goto inst704_alt
-		case 698:
-			goto inst698_alt
-		case 697:
-			goto inst697_alt
-		case 696:
-			goto inst696_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
-		case 713:
-			goto inst713_alt
-		case 726:
-			goto inst726_alt
-		case 718:
-			goto inst718_alt
-		case 717:
-			goto inst717_alt
-		case 716:
-			goto inst716_alt
-		case 712:
-			goto inst712_alt
-		case 690:
-			goto inst690_alt
 		case 689:
 			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
+		case 726:
+			goto inst726_alt
+		case 728:
+			goto inst728_alt
 		case 729:
 			goto inst729_alt
 		case 731:
 			goto inst731_alt
-		case 714:
-			goto inst714_alt
 		}
 	}
 	goto fail
@@ -22711,55 +21987,54 @@ inst743: // rune "09" -> 745
 	goto unreachable
 	goto inst743_fail
 inst743_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 739:
-			goto inst739_alt
-		case 729:
-			goto inst729_alt
-		case 713:
-			goto inst713_alt
-		case 712:
-			goto inst712_alt
-		case 705:
-			goto inst705_alt
-		case 704:
-			goto inst704_alt
-		case 742:
-			goto inst742_alt
-		case 741:
-			goto inst741_alt
-		case 689:
-			goto inst689_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
+		case 689:
+			goto inst689_alt
 		case 690:
 			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		case 726:
 			goto inst726_alt
 		case 728:
 			goto inst728_alt
-		case 718:
-			goto inst718_alt
-		case 716:
-			goto inst716_alt
-		case 714:
-			goto inst714_alt
-		case 697:
-			goto inst697_alt
+		case 729:
+			goto inst729_alt
 		case 731:
 			goto inst731_alt
-		case 717:
-			goto inst717_alt
-		case 706:
-			goto inst706_alt
-		case 698:
-			goto inst698_alt
-		case 696:
-			goto inst696_alt
+		case 739:
+			goto inst739_alt
+		case 741:
+			goto inst741_alt
+		case 742:
+			goto inst742_alt
 		}
 	}
 	goto fail
@@ -22779,49 +22054,48 @@ inst744_alt:
 	goto unreachable
 	goto inst744_fail
 inst744_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 714:
-			goto inst714_alt
-		case 697:
-			goto inst697_alt
-		case 696:
-			goto inst696_alt
-		case 718:
-			goto inst718_alt
-		case 717:
-			goto inst717_alt
-		case 716:
-			goto inst716_alt
-		case 731:
-			goto inst731_alt
+			goto unreachable
+		case 688:
+			goto inst688_alt
+		case 689:
+			goto inst689_alt
 		case 690:
 			goto inst690_alt
-		case 729:
-			goto inst729_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		case 726:
 			goto inst726_alt
 		case 728:
 			goto inst728_alt
-		case 706:
-			goto inst706_alt
-		case 689:
-			goto inst689_alt
-		case 688:
-			goto inst688_alt
-		case 704:
-			goto inst704_alt
-		case 698:
-			goto inst698_alt
-		case 713:
-			goto inst713_alt
-		case 712:
-			goto inst712_alt
-		case 705:
-			goto inst705_alt
+		case 729:
+			goto inst729_alt
+		case 731:
+			goto inst731_alt
 		}
 	}
 	goto fail
@@ -22839,57 +22113,56 @@ inst745: //
 	goto unreachable
 	goto inst745_fail
 inst745_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 717:
-			goto inst717_alt
-		case 714:
-			goto inst714_alt
-		case 713:
-			goto inst713_alt
+			goto unreachable
+		case 688:
+			goto inst688_alt
 		case 689:
 			goto inst689_alt
-		case 741:
-			goto inst741_alt
-		case 726:
-			goto inst726_alt
-		case 731:
-			goto inst731_alt
-		case 718:
-			goto inst718_alt
-		case 712:
-			goto inst712_alt
-		case 697:
-			goto inst697_alt
-		case 739:
-			goto inst739_alt
-		case 728:
-			goto inst728_alt
-		case 705:
-			goto inst705_alt
-		case 704:
-			goto inst704_alt
-		case 698:
-			goto inst698_alt
-		case 696:
-			goto inst696_alt
 		case 690:
 			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
+		case 726:
+			goto inst726_alt
+		case 728:
+			goto inst728_alt
+		case 729:
+			goto inst729_alt
+		case 731:
+			goto inst731_alt
+		case 739:
+			goto inst739_alt
+		case 741:
+			goto inst741_alt
 		case 742:
 			goto inst742_alt
 		case 744:
 			goto inst744_alt
-		case 729:
-			goto inst729_alt
-		case 716:
-			goto inst716_alt
-		case 706:
-			goto inst706_alt
-		case 688:
-			goto inst688_alt
 		}
 	}
 	goto fail
@@ -22907,11 +22180,10 @@ inst746: //
 	goto unreachable
 	goto inst746_fail
 inst746_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 757:
 			goto inst757_alt
 		}
@@ -22934,11 +22206,10 @@ inst748: // rune "05" -> 758
 	goto unreachable
 	goto inst748_fail
 inst748_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 757:
 			goto inst757_alt
 		}
@@ -22958,11 +22229,10 @@ inst749: //
 	goto unreachable
 	goto inst749_fail
 inst749_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 754:
 			goto inst754_alt
 		}
@@ -22983,11 +22253,10 @@ inst750: // rune "04" -> 756
 	goto unreachable
 	goto inst750_fail
 inst750_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 754:
 			goto inst754_alt
 		}
@@ -23007,11 +22276,10 @@ inst751: //
 	goto unreachable
 	goto inst751_fail
 inst751_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 752:
 			goto inst752_alt
 		}
@@ -23033,11 +22301,10 @@ inst752_alt:
 	goto unreachable
 	goto inst752_fail
 inst752_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 755:
 			goto inst755_alt
 		}
@@ -23058,11 +22325,10 @@ inst753: // rune "09" -> 756
 	goto unreachable
 	goto inst753_fail
 inst753_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 752:
 			goto inst752_alt
 		case 755:
@@ -23086,11 +22352,10 @@ inst754_alt:
 	goto unreachable
 	goto inst754_fail
 inst754_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 755:
 			goto inst755_alt
 		}
@@ -23112,57 +22377,56 @@ inst755_alt:
 	goto unreachable
 	goto inst755_fail
 inst755_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 741:
-			goto inst741_alt
-		case 713:
-			goto inst713_alt
-		case 704:
-			goto inst704_alt
-		case 697:
-			goto inst697_alt
+			goto unreachable
+		case 688:
+			goto inst688_alt
+		case 689:
+			goto inst689_alt
 		case 690:
 			goto inst690_alt
-		case 739:
-			goto inst739_alt
-		case 729:
-			goto inst729_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		case 726:
 			goto inst726_alt
 		case 728:
 			goto inst728_alt
-		case 712:
-			goto inst712_alt
-		case 705:
-			goto inst705_alt
-		case 698:
-			goto inst698_alt
+		case 729:
+			goto inst729_alt
 		case 731:
 			goto inst731_alt
-		case 718:
-			goto inst718_alt
-		case 706:
-			goto inst706_alt
-		case 689:
-			goto inst689_alt
+		case 739:
+			goto inst739_alt
+		case 741:
+			goto inst741_alt
 		case 742:
 			goto inst742_alt
 		case 744:
 			goto inst744_alt
-		case 717:
-			goto inst717_alt
-		case 716:
-			goto inst716_alt
-		case 714:
-			goto inst714_alt
-		case 696:
-			goto inst696_alt
-		case 688:
-			goto inst688_alt
 		}
 	}
 	goto fail
@@ -23181,63 +22445,62 @@ inst756: // rune "09" -> 758
 	goto unreachable
 	goto inst756_fail
 inst756_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 704:
-			goto inst704_alt
+			goto unreachable
+		case 688:
+			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
 		case 697:
 			goto inst697_alt
-		case 729:
-			goto inst729_alt
-		case 726:
-			goto inst726_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
 		case 717:
 			goto inst717_alt
 		case 718:
 			goto inst718_alt
-		case 712:
-			goto inst712_alt
-		case 696:
-			goto inst696_alt
-		case 755:
-			goto inst755_alt
-		case 754:
-			goto inst754_alt
-		case 741:
-			goto inst741_alt
-		case 714:
-			goto inst714_alt
-		case 706:
-			goto inst706_alt
-		case 705:
-			goto inst705_alt
-		case 752:
-			goto inst752_alt
+		case 726:
+			goto inst726_alt
 		case 728:
 			goto inst728_alt
+		case 729:
+			goto inst729_alt
 		case 731:
 			goto inst731_alt
-		case 716:
-			goto inst716_alt
-		case 713:
-			goto inst713_alt
-		case 698:
-			goto inst698_alt
-		case 690:
-			goto inst690_alt
-		case 689:
-			goto inst689_alt
-		case 742:
-			goto inst742_alt
 		case 739:
 			goto inst739_alt
+		case 741:
+			goto inst741_alt
+		case 742:
+			goto inst742_alt
 		case 744:
 			goto inst744_alt
-		case 688:
-			goto inst688_alt
+		case 752:
+			goto inst752_alt
+		case 754:
+			goto inst754_alt
+		case 755:
+			goto inst755_alt
 		}
 	}
 	goto fail
@@ -23257,57 +22520,56 @@ inst757_alt:
 	goto unreachable
 	goto inst757_fail
 inst757_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 742:
-			goto inst742_alt
-		case 741:
-			goto inst741_alt
-		case 729:
-			goto inst729_alt
-		case 714:
-			goto inst714_alt
-		case 712:
-			goto inst712_alt
-		case 696:
-			goto inst696_alt
-		case 706:
-			goto inst706_alt
-		case 705:
-			goto inst705_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
 		case 726:
 			goto inst726_alt
 		case 728:
 			goto inst728_alt
-		case 718:
-			goto inst718_alt
-		case 716:
-			goto inst716_alt
-		case 704:
-			goto inst704_alt
-		case 689:
-			goto inst689_alt
-		case 739:
-			goto inst739_alt
-		case 744:
-			goto inst744_alt
+		case 729:
+			goto inst729_alt
 		case 731:
 			goto inst731_alt
-		case 717:
-			goto inst717_alt
-		case 713:
-			goto inst713_alt
-		case 698:
-			goto inst698_alt
-		case 697:
-			goto inst697_alt
-		case 690:
-			goto inst690_alt
+		case 739:
+			goto inst739_alt
+		case 741:
+			goto inst741_alt
+		case 742:
+			goto inst742_alt
+		case 744:
+			goto inst744_alt
 		}
 	}
 	goto fail
@@ -23325,65 +22587,64 @@ inst758: //
 	goto unreachable
 	goto inst758_fail
 inst758_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 757:
-			goto inst757_alt
-		case 741:
-			goto inst741_alt
-		case 718:
-			goto inst718_alt
-		case 729:
-			goto inst729_alt
-		case 696:
-			goto inst696_alt
-		case 689:
-			goto inst689_alt
-		case 713:
-			goto inst713_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
-		case 731:
-			goto inst731_alt
-		case 717:
-			goto inst717_alt
-		case 752:
-			goto inst752_alt
-		case 742:
-			goto inst742_alt
-		case 716:
-			goto inst716_alt
-		case 714:
-			goto inst714_alt
-		case 712:
-			goto inst712_alt
-		case 698:
-			goto inst698_alt
+		case 689:
+			goto inst689_alt
 		case 690:
 			goto inst690_alt
-		case 755:
-			goto inst755_alt
-		case 726:
-			goto inst726_alt
-		case 705:
-			goto inst705_alt
-		case 704:
-			goto inst704_alt
+		case 696:
+			goto inst696_alt
 		case 697:
 			goto inst697_alt
-		case 754:
-			goto inst754_alt
-		case 739:
-			goto inst739_alt
-		case 744:
-			goto inst744_alt
-		case 728:
-			goto inst728_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
 		case 706:
 			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
+		case 726:
+			goto inst726_alt
+		case 728:
+			goto inst728_alt
+		case 729:
+			goto inst729_alt
+		case 731:
+			goto inst731_alt
+		case 739:
+			goto inst739_alt
+		case 741:
+			goto inst741_alt
+		case 742:
+			goto inst742_alt
+		case 744:
+			goto inst744_alt
+		case 752:
+			goto inst752_alt
+		case 754:
+			goto inst754_alt
+		case 755:
+			goto inst755_alt
+		case 757:
+			goto inst757_alt
 		}
 	}
 	goto fail
@@ -23401,11 +22662,10 @@ inst759: //
 	goto unreachable
 	goto inst759_fail
 inst759_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 770:
 			goto inst770_alt
 		}
@@ -23428,11 +22688,10 @@ inst761: // rune "05" -> 772
 	goto unreachable
 	goto inst761_fail
 inst761_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 770:
 			goto inst770_alt
 		}
@@ -23452,11 +22711,10 @@ inst762: //
 	goto unreachable
 	goto inst762_fail
 inst762_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 767:
 			goto inst767_alt
 		}
@@ -23477,11 +22735,10 @@ inst763: // rune "04" -> 769
 	goto unreachable
 	goto inst763_fail
 inst763_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 767:
 			goto inst767_alt
 		}
@@ -23501,11 +22758,10 @@ inst764: //
 	goto unreachable
 	goto inst764_fail
 inst764_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 765:
 			goto inst765_alt
 		}
@@ -23527,11 +22783,10 @@ inst765_alt:
 	goto unreachable
 	goto inst765_fail
 inst765_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 768:
 			goto inst768_alt
 		}
@@ -23552,15 +22807,14 @@ inst766: // rune "09" -> 769
 	goto unreachable
 	goto inst766_fail
 inst766_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 768:
-			goto inst768_alt
+			goto unreachable
 		case 765:
 			goto inst765_alt
+		case 768:
+			goto inst768_alt
 		}
 	}
 	goto fail
@@ -23580,11 +22834,10 @@ inst767_alt:
 	goto unreachable
 	goto inst767_fail
 inst767_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 768:
 			goto inst768_alt
 		}
@@ -23606,65 +22859,64 @@ inst768_alt:
 	goto unreachable
 	goto inst768_fail
 inst768_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 718:
-			goto inst718_alt
-		case 706:
-			goto inst706_alt
+			goto unreachable
+		case 688:
+			goto inst688_alt
 		case 689:
 			goto inst689_alt
-		case 726:
-			goto inst726_alt
-		case 731:
-			goto inst731_alt
-		case 717:
-			goto inst717_alt
-		case 729:
-			goto inst729_alt
-		case 705:
-			goto inst705_alt
-		case 698:
-			goto inst698_alt
-		case 728:
-			goto inst728_alt
-		case 704:
-			goto inst704_alt
+		case 690:
+			goto inst690_alt
 		case 696:
 			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
 		case 712:
 			goto inst712_alt
 		case 713:
 			goto inst713_alt
-		case 697:
-			goto inst697_alt
-		case 744:
-			goto inst744_alt
+		case 714:
+			goto inst714_alt
 		case 716:
 			goto inst716_alt
-		case 752:
-			goto inst752_alt
-		case 742:
-			goto inst742_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
+		case 726:
+			goto inst726_alt
+		case 728:
+			goto inst728_alt
+		case 729:
+			goto inst729_alt
+		case 731:
+			goto inst731_alt
+		case 739:
+			goto inst739_alt
 		case 741:
 			goto inst741_alt
-		case 688:
-			goto inst688_alt
+		case 742:
+			goto inst742_alt
+		case 744:
+			goto inst744_alt
+		case 752:
+			goto inst752_alt
+		case 754:
+			goto inst754_alt
 		case 755:
 			goto inst755_alt
 		case 757:
 			goto inst757_alt
-		case 739:
-			goto inst739_alt
-		case 714:
-			goto inst714_alt
-		case 690:
-			goto inst690_alt
-		case 754:
-			goto inst754_alt
 		}
 	}
 	goto fail
@@ -23683,71 +22935,70 @@ inst769: // rune "09" -> 772
 	goto unreachable
 	goto inst769_fail
 inst769_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 728:
-			goto inst728_alt
-		case 697:
-			goto inst697_alt
-		case 689:
-			goto inst689_alt
-		case 754:
-			goto inst754_alt
-		case 744:
-			goto inst744_alt
-		case 731:
-			goto inst731_alt
-		case 714:
-			goto inst714_alt
-		case 705:
-			goto inst705_alt
-		case 717:
-			goto inst717_alt
-		case 712:
-			goto inst712_alt
-		case 767:
-			goto inst767_alt
-		case 757:
-			goto inst757_alt
-		case 742:
-			goto inst742_alt
-		case 729:
-			goto inst729_alt
-		case 726:
-			goto inst726_alt
-		case 718:
-			goto inst718_alt
-		case 698:
-			goto inst698_alt
-		case 755:
-			goto inst755_alt
-		case 752:
-			goto inst752_alt
-		case 696:
-			goto inst696_alt
-		case 741:
-			goto inst741_alt
-		case 716:
-			goto inst716_alt
-		case 713:
-			goto inst713_alt
-		case 690:
-			goto inst690_alt
-		case 765:
-			goto inst765_alt
-		case 706:
-			goto inst706_alt
-		case 768:
-			goto inst768_alt
-		case 739:
-			goto inst739_alt
-		case 704:
-			goto inst704_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
+		case 726:
+			goto inst726_alt
+		case 728:
+			goto inst728_alt
+		case 729:
+			goto inst729_alt
+		case 731:
+			goto inst731_alt
+		case 739:
+			goto inst739_alt
+		case 741:
+			goto inst741_alt
+		case 742:
+			goto inst742_alt
+		case 744:
+			goto inst744_alt
+		case 752:
+			goto inst752_alt
+		case 754:
+			goto inst754_alt
+		case 755:
+			goto inst755_alt
+		case 757:
+			goto inst757_alt
+		case 765:
+			goto inst765_alt
+		case 767:
+			goto inst767_alt
+		case 768:
+			goto inst768_alt
 		}
 	}
 	goto fail
@@ -23767,65 +23018,64 @@ inst770_alt:
 	goto unreachable
 	goto inst770_fail
 inst770_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 744:
-			goto inst744_alt
-		case 728:
-			goto inst728_alt
-		case 742:
-			goto inst742_alt
-		case 712:
-			goto inst712_alt
-		case 705:
-			goto inst705_alt
-		case 704:
-			goto inst704_alt
-		case 757:
-			goto inst757_alt
-		case 739:
-			goto inst739_alt
-		case 726:
-			goto inst726_alt
-		case 731:
-			goto inst731_alt
-		case 717:
-			goto inst717_alt
-		case 697:
-			goto inst697_alt
-		case 690:
-			goto inst690_alt
-		case 689:
-			goto inst689_alt
-		case 755:
-			goto inst755_alt
-		case 729:
-			goto inst729_alt
-		case 754:
-			goto inst754_alt
-		case 696:
-			goto inst696_alt
-		case 706:
-			goto inst706_alt
-		case 713:
-			goto inst713_alt
-		case 716:
-			goto inst716_alt
-		case 714:
-			goto inst714_alt
-		case 698:
-			goto inst698_alt
+			goto unreachable
 		case 688:
 			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
 		case 718:
 			goto inst718_alt
+		case 726:
+			goto inst726_alt
+		case 728:
+			goto inst728_alt
+		case 729:
+			goto inst729_alt
+		case 731:
+			goto inst731_alt
+		case 739:
+			goto inst739_alt
 		case 741:
 			goto inst741_alt
+		case 742:
+			goto inst742_alt
+		case 744:
+			goto inst744_alt
 		case 752:
 			goto inst752_alt
+		case 754:
+			goto inst754_alt
+		case 755:
+			goto inst755_alt
+		case 757:
+			goto inst757_alt
 		}
 	}
 	goto fail
@@ -23855,647 +23105,646 @@ inst772: // match
 	goto unreachable
 	goto inst772_fail
 inst772_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
-		case 398:
-			goto inst398_alt
-		case 363:
-			goto inst363_alt
-		case 266:
-			goto inst266_alt
-		case 174:
-			goto inst174_alt
-		case 729:
-			goto inst729_alt
-		case 556:
-			goto inst556_alt
-		case 508:
-			goto inst508_alt
-		case 451:
-			goto inst451_alt
-		case 92:
-			goto inst92_alt
-		case 7:
-			goto inst7_alt
-		case 22:
-			goto inst22_alt
-		case 744:
-			goto inst744_alt
-		case 141:
-			goto inst141_alt
-		case 78:
-			goto inst78_alt
-		case 39:
-			goto inst39_alt
-		case 204:
-			goto inst204_alt
-		case 76:
-			goto inst76_alt
-		case 45:
-			goto inst45_alt
-		case 690:
-			goto inst690_alt
-		case 605:
-			goto inst605_alt
-		case 335:
-			goto inst335_alt
-		case 210:
-			goto inst210_alt
-		case 301:
-			goto inst301_alt
-		case 219:
-			goto inst219_alt
-		case 194:
-			goto inst194_alt
-		case 14:
-			goto inst14_alt
-		case 688:
-			goto inst688_alt
-		case 641:
-			goto inst641_alt
-		case 539:
-			goto inst539_alt
-		case 494:
-			goto inst494_alt
-		case 476:
-			goto inst476_alt
-		case 203:
-			goto inst203_alt
-		case 124:
-			goto inst124_alt
-		case 230:
-			goto inst230_alt
-		case 166:
-			goto inst166_alt
-		case 63:
-			goto inst63_alt
-		case 626:
-			goto inst626_alt
-		case 586:
-			goto inst586_alt
-		case 585:
-			goto inst585_alt
-		case 400:
-			goto inst400_alt
-		case 355:
-			goto inst355_alt
-		case 240:
-			goto inst240_alt
-		case 55:
-			goto inst55_alt
-		case 29:
-			goto inst29_alt
-		case 754:
-			goto inst754_alt
-		case 739:
-			goto inst739_alt
-		case 607:
-			goto inst607_alt
-		case 477:
-			goto inst477_alt
-		case 603:
-			goto inst603_alt
-		case 579:
-			goto inst579_alt
-		case 264:
-			goto inst264_alt
-		case 202:
-			goto inst202_alt
-		case 178:
-			goto inst178_alt
-		case 706:
-			goto inst706_alt
-		case 704:
-			goto inst704_alt
-		case 698:
-			goto inst698_alt
-		case 300:
-			goto inst300_alt
-		case 362:
-			goto inst362_alt
-		case 726:
-			goto inst726_alt
-		case 459:
-			goto inst459_alt
-		case 431:
-			goto inst431_alt
-		case 388:
-			goto inst388_alt
-		case 577:
-			goto inst577_alt
-		case 497:
-			goto inst497_alt
-		case 475:
-			goto inst475_alt
-		case 432:
-			goto inst432_alt
-		case 227:
-			goto inst227_alt
-		case 249:
-			goto inst249_alt
-		case 157:
-			goto inst157_alt
-		case 576:
-			goto inst576_alt
-		case 540:
-			goto inst540_alt
-		case 514:
-			goto inst514_alt
-		case 273:
-			goto inst273_alt
-		case 101:
-			goto inst101_alt
-		case 54:
-			goto inst54_alt
-		case 757:
-			goto inst757_alt
-		case 640:
-			goto inst640_alt
-		case 522:
-			goto inst522_alt
-		case 286:
-			goto inst286_alt
-		case 523:
-			goto inst523_alt
-		case 369:
-			goto inst369_alt
-		case 310:
-			goto inst310_alt
-		case 23:
-			goto inst23_alt
-		case 755:
-			goto inst755_alt
-		case 752:
-			goto inst752_alt
-		case 609:
-			goto inst609_alt
-		case 564:
-			goto inst564_alt
-		case 436:
-			goto inst436_alt
-		case 414:
-			goto inst414_alt
-		case 302:
-			goto inst302_alt
-		case 122:
-			goto inst122_alt
-		case 587:
-			goto inst587_alt
-		case 415:
-			goto inst415_alt
-		case 361:
-			goto inst361_alt
-		case 697:
-			goto inst697_alt
-		case 559:
-			goto inst559_alt
-		case 548:
-			goto inst548_alt
-		case 347:
-			goto inst347_alt
-		case 177:
-			goto inst177_alt
-		case 142:
-			goto inst142_alt
-		case 496:
-			goto inst496_alt
-		case 434:
-			goto inst434_alt
-		case 374:
-			goto inst374_alt
-		case 233:
-			goto inst233_alt
-		case 345:
-			goto inst345_alt
-		case 165:
-			goto inst165_alt
-		case 484:
-			goto inst484_alt
-		case 424:
-			goto inst424_alt
-		case 416:
-			goto inst416_alt
-		case 406:
-			goto inst406_alt
-		case 498:
-			goto inst498_alt
-		case 453:
-			goto inst453_alt
-		case 373:
-			goto inst373_alt
-		case 77:
-			goto inst77_alt
-		case 628:
-			goto inst628_alt
-		case 148:
-			goto inst148_alt
-		case 588:
-			goto inst588_alt
-		case 399:
-			goto inst399_alt
-		case 250:
-			goto inst250_alt
-		case 195:
-			goto inst195_alt
-		case 70:
-			goto inst70_alt
-		case 629:
-			goto inst629_alt
-		case 606:
-			goto inst606_alt
-		case 578:
-			goto inst578_alt
-		case 228:
-			goto inst228_alt
-		case 765:
-			goto inst765_alt
-		case 469:
-			goto inst469_alt
-		case 156:
-			goto inst156_alt
-		case 38:
-			goto inst38_alt
-		case 614:
-			goto inst614_alt
-		case 562:
-			goto inst562_alt
-		case 390:
-			goto inst390_alt
-		case 220:
-			goto inst220_alt
-		case 712:
-			goto inst712_alt
-		case 682:
-			goto inst682_alt
-		case 461:
-			goto inst461_alt
-		case 47:
-			goto inst47_alt
-		case 116:
-			goto inst116_alt
-		case 30:
-			goto inst30_alt
-		case 530:
-			goto inst530_alt
-		case 492:
-			goto inst492_alt
-		case 467:
-			goto inst467_alt
-		case 281:
-			goto inst281_alt
-		case 656:
-			goto inst656_alt
-		case 443:
-			goto inst443_alt
-		case 241:
-			goto inst241_alt
-		case 164:
-			goto inst164_alt
-		case 120:
-			goto inst120_alt
-		case 716:
-			goto inst716_alt
-		case 557:
-			goto inst557_alt
-		case 320:
-			goto inst320_alt
-		case 211:
-			goto inst211_alt
-		case 594:
-			goto inst594_alt
-		case 256:
-			goto inst256_alt
-		case 239:
-			goto inst239_alt
-		case 186:
-			goto inst186_alt
-		case 196:
-			goto inst196_alt
-		case 117:
-			goto inst117_alt
-		case 31:
-			goto inst31_alt
-		case 718:
-			goto inst718_alt
-		case 679:
-			goto inst679_alt
-		case 555:
-			goto inst555_alt
-		case 354:
-			goto inst354_alt
-		case 134:
-			goto inst134_alt
-		case 125:
-			goto inst125_alt
-		case 121:
-			goto inst121_alt
-		case 15:
-			goto inst15_alt
-		case 714:
-			goto inst714_alt
-		case 667:
-			goto inst667_alt
-		case 507:
-			goto inst507_alt
-		case 327:
-			goto inst327_alt
-		case 188:
-			goto inst188_alt
-		case 132:
-			goto inst132_alt
-		case 46:
-			goto inst46_alt
+			goto unreachable
 		case 5:
 			goto inst5_alt
-		case 608:
-			goto inst608_alt
-		case 597:
-			goto inst597_alt
-		case 506:
-			goto inst506_alt
-		case 258:
-			goto inst258_alt
-		case 435:
-			goto inst435_alt
-		case 430:
-			goto inst430_alt
-		case 68:
-			goto inst68_alt
-		case 328:
-			goto inst328_alt
-		case 149:
-			goto inst149_alt
-		case 127:
-			goto inst127_alt
-		case 669:
-			goto inst669_alt
-		case 380:
-			goto inst380_alt
-		case 292:
-			goto inst292_alt
-		case 248:
-			goto inst248_alt
-		case 381:
-			goto inst381_alt
-		case 285:
-			goto inst285_alt
-		case 232:
-			goto inst232_alt
-		case 84:
-			goto inst84_alt
-		case 560:
-			goto inst560_alt
-		case 389:
-			goto inst389_alt
-		case 231:
-			goto inst231_alt
-		case 717:
-			goto inst717_alt
-		case 664:
-			goto inst664_alt
-		case 654:
-			goto inst654_alt
-		case 627:
-			goto inst627_alt
-		case 251:
-			goto inst251_alt
-		case 731:
-			goto inst731_alt
-		case 638:
-			goto inst638_alt
-		case 493:
-			goto inst493_alt
-		case 218:
-			goto inst218_alt
-		case 485:
-			goto inst485_alt
-		case 370:
-			goto inst370_alt
-		case 318:
-			goto inst318_alt
-		case 705:
-			goto inst705_alt
-		case 538:
-			goto inst538_alt
-		case 532:
-			goto inst532_alt
-		case 491:
-			goto inst491_alt
-		case 109:
-			goto inst109_alt
-		case 524:
-			goto inst524_alt
-		case 433:
-			goto inst433_alt
-		case 353:
-			goto inst353_alt
-		case 140:
-			goto inst140_alt
-		case 728:
-			goto inst728_alt
-		case 554:
-			goto inst554_alt
-		case 392:
-			goto inst392_alt
-		case 176:
-			goto inst176_alt
-		case 110:
-			goto inst110_alt
-		case 452:
-			goto inst452_alt
-		case 499:
-			goto inst499_alt
-		case 308:
-			goto inst308_alt
-		case 189:
-			goto inst189_alt
-		case 282:
-			goto inst282_alt
-		case 187:
-			goto inst187_alt
-		case 118:
-			goto inst118_alt
-		case 21:
-			goto inst21_alt
-		case 561:
-			goto inst561_alt
-		case 546:
-			goto inst546_alt
-		case 515:
-			goto inst515_alt
-		case 309:
-			goto inst309_alt
-		case 326:
-			goto inst326_alt
-		case 294:
-			goto inst294_alt
-		case 437:
-			goto inst437_alt
-		case 346:
-			goto inst346_alt
-		case 133:
-			goto inst133_alt
-		case 69:
-			goto inst69_alt
-		case 604:
-			goto inst604_alt
-		case 595:
-			goto inst595_alt
-		case 565:
-			goto inst565_alt
-		case 382:
-			goto inst382_alt
-		case 460:
-			goto inst460_alt
-		case 442:
-			goto inst442_alt
-		case 61:
-			goto inst61_alt
-		case 422:
-			goto inst422_alt
-		case 338:
-			goto inst338_alt
-		case 272:
-			goto inst272_alt
-		case 53:
-			goto inst53_alt
-		case 713:
-			goto inst713_alt
-		case 696:
-			goto inst696_alt
-		case 771:
-			goto inst771_alt
-		case 495:
-			goto inst495_alt
-		case 274:
-			goto inst274_alt
-		case 93:
-			goto inst93_alt
-		case 13:
-			goto inst13_alt
-		case 767:
-			goto inst767_alt
-		case 653:
-			goto inst653_alt
-		case 444:
-			goto inst444_alt
-		case 375:
-			goto inst375_alt
-		case 123:
-			goto inst123_alt
-		case 547:
-			goto inst547_alt
-		case 468:
-			goto inst468_alt
-		case 313:
-			goto inst313_alt
-		case 180:
-			goto inst180_alt
-		case 742:
-			goto inst742_alt
-		case 372:
-			goto inst372_alt
-		case 173:
-			goto inst173_alt
-		case 86:
-			goto inst86_alt
-		case 770:
-			goto inst770_alt
-		case 610:
-			goto inst610_alt
-		case 741:
-			goto inst741_alt
-		case 516:
-			goto inst516_alt
-		case 85:
-			goto inst85_alt
-		case 423:
-			goto inst423_alt
-		case 371:
-			goto inst371_alt
-		case 179:
-			goto inst179_alt
-		case 100:
-			goto inst100_alt
-		case 596:
-			goto inst596_alt
-		case 531:
-			goto inst531_alt
-		case 408:
-			goto inst408_alt
-		case 339:
-			goto inst339_alt
-		case 407:
-			goto inst407_alt
-		case 226:
-			goto inst226_alt
-		case 150:
-			goto inst150_alt
-		case 666:
-			goto inst666_alt
-		case 631:
-			goto inst631_alt
-		case 558:
-			goto inst558_alt
-		case 483:
-			goto inst483_alt
-		case 311:
-			goto inst311_alt
-		case 683:
-			goto inst683_alt
-		case 336:
-			goto inst336_alt
-		case 334:
-			goto inst334_alt
-		case 312:
-			goto inst312_alt
-		case 680:
-			goto inst680_alt
-		case 651:
-			goto inst651_alt
-		case 212:
-			goto inst212_alt
 		case 6:
 			goto inst6_alt
-		case 768:
-			goto inst768_alt
-		case 689:
-			goto inst689_alt
-		case 280:
-			goto inst280_alt
-		case 265:
-			goto inst265_alt
-		case 102:
-			goto inst102_alt
-		case 677:
-			goto inst677_alt
-		case 319:
-			goto inst319_alt
-		case 247:
-			goto inst247_alt
-		case 108:
-			goto inst108_alt
-		case 257:
-			goto inst257_alt
-		case 158:
-			goto inst158_alt
-		case 94:
-			goto inst94_alt
-		case 62:
-			goto inst62_alt
+		case 7:
+			goto inst7_alt
+		case 13:
+			goto inst13_alt
+		case 14:
+			goto inst14_alt
+		case 15:
+			goto inst15_alt
+		case 21:
+			goto inst21_alt
+		case 22:
+			goto inst22_alt
+		case 23:
+			goto inst23_alt
+		case 29:
+			goto inst29_alt
+		case 30:
+			goto inst30_alt
+		case 31:
+			goto inst31_alt
 		case 37:
 			goto inst37_alt
-		case 643:
-			goto inst643_alt
-		case 293:
-			goto inst293_alt
-		case 284:
-			goto inst284_alt
+		case 38:
+			goto inst38_alt
+		case 39:
+			goto inst39_alt
+		case 45:
+			goto inst45_alt
+		case 46:
+			goto inst46_alt
+		case 47:
+			goto inst47_alt
+		case 53:
+			goto inst53_alt
+		case 54:
+			goto inst54_alt
+		case 55:
+			goto inst55_alt
+		case 61:
+			goto inst61_alt
+		case 62:
+			goto inst62_alt
+		case 63:
+			goto inst63_alt
+		case 68:
+			goto inst68_alt
+		case 69:
+			goto inst69_alt
+		case 70:
+			goto inst70_alt
+		case 76:
+			goto inst76_alt
+		case 77:
+			goto inst77_alt
+		case 78:
+			goto inst78_alt
+		case 84:
+			goto inst84_alt
+		case 85:
+			goto inst85_alt
+		case 86:
+			goto inst86_alt
+		case 92:
+			goto inst92_alt
+		case 93:
+			goto inst93_alt
+		case 94:
+			goto inst94_alt
+		case 100:
+			goto inst100_alt
+		case 101:
+			goto inst101_alt
+		case 102:
+			goto inst102_alt
+		case 108:
+			goto inst108_alt
+		case 109:
+			goto inst109_alt
+		case 110:
+			goto inst110_alt
+		case 116:
+			goto inst116_alt
+		case 117:
+			goto inst117_alt
+		case 118:
+			goto inst118_alt
+		case 120:
+			goto inst120_alt
+		case 121:
+			goto inst121_alt
+		case 122:
+			goto inst122_alt
+		case 123:
+			goto inst123_alt
+		case 124:
+			goto inst124_alt
+		case 125:
+			goto inst125_alt
+		case 127:
+			goto inst127_alt
+		case 132:
+			goto inst132_alt
+		case 133:
+			goto inst133_alt
+		case 134:
+			goto inst134_alt
+		case 140:
+			goto inst140_alt
+		case 141:
+			goto inst141_alt
+		case 142:
+			goto inst142_alt
+		case 148:
+			goto inst148_alt
+		case 149:
+			goto inst149_alt
+		case 150:
+			goto inst150_alt
+		case 156:
+			goto inst156_alt
+		case 157:
+			goto inst157_alt
+		case 158:
+			goto inst158_alt
+		case 164:
+			goto inst164_alt
+		case 165:
+			goto inst165_alt
+		case 166:
+			goto inst166_alt
 		case 172:
 			goto inst172_alt
+		case 173:
+			goto inst173_alt
+		case 174:
+			goto inst174_alt
+		case 176:
+			goto inst176_alt
+		case 177:
+			goto inst177_alt
+		case 178:
+			goto inst178_alt
+		case 179:
+			goto inst179_alt
+		case 180:
+			goto inst180_alt
+		case 186:
+			goto inst186_alt
+		case 187:
+			goto inst187_alt
+		case 188:
+			goto inst188_alt
+		case 189:
+			goto inst189_alt
+		case 194:
+			goto inst194_alt
+		case 195:
+			goto inst195_alt
+		case 196:
+			goto inst196_alt
+		case 202:
+			goto inst202_alt
+		case 203:
+			goto inst203_alt
+		case 204:
+			goto inst204_alt
+		case 210:
+			goto inst210_alt
+		case 211:
+			goto inst211_alt
+		case 212:
+			goto inst212_alt
+		case 218:
+			goto inst218_alt
+		case 219:
+			goto inst219_alt
+		case 220:
+			goto inst220_alt
+		case 226:
+			goto inst226_alt
+		case 227:
+			goto inst227_alt
+		case 228:
+			goto inst228_alt
+		case 230:
+			goto inst230_alt
+		case 231:
+			goto inst231_alt
+		case 232:
+			goto inst232_alt
+		case 233:
+			goto inst233_alt
+		case 239:
+			goto inst239_alt
+		case 240:
+			goto inst240_alt
+		case 241:
+			goto inst241_alt
+		case 247:
+			goto inst247_alt
+		case 248:
+			goto inst248_alt
+		case 249:
+			goto inst249_alt
+		case 250:
+			goto inst250_alt
+		case 251:
+			goto inst251_alt
+		case 256:
+			goto inst256_alt
+		case 257:
+			goto inst257_alt
+		case 258:
+			goto inst258_alt
+		case 264:
+			goto inst264_alt
+		case 265:
+			goto inst265_alt
+		case 266:
+			goto inst266_alt
+		case 272:
+			goto inst272_alt
+		case 273:
+			goto inst273_alt
+		case 274:
+			goto inst274_alt
+		case 280:
+			goto inst280_alt
+		case 281:
+			goto inst281_alt
+		case 282:
+			goto inst282_alt
+		case 284:
+			goto inst284_alt
+		case 285:
+			goto inst285_alt
+		case 286:
+			goto inst286_alt
+		case 292:
+			goto inst292_alt
+		case 293:
+			goto inst293_alt
+		case 294:
+			goto inst294_alt
+		case 300:
+			goto inst300_alt
+		case 301:
+			goto inst301_alt
+		case 302:
+			goto inst302_alt
+		case 308:
+			goto inst308_alt
+		case 309:
+			goto inst309_alt
+		case 310:
+			goto inst310_alt
+		case 311:
+			goto inst311_alt
+		case 312:
+			goto inst312_alt
+		case 313:
+			goto inst313_alt
+		case 318:
+			goto inst318_alt
+		case 319:
+			goto inst319_alt
+		case 320:
+			goto inst320_alt
+		case 326:
+			goto inst326_alt
+		case 327:
+			goto inst327_alt
+		case 328:
+			goto inst328_alt
+		case 334:
+			goto inst334_alt
+		case 335:
+			goto inst335_alt
+		case 336:
+			goto inst336_alt
+		case 338:
+			goto inst338_alt
+		case 339:
+			goto inst339_alt
+		case 345:
+			goto inst345_alt
+		case 346:
+			goto inst346_alt
+		case 347:
+			goto inst347_alt
+		case 353:
+			goto inst353_alt
+		case 354:
+			goto inst354_alt
+		case 355:
+			goto inst355_alt
+		case 361:
+			goto inst361_alt
+		case 362:
+			goto inst362_alt
+		case 363:
+			goto inst363_alt
+		case 369:
+			goto inst369_alt
+		case 370:
+			goto inst370_alt
+		case 371:
+			goto inst371_alt
+		case 372:
+			goto inst372_alt
+		case 373:
+			goto inst373_alt
+		case 374:
+			goto inst374_alt
+		case 375:
+			goto inst375_alt
+		case 380:
+			goto inst380_alt
+		case 381:
+			goto inst381_alt
+		case 382:
+			goto inst382_alt
+		case 388:
+			goto inst388_alt
+		case 389:
+			goto inst389_alt
+		case 390:
+			goto inst390_alt
+		case 392:
+			goto inst392_alt
+		case 398:
+			goto inst398_alt
+		case 399:
+			goto inst399_alt
+		case 400:
+			goto inst400_alt
+		case 406:
+			goto inst406_alt
+		case 407:
+			goto inst407_alt
+		case 408:
+			goto inst408_alt
+		case 414:
+			goto inst414_alt
+		case 415:
+			goto inst415_alt
+		case 416:
+			goto inst416_alt
+		case 422:
+			goto inst422_alt
+		case 423:
+			goto inst423_alt
+		case 424:
+			goto inst424_alt
+		case 430:
+			goto inst430_alt
+		case 431:
+			goto inst431_alt
+		case 432:
+			goto inst432_alt
+		case 433:
+			goto inst433_alt
+		case 434:
+			goto inst434_alt
+		case 435:
+			goto inst435_alt
+		case 436:
+			goto inst436_alt
+		case 437:
+			goto inst437_alt
+		case 442:
+			goto inst442_alt
+		case 443:
+			goto inst443_alt
+		case 444:
+			goto inst444_alt
+		case 451:
+			goto inst451_alt
+		case 452:
+			goto inst452_alt
+		case 453:
+			goto inst453_alt
+		case 459:
+			goto inst459_alt
+		case 460:
+			goto inst460_alt
+		case 461:
+			goto inst461_alt
+		case 467:
+			goto inst467_alt
+		case 468:
+			goto inst468_alt
+		case 469:
+			goto inst469_alt
+		case 475:
+			goto inst475_alt
+		case 476:
+			goto inst476_alt
+		case 477:
+			goto inst477_alt
+		case 483:
+			goto inst483_alt
+		case 484:
+			goto inst484_alt
+		case 485:
+			goto inst485_alt
+		case 491:
+			goto inst491_alt
+		case 492:
+			goto inst492_alt
+		case 493:
+			goto inst493_alt
+		case 494:
+			goto inst494_alt
+		case 495:
+			goto inst495_alt
+		case 496:
+			goto inst496_alt
+		case 497:
+			goto inst497_alt
+		case 498:
+			goto inst498_alt
+		case 499:
+			goto inst499_alt
+		case 506:
+			goto inst506_alt
+		case 507:
+			goto inst507_alt
+		case 508:
+			goto inst508_alt
+		case 514:
+			goto inst514_alt
+		case 515:
+			goto inst515_alt
+		case 516:
+			goto inst516_alt
+		case 522:
+			goto inst522_alt
+		case 523:
+			goto inst523_alt
+		case 524:
+			goto inst524_alt
+		case 530:
+			goto inst530_alt
+		case 531:
+			goto inst531_alt
+		case 532:
+			goto inst532_alt
+		case 538:
+			goto inst538_alt
+		case 539:
+			goto inst539_alt
+		case 540:
+			goto inst540_alt
+		case 546:
+			goto inst546_alt
+		case 547:
+			goto inst547_alt
+		case 548:
+			goto inst548_alt
+		case 554:
+			goto inst554_alt
+		case 555:
+			goto inst555_alt
+		case 556:
+			goto inst556_alt
+		case 557:
+			goto inst557_alt
+		case 558:
+			goto inst558_alt
+		case 559:
+			goto inst559_alt
+		case 560:
+			goto inst560_alt
+		case 561:
+			goto inst561_alt
+		case 562:
+			goto inst562_alt
+		case 564:
+			goto inst564_alt
+		case 565:
+			goto inst565_alt
+		case 576:
+			goto inst576_alt
+		case 577:
+			goto inst577_alt
+		case 578:
+			goto inst578_alt
+		case 579:
+			goto inst579_alt
+		case 585:
+			goto inst585_alt
+		case 586:
+			goto inst586_alt
+		case 587:
+			goto inst587_alt
+		case 588:
+			goto inst588_alt
+		case 594:
+			goto inst594_alt
+		case 595:
+			goto inst595_alt
+		case 596:
+			goto inst596_alt
+		case 597:
+			goto inst597_alt
+		case 603:
+			goto inst603_alt
+		case 604:
+			goto inst604_alt
+		case 605:
+			goto inst605_alt
+		case 606:
+			goto inst606_alt
+		case 607:
+			goto inst607_alt
+		case 608:
+			goto inst608_alt
+		case 609:
+			goto inst609_alt
+		case 610:
+			goto inst610_alt
+		case 614:
+			goto inst614_alt
+		case 626:
+			goto inst626_alt
+		case 627:
+			goto inst627_alt
+		case 628:
+			goto inst628_alt
+		case 629:
+			goto inst629_alt
+		case 631:
+			goto inst631_alt
+		case 638:
+			goto inst638_alt
+		case 640:
+			goto inst640_alt
+		case 641:
+			goto inst641_alt
+		case 643:
+			goto inst643_alt
+		case 651:
+			goto inst651_alt
+		case 653:
+			goto inst653_alt
+		case 654:
+			goto inst654_alt
+		case 656:
+			goto inst656_alt
+		case 664:
+			goto inst664_alt
+		case 666:
+			goto inst666_alt
+		case 667:
+			goto inst667_alt
+		case 669:
+			goto inst669_alt
+		case 677:
+			goto inst677_alt
+		case 679:
+			goto inst679_alt
+		case 680:
+			goto inst680_alt
+		case 682:
+			goto inst682_alt
+		case 683:
+			goto inst683_alt
+		case 688:
+			goto inst688_alt
+		case 689:
+			goto inst689_alt
+		case 690:
+			goto inst690_alt
+		case 696:
+			goto inst696_alt
+		case 697:
+			goto inst697_alt
+		case 698:
+			goto inst698_alt
+		case 704:
+			goto inst704_alt
+		case 705:
+			goto inst705_alt
+		case 706:
+			goto inst706_alt
+		case 712:
+			goto inst712_alt
+		case 713:
+			goto inst713_alt
+		case 714:
+			goto inst714_alt
+		case 716:
+			goto inst716_alt
+		case 717:
+			goto inst717_alt
+		case 718:
+			goto inst718_alt
+		case 726:
+			goto inst726_alt
+		case 728:
+			goto inst728_alt
+		case 729:
+			goto inst729_alt
+		case 731:
+			goto inst731_alt
+		case 739:
+			goto inst739_alt
+		case 741:
+			goto inst741_alt
+		case 742:
+			goto inst742_alt
+		case 744:
+			goto inst744_alt
+		case 752:
+			goto inst752_alt
+		case 754:
+			goto inst754_alt
+		case 755:
+			goto inst755_alt
+		case 757:
+			goto inst757_alt
+		case 765:
+			goto inst765_alt
+		case 767:
+			goto inst767_alt
+		case 768:
+			goto inst768_alt
+		case 770:
+			goto inst770_alt
+		case 771:
+			goto inst771_alt
 		}
 	}
 	goto fail

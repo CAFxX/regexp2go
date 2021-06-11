@@ -108,11 +108,10 @@ inst4: // anynotnl -> 5
 	goto unreachable
 	goto inst4_fail
 inst4_fail:
-
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
-			panic(bt[len(bt)-1].pc)
+			goto unreachable
 		case 5:
 			goto inst5_alt
 		}
