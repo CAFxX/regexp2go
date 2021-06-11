@@ -38,7 +38,8 @@ restart:
 
 	// fast prefix search "Hello "
 	if idx := strings.Index(r[si:], "Hello "); idx >= 0 {
-		i += idx   // prefix found, skip to it
+		i += idx // prefix found, skip to it
+		si = i
 		c[0] = i   // start of match
 		i += 6     // prefix length
 		goto inst7 // instruction after prefix
@@ -46,7 +47,6 @@ restart:
 	}
 	i += len(r[si:]) // no prefix found, skip to the end of the rune slice
 
-	si = i
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 

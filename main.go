@@ -137,6 +137,7 @@ func main() {
 			prefix, prefix)
 		if p.Inst[p.Start].Op == instString && prefix == string(p.Inst[p.Start].Rune) {
 			// jump directly into the instruction at the end of the prefix
+			out("si = i") // if we skipped ahead, move also the start position
 			out("c[0] = i // start of match")
 			out("i += %d // prefix length", len(prefix))
 			out("goto inst%d // instruction after prefix", p.Inst[p.Start].Out)
@@ -153,7 +154,6 @@ func main() {
 	//       e.g. if the regexp starts with [0-9] record where the first [0-9] appears after si, and the jump to that position after restart.
 	//       This may require duplicating the FSM, with one copy doing this extra check, and the second without. When the first copy finds the first candidate
 	//       it jumps to the second copy.
-	out("  si = i") // if we skipped ahead, move also the start position
 	out("  c[0] = i // start of match ")
 	out("  goto inst%d // initial instruction", p.Start)
 

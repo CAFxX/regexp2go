@@ -35,9 +35,8 @@ restart:
 	var bc [2]int    // captures for the longest match so far
 	matched := false // succesful match flag
 	i := si          // current byte index
-	si = i
-	c[0] = i   // start of match
-	goto inst1 // initial instruction
+	c[0] = i         // start of match
+	goto inst1       // initial instruction
 
 	// inst0 unreacheable
 

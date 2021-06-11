@@ -61,15 +61,12 @@ func TestRegexp2go(t *testing.T) {
 						t.Errorf("ok: got %v, expected %v", ok, reok)
 					}
 
-					_ = pos
-					/* FIXME: pos is incorrect
 					if ok {
 						repos := re.FindStringIndex(s)
 						if pos != int64(repos[0]) {
 							t.Errorf("pos: got %v, expected %v", pos, repos[0])
 						}
 					}
-					*/
 				})
 			}
 		})
