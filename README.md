@@ -60,11 +60,4 @@ function that implements the regular expression.
 
 ![Benchmark result](benchmark/chart.svg)
 
-In the chart above the results are normalized to the regexp time. Lower is better.
-
-| Benchmark   | regexp2go | regexp |
-| ----------- | --------: | -----: |
-| Prefix      |    0.70µs | 1.10µs |
-| Dna         |     427µs |  481µs |
-| MailCrawler |    1.51µs | 6.53µs |
-| LogParse    |    0.38µs | 1.68µs |
+regexp2go can be from slightly faster to over 5 times faster than the `regexp` package in the golang standard library, depending on the regexp and the input data.
