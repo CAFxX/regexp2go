@@ -50,6 +50,10 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
+	// inst0 unreacheable
+
+	// inst8 unreacheable
+
 	goto unreachable
 	goto inst1
 inst1: // string "私は" -> 3
@@ -118,12 +122,6 @@ inst6: // cap 3 -> 7
 	c[3] = i
 	goto inst7
 
-	// inst2 unreacheable
-
-	// inst0 unreacheable
-
-	// inst8 unreacheable
-
 	goto unreachable
 	goto inst7
 inst7: // string "です" -> 9
@@ -140,6 +138,8 @@ inst7: // string "です" -> 9
 inst9: // match
 	c[1] = i // end of match
 	goto match
+
+	// inst2 unreacheable
 
 	goto unreachable
 	goto fail

@@ -561,7 +561,7 @@ func optReorder(p *syntax.Prog) []int {
 		insts[pc].pos = pc
 		out, arg := p.Inst[pc].Out, p.Inst[pc].Arg
 		switch p.Inst[pc].Op {
-		case syntax.InstMatch, syntax.InstFail:
+		case syntax.InstMatch, syntax.InstFail, instDead:
 			continue
 		case syntax.InstAltMatch:
 			panic("not implemented")

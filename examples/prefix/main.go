@@ -50,17 +50,48 @@ restart:
 	c[0] = i   // start of match
 	goto inst1 // initial instruction
 
-	// inst6 unreacheable
-
-	// inst3 unreacheable
-
 	// inst0 unreacheable
 
 	// inst2 unreacheable
 
-	// inst4 unreacheable
+	// inst3 unreacheable
 
 	// inst5 unreacheable
+
+	// inst6 unreacheable
+
+	goto unreachable
+	goto inst1
+inst1: // string "Hello " -> 7
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "Hello " {
+			i += 6
+			goto inst7
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst7
+inst7: // cap 2 -> 8
+	c[2] = i
+	goto inst8
+
+	goto unreachable
+	goto inst8
+inst8: // rune "\x00 \"\U0010ffff" -> 9
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cr >= utf8.RuneSelf {
+			cr, sz = utf8.DecodeRuneInString(r[i:])
+		}
+
+		if false || (cr >= 0 && cr <= 32) || (cr >= 34 && cr <= 1114111) {
+			i += sz
+			goto inst9
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst9
@@ -92,39 +123,6 @@ inst9_alt:
 	}
 
 	goto unreachable
-	goto inst8
-inst8: // rune "\x00 \"\U0010ffff" -> 9
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if false || (cr >= 0 && cr <= 32) || (cr >= 34 && cr <= 1114111) {
-			i += sz
-			goto inst9
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst7
-inst7: // cap 2 -> 8
-	c[2] = i
-	goto inst8
-
-	goto unreachable
-	goto inst1
-inst1: // string "Hello " -> 7
-	if i >= 0 && i+6 <= len(r) {
-		if r[i:i+6] == "Hello " {
-			i += 6
-			goto inst7
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst10
 inst10: // cap 3 -> 11
 	c[3] = i
@@ -146,6 +144,8 @@ inst11: // string "!" -> 12
 inst12: // match
 	c[1] = i // end of match
 	goto match
+
+	// inst4 unreacheable
 
 	goto unreachable
 	goto fail

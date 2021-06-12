@@ -38,6 +38,8 @@ restart:
 	c[0] = i         // start of match
 	goto inst771     // initial instruction
 
+	// inst0 unreacheable
+
 	goto unreachable
 	goto inst2
 inst2: // rune "09AFaf" -> 6
@@ -56,6 +58,19 @@ inst2: // rune "09AFaf" -> 6
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst7
+inst7: // alt -> 2, 8
+	bt = append(bt, stateMatch{c, i, 7, 0})
+	goto inst2
+inst7_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst8
+	}
 
 	goto unreachable
 	goto inst6
@@ -103,6 +118,17 @@ inst5_alt:
 	}
 
 	goto unreachable
+	goto inst8
+inst8: // string ":" -> 9
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst9
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst4
 inst4: // rune "09AFaf" -> 8
 	if i >= 0 && i < len(r) {
@@ -122,30 +148,6 @@ inst4: // rune "09AFaf" -> 8
 	goto fail
 
 	goto unreachable
-	goto inst8
-inst8: // string ":" -> 9
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst9
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst7
-inst7: // alt -> 2, 8
-	bt = append(bt, stateMatch{c, i, 7, 0})
-	goto inst2
-inst7_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst8
-	}
-
-	goto unreachable
 	goto inst9
 inst9: // rune "09AFaf" -> 15
 	if i >= 0 && i < len(r) {
@@ -163,6 +165,51 @@ inst9: // rune "09AFaf" -> 15
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst15
+inst15: // alt -> 10, 16
+	bt = append(bt, stateMatch{c, i, 15, 0})
+	goto inst10
+inst15_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst16
+	}
+
+	goto unreachable
+	goto inst10
+inst10: // rune "09AFaf" -> 14
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst14
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst14
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst14
+inst14: // alt -> 11, 16
+	bt = append(bt, stateMatch{c, i, 14, 0})
+	goto inst11
+inst14_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst16
+	}
 
 	goto unreachable
 	goto inst11
@@ -197,6 +244,17 @@ inst13_alt:
 	}
 
 	goto unreachable
+	goto inst16
+inst16: // string ":" -> 17
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst17
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst12
 inst12: // rune "09AFaf" -> 16
 	if i >= 0 && i < len(r) {
@@ -211,62 +269,6 @@ inst12: // rune "09AFaf" -> 16
 		} else if false {
 			i += sz
 			goto inst16
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst16
-inst16: // string ":" -> 17
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst17
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst15
-inst15: // alt -> 10, 16
-	bt = append(bt, stateMatch{c, i, 15, 0})
-	goto inst10
-inst15_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst16
-	}
-
-	goto unreachable
-	goto inst14
-inst14: // alt -> 11, 16
-	bt = append(bt, stateMatch{c, i, 14, 0})
-	goto inst11
-inst14_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst16
-	}
-
-	goto unreachable
-	goto inst10
-inst10: // rune "09AFaf" -> 14
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst14
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst14
 		}
 	}
 	goto fail
@@ -289,6 +291,51 @@ inst17: // rune "09AFaf" -> 23
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst23
+inst23: // alt -> 18, 24
+	bt = append(bt, stateMatch{c, i, 23, 0})
+	goto inst18
+inst23_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst24
+	}
+
+	goto unreachable
+	goto inst18
+inst18: // rune "09AFaf" -> 22
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst22
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst22
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst22
+inst22: // alt -> 19, 24
+	bt = append(bt, stateMatch{c, i, 22, 0})
+	goto inst19
+inst22_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst24
+	}
 
 	goto unreachable
 	goto inst19
@@ -323,6 +370,17 @@ inst21_alt:
 	}
 
 	goto unreachable
+	goto inst24
+inst24: // string ":" -> 25
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst25
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst20
 inst20: // rune "09AFaf" -> 24
 	if i >= 0 && i < len(r) {
@@ -337,62 +395,6 @@ inst20: // rune "09AFaf" -> 24
 		} else if false {
 			i += sz
 			goto inst24
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst24
-inst24: // string ":" -> 25
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst25
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst23
-inst23: // alt -> 18, 24
-	bt = append(bt, stateMatch{c, i, 23, 0})
-	goto inst18
-inst23_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst24
-	}
-
-	goto unreachable
-	goto inst22
-inst22: // alt -> 19, 24
-	bt = append(bt, stateMatch{c, i, 22, 0})
-	goto inst19
-inst22_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst24
-	}
-
-	goto unreachable
-	goto inst18
-inst18: // rune "09AFaf" -> 22
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst22
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst22
 		}
 	}
 	goto fail
@@ -415,6 +417,51 @@ inst25: // rune "09AFaf" -> 31
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst31
+inst31: // alt -> 26, 32
+	bt = append(bt, stateMatch{c, i, 31, 0})
+	goto inst26
+inst31_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst32
+	}
+
+	goto unreachable
+	goto inst26
+inst26: // rune "09AFaf" -> 30
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst30
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst30
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst30
+inst30: // alt -> 27, 32
+	bt = append(bt, stateMatch{c, i, 30, 0})
+	goto inst27
+inst30_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst32
+	}
 
 	goto unreachable
 	goto inst27
@@ -449,6 +496,17 @@ inst29_alt:
 	}
 
 	goto unreachable
+	goto inst32
+inst32: // string ":" -> 33
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst33
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst28
 inst28: // rune "09AFaf" -> 32
 	if i >= 0 && i < len(r) {
@@ -463,62 +521,6 @@ inst28: // rune "09AFaf" -> 32
 		} else if false {
 			i += sz
 			goto inst32
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst32
-inst32: // string ":" -> 33
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst33
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst31
-inst31: // alt -> 26, 32
-	bt = append(bt, stateMatch{c, i, 31, 0})
-	goto inst26
-inst31_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst32
-	}
-
-	goto unreachable
-	goto inst30
-inst30: // alt -> 27, 32
-	bt = append(bt, stateMatch{c, i, 30, 0})
-	goto inst27
-inst30_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst32
-	}
-
-	goto unreachable
-	goto inst26
-inst26: // rune "09AFaf" -> 30
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst30
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst30
 		}
 	}
 	goto fail
@@ -541,6 +543,51 @@ inst33: // rune "09AFaf" -> 39
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst39
+inst39: // alt -> 34, 40
+	bt = append(bt, stateMatch{c, i, 39, 0})
+	goto inst34
+inst39_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst40
+	}
+
+	goto unreachable
+	goto inst34
+inst34: // rune "09AFaf" -> 38
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst38
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst38
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst38
+inst38: // alt -> 35, 40
+	bt = append(bt, stateMatch{c, i, 38, 0})
+	goto inst35
+inst38_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst40
+	}
 
 	goto unreachable
 	goto inst35
@@ -575,6 +622,17 @@ inst37_alt:
 	}
 
 	goto unreachable
+	goto inst40
+inst40: // string ":" -> 41
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst41
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst36
 inst36: // rune "09AFaf" -> 40
 	if i >= 0 && i < len(r) {
@@ -589,62 +647,6 @@ inst36: // rune "09AFaf" -> 40
 		} else if false {
 			i += sz
 			goto inst40
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst40
-inst40: // string ":" -> 41
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst41
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst39
-inst39: // alt -> 34, 40
-	bt = append(bt, stateMatch{c, i, 39, 0})
-	goto inst34
-inst39_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst40
-	}
-
-	goto unreachable
-	goto inst38
-inst38: // alt -> 35, 40
-	bt = append(bt, stateMatch{c, i, 38, 0})
-	goto inst35
-inst38_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst40
-	}
-
-	goto unreachable
-	goto inst34
-inst34: // rune "09AFaf" -> 38
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst38
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst38
 		}
 	}
 	goto fail
@@ -667,6 +669,51 @@ inst41: // rune "09AFaf" -> 47
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst47
+inst47: // alt -> 42, 48
+	bt = append(bt, stateMatch{c, i, 47, 0})
+	goto inst42
+inst47_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst48
+	}
+
+	goto unreachable
+	goto inst42
+inst42: // rune "09AFaf" -> 46
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst46
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst46
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst46
+inst46: // alt -> 43, 48
+	bt = append(bt, stateMatch{c, i, 46, 0})
+	goto inst43
+inst46_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst48
+	}
 
 	goto unreachable
 	goto inst43
@@ -701,6 +748,17 @@ inst45_alt:
 	}
 
 	goto unreachable
+	goto inst48
+inst48: // string ":" -> 49
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst49
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst44
 inst44: // rune "09AFaf" -> 48
 	if i >= 0 && i < len(r) {
@@ -715,62 +773,6 @@ inst44: // rune "09AFaf" -> 48
 		} else if false {
 			i += sz
 			goto inst48
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst48
-inst48: // string ":" -> 49
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst49
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst47
-inst47: // alt -> 42, 48
-	bt = append(bt, stateMatch{c, i, 47, 0})
-	goto inst42
-inst47_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst48
-	}
-
-	goto unreachable
-	goto inst46
-inst46: // alt -> 43, 48
-	bt = append(bt, stateMatch{c, i, 46, 0})
-	goto inst43
-inst46_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst48
-	}
-
-	goto unreachable
-	goto inst42
-inst42: // rune "09AFaf" -> 46
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst46
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst46
 		}
 	}
 	goto fail
@@ -793,6 +795,51 @@ inst49: // rune "09AFaf" -> 55
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst55
+inst55: // alt -> 50, 56
+	bt = append(bt, stateMatch{c, i, 55, 0})
+	goto inst50
+inst55_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst56
+	}
+
+	goto unreachable
+	goto inst50
+inst50: // rune "09AFaf" -> 54
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst54
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst54
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst54
+inst54: // alt -> 51, 56
+	bt = append(bt, stateMatch{c, i, 54, 0})
+	goto inst51
+inst54_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst56
+	}
 
 	goto unreachable
 	goto inst51
@@ -827,6 +874,17 @@ inst53_alt:
 	}
 
 	goto unreachable
+	goto inst56
+inst56: // string ":" -> 57
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst57
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst52
 inst52: // rune "09AFaf" -> 56
 	if i >= 0 && i < len(r) {
@@ -841,62 +899,6 @@ inst52: // rune "09AFaf" -> 56
 		} else if false {
 			i += sz
 			goto inst56
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst56
-inst56: // string ":" -> 57
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst57
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst55
-inst55: // alt -> 50, 56
-	bt = append(bt, stateMatch{c, i, 55, 0})
-	goto inst50
-inst55_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst56
-	}
-
-	goto unreachable
-	goto inst54
-inst54: // alt -> 51, 56
-	bt = append(bt, stateMatch{c, i, 54, 0})
-	goto inst51
-inst54_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst56
-	}
-
-	goto unreachable
-	goto inst50
-inst50: // rune "09AFaf" -> 54
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst54
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst54
 		}
 	}
 	goto fail
@@ -953,6 +955,25 @@ inst58: // rune "09AFaf" -> 62
 	goto fail
 
 	goto unreachable
+	goto inst1
+inst1: // rune "09AFaf" -> 7
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst7
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst7
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst62
 inst62: // alt -> 59, 772
 	bt = append(bt, stateMatch{c, i, 62, 0})
@@ -980,25 +1001,6 @@ inst59: // rune "09AFaf" -> 61
 		} else if false {
 			i += sz
 			goto inst61
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst1
-inst1: // rune "09AFaf" -> 7
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst7
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst7
 		}
 	}
 	goto fail
@@ -1143,20 +1145,20 @@ inst127_alt:
 	}
 
 	goto unreachable
-	goto inst75
-inst75: // rune "09AFaf" -> 79
+	goto inst74
+inst74: // rune "09AFaf" -> 76
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst79
+				goto inst76
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst79
+			goto inst76
 		}
 	}
 	goto fail
@@ -1175,20 +1177,20 @@ inst76_alt:
 	}
 
 	goto unreachable
-	goto inst74
-inst74: // rune "09AFaf" -> 76
+	goto inst75
+inst75: // rune "09AFaf" -> 79
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst76
+				goto inst79
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst76
+			goto inst79
 		}
 	}
 	goto fail
@@ -1250,30 +1252,62 @@ inst78_alt:
 	}
 
 	goto unreachable
-	goto inst83
-inst83: // rune "09AFaf" -> 87
+	goto inst80
+inst80: // rune "09AFaf" -> 86
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst87
+				goto inst86
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst87
+			goto inst86
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst84
-inst84: // alt -> 83, 87
-	bt = append(bt, stateMatch{c, i, 84, 0})
-	goto inst83
-inst84_alt:
+	goto inst86
+inst86: // alt -> 81, 87
+	bt = append(bt, stateMatch{c, i, 86, 0})
+	goto inst81
+inst86_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst87
+	}
+
+	goto unreachable
+	goto inst81
+inst81: // rune "09AFaf" -> 85
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst85
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst85
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst85
+inst85: // alt -> 82, 87
+	bt = append(bt, stateMatch{c, i, 85, 0})
+	goto inst82
+inst85_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -1301,11 +1335,11 @@ inst82: // rune "09AFaf" -> 84
 	goto fail
 
 	goto unreachable
-	goto inst85
-inst85: // alt -> 82, 87
-	bt = append(bt, stateMatch{c, i, 85, 0})
-	goto inst82
-inst85_alt:
+	goto inst84
+inst84: // alt -> 83, 87
+	bt = append(bt, stateMatch{c, i, 84, 0})
+	goto inst83
+inst84_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -1325,35 +1359,35 @@ inst87: // string ":" -> 123
 	goto fail
 
 	goto unreachable
-	goto inst81
-inst81: // rune "09AFaf" -> 85
+	goto inst83
+inst83: // rune "09AFaf" -> 87
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst85
+				goto inst87
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst85
+			goto inst87
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst86
-inst86: // alt -> 81, 87
-	bt = append(bt, stateMatch{c, i, 86, 0})
-	goto inst81
-inst86_alt:
+	goto inst124
+inst124: // alt -> 80, 126
+	bt = append(bt, stateMatch{c, i, 124, 0})
+	goto inst80
+inst124_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst87
+		goto inst126
 	}
 
 	goto unreachable
@@ -1430,6 +1464,38 @@ inst95: // string ":" -> 122
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst89
+inst89: // rune "09AFaf" -> 93
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst93
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst93
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst94
+inst94: // alt -> 89, 95
+	bt = append(bt, stateMatch{c, i, 94, 0})
+	goto inst89
+inst94_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst95
+	}
 
 	goto unreachable
 	goto inst98
@@ -1539,36 +1605,124 @@ inst102_alt:
 	}
 
 	goto unreachable
-	goto inst89
-inst89: // rune "09AFaf" -> 93
+	goto inst121
+inst121: // alt -> 104, 126
+	bt = append(bt, stateMatch{c, i, 121, 0})
+	goto inst104
+inst121_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst126
+	}
+
+	goto unreachable
+	goto inst104
+inst104: // rune "09AFaf" -> 110
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst93
+				goto inst110
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst93
+			goto inst110
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst94
-inst94: // alt -> 89, 95
-	bt = append(bt, stateMatch{c, i, 94, 0})
-	goto inst89
-inst94_alt:
+	goto inst110
+inst110: // alt -> 105, 111
+	bt = append(bt, stateMatch{c, i, 110, 0})
+	goto inst105
+inst110_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst95
+		goto inst111
 	}
+
+	goto unreachable
+	goto inst105
+inst105: // rune "09AFaf" -> 109
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst109
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst109
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst72
+inst72: // rune "09AFaf" -> 78
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst78
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst78
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst125
+inst125: // alt -> 72, 126
+	bt = append(bt, stateMatch{c, i, 125, 0})
+	goto inst72
+inst125_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst126
+	}
+
+	goto unreachable
+	goto inst109
+inst109: // alt -> 106, 111
+	bt = append(bt, stateMatch{c, i, 109, 0})
+	goto inst106
+inst109_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst111
+	}
+
+	goto unreachable
+	goto inst111
+inst111: // string ":" -> 120
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst120
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst107
@@ -1620,265 +1774,6 @@ inst106: // rune "09AFaf" -> 108
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst111
-inst111: // string ":" -> 120
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst120
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst109
-inst109: // alt -> 106, 111
-	bt = append(bt, stateMatch{c, i, 109, 0})
-	goto inst106
-inst109_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst111
-	}
-
-	goto unreachable
-	goto inst105
-inst105: // rune "09AFaf" -> 109
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst109
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst109
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst110
-inst110: // alt -> 105, 111
-	bt = append(bt, stateMatch{c, i, 110, 0})
-	goto inst105
-inst110_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst111
-	}
-
-	goto unreachable
-	goto inst104
-inst104: // rune "09AFaf" -> 110
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst110
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst110
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst121
-inst121: // alt -> 104, 126
-	bt = append(bt, stateMatch{c, i, 121, 0})
-	goto inst104
-inst121_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst126
-	}
-
-	goto unreachable
-	goto inst96
-inst96: // rune "09AFaf" -> 102
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst102
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst102
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst122
-inst122: // alt -> 96, 126
-	bt = append(bt, stateMatch{c, i, 122, 0})
-	goto inst96
-inst122_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst126
-	}
-
-	goto unreachable
-	goto inst72
-inst72: // rune "09AFaf" -> 78
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst78
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst78
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst125
-inst125: // alt -> 72, 126
-	bt = append(bt, stateMatch{c, i, 125, 0})
-	goto inst72
-inst125_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst126
-	}
-
-	goto unreachable
-	goto inst115
-inst115: // rune "09AFaf" -> 119
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst119
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst119
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst116
-inst116: // alt -> 115, 119
-	bt = append(bt, stateMatch{c, i, 116, 0})
-	goto inst115
-inst116_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst119
-	}
-
-	goto unreachable
-	goto inst114
-inst114: // rune "09AFaf" -> 116
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst116
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst116
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst119
-inst119: // string "::" -> 772
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
-			i += 2
-			goto inst772
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst117
-inst117: // alt -> 114, 119
-	bt = append(bt, stateMatch{c, i, 117, 0})
-	goto inst114
-inst117_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst119
-	}
-
-	goto unreachable
-	goto inst113
-inst113: // rune "09AFaf" -> 117
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst117
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst117
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst118
-inst118: // alt -> 113, 119
-	bt = append(bt, stateMatch{c, i, 118, 0})
-	goto inst113
-inst118_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst119
-	}
 
 	goto unreachable
 	goto inst88
@@ -1937,6 +1832,38 @@ inst120_alt:
 	}
 
 	goto unreachable
+	goto inst122
+inst122: // alt -> 96, 126
+	bt = append(bt, stateMatch{c, i, 122, 0})
+	goto inst96
+inst122_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst126
+	}
+
+	goto unreachable
+	goto inst96
+inst96: // rune "09AFaf" -> 102
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst102
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst102
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst112
 inst112: // rune "09AFaf" -> 118
 	if i >= 0 && i < len(r) {
@@ -1956,33 +1883,108 @@ inst112: // rune "09AFaf" -> 118
 	goto fail
 
 	goto unreachable
-	goto inst124
-inst124: // alt -> 80, 126
-	bt = append(bt, stateMatch{c, i, 124, 0})
-	goto inst80
-inst124_alt:
+	goto inst118
+inst118: // alt -> 113, 119
+	bt = append(bt, stateMatch{c, i, 118, 0})
+	goto inst113
+inst118_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst126
+		goto inst119
 	}
 
 	goto unreachable
-	goto inst80
-inst80: // rune "09AFaf" -> 86
+	goto inst113
+inst113: // rune "09AFaf" -> 117
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst86
+				goto inst117
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst86
+			goto inst117
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst117
+inst117: // alt -> 114, 119
+	bt = append(bt, stateMatch{c, i, 117, 0})
+	goto inst114
+inst117_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst119
+	}
+
+	goto unreachable
+	goto inst114
+inst114: // rune "09AFaf" -> 116
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst116
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst116
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst119
+inst119: // string "::" -> 772
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "::" {
+			i += 2
+			goto inst772
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst116
+inst116: // alt -> 115, 119
+	bt = append(bt, stateMatch{c, i, 116, 0})
+	goto inst115
+inst116_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst119
+	}
+
+	goto unreachable
+	goto inst115
+inst115: // rune "09AFaf" -> 119
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst119
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst119
 		}
 	}
 	goto fail
@@ -2146,6 +2148,19 @@ inst138: // rune "09AFaf" -> 140
 	goto fail
 
 	goto unreachable
+	goto inst141
+inst141: // alt -> 138, 143
+	bt = append(bt, stateMatch{c, i, 141, 0})
+	goto inst138
+inst141_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst143
+	}
+
+	goto unreachable
 	goto inst140
 inst140: // alt -> 139, 143
 	bt = append(bt, stateMatch{c, i, 140, 0})
@@ -2176,19 +2191,6 @@ inst139: // rune "09AFaf" -> 143
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst141
-inst141: // alt -> 138, 143
-	bt = append(bt, stateMatch{c, i, 141, 0})
-	goto inst138
-inst141_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst143
-	}
 
 	goto unreachable
 	goto inst143
@@ -2234,35 +2236,67 @@ inst142_alt:
 	}
 
 	goto unreachable
-	goto inst136
-inst136: // rune "09AFaf" -> 142
+	goto inst144
+inst144: // rune "09AFaf" -> 150
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst142
+				goto inst150
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst142
+			goto inst150
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst180
-inst180: // alt -> 136, 181
-	bt = append(bt, stateMatch{c, i, 180, 0})
-	goto inst136
-inst180_alt:
+	goto inst150
+inst150: // alt -> 145, 151
+	bt = append(bt, stateMatch{c, i, 150, 0})
+	goto inst145
+inst150_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst181
+		goto inst151
+	}
+
+	goto unreachable
+	goto inst145
+inst145: // rune "09AFaf" -> 149
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst149
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst149
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst149
+inst149: // alt -> 146, 151
+	bt = append(bt, stateMatch{c, i, 149, 0})
+	goto inst146
+inst149_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst151
 	}
 
 	goto unreachable
@@ -2298,6 +2332,17 @@ inst148_alt:
 	}
 
 	goto unreachable
+	goto inst151
+inst151: // string ":" -> 178
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst178
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst147
 inst147: // rune "09AFaf" -> 151
 	if i >= 0 && i < len(r) {
@@ -2317,76 +2362,33 @@ inst147: // rune "09AFaf" -> 151
 	goto fail
 
 	goto unreachable
-	goto inst151
-inst151: // string ":" -> 178
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst178
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst149
-inst149: // alt -> 146, 151
-	bt = append(bt, stateMatch{c, i, 149, 0})
-	goto inst146
-inst149_alt:
+	goto inst179
+inst179: // alt -> 144, 181
+	bt = append(bt, stateMatch{c, i, 179, 0})
+	goto inst144
+inst179_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst151
+		goto inst181
 	}
 
 	goto unreachable
-	goto inst145
-inst145: // rune "09AFaf" -> 149
+	goto inst155
+inst155: // rune "09AFaf" -> 159
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst149
+				goto inst159
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst149
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst150
-inst150: // alt -> 145, 151
-	bt = append(bt, stateMatch{c, i, 150, 0})
-	goto inst145
-inst150_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst151
-	}
-
-	goto unreachable
-	goto inst154
-inst154: // rune "09AFaf" -> 156
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst156
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst156
+			goto inst159
 		}
 	}
 	goto fail
@@ -2405,20 +2407,20 @@ inst156_alt:
 	}
 
 	goto unreachable
-	goto inst155
-inst155: // rune "09AFaf" -> 159
+	goto inst154
+inst154: // rune "09AFaf" -> 156
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst159
+				goto inst156
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst159
+			goto inst156
 		}
 	}
 	goto fail
@@ -2446,6 +2448,102 @@ inst159: // string ":" -> 177
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst153
+inst153: // rune "09AFaf" -> 157
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst157
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst157
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst158
+inst158: // alt -> 153, 159
+	bt = append(bt, stateMatch{c, i, 158, 0})
+	goto inst153
+inst158_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst159
+	}
+
+	goto unreachable
+	goto inst136
+inst136: // rune "09AFaf" -> 142
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst142
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst142
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst180
+inst180: // alt -> 136, 181
+	bt = append(bt, stateMatch{c, i, 180, 0})
+	goto inst136
+inst180_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst181
+	}
+
+	goto unreachable
+	goto inst161
+inst161: // rune "09AFaf" -> 165
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst165
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst165
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst165
+inst165: // alt -> 162, 167
+	bt = append(bt, stateMatch{c, i, 165, 0})
+	goto inst162
+inst165_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst167
+	}
 
 	goto unreachable
 	goto inst162
@@ -2510,38 +2608,6 @@ inst167: // string ":" -> 176
 	goto fail
 
 	goto unreachable
-	goto inst165
-inst165: // alt -> 162, 167
-	bt = append(bt, stateMatch{c, i, 165, 0})
-	goto inst162
-inst165_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst167
-	}
-
-	goto unreachable
-	goto inst161
-inst161: // rune "09AFaf" -> 165
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst165
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst165
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst166
 inst166: // alt -> 161, 167
 	bt = append(bt, stateMatch{c, i, 166, 0})
@@ -2552,70 +2618,6 @@ inst166_alt:
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst167
-	}
-
-	goto unreachable
-	goto inst153
-inst153: // rune "09AFaf" -> 157
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst157
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst157
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst158
-inst158: // alt -> 153, 159
-	bt = append(bt, stateMatch{c, i, 158, 0})
-	goto inst153
-inst158_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst159
-	}
-
-	goto unreachable
-	goto inst144
-inst144: // rune "09AFaf" -> 150
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst150
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst150
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst179
-inst179: // alt -> 144, 181
-	bt = append(bt, stateMatch{c, i, 179, 0})
-	goto inst144
-inst179_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst181
 	}
 
 	goto unreachable
@@ -2651,20 +2653,12 @@ inst177_alt:
 	}
 
 	goto unreachable
-	goto inst152
-inst152: // rune "09AFaf" -> 158
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst158
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst158
+	goto inst181
+inst181: // string ":" -> 182
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst182
 		}
 	}
 	goto fail
@@ -2683,12 +2677,20 @@ inst178_alt:
 	}
 
 	goto unreachable
-	goto inst181
-inst181: // string ":" -> 182
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst182
+	goto inst152
+inst152: // rune "09AFaf" -> 158
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst158
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst158
 		}
 	}
 	goto fail
@@ -2739,30 +2741,60 @@ inst174_alt:
 	}
 
 	goto unreachable
-	goto inst169
-inst169: // rune "09AFaf" -> 173
+	goto inst182
+inst182: // rune "09AFaf" -> 188
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst173
+				goto inst188
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst173
+			goto inst188
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst173
-inst173: // alt -> 170, 175
-	bt = append(bt, stateMatch{c, i, 173, 0})
-	goto inst170
-inst173_alt:
+	goto inst175
+inst175: // string "::" -> 182
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "::" {
+			i += 2
+			goto inst182
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst171
+inst171: // rune "09AFaf" -> 175
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst175
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst175
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst172
+inst172: // alt -> 171, 175
+	bt = append(bt, stateMatch{c, i, 172, 0})
+	goto inst171
+inst172_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -2790,22 +2822,11 @@ inst170: // rune "09AFaf" -> 172
 	goto fail
 
 	goto unreachable
-	goto inst175
-inst175: // string "::" -> 182
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
-			i += 2
-			goto inst182
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst172
-inst172: // alt -> 171, 175
-	bt = append(bt, stateMatch{c, i, 172, 0})
-	goto inst171
-inst172_alt:
+	goto inst173
+inst173: // alt -> 170, 175
+	bt = append(bt, stateMatch{c, i, 173, 0})
+	goto inst170
+inst173_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -2814,39 +2835,20 @@ inst172_alt:
 	}
 
 	goto unreachable
-	goto inst171
-inst171: // rune "09AFaf" -> 175
+	goto inst169
+inst169: // rune "09AFaf" -> 173
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst175
+				goto inst173
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst175
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst182
-inst182: // rune "09AFaf" -> 188
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst188
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst188
+			goto inst173
 		}
 	}
 	goto fail
@@ -2916,6 +2918,51 @@ inst183: // rune "09AFaf" -> 187
 	goto fail
 
 	goto unreachable
+	goto inst196
+inst196: // alt -> 191, 197
+	bt = append(bt, stateMatch{c, i, 196, 0})
+	goto inst191
+inst196_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst197
+	}
+
+	goto unreachable
+	goto inst191
+inst191: // rune "09AFaf" -> 195
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst195
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst195
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst195
+inst195: // alt -> 192, 197
+	bt = append(bt, stateMatch{c, i, 195, 0})
+	goto inst192
+inst195_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst197
+	}
+
+	goto unreachable
 	goto inst192
 inst192: // rune "09AFaf" -> 194
 	if i >= 0 && i < len(r) {
@@ -2930,6 +2977,17 @@ inst192: // rune "09AFaf" -> 194
 		} else if false {
 			i += sz
 			goto inst194
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst197
+inst197: // string ":" -> 233
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst233
 		}
 	}
 	goto fail
@@ -2962,62 +3020,6 @@ inst193: // rune "09AFaf" -> 197
 		} else if false {
 			i += sz
 			goto inst197
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst197
-inst197: // string ":" -> 233
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst233
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst195
-inst195: // alt -> 192, 197
-	bt = append(bt, stateMatch{c, i, 195, 0})
-	goto inst192
-inst195_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst197
-	}
-
-	goto unreachable
-	goto inst196
-inst196: // alt -> 191, 197
-	bt = append(bt, stateMatch{c, i, 196, 0})
-	goto inst191
-inst196_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst197
-	}
-
-	goto unreachable
-	goto inst191
-inst191: // rune "09AFaf" -> 195
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst195
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst195
 		}
 	}
 	goto fail
@@ -3119,6 +3121,17 @@ inst200: // rune "09AFaf" -> 202
 	goto fail
 
 	goto unreachable
+	goto inst205
+inst205: // string ":" -> 232
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst232
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst202
 inst202: // alt -> 201, 205
 	bt = append(bt, stateMatch{c, i, 202, 0})
@@ -3130,17 +3143,6 @@ inst202_alt:
 		bt = bt[:n]
 		goto inst205
 	}
-
-	goto unreachable
-	goto inst205
-inst205: // string ":" -> 232
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst232
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst201
@@ -3162,20 +3164,20 @@ inst201: // rune "09AFaf" -> 205
 	goto fail
 
 	goto unreachable
-	goto inst208
-inst208: // rune "09AFaf" -> 210
+	goto inst209
+inst209: // rune "09AFaf" -> 213
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst210
+				goto inst213
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst210
+			goto inst213
 		}
 	}
 	goto fail
@@ -3194,20 +3196,20 @@ inst210_alt:
 	}
 
 	goto unreachable
-	goto inst209
-inst209: // rune "09AFaf" -> 213
+	goto inst208
+inst208: // rune "09AFaf" -> 210
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst213
+				goto inst210
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst213
+			goto inst210
 		}
 	}
 	goto fail
@@ -3301,62 +3303,6 @@ inst232_alt:
 	}
 
 	goto unreachable
-	goto inst234
-inst234: // string ":" -> 235
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst235
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst231
-inst231: // alt -> 214, 234
-	bt = append(bt, stateMatch{c, i, 231, 0})
-	goto inst214
-inst231_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst234
-	}
-
-	goto unreachable
-	goto inst214
-inst214: // rune "09AFaf" -> 220
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst220
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst220
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst220
-inst220: // alt -> 215, 221
-	bt = append(bt, stateMatch{c, i, 220, 0})
-	goto inst215
-inst220_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst221
-	}
-
-	goto unreachable
 	goto inst217
 inst217: // rune "09AFaf" -> 221
 	if i >= 0 && i < len(r) {
@@ -3389,17 +3335,6 @@ inst218_alt:
 	}
 
 	goto unreachable
-	goto inst221
-inst221: // string ":" -> 230
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst230
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst216
 inst216: // rune "09AFaf" -> 218
 	if i >= 0 && i < len(r) {
@@ -3424,6 +3359,73 @@ inst219: // alt -> 216, 221
 	bt = append(bt, stateMatch{c, i, 219, 0})
 	goto inst216
 inst219_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst221
+	}
+
+	goto unreachable
+	goto inst221
+inst221: // string ":" -> 230
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst230
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst231
+inst231: // alt -> 214, 234
+	bt = append(bt, stateMatch{c, i, 231, 0})
+	goto inst214
+inst231_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst234
+	}
+
+	goto unreachable
+	goto inst234
+inst234: // string ":" -> 235
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst235
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst214
+inst214: // rune "09AFaf" -> 220
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst220
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst220
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst220
+inst220: // alt -> 215, 221
+	bt = append(bt, stateMatch{c, i, 220, 0})
+	goto inst215
+inst220_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -3461,100 +3463,6 @@ inst230_alt:
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst234
-	}
-
-	goto unreachable
-	goto inst225
-inst225: // rune "09AFaf" -> 229
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst229
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst229
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst226
-inst226: // alt -> 225, 229
-	bt = append(bt, stateMatch{c, i, 226, 0})
-	goto inst225
-inst226_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst229
-	}
-
-	goto unreachable
-	goto inst229
-inst229: // string "::" -> 235
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
-			i += 2
-			goto inst235
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst235
-inst235: // rune "09AFaf" -> 241
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst241
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst241
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst224
-inst224: // rune "09AFaf" -> 226
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst226
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst226
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst227
-inst227: // alt -> 224, 229
-	bt = append(bt, stateMatch{c, i, 227, 0})
-	goto inst224
-inst227_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst229
 	}
 
 	goto unreachable
@@ -3609,52 +3517,95 @@ inst223: // rune "09AFaf" -> 227
 	goto fail
 
 	goto unreachable
-	goto inst238
-inst238: // rune "09AFaf" -> 250
+	goto inst227
+inst227: // alt -> 224, 229
+	bt = append(bt, stateMatch{c, i, 227, 0})
+	goto inst224
+inst227_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst229
+	}
+
+	goto unreachable
+	goto inst235
+inst235: // rune "09AFaf" -> 241
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst250
+				goto inst241
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst250
+			goto inst241
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst239
-inst239: // alt -> 238, 250
-	bt = append(bt, stateMatch{c, i, 239, 0})
-	goto inst238
-inst239_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst250
+	goto inst229
+inst229: // string "::" -> 235
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "::" {
+			i += 2
+			goto inst235
+		}
 	}
+	goto fail
 
 	goto unreachable
-	goto inst237
-inst237: // rune "09AFaf" -> 239
+	goto inst224
+inst224: // rune "09AFaf" -> 226
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst239
+				goto inst226
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst239
+			goto inst226
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst226
+inst226: // alt -> 225, 229
+	bt = append(bt, stateMatch{c, i, 226, 0})
+	goto inst225
+inst226_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst229
+	}
+
+	goto unreachable
+	goto inst225
+inst225: // rune "09AFaf" -> 229
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst229
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst229
 		}
 	}
 	goto fail
@@ -3705,6 +3656,38 @@ inst240_alt:
 	}
 
 	goto unreachable
+	goto inst237
+inst237: // rune "09AFaf" -> 239
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst239
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst239
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst239
+inst239: // alt -> 238, 250
+	bt = append(bt, stateMatch{c, i, 239, 0})
+	goto inst238
+inst239_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst250
+	}
+
+	goto unreachable
 	goto inst250
 inst250: // alt -> 242, 772
 	bt = append(bt, stateMatch{c, i, 250, 0})
@@ -3718,6 +3701,25 @@ inst250_alt:
 	}
 
 	goto unreachable
+	goto inst238
+inst238: // rune "09AFaf" -> 250
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst250
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst250
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst242
 inst242: // string ":" -> 243
 	if i >= 0 && i+1 <= len(r) {
@@ -3728,24 +3730,7 @@ inst242: // string ":" -> 243
 	}
 	goto fail
 
-	goto unreachable
-	goto inst243
-inst243: // rune "09AFaf" -> 249
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst249
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst249
-		}
-	}
-	goto fail
+	// inst446 unreacheable
 
 	goto unreachable
 	goto inst313
@@ -3780,11 +3765,30 @@ inst252: // rune "09AFaf" -> 258
 	goto fail
 
 	goto unreachable
-	goto inst249
-inst249: // alt -> 244, 772
-	bt = append(bt, stateMatch{c, i, 249, 0})
-	goto inst244
-inst249_alt:
+	goto inst243
+inst243: // rune "09AFaf" -> 249
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst249
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst249
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst187
+inst187: // alt -> 184, 772
+	bt = append(bt, stateMatch{c, i, 187, 0})
+	goto inst184
+inst187_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -3793,20 +3797,20 @@ inst249_alt:
 	}
 
 	goto unreachable
-	goto inst244
-inst244: // rune "09AFaf" -> 248
+	goto inst184
+inst184: // rune "09AFaf" -> 186
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst248
+				goto inst186
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst248
+			goto inst186
 		}
 	}
 	goto fail
@@ -3876,6 +3880,38 @@ inst254: // rune "09AFaf" -> 256
 	goto fail
 
 	goto unreachable
+	goto inst249
+inst249: // alt -> 244, 772
+	bt = append(bt, stateMatch{c, i, 249, 0})
+	goto inst244
+inst249_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst244
+inst244: // rune "09AFaf" -> 248
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst248
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst248
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst259
 inst259: // string ":" -> 286
 	if i >= 0 && i+1 <= len(r) {
@@ -3919,75 +3955,43 @@ inst255: // rune "09AFaf" -> 259
 	goto fail
 
 	goto unreachable
-	goto inst286
-inst286: // alt -> 260, 287
-	bt = append(bt, stateMatch{c, i, 286, 0})
-	goto inst260
-inst286_alt:
+	goto inst248
+inst248: // alt -> 245, 772
+	bt = append(bt, stateMatch{c, i, 248, 0})
+	goto inst245
+inst248_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst287
+		goto inst772
 	}
 
 	goto unreachable
-	goto inst260
-inst260: // rune "09AFaf" -> 266
+	goto inst263
+inst263: // rune "09AFaf" -> 267
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst266
+				goto inst267
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst266
+			goto inst267
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst266
-inst266: // alt -> 261, 267
-	bt = append(bt, stateMatch{c, i, 266, 0})
-	goto inst261
-inst266_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst267
-	}
-
-	goto unreachable
-	goto inst261
-inst261: // rune "09AFaf" -> 265
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst265
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst265
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst265
-inst265: // alt -> 262, 267
-	bt = append(bt, stateMatch{c, i, 265, 0})
-	goto inst262
-inst265_alt:
+	goto inst264
+inst264: // alt -> 263, 267
+	bt = append(bt, stateMatch{c, i, 264, 0})
+	goto inst263
+inst264_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -4015,19 +4019,6 @@ inst262: // rune "09AFaf" -> 264
 	goto fail
 
 	goto unreachable
-	goto inst264
-inst264: // alt -> 263, 267
-	bt = append(bt, stateMatch{c, i, 264, 0})
-	goto inst263
-inst264_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst267
-	}
-
-	goto unreachable
 	goto inst267
 inst267: // string ":" -> 285
 	if i >= 0 && i+1 <= len(r) {
@@ -4039,55 +4030,68 @@ inst267: // string ":" -> 285
 	goto fail
 
 	goto unreachable
-	goto inst263
-inst263: // rune "09AFaf" -> 267
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst267
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst267
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst285
-inst285: // alt -> 268, 287
-	bt = append(bt, stateMatch{c, i, 285, 0})
-	goto inst268
-inst285_alt:
+	goto inst265
+inst265: // alt -> 262, 267
+	bt = append(bt, stateMatch{c, i, 265, 0})
+	goto inst262
+inst265_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst287
+		goto inst267
 	}
 
 	goto unreachable
-	goto inst268
-inst268: // rune "09AFaf" -> 274
+	goto inst245
+inst245: // rune "09AFaf" -> 247
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst274
+				goto inst247
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst274
+			goto inst247
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst261
+inst261: // rune "09AFaf" -> 265
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst265
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst265
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst266
+inst266: // alt -> 261, 267
+	bt = append(bt, stateMatch{c, i, 266, 0})
+	goto inst261
+inst266_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst267
+	}
 
 	goto unreachable
 	goto inst270
@@ -4165,19 +4169,6 @@ inst275: // string ":" -> 284
 	goto fail
 
 	goto unreachable
-	goto inst274
-inst274: // alt -> 269, 275
-	bt = append(bt, stateMatch{c, i, 274, 0})
-	goto inst269
-inst274_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst275
-	}
-
-	goto unreachable
 	goto inst269
 inst269: // rune "09AFaf" -> 273
 	if i >= 0 && i < len(r) {
@@ -4195,6 +4186,83 @@ inst269: // rune "09AFaf" -> 273
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst274
+inst274: // alt -> 269, 275
+	bt = append(bt, stateMatch{c, i, 274, 0})
+	goto inst269
+inst274_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst275
+	}
+
+	goto unreachable
+	goto inst268
+inst268: // rune "09AFaf" -> 274
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst274
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst274
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst285
+inst285: // alt -> 268, 287
+	bt = append(bt, stateMatch{c, i, 285, 0})
+	goto inst268
+inst285_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst287
+	}
+
+	goto unreachable
+	goto inst260
+inst260: // rune "09AFaf" -> 266
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst266
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst266
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst286
+inst286: // alt -> 260, 287
+	bt = append(bt, stateMatch{c, i, 286, 0})
+	goto inst260
+inst286_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst287
+	}
 
 	goto unreachable
 	goto inst287
@@ -4240,6 +4308,19 @@ inst276: // rune "09AFaf" -> 282
 	goto fail
 
 	goto unreachable
+	goto inst282
+inst282: // alt -> 277, 283
+	bt = append(bt, stateMatch{c, i, 282, 0})
+	goto inst277
+inst282_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst283
+	}
+
+	goto unreachable
 	goto inst288
 inst288: // rune "09AFaf" -> 294
 	if i >= 0 && i < len(r) {
@@ -4259,11 +4340,41 @@ inst288: // rune "09AFaf" -> 294
 	goto fail
 
 	goto unreachable
-	goto inst282
-inst282: // alt -> 277, 283
-	bt = append(bt, stateMatch{c, i, 282, 0})
-	goto inst277
-inst282_alt:
+	goto inst283
+inst283: // string "::" -> 288
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "::" {
+			i += 2
+			goto inst288
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst279
+inst279: // rune "09AFaf" -> 283
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst283
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst283
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst280
+inst280: // alt -> 279, 283
+	bt = append(bt, stateMatch{c, i, 280, 0})
+	goto inst279
+inst280_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -4286,17 +4397,6 @@ inst277: // rune "09AFaf" -> 281
 		} else if false {
 			i += sz
 			goto inst281
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst283
-inst283: // string "::" -> 288
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
-			i += 2
-			goto inst288
 		}
 	}
 	goto fail
@@ -4334,75 +4434,30 @@ inst278: // rune "09AFaf" -> 280
 	goto fail
 
 	goto unreachable
-	goto inst280
-inst280: // alt -> 279, 283
-	bt = append(bt, stateMatch{c, i, 280, 0})
-	goto inst279
-inst280_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst283
-	}
-
-	goto unreachable
-	goto inst279
-inst279: // rune "09AFaf" -> 283
+	goto inst291
+inst291: // rune "09AFaf" -> 312
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst283
+				goto inst312
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst283
+			goto inst312
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst294
-inst294: // alt -> 289, 312
-	bt = append(bt, stateMatch{c, i, 294, 0})
-	goto inst289
-inst294_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst312
-	}
-
-	goto unreachable
-	goto inst289
-inst289: // rune "09AFaf" -> 293
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst293
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst293
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst293
-inst293: // alt -> 290, 312
-	bt = append(bt, stateMatch{c, i, 293, 0})
-	goto inst290
-inst293_alt:
+	goto inst292
+inst292: // alt -> 291, 312
+	bt = append(bt, stateMatch{c, i, 292, 0})
+	goto inst291
+inst292_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -4430,36 +4485,17 @@ inst290: // rune "09AFaf" -> 292
 	goto fail
 
 	goto unreachable
-	goto inst292
-inst292: // alt -> 291, 312
-	bt = append(bt, stateMatch{c, i, 292, 0})
-	goto inst291
-inst292_alt:
+	goto inst294
+inst294: // alt -> 289, 312
+	bt = append(bt, stateMatch{c, i, 294, 0})
+	goto inst289
+inst294_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst312
 	}
-
-	goto unreachable
-	goto inst291
-inst291: // rune "09AFaf" -> 312
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst312
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst312
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst312
@@ -4473,6 +4509,38 @@ inst312_alt:
 		bt = bt[:n]
 		goto inst772
 	}
+
+	goto unreachable
+	goto inst293
+inst293: // alt -> 290, 312
+	bt = append(bt, stateMatch{c, i, 293, 0})
+	goto inst290
+inst293_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst312
+	}
+
+	goto unreachable
+	goto inst289
+inst289: // rune "09AFaf" -> 293
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst293
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst293
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst295
@@ -4500,6 +4568,38 @@ inst296: // rune "09AFaf" -> 302
 		} else if false {
 			i += sz
 			goto inst302
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst247
+inst247: // alt -> 246, 772
+	bt = append(bt, stateMatch{c, i, 247, 0})
+	goto inst246
+inst247_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst246
+inst246: // rune "09AFaf" -> 772
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst772
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst772
 		}
 	}
 	goto fail
@@ -4582,6 +4682,19 @@ inst300_alt:
 	}
 
 	goto unreachable
+	goto inst311
+inst311: // alt -> 303, 772
+	bt = append(bt, stateMatch{c, i, 311, 0})
+	goto inst303
+inst311_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
 	goto inst299
 inst299: // rune "09AFaf" -> 311
 	if i >= 0 && i < len(r) {
@@ -4599,19 +4712,6 @@ inst299: // rune "09AFaf" -> 311
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst311
-inst311: // alt -> 303, 772
-	bt = append(bt, stateMatch{c, i, 311, 0})
-	goto inst303
-inst311_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
 
 	goto unreachable
 	goto inst303
@@ -4639,6 +4739,70 @@ inst304: // rune "09AFaf" -> 310
 		} else if false {
 			i += sz
 			goto inst310
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst310
+inst310: // alt -> 305, 772
+	bt = append(bt, stateMatch{c, i, 310, 0})
+	goto inst305
+inst310_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst305
+inst305: // rune "09AFaf" -> 309
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst309
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst309
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst309
+inst309: // alt -> 306, 772
+	bt = append(bt, stateMatch{c, i, 309, 0})
+	goto inst306
+inst309_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst306
+inst306: // rune "09AFaf" -> 308
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst308
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst308
 		}
 	}
 	goto fail
@@ -4740,17 +4904,6 @@ inst316: // rune "09AFaf" -> 318
 	goto fail
 
 	goto unreachable
-	goto inst321
-inst321: // string ":" -> 339
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst339
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst318
 inst318: // alt -> 317, 321
 	bt = append(bt, stateMatch{c, i, 318, 0})
@@ -4762,6 +4915,17 @@ inst318_alt:
 		bt = bt[:n]
 		goto inst321
 	}
+
+	goto unreachable
+	goto inst321
+inst321: // string ":" -> 339
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst339
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst317
@@ -4879,6 +5043,17 @@ inst324: // rune "09AFaf" -> 326
 	goto fail
 
 	goto unreachable
+	goto inst329
+inst329: // string ":" -> 338
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst338
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst326
 inst326: // alt -> 325, 329
 	bt = append(bt, stateMatch{c, i, 326, 0})
@@ -4890,17 +5065,6 @@ inst326_alt:
 		bt = bt[:n]
 		goto inst329
 	}
-
-	goto unreachable
-	goto inst329
-inst329: // string ":" -> 338
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst338
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst325
@@ -4922,105 +5086,30 @@ inst325: // rune "09AFaf" -> 329
 	goto fail
 
 	goto unreachable
-	goto inst338
-inst338: // alt -> 330, 340
-	bt = append(bt, stateMatch{c, i, 338, 0})
-	goto inst330
-inst338_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst340
-	}
-
-	goto unreachable
-	goto inst340
-inst340: // string ":" -> 341
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst341
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst330
-inst330: // rune "09AFaf" -> 336
+	goto inst331
+inst331: // rune "09AFaf" -> 335
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst336
+				goto inst335
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst336
+			goto inst335
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst376
-inst376: // rune "09AFaf" -> 382
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst382
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst382
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst437
-inst437: // alt -> 375, 376
-	bt = append(bt, stateMatch{c, i, 437, 0})
-	goto inst375
-inst437_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst376
-	}
-
-	goto unreachable
-	goto inst333
-inst333: // rune "09AFaf" -> 337
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst337
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst337
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst334
-inst334: // alt -> 333, 337
-	bt = append(bt, stateMatch{c, i, 334, 0})
-	goto inst333
-inst334_alt:
+	goto inst335
+inst335: // alt -> 332, 337
+	bt = append(bt, stateMatch{c, i, 335, 0})
+	goto inst332
+inst335_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -5048,17 +5137,36 @@ inst332: // rune "09AFaf" -> 334
 	goto fail
 
 	goto unreachable
-	goto inst336
-inst336: // alt -> 331, 337
-	bt = append(bt, stateMatch{c, i, 336, 0})
-	goto inst331
-inst336_alt:
+	goto inst334
+inst334: // alt -> 333, 337
+	bt = append(bt, stateMatch{c, i, 334, 0})
+	goto inst333
+inst334_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst337
 	}
+
+	goto unreachable
+	goto inst333
+inst333: // rune "09AFaf" -> 337
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst337
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst337
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst337
@@ -5072,11 +5180,11 @@ inst337: // string "::" -> 341
 	goto fail
 
 	goto unreachable
-	goto inst335
-inst335: // alt -> 332, 337
-	bt = append(bt, stateMatch{c, i, 335, 0})
-	goto inst332
-inst335_alt:
+	goto inst336
+inst336: // alt -> 331, 337
+	bt = append(bt, stateMatch{c, i, 336, 0})
+	goto inst331
+inst336_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -5085,20 +5193,12 @@ inst335_alt:
 	}
 
 	goto unreachable
-	goto inst331
-inst331: // rune "09AFaf" -> 335
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst335
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst335
+	goto inst340
+inst340: // string ":" -> 341
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst341
 		}
 	}
 	goto fail
@@ -5123,75 +5223,75 @@ inst341: // rune "09AFaf" -> 347
 	goto fail
 
 	goto unreachable
-	goto inst248
-inst248: // alt -> 245, 772
-	bt = append(bt, stateMatch{c, i, 248, 0})
-	goto inst245
-inst248_alt:
+	goto inst338
+inst338: // alt -> 330, 340
+	bt = append(bt, stateMatch{c, i, 338, 0})
+	goto inst330
+inst338_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst772
+		goto inst340
 	}
 
 	goto unreachable
-	goto inst245
-inst245: // rune "09AFaf" -> 247
+	goto inst330
+inst330: // rune "09AFaf" -> 336
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst247
+				goto inst336
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst247
+			goto inst336
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst344
-inst344: // rune "09AFaf" -> 374
+	goto inst347
+inst347: // alt -> 342, 374
+	bt = append(bt, stateMatch{c, i, 347, 0})
+	goto inst342
+inst347_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst374
+	}
+
+	goto unreachable
+	goto inst342
+inst342: // rune "09AFaf" -> 346
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst374
+				goto inst346
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst374
+			goto inst346
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst499
-inst499: // alt -> 437, 438
-	bt = append(bt, stateMatch{c, i, 499, 0})
-	goto inst437
-inst499_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst438
-	}
-
-	goto unreachable
-	goto inst345
-inst345: // alt -> 344, 374
-	bt = append(bt, stateMatch{c, i, 345, 0})
-	goto inst344
-inst345_alt:
+	goto inst346
+inst346: // alt -> 343, 374
+	bt = append(bt, stateMatch{c, i, 346, 0})
+	goto inst343
+inst346_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -5219,11 +5319,11 @@ inst343: // rune "09AFaf" -> 345
 	goto fail
 
 	goto unreachable
-	goto inst347
-inst347: // alt -> 342, 374
-	bt = append(bt, stateMatch{c, i, 347, 0})
-	goto inst342
-inst347_alt:
+	goto inst345
+inst345: // alt -> 344, 374
+	bt = append(bt, stateMatch{c, i, 345, 0})
+	goto inst344
+inst345_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -5245,52 +5345,20 @@ inst374_alt:
 	}
 
 	goto unreachable
-	goto inst346
-inst346: // alt -> 343, 374
-	bt = append(bt, stateMatch{c, i, 346, 0})
-	goto inst343
-inst346_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst374
-	}
-
-	goto unreachable
-	goto inst438
-inst438: // rune "09AFaf" -> 444
+	goto inst344
+inst344: // rune "09AFaf" -> 374
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst444
+				goto inst374
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst444
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst342
-inst342: // rune "09AFaf" -> 346
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst346
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst346
+			goto inst374
 		}
 	}
 	goto fail
@@ -5324,51 +5392,6 @@ inst349: // rune "09AFaf" -> 355
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst355
-inst355: // alt -> 350, 373
-	bt = append(bt, stateMatch{c, i, 355, 0})
-	goto inst350
-inst355_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst373
-	}
-
-	goto unreachable
-	goto inst350
-inst350: // rune "09AFaf" -> 354
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst354
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst354
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst354
-inst354: // alt -> 351, 373
-	bt = append(bt, stateMatch{c, i, 354, 0})
-	goto inst351
-inst354_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst373
-	}
 
 	goto unreachable
 	goto inst351
@@ -5420,6 +5443,51 @@ inst352: // rune "09AFaf" -> 373
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst355
+inst355: // alt -> 350, 373
+	bt = append(bt, stateMatch{c, i, 355, 0})
+	goto inst350
+inst355_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst373
+	}
+
+	goto unreachable
+	goto inst350
+inst350: // rune "09AFaf" -> 354
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst354
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst354
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst354
+inst354: // alt -> 351, 373
+	bt = append(bt, stateMatch{c, i, 354, 0})
+	goto inst351
+inst354_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst373
+	}
 
 	goto unreachable
 	goto inst373
@@ -5497,51 +5565,6 @@ inst358: // rune "09AFaf" -> 362
 	goto fail
 
 	goto unreachable
-	goto inst360
-inst360: // rune "09AFaf" -> 372
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst372
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst372
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst361
-inst361: // alt -> 360, 372
-	bt = append(bt, stateMatch{c, i, 361, 0})
-	goto inst360
-inst361_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst372
-	}
-
-	goto unreachable
-	goto inst372
-inst372: // alt -> 364, 772
-	bt = append(bt, stateMatch{c, i, 372, 0})
-	goto inst364
-inst372_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
 	goto inst362
 inst362: // alt -> 359, 372
 	bt = append(bt, stateMatch{c, i, 362, 0})
@@ -5574,6 +5597,51 @@ inst359: // rune "09AFaf" -> 361
 	goto fail
 
 	goto unreachable
+	goto inst361
+inst361: // alt -> 360, 372
+	bt = append(bt, stateMatch{c, i, 361, 0})
+	goto inst360
+inst361_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst372
+	}
+
+	goto unreachable
+	goto inst372
+inst372: // alt -> 364, 772
+	bt = append(bt, stateMatch{c, i, 372, 0})
+	goto inst364
+inst372_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst360
+inst360: // rune "09AFaf" -> 372
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst372
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst372
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst364
 inst364: // string ":" -> 365
 	if i >= 0 && i+1 <= len(r) {
@@ -5583,6 +5651,51 @@ inst364: // string ":" -> 365
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst397
+inst397: // rune "09AFaf" -> 436
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst436
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst436
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst398
+inst398: // alt -> 397, 436
+	bt = append(bt, stateMatch{c, i, 398, 0})
+	goto inst397
+inst398_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst436
+	}
+
+	goto unreachable
+	goto inst436
+inst436: // alt -> 401, 772
+	bt = append(bt, stateMatch{c, i, 436, 0})
+	goto inst401
+inst436_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
 
 	goto unreachable
 	goto inst365
@@ -5604,43 +5717,54 @@ inst365: // rune "09AFaf" -> 371
 	goto fail
 
 	goto unreachable
-	goto inst371
-inst371: // alt -> 366, 772
-	bt = append(bt, stateMatch{c, i, 371, 0})
-	goto inst366
-inst371_alt:
+	goto inst401
+inst401: // string ":" -> 402
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst402
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst400
+inst400: // alt -> 395, 436
+	bt = append(bt, stateMatch{c, i, 400, 0})
+	goto inst395
+inst400_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst772
+		goto inst436
 	}
 
 	goto unreachable
-	goto inst366
-inst366: // rune "09AFaf" -> 370
+	goto inst378
+inst378: // rune "09AFaf" -> 380
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst370
+				goto inst380
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst370
+			goto inst380
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst382
-inst382: // alt -> 377, 383
-	bt = append(bt, stateMatch{c, i, 382, 0})
-	goto inst377
-inst382_alt:
+	goto inst381
+inst381: // alt -> 378, 383
+	bt = append(bt, stateMatch{c, i, 381, 0})
+	goto inst378
+inst381_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -5668,11 +5792,11 @@ inst377: // rune "09AFaf" -> 381
 	goto fail
 
 	goto unreachable
-	goto inst381
-inst381: // alt -> 378, 383
-	bt = append(bt, stateMatch{c, i, 381, 0})
-	goto inst378
-inst381_alt:
+	goto inst382
+inst382: // alt -> 377, 383
+	bt = append(bt, stateMatch{c, i, 382, 0})
+	goto inst377
+inst382_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -5681,20 +5805,44 @@ inst381_alt:
 	}
 
 	goto unreachable
-	goto inst378
-inst378: // rune "09AFaf" -> 380
+	goto inst376
+inst376: // rune "09AFaf" -> 382
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst380
+				goto inst382
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst380
+			goto inst382
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst437
+inst437: // alt -> 375, 376
+	bt = append(bt, stateMatch{c, i, 437, 0})
+	goto inst375
+inst437_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst376
+	}
+
+	goto unreachable
+	goto inst383
+inst383: // string ":" -> 392
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst392
 		}
 	}
 	goto fail
@@ -5711,17 +5859,6 @@ inst380_alt:
 		bt = bt[:n]
 		goto inst383
 	}
-
-	goto unreachable
-	goto inst383
-inst383: // string ":" -> 392
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst392
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst379
@@ -5762,19 +5899,6 @@ inst386: // rune "09AFaf" -> 388
 	goto fail
 
 	goto unreachable
-	goto inst389
-inst389: // alt -> 386, 391
-	bt = append(bt, stateMatch{c, i, 389, 0})
-	goto inst386
-inst389_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst391
-	}
-
-	goto unreachable
 	goto inst388
 inst388: // alt -> 387, 391
 	bt = append(bt, stateMatch{c, i, 388, 0})
@@ -5807,11 +5931,11 @@ inst387: // rune "09AFaf" -> 391
 	goto fail
 
 	goto unreachable
-	goto inst390
-inst390: // alt -> 385, 391
-	bt = append(bt, stateMatch{c, i, 390, 0})
-	goto inst385
-inst390_alt:
+	goto inst389
+inst389: // alt -> 386, 391
+	bt = append(bt, stateMatch{c, i, 389, 0})
+	goto inst386
+inst389_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -5837,6 +5961,62 @@ inst385: // rune "09AFaf" -> 389
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst384
+inst384: // rune "09AFaf" -> 390
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst390
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst390
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst390
+inst390: // alt -> 385, 391
+	bt = append(bt, stateMatch{c, i, 390, 0})
+	goto inst385
+inst390_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst391
+	}
+
+	goto unreachable
+	goto inst391
+inst391: // string "::" -> 394
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "::" {
+			i += 2
+			goto inst394
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst392
+inst392: // alt -> 384, 393
+	bt = append(bt, stateMatch{c, i, 392, 0})
+	goto inst384
+inst392_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst393
+	}
 
 	goto unreachable
 	goto inst393
@@ -5869,81 +6049,6 @@ inst394: // rune "09AFaf" -> 400
 	goto fail
 
 	goto unreachable
-	goto inst391
-inst391: // string "::" -> 394
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
-			i += 2
-			goto inst394
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst392
-inst392: // alt -> 384, 393
-	bt = append(bt, stateMatch{c, i, 392, 0})
-	goto inst384
-inst392_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst393
-	}
-
-	goto unreachable
-	goto inst384
-inst384: // rune "09AFaf" -> 390
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst390
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst390
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst370
-inst370: // alt -> 367, 772
-	bt = append(bt, stateMatch{c, i, 370, 0})
-	goto inst367
-inst370_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst367
-inst367: // rune "09AFaf" -> 369
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst369
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst369
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst395
 inst395: // rune "09AFaf" -> 399
 	if i >= 0 && i < len(r) {
@@ -5958,75 +6063,6 @@ inst395: // rune "09AFaf" -> 399
 		} else if false {
 			i += sz
 			goto inst399
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst400
-inst400: // alt -> 395, 436
-	bt = append(bt, stateMatch{c, i, 400, 0})
-	goto inst395
-inst400_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst436
-	}
-
-	goto unreachable
-	goto inst399
-inst399: // alt -> 396, 436
-	bt = append(bt, stateMatch{c, i, 399, 0})
-	goto inst396
-inst399_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst436
-	}
-
-	goto unreachable
-	goto inst398
-inst398: // alt -> 397, 436
-	bt = append(bt, stateMatch{c, i, 398, 0})
-	goto inst397
-inst398_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst436
-	}
-
-	goto unreachable
-	goto inst396
-inst396: // rune "09AFaf" -> 398
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst398
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst398
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst401
-inst401: // string ":" -> 402
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst402
 		}
 	}
 	goto fail
@@ -6051,36 +6087,113 @@ inst402: // rune "09AFaf" -> 408
 	goto fail
 
 	goto unreachable
-	goto inst397
-inst397: // rune "09AFaf" -> 436
+	goto inst396
+inst396: // rune "09AFaf" -> 398
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst436
+				goto inst398
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst436
+			goto inst398
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst436
-inst436: // alt -> 401, 772
-	bt = append(bt, stateMatch{c, i, 436, 0})
-	goto inst401
-inst436_alt:
+	goto inst399
+inst399: // alt -> 396, 436
+	bt = append(bt, stateMatch{c, i, 399, 0})
+	goto inst396
+inst399_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst436
+	}
+
+	goto unreachable
+	goto inst371
+inst371: // alt -> 366, 772
+	bt = append(bt, stateMatch{c, i, 371, 0})
+	goto inst366
+inst371_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst772
 	}
+
+	goto unreachable
+	goto inst366
+inst366: // rune "09AFaf" -> 370
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst370
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst370
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst370
+inst370: // alt -> 367, 772
+	bt = append(bt, stateMatch{c, i, 370, 0})
+	goto inst367
+inst370_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst499
+inst499: // alt -> 437, 438
+	bt = append(bt, stateMatch{c, i, 499, 0})
+	goto inst437
+inst499_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst438
+	}
+
+	goto unreachable
+	goto inst367
+inst367: // rune "09AFaf" -> 369
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst369
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst369
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst369
@@ -6093,19 +6206,6 @@ inst369_alt:
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst772
-	}
-
-	goto unreachable
-	goto inst406
-inst406: // alt -> 405, 435
-	bt = append(bt, stateMatch{c, i, 406, 0})
-	goto inst405
-inst406_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst435
 	}
 
 	goto unreachable
@@ -6185,6 +6285,19 @@ inst403: // rune "09AFaf" -> 407
 	goto fail
 
 	goto unreachable
+	goto inst406
+inst406: // alt -> 405, 435
+	bt = append(bt, stateMatch{c, i, 406, 0})
+	goto inst405
+inst406_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst435
+	}
+
+	goto unreachable
 	goto inst407
 inst407: // alt -> 404, 435
 	bt = append(bt, stateMatch{c, i, 407, 0})
@@ -6239,19 +6352,6 @@ inst410: // rune "09AFaf" -> 416
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst415
-inst415: // alt -> 412, 434
-	bt = append(bt, stateMatch{c, i, 415, 0})
-	goto inst412
-inst415_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst434
-	}
 
 	goto unreachable
 	goto inst411
@@ -6324,6 +6424,19 @@ inst414_alt:
 	}
 
 	goto unreachable
+	goto inst415
+inst415: // alt -> 412, 434
+	bt = append(bt, stateMatch{c, i, 415, 0})
+	goto inst412
+inst415_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst434
+	}
+
+	goto unreachable
 	goto inst416
 inst416: // alt -> 411, 434
 	bt = append(bt, stateMatch{c, i, 416, 0})
@@ -6334,19 +6447,6 @@ inst416_alt:
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst434
-	}
-
-	goto unreachable
-	goto inst424
-inst424: // alt -> 419, 433
-	bt = append(bt, stateMatch{c, i, 424, 0})
-	goto inst419
-inst424_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst433
 	}
 
 	goto unreachable
@@ -6463,12 +6563,44 @@ inst423_alt:
 	}
 
 	goto unreachable
+	goto inst424
+inst424: // alt -> 419, 433
+	bt = append(bt, stateMatch{c, i, 424, 0})
+	goto inst419
+inst424_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst433
+	}
+
+	goto unreachable
 	goto inst425
 inst425: // string ":" -> 426
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
 			goto inst426
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst426
+inst426: // rune "09AFaf" -> 432
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst432
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst432
 		}
 	}
 	goto fail
@@ -6493,11 +6625,56 @@ inst427: // rune "09AFaf" -> 431
 	goto fail
 
 	goto unreachable
+	goto inst428
+inst428: // rune "09AFaf" -> 430
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst430
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst430
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst432
 inst432: // alt -> 427, 772
 	bt = append(bt, stateMatch{c, i, 432, 0})
 	goto inst427
 inst432_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst431
+inst431: // alt -> 428, 772
+	bt = append(bt, stateMatch{c, i, 431, 0})
+	goto inst428
+inst431_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst433
+inst433: // alt -> 425, 772
+	bt = append(bt, stateMatch{c, i, 433, 0})
+	goto inst425
+inst433_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -6532,17 +6709,23 @@ inst435_alt:
 	}
 
 	goto unreachable
-	goto inst433
-inst433: // alt -> 425, 772
-	bt = append(bt, stateMatch{c, i, 433, 0})
-	goto inst425
-inst433_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
+	goto inst438
+inst438: // rune "09AFaf" -> 444
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst444
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst444
+		}
 	}
+	goto fail
 
 	goto unreachable
 	goto inst439
@@ -6559,6 +6742,100 @@ inst439: // rune "09AFaf" -> 443
 		} else if false {
 			i += sz
 			goto inst443
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst445
+inst445: // string "::" -> 447
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "::" {
+			i += 2
+			goto inst447
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst440
+inst440: // rune "09AFaf" -> 442
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst442
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst442
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst453
+inst453: // alt -> 448, 498
+	bt = append(bt, stateMatch{c, i, 453, 0})
+	goto inst448
+inst453_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst498
+	}
+
+	goto unreachable
+	goto inst449
+inst449: // rune "09AFaf" -> 451
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst451
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst451
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst451
+inst451: // alt -> 450, 498
+	bt = append(bt, stateMatch{c, i, 451, 0})
+	goto inst450
+inst451_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst498
+	}
+
+	goto unreachable
+	goto inst441
+inst441: // rune "09AFaf" -> 445
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst445
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst445
 		}
 	}
 	goto fail
@@ -6603,23 +6880,55 @@ inst444_alt:
 	}
 
 	goto unreachable
-	goto inst441
-inst441: // rune "09AFaf" -> 445
+	goto inst447
+inst447: // rune "09AFaf" -> 453
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst445
+				goto inst453
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst445
+			goto inst453
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst448
+inst448: // rune "09AFaf" -> 452
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst452
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst452
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst498
+inst498: // alt -> 454, 772
+	bt = append(bt, stateMatch{c, i, 498, 0})
+	goto inst454
+inst498_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
 
 	goto unreachable
 	goto inst450
@@ -6641,156 +6950,6 @@ inst450: // rune "09AFaf" -> 498
 	goto fail
 
 	goto unreachable
-	goto inst445
-inst445: // string "::" -> 447
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
-			i += 2
-			goto inst447
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst447
-inst447: // rune "09AFaf" -> 453
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst453
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst453
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst431
-inst431: // alt -> 428, 772
-	bt = append(bt, stateMatch{c, i, 431, 0})
-	goto inst428
-inst431_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst426
-inst426: // rune "09AFaf" -> 432
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst432
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst432
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst498
-inst498: // alt -> 454, 772
-	bt = append(bt, stateMatch{c, i, 498, 0})
-	goto inst454
-inst498_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst440
-inst440: // rune "09AFaf" -> 442
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst442
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst442
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst451
-inst451: // alt -> 450, 498
-	bt = append(bt, stateMatch{c, i, 451, 0})
-	goto inst450
-inst451_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst498
-	}
-
-	goto unreachable
-	goto inst449
-inst449: // rune "09AFaf" -> 451
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst451
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst451
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst453
-inst453: // alt -> 448, 498
-	bt = append(bt, stateMatch{c, i, 453, 0})
-	goto inst448
-inst453_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst498
-	}
-
-	goto unreachable
-	goto inst454
-inst454: // string ":" -> 455
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst455
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst452
 inst452: // alt -> 449, 498
 	bt = append(bt, stateMatch{c, i, 452, 0})
@@ -6804,20 +6963,39 @@ inst452_alt:
 	}
 
 	goto unreachable
-	goto inst448
-inst448: // rune "09AFaf" -> 452
+	goto inst772
+inst772: // match
+	c[1] = i // end of match
+	goto match
+
+	goto unreachable
+	goto inst308
+inst308: // alt -> 307, 772
+	bt = append(bt, stateMatch{c, i, 308, 0})
+	goto inst307
+inst308_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst307
+inst307: // rune "09AFaf" -> 772
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst452
+				goto inst772
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst452
+			goto inst772
 		}
 	}
 	goto fail
@@ -6855,11 +7033,11 @@ inst60: // rune "09AFaf" -> 772
 	goto fail
 
 	goto unreachable
-	goto inst247
-inst247: // alt -> 246, 772
-	bt = append(bt, stateMatch{c, i, 247, 0})
-	goto inst246
-inst247_alt:
+	goto inst430
+inst430: // alt -> 429, 772
+	bt = append(bt, stateMatch{c, i, 430, 0})
+	goto inst429
+inst430_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -6868,8 +7046,8 @@ inst247_alt:
 	}
 
 	goto unreachable
-	goto inst246
-inst246: // rune "09AFaf" -> 772
+	goto inst429
+inst429: // rune "09AFaf" -> 772
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6887,11 +7065,11 @@ inst246: // rune "09AFaf" -> 772
 	goto fail
 
 	goto unreachable
-	goto inst187
-inst187: // alt -> 184, 772
-	bt = append(bt, stateMatch{c, i, 187, 0})
-	goto inst184
-inst187_alt:
+	goto inst186
+inst186: // alt -> 185, 772
+	bt = append(bt, stateMatch{c, i, 186, 0})
+	goto inst185
+inst186_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -6900,47 +7078,55 @@ inst187_alt:
 	}
 
 	goto unreachable
-	goto inst772
-inst772: // match
-	c[1] = i // end of match
-	goto match
-
-	goto unreachable
-	goto inst310
-inst310: // alt -> 305, 772
-	bt = append(bt, stateMatch{c, i, 310, 0})
-	goto inst305
-inst310_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst497
-inst497: // alt -> 462, 772
-	bt = append(bt, stateMatch{c, i, 497, 0})
-	goto inst462
-inst497_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst470
-inst470: // string ":" -> 471
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst471
+	goto inst185
+inst185: // rune "09AFaf" -> 772
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst772
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst772
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst465
+inst465: // rune "09AFaf" -> 467
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst467
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst467
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst461
+inst461: // alt -> 456, 497
+	bt = append(bt, stateMatch{c, i, 461, 0})
+	goto inst456
+inst461_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst497
+	}
 
 	goto unreachable
 	goto inst464
@@ -6962,113 +7148,6 @@ inst464: // rune "09AFaf" -> 468
 	goto fail
 
 	goto unreachable
-	goto inst469
-inst469: // alt -> 464, 496
-	bt = append(bt, stateMatch{c, i, 469, 0})
-	goto inst464
-inst469_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst496
-	}
-
-	goto unreachable
-	goto inst458
-inst458: // rune "09AFaf" -> 497
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst497
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst497
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst460
-inst460: // alt -> 457, 497
-	bt = append(bt, stateMatch{c, i, 460, 0})
-	goto inst457
-inst460_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst497
-	}
-
-	goto unreachable
-	goto inst462
-inst462: // string ":" -> 463
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst463
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst463
-inst463: // rune "09AFaf" -> 469
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst469
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst469
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst455
-inst455: // rune "09AFaf" -> 461
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst461
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst461
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst459
-inst459: // alt -> 458, 497
-	bt = append(bt, stateMatch{c, i, 459, 0})
-	goto inst458
-inst459_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst497
-	}
-
-	goto unreachable
 	goto inst466
 inst466: // rune "09AFaf" -> 496
 	if i >= 0 && i < len(r) {
@@ -7088,16 +7167,16 @@ inst466: // rune "09AFaf" -> 496
 	goto fail
 
 	goto unreachable
-	goto inst496
-inst496: // alt -> 470, 772
-	bt = append(bt, stateMatch{c, i, 496, 0})
-	goto inst470
-inst496_alt:
+	goto inst467
+inst467: // alt -> 466, 496
+	bt = append(bt, stateMatch{c, i, 467, 0})
+	goto inst466
+inst467_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst772
+		goto inst496
 	}
 
 	goto unreachable
@@ -7114,113 +7193,11 @@ inst468_alt:
 	}
 
 	goto unreachable
-	goto inst467
-inst467: // alt -> 466, 496
-	bt = append(bt, stateMatch{c, i, 467, 0})
-	goto inst466
-inst467_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst496
-	}
-
-	goto unreachable
-	goto inst461
-inst461: // alt -> 456, 497
-	bt = append(bt, stateMatch{c, i, 461, 0})
-	goto inst456
-inst461_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst497
-	}
-
-	goto unreachable
-	goto inst471
-inst471: // rune "09AFaf" -> 477
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst477
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst477
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst456
-inst456: // rune "09AFaf" -> 460
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst460
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst460
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst457
-inst457: // rune "09AFaf" -> 459
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst459
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst459
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst428
-inst428: // rune "09AFaf" -> 430
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst430
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst430
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst430
-inst430: // alt -> 429, 772
-	bt = append(bt, stateMatch{c, i, 430, 0})
-	goto inst429
-inst430_alt:
+	goto inst496
+inst496: // alt -> 470, 772
+	bt = append(bt, stateMatch{c, i, 496, 0})
+	goto inst470
+inst496_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -7229,70 +7206,25 @@ inst430_alt:
 	}
 
 	goto unreachable
-	goto inst475
-inst475: // alt -> 474, 495
-	bt = append(bt, stateMatch{c, i, 475, 0})
-	goto inst474
-inst475_alt:
+	goto inst469
+inst469: // alt -> 464, 496
+	bt = append(bt, stateMatch{c, i, 469, 0})
+	goto inst464
+inst469_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst495
+		goto inst496
 	}
 
 	goto unreachable
-	goto inst474
-inst474: // rune "09AFaf" -> 495
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst495
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst495
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst476
-inst476: // alt -> 473, 495
-	bt = append(bt, stateMatch{c, i, 476, 0})
-	goto inst473
-inst476_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst495
-	}
-
-	goto unreachable
-	goto inst477
-inst477: // alt -> 472, 495
-	bt = append(bt, stateMatch{c, i, 477, 0})
-	goto inst472
-inst477_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst495
-	}
-
-	goto unreachable
-	goto inst478
-inst478: // string ":" -> 479
+	goto inst470
+inst470: // string ":" -> 471
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
-			goto inst479
+			goto inst471
 		}
 	}
 	goto fail
@@ -7336,17 +7268,41 @@ inst473: // rune "09AFaf" -> 475
 	goto fail
 
 	goto unreachable
-	goto inst495
-inst495: // alt -> 478, 772
-	bt = append(bt, stateMatch{c, i, 495, 0})
-	goto inst478
-inst495_alt:
+	goto inst476
+inst476: // alt -> 473, 495
+	bt = append(bt, stateMatch{c, i, 476, 0})
+	goto inst473
+inst476_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst772
+		goto inst495
 	}
+
+	goto unreachable
+	goto inst459
+inst459: // alt -> 458, 497
+	bt = append(bt, stateMatch{c, i, 459, 0})
+	goto inst458
+inst459_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst497
+	}
+
+	goto unreachable
+	goto inst478
+inst478: // string ":" -> 479
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst479
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst479
@@ -7368,119 +7324,98 @@ inst479: // rune "09AFaf" -> 485
 	goto fail
 
 	goto unreachable
-	goto inst481
-inst481: // rune "09AFaf" -> 483
+	goto inst457
+inst457: // rune "09AFaf" -> 459
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst483
+				goto inst459
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst483
+			goto inst459
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst494
-inst494: // alt -> 486, 772
-	bt = append(bt, stateMatch{c, i, 494, 0})
+	goto inst456
+inst456: // rune "09AFaf" -> 460
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst460
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst460
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst460
+inst460: // alt -> 457, 497
+	bt = append(bt, stateMatch{c, i, 460, 0})
+	goto inst457
+inst460_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst497
+	}
+
+	goto unreachable
+	goto inst455
+inst455: // rune "09AFaf" -> 461
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst461
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst461
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst486
-inst494_alt:
+inst486: // string ":" -> 487
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst487
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst497
+inst497: // alt -> 462, 772
+	bt = append(bt, stateMatch{c, i, 497, 0})
+	goto inst462
+inst497_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst772
 	}
-
-	goto unreachable
-	goto inst484
-inst484: // alt -> 481, 494
-	bt = append(bt, stateMatch{c, i, 484, 0})
-	goto inst481
-inst484_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst494
-	}
-
-	goto unreachable
-	goto inst429
-inst429: // rune "09AFaf" -> 772
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst772
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst772
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst482
-inst482: // rune "09AFaf" -> 494
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst494
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst494
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst483
-inst483: // alt -> 482, 494
-	bt = append(bt, stateMatch{c, i, 483, 0})
-	goto inst482
-inst483_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst494
-	}
-
-	goto unreachable
-	goto inst465
-inst465: // rune "09AFaf" -> 467
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst467
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst467
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst485
@@ -7496,154 +7431,20 @@ inst485_alt:
 	}
 
 	goto unreachable
-	goto inst480
-inst480: // rune "09AFaf" -> 484
+	goto inst458
+inst458: // rune "09AFaf" -> 497
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst484
+				goto inst497
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst484
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst307
-inst307: // rune "09AFaf" -> 772
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst772
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst772
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst308
-inst308: // alt -> 307, 772
-	bt = append(bt, stateMatch{c, i, 308, 0})
-	goto inst307
-inst308_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst306
-inst306: // rune "09AFaf" -> 308
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst308
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst308
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst309
-inst309: // alt -> 306, 772
-	bt = append(bt, stateMatch{c, i, 309, 0})
-	goto inst306
-inst309_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst305
-inst305: // rune "09AFaf" -> 309
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst309
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst309
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst184
-inst184: // rune "09AFaf" -> 186
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst186
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst186
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst186
-inst186: // alt -> 185, 772
-	bt = append(bt, stateMatch{c, i, 186, 0})
-	goto inst185
-inst186_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst185
-inst185: // rune "09AFaf" -> 772
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst772
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst772
+			goto inst497
 		}
 	}
 	goto fail
@@ -7675,6 +7476,25 @@ inst493_alt:
 	}
 
 	goto unreachable
+	goto inst487
+inst487: // rune "09AFaf" -> 493
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst493
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst493
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst488
 inst488: // rune "09AFaf" -> 492
 	if i >= 0 && i < len(r) {
@@ -7689,25 +7509,6 @@ inst488: // rune "09AFaf" -> 492
 		} else if false {
 			i += sz
 			goto inst492
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst490
-inst490: // rune "09AFaf" -> 772
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst772
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst772
 		}
 	}
 	goto fail
@@ -7732,6 +7533,25 @@ inst489: // rune "09AFaf" -> 491
 	goto fail
 
 	goto unreachable
+	goto inst490
+inst490: // rune "09AFaf" -> 772
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst772
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst772
+		}
+	}
+	goto fail
+
+	goto unreachable
 	goto inst491
 inst491: // alt -> 490, 772
 	bt = append(bt, stateMatch{c, i, 491, 0})
@@ -7743,6 +7563,227 @@ inst491_alt:
 		bt = bt[:n]
 		goto inst772
 	}
+
+	goto unreachable
+	goto inst494
+inst494: // alt -> 486, 772
+	bt = append(bt, stateMatch{c, i, 494, 0})
+	goto inst486
+inst494_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst454
+inst454: // string ":" -> 455
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst455
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst471
+inst471: // rune "09AFaf" -> 477
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst477
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst477
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst495
+inst495: // alt -> 478, 772
+	bt = append(bt, stateMatch{c, i, 495, 0})
+	goto inst478
+inst495_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst462
+inst462: // string ":" -> 463
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst463
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst475
+inst475: // alt -> 474, 495
+	bt = append(bt, stateMatch{c, i, 475, 0})
+	goto inst474
+inst475_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst495
+	}
+
+	goto unreachable
+	goto inst477
+inst477: // alt -> 472, 495
+	bt = append(bt, stateMatch{c, i, 477, 0})
+	goto inst472
+inst477_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst495
+	}
+
+	goto unreachable
+	goto inst463
+inst463: // rune "09AFaf" -> 469
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst469
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst469
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst560
+inst560: // alt -> 525, 772
+	bt = append(bt, stateMatch{c, i, 560, 0})
+	goto inst525
+inst560_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst474
+inst474: // rune "09AFaf" -> 495
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst495
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst495
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst504
+inst504: // rune "09AFaf" -> 506
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst506
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst506
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst484
+inst484: // alt -> 481, 494
+	bt = append(bt, stateMatch{c, i, 484, 0})
+	goto inst481
+inst484_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst494
+	}
+
+	goto unreachable
+	goto inst483
+inst483: // alt -> 482, 494
+	bt = append(bt, stateMatch{c, i, 483, 0})
+	goto inst482
+inst483_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst494
+	}
+
+	goto unreachable
+	goto inst506
+inst506: // alt -> 505, 562
+	bt = append(bt, stateMatch{c, i, 506, 0})
+	goto inst505
+inst506_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst562
+	}
+
+	goto unreachable
+	goto inst480
+inst480: // rune "09AFaf" -> 484
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst484
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst484
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst505
@@ -7764,101 +7805,6 @@ inst505: // rune "09AFaf" -> 562
 	goto fail
 
 	goto unreachable
-	goto inst514
-inst514: // alt -> 513, 561
-	bt = append(bt, stateMatch{c, i, 514, 0})
-	goto inst513
-inst514_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst561
-	}
-
-	goto unreachable
-	goto inst513
-inst513: // rune "09AFaf" -> 561
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst561
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst561
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst509
-inst509: // string ":" -> 510
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst510
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst506
-inst506: // alt -> 505, 562
-	bt = append(bt, stateMatch{c, i, 506, 0})
-	goto inst505
-inst506_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst562
-	}
-
-	goto unreachable
-	goto inst562
-inst562: // alt -> 509, 772
-	bt = append(bt, stateMatch{c, i, 562, 0})
-	goto inst509
-inst562_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst561
-inst561: // alt -> 517, 772
-	bt = append(bt, stateMatch{c, i, 561, 0})
-	goto inst517
-inst561_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst522
-inst522: // alt -> 521, 560
-	bt = append(bt, stateMatch{c, i, 522, 0})
-	goto inst521
-inst522_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst560
-	}
-
-	goto unreachable
 	goto inst521
 inst521: // rune "09AFaf" -> 560
 	if i >= 0 && i < len(r) {
@@ -7878,31 +7824,122 @@ inst521: // rune "09AFaf" -> 560
 	goto fail
 
 	goto unreachable
-	goto inst486
-inst486: // string ":" -> 487
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst487
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst487
-inst487: // rune "09AFaf" -> 493
+	goto inst482
+inst482: // rune "09AFaf" -> 494
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst493
+				goto inst494
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst493
+			goto inst494
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst561
+inst561: // alt -> 517, 772
+	bt = append(bt, stateMatch{c, i, 561, 0})
+	goto inst517
+inst561_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst510
+inst510: // rune "09AFaf" -> 516
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst516
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst516
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst511
+inst511: // rune "09AFaf" -> 515
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst515
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst515
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst514
+inst514: // alt -> 513, 561
+	bt = append(bt, stateMatch{c, i, 514, 0})
+	goto inst513
+inst514_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst561
+	}
+
+	goto unreachable
+	goto inst512
+inst512: // rune "09AFaf" -> 514
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst514
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst514
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst513
+inst513: // rune "09AFaf" -> 561
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst561
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst561
 		}
 	}
 	goto fail
@@ -7945,20 +7982,20 @@ inst517: // string ":" -> 518
 	goto fail
 
 	goto unreachable
-	goto inst520
-inst520: // rune "09AFaf" -> 522
+	goto inst518
+inst518: // rune "09AFaf" -> 524
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst522
+				goto inst524
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst522
+			goto inst524
 		}
 	}
 	goto fail
@@ -7983,81 +8020,11 @@ inst519: // rune "09AFaf" -> 523
 	goto fail
 
 	goto unreachable
-	goto inst512
-inst512: // rune "09AFaf" -> 514
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst514
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst514
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst518
-inst518: // rune "09AFaf" -> 524
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst524
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst524
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst560
-inst560: // alt -> 525, 772
-	bt = append(bt, stateMatch{c, i, 560, 0})
-	goto inst525
-inst560_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
-	goto inst511
-inst511: // rune "09AFaf" -> 515
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst515
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst515
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst523
-inst523: // alt -> 520, 560
-	bt = append(bt, stateMatch{c, i, 523, 0})
-	goto inst520
-inst523_alt:
+	goto inst524
+inst524: // alt -> 519, 560
+	bt = append(bt, stateMatch{c, i, 524, 0})
+	goto inst519
+inst524_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -8066,11 +8033,56 @@ inst523_alt:
 	}
 
 	goto unreachable
-	goto inst524
-inst524: // alt -> 519, 560
-	bt = append(bt, stateMatch{c, i, 524, 0})
-	goto inst519
-inst524_alt:
+	goto inst520
+inst520: // rune "09AFaf" -> 522
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst522
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst522
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst548
+inst548: // alt -> 543, 557
+	bt = append(bt, stateMatch{c, i, 548, 0})
+	goto inst543
+inst548_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst557
+	}
+
+	goto unreachable
+	goto inst522
+inst522: // alt -> 521, 560
+	bt = append(bt, stateMatch{c, i, 522, 0})
+	goto inst521
+inst522_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst560
+	}
+
+	goto unreachable
+	goto inst523
+inst523: // alt -> 520, 560
+	bt = append(bt, stateMatch{c, i, 523, 0})
+	goto inst520
+inst523_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -8090,68 +8102,17 @@ inst525: // string ":" -> 526
 	goto fail
 
 	goto unreachable
-	goto inst508
-inst508: // alt -> 503, 562
-	bt = append(bt, stateMatch{c, i, 508, 0})
-	goto inst503
-inst508_alt:
+	goto inst532
+inst532: // alt -> 527, 559
+	bt = append(bt, stateMatch{c, i, 532, 0})
+	goto inst527
+inst532_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst562
+		goto inst559
 	}
-
-	goto unreachable
-	goto inst510
-inst510: // rune "09AFaf" -> 516
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst516
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst516
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst507
-inst507: // alt -> 504, 562
-	bt = append(bt, stateMatch{c, i, 507, 0})
-	goto inst504
-inst507_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst562
-	}
-
-	goto unreachable
-	goto inst504
-inst504: // rune "09AFaf" -> 506
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst506
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst506
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst526
@@ -8168,38 +8129,6 @@ inst526: // rune "09AFaf" -> 532
 		} else if false {
 			i += sz
 			goto inst532
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst532
-inst532: // alt -> 527, 559
-	bt = append(bt, stateMatch{c, i, 532, 0})
-	goto inst527
-inst532_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst559
-	}
-
-	goto unreachable
-	goto inst503
-inst503: // rune "09AFaf" -> 507
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst507
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst507
 		}
 	}
 	goto fail
@@ -8224,33 +8153,127 @@ inst527: // rune "09AFaf" -> 531
 	goto fail
 
 	goto unreachable
-	goto inst540
-inst540: // alt -> 535, 558
-	bt = append(bt, stateMatch{c, i, 540, 0})
-	goto inst535
-inst540_alt:
+	goto inst559
+inst559: // alt -> 533, 772
+	bt = append(bt, stateMatch{c, i, 559, 0})
+	goto inst533
+inst559_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst558
+		goto inst772
 	}
 
 	goto unreachable
-	goto inst535
-inst535: // rune "09AFaf" -> 539
+	goto inst528
+inst528: // rune "09AFaf" -> 530
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst539
+				goto inst530
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst539
+			goto inst530
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst529
+inst529: // rune "09AFaf" -> 559
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst559
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst559
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst530
+inst530: // alt -> 529, 559
+	bt = append(bt, stateMatch{c, i, 530, 0})
+	goto inst529
+inst530_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst559
+	}
+
+	goto unreachable
+	goto inst531
+inst531: // alt -> 528, 559
+	bt = append(bt, stateMatch{c, i, 531, 0})
+	goto inst528
+inst531_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst559
+	}
+
+	goto unreachable
+	goto inst542
+inst542: // rune "09AFaf" -> 548
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst548
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst548
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst533
+inst533: // string ":" -> 534
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst534
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst534
+inst534: // rune "09AFaf" -> 540
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst540
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst540
 		}
 	}
 	goto fail
@@ -8275,36 +8298,17 @@ inst536: // rune "09AFaf" -> 538
 	goto fail
 
 	goto unreachable
-	goto inst558
-inst558: // alt -> 541, 772
-	bt = append(bt, stateMatch{c, i, 558, 0})
-	goto inst541
-inst558_alt:
+	goto inst554
+inst554: // alt -> 553, 772
+	bt = append(bt, stateMatch{c, i, 554, 0})
+	goto inst553
+inst554_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst772
 	}
-
-	goto unreachable
-	goto inst537
-inst537: // rune "09AFaf" -> 558
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst558
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst558
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst538
@@ -8333,36 +8337,36 @@ inst539_alt:
 	}
 
 	goto unreachable
-	goto inst542
-inst542: // rune "09AFaf" -> 548
+	goto inst540
+inst540: // alt -> 535, 558
+	bt = append(bt, stateMatch{c, i, 540, 0})
+	goto inst535
+inst540_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst558
+	}
+
+	goto unreachable
+	goto inst553
+inst553: // rune "09AFaf" -> 772
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst548
+				goto inst772
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst548
+			goto inst772
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst548
-inst548: // alt -> 543, 557
-	bt = append(bt, stateMatch{c, i, 548, 0})
-	goto inst543
-inst548_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst557
-	}
 
 	goto unreachable
 	goto inst541
@@ -8414,17 +8418,23 @@ inst544: // rune "09AFaf" -> 546
 	goto fail
 
 	goto unreachable
-	goto inst531
-inst531: // alt -> 528, 559
-	bt = append(bt, stateMatch{c, i, 531, 0})
-	goto inst528
-inst531_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst559
+	goto inst545
+inst545: // rune "09AFaf" -> 557
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst557
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst557
+		}
 	}
+	goto fail
 
 	goto unreachable
 	goto inst546
@@ -8453,6 +8463,19 @@ inst547_alt:
 	}
 
 	goto unreachable
+	goto inst507
+inst507: // alt -> 504, 562
+	bt = append(bt, stateMatch{c, i, 507, 0})
+	goto inst504
+inst507_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst562
+	}
+
+	goto unreachable
 	goto inst556
 inst556: // alt -> 551, 772
 	bt = append(bt, stateMatch{c, i, 556, 0})
@@ -8464,6 +8487,25 @@ inst556_alt:
 		bt = bt[:n]
 		goto inst772
 	}
+
+	goto unreachable
+	goto inst535
+inst535: // rune "09AFaf" -> 539
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst539
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst539
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst550
@@ -8485,20 +8527,20 @@ inst550: // rune "09AFaf" -> 556
 	goto fail
 
 	goto unreachable
-	goto inst528
-inst528: // rune "09AFaf" -> 530
+	goto inst551
+inst551: // rune "09AFaf" -> 555
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst530
+				goto inst555
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst530
+			goto inst555
 		}
 	}
 	goto fail
@@ -8523,38 +8565,6 @@ inst552: // rune "09AFaf" -> 554
 	goto fail
 
 	goto unreachable
-	goto inst553
-inst553: // rune "09AFaf" -> 772
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst772
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst772
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst554
-inst554: // alt -> 553, 772
-	bt = append(bt, stateMatch{c, i, 554, 0})
-	goto inst553
-inst554_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst772
-	}
-
-	goto unreachable
 	goto inst555
 inst555: // alt -> 552, 772
 	bt = append(bt, stateMatch{c, i, 555, 0})
@@ -8568,20 +8578,12 @@ inst555_alt:
 	}
 
 	goto unreachable
-	goto inst551
-inst551: // rune "09AFaf" -> 555
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst555
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst555
+	goto inst549
+inst549: // string ":" -> 550
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst550
 		}
 	}
 	goto fail
@@ -8600,11 +8602,11 @@ inst557_alt:
 	}
 
 	goto unreachable
-	goto inst559
-inst559: // alt -> 533, 772
-	bt = append(bt, stateMatch{c, i, 559, 0})
-	goto inst533
-inst559_alt:
+	goto inst558
+inst558: // alt -> 541, 772
+	bt = append(bt, stateMatch{c, i, 558, 0})
+	goto inst541
+inst558_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
@@ -8613,44 +8615,52 @@ inst559_alt:
 	}
 
 	goto unreachable
-	goto inst565
-inst565: // alt -> 499, 500
-	bt = append(bt, stateMatch{c, i, 565, 0})
-	goto inst499
-inst565_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst500
-	}
-
-	goto unreachable
-	goto inst545
-inst545: // rune "09AFaf" -> 557
+	goto inst537
+inst537: // rune "09AFaf" -> 558
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst557
+				goto inst558
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst557
+			goto inst558
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst571
-inst571: // string ":" -> 579
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst579
+	goto inst562
+inst562: // alt -> 509, 772
+	bt = append(bt, stateMatch{c, i, 562, 0})
+	goto inst509
+inst562_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst772
+	}
+
+	goto unreachable
+	goto inst481
+inst481: // rune "09AFaf" -> 483
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst483
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst483
 		}
 	}
 	goto fail
@@ -8669,84 +8679,97 @@ inst609_alt:
 	}
 
 	goto unreachable
-	goto inst566
-inst566: // string "fe80:" -> 610
-	if i >= 0 && i+5 <= len(r) {
-		if r[i:i+5] == "fe80:" {
-			i += 5
-			goto inst610
+	goto inst563
+inst563: // string ":" -> 772
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst772
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst529
-inst529: // rune "09AFaf" -> 559
+	goto inst564
+inst564: // alt -> 501, 563
+	bt = append(bt, stateMatch{c, i, 564, 0})
+	goto inst501
+inst564_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst563
+	}
+
+	goto unreachable
+	goto inst565
+inst565: // alt -> 499, 500
+	bt = append(bt, stateMatch{c, i, 565, 0})
+	goto inst499
+inst565_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst500
+	}
+
+	goto unreachable
+	goto inst500
+inst500: // string ":" -> 564
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst564
+		}
+	}
+	goto fail
+
+	// inst568 unreacheable
+
+	goto unreachable
+	goto inst503
+inst503: // rune "09AFaf" -> 507
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst559
+				goto inst507
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst559
+			goto inst507
 		}
 	}
 	goto fail
 
-	goto unreachable
-	goto inst614
-inst614: // alt -> 565, 566
-	bt = append(bt, stateMatch{c, i, 614, 0})
-	goto inst565
-inst614_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst566
-	}
+	// inst616 unreacheable
 
 	goto unreachable
-	goto inst530
-inst530: // alt -> 529, 559
-	bt = append(bt, stateMatch{c, i, 530, 0})
-	goto inst529
-inst530_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst559
-	}
-
-	goto unreachable
-	goto inst549
-inst549: // string ":" -> 550
+	goto inst509
+inst509: // string ":" -> 510
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
-			goto inst550
+			goto inst510
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst579
-inst579: // alt -> 572, 609
-	bt = append(bt, stateMatch{c, i, 579, 0})
-	goto inst572
-inst579_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst609
+	goto inst571
+inst571: // string ":" -> 579
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst579
+		}
 	}
+	goto fail
 
 	goto unreachable
 	goto inst572
@@ -8768,28 +8791,36 @@ inst572: // rune "09AFaf" -> 578
 	goto fail
 
 	goto unreachable
-	goto inst610
-inst610: // alt -> 571, 611
-	bt = append(bt, stateMatch{c, i, 610, 0})
-	goto inst571
-inst610_alt:
+	goto inst573
+inst573: // rune "09AFaf" -> 577
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst577
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst577
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst578
+inst578: // alt -> 573, 609
+	bt = append(bt, stateMatch{c, i, 578, 0})
+	goto inst573
+inst578_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst611
+		goto inst609
 	}
-
-	goto unreachable
-	goto inst533
-inst533: // string ":" -> 534
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst534
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst574
@@ -8830,25 +8861,6 @@ inst575: // rune "09AFaf" -> 609
 	goto fail
 
 	goto unreachable
-	goto inst534
-inst534: // rune "09AFaf" -> 540
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst540
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst540
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst576
 inst576: // alt -> 575, 609
 	bt = append(bt, stateMatch{c, i, 576, 0})
@@ -8875,55 +8887,17 @@ inst577_alt:
 	}
 
 	goto unreachable
-	goto inst578
-inst578: // alt -> 573, 609
-	bt = append(bt, stateMatch{c, i, 578, 0})
-	goto inst573
-inst578_alt:
+	goto inst579
+inst579: // alt -> 572, 609
+	bt = append(bt, stateMatch{c, i, 579, 0})
+	goto inst572
+inst579_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst609
 	}
-
-	goto unreachable
-	goto inst583
-inst583: // rune "09AFaf" -> 585
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst585
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst585
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst573
-inst573: // rune "09AFaf" -> 577
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst577
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst577
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst580
@@ -8975,12 +8949,33 @@ inst582: // rune "09AFaf" -> 586
 	goto fail
 
 	goto unreachable
-	goto inst563
-inst563: // string ":" -> 772
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst772
+	goto inst586
+inst586: // alt -> 583, 608
+	bt = append(bt, stateMatch{c, i, 586, 0})
+	goto inst583
+inst586_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst608
+	}
+
+	goto unreachable
+	goto inst590
+inst590: // rune "09AFaf" -> 596
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst596
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst596
 		}
 	}
 	goto fail
@@ -9017,35 +9012,24 @@ inst585_alt:
 		goto inst608
 	}
 
-	// inst569 unreacheable
-
 	goto unreachable
-	goto inst586
-inst586: // alt -> 583, 608
-	bt = append(bt, stateMatch{c, i, 586, 0})
 	goto inst583
-inst586_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst608
+inst583: // rune "09AFaf" -> 585
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst585
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst585
+		}
 	}
-
-	goto unreachable
-	goto inst564
-inst564: // alt -> 501, 563
-	bt = append(bt, stateMatch{c, i, 564, 0})
-	goto inst501
-inst564_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst563
-	}
-
-	// inst570 unreacheable
+	goto fail
 
 	goto unreachable
 	goto inst587
@@ -9085,31 +9069,39 @@ inst589: // string ":" -> 597
 	goto fail
 
 	goto unreachable
-	goto inst590
-inst590: // rune "09AFaf" -> 596
+	goto inst591
+inst591: // rune "09AFaf" -> 595
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst596
+				goto inst595
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst596
+			goto inst595
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst598
-inst598: // string ":" -> 606
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst606
+	goto inst600
+inst600: // rune "09AFaf" -> 604
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst604
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst604
 		}
 	}
 	goto fail
@@ -9133,37 +9125,26 @@ inst592: // rune "09AFaf" -> 594
 	}
 	goto fail
 
+	// inst569 unreacheable
+
 	goto unreachable
-	goto inst593
-inst593: // rune "09AFaf" -> 607
+	goto inst601
+inst601: // rune "09AFaf" -> 603
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
 			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
 			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
 				i += sz
-				goto inst607
+				goto inst603
 			}
 			goto fail
 		} else if false {
 			i += sz
-			goto inst607
+			goto inst603
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst594
-inst594: // alt -> 593, 607
-	bt = append(bt, stateMatch{c, i, 594, 0})
-	goto inst593
-inst594_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst607
-	}
 
 	goto unreachable
 	goto inst595
@@ -9205,17 +9186,15 @@ inst597_alt:
 	}
 
 	goto unreachable
-	goto inst608
-inst608: // alt -> 589, 611
-	bt = append(bt, stateMatch{c, i, 608, 0})
-	goto inst589
-inst608_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst611
+	goto inst598
+inst598: // string ":" -> 606
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst606
+		}
 	}
+	goto fail
 
 	goto unreachable
 	goto inst599
@@ -9237,39 +9216,25 @@ inst599: // rune "09AFaf" -> 605
 	goto fail
 
 	goto unreachable
-	goto inst600
-inst600: // rune "09AFaf" -> 604
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst604
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst604
-		}
+	goto inst608
+inst608: // alt -> 589, 611
+	bt = append(bt, stateMatch{c, i, 608, 0})
+	goto inst589
+inst608_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst611
 	}
-	goto fail
 
 	goto unreachable
-	goto inst601
-inst601: // rune "09AFaf" -> 603
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst603
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst603
+	goto inst501
+inst501: // string ":" -> 502
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst502
 		}
 	}
 	goto fail
@@ -9359,23 +9324,30 @@ inst607_alt:
 	}
 
 	goto unreachable
-	goto inst591
-inst591: // rune "09AFaf" -> 595
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst595
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst595
-		}
+	goto inst594
+inst594: // alt -> 593, 607
+	bt = append(bt, stateMatch{c, i, 594, 0})
+	goto inst593
+inst594_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst607
 	}
-	goto fail
+
+	goto unreachable
+	goto inst610
+inst610: // alt -> 571, 611
+	bt = append(bt, stateMatch{c, i, 610, 0})
+	goto inst571
+inst610_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst611
+	}
 
 	goto unreachable
 	goto inst611
@@ -9387,19 +9359,6 @@ inst611: // string "%" -> 612
 		}
 	}
 	goto fail
-
-	goto unreachable
-	goto inst631
-inst631: // alt -> 617, 643
-	bt = append(bt, stateMatch{c, i, 631, 0})
-	goto inst617
-inst631_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst643
-	}
 
 	goto unreachable
 	goto inst612
@@ -9449,32 +9408,6 @@ inst613_alt:
 		goto inst772
 	}
 
-	// inst633 unreacheable
-
-	goto unreachable
-	goto inst615
-inst615: // string "::" -> 631
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
-			i += 2
-			goto inst631
-		}
-	}
-	goto fail
-
-	// inst616 unreacheable
-
-	goto unreachable
-	goto inst501
-inst501: // string ":" -> 502
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst502
-		}
-	}
-	goto fail
-
 	goto unreachable
 	goto inst617
 inst617: // string "ffff" -> 629
@@ -9486,54 +9419,37 @@ inst617: // string "ffff" -> 629
 	}
 	goto fail
 
-	// inst567 unreacheable
-
 	goto unreachable
-	goto inst500
-inst500: // string ":" -> 564
+	goto inst637
+inst637: // string "1" -> 639
 	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+		if r[i:i+1] == "1" {
 			i += 1
-			goto inst564
+			goto inst639
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst643
-inst643: // alt -> 632, 641
-	bt = append(bt, stateMatch{c, i, 643, 0})
-	goto inst632
-inst643_alt:
+	goto inst614
+inst614: // alt -> 565, 566
+	bt = append(bt, stateMatch{c, i, 614, 0})
+	goto inst565
+inst614_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst641
+		goto inst566
 	}
 
-	// inst620 unreacheable
-
 	goto unreachable
-	goto inst621
-inst621: // string ":0" -> 628
+	goto inst615
+inst615: // string "::" -> 631
 	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == ":0" {
+		if r[i:i+2] == "::" {
 			i += 2
-			goto inst628
-		}
-	}
-	goto fail
-
-	// inst622 unreacheable
-
-	goto unreachable
-	goto inst623
-inst623: // string "0" -> 627
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "0" {
-			i += 1
-			goto inst627
+			goto inst631
 		}
 	}
 	goto fail
@@ -9549,12 +9465,64 @@ inst624: // string "0" -> 626
 	}
 	goto fail
 
+	// inst618 unreacheable
+
+	goto unreachable
+	goto inst621
+inst621: // string ":0" -> 628
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == ":0" {
+			i += 2
+			goto inst628
+		}
+	}
+	goto fail
+
+	// inst622 unreacheable
+
+	goto unreachable
+	goto inst643
+inst643: // alt -> 632, 641
+	bt = append(bt, stateMatch{c, i, 643, 0})
+	goto inst632
+inst643_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst641
+	}
+
+	goto unreachable
+	goto inst623
+inst623: // string "0" -> 627
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "0" {
+			i += 1
+			goto inst627
+		}
+	}
+	goto fail
+
 	goto unreachable
 	goto inst625
 inst625: // string "0:" -> 643
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "0:" {
 			i += 2
+			goto inst643
+		}
+	}
+	goto fail
+
+	// inst619 unreacheable
+
+	goto unreachable
+	goto inst630
+inst630: // string ":" -> 643
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
 			goto inst643
 		}
 	}
@@ -9613,15 +9581,17 @@ inst629_alt:
 	}
 
 	goto unreachable
-	goto inst630
-inst630: // string ":" -> 643
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst643
-		}
+	goto inst631
+inst631: // alt -> 617, 643
+	bt = append(bt, stateMatch{c, i, 631, 0})
+	goto inst617
+inst631_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst643
 	}
-	goto fail
 
 	goto unreachable
 	goto inst632
@@ -9634,13 +9604,26 @@ inst632: // string "25" -> 634
 	}
 	goto fail
 
+	// inst633 unreacheable
+
 	goto unreachable
-	goto inst644
-inst644: // string "." -> 656
+	goto inst635
+inst635: // string "2" -> 636
 	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+		if r[i:i+1] == "2" {
 			i += 1
-			goto inst656
+			goto inst636
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst566
+inst566: // string "fe80:" -> 610
+	if i >= 0 && i+5 <= len(r) {
+		if r[i:i+5] == "fe80:" {
+			i += 5
+			goto inst610
 		}
 	}
 	goto fail
@@ -9658,29 +9641,6 @@ inst634: // rune "05" -> 644
 	goto fail
 
 	goto unreachable
-	goto inst642
-inst642: // rune "09" -> 644
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if false || (cr >= 48 && cr <= 57) {
-			i += sz
-			goto inst644
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst635
-inst635: // string "2" -> 636
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
-			i += 1
-			goto inst636
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst636
 inst636: // rune "04" -> 642
 	if i >= 0 && i < len(r) {
@@ -9692,28 +9652,38 @@ inst636: // rune "04" -> 642
 	}
 	goto fail
 
+	// inst570 unreacheable
+
 	goto unreachable
-	goto inst637
-inst637: // string "1" -> 639
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
-			i += 1
-			goto inst639
+	goto inst502
+inst502: // rune "09AFaf" -> 508
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst508
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst508
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst638
-inst638: // alt -> 637, 639
-	bt = append(bt, stateMatch{c, i, 638, 0})
-	goto inst637
-inst638_alt:
+	goto inst683
+inst683: // alt -> 614, 615
+	bt = append(bt, stateMatch{c, i, 683, 0})
+	goto inst614
+inst683_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst639
+		goto inst615
 	}
 
 	goto unreachable
@@ -9755,6 +9725,67 @@ inst641_alt:
 	}
 
 	goto unreachable
+	goto inst642
+inst642: // rune "09" -> 644
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if false || (cr >= 48 && cr <= 57) {
+			i += sz
+			goto inst644
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst645
+inst645: // string "25" -> 647
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "25" {
+			i += 2
+			goto inst647
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst644
+inst644: // string "." -> 656
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "." {
+			i += 1
+			goto inst656
+		}
+	}
+	goto fail
+
+	// inst646 unreacheable
+
+	goto unreachable
+	goto inst673
+inst673: // rune "05" -> 772
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if false || (cr >= 48 && cr <= 53) {
+			i += sz
+			goto inst772
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst638
+inst638: // alt -> 637, 639
+	bt = append(bt, stateMatch{c, i, 638, 0})
+	goto inst637
+inst638_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst639
+	}
+
+	goto unreachable
 	goto inst649
 inst649: // rune "04" -> 655
 	if i >= 0 && i < len(r) {
@@ -9762,6 +9793,28 @@ inst649: // rune "04" -> 655
 		if false || (cr >= 48 && cr <= 52) {
 			i += sz
 			goto inst655
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst658
+inst658: // string "25" -> 660
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "25" {
+			i += 2
+			goto inst660
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst650
+inst650: // string "1" -> 652
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "1" {
+			i += 1
+			goto inst652
 		}
 	}
 	goto fail
@@ -9779,26 +9832,55 @@ inst647: // rune "05" -> 657
 	goto fail
 
 	goto unreachable
-	goto inst645
-inst645: // string "25" -> 647
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
-			i += 2
-			goto inst647
+	goto inst651
+inst651: // alt -> 650, 652
+	bt = append(bt, stateMatch{c, i, 651, 0})
+	goto inst650
+inst651_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst652
+	}
+
+	goto unreachable
+	goto inst652
+inst652: // rune "09" -> 655
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if false || (cr >= 48 && cr <= 57) {
+			i += sz
+			goto inst655
 		}
 	}
 	goto fail
 
 	goto unreachable
-	goto inst657
-inst657: // string "." -> 669
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
-			i += 1
-			goto inst669
-		}
+	goto inst653
+inst653: // alt -> 648, 651
+	bt = append(bt, stateMatch{c, i, 653, 0})
+	goto inst648
+inst653_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst651
 	}
-	goto fail
+
+	goto unreachable
+	goto inst654
+inst654: // alt -> 653, 655
+	bt = append(bt, stateMatch{c, i, 654, 0})
+	goto inst653
+inst654_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst655
+	}
 
 	goto unreachable
 	goto inst655
@@ -9837,80 +9919,16 @@ inst648: // string "2" -> 649
 	goto fail
 
 	goto unreachable
-	goto inst652
-inst652: // rune "09" -> 655
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if false || (cr >= 48 && cr <= 57) {
-			i += sz
-			goto inst655
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst650
-inst650: // string "1" -> 652
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
-			i += 1
-			goto inst652
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst651
-inst651: // alt -> 650, 652
-	bt = append(bt, stateMatch{c, i, 651, 0})
-	goto inst650
-inst651_alt:
+	goto inst508
+inst508: // alt -> 503, 562
+	bt = append(bt, stateMatch{c, i, 508, 0})
+	goto inst503
+inst508_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst652
-	}
-
-	goto unreachable
-	goto inst653
-inst653: // alt -> 648, 651
-	bt = append(bt, stateMatch{c, i, 653, 0})
-	goto inst648
-inst653_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst651
-	}
-
-	goto unreachable
-	goto inst654
-inst654: // alt -> 653, 655
-	bt = append(bt, stateMatch{c, i, 654, 0})
-	goto inst653
-inst654_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst655
-	}
-
-	// inst659 unreacheable
-
-	goto unreachable
-	goto inst669
-inst669: // alt -> 658, 667
-	bt = append(bt, stateMatch{c, i, 669, 0})
-	goto inst658
-inst669_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst667
+		goto inst562
 	}
 
 	goto unreachable
@@ -9926,12 +9944,12 @@ inst660: // rune "05" -> 670
 	goto fail
 
 	goto unreachable
-	goto inst658
-inst658: // string "25" -> 660
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
-			i += 2
-			goto inst660
+	goto inst661
+inst661: // string "2" -> 662
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "2" {
+			i += 1
+			goto inst662
 		}
 	}
 	goto fail
@@ -9943,42 +9961,6 @@ inst670: // string "." -> 682
 		if r[i:i+1] == "." {
 			i += 1
 			goto inst682
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst668
-inst668: // rune "09" -> 670
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if false || (cr >= 48 && cr <= 57) {
-			i += sz
-			goto inst670
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst683
-inst683: // alt -> 614, 615
-	bt = append(bt, stateMatch{c, i, 683, 0})
-	goto inst614
-inst683_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst615
-	}
-
-	goto unreachable
-	goto inst661
-inst661: // string "2" -> 662
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
-			i += 1
-			goto inst662
 		}
 	}
 	goto fail
@@ -10057,23 +10039,30 @@ inst667_alt:
 		goto inst668
 	}
 
-	// inst672 unreacheable
-
 	goto unreachable
-	goto inst673
-inst673: // rune "05" -> 772
+	goto inst668
+inst668: // rune "09" -> 670
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
-		if false || (cr >= 48 && cr <= 53) {
+		if false || (cr >= 48 && cr <= 57) {
 			i += sz
-			goto inst772
+			goto inst670
 		}
 	}
 	goto fail
 
-	// inst0 unreacheable
-
-	// inst760 unreacheable
+	goto unreachable
+	goto inst669
+inst669: // alt -> 658, 667
+	bt = append(bt, stateMatch{c, i, 669, 0})
+	goto inst658
+inst669_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst667
+	}
 
 	goto unreachable
 	goto inst671
@@ -10086,7 +10075,20 @@ inst671: // string "25" -> 673
 	}
 	goto fail
 
-	// inst646 unreacheable
+	goto unreachable
+	goto inst682
+inst682: // alt -> 671, 680
+	bt = append(bt, stateMatch{c, i, 682, 0})
+	goto inst671
+inst682_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst680
+	}
+
+	// inst672 unreacheable
 
 	goto unreachable
 	goto inst674
@@ -10095,6 +10097,25 @@ inst674: // string "2" -> 675
 		if r[i:i+1] == "2" {
 			i += 1
 			goto inst675
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst593
+inst593: // rune "09AFaf" -> 607
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst607
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst607
 		}
 	}
 	goto fail
@@ -10185,33 +10206,29 @@ inst681: // rune "09" -> 772
 	}
 	goto fail
 
-	goto unreachable
-	goto inst689
-inst689: // alt -> 686, 691
-	bt = append(bt, stateMatch{c, i, 689, 0})
-	goto inst686
-inst689_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst691
-	}
+	// inst760 unreacheable
 
 	goto unreachable
-	goto inst682
-inst682: // alt -> 671, 680
-	bt = append(bt, stateMatch{c, i, 682, 0})
-	goto inst671
-inst682_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst680
+	goto inst657
+inst657: // string "." -> 669
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "." {
+			i += 1
+			goto inst669
+		}
 	}
+	goto fail
 
-	// inst568 unreacheable
+	goto unreachable
+	goto inst691
+inst691: // string ":" -> 718
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == ":" {
+			i += 1
+			goto inst718
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst685
@@ -10284,6 +10301,19 @@ inst688_alt:
 	}
 
 	goto unreachable
+	goto inst689
+inst689: // alt -> 686, 691
+	bt = append(bt, stateMatch{c, i, 689, 0})
+	goto inst686
+inst689_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst691
+	}
+
+	goto unreachable
 	goto inst690
 inst690: // alt -> 685, 691
 	bt = append(bt, stateMatch{c, i, 690, 0})
@@ -10295,17 +10325,6 @@ inst690_alt:
 		bt = bt[:n]
 		goto inst691
 	}
-
-	goto unreachable
-	goto inst691
-inst691: // string ":" -> 718
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
-			i += 1
-			goto inst718
-		}
-	}
-	goto fail
 
 	goto unreachable
 	goto inst692
@@ -10337,7 +10356,24 @@ inst699: // string ":" -> 717
 	}
 	goto fail
 
-	// inst618 unreacheable
+	goto unreachable
+	goto inst693
+inst693: // rune "09AFaf" -> 697
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst697
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst697
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst694
@@ -10416,7 +10452,24 @@ inst698_alt:
 		goto inst699
 	}
 
-	// inst721 unreacheable
+	goto unreachable
+	goto inst703
+inst703: // rune "09AFaf" -> 707
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst707
+			}
+			goto fail
+		} else if false {
+			i += sz
+			goto inst707
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst707
@@ -10468,25 +10521,6 @@ inst702: // rune "09AFaf" -> 704
 	goto fail
 
 	goto unreachable
-	goto inst703
-inst703: // rune "09AFaf" -> 707
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst707
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst707
-		}
-	}
-	goto fail
-
-	goto unreachable
 	goto inst704
 inst704: // alt -> 703, 707
 	bt = append(bt, stateMatch{c, i, 704, 0})
@@ -10499,7 +10533,18 @@ inst704_alt:
 		goto inst707
 	}
 
-	// inst619 unreacheable
+	goto unreachable
+	goto inst705
+inst705: // alt -> 702, 707
+	bt = append(bt, stateMatch{c, i, 705, 0})
+	goto inst702
+inst705_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst707
+	}
 
 	goto unreachable
 	goto inst706
@@ -10513,6 +10558,8 @@ inst706_alt:
 		bt = bt[:n]
 		goto inst707
 	}
+
+	// inst567 unreacheable
 
 	goto unreachable
 	goto inst708
@@ -10534,23 +10581,17 @@ inst708: // rune "09AFaf" -> 714
 	goto fail
 
 	goto unreachable
-	goto inst693
-inst693: // rune "09AFaf" -> 697
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst697
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst697
-		}
+	goto inst714
+inst714: // alt -> 709, 715
+	bt = append(bt, stateMatch{c, i, 714, 0})
+	goto inst709
+inst714_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst715
 	}
-	goto fail
 
 	goto unreachable
 	goto inst709
@@ -10655,19 +10696,6 @@ inst713_alt:
 	}
 
 	goto unreachable
-	goto inst714
-inst714: // alt -> 709, 715
-	bt = append(bt, stateMatch{c, i, 714, 0})
-	goto inst709
-inst714_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst715
-	}
-
-	goto unreachable
 	goto inst715
 inst715: // string "::" -> 731
 	if i >= 0 && i+2 <= len(r) {
@@ -10729,6 +10757,19 @@ inst719: // string ":" -> 731
 	goto fail
 
 	goto unreachable
+	goto inst731
+inst731: // alt -> 720, 729
+	bt = append(bt, stateMatch{c, i, 731, 0})
+	goto inst720
+inst731_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst729
+	}
+
+	goto unreachable
 	goto inst720
 inst720: // string "25" -> 722
 	if i >= 0 && i+2 <= len(r) {
@@ -10739,18 +10780,7 @@ inst720: // string "25" -> 722
 	}
 	goto fail
 
-	goto unreachable
-	goto inst705
-inst705: // alt -> 702, 707
-	bt = append(bt, stateMatch{c, i, 705, 0})
-	goto inst702
-inst705_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst707
-	}
+	// inst721 unreacheable
 
 	goto unreachable
 	goto inst722
@@ -10862,19 +10892,6 @@ inst730: // rune "09" -> 732
 	goto fail
 
 	goto unreachable
-	goto inst731
-inst731: // alt -> 720, 729
-	bt = append(bt, stateMatch{c, i, 731, 0})
-	goto inst720
-inst731_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst729
-	}
-
-	goto unreachable
 	goto inst732
 inst732: // string "." -> 744
 	if i >= 0 && i+1 <= len(r) {
@@ -10884,6 +10901,19 @@ inst732: // string "." -> 744
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst744
+inst744: // alt -> 733, 742
+	bt = append(bt, stateMatch{c, i, 744, 0})
+	goto inst733
+inst744_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst742
+	}
 
 	goto unreachable
 	goto inst733
@@ -10944,18 +10974,7 @@ inst738: // string "1" -> 740
 	}
 	goto fail
 
-	goto unreachable
-	goto inst739
-inst739: // alt -> 738, 740
-	bt = append(bt, stateMatch{c, i, 739, 0})
-	goto inst738
-inst739_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst740
-	}
+	// inst659 unreacheable
 
 	goto unreachable
 	goto inst740
@@ -11008,19 +11027,6 @@ inst743: // rune "09" -> 745
 	goto fail
 
 	goto unreachable
-	goto inst744
-inst744: // alt -> 733, 742
-	bt = append(bt, stateMatch{c, i, 744, 0})
-	goto inst733
-inst744_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst742
-	}
-
-	goto unreachable
 	goto inst745
 inst745: // string "." -> 757
 	if i >= 0 && i+1 <= len(r) {
@@ -11030,6 +11036,19 @@ inst745: // string "." -> 757
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst757
+inst757: // alt -> 746, 755
+	bt = append(bt, stateMatch{c, i, 757, 0})
+	goto inst746
+inst757_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst755
+	}
 
 	goto unreachable
 	goto inst746
@@ -11154,19 +11173,6 @@ inst756: // rune "09" -> 758
 	goto fail
 
 	goto unreachable
-	goto inst757
-inst757: // alt -> 746, 755
-	bt = append(bt, stateMatch{c, i, 757, 0})
-	goto inst746
-inst757_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst755
-	}
-
-	goto unreachable
 	goto inst758
 inst758: // string "." -> 770
 	if i >= 0 && i+1 <= len(r) {
@@ -11176,6 +11182,19 @@ inst758: // string "." -> 770
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst770
+inst770: // alt -> 759, 768
+	bt = append(bt, stateMatch{c, i, 770, 0})
+	goto inst759
+inst770_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst768
+	}
 
 	goto unreachable
 	goto inst759
@@ -11317,19 +11336,6 @@ inst769: // rune "09" -> 772
 	goto fail
 
 	goto unreachable
-	goto inst770
-inst770: // alt -> 759, 768
-	bt = append(bt, stateMatch{c, i, 770, 0})
-	goto inst759
-inst770_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst768
-	}
-
-	goto unreachable
 	goto inst771
 inst771: // alt -> 683, 684
 	bt = append(bt, stateMatch{c, i, 771, 0})
@@ -11342,26 +11348,20 @@ inst771_alt:
 		goto inst684
 	}
 
-	goto unreachable
-	goto inst502
-inst502: // rune "09AFaf" -> 508
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\xff\x03~\x00\x00\x00~\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst508
-			}
-			goto fail
-		} else if false {
-			i += sz
-			goto inst508
-		}
-	}
-	goto fail
+	// inst620 unreacheable
 
-	// inst446 unreacheable
+	goto unreachable
+	goto inst739
+inst739: // alt -> 738, 740
+	bt = append(bt, stateMatch{c, i, 739, 0})
+	goto inst738
+inst739_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst740
+	}
 
 	goto unreachable
 	goto fail
@@ -11371,48 +11371,48 @@ fail:
 			switch bt[len(bt)-1].pc {
 			default:
 				panic(bt[len(bt)-1].pc)
+			case 7:
+				goto inst7_alt
 			case 6:
 				goto inst6_alt
 			case 5:
 				goto inst5_alt
-			case 7:
-				goto inst7_alt
-			case 13:
-				goto inst13_alt
 			case 15:
 				goto inst15_alt
 			case 14:
 				goto inst14_alt
-			case 21:
-				goto inst21_alt
+			case 13:
+				goto inst13_alt
 			case 23:
 				goto inst23_alt
 			case 22:
 				goto inst22_alt
-			case 29:
-				goto inst29_alt
+			case 21:
+				goto inst21_alt
 			case 31:
 				goto inst31_alt
 			case 30:
 				goto inst30_alt
-			case 37:
-				goto inst37_alt
+			case 29:
+				goto inst29_alt
 			case 39:
 				goto inst39_alt
 			case 38:
 				goto inst38_alt
-			case 45:
-				goto inst45_alt
+			case 37:
+				goto inst37_alt
 			case 47:
 				goto inst47_alt
 			case 46:
 				goto inst46_alt
-			case 53:
-				goto inst53_alt
+			case 45:
+				goto inst45_alt
 			case 55:
 				goto inst55_alt
 			case 54:
 				goto inst54_alt
+			case 53:
+				goto inst53_alt
 			case 63:
 				goto inst63_alt
 			case 62:
@@ -11431,48 +11431,48 @@ fail:
 				goto inst77_alt
 			case 78:
 				goto inst78_alt
-			case 84:
-				goto inst84_alt
-			case 85:
-				goto inst85_alt
 			case 86:
 				goto inst86_alt
+			case 85:
+				goto inst85_alt
+			case 84:
+				goto inst84_alt
+			case 124:
+				goto inst124_alt
 			case 92:
 				goto inst92_alt
 			case 93:
 				goto inst93_alt
+			case 94:
+				goto inst94_alt
 			case 100:
 				goto inst100_alt
 			case 101:
 				goto inst101_alt
 			case 102:
 				goto inst102_alt
-			case 94:
-				goto inst94_alt
-			case 108:
-				goto inst108_alt
-			case 109:
-				goto inst109_alt
-			case 110:
-				goto inst110_alt
 			case 121:
 				goto inst121_alt
-			case 122:
-				goto inst122_alt
+			case 110:
+				goto inst110_alt
 			case 125:
 				goto inst125_alt
-			case 116:
-				goto inst116_alt
-			case 117:
-				goto inst117_alt
-			case 118:
-				goto inst118_alt
+			case 109:
+				goto inst109_alt
+			case 108:
+				goto inst108_alt
 			case 123:
 				goto inst123_alt
 			case 120:
 				goto inst120_alt
-			case 124:
-				goto inst124_alt
+			case 122:
+				goto inst122_alt
+			case 118:
+				goto inst118_alt
+			case 117:
+				goto inst117_alt
+			case 116:
+				goto inst116_alt
 			case 132:
 				goto inst132_alt
 			case 133:
@@ -11481,34 +11481,34 @@ fail:
 				goto inst134_alt
 			case 189:
 				goto inst189_alt
-			case 140:
-				goto inst140_alt
 			case 141:
 				goto inst141_alt
+			case 140:
+				goto inst140_alt
 			case 142:
 				goto inst142_alt
-			case 180:
-				goto inst180_alt
-			case 148:
-				goto inst148_alt
-			case 149:
-				goto inst149_alt
 			case 150:
 				goto inst150_alt
+			case 149:
+				goto inst149_alt
+			case 148:
+				goto inst148_alt
+			case 179:
+				goto inst179_alt
 			case 156:
 				goto inst156_alt
 			case 157:
 				goto inst157_alt
-			case 164:
-				goto inst164_alt
-			case 165:
-				goto inst165_alt
-			case 166:
-				goto inst166_alt
 			case 158:
 				goto inst158_alt
-			case 179:
-				goto inst179_alt
+			case 180:
+				goto inst180_alt
+			case 165:
+				goto inst165_alt
+			case 164:
+				goto inst164_alt
+			case 166:
+				goto inst166_alt
 			case 177:
 				goto inst177_alt
 			case 178:
@@ -11517,20 +11517,20 @@ fail:
 				goto inst176_alt
 			case 174:
 				goto inst174_alt
-			case 173:
-				goto inst173_alt
 			case 172:
 				goto inst172_alt
+			case 173:
+				goto inst173_alt
 			case 251:
 				goto inst251_alt
 			case 188:
 				goto inst188_alt
-			case 194:
-				goto inst194_alt
-			case 195:
-				goto inst195_alt
 			case 196:
 				goto inst196_alt
+			case 195:
+				goto inst195_alt
+			case 194:
+				goto inst194_alt
 			case 233:
 				goto inst233_alt
 			case 204:
@@ -11547,72 +11547,78 @@ fail:
 				goto inst212_alt
 			case 232:
 				goto inst232_alt
-			case 231:
-				goto inst231_alt
-			case 220:
-				goto inst220_alt
 			case 218:
 				goto inst218_alt
 			case 219:
 				goto inst219_alt
+			case 231:
+				goto inst231_alt
+			case 220:
+				goto inst220_alt
 			case 230:
 				goto inst230_alt
-			case 226:
-				goto inst226_alt
-			case 227:
-				goto inst227_alt
 			case 228:
 				goto inst228_alt
-			case 239:
-				goto inst239_alt
+			case 227:
+				goto inst227_alt
+			case 226:
+				goto inst226_alt
 			case 241:
 				goto inst241_alt
 			case 240:
 				goto inst240_alt
+			case 239:
+				goto inst239_alt
 			case 250:
 				goto inst250_alt
 			case 313:
 				goto inst313_alt
-			case 249:
-				goto inst249_alt
+			case 187:
+				goto inst187_alt
 			case 258:
 				goto inst258_alt
 			case 257:
 				goto inst257_alt
+			case 249:
+				goto inst249_alt
 			case 256:
 				goto inst256_alt
-			case 286:
-				goto inst286_alt
-			case 266:
-				goto inst266_alt
-			case 265:
-				goto inst265_alt
+			case 248:
+				goto inst248_alt
 			case 264:
 				goto inst264_alt
-			case 285:
-				goto inst285_alt
+			case 265:
+				goto inst265_alt
+			case 266:
+				goto inst266_alt
 			case 272:
 				goto inst272_alt
 			case 273:
 				goto inst273_alt
 			case 274:
 				goto inst274_alt
+			case 285:
+				goto inst285_alt
+			case 286:
+				goto inst286_alt
 			case 284:
 				goto inst284_alt
 			case 282:
 				goto inst282_alt
-			case 281:
-				goto inst281_alt
 			case 280:
 				goto inst280_alt
-			case 294:
-				goto inst294_alt
-			case 293:
-				goto inst293_alt
+			case 281:
+				goto inst281_alt
 			case 292:
 				goto inst292_alt
+			case 294:
+				goto inst294_alt
 			case 312:
 				goto inst312_alt
+			case 293:
+				goto inst293_alt
+			case 247:
+				goto inst247_alt
 			case 302:
 				goto inst302_alt
 			case 301:
@@ -11621,6 +11627,10 @@ fail:
 				goto inst300_alt
 			case 311:
 				goto inst311_alt
+			case 310:
+				goto inst310_alt
+			case 309:
+				goto inst309_alt
 			case 375:
 				goto inst375_alt
 			case 320:
@@ -11637,70 +11647,68 @@ fail:
 				goto inst327_alt
 			case 326:
 				goto inst326_alt
-			case 338:
-				goto inst338_alt
-			case 437:
-				goto inst437_alt
+			case 335:
+				goto inst335_alt
 			case 334:
 				goto inst334_alt
 			case 336:
 				goto inst336_alt
-			case 335:
-				goto inst335_alt
-			case 248:
-				goto inst248_alt
-			case 499:
-				goto inst499_alt
-			case 345:
-				goto inst345_alt
+			case 338:
+				goto inst338_alt
 			case 347:
 				goto inst347_alt
-			case 374:
-				goto inst374_alt
 			case 346:
 				goto inst346_alt
+			case 345:
+				goto inst345_alt
+			case 374:
+				goto inst374_alt
+			case 353:
+				goto inst353_alt
 			case 355:
 				goto inst355_alt
 			case 354:
 				goto inst354_alt
-			case 353:
-				goto inst353_alt
 			case 373:
 				goto inst373_alt
 			case 363:
 				goto inst363_alt
+			case 362:
+				goto inst362_alt
 			case 361:
 				goto inst361_alt
 			case 372:
 				goto inst372_alt
-			case 362:
-				goto inst362_alt
-			case 371:
-				goto inst371_alt
-			case 382:
-				goto inst382_alt
-			case 381:
-				goto inst381_alt
-			case 380:
-				goto inst380_alt
-			case 389:
-				goto inst389_alt
-			case 388:
-				goto inst388_alt
-			case 390:
-				goto inst390_alt
-			case 392:
-				goto inst392_alt
-			case 370:
-				goto inst370_alt
-			case 400:
-				goto inst400_alt
-			case 399:
-				goto inst399_alt
 			case 398:
 				goto inst398_alt
 			case 436:
 				goto inst436_alt
+			case 400:
+				goto inst400_alt
+			case 381:
+				goto inst381_alt
+			case 382:
+				goto inst382_alt
+			case 437:
+				goto inst437_alt
+			case 380:
+				goto inst380_alt
+			case 388:
+				goto inst388_alt
+			case 389:
+				goto inst389_alt
+			case 390:
+				goto inst390_alt
+			case 392:
+				goto inst392_alt
+			case 399:
+				goto inst399_alt
+			case 371:
+				goto inst371_alt
+			case 370:
+				goto inst370_alt
+			case 499:
+				goto inst499_alt
 			case 369:
 				goto inst369_alt
 			case 406:
@@ -11709,178 +11717,162 @@ fail:
 				goto inst407_alt
 			case 408:
 				goto inst408_alt
-			case 415:
-				goto inst415_alt
 			case 414:
 				goto inst414_alt
+			case 415:
+				goto inst415_alt
 			case 416:
 				goto inst416_alt
-			case 424:
-				goto inst424_alt
 			case 422:
 				goto inst422_alt
 			case 423:
 				goto inst423_alt
+			case 424:
+				goto inst424_alt
 			case 432:
 				goto inst432_alt
+			case 431:
+				goto inst431_alt
+			case 433:
+				goto inst433_alt
 			case 434:
 				goto inst434_alt
 			case 435:
 				goto inst435_alt
-			case 433:
-				goto inst433_alt
+			case 453:
+				goto inst453_alt
+			case 451:
+				goto inst451_alt
 			case 442:
 				goto inst442_alt
 			case 443:
 				goto inst443_alt
 			case 444:
 				goto inst444_alt
-			case 431:
-				goto inst431_alt
 			case 498:
 				goto inst498_alt
-			case 451:
-				goto inst451_alt
-			case 453:
-				goto inst453_alt
 			case 452:
 				goto inst452_alt
-			case 61:
-				goto inst61_alt
-			case 247:
-				goto inst247_alt
-			case 187:
-				goto inst187_alt
-			case 310:
-				goto inst310_alt
-			case 497:
-				goto inst497_alt
-			case 469:
-				goto inst469_alt
-			case 460:
-				goto inst460_alt
-			case 459:
-				goto inst459_alt
-			case 496:
-				goto inst496_alt
-			case 468:
-				goto inst468_alt
-			case 467:
-				goto inst467_alt
-			case 461:
-				goto inst461_alt
-			case 430:
-				goto inst430_alt
-			case 475:
-				goto inst475_alt
-			case 476:
-				goto inst476_alt
-			case 477:
-				goto inst477_alt
-			case 495:
-				goto inst495_alt
-			case 494:
-				goto inst494_alt
-			case 484:
-				goto inst484_alt
-			case 483:
-				goto inst483_alt
-			case 485:
-				goto inst485_alt
 			case 308:
 				goto inst308_alt
-			case 309:
-				goto inst309_alt
+			case 61:
+				goto inst61_alt
+			case 430:
+				goto inst430_alt
 			case 186:
 				goto inst186_alt
+			case 461:
+				goto inst461_alt
+			case 467:
+				goto inst467_alt
+			case 468:
+				goto inst468_alt
+			case 496:
+				goto inst496_alt
+			case 469:
+				goto inst469_alt
+			case 476:
+				goto inst476_alt
+			case 459:
+				goto inst459_alt
+			case 460:
+				goto inst460_alt
+			case 497:
+				goto inst497_alt
+			case 485:
+				goto inst485_alt
 			case 492:
 				goto inst492_alt
 			case 493:
 				goto inst493_alt
 			case 491:
 				goto inst491_alt
-			case 514:
-				goto inst514_alt
+			case 494:
+				goto inst494_alt
+			case 495:
+				goto inst495_alt
+			case 475:
+				goto inst475_alt
+			case 477:
+				goto inst477_alt
+			case 560:
+				goto inst560_alt
+			case 484:
+				goto inst484_alt
+			case 483:
+				goto inst483_alt
 			case 506:
 				goto inst506_alt
-			case 562:
-				goto inst562_alt
 			case 561:
 				goto inst561_alt
-			case 522:
-				goto inst522_alt
+			case 514:
+				goto inst514_alt
 			case 515:
 				goto inst515_alt
 			case 516:
 				goto inst516_alt
-			case 560:
-				goto inst560_alt
-			case 523:
-				goto inst523_alt
 			case 524:
 				goto inst524_alt
-			case 508:
-				goto inst508_alt
-			case 507:
-				goto inst507_alt
+			case 548:
+				goto inst548_alt
+			case 522:
+				goto inst522_alt
+			case 523:
+				goto inst523_alt
 			case 532:
 				goto inst532_alt
-			case 540:
-				goto inst540_alt
-			case 558:
-				goto inst558_alt
+			case 559:
+				goto inst559_alt
+			case 530:
+				goto inst530_alt
+			case 531:
+				goto inst531_alt
+			case 554:
+				goto inst554_alt
 			case 538:
 				goto inst538_alt
 			case 539:
 				goto inst539_alt
-			case 548:
-				goto inst548_alt
-			case 531:
-				goto inst531_alt
+			case 540:
+				goto inst540_alt
 			case 546:
 				goto inst546_alt
 			case 547:
 				goto inst547_alt
+			case 507:
+				goto inst507_alt
 			case 556:
 				goto inst556_alt
-			case 554:
-				goto inst554_alt
 			case 555:
 				goto inst555_alt
 			case 557:
 				goto inst557_alt
-			case 559:
-				goto inst559_alt
-			case 565:
-				goto inst565_alt
+			case 558:
+				goto inst558_alt
+			case 562:
+				goto inst562_alt
 			case 609:
 				goto inst609_alt
-			case 614:
-				goto inst614_alt
-			case 530:
-				goto inst530_alt
-			case 579:
-				goto inst579_alt
-			case 610:
-				goto inst610_alt
+			case 564:
+				goto inst564_alt
+			case 565:
+				goto inst565_alt
+			case 578:
+				goto inst578_alt
 			case 576:
 				goto inst576_alt
 			case 577:
 				goto inst577_alt
-			case 578:
-				goto inst578_alt
-			case 585:
-				goto inst585_alt
+			case 579:
+				goto inst579_alt
 			case 586:
 				goto inst586_alt
-			case 564:
-				goto inst564_alt
+			case 585:
+				goto inst585_alt
 			case 587:
 				goto inst587_alt
 			case 588:
 				goto inst588_alt
-			case 594:
-				goto inst594_alt
 			case 595:
 				goto inst595_alt
 			case 596:
@@ -11899,10 +11891,14 @@ fail:
 				goto inst606_alt
 			case 607:
 				goto inst607_alt
-			case 631:
-				goto inst631_alt
+			case 594:
+				goto inst594_alt
+			case 610:
+				goto inst610_alt
 			case 613:
 				goto inst613_alt
+			case 614:
+				goto inst614_alt
 			case 643:
 				goto inst643_alt
 			case 626:
@@ -11913,42 +11909,46 @@ fail:
 				goto inst628_alt
 			case 629:
 				goto inst629_alt
-			case 638:
-				goto inst638_alt
+			case 631:
+				goto inst631_alt
+			case 683:
+				goto inst683_alt
 			case 640:
 				goto inst640_alt
 			case 641:
 				goto inst641_alt
-			case 656:
-				goto inst656_alt
+			case 638:
+				goto inst638_alt
 			case 651:
 				goto inst651_alt
 			case 653:
 				goto inst653_alt
 			case 654:
 				goto inst654_alt
-			case 669:
-				goto inst669_alt
-			case 683:
-				goto inst683_alt
+			case 656:
+				goto inst656_alt
+			case 508:
+				goto inst508_alt
 			case 664:
 				goto inst664_alt
 			case 666:
 				goto inst666_alt
 			case 667:
 				goto inst667_alt
+			case 669:
+				goto inst669_alt
+			case 682:
+				goto inst682_alt
 			case 677:
 				goto inst677_alt
 			case 679:
 				goto inst679_alt
 			case 680:
 				goto inst680_alt
-			case 689:
-				goto inst689_alt
-			case 682:
-				goto inst682_alt
 			case 688:
 				goto inst688_alt
+			case 689:
+				goto inst689_alt
 			case 690:
 				goto inst690_alt
 			case 696:
@@ -11959,56 +11959,56 @@ fail:
 				goto inst698_alt
 			case 704:
 				goto inst704_alt
+			case 705:
+				goto inst705_alt
 			case 706:
 				goto inst706_alt
+			case 714:
+				goto inst714_alt
 			case 712:
 				goto inst712_alt
 			case 713:
 				goto inst713_alt
-			case 714:
-				goto inst714_alt
 			case 716:
 				goto inst716_alt
 			case 717:
 				goto inst717_alt
 			case 718:
 				goto inst718_alt
-			case 705:
-				goto inst705_alt
+			case 731:
+				goto inst731_alt
 			case 726:
 				goto inst726_alt
 			case 728:
 				goto inst728_alt
 			case 729:
 				goto inst729_alt
-			case 731:
-				goto inst731_alt
-			case 739:
-				goto inst739_alt
+			case 744:
+				goto inst744_alt
 			case 741:
 				goto inst741_alt
 			case 742:
 				goto inst742_alt
-			case 744:
-				goto inst744_alt
+			case 757:
+				goto inst757_alt
 			case 752:
 				goto inst752_alt
 			case 754:
 				goto inst754_alt
 			case 755:
 				goto inst755_alt
-			case 757:
-				goto inst757_alt
+			case 770:
+				goto inst770_alt
 			case 765:
 				goto inst765_alt
 			case 767:
 				goto inst767_alt
 			case 768:
 				goto inst768_alt
-			case 770:
-				goto inst770_alt
 			case 771:
 				goto inst771_alt
+			case 739:
+				goto inst739_alt
 			}
 		}
 		if matched {
