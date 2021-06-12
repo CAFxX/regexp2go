@@ -115,7 +115,7 @@ inst7: // cap 2 -> 8
 
 	goto unreachable
 	goto inst1
-inst1: //
+inst1: // string "Hello " -> 7
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "Hello " {
 			i += 6
@@ -132,7 +132,7 @@ inst10: // cap 3 -> 11
 
 	goto unreachable
 	goto inst11
-inst11: //
+inst11: // string "!" -> 12
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "!" {
 			i += 1

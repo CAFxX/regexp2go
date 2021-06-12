@@ -58,7 +58,7 @@ inst1: // empty 1 -> 2
 
 	goto unreachable
 	goto inst2
-inst2: //
+inst2: // string "INFO res=" -> 11
 	if i >= 0 && i+9 <= len(r) {
 		if r[i:i+9] == "INFO res=" {
 			i += 9
@@ -148,7 +148,7 @@ inst14: // cap 3 -> 15
 
 	goto unreachable
 	goto inst15
-inst15: //
+inst15: // string " msg=" -> 20
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == " msg=" {
 			i += 5

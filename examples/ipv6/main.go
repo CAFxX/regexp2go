@@ -123,7 +123,7 @@ inst4: // rune "09AFaf" -> 8
 
 	goto unreachable
 	goto inst8
-inst8: //
+inst8: // string ":" -> 9
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -217,7 +217,7 @@ inst12: // rune "09AFaf" -> 16
 
 	goto unreachable
 	goto inst16
-inst16: //
+inst16: // string ":" -> 17
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -343,7 +343,7 @@ inst20: // rune "09AFaf" -> 24
 
 	goto unreachable
 	goto inst24
-inst24: //
+inst24: // string ":" -> 25
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -469,7 +469,7 @@ inst28: // rune "09AFaf" -> 32
 
 	goto unreachable
 	goto inst32
-inst32: //
+inst32: // string ":" -> 33
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -595,7 +595,7 @@ inst36: // rune "09AFaf" -> 40
 
 	goto unreachable
 	goto inst40
-inst40: //
+inst40: // string ":" -> 41
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -721,7 +721,7 @@ inst44: // rune "09AFaf" -> 48
 
 	goto unreachable
 	goto inst48
-inst48: //
+inst48: // string ":" -> 49
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -847,7 +847,7 @@ inst52: // rune "09AFaf" -> 56
 
 	goto unreachable
 	goto inst56
-inst56: //
+inst56: // string ":" -> 57
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1056,7 +1056,7 @@ inst67: // rune "09AFaf" -> 71
 
 	goto unreachable
 	goto inst71
-inst71: //
+inst71: // string ":" -> 125
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1208,7 +1208,7 @@ inst77_alt:
 
 	goto unreachable
 	goto inst79
-inst79: //
+inst79: // string ":" -> 124
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1315,7 +1315,7 @@ inst85_alt:
 
 	goto unreachable
 	goto inst87
-inst87: //
+inst87: // string ":" -> 123
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1422,7 +1422,7 @@ inst93_alt:
 
 	goto unreachable
 	goto inst95
-inst95: //
+inst95: // string ":" -> 122
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1484,7 +1484,7 @@ inst99: // rune "09AFaf" -> 103
 
 	goto unreachable
 	goto inst103
-inst103: //
+inst103: // string ":" -> 121
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1623,7 +1623,7 @@ inst106: // rune "09AFaf" -> 108
 
 	goto unreachable
 	goto inst111
-inst111: //
+inst111: // string ":" -> 120
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1826,7 +1826,7 @@ inst114: // rune "09AFaf" -> 116
 
 	goto unreachable
 	goto inst119
-inst119: //
+inst119: // string "::" -> 772
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -1914,7 +1914,7 @@ inst123_alt:
 
 	goto unreachable
 	goto inst126
-inst126: //
+inst126: // string ":" -> 772
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2040,7 +2040,7 @@ inst131: // rune "09AFaf" -> 135
 
 	goto unreachable
 	goto inst135
-inst135: //
+inst135: // string ":" -> 180
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2192,7 +2192,7 @@ inst141_alt:
 
 	goto unreachable
 	goto inst143
-inst143: //
+inst143: // string ":" -> 179
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2318,7 +2318,7 @@ inst147: // rune "09AFaf" -> 151
 
 	goto unreachable
 	goto inst151
-inst151: //
+inst151: // string ":" -> 178
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2438,7 +2438,7 @@ inst157_alt:
 
 	goto unreachable
 	goto inst159
-inst159: //
+inst159: // string ":" -> 177
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2500,7 +2500,7 @@ inst163: // rune "09AFaf" -> 167
 
 	goto unreachable
 	goto inst167
-inst167: //
+inst167: // string ":" -> 176
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2684,7 +2684,7 @@ inst178_alt:
 
 	goto unreachable
 	goto inst181
-inst181: //
+inst181: // string ":" -> 182
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2791,7 +2791,7 @@ inst170: // rune "09AFaf" -> 172
 
 	goto unreachable
 	goto inst175
-inst175: //
+inst175: // string "::" -> 182
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -2968,7 +2968,7 @@ inst193: // rune "09AFaf" -> 197
 
 	goto unreachable
 	goto inst197
-inst197: //
+inst197: // string ":" -> 233
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3133,7 +3133,7 @@ inst202_alt:
 
 	goto unreachable
 	goto inst205
-inst205: //
+inst205: // string ":" -> 232
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3214,7 +3214,7 @@ inst209: // rune "09AFaf" -> 213
 
 	goto unreachable
 	goto inst213
-inst213: //
+inst213: // string ":" -> 231
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3302,7 +3302,7 @@ inst232_alt:
 
 	goto unreachable
 	goto inst234
-inst234: //
+inst234: // string ":" -> 235
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3390,7 +3390,7 @@ inst218_alt:
 
 	goto unreachable
 	goto inst221
-inst221: //
+inst221: // string ":" -> 230
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3497,7 +3497,7 @@ inst226_alt:
 
 	goto unreachable
 	goto inst229
-inst229: //
+inst229: // string "::" -> 235
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -3719,7 +3719,7 @@ inst250_alt:
 
 	goto unreachable
 	goto inst242
-inst242: //
+inst242: // string ":" -> 243
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3877,7 +3877,7 @@ inst254: // rune "09AFaf" -> 256
 
 	goto unreachable
 	goto inst259
-inst259: //
+inst259: // string ":" -> 286
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4029,7 +4029,7 @@ inst264_alt:
 
 	goto unreachable
 	goto inst267
-inst267: //
+inst267: // string ":" -> 285
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4155,7 +4155,7 @@ inst273_alt:
 
 	goto unreachable
 	goto inst275
-inst275: //
+inst275: // string ":" -> 284
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4198,7 +4198,7 @@ inst269: // rune "09AFaf" -> 273
 
 	goto unreachable
 	goto inst287
-inst287: //
+inst287: // string ":" -> 288
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4292,7 +4292,7 @@ inst277: // rune "09AFaf" -> 281
 
 	goto unreachable
 	goto inst283
-inst283: //
+inst283: // string "::" -> 288
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -4476,7 +4476,7 @@ inst312_alt:
 
 	goto unreachable
 	goto inst295
-inst295: //
+inst295: // string ":" -> 296
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4615,7 +4615,7 @@ inst311_alt:
 
 	goto unreachable
 	goto inst303
-inst303: //
+inst303: // string ":" -> 304
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4741,7 +4741,7 @@ inst316: // rune "09AFaf" -> 318
 
 	goto unreachable
 	goto inst321
-inst321: //
+inst321: // string ":" -> 339
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4893,7 +4893,7 @@ inst326_alt:
 
 	goto unreachable
 	goto inst329
-inst329: //
+inst329: // string ":" -> 338
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4936,7 +4936,7 @@ inst338_alt:
 
 	goto unreachable
 	goto inst340
-inst340: //
+inst340: // string ":" -> 341
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5062,7 +5062,7 @@ inst336_alt:
 
 	goto unreachable
 	goto inst337
-inst337: //
+inst337: // string "::" -> 341
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -5297,7 +5297,7 @@ inst342: // rune "09AFaf" -> 346
 
 	goto unreachable
 	goto inst348
-inst348: //
+inst348: // string ":" -> 349
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5436,7 +5436,7 @@ inst373_alt:
 
 	goto unreachable
 	goto inst356
-inst356: //
+inst356: // string ":" -> 357
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5575,7 +5575,7 @@ inst359: // rune "09AFaf" -> 361
 
 	goto unreachable
 	goto inst364
-inst364: //
+inst364: // string ":" -> 365
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5714,7 +5714,7 @@ inst380_alt:
 
 	goto unreachable
 	goto inst383
-inst383: //
+inst383: // string ":" -> 392
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5840,7 +5840,7 @@ inst385: // rune "09AFaf" -> 389
 
 	goto unreachable
 	goto inst393
-inst393: //
+inst393: // string ":" -> 394
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5870,7 +5870,7 @@ inst394: // rune "09AFaf" -> 400
 
 	goto unreachable
 	goto inst391
-inst391: //
+inst391: // string "::" -> 394
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -6022,7 +6022,7 @@ inst396: // rune "09AFaf" -> 398
 
 	goto unreachable
 	goto inst401
-inst401: //
+inst401: // string ":" -> 402
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6212,7 +6212,7 @@ inst408_alt:
 
 	goto unreachable
 	goto inst409
-inst409: //
+inst409: // string ":" -> 410
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6351,7 +6351,7 @@ inst424_alt:
 
 	goto unreachable
 	goto inst417
-inst417: //
+inst417: // string ":" -> 418
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6464,7 +6464,7 @@ inst423_alt:
 
 	goto unreachable
 	goto inst425
-inst425: //
+inst425: // string ":" -> 426
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6642,7 +6642,7 @@ inst450: // rune "09AFaf" -> 498
 
 	goto unreachable
 	goto inst445
-inst445: //
+inst445: // string "::" -> 447
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -6781,7 +6781,7 @@ inst453_alt:
 
 	goto unreachable
 	goto inst454
-inst454: //
+inst454: // string ":" -> 455
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6933,7 +6933,7 @@ inst497_alt:
 
 	goto unreachable
 	goto inst470
-inst470: //
+inst470: // string ":" -> 471
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7008,7 +7008,7 @@ inst460_alt:
 
 	goto unreachable
 	goto inst462
-inst462: //
+inst462: // string ":" -> 463
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7288,7 +7288,7 @@ inst477_alt:
 
 	goto unreachable
 	goto inst478
-inst478: //
+inst478: // string ":" -> 479
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7797,7 +7797,7 @@ inst513: // rune "09AFaf" -> 561
 
 	goto unreachable
 	goto inst509
-inst509: //
+inst509: // string ":" -> 510
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7879,7 +7879,7 @@ inst521: // rune "09AFaf" -> 560
 
 	goto unreachable
 	goto inst486
-inst486: //
+inst486: // string ":" -> 487
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7935,7 +7935,7 @@ inst516_alt:
 
 	goto unreachable
 	goto inst517
-inst517: //
+inst517: // string ":" -> 518
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8080,7 +8080,7 @@ inst524_alt:
 
 	goto unreachable
 	goto inst525
-inst525: //
+inst525: // string ":" -> 526
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8366,7 +8366,7 @@ inst548_alt:
 
 	goto unreachable
 	goto inst541
-inst541: //
+inst541: // string ":" -> 542
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8646,7 +8646,7 @@ inst545: // rune "09AFaf" -> 557
 
 	goto unreachable
 	goto inst571
-inst571: //
+inst571: // string ":" -> 579
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8670,7 +8670,7 @@ inst609_alt:
 
 	goto unreachable
 	goto inst566
-inst566: //
+inst566: // string "fe80:" -> 610
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == "fe80:" {
 			i += 5
@@ -8726,7 +8726,7 @@ inst530_alt:
 
 	goto unreachable
 	goto inst549
-inst549: //
+inst549: // string ":" -> 550
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8782,7 +8782,7 @@ inst610_alt:
 
 	goto unreachable
 	goto inst533
-inst533: //
+inst533: // string ":" -> 534
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8927,7 +8927,7 @@ inst573: // rune "09AFaf" -> 577
 
 	goto unreachable
 	goto inst580
-inst580: //
+inst580: // string ":" -> 588
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8976,7 +8976,7 @@ inst582: // rune "09AFaf" -> 586
 
 	goto unreachable
 	goto inst563
-inst563: //
+inst563: // string ":" -> 772
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9075,7 +9075,7 @@ inst588_alt:
 
 	goto unreachable
 	goto inst589
-inst589: //
+inst589: // string ":" -> 597
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9105,7 +9105,7 @@ inst590: // rune "09AFaf" -> 596
 
 	goto unreachable
 	goto inst598
-inst598: //
+inst598: // string ":" -> 606
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9379,7 +9379,7 @@ inst591: // rune "09AFaf" -> 595
 
 	goto unreachable
 	goto inst611
-inst611: //
+inst611: // string "%" -> 612
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "%" {
 			i += 1
@@ -9453,7 +9453,7 @@ inst613_alt:
 
 	goto unreachable
 	goto inst615
-inst615: //
+inst615: // string "::" -> 631
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -9466,7 +9466,7 @@ inst615: //
 
 	goto unreachable
 	goto inst501
-inst501: //
+inst501: // string ":" -> 502
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9477,7 +9477,7 @@ inst501: //
 
 	goto unreachable
 	goto inst617
-inst617: //
+inst617: // string "ffff" -> 629
 	if i >= 0 && i+4 <= len(r) {
 		if r[i:i+4] == "ffff" {
 			i += 4
@@ -9490,7 +9490,7 @@ inst617: //
 
 	goto unreachable
 	goto inst500
-inst500: //
+inst500: // string ":" -> 564
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9516,7 +9516,7 @@ inst643_alt:
 
 	goto unreachable
 	goto inst621
-inst621: //
+inst621: // string ":0" -> 628
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == ":0" {
 			i += 2
@@ -9529,7 +9529,7 @@ inst621: //
 
 	goto unreachable
 	goto inst623
-inst623: //
+inst623: // string "0" -> 627
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "0" {
 			i += 1
@@ -9540,7 +9540,7 @@ inst623: //
 
 	goto unreachable
 	goto inst624
-inst624: //
+inst624: // string "0" -> 626
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "0" {
 			i += 1
@@ -9551,7 +9551,7 @@ inst624: //
 
 	goto unreachable
 	goto inst625
-inst625: //
+inst625: // string "0:" -> 643
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "0:" {
 			i += 2
@@ -9614,7 +9614,7 @@ inst629_alt:
 
 	goto unreachable
 	goto inst630
-inst630: //
+inst630: // string ":" -> 643
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9625,7 +9625,7 @@ inst630: //
 
 	goto unreachable
 	goto inst632
-inst632: //
+inst632: // string "25" -> 634
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -9636,7 +9636,7 @@ inst632: //
 
 	goto unreachable
 	goto inst644
-inst644: //
+inst644: // string "." -> 656
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -9671,7 +9671,7 @@ inst642: // rune "09" -> 644
 
 	goto unreachable
 	goto inst635
-inst635: //
+inst635: // string "2" -> 636
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -9694,7 +9694,7 @@ inst636: // rune "04" -> 642
 
 	goto unreachable
 	goto inst637
-inst637: //
+inst637: // string "1" -> 639
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -9780,7 +9780,7 @@ inst647: // rune "05" -> 657
 
 	goto unreachable
 	goto inst645
-inst645: //
+inst645: // string "25" -> 647
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -9791,7 +9791,7 @@ inst645: //
 
 	goto unreachable
 	goto inst657
-inst657: //
+inst657: // string "." -> 669
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -9827,7 +9827,7 @@ inst656_alt:
 
 	goto unreachable
 	goto inst648
-inst648: //
+inst648: // string "2" -> 649
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -9850,7 +9850,7 @@ inst652: // rune "09" -> 655
 
 	goto unreachable
 	goto inst650
-inst650: //
+inst650: // string "1" -> 652
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -9927,7 +9927,7 @@ inst660: // rune "05" -> 670
 
 	goto unreachable
 	goto inst658
-inst658: //
+inst658: // string "25" -> 660
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -9938,7 +9938,7 @@ inst658: //
 
 	goto unreachable
 	goto inst670
-inst670: //
+inst670: // string "." -> 682
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -9974,7 +9974,7 @@ inst683_alt:
 
 	goto unreachable
 	goto inst661
-inst661: //
+inst661: // string "2" -> 662
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -9997,7 +9997,7 @@ inst662: // rune "04" -> 668
 
 	goto unreachable
 	goto inst663
-inst663: //
+inst663: // string "1" -> 665
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -10077,7 +10077,7 @@ inst673: // rune "05" -> 772
 
 	goto unreachable
 	goto inst671
-inst671: //
+inst671: // string "25" -> 673
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -10090,7 +10090,7 @@ inst671: //
 
 	goto unreachable
 	goto inst674
-inst674: //
+inst674: // string "2" -> 675
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -10113,7 +10113,7 @@ inst675: // rune "04" -> 681
 
 	goto unreachable
 	goto inst676
-inst676: //
+inst676: // string "1" -> 678
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -10298,7 +10298,7 @@ inst690_alt:
 
 	goto unreachable
 	goto inst691
-inst691: //
+inst691: // string ":" -> 718
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -10328,7 +10328,7 @@ inst692: // rune "09AFaf" -> 698
 
 	goto unreachable
 	goto inst699
-inst699: //
+inst699: // string ":" -> 717
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -10420,7 +10420,7 @@ inst698_alt:
 
 	goto unreachable
 	goto inst707
-inst707: //
+inst707: // string ":" -> 716
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -10669,7 +10669,7 @@ inst714_alt:
 
 	goto unreachable
 	goto inst715
-inst715: //
+inst715: // string "::" -> 731
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -10719,7 +10719,7 @@ inst718_alt:
 
 	goto unreachable
 	goto inst719
-inst719: //
+inst719: // string ":" -> 731
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -10730,7 +10730,7 @@ inst719: //
 
 	goto unreachable
 	goto inst720
-inst720: //
+inst720: // string "25" -> 722
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -10766,7 +10766,7 @@ inst722: // rune "05" -> 732
 
 	goto unreachable
 	goto inst723
-inst723: //
+inst723: // string "2" -> 724
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -10789,7 +10789,7 @@ inst724: // rune "04" -> 730
 
 	goto unreachable
 	goto inst725
-inst725: //
+inst725: // string "1" -> 727
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -10876,7 +10876,7 @@ inst731_alt:
 
 	goto unreachable
 	goto inst732
-inst732: //
+inst732: // string "." -> 744
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -10887,7 +10887,7 @@ inst732: //
 
 	goto unreachable
 	goto inst733
-inst733: //
+inst733: // string "25" -> 735
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -10912,7 +10912,7 @@ inst735: // rune "05" -> 745
 
 	goto unreachable
 	goto inst736
-inst736: //
+inst736: // string "2" -> 737
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -10935,7 +10935,7 @@ inst737: // rune "04" -> 743
 
 	goto unreachable
 	goto inst738
-inst738: //
+inst738: // string "1" -> 740
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -11022,7 +11022,7 @@ inst744_alt:
 
 	goto unreachable
 	goto inst745
-inst745: //
+inst745: // string "." -> 757
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -11033,7 +11033,7 @@ inst745: //
 
 	goto unreachable
 	goto inst746
-inst746: //
+inst746: // string "25" -> 748
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -11058,7 +11058,7 @@ inst748: // rune "05" -> 758
 
 	goto unreachable
 	goto inst749
-inst749: //
+inst749: // string "2" -> 750
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -11081,7 +11081,7 @@ inst750: // rune "04" -> 756
 
 	goto unreachable
 	goto inst751
-inst751: //
+inst751: // string "1" -> 753
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -11168,7 +11168,7 @@ inst757_alt:
 
 	goto unreachable
 	goto inst758
-inst758: //
+inst758: // string "." -> 770
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -11179,7 +11179,7 @@ inst758: //
 
 	goto unreachable
 	goto inst759
-inst759: //
+inst759: // string "25" -> 761
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -11221,7 +11221,7 @@ inst761: // rune "05" -> 772
 
 	goto unreachable
 	goto inst762
-inst762: //
+inst762: // string "2" -> 763
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -11244,7 +11244,7 @@ inst763: // rune "04" -> 769
 
 	goto unreachable
 	goto inst764
-inst764: //
+inst764: // string "1" -> 766
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1

@@ -166,7 +166,7 @@ func main() {
 			out("\n // inst%d unreacheable", pc)
 			continue
 		}
-		out("\n goto unreachable \n goto inst%d \n inst%d: // %s ", pc, pc, inst.String())
+		out("\n goto unreachable \n goto inst%d \n inst%d: // %s ", pc, pc, instname(inst))
 		// out("fmt.Println(i, %d, %q)", pc, inst.String())
 		switch inst.Op {
 		case syntax.InstAlt:
@@ -482,6 +482,17 @@ const (
 	instString syntax.InstOp = 64 + iota
 	instDead
 )
+
+func instname(inst syntax.Inst) string {
+	switch inst.Op {
+	case instString:
+		return fmt.Sprintf("string %q -> %d", string(inst.Rune), inst.Out)
+	case instDead:
+		return "unreachable"
+	default:
+		return inst.String()
+	}
+}
 
 func optString(p *syntax.Prog) {
 	for i, inst := range p.Inst {
