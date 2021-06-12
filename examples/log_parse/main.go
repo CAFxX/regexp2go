@@ -73,22 +73,6 @@ inst11: // cap 2 -> 12
 	c[2] = i
 	goto inst12
 
-	// inst5 unreacheable
-
-	// inst6 unreacheable
-
-	// inst7 unreacheable
-
-	// inst8 unreacheable
-
-	// inst9 unreacheable
-
-	// inst10 unreacheable
-
-	// inst0 unreacheable
-
-	// inst4 unreacheable
-
 	goto unreachable
 	goto inst12
 inst12: // rune "09" -> 13
@@ -130,21 +114,37 @@ inst13_alt:
 		goto inst14
 	}
 
-	// inst16 unreacheable
+	// inst17 unreacheable
+
+	// inst8 unreacheable
+
+	// inst19 unreacheable
+
+	// inst10 unreacheable
 
 	// inst3 unreacheable
+
+	// inst4 unreacheable
+
+	// inst0 unreacheable
+
+	// inst5 unreacheable
+
+	// inst16 unreacheable
+
+	// inst7 unreacheable
+
+	// inst6 unreacheable
+
+	// inst9 unreacheable
+
+	// inst18 unreacheable
 
 	goto unreachable
 	goto inst14
 inst14: // cap 3 -> 15
 	c[3] = i
 	goto inst15
-
-	// inst17 unreacheable
-
-	// inst18 unreacheable
-
-	// inst19 unreacheable
 
 	goto unreachable
 	goto inst15

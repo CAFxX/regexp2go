@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"go/format"
+	"math/rand"
 	"os"
 	"regexp/syntax"
 	"strings"
@@ -569,24 +570,32 @@ func optReorder(p *syntax.Prog) []int {
 			if d < 0 {
 				d = -d
 			}
-			dd += d
+			if d > 0 {
+				dd += d - 1
+			}
 		}
 		for _, out := range insts[pc].out {
 			d := insts[pc].pos - insts[out].pos
 			if d < 0 {
 				d = -d
 			}
-			dd += d
+			if d > 0 {
+				dd += d - 1
+			}
 		}
 		return
 	}
 
-	for iter, modified := 0, true; iter < 100 && modified; iter++ {
-		modified = false
-		tdd := 0
+	metricAll := func() (dd int) {
 		for i := range insts {
-			tdd += metric(i)
+			dd += metric(i)
 		}
+		return
+	}
+
+	for iter, modified := 0, true; iter < 50 && modified; iter++ {
+		modified = false
+		tdd := metricAll()
 		fmt.Fprintf(os.Stderr, "iter=%d, tdd=%d\n", iter, tdd)
 		for i := range insts {
 			ddi := metric(i)
@@ -604,12 +613,17 @@ func optReorder(p *syntax.Prog) []int {
 		if len(insts) < 3 {
 			continue
 		}
-		for i := range insts[:len(insts)-2] {
-			dd := metric(i) + metric(i+1) + metric(i+2)
-			insts[i].pos, insts[i+1].pos, insts[i+2].pos = insts[i+1].pos, insts[i+2].pos, insts[i].pos
-			dds := metric(i) + metric(i+1) + metric(i+2)
+		r := rand.New(rand.NewSource(int64(iter)))
+		for n := 0; n < len(insts)*10; n++ {
+			i, j, k := r.Intn(len(insts)), r.Intn(len(insts)), r.Intn(len(insts))
+			if i == j || j == k || k == i {
+				continue
+			}
+			dd := metric(i) + metric(j) + metric(k)
+			insts[i].pos, insts[j].pos, insts[k].pos = insts[j].pos, insts[k].pos, insts[i].pos
+			dds := metric(i) + metric(j) + metric(k)
 			if dd <= dds {
-				insts[i+1].pos, insts[i+2].pos, insts[i].pos = insts[i].pos, insts[i+1].pos, insts[i+2].pos
+				insts[j].pos, insts[k].pos, insts[i].pos = insts[i].pos, insts[j].pos, insts[k].pos
 			} else {
 				modified = true
 			}
