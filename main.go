@@ -604,10 +604,8 @@ func optReorder(p *syntax.Prog) []int {
 		return
 	}
 
-	for iter, modified := 0, true; iter < 50 && modified; iter++ {
+	for iter, modified := 0, true; iter < 50 && modified && metricAll() > 0; iter++ {
 		modified = false
-		tdd := metricAll()
-		fmt.Fprintf(os.Stderr, "iter=%d, tdd=%d\n", iter, tdd)
 		for i := range insts {
 			ddi := metric(i)
 			for j := range insts[i+1:] {
