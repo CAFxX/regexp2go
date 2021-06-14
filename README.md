@@ -9,8 +9,8 @@ but aiming for compatibility with the Go `regexp` package.
 :warning: This is an experimental PoC that currently implements only a 
 subset of the functionalities and optimizations present in the full 
 `regexp` package.
-Rather importantly it does not yet offer the "run in time linear in the 
-size of the input" guarantee that is offered by the `regexp` package,
+Rather importantly **it does not yet offer the "run in time linear in the 
+size of the input" guarantee that is offered by the `regexp` package**,
 and it is extremely likely to contain correctness bugs since it's currently
 lacking any proper test. 
 Do not use for anything serious.
