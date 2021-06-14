@@ -18,8 +18,8 @@ func Server(addr string) error {
 						Compile <a href="https://golang.org/pkg/regexp/syntax/">Go regular expressions</a> to Go code.
 					</p>
 					<form method=post action="/generate">
-						<input type=text name=regex placeholder="Regexp">
-						<input type=submit>
+						<input type=text name=regex placeholder=Regexp required=required>
+						<input type=submit value=Compile>
 					</form>
 					<p>
 						Warning: regexp2go is alpha quality.
