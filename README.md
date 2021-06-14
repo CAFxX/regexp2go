@@ -17,7 +17,7 @@ Do not use for anything serious.
 
 ## Usage
 
-For a quick demo:
+For a quick demo you can use the [online demo](https://regexp2go-demo.herokuapp.com/), or run it locally:
 
 ```sh
 $ go get github.com/CAFxX/regexp2go
@@ -53,6 +53,9 @@ Examples of generated code are in [`examples/`](./examples).
 
 Each example contains the generated Go code, and the disassembly of the
 function that implements the regular expression.
+
+For demo purposes you can also use the [online demo](https://regexp2go-demo.herokuapp.com/)
+to compile a custom regular expression.
 
 ## Benchmarks
 
