@@ -6,6 +6,7 @@ package ipv6
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
 
@@ -29,8 +30,18 @@ func Match(r string) (matches [1]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*319+7)/8)
+
+	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*319 + 7) / 8)
+	defer func() {
+		pi := *ppi
+		for i := range pi {
+			pi[i] = 0
+		}
+		bytespool.PutBytesSlicePtr(ppi)
+	}()
+	pi := *ppi
 	_ = pi
+
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [2]int     // captures

@@ -6,6 +6,7 @@ package log_parse
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?m)^INFO res=([0-9]+) msg=(.*)$"
 
@@ -29,8 +30,18 @@ func Match(r string) (matches [3]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([3]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*2+7)/8)
+
+	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*2 + 7) / 8)
+	defer func() {
+		pi := *ppi
+		for i := range pi {
+			pi[i] = 0
+		}
+		bytespool.PutBytesSlicePtr(ppi)
+	}()
+	pi := *ppi
 	_ = pi
+
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [6]int     // captures

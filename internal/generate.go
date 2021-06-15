@@ -68,6 +68,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 	out(`import "regexp/syntax"`)
 	out(`import "unicode/utf8"`)
 	out(`import "strings"`)
+	out(`import "github.com/CAFxX/bytespool"`)
 	if pkg == "main" {
 		out(`
 			import "fmt"
@@ -101,7 +102,22 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 
 	out("func do%s(r string, bt []state%s) ([%d]string, int, bool) {", fn, fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
-	out("  pi := make([]byte, ((len(r)+1)*%d+7)/8) \n _ = pi", numSt)
+	// TODO: is this really needed every time we have an InstAlt? Can we skip it in some more cases?
+	// TODO: make the bytespool dependency optional
+	if numSt > 0 {
+		out(`  
+			ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*%d+7)/8)
+			defer func() {
+				pi := *ppi
+				for i := range pi { 
+					pi[i] = 0 
+				}
+				bytespool.PutBytesSlicePtr(ppi) 
+			}()
+			pi := *ppi
+			_ = pi
+		`, numSt)
+	}
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  bt = bt[:0] // fast reset dynamic backtracking state")
@@ -148,6 +164,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 		// out("fmt.Println(i, %d, %q)", pc, inst.String())
 		switch inst.Op {
 		case syntax.InstAlt:
+			// TODO: pick the optimal indexing scheme based on the number of states and the size of the input string
 			out(`{
 				idx := i * %d + %d
 				if pi[idx/8] & (byte(1)<<(idx%%8)) != 0 { 

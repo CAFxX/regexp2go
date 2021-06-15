@@ -6,6 +6,7 @@ package dna
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))"
 
@@ -29,8 +30,18 @@ func Match(r string) (matches [10]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([10]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*17+7)/8)
+
+	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*17 + 7) / 8)
+	defer func() {
+		pi := *ppi
+		for i := range pi {
+			pi[i] = 0
+		}
+		bytespool.PutBytesSlicePtr(ppi)
+	}()
+	pi := *ppi
 	_ = pi
+
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [20]int    // captures

@@ -6,6 +6,7 @@ package line_prefix
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?m)^>(.*)$"
 
@@ -29,8 +30,18 @@ func Match(r string) (matches [2]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([2]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*1+7)/8)
+
+	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*1 + 7) / 8)
+	defer func() {
+		pi := *ppi
+		for i := range pi {
+			pi[i] = 0
+		}
+		bytespool.PutBytesSlicePtr(ppi)
+	}()
+	pi := *ppi
 	_ = pi
+
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [4]int     // captures
