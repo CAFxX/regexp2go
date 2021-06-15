@@ -29,6 +29,8 @@ func Match(r string) (matches [2]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([2]string, int, bool) {
 	si := 0 // starting byte index
+	pi := make([]byte, ((len(r)+1)*9+7)/8)
+	_ = pi
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [4]int     // captures
@@ -43,6 +45,13 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // empty 1 -> 2
+	{
+		idx := i*9 + 1
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	{
 		before := rune(-1)
 		if i := i - 1; i >= 0 && i < len(r) {
@@ -61,6 +70,13 @@ inst1: // empty 1 -> 2
 	goto unreachable
 	goto inst2
 inst2: // string ">" -> 3
+	{
+		idx := i*9 + 2
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ">" {
 			i += 1
@@ -72,12 +88,26 @@ inst2: // string ">" -> 3
 	goto unreachable
 	goto inst3
 inst3: // cap 2 -> 5
+	{
+		idx := i*9 + 3
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[2] = i
 	goto inst5
 
 	goto unreachable
 	goto inst4
 inst4: // anynotnl -> 5
+	{
+		idx := i*9 + 4
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i < 0 || i >= len(r) {
 		goto fail
 	}
@@ -97,6 +127,13 @@ inst4: // anynotnl -> 5
 	goto unreachable
 	goto inst5
 inst5: // alt -> 4, 6
+	{
+		idx := i*9 + 5
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 5 && i-ps.i == 1 {
@@ -126,12 +163,26 @@ inst5_alt:
 	goto unreachable
 	goto inst6
 inst6: // cap 3 -> 7
+	{
+		idx := i*9 + 6
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[3] = i
 	goto inst7
 
 	goto unreachable
 	goto inst7
 inst7: // empty 2 -> 8
+	{
+		idx := i*9 + 7
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	{
 		after := rune(-1)
 		if i := i; i >= 0 && i < len(r) {
@@ -150,6 +201,13 @@ inst7: // empty 2 -> 8
 	goto unreachable
 	goto inst8
 inst8: // match
+	{
+		idx := i*9 + 8
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[1] = i // end of match
 	goto match
 

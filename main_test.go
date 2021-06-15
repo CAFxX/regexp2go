@@ -11,6 +11,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/line_prefix"
 	"github.com/CAFxX/regexp2go/examples/log_parse"
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
+	"github.com/CAFxX/regexp2go/examples/pathological"
 	"github.com/CAFxX/regexp2go/examples/prefix"
 	"github.com/CAFxX/regexp2go/examples/quoted"
 	"github.com/CAFxX/regexp2go/examples/suffix"
@@ -32,6 +33,7 @@ func TestRegexp2go(t *testing.T) {
 		"line_prefix":  {line_prefix.MatchRegexp, line_prefix.Match, []string{"example\n>hello\n>world!\nend\n"}},
 		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match, []string{" dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com"}},
 		"quoted":       {quoted.MatchRegexp, quoted.Match, []string{`code:0 pub:true msg:"Hello World!" t:452`}},
+		"pathological": {pathological.MatchRegexp, pathological.Match, []string{`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`}},
 	}
 	for n, c := range cases {
 		c := c
@@ -57,17 +59,17 @@ func TestRegexp2go(t *testing.T) {
 					t.Logf("pos: %v", pos)
 					t.Logf("ok: %v", ok)
 
-					rematches := re.FindStringSubmatch(s)
-					if !reflect.DeepEqual(matches, rematches) {
-						t.Errorf("matches: got %#v, expected %#v", matches, rematches)
-					}
-
 					reok := re.MatchString(s)
 					if ok != reok {
 						t.Errorf("ok: got %v, expected %v", ok, reok)
 					}
 
 					if ok {
+						rematches := re.FindStringSubmatch(s)
+						if !reflect.DeepEqual(matches, rematches) {
+							t.Errorf("matches: got %#v, expected %#v", matches, rematches)
+						}
+
 						repos := re.FindStringIndex(s)
 						if pos != int64(repos[0]) {
 							t.Errorf("pos: got %v, expected %v", pos, repos[0])
