@@ -29,7 +29,7 @@ func Match(r string) (matches [3]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([3]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*17+7)/8)
+	pi := make([]byte, ((len(r)+1)*3+7)/8)
 	_ = pi
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
@@ -45,13 +45,6 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // empty 16 -> 2
-	{
-		idx := i*17 + 1
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	{
 		before := rune(-1)
 		if i := i - 1; i >= 0 && i < len(r) {
@@ -78,26 +71,12 @@ inst1: // empty 16 -> 2
 	goto unreachable
 	goto inst2
 inst2: // cap 2 -> 3
-	{
-		idx := i*17 + 2
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[2] = i
 	goto inst3
 
 	goto unreachable
 	goto inst3
 inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
-	{
-		idx := i*17 + 3
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
@@ -122,7 +101,7 @@ inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
 	goto inst4
 inst4: // alt -> 3, 5
 	{
-		idx := i*17 + 4
+		idx := i*3 + 0
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -157,26 +136,12 @@ inst4_alt:
 	goto unreachable
 	goto inst5
 inst5: // cap 3 -> 6
-	{
-		idx := i*17 + 5
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[3] = i
 	goto inst6
 
 	goto unreachable
 	goto inst6
 inst6: // string "@" -> 7
-	{
-		idx := i*17 + 6
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "@" {
 			i += 1
@@ -188,26 +153,12 @@ inst6: // string "@" -> 7
 	goto unreachable
 	goto inst7
 inst7: // cap 4 -> 8
-	{
-		idx := i*17 + 7
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[4] = i
 	goto inst8
 
 	goto unreachable
 	goto inst8
 inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
-	{
-		idx := i*17 + 8
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
@@ -232,7 +183,7 @@ inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
 	goto inst9
 inst9: // alt -> 8, 10
 	{
-		idx := i*17 + 9
+		idx := i*3 + 1
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -267,13 +218,6 @@ inst9_alt:
 	goto unreachable
 	goto inst10
 inst10: // string "." -> 11
-	{
-		idx := i*17 + 10
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -285,13 +229,6 @@ inst10: // string "." -> 11
 	goto unreachable
 	goto inst11
 inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
-	{
-		idx := i*17 + 11
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
@@ -315,13 +252,6 @@ inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 	goto unreachable
 	goto inst12
 inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
-	{
-		idx := i*17 + 12
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
@@ -346,7 +276,7 @@ inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
 	goto inst13
 inst13: // alt -> 12, 14
 	{
-		idx := i*17 + 13
+		idx := i*3 + 2
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -381,26 +311,12 @@ inst13_alt:
 	goto unreachable
 	goto inst14
 inst14: // cap 5 -> 15
-	{
-		idx := i*17 + 14
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[5] = i
 	goto inst15
 
 	goto unreachable
 	goto inst15
 inst15: // empty 16 -> 16
-	{
-		idx := i*17 + 15
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	{
 		before := rune(-1)
 		if i := i - 1; i >= 0 && i < len(r) {
@@ -427,13 +343,6 @@ inst15: // empty 16 -> 16
 	goto unreachable
 	goto inst16
 inst16: // match
-	{
-		idx := i*17 + 16
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[1] = i // end of match
 	goto match
 
