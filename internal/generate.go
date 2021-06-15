@@ -101,6 +101,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 
 	out("func do%s(r string, bt []state%s) ([%d]string, int, bool) {", fn, fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
+	out("  pi := make([]byte, ((len(r)+1)*%d+7)/8) \n _ = pi", len(p.Inst))
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  bt = bt[:0] // fast reset dynamic backtracking state")
@@ -145,6 +146,14 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 		}
 		out("\n goto unreachable \n goto inst%d \n inst%d: // %s ", pc, pc, instname(inst))
 		// out("fmt.Println(i, %d, %q)", pc, inst.String())
+		// TODO: only add this check in states where it's needed (InstAlt?)
+		out(`{
+			idx := i * %d + %d
+			if pi[idx/8] & (byte(1)<<(idx%%8)) != 0 { 
+				goto fail 
+			}
+			pi[idx/8] |= byte(1)<<(idx%%8)
+		}`, len(p.Inst), pc)
 		switch inst.Op {
 		case syntax.InstAlt:
 			// TODO: use a pool of state segments to avoid copying (by linking the segments into a stack)
@@ -413,7 +422,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 
 	gen, err := format.Source(b.Bytes())
 	if err != nil {
-		return gen, fmt.Errorf("formatting generated code: %w", err)
+		return b.Bytes(), fmt.Errorf("formatting generated code: %w", err)
 	}
 	return gen, nil
 }

@@ -29,6 +29,8 @@ func Match(r string) (matches [3]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([3]string, int, bool) {
 	si := 0 // starting byte index
+	pi := make([]byte, ((len(r)+1)*26+7)/8)
+	_ = pi
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [6]int     // captures
@@ -45,6 +47,13 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // empty 1 -> 2
+	{
+		idx := i*26 + 1
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	{
 		before := rune(-1)
 		if i := i - 1; i >= 0 && i < len(r) {
@@ -63,6 +72,13 @@ inst1: // empty 1 -> 2
 	goto unreachable
 	goto inst2
 inst2: // string "INFO res=" -> 11
+	{
+		idx := i*26 + 2
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i >= 0 && i+9 <= len(r) {
 		if r[i:i+9] == "INFO res=" {
 			i += 9
@@ -88,12 +104,26 @@ inst2: // string "INFO res=" -> 11
 	goto unreachable
 	goto inst11
 inst11: // cap 2 -> 12
+	{
+		idx := i*26 + 11
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[2] = i
 	goto inst12
 
 	goto unreachable
 	goto inst12
 inst12: // rune "09" -> 13
+	{
+		idx := i*26 + 12
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -106,6 +136,13 @@ inst12: // rune "09" -> 13
 	goto unreachable
 	goto inst13
 inst13: // alt -> 12, 14
+	{
+		idx := i*26 + 13
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 13 && i-ps.i == 1 {
@@ -135,12 +172,26 @@ inst13_alt:
 	goto unreachable
 	goto inst14
 inst14: // cap 3 -> 15
+	{
+		idx := i*26 + 14
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[3] = i
 	goto inst15
 
 	goto unreachable
 	goto inst15
 inst15: // string " msg=" -> 20
+	{
+		idx := i*26 + 15
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == " msg=" {
 			i += 5
@@ -160,12 +211,26 @@ inst15: // string " msg=" -> 20
 	goto unreachable
 	goto inst20
 inst20: // cap 4 -> 22
+	{
+		idx := i*26 + 20
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[4] = i
 	goto inst22
 
 	goto unreachable
 	goto inst21
 inst21: // anynotnl -> 22
+	{
+		idx := i*26 + 21
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i < 0 || i >= len(r) {
 		goto fail
 	}
@@ -185,6 +250,13 @@ inst21: // anynotnl -> 22
 	goto unreachable
 	goto inst22
 inst22: // alt -> 21, 23
+	{
+		idx := i*26 + 22
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 22 && i-ps.i == 1 {
@@ -214,12 +286,26 @@ inst22_alt:
 	goto unreachable
 	goto inst23
 inst23: // cap 5 -> 24
+	{
+		idx := i*26 + 23
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[5] = i
 	goto inst24
 
 	goto unreachable
 	goto inst24
 inst24: // empty 2 -> 25
+	{
+		idx := i*26 + 24
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	{
 		after := rune(-1)
 		if i := i; i >= 0 && i < len(r) {
@@ -238,6 +324,13 @@ inst24: // empty 2 -> 25
 	goto unreachable
 	goto inst25
 inst25: // match
+	{
+		idx := i*26 + 25
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[1] = i // end of match
 	goto match
 

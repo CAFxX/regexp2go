@@ -29,6 +29,8 @@ func Match(r string) (matches [2]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([2]string, int, bool) {
 	si := 0 // starting byte index
+	pi := make([]byte, ((len(r)+1)*10+7)/8)
+	_ = pi
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
 	var c [4]int     // captures
@@ -57,6 +59,13 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // string "私は" -> 3
+	{
+		idx := i*10 + 1
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "私は" {
 			i += 6
@@ -68,12 +77,26 @@ inst1: // string "私は" -> 3
 	goto unreachable
 	goto inst3
 inst3: // cap 2 -> 4
+	{
+		idx := i*10 + 3
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[2] = i
 	goto inst4
 
 	goto unreachable
 	goto inst4
 inst4: // rune "\u2e80\u2e99\u2e9b\u2ef3\u2f00\u2fd5\u3005\u3005\u3007\u3007\u3021\u3029\u3038\u303b\u3041\u3096\u309d\u309f\u30a1\u30fa\u30fd\u30ff\u31f0\u31ff\u32d0\u32fe\u3300\u3357\u3400\u4dbf\u4e00\u9ffc\uf900\ufa6d\ufa70\ufad9\uff66\uff6f\uff71\uff9d\U00016ff0\U00016ff1\U0001b000\U0001b11e\U0001b150\U0001b152\U0001b164\U0001b167\U0001f200\U0001f200\U00020000\U0002a6dd\U0002a700\U0002b734\U0002b740\U0002b81d\U0002b820\U0002cea1\U0002ceb0\U0002ebe0\U0002f800\U0002fa1d\U00030000\U0003134a" -> 5
+	{
+		idx := i*10 + 4
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
@@ -90,6 +113,13 @@ inst4: // rune "\u2e80\u2e99\u2e9b\u2ef3\u2f00\u2fd5\u3005\u3005\u3007\u3007\u30
 	goto unreachable
 	goto inst5
 inst5: // alt -> 4, 6
+	{
+		idx := i*10 + 5
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if len(bt) > 0 {
 		ps := &bt[len(bt)-1]
 		if ps.pc == 5 && i-ps.i == 1 {
@@ -119,12 +149,26 @@ inst5_alt:
 	goto unreachable
 	goto inst6
 inst6: // cap 3 -> 7
+	{
+		idx := i*10 + 6
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[3] = i
 	goto inst7
 
 	goto unreachable
 	goto inst7
 inst7: // string "です" -> 9
+	{
+		idx := i*10 + 7
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "です" {
 			i += 6
@@ -136,6 +180,13 @@ inst7: // string "です" -> 9
 	goto unreachable
 	goto inst9
 inst9: // match
+	{
+		idx := i*10 + 9
+		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
+			goto fail
+		}
+		pi[idx/8] |= byte(1) << (idx % 8)
+	}
 	c[1] = i // end of match
 	goto match
 
