@@ -26,8 +26,10 @@ func Server(addr string) error {
 						</div>
 						<div class=row>
 							<form method=post action="/generate">
-								<input type=text name=regex placeholder=Regexp required=required class=form-control>
-								<button type=submit class="btn btn-primary">Compile</button>
+								<div class="input-group">
+									<input type=text name=regex placeholder=Regexp required=required class=form-control>
+									<button type=submit class="btn btn-primary">Compile</button>
+								</div>
 							</form>
 						</div>
 						<div class=row>
