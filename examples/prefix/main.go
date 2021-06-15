@@ -29,7 +29,7 @@ func Match(r string) (matches [2]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([2]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*13+7)/8)
+	pi := make([]byte, ((len(r)+1)*1+7)/8)
 	_ = pi
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
@@ -65,13 +65,6 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // string "Hello " -> 7
-	{
-		idx := i*13 + 1
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "Hello " {
 			i += 6
@@ -83,26 +76,12 @@ inst1: // string "Hello " -> 7
 	goto unreachable
 	goto inst7
 inst7: // cap 2 -> 8
-	{
-		idx := i*13 + 7
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[2] = i
 	goto inst8
 
 	goto unreachable
 	goto inst8
 inst8: // rune "\x00 \"\U0010ffff" -> 9
-	{
-		idx := i*13 + 8
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cr >= utf8.RuneSelf {
@@ -120,7 +99,7 @@ inst8: // rune "\x00 \"\U0010ffff" -> 9
 	goto inst9
 inst9: // alt -> 8, 10
 	{
-		idx := i*13 + 9
+		idx := i*1 + 0
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -155,26 +134,12 @@ inst9_alt:
 	goto unreachable
 	goto inst10
 inst10: // cap 3 -> 11
-	{
-		idx := i*13 + 10
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[3] = i
 	goto inst11
 
 	goto unreachable
 	goto inst11
 inst11: // string "!" -> 12
-	{
-		idx := i*13 + 11
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "!" {
 			i += 1
@@ -186,13 +151,6 @@ inst11: // string "!" -> 12
 	goto unreachable
 	goto inst12
 inst12: // match
-	{
-		idx := i*13 + 12
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[1] = i // end of match
 	goto match
 

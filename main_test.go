@@ -33,7 +33,7 @@ func TestRegexp2go(t *testing.T) {
 		"line_prefix":  {line_prefix.MatchRegexp, line_prefix.Match, []string{"example\n>hello\n>world!\nend\n"}},
 		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match, []string{" dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com"}},
 		"quoted":       {quoted.MatchRegexp, quoted.Match, []string{`code:0 pub:true msg:"Hello World!" t:452`}},
-		"pathological": {pathological.MatchRegexp, pathological.Match, []string{`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`}},
+		"pathological": {pathological.MatchRegexp, pathological.Match, []string{`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`, `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab`}},
 	}
 	for n, c := range cases {
 		c := c

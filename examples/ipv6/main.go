@@ -29,7 +29,7 @@ func Match(r string) (matches [1]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*773+7)/8)
+	pi := make([]byte, ((len(r)+1)*319+7)/8)
 	_ = pi
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
@@ -45,13 +45,6 @@ restart:
 	goto unreachable
 	goto inst2
 inst2: // rune "09AFaf" -> 6
-	{
-		idx := i*773 + 2
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -72,7 +65,7 @@ inst2: // rune "09AFaf" -> 6
 	goto inst7
 inst7: // alt -> 2, 8
 	{
-		idx := i*773 + 7
+		idx := i*319 + 0
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -92,7 +85,7 @@ inst7_alt:
 	goto inst6
 inst6: // alt -> 3, 8
 	{
-		idx := i*773 + 6
+		idx := i*319 + 1
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -111,13 +104,6 @@ inst6_alt:
 	goto unreachable
 	goto inst3
 inst3: // rune "09AFaf" -> 5
-	{
-		idx := i*773 + 3
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -138,7 +124,7 @@ inst3: // rune "09AFaf" -> 5
 	goto inst5
 inst5: // alt -> 4, 8
 	{
-		idx := i*773 + 5
+		idx := i*319 + 2
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -157,13 +143,6 @@ inst5_alt:
 	goto unreachable
 	goto inst8
 inst8: // string ":" -> 9
-	{
-		idx := i*773 + 8
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -175,13 +154,6 @@ inst8: // string ":" -> 9
 	goto unreachable
 	goto inst4
 inst4: // rune "09AFaf" -> 8
-	{
-		idx := i*773 + 4
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -201,13 +173,6 @@ inst4: // rune "09AFaf" -> 8
 	goto unreachable
 	goto inst9
 inst9: // rune "09AFaf" -> 15
-	{
-		idx := i*773 + 9
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -228,7 +193,7 @@ inst9: // rune "09AFaf" -> 15
 	goto inst15
 inst15: // alt -> 10, 16
 	{
-		idx := i*773 + 15
+		idx := i*319 + 3
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -247,13 +212,6 @@ inst15_alt:
 	goto unreachable
 	goto inst10
 inst10: // rune "09AFaf" -> 14
-	{
-		idx := i*773 + 10
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -274,7 +232,7 @@ inst10: // rune "09AFaf" -> 14
 	goto inst14
 inst14: // alt -> 11, 16
 	{
-		idx := i*773 + 14
+		idx := i*319 + 4
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -293,13 +251,6 @@ inst14_alt:
 	goto unreachable
 	goto inst11
 inst11: // rune "09AFaf" -> 13
-	{
-		idx := i*773 + 11
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -320,7 +271,7 @@ inst11: // rune "09AFaf" -> 13
 	goto inst13
 inst13: // alt -> 12, 16
 	{
-		idx := i*773 + 13
+		idx := i*319 + 5
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -339,13 +290,6 @@ inst13_alt:
 	goto unreachable
 	goto inst16
 inst16: // string ":" -> 17
-	{
-		idx := i*773 + 16
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -357,13 +301,6 @@ inst16: // string ":" -> 17
 	goto unreachable
 	goto inst12
 inst12: // rune "09AFaf" -> 16
-	{
-		idx := i*773 + 12
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -383,13 +320,6 @@ inst12: // rune "09AFaf" -> 16
 	goto unreachable
 	goto inst17
 inst17: // rune "09AFaf" -> 23
-	{
-		idx := i*773 + 17
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -410,7 +340,7 @@ inst17: // rune "09AFaf" -> 23
 	goto inst23
 inst23: // alt -> 18, 24
 	{
-		idx := i*773 + 23
+		idx := i*319 + 6
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -429,13 +359,6 @@ inst23_alt:
 	goto unreachable
 	goto inst18
 inst18: // rune "09AFaf" -> 22
-	{
-		idx := i*773 + 18
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -456,7 +379,7 @@ inst18: // rune "09AFaf" -> 22
 	goto inst22
 inst22: // alt -> 19, 24
 	{
-		idx := i*773 + 22
+		idx := i*319 + 7
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -475,13 +398,6 @@ inst22_alt:
 	goto unreachable
 	goto inst19
 inst19: // rune "09AFaf" -> 21
-	{
-		idx := i*773 + 19
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -502,7 +418,7 @@ inst19: // rune "09AFaf" -> 21
 	goto inst21
 inst21: // alt -> 20, 24
 	{
-		idx := i*773 + 21
+		idx := i*319 + 8
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -521,13 +437,6 @@ inst21_alt:
 	goto unreachable
 	goto inst24
 inst24: // string ":" -> 25
-	{
-		idx := i*773 + 24
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -539,13 +448,6 @@ inst24: // string ":" -> 25
 	goto unreachable
 	goto inst20
 inst20: // rune "09AFaf" -> 24
-	{
-		idx := i*773 + 20
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -565,13 +467,6 @@ inst20: // rune "09AFaf" -> 24
 	goto unreachable
 	goto inst25
 inst25: // rune "09AFaf" -> 31
-	{
-		idx := i*773 + 25
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -592,7 +487,7 @@ inst25: // rune "09AFaf" -> 31
 	goto inst31
 inst31: // alt -> 26, 32
 	{
-		idx := i*773 + 31
+		idx := i*319 + 9
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -611,13 +506,6 @@ inst31_alt:
 	goto unreachable
 	goto inst26
 inst26: // rune "09AFaf" -> 30
-	{
-		idx := i*773 + 26
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -638,7 +526,7 @@ inst26: // rune "09AFaf" -> 30
 	goto inst30
 inst30: // alt -> 27, 32
 	{
-		idx := i*773 + 30
+		idx := i*319 + 10
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -657,13 +545,6 @@ inst30_alt:
 	goto unreachable
 	goto inst27
 inst27: // rune "09AFaf" -> 29
-	{
-		idx := i*773 + 27
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -684,7 +565,7 @@ inst27: // rune "09AFaf" -> 29
 	goto inst29
 inst29: // alt -> 28, 32
 	{
-		idx := i*773 + 29
+		idx := i*319 + 11
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -703,13 +584,6 @@ inst29_alt:
 	goto unreachable
 	goto inst32
 inst32: // string ":" -> 33
-	{
-		idx := i*773 + 32
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -721,13 +595,6 @@ inst32: // string ":" -> 33
 	goto unreachable
 	goto inst28
 inst28: // rune "09AFaf" -> 32
-	{
-		idx := i*773 + 28
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -747,13 +614,6 @@ inst28: // rune "09AFaf" -> 32
 	goto unreachable
 	goto inst33
 inst33: // rune "09AFaf" -> 39
-	{
-		idx := i*773 + 33
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -774,7 +634,7 @@ inst33: // rune "09AFaf" -> 39
 	goto inst39
 inst39: // alt -> 34, 40
 	{
-		idx := i*773 + 39
+		idx := i*319 + 12
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -793,13 +653,6 @@ inst39_alt:
 	goto unreachable
 	goto inst34
 inst34: // rune "09AFaf" -> 38
-	{
-		idx := i*773 + 34
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -820,7 +673,7 @@ inst34: // rune "09AFaf" -> 38
 	goto inst38
 inst38: // alt -> 35, 40
 	{
-		idx := i*773 + 38
+		idx := i*319 + 13
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -839,13 +692,6 @@ inst38_alt:
 	goto unreachable
 	goto inst35
 inst35: // rune "09AFaf" -> 37
-	{
-		idx := i*773 + 35
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -866,7 +712,7 @@ inst35: // rune "09AFaf" -> 37
 	goto inst37
 inst37: // alt -> 36, 40
 	{
-		idx := i*773 + 37
+		idx := i*319 + 14
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -885,13 +731,6 @@ inst37_alt:
 	goto unreachable
 	goto inst40
 inst40: // string ":" -> 41
-	{
-		idx := i*773 + 40
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -903,13 +742,6 @@ inst40: // string ":" -> 41
 	goto unreachable
 	goto inst36
 inst36: // rune "09AFaf" -> 40
-	{
-		idx := i*773 + 36
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -929,13 +761,6 @@ inst36: // rune "09AFaf" -> 40
 	goto unreachable
 	goto inst41
 inst41: // rune "09AFaf" -> 47
-	{
-		idx := i*773 + 41
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -956,7 +781,7 @@ inst41: // rune "09AFaf" -> 47
 	goto inst47
 inst47: // alt -> 42, 48
 	{
-		idx := i*773 + 47
+		idx := i*319 + 15
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -975,13 +800,6 @@ inst47_alt:
 	goto unreachable
 	goto inst42
 inst42: // rune "09AFaf" -> 46
-	{
-		idx := i*773 + 42
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1002,7 +820,7 @@ inst42: // rune "09AFaf" -> 46
 	goto inst46
 inst46: // alt -> 43, 48
 	{
-		idx := i*773 + 46
+		idx := i*319 + 16
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1021,13 +839,6 @@ inst46_alt:
 	goto unreachable
 	goto inst43
 inst43: // rune "09AFaf" -> 45
-	{
-		idx := i*773 + 43
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1048,7 +859,7 @@ inst43: // rune "09AFaf" -> 45
 	goto inst45
 inst45: // alt -> 44, 48
 	{
-		idx := i*773 + 45
+		idx := i*319 + 17
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1067,13 +878,6 @@ inst45_alt:
 	goto unreachable
 	goto inst48
 inst48: // string ":" -> 49
-	{
-		idx := i*773 + 48
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1085,13 +889,6 @@ inst48: // string ":" -> 49
 	goto unreachable
 	goto inst44
 inst44: // rune "09AFaf" -> 48
-	{
-		idx := i*773 + 44
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1111,13 +908,6 @@ inst44: // rune "09AFaf" -> 48
 	goto unreachable
 	goto inst49
 inst49: // rune "09AFaf" -> 55
-	{
-		idx := i*773 + 49
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1138,7 +928,7 @@ inst49: // rune "09AFaf" -> 55
 	goto inst55
 inst55: // alt -> 50, 56
 	{
-		idx := i*773 + 55
+		idx := i*319 + 18
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1157,13 +947,6 @@ inst55_alt:
 	goto unreachable
 	goto inst50
 inst50: // rune "09AFaf" -> 54
-	{
-		idx := i*773 + 50
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1184,7 +967,7 @@ inst50: // rune "09AFaf" -> 54
 	goto inst54
 inst54: // alt -> 51, 56
 	{
-		idx := i*773 + 54
+		idx := i*319 + 19
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1203,13 +986,6 @@ inst54_alt:
 	goto unreachable
 	goto inst51
 inst51: // rune "09AFaf" -> 53
-	{
-		idx := i*773 + 51
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1230,7 +1006,7 @@ inst51: // rune "09AFaf" -> 53
 	goto inst53
 inst53: // alt -> 52, 56
 	{
-		idx := i*773 + 53
+		idx := i*319 + 20
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1249,13 +1025,6 @@ inst53_alt:
 	goto unreachable
 	goto inst56
 inst56: // string ":" -> 57
-	{
-		idx := i*773 + 56
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1267,13 +1036,6 @@ inst56: // string ":" -> 57
 	goto unreachable
 	goto inst52
 inst52: // rune "09AFaf" -> 56
-	{
-		idx := i*773 + 52
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1293,13 +1055,6 @@ inst52: // rune "09AFaf" -> 56
 	goto unreachable
 	goto inst57
 inst57: // rune "09AFaf" -> 63
-	{
-		idx := i*773 + 57
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1320,7 +1075,7 @@ inst57: // rune "09AFaf" -> 63
 	goto inst63
 inst63: // alt -> 58, 772
 	{
-		idx := i*773 + 63
+		idx := i*319 + 21
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1339,13 +1094,6 @@ inst63_alt:
 	goto unreachable
 	goto inst58
 inst58: // rune "09AFaf" -> 62
-	{
-		idx := i*773 + 58
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1365,13 +1113,6 @@ inst58: // rune "09AFaf" -> 62
 	goto unreachable
 	goto inst1
 inst1: // rune "09AFaf" -> 7
-	{
-		idx := i*773 + 1
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1392,7 +1133,7 @@ inst1: // rune "09AFaf" -> 7
 	goto inst62
 inst62: // alt -> 59, 772
 	{
-		idx := i*773 + 62
+		idx := i*319 + 22
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1411,13 +1152,6 @@ inst62_alt:
 	goto unreachable
 	goto inst59
 inst59: // rune "09AFaf" -> 61
-	{
-		idx := i*773 + 59
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1437,13 +1171,6 @@ inst59: // rune "09AFaf" -> 61
 	goto unreachable
 	goto inst66
 inst66: // rune "09AFaf" -> 68
-	{
-		idx := i*773 + 66
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1464,7 +1191,7 @@ inst66: // rune "09AFaf" -> 68
 	goto inst68
 inst68: // alt -> 67, 71
 	{
-		idx := i*773 + 68
+		idx := i*319 + 23
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1483,13 +1210,6 @@ inst68_alt:
 	goto unreachable
 	goto inst67
 inst67: // rune "09AFaf" -> 71
-	{
-		idx := i*773 + 67
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1509,13 +1229,6 @@ inst67: // rune "09AFaf" -> 71
 	goto unreachable
 	goto inst71
 inst71: // string ":" -> 125
-	{
-		idx := i*773 + 71
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1528,7 +1241,7 @@ inst71: // string ":" -> 125
 	goto inst69
 inst69: // alt -> 66, 71
 	{
-		idx := i*773 + 69
+		idx := i*319 + 24
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1547,13 +1260,6 @@ inst69_alt:
 	goto unreachable
 	goto inst65
 inst65: // rune "09AFaf" -> 69
-	{
-		idx := i*773 + 65
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1574,7 +1280,7 @@ inst65: // rune "09AFaf" -> 69
 	goto inst70
 inst70: // alt -> 65, 71
 	{
-		idx := i*773 + 70
+		idx := i*319 + 25
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1593,13 +1299,6 @@ inst70_alt:
 	goto unreachable
 	goto inst64
 inst64: // rune "09AFaf" -> 70
-	{
-		idx := i*773 + 64
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1620,7 +1319,7 @@ inst64: // rune "09AFaf" -> 70
 	goto inst127
 inst127: // alt -> 1, 64
 	{
-		idx := i*773 + 127
+		idx := i*319 + 26
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1639,13 +1338,6 @@ inst127_alt:
 	goto unreachable
 	goto inst74
 inst74: // rune "09AFaf" -> 76
-	{
-		idx := i*773 + 74
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1666,7 +1358,7 @@ inst74: // rune "09AFaf" -> 76
 	goto inst76
 inst76: // alt -> 75, 79
 	{
-		idx := i*773 + 76
+		idx := i*319 + 27
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1685,13 +1377,6 @@ inst76_alt:
 	goto unreachable
 	goto inst75
 inst75: // rune "09AFaf" -> 79
-	{
-		idx := i*773 + 75
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1712,7 +1397,7 @@ inst75: // rune "09AFaf" -> 79
 	goto inst77
 inst77: // alt -> 74, 79
 	{
-		idx := i*773 + 77
+		idx := i*319 + 28
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1731,13 +1416,6 @@ inst77_alt:
 	goto unreachable
 	goto inst79
 inst79: // string ":" -> 124
-	{
-		idx := i*773 + 79
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1749,13 +1427,6 @@ inst79: // string ":" -> 124
 	goto unreachable
 	goto inst73
 inst73: // rune "09AFaf" -> 77
-	{
-		idx := i*773 + 73
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1776,7 +1447,7 @@ inst73: // rune "09AFaf" -> 77
 	goto inst78
 inst78: // alt -> 73, 79
 	{
-		idx := i*773 + 78
+		idx := i*319 + 29
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1795,13 +1466,6 @@ inst78_alt:
 	goto unreachable
 	goto inst80
 inst80: // rune "09AFaf" -> 86
-	{
-		idx := i*773 + 80
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1822,7 +1486,7 @@ inst80: // rune "09AFaf" -> 86
 	goto inst86
 inst86: // alt -> 81, 87
 	{
-		idx := i*773 + 86
+		idx := i*319 + 30
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1841,13 +1505,6 @@ inst86_alt:
 	goto unreachable
 	goto inst81
 inst81: // rune "09AFaf" -> 85
-	{
-		idx := i*773 + 81
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1868,7 +1525,7 @@ inst81: // rune "09AFaf" -> 85
 	goto inst85
 inst85: // alt -> 82, 87
 	{
-		idx := i*773 + 85
+		idx := i*319 + 31
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1887,13 +1544,6 @@ inst85_alt:
 	goto unreachable
 	goto inst82
 inst82: // rune "09AFaf" -> 84
-	{
-		idx := i*773 + 82
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1914,7 +1564,7 @@ inst82: // rune "09AFaf" -> 84
 	goto inst84
 inst84: // alt -> 83, 87
 	{
-		idx := i*773 + 84
+		idx := i*319 + 32
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1933,13 +1583,6 @@ inst84_alt:
 	goto unreachable
 	goto inst87
 inst87: // string ":" -> 123
-	{
-		idx := i*773 + 87
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -1951,13 +1594,6 @@ inst87: // string ":" -> 123
 	goto unreachable
 	goto inst83
 inst83: // rune "09AFaf" -> 87
-	{
-		idx := i*773 + 83
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -1978,7 +1614,7 @@ inst83: // rune "09AFaf" -> 87
 	goto inst124
 inst124: // alt -> 80, 126
 	{
-		idx := i*773 + 124
+		idx := i*319 + 33
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -1997,13 +1633,6 @@ inst124_alt:
 	goto unreachable
 	goto inst91
 inst91: // rune "09AFaf" -> 95
-	{
-		idx := i*773 + 91
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2024,7 +1653,7 @@ inst91: // rune "09AFaf" -> 95
 	goto inst92
 inst92: // alt -> 91, 95
 	{
-		idx := i*773 + 92
+		idx := i*319 + 34
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2043,13 +1672,6 @@ inst92_alt:
 	goto unreachable
 	goto inst90
 inst90: // rune "09AFaf" -> 92
-	{
-		idx := i*773 + 90
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2070,7 +1692,7 @@ inst90: // rune "09AFaf" -> 92
 	goto inst93
 inst93: // alt -> 90, 95
 	{
-		idx := i*773 + 93
+		idx := i*319 + 35
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2089,13 +1711,6 @@ inst93_alt:
 	goto unreachable
 	goto inst95
 inst95: // string ":" -> 122
-	{
-		idx := i*773 + 95
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2107,13 +1722,6 @@ inst95: // string ":" -> 122
 	goto unreachable
 	goto inst89
 inst89: // rune "09AFaf" -> 93
-	{
-		idx := i*773 + 89
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2134,7 +1742,7 @@ inst89: // rune "09AFaf" -> 93
 	goto inst94
 inst94: // alt -> 89, 95
 	{
-		idx := i*773 + 94
+		idx := i*319 + 36
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2153,13 +1761,6 @@ inst94_alt:
 	goto unreachable
 	goto inst98
 inst98: // rune "09AFaf" -> 100
-	{
-		idx := i*773 + 98
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2180,7 +1781,7 @@ inst98: // rune "09AFaf" -> 100
 	goto inst100
 inst100: // alt -> 99, 103
 	{
-		idx := i*773 + 100
+		idx := i*319 + 37
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2199,13 +1800,6 @@ inst100_alt:
 	goto unreachable
 	goto inst99
 inst99: // rune "09AFaf" -> 103
-	{
-		idx := i*773 + 99
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2225,13 +1819,6 @@ inst99: // rune "09AFaf" -> 103
 	goto unreachable
 	goto inst103
 inst103: // string ":" -> 121
-	{
-		idx := i*773 + 103
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2244,7 +1831,7 @@ inst103: // string ":" -> 121
 	goto inst101
 inst101: // alt -> 98, 103
 	{
-		idx := i*773 + 101
+		idx := i*319 + 38
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2263,13 +1850,6 @@ inst101_alt:
 	goto unreachable
 	goto inst97
 inst97: // rune "09AFaf" -> 101
-	{
-		idx := i*773 + 97
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2290,7 +1870,7 @@ inst97: // rune "09AFaf" -> 101
 	goto inst102
 inst102: // alt -> 97, 103
 	{
-		idx := i*773 + 102
+		idx := i*319 + 39
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2310,7 +1890,7 @@ inst102_alt:
 	goto inst121
 inst121: // alt -> 104, 126
 	{
-		idx := i*773 + 121
+		idx := i*319 + 40
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2329,13 +1909,6 @@ inst121_alt:
 	goto unreachable
 	goto inst104
 inst104: // rune "09AFaf" -> 110
-	{
-		idx := i*773 + 104
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2356,7 +1929,7 @@ inst104: // rune "09AFaf" -> 110
 	goto inst110
 inst110: // alt -> 105, 111
 	{
-		idx := i*773 + 110
+		idx := i*319 + 41
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2375,13 +1948,6 @@ inst110_alt:
 	goto unreachable
 	goto inst105
 inst105: // rune "09AFaf" -> 109
-	{
-		idx := i*773 + 105
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2401,13 +1967,6 @@ inst105: // rune "09AFaf" -> 109
 	goto unreachable
 	goto inst72
 inst72: // rune "09AFaf" -> 78
-	{
-		idx := i*773 + 72
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2428,7 +1987,7 @@ inst72: // rune "09AFaf" -> 78
 	goto inst125
 inst125: // alt -> 72, 126
 	{
-		idx := i*773 + 125
+		idx := i*319 + 42
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2448,7 +2007,7 @@ inst125_alt:
 	goto inst109
 inst109: // alt -> 106, 111
 	{
-		idx := i*773 + 109
+		idx := i*319 + 43
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2467,13 +2026,6 @@ inst109_alt:
 	goto unreachable
 	goto inst111
 inst111: // string ":" -> 120
-	{
-		idx := i*773 + 111
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2485,13 +2037,6 @@ inst111: // string ":" -> 120
 	goto unreachable
 	goto inst107
 inst107: // rune "09AFaf" -> 111
-	{
-		idx := i*773 + 107
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2512,7 +2057,7 @@ inst107: // rune "09AFaf" -> 111
 	goto inst108
 inst108: // alt -> 107, 111
 	{
-		idx := i*773 + 108
+		idx := i*319 + 44
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2531,13 +2076,6 @@ inst108_alt:
 	goto unreachable
 	goto inst106
 inst106: // rune "09AFaf" -> 108
-	{
-		idx := i*773 + 106
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2557,13 +2095,6 @@ inst106: // rune "09AFaf" -> 108
 	goto unreachable
 	goto inst88
 inst88: // rune "09AFaf" -> 94
-	{
-		idx := i*773 + 88
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2584,7 +2115,7 @@ inst88: // rune "09AFaf" -> 94
 	goto inst123
 inst123: // alt -> 88, 126
 	{
-		idx := i*773 + 123
+		idx := i*319 + 45
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2603,13 +2134,6 @@ inst123_alt:
 	goto unreachable
 	goto inst126
 inst126: // string ":" -> 772
-	{
-		idx := i*773 + 126
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2622,7 +2146,7 @@ inst126: // string ":" -> 772
 	goto inst120
 inst120: // alt -> 112, 126
 	{
-		idx := i*773 + 120
+		idx := i*319 + 46
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2642,7 +2166,7 @@ inst120_alt:
 	goto inst122
 inst122: // alt -> 96, 126
 	{
-		idx := i*773 + 122
+		idx := i*319 + 47
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2661,13 +2185,6 @@ inst122_alt:
 	goto unreachable
 	goto inst96
 inst96: // rune "09AFaf" -> 102
-	{
-		idx := i*773 + 96
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2687,13 +2204,6 @@ inst96: // rune "09AFaf" -> 102
 	goto unreachable
 	goto inst112
 inst112: // rune "09AFaf" -> 118
-	{
-		idx := i*773 + 112
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2714,7 +2224,7 @@ inst112: // rune "09AFaf" -> 118
 	goto inst118
 inst118: // alt -> 113, 119
 	{
-		idx := i*773 + 118
+		idx := i*319 + 48
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2733,13 +2243,6 @@ inst118_alt:
 	goto unreachable
 	goto inst113
 inst113: // rune "09AFaf" -> 117
-	{
-		idx := i*773 + 113
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2760,7 +2263,7 @@ inst113: // rune "09AFaf" -> 117
 	goto inst117
 inst117: // alt -> 114, 119
 	{
-		idx := i*773 + 117
+		idx := i*319 + 49
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2779,13 +2282,6 @@ inst117_alt:
 	goto unreachable
 	goto inst114
 inst114: // rune "09AFaf" -> 116
-	{
-		idx := i*773 + 114
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2805,13 +2301,6 @@ inst114: // rune "09AFaf" -> 116
 	goto unreachable
 	goto inst119
 inst119: // string "::" -> 772
-	{
-		idx := i*773 + 119
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -2824,7 +2313,7 @@ inst119: // string "::" -> 772
 	goto inst116
 inst116: // alt -> 115, 119
 	{
-		idx := i*773 + 116
+		idx := i*319 + 50
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2843,13 +2332,6 @@ inst116_alt:
 	goto unreachable
 	goto inst115
 inst115: // rune "09AFaf" -> 119
-	{
-		idx := i*773 + 115
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2869,13 +2351,6 @@ inst115: // rune "09AFaf" -> 119
 	goto unreachable
 	goto inst130
 inst130: // rune "09AFaf" -> 132
-	{
-		idx := i*773 + 130
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2896,7 +2371,7 @@ inst130: // rune "09AFaf" -> 132
 	goto inst132
 inst132: // alt -> 131, 135
 	{
-		idx := i*773 + 132
+		idx := i*319 + 51
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2915,13 +2390,6 @@ inst132_alt:
 	goto unreachable
 	goto inst131
 inst131: // rune "09AFaf" -> 135
-	{
-		idx := i*773 + 131
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -2941,13 +2409,6 @@ inst131: // rune "09AFaf" -> 135
 	goto unreachable
 	goto inst135
 inst135: // string ":" -> 180
-	{
-		idx := i*773 + 135
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -2960,7 +2421,7 @@ inst135: // string ":" -> 180
 	goto inst133
 inst133: // alt -> 130, 135
 	{
-		idx := i*773 + 133
+		idx := i*319 + 52
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -2979,13 +2440,6 @@ inst133_alt:
 	goto unreachable
 	goto inst129
 inst129: // rune "09AFaf" -> 133
-	{
-		idx := i*773 + 129
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3006,7 +2460,7 @@ inst129: // rune "09AFaf" -> 133
 	goto inst134
 inst134: // alt -> 129, 135
 	{
-		idx := i*773 + 134
+		idx := i*319 + 53
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3025,13 +2479,6 @@ inst134_alt:
 	goto unreachable
 	goto inst128
 inst128: // rune "09AFaf" -> 134
-	{
-		idx := i*773 + 128
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3052,7 +2499,7 @@ inst128: // rune "09AFaf" -> 134
 	goto inst189
 inst189: // alt -> 127, 128
 	{
-		idx := i*773 + 189
+		idx := i*319 + 54
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3071,13 +2518,6 @@ inst189_alt:
 	goto unreachable
 	goto inst138
 inst138: // rune "09AFaf" -> 140
-	{
-		idx := i*773 + 138
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3098,7 +2538,7 @@ inst138: // rune "09AFaf" -> 140
 	goto inst141
 inst141: // alt -> 138, 143
 	{
-		idx := i*773 + 141
+		idx := i*319 + 55
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3118,7 +2558,7 @@ inst141_alt:
 	goto inst140
 inst140: // alt -> 139, 143
 	{
-		idx := i*773 + 140
+		idx := i*319 + 56
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3137,13 +2577,6 @@ inst140_alt:
 	goto unreachable
 	goto inst139
 inst139: // rune "09AFaf" -> 143
-	{
-		idx := i*773 + 139
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3163,13 +2596,6 @@ inst139: // rune "09AFaf" -> 143
 	goto unreachable
 	goto inst143
 inst143: // string ":" -> 179
-	{
-		idx := i*773 + 143
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3181,13 +2607,6 @@ inst143: // string ":" -> 179
 	goto unreachable
 	goto inst137
 inst137: // rune "09AFaf" -> 141
-	{
-		idx := i*773 + 137
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3208,7 +2627,7 @@ inst137: // rune "09AFaf" -> 141
 	goto inst142
 inst142: // alt -> 137, 143
 	{
-		idx := i*773 + 142
+		idx := i*319 + 57
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3227,13 +2646,6 @@ inst142_alt:
 	goto unreachable
 	goto inst144
 inst144: // rune "09AFaf" -> 150
-	{
-		idx := i*773 + 144
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3254,7 +2666,7 @@ inst144: // rune "09AFaf" -> 150
 	goto inst150
 inst150: // alt -> 145, 151
 	{
-		idx := i*773 + 150
+		idx := i*319 + 58
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3273,13 +2685,6 @@ inst150_alt:
 	goto unreachable
 	goto inst145
 inst145: // rune "09AFaf" -> 149
-	{
-		idx := i*773 + 145
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3300,7 +2705,7 @@ inst145: // rune "09AFaf" -> 149
 	goto inst149
 inst149: // alt -> 146, 151
 	{
-		idx := i*773 + 149
+		idx := i*319 + 59
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3319,13 +2724,6 @@ inst149_alt:
 	goto unreachable
 	goto inst146
 inst146: // rune "09AFaf" -> 148
-	{
-		idx := i*773 + 146
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3346,7 +2744,7 @@ inst146: // rune "09AFaf" -> 148
 	goto inst148
 inst148: // alt -> 147, 151
 	{
-		idx := i*773 + 148
+		idx := i*319 + 60
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3365,13 +2763,6 @@ inst148_alt:
 	goto unreachable
 	goto inst151
 inst151: // string ":" -> 178
-	{
-		idx := i*773 + 151
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3383,13 +2774,6 @@ inst151: // string ":" -> 178
 	goto unreachable
 	goto inst147
 inst147: // rune "09AFaf" -> 151
-	{
-		idx := i*773 + 147
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3410,7 +2794,7 @@ inst147: // rune "09AFaf" -> 151
 	goto inst179
 inst179: // alt -> 144, 181
 	{
-		idx := i*773 + 179
+		idx := i*319 + 61
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3429,13 +2813,6 @@ inst179_alt:
 	goto unreachable
 	goto inst155
 inst155: // rune "09AFaf" -> 159
-	{
-		idx := i*773 + 155
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3456,7 +2833,7 @@ inst155: // rune "09AFaf" -> 159
 	goto inst156
 inst156: // alt -> 155, 159
 	{
-		idx := i*773 + 156
+		idx := i*319 + 62
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3475,13 +2852,6 @@ inst156_alt:
 	goto unreachable
 	goto inst154
 inst154: // rune "09AFaf" -> 156
-	{
-		idx := i*773 + 154
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3502,7 +2872,7 @@ inst154: // rune "09AFaf" -> 156
 	goto inst157
 inst157: // alt -> 154, 159
 	{
-		idx := i*773 + 157
+		idx := i*319 + 63
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3521,13 +2891,6 @@ inst157_alt:
 	goto unreachable
 	goto inst159
 inst159: // string ":" -> 177
-	{
-		idx := i*773 + 159
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3539,13 +2902,6 @@ inst159: // string ":" -> 177
 	goto unreachable
 	goto inst153
 inst153: // rune "09AFaf" -> 157
-	{
-		idx := i*773 + 153
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3566,7 +2922,7 @@ inst153: // rune "09AFaf" -> 157
 	goto inst158
 inst158: // alt -> 153, 159
 	{
-		idx := i*773 + 158
+		idx := i*319 + 64
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3585,13 +2941,6 @@ inst158_alt:
 	goto unreachable
 	goto inst136
 inst136: // rune "09AFaf" -> 142
-	{
-		idx := i*773 + 136
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3612,7 +2961,7 @@ inst136: // rune "09AFaf" -> 142
 	goto inst180
 inst180: // alt -> 136, 181
 	{
-		idx := i*773 + 180
+		idx := i*319 + 65
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3631,13 +2980,6 @@ inst180_alt:
 	goto unreachable
 	goto inst161
 inst161: // rune "09AFaf" -> 165
-	{
-		idx := i*773 + 161
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3658,7 +3000,7 @@ inst161: // rune "09AFaf" -> 165
 	goto inst165
 inst165: // alt -> 162, 167
 	{
-		idx := i*773 + 165
+		idx := i*319 + 66
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3677,13 +3019,6 @@ inst165_alt:
 	goto unreachable
 	goto inst162
 inst162: // rune "09AFaf" -> 164
-	{
-		idx := i*773 + 162
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3704,7 +3039,7 @@ inst162: // rune "09AFaf" -> 164
 	goto inst164
 inst164: // alt -> 163, 167
 	{
-		idx := i*773 + 164
+		idx := i*319 + 67
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3723,13 +3058,6 @@ inst164_alt:
 	goto unreachable
 	goto inst163
 inst163: // rune "09AFaf" -> 167
-	{
-		idx := i*773 + 163
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3749,13 +3077,6 @@ inst163: // rune "09AFaf" -> 167
 	goto unreachable
 	goto inst167
 inst167: // string ":" -> 176
-	{
-		idx := i*773 + 167
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3768,7 +3089,7 @@ inst167: // string ":" -> 176
 	goto inst166
 inst166: // alt -> 161, 167
 	{
-		idx := i*773 + 166
+		idx := i*319 + 68
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3787,13 +3108,6 @@ inst166_alt:
 	goto unreachable
 	goto inst160
 inst160: // rune "09AFaf" -> 166
-	{
-		idx := i*773 + 160
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3814,7 +3128,7 @@ inst160: // rune "09AFaf" -> 166
 	goto inst177
 inst177: // alt -> 160, 181
 	{
-		idx := i*773 + 177
+		idx := i*319 + 69
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3833,13 +3147,6 @@ inst177_alt:
 	goto unreachable
 	goto inst181
 inst181: // string ":" -> 182
-	{
-		idx := i*773 + 181
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -3852,7 +3159,7 @@ inst181: // string ":" -> 182
 	goto inst178
 inst178: // alt -> 152, 181
 	{
-		idx := i*773 + 178
+		idx := i*319 + 70
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3871,13 +3178,6 @@ inst178_alt:
 	goto unreachable
 	goto inst152
 inst152: // rune "09AFaf" -> 158
-	{
-		idx := i*773 + 152
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3898,7 +3198,7 @@ inst152: // rune "09AFaf" -> 158
 	goto inst176
 inst176: // alt -> 168, 181
 	{
-		idx := i*773 + 176
+		idx := i*319 + 71
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3917,13 +3217,6 @@ inst176_alt:
 	goto unreachable
 	goto inst168
 inst168: // rune "09AFaf" -> 174
-	{
-		idx := i*773 + 168
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3944,7 +3237,7 @@ inst168: // rune "09AFaf" -> 174
 	goto inst174
 inst174: // alt -> 169, 175
 	{
-		idx := i*773 + 174
+		idx := i*319 + 72
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -3963,13 +3256,6 @@ inst174_alt:
 	goto unreachable
 	goto inst182
 inst182: // rune "09AFaf" -> 188
-	{
-		idx := i*773 + 182
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -3989,13 +3275,6 @@ inst182: // rune "09AFaf" -> 188
 	goto unreachable
 	goto inst175
 inst175: // string "::" -> 182
-	{
-		idx := i*773 + 175
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -4007,13 +3286,6 @@ inst175: // string "::" -> 182
 	goto unreachable
 	goto inst171
 inst171: // rune "09AFaf" -> 175
-	{
-		idx := i*773 + 171
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4034,7 +3306,7 @@ inst171: // rune "09AFaf" -> 175
 	goto inst172
 inst172: // alt -> 171, 175
 	{
-		idx := i*773 + 172
+		idx := i*319 + 73
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4053,13 +3325,6 @@ inst172_alt:
 	goto unreachable
 	goto inst170
 inst170: // rune "09AFaf" -> 172
-	{
-		idx := i*773 + 170
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4080,7 +3345,7 @@ inst170: // rune "09AFaf" -> 172
 	goto inst173
 inst173: // alt -> 170, 175
 	{
-		idx := i*773 + 173
+		idx := i*319 + 74
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4099,13 +3364,6 @@ inst173_alt:
 	goto unreachable
 	goto inst169
 inst169: // rune "09AFaf" -> 173
-	{
-		idx := i*773 + 169
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4126,7 +3384,7 @@ inst169: // rune "09AFaf" -> 173
 	goto inst251
 inst251: // alt -> 189, 190
 	{
-		idx := i*773 + 251
+		idx := i*319 + 75
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4145,13 +3403,6 @@ inst251_alt:
 	goto unreachable
 	goto inst190
 inst190: // rune "09AFaf" -> 196
-	{
-		idx := i*773 + 190
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4172,7 +3423,7 @@ inst190: // rune "09AFaf" -> 196
 	goto inst188
 inst188: // alt -> 183, 772
 	{
-		idx := i*773 + 188
+		idx := i*319 + 76
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4191,13 +3442,6 @@ inst188_alt:
 	goto unreachable
 	goto inst183
 inst183: // rune "09AFaf" -> 187
-	{
-		idx := i*773 + 183
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4218,7 +3462,7 @@ inst183: // rune "09AFaf" -> 187
 	goto inst196
 inst196: // alt -> 191, 197
 	{
-		idx := i*773 + 196
+		idx := i*319 + 77
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4237,13 +3481,6 @@ inst196_alt:
 	goto unreachable
 	goto inst191
 inst191: // rune "09AFaf" -> 195
-	{
-		idx := i*773 + 191
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4264,7 +3501,7 @@ inst191: // rune "09AFaf" -> 195
 	goto inst195
 inst195: // alt -> 192, 197
 	{
-		idx := i*773 + 195
+		idx := i*319 + 78
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4283,13 +3520,6 @@ inst195_alt:
 	goto unreachable
 	goto inst192
 inst192: // rune "09AFaf" -> 194
-	{
-		idx := i*773 + 192
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4309,13 +3539,6 @@ inst192: // rune "09AFaf" -> 194
 	goto unreachable
 	goto inst197
 inst197: // string ":" -> 233
-	{
-		idx := i*773 + 197
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4328,7 +3551,7 @@ inst197: // string ":" -> 233
 	goto inst194
 inst194: // alt -> 193, 197
 	{
-		idx := i*773 + 194
+		idx := i*319 + 79
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4347,13 +3570,6 @@ inst194_alt:
 	goto unreachable
 	goto inst193
 inst193: // rune "09AFaf" -> 197
-	{
-		idx := i*773 + 193
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4374,7 +3590,7 @@ inst193: // rune "09AFaf" -> 197
 	goto inst233
 inst233: // alt -> 198, 234
 	{
-		idx := i*773 + 233
+		idx := i*319 + 80
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4393,13 +3609,6 @@ inst233_alt:
 	goto unreachable
 	goto inst198
 inst198: // rune "09AFaf" -> 204
-	{
-		idx := i*773 + 198
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4420,7 +3629,7 @@ inst198: // rune "09AFaf" -> 204
 	goto inst204
 inst204: // alt -> 199, 205
 	{
-		idx := i*773 + 204
+		idx := i*319 + 81
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4439,13 +3648,6 @@ inst204_alt:
 	goto unreachable
 	goto inst199
 inst199: // rune "09AFaf" -> 203
-	{
-		idx := i*773 + 199
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4466,7 +3668,7 @@ inst199: // rune "09AFaf" -> 203
 	goto inst203
 inst203: // alt -> 200, 205
 	{
-		idx := i*773 + 203
+		idx := i*319 + 82
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4485,13 +3687,6 @@ inst203_alt:
 	goto unreachable
 	goto inst200
 inst200: // rune "09AFaf" -> 202
-	{
-		idx := i*773 + 200
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4511,13 +3706,6 @@ inst200: // rune "09AFaf" -> 202
 	goto unreachable
 	goto inst205
 inst205: // string ":" -> 232
-	{
-		idx := i*773 + 205
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4530,7 +3718,7 @@ inst205: // string ":" -> 232
 	goto inst202
 inst202: // alt -> 201, 205
 	{
-		idx := i*773 + 202
+		idx := i*319 + 83
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4549,13 +3737,6 @@ inst202_alt:
 	goto unreachable
 	goto inst201
 inst201: // rune "09AFaf" -> 205
-	{
-		idx := i*773 + 201
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4575,13 +3756,6 @@ inst201: // rune "09AFaf" -> 205
 	goto unreachable
 	goto inst209
 inst209: // rune "09AFaf" -> 213
-	{
-		idx := i*773 + 209
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4602,7 +3776,7 @@ inst209: // rune "09AFaf" -> 213
 	goto inst210
 inst210: // alt -> 209, 213
 	{
-		idx := i*773 + 210
+		idx := i*319 + 84
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4621,13 +3795,6 @@ inst210_alt:
 	goto unreachable
 	goto inst208
 inst208: // rune "09AFaf" -> 210
-	{
-		idx := i*773 + 208
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4647,13 +3814,6 @@ inst208: // rune "09AFaf" -> 210
 	goto unreachable
 	goto inst213
 inst213: // string ":" -> 231
-	{
-		idx := i*773 + 213
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4666,7 +3826,7 @@ inst213: // string ":" -> 231
 	goto inst211
 inst211: // alt -> 208, 213
 	{
-		idx := i*773 + 211
+		idx := i*319 + 85
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4685,13 +3845,6 @@ inst211_alt:
 	goto unreachable
 	goto inst207
 inst207: // rune "09AFaf" -> 211
-	{
-		idx := i*773 + 207
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4712,7 +3865,7 @@ inst207: // rune "09AFaf" -> 211
 	goto inst212
 inst212: // alt -> 207, 213
 	{
-		idx := i*773 + 212
+		idx := i*319 + 86
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4731,13 +3884,6 @@ inst212_alt:
 	goto unreachable
 	goto inst206
 inst206: // rune "09AFaf" -> 212
-	{
-		idx := i*773 + 206
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4758,7 +3904,7 @@ inst206: // rune "09AFaf" -> 212
 	goto inst232
 inst232: // alt -> 206, 234
 	{
-		idx := i*773 + 232
+		idx := i*319 + 87
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4777,13 +3923,6 @@ inst232_alt:
 	goto unreachable
 	goto inst217
 inst217: // rune "09AFaf" -> 221
-	{
-		idx := i*773 + 217
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4804,7 +3943,7 @@ inst217: // rune "09AFaf" -> 221
 	goto inst218
 inst218: // alt -> 217, 221
 	{
-		idx := i*773 + 218
+		idx := i*319 + 88
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4823,13 +3962,6 @@ inst218_alt:
 	goto unreachable
 	goto inst216
 inst216: // rune "09AFaf" -> 218
-	{
-		idx := i*773 + 216
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4850,7 +3982,7 @@ inst216: // rune "09AFaf" -> 218
 	goto inst219
 inst219: // alt -> 216, 221
 	{
-		idx := i*773 + 219
+		idx := i*319 + 89
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4869,13 +4001,6 @@ inst219_alt:
 	goto unreachable
 	goto inst221
 inst221: // string ":" -> 230
-	{
-		idx := i*773 + 221
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4888,7 +4013,7 @@ inst221: // string ":" -> 230
 	goto inst231
 inst231: // alt -> 214, 234
 	{
-		idx := i*773 + 231
+		idx := i*319 + 90
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4907,13 +4032,6 @@ inst231_alt:
 	goto unreachable
 	goto inst234
 inst234: // string ":" -> 235
-	{
-		idx := i*773 + 234
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -4925,13 +4043,6 @@ inst234: // string ":" -> 235
 	goto unreachable
 	goto inst214
 inst214: // rune "09AFaf" -> 220
-	{
-		idx := i*773 + 214
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4952,7 +4063,7 @@ inst214: // rune "09AFaf" -> 220
 	goto inst220
 inst220: // alt -> 215, 221
 	{
-		idx := i*773 + 220
+		idx := i*319 + 91
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -4971,13 +4082,6 @@ inst220_alt:
 	goto unreachable
 	goto inst215
 inst215: // rune "09AFaf" -> 219
-	{
-		idx := i*773 + 215
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -4998,7 +4102,7 @@ inst215: // rune "09AFaf" -> 219
 	goto inst230
 inst230: // alt -> 222, 234
 	{
-		idx := i*773 + 230
+		idx := i*319 + 92
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5017,13 +4121,6 @@ inst230_alt:
 	goto unreachable
 	goto inst222
 inst222: // rune "09AFaf" -> 228
-	{
-		idx := i*773 + 222
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5044,7 +4141,7 @@ inst222: // rune "09AFaf" -> 228
 	goto inst228
 inst228: // alt -> 223, 229
 	{
-		idx := i*773 + 228
+		idx := i*319 + 93
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5063,13 +4160,6 @@ inst228_alt:
 	goto unreachable
 	goto inst223
 inst223: // rune "09AFaf" -> 227
-	{
-		idx := i*773 + 223
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5090,7 +4180,7 @@ inst223: // rune "09AFaf" -> 227
 	goto inst227
 inst227: // alt -> 224, 229
 	{
-		idx := i*773 + 227
+		idx := i*319 + 94
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5109,13 +4199,6 @@ inst227_alt:
 	goto unreachable
 	goto inst235
 inst235: // rune "09AFaf" -> 241
-	{
-		idx := i*773 + 235
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5135,13 +4218,6 @@ inst235: // rune "09AFaf" -> 241
 	goto unreachable
 	goto inst229
 inst229: // string "::" -> 235
-	{
-		idx := i*773 + 229
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -5153,13 +4229,6 @@ inst229: // string "::" -> 235
 	goto unreachable
 	goto inst224
 inst224: // rune "09AFaf" -> 226
-	{
-		idx := i*773 + 224
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5180,7 +4249,7 @@ inst224: // rune "09AFaf" -> 226
 	goto inst226
 inst226: // alt -> 225, 229
 	{
-		idx := i*773 + 226
+		idx := i*319 + 95
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5199,13 +4268,6 @@ inst226_alt:
 	goto unreachable
 	goto inst225
 inst225: // rune "09AFaf" -> 229
-	{
-		idx := i*773 + 225
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5226,7 +4288,7 @@ inst225: // rune "09AFaf" -> 229
 	goto inst241
 inst241: // alt -> 236, 250
 	{
-		idx := i*773 + 241
+		idx := i*319 + 96
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5245,13 +4307,6 @@ inst241_alt:
 	goto unreachable
 	goto inst236
 inst236: // rune "09AFaf" -> 240
-	{
-		idx := i*773 + 236
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5272,7 +4327,7 @@ inst236: // rune "09AFaf" -> 240
 	goto inst240
 inst240: // alt -> 237, 250
 	{
-		idx := i*773 + 240
+		idx := i*319 + 97
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5291,13 +4346,6 @@ inst240_alt:
 	goto unreachable
 	goto inst237
 inst237: // rune "09AFaf" -> 239
-	{
-		idx := i*773 + 237
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5318,7 +4366,7 @@ inst237: // rune "09AFaf" -> 239
 	goto inst239
 inst239: // alt -> 238, 250
 	{
-		idx := i*773 + 239
+		idx := i*319 + 98
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5338,7 +4386,7 @@ inst239_alt:
 	goto inst250
 inst250: // alt -> 242, 772
 	{
-		idx := i*773 + 250
+		idx := i*319 + 99
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5357,13 +4405,6 @@ inst250_alt:
 	goto unreachable
 	goto inst238
 inst238: // rune "09AFaf" -> 250
-	{
-		idx := i*773 + 238
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5383,13 +4424,6 @@ inst238: // rune "09AFaf" -> 250
 	goto unreachable
 	goto inst242
 inst242: // string ":" -> 243
-	{
-		idx := i*773 + 242
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5404,7 +4438,7 @@ inst242: // string ":" -> 243
 	goto inst313
 inst313: // alt -> 251, 252
 	{
-		idx := i*773 + 313
+		idx := i*319 + 100
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5423,13 +4457,6 @@ inst313_alt:
 	goto unreachable
 	goto inst252
 inst252: // rune "09AFaf" -> 258
-	{
-		idx := i*773 + 252
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5449,13 +4476,6 @@ inst252: // rune "09AFaf" -> 258
 	goto unreachable
 	goto inst243
 inst243: // rune "09AFaf" -> 249
-	{
-		idx := i*773 + 243
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5476,7 +4496,7 @@ inst243: // rune "09AFaf" -> 249
 	goto inst187
 inst187: // alt -> 184, 772
 	{
-		idx := i*773 + 187
+		idx := i*319 + 101
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5495,13 +4515,6 @@ inst187_alt:
 	goto unreachable
 	goto inst184
 inst184: // rune "09AFaf" -> 186
-	{
-		idx := i*773 + 184
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5522,7 +4535,7 @@ inst184: // rune "09AFaf" -> 186
 	goto inst258
 inst258: // alt -> 253, 259
 	{
-		idx := i*773 + 258
+		idx := i*319 + 102
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5541,13 +4554,6 @@ inst258_alt:
 	goto unreachable
 	goto inst253
 inst253: // rune "09AFaf" -> 257
-	{
-		idx := i*773 + 253
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5568,7 +4574,7 @@ inst253: // rune "09AFaf" -> 257
 	goto inst257
 inst257: // alt -> 254, 259
 	{
-		idx := i*773 + 257
+		idx := i*319 + 103
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5587,13 +4593,6 @@ inst257_alt:
 	goto unreachable
 	goto inst254
 inst254: // rune "09AFaf" -> 256
-	{
-		idx := i*773 + 254
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5614,7 +4613,7 @@ inst254: // rune "09AFaf" -> 256
 	goto inst249
 inst249: // alt -> 244, 772
 	{
-		idx := i*773 + 249
+		idx := i*319 + 104
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5633,13 +4632,6 @@ inst249_alt:
 	goto unreachable
 	goto inst244
 inst244: // rune "09AFaf" -> 248
-	{
-		idx := i*773 + 244
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5659,13 +4651,6 @@ inst244: // rune "09AFaf" -> 248
 	goto unreachable
 	goto inst259
 inst259: // string ":" -> 286
-	{
-		idx := i*773 + 259
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5678,7 +4663,7 @@ inst259: // string ":" -> 286
 	goto inst256
 inst256: // alt -> 255, 259
 	{
-		idx := i*773 + 256
+		idx := i*319 + 105
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5697,13 +4682,6 @@ inst256_alt:
 	goto unreachable
 	goto inst255
 inst255: // rune "09AFaf" -> 259
-	{
-		idx := i*773 + 255
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5724,7 +4702,7 @@ inst255: // rune "09AFaf" -> 259
 	goto inst248
 inst248: // alt -> 245, 772
 	{
-		idx := i*773 + 248
+		idx := i*319 + 106
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5743,13 +4721,6 @@ inst248_alt:
 	goto unreachable
 	goto inst263
 inst263: // rune "09AFaf" -> 267
-	{
-		idx := i*773 + 263
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5770,7 +4741,7 @@ inst263: // rune "09AFaf" -> 267
 	goto inst264
 inst264: // alt -> 263, 267
 	{
-		idx := i*773 + 264
+		idx := i*319 + 107
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5789,13 +4760,6 @@ inst264_alt:
 	goto unreachable
 	goto inst262
 inst262: // rune "09AFaf" -> 264
-	{
-		idx := i*773 + 262
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5815,13 +4779,6 @@ inst262: // rune "09AFaf" -> 264
 	goto unreachable
 	goto inst267
 inst267: // string ":" -> 285
-	{
-		idx := i*773 + 267
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -5834,7 +4791,7 @@ inst267: // string ":" -> 285
 	goto inst265
 inst265: // alt -> 262, 267
 	{
-		idx := i*773 + 265
+		idx := i*319 + 108
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5853,13 +4810,6 @@ inst265_alt:
 	goto unreachable
 	goto inst245
 inst245: // rune "09AFaf" -> 247
-	{
-		idx := i*773 + 245
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5879,13 +4829,6 @@ inst245: // rune "09AFaf" -> 247
 	goto unreachable
 	goto inst261
 inst261: // rune "09AFaf" -> 265
-	{
-		idx := i*773 + 261
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5906,7 +4849,7 @@ inst261: // rune "09AFaf" -> 265
 	goto inst266
 inst266: // alt -> 261, 267
 	{
-		idx := i*773 + 266
+		idx := i*319 + 109
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5925,13 +4868,6 @@ inst266_alt:
 	goto unreachable
 	goto inst270
 inst270: // rune "09AFaf" -> 272
-	{
-		idx := i*773 + 270
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5952,7 +4888,7 @@ inst270: // rune "09AFaf" -> 272
 	goto inst272
 inst272: // alt -> 271, 275
 	{
-		idx := i*773 + 272
+		idx := i*319 + 110
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -5971,13 +4907,6 @@ inst272_alt:
 	goto unreachable
 	goto inst271
 inst271: // rune "09AFaf" -> 275
-	{
-		idx := i*773 + 271
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -5998,7 +4927,7 @@ inst271: // rune "09AFaf" -> 275
 	goto inst273
 inst273: // alt -> 270, 275
 	{
-		idx := i*773 + 273
+		idx := i*319 + 111
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6017,13 +4946,6 @@ inst273_alt:
 	goto unreachable
 	goto inst275
 inst275: // string ":" -> 284
-	{
-		idx := i*773 + 275
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6035,13 +4957,6 @@ inst275: // string ":" -> 284
 	goto unreachable
 	goto inst269
 inst269: // rune "09AFaf" -> 273
-	{
-		idx := i*773 + 269
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6062,7 +4977,7 @@ inst269: // rune "09AFaf" -> 273
 	goto inst274
 inst274: // alt -> 269, 275
 	{
-		idx := i*773 + 274
+		idx := i*319 + 112
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6081,13 +4996,6 @@ inst274_alt:
 	goto unreachable
 	goto inst268
 inst268: // rune "09AFaf" -> 274
-	{
-		idx := i*773 + 268
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6108,7 +5016,7 @@ inst268: // rune "09AFaf" -> 274
 	goto inst285
 inst285: // alt -> 268, 287
 	{
-		idx := i*773 + 285
+		idx := i*319 + 113
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6127,13 +5035,6 @@ inst285_alt:
 	goto unreachable
 	goto inst260
 inst260: // rune "09AFaf" -> 266
-	{
-		idx := i*773 + 260
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6154,7 +5055,7 @@ inst260: // rune "09AFaf" -> 266
 	goto inst286
 inst286: // alt -> 260, 287
 	{
-		idx := i*773 + 286
+		idx := i*319 + 114
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6173,13 +5074,6 @@ inst286_alt:
 	goto unreachable
 	goto inst287
 inst287: // string ":" -> 288
-	{
-		idx := i*773 + 287
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6192,7 +5086,7 @@ inst287: // string ":" -> 288
 	goto inst284
 inst284: // alt -> 276, 287
 	{
-		idx := i*773 + 284
+		idx := i*319 + 115
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6211,13 +5105,6 @@ inst284_alt:
 	goto unreachable
 	goto inst276
 inst276: // rune "09AFaf" -> 282
-	{
-		idx := i*773 + 276
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6238,7 +5125,7 @@ inst276: // rune "09AFaf" -> 282
 	goto inst282
 inst282: // alt -> 277, 283
 	{
-		idx := i*773 + 282
+		idx := i*319 + 116
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6257,13 +5144,6 @@ inst282_alt:
 	goto unreachable
 	goto inst288
 inst288: // rune "09AFaf" -> 294
-	{
-		idx := i*773 + 288
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6283,13 +5163,6 @@ inst288: // rune "09AFaf" -> 294
 	goto unreachable
 	goto inst283
 inst283: // string "::" -> 288
-	{
-		idx := i*773 + 283
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -6301,13 +5174,6 @@ inst283: // string "::" -> 288
 	goto unreachable
 	goto inst279
 inst279: // rune "09AFaf" -> 283
-	{
-		idx := i*773 + 279
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6328,7 +5194,7 @@ inst279: // rune "09AFaf" -> 283
 	goto inst280
 inst280: // alt -> 279, 283
 	{
-		idx := i*773 + 280
+		idx := i*319 + 117
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6347,13 +5213,6 @@ inst280_alt:
 	goto unreachable
 	goto inst277
 inst277: // rune "09AFaf" -> 281
-	{
-		idx := i*773 + 277
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6374,7 +5233,7 @@ inst277: // rune "09AFaf" -> 281
 	goto inst281
 inst281: // alt -> 278, 283
 	{
-		idx := i*773 + 281
+		idx := i*319 + 118
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6393,13 +5252,6 @@ inst281_alt:
 	goto unreachable
 	goto inst278
 inst278: // rune "09AFaf" -> 280
-	{
-		idx := i*773 + 278
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6419,13 +5271,6 @@ inst278: // rune "09AFaf" -> 280
 	goto unreachable
 	goto inst291
 inst291: // rune "09AFaf" -> 312
-	{
-		idx := i*773 + 291
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6446,7 +5291,7 @@ inst291: // rune "09AFaf" -> 312
 	goto inst292
 inst292: // alt -> 291, 312
 	{
-		idx := i*773 + 292
+		idx := i*319 + 119
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6465,13 +5310,6 @@ inst292_alt:
 	goto unreachable
 	goto inst290
 inst290: // rune "09AFaf" -> 292
-	{
-		idx := i*773 + 290
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6492,7 +5330,7 @@ inst290: // rune "09AFaf" -> 292
 	goto inst294
 inst294: // alt -> 289, 312
 	{
-		idx := i*773 + 294
+		idx := i*319 + 120
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6512,7 +5350,7 @@ inst294_alt:
 	goto inst312
 inst312: // alt -> 295, 772
 	{
-		idx := i*773 + 312
+		idx := i*319 + 121
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6532,7 +5370,7 @@ inst312_alt:
 	goto inst293
 inst293: // alt -> 290, 312
 	{
-		idx := i*773 + 293
+		idx := i*319 + 122
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6551,13 +5389,6 @@ inst293_alt:
 	goto unreachable
 	goto inst289
 inst289: // rune "09AFaf" -> 293
-	{
-		idx := i*773 + 289
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6577,13 +5408,6 @@ inst289: // rune "09AFaf" -> 293
 	goto unreachable
 	goto inst295
 inst295: // string ":" -> 296
-	{
-		idx := i*773 + 295
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6595,13 +5419,6 @@ inst295: // string ":" -> 296
 	goto unreachable
 	goto inst296
 inst296: // rune "09AFaf" -> 302
-	{
-		idx := i*773 + 296
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6622,7 +5439,7 @@ inst296: // rune "09AFaf" -> 302
 	goto inst247
 inst247: // alt -> 246, 772
 	{
-		idx := i*773 + 247
+		idx := i*319 + 123
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6641,13 +5458,6 @@ inst247_alt:
 	goto unreachable
 	goto inst246
 inst246: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 246
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6668,7 +5478,7 @@ inst246: // rune "09AFaf" -> 772
 	goto inst302
 inst302: // alt -> 297, 311
 	{
-		idx := i*773 + 302
+		idx := i*319 + 124
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6687,13 +5497,6 @@ inst302_alt:
 	goto unreachable
 	goto inst297
 inst297: // rune "09AFaf" -> 301
-	{
-		idx := i*773 + 297
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6714,7 +5517,7 @@ inst297: // rune "09AFaf" -> 301
 	goto inst301
 inst301: // alt -> 298, 311
 	{
-		idx := i*773 + 301
+		idx := i*319 + 125
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6733,13 +5536,6 @@ inst301_alt:
 	goto unreachable
 	goto inst298
 inst298: // rune "09AFaf" -> 300
-	{
-		idx := i*773 + 298
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6760,7 +5556,7 @@ inst298: // rune "09AFaf" -> 300
 	goto inst300
 inst300: // alt -> 299, 311
 	{
-		idx := i*773 + 300
+		idx := i*319 + 126
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6780,7 +5576,7 @@ inst300_alt:
 	goto inst311
 inst311: // alt -> 303, 772
 	{
-		idx := i*773 + 311
+		idx := i*319 + 127
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6799,13 +5595,6 @@ inst311_alt:
 	goto unreachable
 	goto inst299
 inst299: // rune "09AFaf" -> 311
-	{
-		idx := i*773 + 299
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6825,13 +5614,6 @@ inst299: // rune "09AFaf" -> 311
 	goto unreachable
 	goto inst303
 inst303: // string ":" -> 304
-	{
-		idx := i*773 + 303
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -6843,13 +5625,6 @@ inst303: // string ":" -> 304
 	goto unreachable
 	goto inst304
 inst304: // rune "09AFaf" -> 310
-	{
-		idx := i*773 + 304
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6870,7 +5645,7 @@ inst304: // rune "09AFaf" -> 310
 	goto inst310
 inst310: // alt -> 305, 772
 	{
-		idx := i*773 + 310
+		idx := i*319 + 128
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6889,13 +5664,6 @@ inst310_alt:
 	goto unreachable
 	goto inst305
 inst305: // rune "09AFaf" -> 309
-	{
-		idx := i*773 + 305
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6916,7 +5684,7 @@ inst305: // rune "09AFaf" -> 309
 	goto inst309
 inst309: // alt -> 306, 772
 	{
-		idx := i*773 + 309
+		idx := i*319 + 129
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6935,13 +5703,6 @@ inst309_alt:
 	goto unreachable
 	goto inst306
 inst306: // rune "09AFaf" -> 308
-	{
-		idx := i*773 + 306
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -6962,7 +5723,7 @@ inst306: // rune "09AFaf" -> 308
 	goto inst375
 inst375: // alt -> 313, 314
 	{
-		idx := i*773 + 375
+		idx := i*319 + 130
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -6981,13 +5742,6 @@ inst375_alt:
 	goto unreachable
 	goto inst314
 inst314: // rune "09AFaf" -> 320
-	{
-		idx := i*773 + 314
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7008,7 +5762,7 @@ inst314: // rune "09AFaf" -> 320
 	goto inst320
 inst320: // alt -> 315, 321
 	{
-		idx := i*773 + 320
+		idx := i*319 + 131
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7027,13 +5781,6 @@ inst320_alt:
 	goto unreachable
 	goto inst315
 inst315: // rune "09AFaf" -> 319
-	{
-		idx := i*773 + 315
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7054,7 +5801,7 @@ inst315: // rune "09AFaf" -> 319
 	goto inst319
 inst319: // alt -> 316, 321
 	{
-		idx := i*773 + 319
+		idx := i*319 + 132
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7073,13 +5820,6 @@ inst319_alt:
 	goto unreachable
 	goto inst316
 inst316: // rune "09AFaf" -> 318
-	{
-		idx := i*773 + 316
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7100,7 +5840,7 @@ inst316: // rune "09AFaf" -> 318
 	goto inst318
 inst318: // alt -> 317, 321
 	{
-		idx := i*773 + 318
+		idx := i*319 + 133
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7119,13 +5859,6 @@ inst318_alt:
 	goto unreachable
 	goto inst321
 inst321: // string ":" -> 339
-	{
-		idx := i*773 + 321
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7137,13 +5870,6 @@ inst321: // string ":" -> 339
 	goto unreachable
 	goto inst317
 inst317: // rune "09AFaf" -> 321
-	{
-		idx := i*773 + 317
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7164,7 +5890,7 @@ inst317: // rune "09AFaf" -> 321
 	goto inst339
 inst339: // alt -> 322, 340
 	{
-		idx := i*773 + 339
+		idx := i*319 + 134
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7183,13 +5909,6 @@ inst339_alt:
 	goto unreachable
 	goto inst322
 inst322: // rune "09AFaf" -> 328
-	{
-		idx := i*773 + 322
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7210,7 +5929,7 @@ inst322: // rune "09AFaf" -> 328
 	goto inst328
 inst328: // alt -> 323, 329
 	{
-		idx := i*773 + 328
+		idx := i*319 + 135
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7229,13 +5948,6 @@ inst328_alt:
 	goto unreachable
 	goto inst323
 inst323: // rune "09AFaf" -> 327
-	{
-		idx := i*773 + 323
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7256,7 +5968,7 @@ inst323: // rune "09AFaf" -> 327
 	goto inst327
 inst327: // alt -> 324, 329
 	{
-		idx := i*773 + 327
+		idx := i*319 + 136
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7275,13 +5987,6 @@ inst327_alt:
 	goto unreachable
 	goto inst324
 inst324: // rune "09AFaf" -> 326
-	{
-		idx := i*773 + 324
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7301,13 +6006,6 @@ inst324: // rune "09AFaf" -> 326
 	goto unreachable
 	goto inst329
 inst329: // string ":" -> 338
-	{
-		idx := i*773 + 329
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7320,7 +6018,7 @@ inst329: // string ":" -> 338
 	goto inst326
 inst326: // alt -> 325, 329
 	{
-		idx := i*773 + 326
+		idx := i*319 + 137
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7339,13 +6037,6 @@ inst326_alt:
 	goto unreachable
 	goto inst325
 inst325: // rune "09AFaf" -> 329
-	{
-		idx := i*773 + 325
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7365,13 +6056,6 @@ inst325: // rune "09AFaf" -> 329
 	goto unreachable
 	goto inst331
 inst331: // rune "09AFaf" -> 335
-	{
-		idx := i*773 + 331
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7392,7 +6076,7 @@ inst331: // rune "09AFaf" -> 335
 	goto inst335
 inst335: // alt -> 332, 337
 	{
-		idx := i*773 + 335
+		idx := i*319 + 138
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7411,13 +6095,6 @@ inst335_alt:
 	goto unreachable
 	goto inst332
 inst332: // rune "09AFaf" -> 334
-	{
-		idx := i*773 + 332
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7438,7 +6115,7 @@ inst332: // rune "09AFaf" -> 334
 	goto inst334
 inst334: // alt -> 333, 337
 	{
-		idx := i*773 + 334
+		idx := i*319 + 139
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7457,13 +6134,6 @@ inst334_alt:
 	goto unreachable
 	goto inst333
 inst333: // rune "09AFaf" -> 337
-	{
-		idx := i*773 + 333
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7483,13 +6153,6 @@ inst333: // rune "09AFaf" -> 337
 	goto unreachable
 	goto inst337
 inst337: // string "::" -> 341
-	{
-		idx := i*773 + 337
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -7502,7 +6165,7 @@ inst337: // string "::" -> 341
 	goto inst336
 inst336: // alt -> 331, 337
 	{
-		idx := i*773 + 336
+		idx := i*319 + 140
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7521,13 +6184,6 @@ inst336_alt:
 	goto unreachable
 	goto inst340
 inst340: // string ":" -> 341
-	{
-		idx := i*773 + 340
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7539,13 +6195,6 @@ inst340: // string ":" -> 341
 	goto unreachable
 	goto inst341
 inst341: // rune "09AFaf" -> 347
-	{
-		idx := i*773 + 341
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7566,7 +6215,7 @@ inst341: // rune "09AFaf" -> 347
 	goto inst338
 inst338: // alt -> 330, 340
 	{
-		idx := i*773 + 338
+		idx := i*319 + 141
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7585,13 +6234,6 @@ inst338_alt:
 	goto unreachable
 	goto inst330
 inst330: // rune "09AFaf" -> 336
-	{
-		idx := i*773 + 330
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7612,7 +6254,7 @@ inst330: // rune "09AFaf" -> 336
 	goto inst347
 inst347: // alt -> 342, 374
 	{
-		idx := i*773 + 347
+		idx := i*319 + 142
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7631,13 +6273,6 @@ inst347_alt:
 	goto unreachable
 	goto inst342
 inst342: // rune "09AFaf" -> 346
-	{
-		idx := i*773 + 342
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7658,7 +6293,7 @@ inst342: // rune "09AFaf" -> 346
 	goto inst346
 inst346: // alt -> 343, 374
 	{
-		idx := i*773 + 346
+		idx := i*319 + 143
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7677,13 +6312,6 @@ inst346_alt:
 	goto unreachable
 	goto inst343
 inst343: // rune "09AFaf" -> 345
-	{
-		idx := i*773 + 343
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7704,7 +6332,7 @@ inst343: // rune "09AFaf" -> 345
 	goto inst345
 inst345: // alt -> 344, 374
 	{
-		idx := i*773 + 345
+		idx := i*319 + 144
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7724,7 +6352,7 @@ inst345_alt:
 	goto inst374
 inst374: // alt -> 348, 772
 	{
-		idx := i*773 + 374
+		idx := i*319 + 145
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7743,13 +6371,6 @@ inst374_alt:
 	goto unreachable
 	goto inst344
 inst344: // rune "09AFaf" -> 374
-	{
-		idx := i*773 + 344
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7769,13 +6390,6 @@ inst344: // rune "09AFaf" -> 374
 	goto unreachable
 	goto inst348
 inst348: // string ":" -> 349
-	{
-		idx := i*773 + 348
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7787,13 +6401,6 @@ inst348: // string ":" -> 349
 	goto unreachable
 	goto inst349
 inst349: // rune "09AFaf" -> 355
-	{
-		idx := i*773 + 349
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7813,13 +6420,6 @@ inst349: // rune "09AFaf" -> 355
 	goto unreachable
 	goto inst351
 inst351: // rune "09AFaf" -> 353
-	{
-		idx := i*773 + 351
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7840,7 +6440,7 @@ inst351: // rune "09AFaf" -> 353
 	goto inst353
 inst353: // alt -> 352, 373
 	{
-		idx := i*773 + 353
+		idx := i*319 + 146
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7859,13 +6459,6 @@ inst353_alt:
 	goto unreachable
 	goto inst352
 inst352: // rune "09AFaf" -> 373
-	{
-		idx := i*773 + 352
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7886,7 +6479,7 @@ inst352: // rune "09AFaf" -> 373
 	goto inst355
 inst355: // alt -> 350, 373
 	{
-		idx := i*773 + 355
+		idx := i*319 + 147
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7905,13 +6498,6 @@ inst355_alt:
 	goto unreachable
 	goto inst350
 inst350: // rune "09AFaf" -> 354
-	{
-		idx := i*773 + 350
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -7932,7 +6518,7 @@ inst350: // rune "09AFaf" -> 354
 	goto inst354
 inst354: // alt -> 351, 373
 	{
-		idx := i*773 + 354
+		idx := i*319 + 148
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7952,7 +6538,7 @@ inst354_alt:
 	goto inst373
 inst373: // alt -> 356, 772
 	{
-		idx := i*773 + 373
+		idx := i*319 + 149
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -7971,13 +6557,6 @@ inst373_alt:
 	goto unreachable
 	goto inst356
 inst356: // string ":" -> 357
-	{
-		idx := i*773 + 356
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -7989,13 +6568,6 @@ inst356: // string ":" -> 357
 	goto unreachable
 	goto inst357
 inst357: // rune "09AFaf" -> 363
-	{
-		idx := i*773 + 357
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8016,7 +6588,7 @@ inst357: // rune "09AFaf" -> 363
 	goto inst363
 inst363: // alt -> 358, 372
 	{
-		idx := i*773 + 363
+		idx := i*319 + 150
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8035,13 +6607,6 @@ inst363_alt:
 	goto unreachable
 	goto inst358
 inst358: // rune "09AFaf" -> 362
-	{
-		idx := i*773 + 358
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8062,7 +6627,7 @@ inst358: // rune "09AFaf" -> 362
 	goto inst362
 inst362: // alt -> 359, 372
 	{
-		idx := i*773 + 362
+		idx := i*319 + 151
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8081,13 +6646,6 @@ inst362_alt:
 	goto unreachable
 	goto inst359
 inst359: // rune "09AFaf" -> 361
-	{
-		idx := i*773 + 359
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8108,7 +6666,7 @@ inst359: // rune "09AFaf" -> 361
 	goto inst361
 inst361: // alt -> 360, 372
 	{
-		idx := i*773 + 361
+		idx := i*319 + 152
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8128,7 +6686,7 @@ inst361_alt:
 	goto inst372
 inst372: // alt -> 364, 772
 	{
-		idx := i*773 + 372
+		idx := i*319 + 153
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8147,13 +6705,6 @@ inst372_alt:
 	goto unreachable
 	goto inst360
 inst360: // rune "09AFaf" -> 372
-	{
-		idx := i*773 + 360
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8173,13 +6724,6 @@ inst360: // rune "09AFaf" -> 372
 	goto unreachable
 	goto inst364
 inst364: // string ":" -> 365
-	{
-		idx := i*773 + 364
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8191,13 +6735,6 @@ inst364: // string ":" -> 365
 	goto unreachable
 	goto inst397
 inst397: // rune "09AFaf" -> 436
-	{
-		idx := i*773 + 397
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8218,7 +6755,7 @@ inst397: // rune "09AFaf" -> 436
 	goto inst398
 inst398: // alt -> 397, 436
 	{
-		idx := i*773 + 398
+		idx := i*319 + 154
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8238,7 +6775,7 @@ inst398_alt:
 	goto inst436
 inst436: // alt -> 401, 772
 	{
-		idx := i*773 + 436
+		idx := i*319 + 155
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8257,13 +6794,6 @@ inst436_alt:
 	goto unreachable
 	goto inst365
 inst365: // rune "09AFaf" -> 371
-	{
-		idx := i*773 + 365
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8283,13 +6813,6 @@ inst365: // rune "09AFaf" -> 371
 	goto unreachable
 	goto inst401
 inst401: // string ":" -> 402
-	{
-		idx := i*773 + 401
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8302,7 +6825,7 @@ inst401: // string ":" -> 402
 	goto inst400
 inst400: // alt -> 395, 436
 	{
-		idx := i*773 + 400
+		idx := i*319 + 156
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8321,13 +6844,6 @@ inst400_alt:
 	goto unreachable
 	goto inst378
 inst378: // rune "09AFaf" -> 380
-	{
-		idx := i*773 + 378
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8348,7 +6864,7 @@ inst378: // rune "09AFaf" -> 380
 	goto inst381
 inst381: // alt -> 378, 383
 	{
-		idx := i*773 + 381
+		idx := i*319 + 157
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8367,13 +6883,6 @@ inst381_alt:
 	goto unreachable
 	goto inst377
 inst377: // rune "09AFaf" -> 381
-	{
-		idx := i*773 + 377
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8394,7 +6903,7 @@ inst377: // rune "09AFaf" -> 381
 	goto inst382
 inst382: // alt -> 377, 383
 	{
-		idx := i*773 + 382
+		idx := i*319 + 158
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8413,13 +6922,6 @@ inst382_alt:
 	goto unreachable
 	goto inst376
 inst376: // rune "09AFaf" -> 382
-	{
-		idx := i*773 + 376
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8440,7 +6942,7 @@ inst376: // rune "09AFaf" -> 382
 	goto inst437
 inst437: // alt -> 375, 376
 	{
-		idx := i*773 + 437
+		idx := i*319 + 159
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8459,13 +6961,6 @@ inst437_alt:
 	goto unreachable
 	goto inst383
 inst383: // string ":" -> 392
-	{
-		idx := i*773 + 383
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8478,7 +6973,7 @@ inst383: // string ":" -> 392
 	goto inst380
 inst380: // alt -> 379, 383
 	{
-		idx := i*773 + 380
+		idx := i*319 + 160
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8497,13 +6992,6 @@ inst380_alt:
 	goto unreachable
 	goto inst379
 inst379: // rune "09AFaf" -> 383
-	{
-		idx := i*773 + 379
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8523,13 +7011,6 @@ inst379: // rune "09AFaf" -> 383
 	goto unreachable
 	goto inst386
 inst386: // rune "09AFaf" -> 388
-	{
-		idx := i*773 + 386
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8550,7 +7031,7 @@ inst386: // rune "09AFaf" -> 388
 	goto inst388
 inst388: // alt -> 387, 391
 	{
-		idx := i*773 + 388
+		idx := i*319 + 161
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8569,13 +7050,6 @@ inst388_alt:
 	goto unreachable
 	goto inst387
 inst387: // rune "09AFaf" -> 391
-	{
-		idx := i*773 + 387
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8596,7 +7070,7 @@ inst387: // rune "09AFaf" -> 391
 	goto inst389
 inst389: // alt -> 386, 391
 	{
-		idx := i*773 + 389
+		idx := i*319 + 162
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8615,13 +7089,6 @@ inst389_alt:
 	goto unreachable
 	goto inst385
 inst385: // rune "09AFaf" -> 389
-	{
-		idx := i*773 + 385
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8641,13 +7108,6 @@ inst385: // rune "09AFaf" -> 389
 	goto unreachable
 	goto inst384
 inst384: // rune "09AFaf" -> 390
-	{
-		idx := i*773 + 384
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8668,7 +7128,7 @@ inst384: // rune "09AFaf" -> 390
 	goto inst390
 inst390: // alt -> 385, 391
 	{
-		idx := i*773 + 390
+		idx := i*319 + 163
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8687,13 +7147,6 @@ inst390_alt:
 	goto unreachable
 	goto inst391
 inst391: // string "::" -> 394
-	{
-		idx := i*773 + 391
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -8706,7 +7159,7 @@ inst391: // string "::" -> 394
 	goto inst392
 inst392: // alt -> 384, 393
 	{
-		idx := i*773 + 392
+		idx := i*319 + 164
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8725,13 +7178,6 @@ inst392_alt:
 	goto unreachable
 	goto inst393
 inst393: // string ":" -> 394
-	{
-		idx := i*773 + 393
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -8743,13 +7189,6 @@ inst393: // string ":" -> 394
 	goto unreachable
 	goto inst394
 inst394: // rune "09AFaf" -> 400
-	{
-		idx := i*773 + 394
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8769,13 +7208,6 @@ inst394: // rune "09AFaf" -> 400
 	goto unreachable
 	goto inst395
 inst395: // rune "09AFaf" -> 399
-	{
-		idx := i*773 + 395
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8795,13 +7227,6 @@ inst395: // rune "09AFaf" -> 399
 	goto unreachable
 	goto inst402
 inst402: // rune "09AFaf" -> 408
-	{
-		idx := i*773 + 402
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8821,13 +7246,6 @@ inst402: // rune "09AFaf" -> 408
 	goto unreachable
 	goto inst396
 inst396: // rune "09AFaf" -> 398
-	{
-		idx := i*773 + 396
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8848,7 +7266,7 @@ inst396: // rune "09AFaf" -> 398
 	goto inst399
 inst399: // alt -> 396, 436
 	{
-		idx := i*773 + 399
+		idx := i*319 + 165
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8868,7 +7286,7 @@ inst399_alt:
 	goto inst371
 inst371: // alt -> 366, 772
 	{
-		idx := i*773 + 371
+		idx := i*319 + 166
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8887,13 +7305,6 @@ inst371_alt:
 	goto unreachable
 	goto inst366
 inst366: // rune "09AFaf" -> 370
-	{
-		idx := i*773 + 366
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8914,7 +7325,7 @@ inst366: // rune "09AFaf" -> 370
 	goto inst370
 inst370: // alt -> 367, 772
 	{
-		idx := i*773 + 370
+		idx := i*319 + 167
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8934,7 +7345,7 @@ inst370_alt:
 	goto inst499
 inst499: // alt -> 437, 438
 	{
-		idx := i*773 + 499
+		idx := i*319 + 168
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8953,13 +7364,6 @@ inst499_alt:
 	goto unreachable
 	goto inst367
 inst367: // rune "09AFaf" -> 369
-	{
-		idx := i*773 + 367
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -8980,7 +7384,7 @@ inst367: // rune "09AFaf" -> 369
 	goto inst369
 inst369: // alt -> 368, 772
 	{
-		idx := i*773 + 369
+		idx := i*319 + 169
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -8999,13 +7403,6 @@ inst369_alt:
 	goto unreachable
 	goto inst368
 inst368: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 368
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9025,13 +7422,6 @@ inst368: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst404
 inst404: // rune "09AFaf" -> 406
-	{
-		idx := i*773 + 404
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9051,13 +7441,6 @@ inst404: // rune "09AFaf" -> 406
 	goto unreachable
 	goto inst405
 inst405: // rune "09AFaf" -> 435
-	{
-		idx := i*773 + 405
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9077,13 +7460,6 @@ inst405: // rune "09AFaf" -> 435
 	goto unreachable
 	goto inst403
 inst403: // rune "09AFaf" -> 407
-	{
-		idx := i*773 + 403
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9104,7 +7480,7 @@ inst403: // rune "09AFaf" -> 407
 	goto inst406
 inst406: // alt -> 405, 435
 	{
-		idx := i*773 + 406
+		idx := i*319 + 170
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9124,7 +7500,7 @@ inst406_alt:
 	goto inst407
 inst407: // alt -> 404, 435
 	{
-		idx := i*773 + 407
+		idx := i*319 + 171
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9144,7 +7520,7 @@ inst407_alt:
 	goto inst408
 inst408: // alt -> 403, 435
 	{
-		idx := i*773 + 408
+		idx := i*319 + 172
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9163,13 +7539,6 @@ inst408_alt:
 	goto unreachable
 	goto inst409
 inst409: // string ":" -> 410
-	{
-		idx := i*773 + 409
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9181,13 +7550,6 @@ inst409: // string ":" -> 410
 	goto unreachable
 	goto inst410
 inst410: // rune "09AFaf" -> 416
-	{
-		idx := i*773 + 410
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9207,13 +7569,6 @@ inst410: // rune "09AFaf" -> 416
 	goto unreachable
 	goto inst411
 inst411: // rune "09AFaf" -> 415
-	{
-		idx := i*773 + 411
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9233,13 +7588,6 @@ inst411: // rune "09AFaf" -> 415
 	goto unreachable
 	goto inst412
 inst412: // rune "09AFaf" -> 414
-	{
-		idx := i*773 + 412
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9259,13 +7607,6 @@ inst412: // rune "09AFaf" -> 414
 	goto unreachable
 	goto inst413
 inst413: // rune "09AFaf" -> 434
-	{
-		idx := i*773 + 413
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9286,7 +7627,7 @@ inst413: // rune "09AFaf" -> 434
 	goto inst414
 inst414: // alt -> 413, 434
 	{
-		idx := i*773 + 414
+		idx := i*319 + 173
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9306,7 +7647,7 @@ inst414_alt:
 	goto inst415
 inst415: // alt -> 412, 434
 	{
-		idx := i*773 + 415
+		idx := i*319 + 174
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9326,7 +7667,7 @@ inst415_alt:
 	goto inst416
 inst416: // alt -> 411, 434
 	{
-		idx := i*773 + 416
+		idx := i*319 + 175
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9345,13 +7686,6 @@ inst416_alt:
 	goto unreachable
 	goto inst417
 inst417: // string ":" -> 418
-	{
-		idx := i*773 + 417
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9363,13 +7697,6 @@ inst417: // string ":" -> 418
 	goto unreachable
 	goto inst418
 inst418: // rune "09AFaf" -> 424
-	{
-		idx := i*773 + 418
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9389,13 +7716,6 @@ inst418: // rune "09AFaf" -> 424
 	goto unreachable
 	goto inst419
 inst419: // rune "09AFaf" -> 423
-	{
-		idx := i*773 + 419
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9415,13 +7735,6 @@ inst419: // rune "09AFaf" -> 423
 	goto unreachable
 	goto inst420
 inst420: // rune "09AFaf" -> 422
-	{
-		idx := i*773 + 420
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9441,13 +7754,6 @@ inst420: // rune "09AFaf" -> 422
 	goto unreachable
 	goto inst421
 inst421: // rune "09AFaf" -> 433
-	{
-		idx := i*773 + 421
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9468,7 +7774,7 @@ inst421: // rune "09AFaf" -> 433
 	goto inst422
 inst422: // alt -> 421, 433
 	{
-		idx := i*773 + 422
+		idx := i*319 + 176
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9488,7 +7794,7 @@ inst422_alt:
 	goto inst423
 inst423: // alt -> 420, 433
 	{
-		idx := i*773 + 423
+		idx := i*319 + 177
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9508,7 +7814,7 @@ inst423_alt:
 	goto inst424
 inst424: // alt -> 419, 433
 	{
-		idx := i*773 + 424
+		idx := i*319 + 178
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9527,13 +7833,6 @@ inst424_alt:
 	goto unreachable
 	goto inst425
 inst425: // string ":" -> 426
-	{
-		idx := i*773 + 425
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -9545,13 +7844,6 @@ inst425: // string ":" -> 426
 	goto unreachable
 	goto inst426
 inst426: // rune "09AFaf" -> 432
-	{
-		idx := i*773 + 426
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9571,13 +7863,6 @@ inst426: // rune "09AFaf" -> 432
 	goto unreachable
 	goto inst427
 inst427: // rune "09AFaf" -> 431
-	{
-		idx := i*773 + 427
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9597,13 +7882,6 @@ inst427: // rune "09AFaf" -> 431
 	goto unreachable
 	goto inst428
 inst428: // rune "09AFaf" -> 430
-	{
-		idx := i*773 + 428
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9624,7 +7902,7 @@ inst428: // rune "09AFaf" -> 430
 	goto inst432
 inst432: // alt -> 427, 772
 	{
-		idx := i*773 + 432
+		idx := i*319 + 179
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9644,7 +7922,7 @@ inst432_alt:
 	goto inst431
 inst431: // alt -> 428, 772
 	{
-		idx := i*773 + 431
+		idx := i*319 + 180
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9664,7 +7942,7 @@ inst431_alt:
 	goto inst433
 inst433: // alt -> 425, 772
 	{
-		idx := i*773 + 433
+		idx := i*319 + 181
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9684,7 +7962,7 @@ inst433_alt:
 	goto inst434
 inst434: // alt -> 417, 772
 	{
-		idx := i*773 + 434
+		idx := i*319 + 182
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9704,7 +7982,7 @@ inst434_alt:
 	goto inst435
 inst435: // alt -> 409, 772
 	{
-		idx := i*773 + 435
+		idx := i*319 + 183
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9723,13 +8001,6 @@ inst435_alt:
 	goto unreachable
 	goto inst438
 inst438: // rune "09AFaf" -> 444
-	{
-		idx := i*773 + 438
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9749,13 +8020,6 @@ inst438: // rune "09AFaf" -> 444
 	goto unreachable
 	goto inst439
 inst439: // rune "09AFaf" -> 443
-	{
-		idx := i*773 + 439
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9775,13 +8039,6 @@ inst439: // rune "09AFaf" -> 443
 	goto unreachable
 	goto inst445
 inst445: // string "::" -> 447
-	{
-		idx := i*773 + 445
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -9793,13 +8050,6 @@ inst445: // string "::" -> 447
 	goto unreachable
 	goto inst440
 inst440: // rune "09AFaf" -> 442
-	{
-		idx := i*773 + 440
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9820,7 +8070,7 @@ inst440: // rune "09AFaf" -> 442
 	goto inst453
 inst453: // alt -> 448, 498
 	{
-		idx := i*773 + 453
+		idx := i*319 + 184
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9839,13 +8089,6 @@ inst453_alt:
 	goto unreachable
 	goto inst449
 inst449: // rune "09AFaf" -> 451
-	{
-		idx := i*773 + 449
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9866,7 +8109,7 @@ inst449: // rune "09AFaf" -> 451
 	goto inst451
 inst451: // alt -> 450, 498
 	{
-		idx := i*773 + 451
+		idx := i*319 + 185
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9885,13 +8128,6 @@ inst451_alt:
 	goto unreachable
 	goto inst441
 inst441: // rune "09AFaf" -> 445
-	{
-		idx := i*773 + 441
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9912,7 +8148,7 @@ inst441: // rune "09AFaf" -> 445
 	goto inst442
 inst442: // alt -> 441, 445
 	{
-		idx := i*773 + 442
+		idx := i*319 + 186
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9932,7 +8168,7 @@ inst442_alt:
 	goto inst443
 inst443: // alt -> 440, 445
 	{
-		idx := i*773 + 443
+		idx := i*319 + 187
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9952,7 +8188,7 @@ inst443_alt:
 	goto inst444
 inst444: // alt -> 439, 445
 	{
-		idx := i*773 + 444
+		idx := i*319 + 188
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -9971,13 +8207,6 @@ inst444_alt:
 	goto unreachable
 	goto inst447
 inst447: // rune "09AFaf" -> 453
-	{
-		idx := i*773 + 447
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -9997,13 +8226,6 @@ inst447: // rune "09AFaf" -> 453
 	goto unreachable
 	goto inst448
 inst448: // rune "09AFaf" -> 452
-	{
-		idx := i*773 + 448
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10024,7 +8246,7 @@ inst448: // rune "09AFaf" -> 452
 	goto inst498
 inst498: // alt -> 454, 772
 	{
-		idx := i*773 + 498
+		idx := i*319 + 189
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10043,13 +8265,6 @@ inst498_alt:
 	goto unreachable
 	goto inst450
 inst450: // rune "09AFaf" -> 498
-	{
-		idx := i*773 + 450
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10070,7 +8285,7 @@ inst450: // rune "09AFaf" -> 498
 	goto inst452
 inst452: // alt -> 449, 498
 	{
-		idx := i*773 + 452
+		idx := i*319 + 190
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10089,13 +8304,6 @@ inst452_alt:
 	goto unreachable
 	goto inst772
 inst772: // match
-	{
-		idx := i*773 + 772
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[1] = i // end of match
 	goto match
 
@@ -10103,7 +8311,7 @@ inst772: // match
 	goto inst308
 inst308: // alt -> 307, 772
 	{
-		idx := i*773 + 308
+		idx := i*319 + 191
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10122,13 +8330,6 @@ inst308_alt:
 	goto unreachable
 	goto inst307
 inst307: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 307
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10149,7 +8350,7 @@ inst307: // rune "09AFaf" -> 772
 	goto inst61
 inst61: // alt -> 60, 772
 	{
-		idx := i*773 + 61
+		idx := i*319 + 192
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10168,13 +8369,6 @@ inst61_alt:
 	goto unreachable
 	goto inst60
 inst60: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 60
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10195,7 +8389,7 @@ inst60: // rune "09AFaf" -> 772
 	goto inst430
 inst430: // alt -> 429, 772
 	{
-		idx := i*773 + 430
+		idx := i*319 + 193
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10214,13 +8408,6 @@ inst430_alt:
 	goto unreachable
 	goto inst429
 inst429: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 429
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10241,7 +8428,7 @@ inst429: // rune "09AFaf" -> 772
 	goto inst186
 inst186: // alt -> 185, 772
 	{
-		idx := i*773 + 186
+		idx := i*319 + 194
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10260,13 +8447,6 @@ inst186_alt:
 	goto unreachable
 	goto inst185
 inst185: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 185
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10286,13 +8466,6 @@ inst185: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst465
 inst465: // rune "09AFaf" -> 467
-	{
-		idx := i*773 + 465
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10313,7 +8486,7 @@ inst465: // rune "09AFaf" -> 467
 	goto inst461
 inst461: // alt -> 456, 497
 	{
-		idx := i*773 + 461
+		idx := i*319 + 195
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10332,13 +8505,6 @@ inst461_alt:
 	goto unreachable
 	goto inst464
 inst464: // rune "09AFaf" -> 468
-	{
-		idx := i*773 + 464
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10358,13 +8524,6 @@ inst464: // rune "09AFaf" -> 468
 	goto unreachable
 	goto inst466
 inst466: // rune "09AFaf" -> 496
-	{
-		idx := i*773 + 466
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10385,7 +8544,7 @@ inst466: // rune "09AFaf" -> 496
 	goto inst467
 inst467: // alt -> 466, 496
 	{
-		idx := i*773 + 467
+		idx := i*319 + 196
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10405,7 +8564,7 @@ inst467_alt:
 	goto inst468
 inst468: // alt -> 465, 496
 	{
-		idx := i*773 + 468
+		idx := i*319 + 197
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10425,7 +8584,7 @@ inst468_alt:
 	goto inst496
 inst496: // alt -> 470, 772
 	{
-		idx := i*773 + 496
+		idx := i*319 + 198
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10445,7 +8604,7 @@ inst496_alt:
 	goto inst469
 inst469: // alt -> 464, 496
 	{
-		idx := i*773 + 469
+		idx := i*319 + 199
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10464,13 +8623,6 @@ inst469_alt:
 	goto unreachable
 	goto inst470
 inst470: // string ":" -> 471
-	{
-		idx := i*773 + 470
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -10482,13 +8634,6 @@ inst470: // string ":" -> 471
 	goto unreachable
 	goto inst472
 inst472: // rune "09AFaf" -> 476
-	{
-		idx := i*773 + 472
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10508,13 +8653,6 @@ inst472: // rune "09AFaf" -> 476
 	goto unreachable
 	goto inst473
 inst473: // rune "09AFaf" -> 475
-	{
-		idx := i*773 + 473
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10535,7 +8673,7 @@ inst473: // rune "09AFaf" -> 475
 	goto inst476
 inst476: // alt -> 473, 495
 	{
-		idx := i*773 + 476
+		idx := i*319 + 200
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10555,7 +8693,7 @@ inst476_alt:
 	goto inst459
 inst459: // alt -> 458, 497
 	{
-		idx := i*773 + 459
+		idx := i*319 + 201
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10574,13 +8712,6 @@ inst459_alt:
 	goto unreachable
 	goto inst478
 inst478: // string ":" -> 479
-	{
-		idx := i*773 + 478
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -10592,13 +8723,6 @@ inst478: // string ":" -> 479
 	goto unreachable
 	goto inst479
 inst479: // rune "09AFaf" -> 485
-	{
-		idx := i*773 + 479
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10618,13 +8742,6 @@ inst479: // rune "09AFaf" -> 485
 	goto unreachable
 	goto inst457
 inst457: // rune "09AFaf" -> 459
-	{
-		idx := i*773 + 457
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10644,13 +8761,6 @@ inst457: // rune "09AFaf" -> 459
 	goto unreachable
 	goto inst456
 inst456: // rune "09AFaf" -> 460
-	{
-		idx := i*773 + 456
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10671,7 +8781,7 @@ inst456: // rune "09AFaf" -> 460
 	goto inst460
 inst460: // alt -> 457, 497
 	{
-		idx := i*773 + 460
+		idx := i*319 + 202
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10690,13 +8800,6 @@ inst460_alt:
 	goto unreachable
 	goto inst455
 inst455: // rune "09AFaf" -> 461
-	{
-		idx := i*773 + 455
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10716,13 +8819,6 @@ inst455: // rune "09AFaf" -> 461
 	goto unreachable
 	goto inst486
 inst486: // string ":" -> 487
-	{
-		idx := i*773 + 486
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -10735,7 +8831,7 @@ inst486: // string ":" -> 487
 	goto inst497
 inst497: // alt -> 462, 772
 	{
-		idx := i*773 + 497
+		idx := i*319 + 203
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10755,7 +8851,7 @@ inst497_alt:
 	goto inst485
 inst485: // alt -> 480, 494
 	{
-		idx := i*773 + 485
+		idx := i*319 + 204
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10774,13 +8870,6 @@ inst485_alt:
 	goto unreachable
 	goto inst458
 inst458: // rune "09AFaf" -> 497
-	{
-		idx := i*773 + 458
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10801,7 +8890,7 @@ inst458: // rune "09AFaf" -> 497
 	goto inst492
 inst492: // alt -> 489, 772
 	{
-		idx := i*773 + 492
+		idx := i*319 + 205
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10821,7 +8910,7 @@ inst492_alt:
 	goto inst493
 inst493: // alt -> 488, 772
 	{
-		idx := i*773 + 493
+		idx := i*319 + 206
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10840,13 +8929,6 @@ inst493_alt:
 	goto unreachable
 	goto inst487
 inst487: // rune "09AFaf" -> 493
-	{
-		idx := i*773 + 487
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10866,13 +8948,6 @@ inst487: // rune "09AFaf" -> 493
 	goto unreachable
 	goto inst488
 inst488: // rune "09AFaf" -> 492
-	{
-		idx := i*773 + 488
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10892,13 +8967,6 @@ inst488: // rune "09AFaf" -> 492
 	goto unreachable
 	goto inst489
 inst489: // rune "09AFaf" -> 491
-	{
-		idx := i*773 + 489
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10918,13 +8986,6 @@ inst489: // rune "09AFaf" -> 491
 	goto unreachable
 	goto inst490
 inst490: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 490
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -10945,7 +9006,7 @@ inst490: // rune "09AFaf" -> 772
 	goto inst491
 inst491: // alt -> 490, 772
 	{
-		idx := i*773 + 491
+		idx := i*319 + 207
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10965,7 +9026,7 @@ inst491_alt:
 	goto inst494
 inst494: // alt -> 486, 772
 	{
-		idx := i*773 + 494
+		idx := i*319 + 208
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -10984,13 +9045,6 @@ inst494_alt:
 	goto unreachable
 	goto inst454
 inst454: // string ":" -> 455
-	{
-		idx := i*773 + 454
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -11002,13 +9056,6 @@ inst454: // string ":" -> 455
 	goto unreachable
 	goto inst471
 inst471: // rune "09AFaf" -> 477
-	{
-		idx := i*773 + 471
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11029,7 +9076,7 @@ inst471: // rune "09AFaf" -> 477
 	goto inst495
 inst495: // alt -> 478, 772
 	{
-		idx := i*773 + 495
+		idx := i*319 + 209
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11048,13 +9095,6 @@ inst495_alt:
 	goto unreachable
 	goto inst462
 inst462: // string ":" -> 463
-	{
-		idx := i*773 + 462
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -11067,7 +9107,7 @@ inst462: // string ":" -> 463
 	goto inst475
 inst475: // alt -> 474, 495
 	{
-		idx := i*773 + 475
+		idx := i*319 + 210
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11087,7 +9127,7 @@ inst475_alt:
 	goto inst477
 inst477: // alt -> 472, 495
 	{
-		idx := i*773 + 477
+		idx := i*319 + 211
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11106,13 +9146,6 @@ inst477_alt:
 	goto unreachable
 	goto inst463
 inst463: // rune "09AFaf" -> 469
-	{
-		idx := i*773 + 463
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11133,7 +9166,7 @@ inst463: // rune "09AFaf" -> 469
 	goto inst560
 inst560: // alt -> 525, 772
 	{
-		idx := i*773 + 560
+		idx := i*319 + 212
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11152,13 +9185,6 @@ inst560_alt:
 	goto unreachable
 	goto inst474
 inst474: // rune "09AFaf" -> 495
-	{
-		idx := i*773 + 474
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11178,13 +9204,6 @@ inst474: // rune "09AFaf" -> 495
 	goto unreachable
 	goto inst504
 inst504: // rune "09AFaf" -> 506
-	{
-		idx := i*773 + 504
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11205,7 +9224,7 @@ inst504: // rune "09AFaf" -> 506
 	goto inst484
 inst484: // alt -> 481, 494
 	{
-		idx := i*773 + 484
+		idx := i*319 + 213
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11225,7 +9244,7 @@ inst484_alt:
 	goto inst483
 inst483: // alt -> 482, 494
 	{
-		idx := i*773 + 483
+		idx := i*319 + 214
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11245,7 +9264,7 @@ inst483_alt:
 	goto inst506
 inst506: // alt -> 505, 562
 	{
-		idx := i*773 + 506
+		idx := i*319 + 215
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11264,13 +9283,6 @@ inst506_alt:
 	goto unreachable
 	goto inst480
 inst480: // rune "09AFaf" -> 484
-	{
-		idx := i*773 + 480
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11290,13 +9302,6 @@ inst480: // rune "09AFaf" -> 484
 	goto unreachable
 	goto inst505
 inst505: // rune "09AFaf" -> 562
-	{
-		idx := i*773 + 505
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11316,13 +9321,6 @@ inst505: // rune "09AFaf" -> 562
 	goto unreachable
 	goto inst521
 inst521: // rune "09AFaf" -> 560
-	{
-		idx := i*773 + 521
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11342,13 +9340,6 @@ inst521: // rune "09AFaf" -> 560
 	goto unreachable
 	goto inst482
 inst482: // rune "09AFaf" -> 494
-	{
-		idx := i*773 + 482
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11369,7 +9360,7 @@ inst482: // rune "09AFaf" -> 494
 	goto inst561
 inst561: // alt -> 517, 772
 	{
-		idx := i*773 + 561
+		idx := i*319 + 216
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11388,13 +9379,6 @@ inst561_alt:
 	goto unreachable
 	goto inst510
 inst510: // rune "09AFaf" -> 516
-	{
-		idx := i*773 + 510
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11414,13 +9398,6 @@ inst510: // rune "09AFaf" -> 516
 	goto unreachable
 	goto inst511
 inst511: // rune "09AFaf" -> 515
-	{
-		idx := i*773 + 511
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11441,7 +9418,7 @@ inst511: // rune "09AFaf" -> 515
 	goto inst514
 inst514: // alt -> 513, 561
 	{
-		idx := i*773 + 514
+		idx := i*319 + 217
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11460,13 +9437,6 @@ inst514_alt:
 	goto unreachable
 	goto inst512
 inst512: // rune "09AFaf" -> 514
-	{
-		idx := i*773 + 512
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11486,13 +9456,6 @@ inst512: // rune "09AFaf" -> 514
 	goto unreachable
 	goto inst513
 inst513: // rune "09AFaf" -> 561
-	{
-		idx := i*773 + 513
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11513,7 +9476,7 @@ inst513: // rune "09AFaf" -> 561
 	goto inst515
 inst515: // alt -> 512, 561
 	{
-		idx := i*773 + 515
+		idx := i*319 + 218
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11533,7 +9496,7 @@ inst515_alt:
 	goto inst516
 inst516: // alt -> 511, 561
 	{
-		idx := i*773 + 516
+		idx := i*319 + 219
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11552,13 +9515,6 @@ inst516_alt:
 	goto unreachable
 	goto inst517
 inst517: // string ":" -> 518
-	{
-		idx := i*773 + 517
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -11570,13 +9526,6 @@ inst517: // string ":" -> 518
 	goto unreachable
 	goto inst518
 inst518: // rune "09AFaf" -> 524
-	{
-		idx := i*773 + 518
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11596,13 +9545,6 @@ inst518: // rune "09AFaf" -> 524
 	goto unreachable
 	goto inst519
 inst519: // rune "09AFaf" -> 523
-	{
-		idx := i*773 + 519
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11623,7 +9565,7 @@ inst519: // rune "09AFaf" -> 523
 	goto inst524
 inst524: // alt -> 519, 560
 	{
-		idx := i*773 + 524
+		idx := i*319 + 220
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11642,13 +9584,6 @@ inst524_alt:
 	goto unreachable
 	goto inst520
 inst520: // rune "09AFaf" -> 522
-	{
-		idx := i*773 + 520
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11669,7 +9604,7 @@ inst520: // rune "09AFaf" -> 522
 	goto inst548
 inst548: // alt -> 543, 557
 	{
-		idx := i*773 + 548
+		idx := i*319 + 221
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11689,7 +9624,7 @@ inst548_alt:
 	goto inst522
 inst522: // alt -> 521, 560
 	{
-		idx := i*773 + 522
+		idx := i*319 + 222
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11709,7 +9644,7 @@ inst522_alt:
 	goto inst523
 inst523: // alt -> 520, 560
 	{
-		idx := i*773 + 523
+		idx := i*319 + 223
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11728,13 +9663,6 @@ inst523_alt:
 	goto unreachable
 	goto inst525
 inst525: // string ":" -> 526
-	{
-		idx := i*773 + 525
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -11747,7 +9675,7 @@ inst525: // string ":" -> 526
 	goto inst532
 inst532: // alt -> 527, 559
 	{
-		idx := i*773 + 532
+		idx := i*319 + 224
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11766,13 +9694,6 @@ inst532_alt:
 	goto unreachable
 	goto inst526
 inst526: // rune "09AFaf" -> 532
-	{
-		idx := i*773 + 526
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11792,13 +9713,6 @@ inst526: // rune "09AFaf" -> 532
 	goto unreachable
 	goto inst527
 inst527: // rune "09AFaf" -> 531
-	{
-		idx := i*773 + 527
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11819,7 +9733,7 @@ inst527: // rune "09AFaf" -> 531
 	goto inst559
 inst559: // alt -> 533, 772
 	{
-		idx := i*773 + 559
+		idx := i*319 + 225
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11838,13 +9752,6 @@ inst559_alt:
 	goto unreachable
 	goto inst528
 inst528: // rune "09AFaf" -> 530
-	{
-		idx := i*773 + 528
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11864,13 +9771,6 @@ inst528: // rune "09AFaf" -> 530
 	goto unreachable
 	goto inst529
 inst529: // rune "09AFaf" -> 559
-	{
-		idx := i*773 + 529
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11891,7 +9791,7 @@ inst529: // rune "09AFaf" -> 559
 	goto inst530
 inst530: // alt -> 529, 559
 	{
-		idx := i*773 + 530
+		idx := i*319 + 226
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11911,7 +9811,7 @@ inst530_alt:
 	goto inst531
 inst531: // alt -> 528, 559
 	{
-		idx := i*773 + 531
+		idx := i*319 + 227
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -11930,13 +9830,6 @@ inst531_alt:
 	goto unreachable
 	goto inst542
 inst542: // rune "09AFaf" -> 548
-	{
-		idx := i*773 + 542
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -11956,13 +9849,6 @@ inst542: // rune "09AFaf" -> 548
 	goto unreachable
 	goto inst533
 inst533: // string ":" -> 534
-	{
-		idx := i*773 + 533
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -11974,13 +9860,6 @@ inst533: // string ":" -> 534
 	goto unreachable
 	goto inst534
 inst534: // rune "09AFaf" -> 540
-	{
-		idx := i*773 + 534
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12000,13 +9879,6 @@ inst534: // rune "09AFaf" -> 540
 	goto unreachable
 	goto inst536
 inst536: // rune "09AFaf" -> 538
-	{
-		idx := i*773 + 536
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12027,7 +9899,7 @@ inst536: // rune "09AFaf" -> 538
 	goto inst554
 inst554: // alt -> 553, 772
 	{
-		idx := i*773 + 554
+		idx := i*319 + 228
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12047,7 +9919,7 @@ inst554_alt:
 	goto inst538
 inst538: // alt -> 537, 558
 	{
-		idx := i*773 + 538
+		idx := i*319 + 229
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12067,7 +9939,7 @@ inst538_alt:
 	goto inst539
 inst539: // alt -> 536, 558
 	{
-		idx := i*773 + 539
+		idx := i*319 + 230
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12087,7 +9959,7 @@ inst539_alt:
 	goto inst540
 inst540: // alt -> 535, 558
 	{
-		idx := i*773 + 540
+		idx := i*319 + 231
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12106,13 +9978,6 @@ inst540_alt:
 	goto unreachable
 	goto inst553
 inst553: // rune "09AFaf" -> 772
-	{
-		idx := i*773 + 553
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12132,13 +9997,6 @@ inst553: // rune "09AFaf" -> 772
 	goto unreachable
 	goto inst541
 inst541: // string ":" -> 542
-	{
-		idx := i*773 + 541
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -12150,13 +10008,6 @@ inst541: // string ":" -> 542
 	goto unreachable
 	goto inst543
 inst543: // rune "09AFaf" -> 547
-	{
-		idx := i*773 + 543
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12176,13 +10027,6 @@ inst543: // rune "09AFaf" -> 547
 	goto unreachable
 	goto inst544
 inst544: // rune "09AFaf" -> 546
-	{
-		idx := i*773 + 544
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12202,13 +10046,6 @@ inst544: // rune "09AFaf" -> 546
 	goto unreachable
 	goto inst545
 inst545: // rune "09AFaf" -> 557
-	{
-		idx := i*773 + 545
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12229,7 +10066,7 @@ inst545: // rune "09AFaf" -> 557
 	goto inst546
 inst546: // alt -> 545, 557
 	{
-		idx := i*773 + 546
+		idx := i*319 + 232
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12249,7 +10086,7 @@ inst546_alt:
 	goto inst547
 inst547: // alt -> 544, 557
 	{
-		idx := i*773 + 547
+		idx := i*319 + 233
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12269,7 +10106,7 @@ inst547_alt:
 	goto inst507
 inst507: // alt -> 504, 562
 	{
-		idx := i*773 + 507
+		idx := i*319 + 234
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12289,7 +10126,7 @@ inst507_alt:
 	goto inst556
 inst556: // alt -> 551, 772
 	{
-		idx := i*773 + 556
+		idx := i*319 + 235
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12308,13 +10145,6 @@ inst556_alt:
 	goto unreachable
 	goto inst535
 inst535: // rune "09AFaf" -> 539
-	{
-		idx := i*773 + 535
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12334,13 +10164,6 @@ inst535: // rune "09AFaf" -> 539
 	goto unreachable
 	goto inst550
 inst550: // rune "09AFaf" -> 556
-	{
-		idx := i*773 + 550
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12360,13 +10183,6 @@ inst550: // rune "09AFaf" -> 556
 	goto unreachable
 	goto inst551
 inst551: // rune "09AFaf" -> 555
-	{
-		idx := i*773 + 551
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12386,13 +10202,6 @@ inst551: // rune "09AFaf" -> 555
 	goto unreachable
 	goto inst552
 inst552: // rune "09AFaf" -> 554
-	{
-		idx := i*773 + 552
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12413,7 +10222,7 @@ inst552: // rune "09AFaf" -> 554
 	goto inst555
 inst555: // alt -> 552, 772
 	{
-		idx := i*773 + 555
+		idx := i*319 + 236
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12432,13 +10241,6 @@ inst555_alt:
 	goto unreachable
 	goto inst549
 inst549: // string ":" -> 550
-	{
-		idx := i*773 + 549
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -12451,7 +10253,7 @@ inst549: // string ":" -> 550
 	goto inst557
 inst557: // alt -> 549, 772
 	{
-		idx := i*773 + 557
+		idx := i*319 + 237
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12471,7 +10273,7 @@ inst557_alt:
 	goto inst558
 inst558: // alt -> 541, 772
 	{
-		idx := i*773 + 558
+		idx := i*319 + 238
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12490,13 +10292,6 @@ inst558_alt:
 	goto unreachable
 	goto inst537
 inst537: // rune "09AFaf" -> 558
-	{
-		idx := i*773 + 537
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12517,7 +10312,7 @@ inst537: // rune "09AFaf" -> 558
 	goto inst562
 inst562: // alt -> 509, 772
 	{
-		idx := i*773 + 562
+		idx := i*319 + 239
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12536,13 +10331,6 @@ inst562_alt:
 	goto unreachable
 	goto inst481
 inst481: // rune "09AFaf" -> 483
-	{
-		idx := i*773 + 481
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12563,7 +10351,7 @@ inst481: // rune "09AFaf" -> 483
 	goto inst609
 inst609: // alt -> 580, 611
 	{
-		idx := i*773 + 609
+		idx := i*319 + 240
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12582,13 +10370,6 @@ inst609_alt:
 	goto unreachable
 	goto inst563
 inst563: // string ":" -> 772
-	{
-		idx := i*773 + 563
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -12601,7 +10382,7 @@ inst563: // string ":" -> 772
 	goto inst564
 inst564: // alt -> 501, 563
 	{
-		idx := i*773 + 564
+		idx := i*319 + 241
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12621,7 +10402,7 @@ inst564_alt:
 	goto inst565
 inst565: // alt -> 499, 500
 	{
-		idx := i*773 + 565
+		idx := i*319 + 242
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12640,13 +10421,6 @@ inst565_alt:
 	goto unreachable
 	goto inst500
 inst500: // string ":" -> 564
-	{
-		idx := i*773 + 500
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -12660,13 +10434,6 @@ inst500: // string ":" -> 564
 	goto unreachable
 	goto inst503
 inst503: // rune "09AFaf" -> 507
-	{
-		idx := i*773 + 503
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12688,13 +10455,6 @@ inst503: // rune "09AFaf" -> 507
 	goto unreachable
 	goto inst509
 inst509: // string ":" -> 510
-	{
-		idx := i*773 + 509
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -12706,13 +10466,6 @@ inst509: // string ":" -> 510
 	goto unreachable
 	goto inst571
 inst571: // string ":" -> 579
-	{
-		idx := i*773 + 571
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -12724,13 +10477,6 @@ inst571: // string ":" -> 579
 	goto unreachable
 	goto inst572
 inst572: // rune "09AFaf" -> 578
-	{
-		idx := i*773 + 572
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12750,13 +10496,6 @@ inst572: // rune "09AFaf" -> 578
 	goto unreachable
 	goto inst573
 inst573: // rune "09AFaf" -> 577
-	{
-		idx := i*773 + 573
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12777,7 +10516,7 @@ inst573: // rune "09AFaf" -> 577
 	goto inst578
 inst578: // alt -> 573, 609
 	{
-		idx := i*773 + 578
+		idx := i*319 + 243
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12796,13 +10535,6 @@ inst578_alt:
 	goto unreachable
 	goto inst574
 inst574: // rune "09AFaf" -> 576
-	{
-		idx := i*773 + 574
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12822,13 +10554,6 @@ inst574: // rune "09AFaf" -> 576
 	goto unreachable
 	goto inst575
 inst575: // rune "09AFaf" -> 609
-	{
-		idx := i*773 + 575
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12849,7 +10574,7 @@ inst575: // rune "09AFaf" -> 609
 	goto inst576
 inst576: // alt -> 575, 609
 	{
-		idx := i*773 + 576
+		idx := i*319 + 244
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12869,7 +10594,7 @@ inst576_alt:
 	goto inst577
 inst577: // alt -> 574, 609
 	{
-		idx := i*773 + 577
+		idx := i*319 + 245
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12889,7 +10614,7 @@ inst577_alt:
 	goto inst579
 inst579: // alt -> 572, 609
 	{
-		idx := i*773 + 579
+		idx := i*319 + 246
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12908,13 +10633,6 @@ inst579_alt:
 	goto unreachable
 	goto inst580
 inst580: // string ":" -> 588
-	{
-		idx := i*773 + 580
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -12926,13 +10644,6 @@ inst580: // string ":" -> 588
 	goto unreachable
 	goto inst581
 inst581: // rune "09AFaf" -> 587
-	{
-		idx := i*773 + 581
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12952,13 +10663,6 @@ inst581: // rune "09AFaf" -> 587
 	goto unreachable
 	goto inst582
 inst582: // rune "09AFaf" -> 586
-	{
-		idx := i*773 + 582
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -12979,7 +10683,7 @@ inst582: // rune "09AFaf" -> 586
 	goto inst586
 inst586: // alt -> 583, 608
 	{
-		idx := i*773 + 586
+		idx := i*319 + 247
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -12998,13 +10702,6 @@ inst586_alt:
 	goto unreachable
 	goto inst590
 inst590: // rune "09AFaf" -> 596
-	{
-		idx := i*773 + 590
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13024,13 +10721,6 @@ inst590: // rune "09AFaf" -> 596
 	goto unreachable
 	goto inst584
 inst584: // rune "09AFaf" -> 608
-	{
-		idx := i*773 + 584
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13051,7 +10741,7 @@ inst584: // rune "09AFaf" -> 608
 	goto inst585
 inst585: // alt -> 584, 608
 	{
-		idx := i*773 + 585
+		idx := i*319 + 248
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13070,13 +10760,6 @@ inst585_alt:
 	goto unreachable
 	goto inst583
 inst583: // rune "09AFaf" -> 585
-	{
-		idx := i*773 + 583
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13097,7 +10780,7 @@ inst583: // rune "09AFaf" -> 585
 	goto inst587
 inst587: // alt -> 582, 608
 	{
-		idx := i*773 + 587
+		idx := i*319 + 249
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13117,7 +10800,7 @@ inst587_alt:
 	goto inst588
 inst588: // alt -> 581, 608
 	{
-		idx := i*773 + 588
+		idx := i*319 + 250
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13136,13 +10819,6 @@ inst588_alt:
 	goto unreachable
 	goto inst589
 inst589: // string ":" -> 597
-	{
-		idx := i*773 + 589
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -13154,13 +10830,6 @@ inst589: // string ":" -> 597
 	goto unreachable
 	goto inst591
 inst591: // rune "09AFaf" -> 595
-	{
-		idx := i*773 + 591
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13180,13 +10849,6 @@ inst591: // rune "09AFaf" -> 595
 	goto unreachable
 	goto inst600
 inst600: // rune "09AFaf" -> 604
-	{
-		idx := i*773 + 600
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13206,13 +10868,6 @@ inst600: // rune "09AFaf" -> 604
 	goto unreachable
 	goto inst592
 inst592: // rune "09AFaf" -> 594
-	{
-		idx := i*773 + 592
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13234,13 +10889,6 @@ inst592: // rune "09AFaf" -> 594
 	goto unreachable
 	goto inst601
 inst601: // rune "09AFaf" -> 603
-	{
-		idx := i*773 + 601
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13261,7 +10909,7 @@ inst601: // rune "09AFaf" -> 603
 	goto inst595
 inst595: // alt -> 592, 607
 	{
-		idx := i*773 + 595
+		idx := i*319 + 251
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13281,7 +10929,7 @@ inst595_alt:
 	goto inst596
 inst596: // alt -> 591, 607
 	{
-		idx := i*773 + 596
+		idx := i*319 + 252
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13301,7 +10949,7 @@ inst596_alt:
 	goto inst597
 inst597: // alt -> 590, 607
 	{
-		idx := i*773 + 597
+		idx := i*319 + 253
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13320,13 +10968,6 @@ inst597_alt:
 	goto unreachable
 	goto inst598
 inst598: // string ":" -> 606
-	{
-		idx := i*773 + 598
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -13338,13 +10979,6 @@ inst598: // string ":" -> 606
 	goto unreachable
 	goto inst599
 inst599: // rune "09AFaf" -> 605
-	{
-		idx := i*773 + 599
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13365,7 +10999,7 @@ inst599: // rune "09AFaf" -> 605
 	goto inst608
 inst608: // alt -> 589, 611
 	{
-		idx := i*773 + 608
+		idx := i*319 + 254
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13384,13 +11018,6 @@ inst608_alt:
 	goto unreachable
 	goto inst501
 inst501: // string ":" -> 502
-	{
-		idx := i*773 + 501
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -13402,13 +11029,6 @@ inst501: // string ":" -> 502
 	goto unreachable
 	goto inst602
 inst602: // rune "09AFaf" -> 611
-	{
-		idx := i*773 + 602
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13429,7 +11049,7 @@ inst602: // rune "09AFaf" -> 611
 	goto inst603
 inst603: // alt -> 602, 611
 	{
-		idx := i*773 + 603
+		idx := i*319 + 255
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13449,7 +11069,7 @@ inst603_alt:
 	goto inst604
 inst604: // alt -> 601, 611
 	{
-		idx := i*773 + 604
+		idx := i*319 + 256
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13469,7 +11089,7 @@ inst604_alt:
 	goto inst605
 inst605: // alt -> 600, 611
 	{
-		idx := i*773 + 605
+		idx := i*319 + 257
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13489,7 +11109,7 @@ inst605_alt:
 	goto inst606
 inst606: // alt -> 599, 611
 	{
-		idx := i*773 + 606
+		idx := i*319 + 258
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13509,7 +11129,7 @@ inst606_alt:
 	goto inst607
 inst607: // alt -> 598, 611
 	{
-		idx := i*773 + 607
+		idx := i*319 + 259
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13529,7 +11149,7 @@ inst607_alt:
 	goto inst594
 inst594: // alt -> 593, 607
 	{
-		idx := i*773 + 594
+		idx := i*319 + 260
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13549,7 +11169,7 @@ inst594_alt:
 	goto inst610
 inst610: // alt -> 571, 611
 	{
-		idx := i*773 + 610
+		idx := i*319 + 261
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13568,13 +11188,6 @@ inst610_alt:
 	goto unreachable
 	goto inst611
 inst611: // string "%" -> 612
-	{
-		idx := i*773 + 611
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "%" {
 			i += 1
@@ -13586,13 +11199,6 @@ inst611: // string "%" -> 612
 	goto unreachable
 	goto inst612
 inst612: // rune "09AZaz" -> 613
-	{
-		idx := i*773 + 612
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -13613,7 +11219,7 @@ inst612: // rune "09AZaz" -> 613
 	goto inst613
 inst613: // alt -> 612, 772
 	{
-		idx := i*773 + 613
+		idx := i*319 + 262
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13648,13 +11254,6 @@ inst613_alt:
 	goto unreachable
 	goto inst617
 inst617: // string "ffff" -> 629
-	{
-		idx := i*773 + 617
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+4 <= len(r) {
 		if r[i:i+4] == "ffff" {
 			i += 4
@@ -13666,13 +11265,6 @@ inst617: // string "ffff" -> 629
 	goto unreachable
 	goto inst637
 inst637: // string "1" -> 639
-	{
-		idx := i*773 + 637
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -13685,7 +11277,7 @@ inst637: // string "1" -> 639
 	goto inst614
 inst614: // alt -> 565, 566
 	{
-		idx := i*773 + 614
+		idx := i*319 + 263
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13704,13 +11296,6 @@ inst614_alt:
 	goto unreachable
 	goto inst615
 inst615: // string "::" -> 631
-	{
-		idx := i*773 + 615
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -13722,13 +11307,6 @@ inst615: // string "::" -> 631
 	goto unreachable
 	goto inst624
 inst624: // string "0" -> 626
-	{
-		idx := i*773 + 624
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "0" {
 			i += 1
@@ -13742,13 +11320,6 @@ inst624: // string "0" -> 626
 	goto unreachable
 	goto inst621
 inst621: // string ":0" -> 628
-	{
-		idx := i*773 + 621
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == ":0" {
 			i += 2
@@ -13763,7 +11334,7 @@ inst621: // string ":0" -> 628
 	goto inst643
 inst643: // alt -> 632, 641
 	{
-		idx := i*773 + 643
+		idx := i*319 + 264
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13782,13 +11353,6 @@ inst643_alt:
 	goto unreachable
 	goto inst623
 inst623: // string "0" -> 627
-	{
-		idx := i*773 + 623
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "0" {
 			i += 1
@@ -13800,13 +11364,6 @@ inst623: // string "0" -> 627
 	goto unreachable
 	goto inst625
 inst625: // string "0:" -> 643
-	{
-		idx := i*773 + 625
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "0:" {
 			i += 2
@@ -13820,13 +11377,6 @@ inst625: // string "0:" -> 643
 	goto unreachable
 	goto inst630
 inst630: // string ":" -> 643
-	{
-		idx := i*773 + 630
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -13839,7 +11389,7 @@ inst630: // string ":" -> 643
 	goto inst626
 inst626: // alt -> 625, 630
 	{
-		idx := i*773 + 626
+		idx := i*319 + 265
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13859,7 +11409,7 @@ inst626_alt:
 	goto inst627
 inst627: // alt -> 624, 630
 	{
-		idx := i*773 + 627
+		idx := i*319 + 266
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13879,7 +11429,7 @@ inst627_alt:
 	goto inst628
 inst628: // alt -> 623, 630
 	{
-		idx := i*773 + 628
+		idx := i*319 + 267
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13899,7 +11449,7 @@ inst628_alt:
 	goto inst629
 inst629: // alt -> 621, 630
 	{
-		idx := i*773 + 629
+		idx := i*319 + 268
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13919,7 +11469,7 @@ inst629_alt:
 	goto inst631
 inst631: // alt -> 617, 643
 	{
-		idx := i*773 + 631
+		idx := i*319 + 269
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -13938,13 +11488,6 @@ inst631_alt:
 	goto unreachable
 	goto inst632
 inst632: // string "25" -> 634
-	{
-		idx := i*773 + 632
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -13958,13 +11501,6 @@ inst632: // string "25" -> 634
 	goto unreachable
 	goto inst635
 inst635: // string "2" -> 636
-	{
-		idx := i*773 + 635
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -13976,13 +11512,6 @@ inst635: // string "2" -> 636
 	goto unreachable
 	goto inst566
 inst566: // string "fe80:" -> 610
-	{
-		idx := i*773 + 566
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == "fe80:" {
 			i += 5
@@ -13994,13 +11523,6 @@ inst566: // string "fe80:" -> 610
 	goto unreachable
 	goto inst634
 inst634: // rune "05" -> 644
-	{
-		idx := i*773 + 634
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -14013,13 +11535,6 @@ inst634: // rune "05" -> 644
 	goto unreachable
 	goto inst636
 inst636: // rune "04" -> 642
-	{
-		idx := i*773 + 636
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -14034,13 +11549,6 @@ inst636: // rune "04" -> 642
 	goto unreachable
 	goto inst502
 inst502: // rune "09AFaf" -> 508
-	{
-		idx := i*773 + 502
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -14061,7 +11569,7 @@ inst502: // rune "09AFaf" -> 508
 	goto inst683
 inst683: // alt -> 614, 615
 	{
-		idx := i*773 + 683
+		idx := i*319 + 270
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14080,13 +11588,6 @@ inst683_alt:
 	goto unreachable
 	goto inst639
 inst639: // rune "09" -> 642
-	{
-		idx := i*773 + 639
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14100,7 +11601,7 @@ inst639: // rune "09" -> 642
 	goto inst640
 inst640: // alt -> 635, 638
 	{
-		idx := i*773 + 640
+		idx := i*319 + 271
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14120,7 +11621,7 @@ inst640_alt:
 	goto inst641
 inst641: // alt -> 640, 642
 	{
-		idx := i*773 + 641
+		idx := i*319 + 272
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14139,13 +11640,6 @@ inst641_alt:
 	goto unreachable
 	goto inst642
 inst642: // rune "09" -> 644
-	{
-		idx := i*773 + 642
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14158,13 +11652,6 @@ inst642: // rune "09" -> 644
 	goto unreachable
 	goto inst645
 inst645: // string "25" -> 647
-	{
-		idx := i*773 + 645
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -14176,13 +11663,6 @@ inst645: // string "25" -> 647
 	goto unreachable
 	goto inst644
 inst644: // string "." -> 656
-	{
-		idx := i*773 + 644
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -14196,13 +11676,6 @@ inst644: // string "." -> 656
 	goto unreachable
 	goto inst673
 inst673: // rune "05" -> 772
-	{
-		idx := i*773 + 673
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -14216,7 +11689,7 @@ inst673: // rune "05" -> 772
 	goto inst638
 inst638: // alt -> 637, 639
 	{
-		idx := i*773 + 638
+		idx := i*319 + 273
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14235,13 +11708,6 @@ inst638_alt:
 	goto unreachable
 	goto inst649
 inst649: // rune "04" -> 655
-	{
-		idx := i*773 + 649
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -14254,13 +11720,6 @@ inst649: // rune "04" -> 655
 	goto unreachable
 	goto inst658
 inst658: // string "25" -> 660
-	{
-		idx := i*773 + 658
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -14272,13 +11731,6 @@ inst658: // string "25" -> 660
 	goto unreachable
 	goto inst650
 inst650: // string "1" -> 652
-	{
-		idx := i*773 + 650
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -14290,13 +11742,6 @@ inst650: // string "1" -> 652
 	goto unreachable
 	goto inst647
 inst647: // rune "05" -> 657
-	{
-		idx := i*773 + 647
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -14310,7 +11755,7 @@ inst647: // rune "05" -> 657
 	goto inst651
 inst651: // alt -> 650, 652
 	{
-		idx := i*773 + 651
+		idx := i*319 + 274
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14329,13 +11774,6 @@ inst651_alt:
 	goto unreachable
 	goto inst652
 inst652: // rune "09" -> 655
-	{
-		idx := i*773 + 652
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14349,7 +11787,7 @@ inst652: // rune "09" -> 655
 	goto inst653
 inst653: // alt -> 648, 651
 	{
-		idx := i*773 + 653
+		idx := i*319 + 275
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14369,7 +11807,7 @@ inst653_alt:
 	goto inst654
 inst654: // alt -> 653, 655
 	{
-		idx := i*773 + 654
+		idx := i*319 + 276
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14388,13 +11826,6 @@ inst654_alt:
 	goto unreachable
 	goto inst655
 inst655: // rune "09" -> 657
-	{
-		idx := i*773 + 655
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14408,7 +11839,7 @@ inst655: // rune "09" -> 657
 	goto inst656
 inst656: // alt -> 645, 654
 	{
-		idx := i*773 + 656
+		idx := i*319 + 277
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14427,13 +11858,6 @@ inst656_alt:
 	goto unreachable
 	goto inst648
 inst648: // string "2" -> 649
-	{
-		idx := i*773 + 648
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -14446,7 +11870,7 @@ inst648: // string "2" -> 649
 	goto inst508
 inst508: // alt -> 503, 562
 	{
-		idx := i*773 + 508
+		idx := i*319 + 278
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14465,13 +11889,6 @@ inst508_alt:
 	goto unreachable
 	goto inst660
 inst660: // rune "05" -> 670
-	{
-		idx := i*773 + 660
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -14484,13 +11901,6 @@ inst660: // rune "05" -> 670
 	goto unreachable
 	goto inst661
 inst661: // string "2" -> 662
-	{
-		idx := i*773 + 661
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -14502,13 +11912,6 @@ inst661: // string "2" -> 662
 	goto unreachable
 	goto inst670
 inst670: // string "." -> 682
-	{
-		idx := i*773 + 670
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -14520,13 +11923,6 @@ inst670: // string "." -> 682
 	goto unreachable
 	goto inst662
 inst662: // rune "04" -> 668
-	{
-		idx := i*773 + 662
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -14539,13 +11935,6 @@ inst662: // rune "04" -> 668
 	goto unreachable
 	goto inst663
 inst663: // string "1" -> 665
-	{
-		idx := i*773 + 663
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -14558,7 +11947,7 @@ inst663: // string "1" -> 665
 	goto inst664
 inst664: // alt -> 663, 665
 	{
-		idx := i*773 + 664
+		idx := i*319 + 279
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14577,13 +11966,6 @@ inst664_alt:
 	goto unreachable
 	goto inst665
 inst665: // rune "09" -> 668
-	{
-		idx := i*773 + 665
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14597,7 +11979,7 @@ inst665: // rune "09" -> 668
 	goto inst666
 inst666: // alt -> 661, 664
 	{
-		idx := i*773 + 666
+		idx := i*319 + 280
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14617,7 +11999,7 @@ inst666_alt:
 	goto inst667
 inst667: // alt -> 666, 668
 	{
-		idx := i*773 + 667
+		idx := i*319 + 281
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14636,13 +12018,6 @@ inst667_alt:
 	goto unreachable
 	goto inst668
 inst668: // rune "09" -> 670
-	{
-		idx := i*773 + 668
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14656,7 +12031,7 @@ inst668: // rune "09" -> 670
 	goto inst669
 inst669: // alt -> 658, 667
 	{
-		idx := i*773 + 669
+		idx := i*319 + 282
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14675,13 +12050,6 @@ inst669_alt:
 	goto unreachable
 	goto inst671
 inst671: // string "25" -> 673
-	{
-		idx := i*773 + 671
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -14694,7 +12062,7 @@ inst671: // string "25" -> 673
 	goto inst682
 inst682: // alt -> 671, 680
 	{
-		idx := i*773 + 682
+		idx := i*319 + 283
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14715,13 +12083,6 @@ inst682_alt:
 	goto unreachable
 	goto inst674
 inst674: // string "2" -> 675
-	{
-		idx := i*773 + 674
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -14733,13 +12094,6 @@ inst674: // string "2" -> 675
 	goto unreachable
 	goto inst593
 inst593: // rune "09AFaf" -> 607
-	{
-		idx := i*773 + 593
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -14759,13 +12113,6 @@ inst593: // rune "09AFaf" -> 607
 	goto unreachable
 	goto inst675
 inst675: // rune "04" -> 681
-	{
-		idx := i*773 + 675
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -14778,13 +12125,6 @@ inst675: // rune "04" -> 681
 	goto unreachable
 	goto inst676
 inst676: // string "1" -> 678
-	{
-		idx := i*773 + 676
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -14797,7 +12137,7 @@ inst676: // string "1" -> 678
 	goto inst677
 inst677: // alt -> 676, 678
 	{
-		idx := i*773 + 677
+		idx := i*319 + 284
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14816,13 +12156,6 @@ inst677_alt:
 	goto unreachable
 	goto inst678
 inst678: // rune "09" -> 681
-	{
-		idx := i*773 + 678
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14836,7 +12169,7 @@ inst678: // rune "09" -> 681
 	goto inst679
 inst679: // alt -> 674, 677
 	{
-		idx := i*773 + 679
+		idx := i*319 + 285
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14856,7 +12189,7 @@ inst679_alt:
 	goto inst680
 inst680: // alt -> 679, 681
 	{
-		idx := i*773 + 680
+		idx := i*319 + 286
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -14875,13 +12208,6 @@ inst680_alt:
 	goto unreachable
 	goto inst681
 inst681: // rune "09" -> 772
-	{
-		idx := i*773 + 681
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -14896,13 +12222,6 @@ inst681: // rune "09" -> 772
 	goto unreachable
 	goto inst657
 inst657: // string "." -> 669
-	{
-		idx := i*773 + 657
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -14914,13 +12233,6 @@ inst657: // string "." -> 669
 	goto unreachable
 	goto inst691
 inst691: // string ":" -> 718
-	{
-		idx := i*773 + 691
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -14932,13 +12244,6 @@ inst691: // string ":" -> 718
 	goto unreachable
 	goto inst685
 inst685: // rune "09AFaf" -> 689
-	{
-		idx := i*773 + 685
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -14958,13 +12263,6 @@ inst685: // rune "09AFaf" -> 689
 	goto unreachable
 	goto inst686
 inst686: // rune "09AFaf" -> 688
-	{
-		idx := i*773 + 686
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -14984,13 +12282,6 @@ inst686: // rune "09AFaf" -> 688
 	goto unreachable
 	goto inst687
 inst687: // rune "09AFaf" -> 691
-	{
-		idx := i*773 + 687
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15011,7 +12302,7 @@ inst687: // rune "09AFaf" -> 691
 	goto inst688
 inst688: // alt -> 687, 691
 	{
-		idx := i*773 + 688
+		idx := i*319 + 287
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15031,7 +12322,7 @@ inst688_alt:
 	goto inst689
 inst689: // alt -> 686, 691
 	{
-		idx := i*773 + 689
+		idx := i*319 + 288
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15051,7 +12342,7 @@ inst689_alt:
 	goto inst690
 inst690: // alt -> 685, 691
 	{
-		idx := i*773 + 690
+		idx := i*319 + 289
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15070,13 +12361,6 @@ inst690_alt:
 	goto unreachable
 	goto inst692
 inst692: // rune "09AFaf" -> 698
-	{
-		idx := i*773 + 692
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15096,13 +12380,6 @@ inst692: // rune "09AFaf" -> 698
 	goto unreachable
 	goto inst699
 inst699: // string ":" -> 717
-	{
-		idx := i*773 + 699
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -15114,13 +12391,6 @@ inst699: // string ":" -> 717
 	goto unreachable
 	goto inst693
 inst693: // rune "09AFaf" -> 697
-	{
-		idx := i*773 + 693
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15140,13 +12410,6 @@ inst693: // rune "09AFaf" -> 697
 	goto unreachable
 	goto inst694
 inst694: // rune "09AFaf" -> 696
-	{
-		idx := i*773 + 694
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15166,13 +12429,6 @@ inst694: // rune "09AFaf" -> 696
 	goto unreachable
 	goto inst695
 inst695: // rune "09AFaf" -> 699
-	{
-		idx := i*773 + 695
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15193,7 +12449,7 @@ inst695: // rune "09AFaf" -> 699
 	goto inst696
 inst696: // alt -> 695, 699
 	{
-		idx := i*773 + 696
+		idx := i*319 + 290
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15213,7 +12469,7 @@ inst696_alt:
 	goto inst697
 inst697: // alt -> 694, 699
 	{
-		idx := i*773 + 697
+		idx := i*319 + 291
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15233,7 +12489,7 @@ inst697_alt:
 	goto inst698
 inst698: // alt -> 693, 699
 	{
-		idx := i*773 + 698
+		idx := i*319 + 292
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15252,13 +12508,6 @@ inst698_alt:
 	goto unreachable
 	goto inst703
 inst703: // rune "09AFaf" -> 707
-	{
-		idx := i*773 + 703
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15278,13 +12527,6 @@ inst703: // rune "09AFaf" -> 707
 	goto unreachable
 	goto inst707
 inst707: // string ":" -> 716
-	{
-		idx := i*773 + 707
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -15296,13 +12538,6 @@ inst707: // string ":" -> 716
 	goto unreachable
 	goto inst701
 inst701: // rune "09AFaf" -> 705
-	{
-		idx := i*773 + 701
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15322,13 +12557,6 @@ inst701: // rune "09AFaf" -> 705
 	goto unreachable
 	goto inst702
 inst702: // rune "09AFaf" -> 704
-	{
-		idx := i*773 + 702
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15349,7 +12577,7 @@ inst702: // rune "09AFaf" -> 704
 	goto inst704
 inst704: // alt -> 703, 707
 	{
-		idx := i*773 + 704
+		idx := i*319 + 293
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15369,7 +12597,7 @@ inst704_alt:
 	goto inst705
 inst705: // alt -> 702, 707
 	{
-		idx := i*773 + 705
+		idx := i*319 + 294
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15389,7 +12617,7 @@ inst705_alt:
 	goto inst706
 inst706: // alt -> 701, 707
 	{
-		idx := i*773 + 706
+		idx := i*319 + 295
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15410,13 +12638,6 @@ inst706_alt:
 	goto unreachable
 	goto inst708
 inst708: // rune "09AFaf" -> 714
-	{
-		idx := i*773 + 708
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15437,7 +12658,7 @@ inst708: // rune "09AFaf" -> 714
 	goto inst714
 inst714: // alt -> 709, 715
 	{
-		idx := i*773 + 714
+		idx := i*319 + 296
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15456,13 +12677,6 @@ inst714_alt:
 	goto unreachable
 	goto inst709
 inst709: // rune "09AFaf" -> 713
-	{
-		idx := i*773 + 709
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15482,13 +12696,6 @@ inst709: // rune "09AFaf" -> 713
 	goto unreachable
 	goto inst710
 inst710: // rune "09AFaf" -> 712
-	{
-		idx := i*773 + 710
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15508,13 +12715,6 @@ inst710: // rune "09AFaf" -> 712
 	goto unreachable
 	goto inst700
 inst700: // rune "09AFaf" -> 706
-	{
-		idx := i*773 + 700
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15534,13 +12734,6 @@ inst700: // rune "09AFaf" -> 706
 	goto unreachable
 	goto inst711
 inst711: // rune "09AFaf" -> 715
-	{
-		idx := i*773 + 711
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -15561,7 +12754,7 @@ inst711: // rune "09AFaf" -> 715
 	goto inst712
 inst712: // alt -> 711, 715
 	{
-		idx := i*773 + 712
+		idx := i*319 + 297
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15581,7 +12774,7 @@ inst712_alt:
 	goto inst713
 inst713: // alt -> 710, 715
 	{
-		idx := i*773 + 713
+		idx := i*319 + 298
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15600,13 +12793,6 @@ inst713_alt:
 	goto unreachable
 	goto inst715
 inst715: // string "::" -> 731
-	{
-		idx := i*773 + 715
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "::" {
 			i += 2
@@ -15619,7 +12805,7 @@ inst715: // string "::" -> 731
 	goto inst716
 inst716: // alt -> 708, 719
 	{
-		idx := i*773 + 716
+		idx := i*319 + 299
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15639,7 +12825,7 @@ inst716_alt:
 	goto inst717
 inst717: // alt -> 700, 719
 	{
-		idx := i*773 + 717
+		idx := i*319 + 300
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15659,7 +12845,7 @@ inst717_alt:
 	goto inst718
 inst718: // alt -> 692, 719
 	{
-		idx := i*773 + 718
+		idx := i*319 + 301
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15678,13 +12864,6 @@ inst718_alt:
 	goto unreachable
 	goto inst719
 inst719: // string ":" -> 731
-	{
-		idx := i*773 + 719
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == ":" {
 			i += 1
@@ -15697,7 +12876,7 @@ inst719: // string ":" -> 731
 	goto inst731
 inst731: // alt -> 720, 729
 	{
-		idx := i*773 + 731
+		idx := i*319 + 302
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15716,13 +12895,6 @@ inst731_alt:
 	goto unreachable
 	goto inst720
 inst720: // string "25" -> 722
-	{
-		idx := i*773 + 720
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -15736,13 +12908,6 @@ inst720: // string "25" -> 722
 	goto unreachable
 	goto inst722
 inst722: // rune "05" -> 732
-	{
-		idx := i*773 + 722
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -15755,13 +12920,6 @@ inst722: // rune "05" -> 732
 	goto unreachable
 	goto inst723
 inst723: // string "2" -> 724
-	{
-		idx := i*773 + 723
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -15773,13 +12931,6 @@ inst723: // string "2" -> 724
 	goto unreachable
 	goto inst724
 inst724: // rune "04" -> 730
-	{
-		idx := i*773 + 724
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -15792,13 +12943,6 @@ inst724: // rune "04" -> 730
 	goto unreachable
 	goto inst725
 inst725: // string "1" -> 727
-	{
-		idx := i*773 + 725
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -15811,7 +12955,7 @@ inst725: // string "1" -> 727
 	goto inst726
 inst726: // alt -> 725, 727
 	{
-		idx := i*773 + 726
+		idx := i*319 + 303
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15830,13 +12974,6 @@ inst726_alt:
 	goto unreachable
 	goto inst727
 inst727: // rune "09" -> 730
-	{
-		idx := i*773 + 727
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -15850,7 +12987,7 @@ inst727: // rune "09" -> 730
 	goto inst728
 inst728: // alt -> 723, 726
 	{
-		idx := i*773 + 728
+		idx := i*319 + 304
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15870,7 +13007,7 @@ inst728_alt:
 	goto inst729
 inst729: // alt -> 728, 730
 	{
-		idx := i*773 + 729
+		idx := i*319 + 305
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15889,13 +13026,6 @@ inst729_alt:
 	goto unreachable
 	goto inst730
 inst730: // rune "09" -> 732
-	{
-		idx := i*773 + 730
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -15908,13 +13038,6 @@ inst730: // rune "09" -> 732
 	goto unreachable
 	goto inst732
 inst732: // string "." -> 744
-	{
-		idx := i*773 + 732
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -15927,7 +13050,7 @@ inst732: // string "." -> 744
 	goto inst744
 inst744: // alt -> 733, 742
 	{
-		idx := i*773 + 744
+		idx := i*319 + 306
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -15946,13 +13069,6 @@ inst744_alt:
 	goto unreachable
 	goto inst733
 inst733: // string "25" -> 735
-	{
-		idx := i*773 + 733
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -15966,13 +13082,6 @@ inst733: // string "25" -> 735
 	goto unreachable
 	goto inst735
 inst735: // rune "05" -> 745
-	{
-		idx := i*773 + 735
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -15985,13 +13094,6 @@ inst735: // rune "05" -> 745
 	goto unreachable
 	goto inst736
 inst736: // string "2" -> 737
-	{
-		idx := i*773 + 736
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -16003,13 +13105,6 @@ inst736: // string "2" -> 737
 	goto unreachable
 	goto inst737
 inst737: // rune "04" -> 743
-	{
-		idx := i*773 + 737
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -16022,13 +13117,6 @@ inst737: // rune "04" -> 743
 	goto unreachable
 	goto inst738
 inst738: // string "1" -> 740
-	{
-		idx := i*773 + 738
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -16042,13 +13130,6 @@ inst738: // string "1" -> 740
 	goto unreachable
 	goto inst740
 inst740: // rune "09" -> 743
-	{
-		idx := i*773 + 740
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -16062,7 +13143,7 @@ inst740: // rune "09" -> 743
 	goto inst741
 inst741: // alt -> 736, 739
 	{
-		idx := i*773 + 741
+		idx := i*319 + 307
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16082,7 +13163,7 @@ inst741_alt:
 	goto inst742
 inst742: // alt -> 741, 743
 	{
-		idx := i*773 + 742
+		idx := i*319 + 308
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16101,13 +13182,6 @@ inst742_alt:
 	goto unreachable
 	goto inst743
 inst743: // rune "09" -> 745
-	{
-		idx := i*773 + 743
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -16120,13 +13194,6 @@ inst743: // rune "09" -> 745
 	goto unreachable
 	goto inst745
 inst745: // string "." -> 757
-	{
-		idx := i*773 + 745
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -16139,7 +13206,7 @@ inst745: // string "." -> 757
 	goto inst757
 inst757: // alt -> 746, 755
 	{
-		idx := i*773 + 757
+		idx := i*319 + 309
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16158,13 +13225,6 @@ inst757_alt:
 	goto unreachable
 	goto inst746
 inst746: // string "25" -> 748
-	{
-		idx := i*773 + 746
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -16178,13 +13238,6 @@ inst746: // string "25" -> 748
 	goto unreachable
 	goto inst748
 inst748: // rune "05" -> 758
-	{
-		idx := i*773 + 748
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -16197,13 +13250,6 @@ inst748: // rune "05" -> 758
 	goto unreachable
 	goto inst749
 inst749: // string "2" -> 750
-	{
-		idx := i*773 + 749
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -16215,13 +13261,6 @@ inst749: // string "2" -> 750
 	goto unreachable
 	goto inst750
 inst750: // rune "04" -> 756
-	{
-		idx := i*773 + 750
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -16234,13 +13273,6 @@ inst750: // rune "04" -> 756
 	goto unreachable
 	goto inst751
 inst751: // string "1" -> 753
-	{
-		idx := i*773 + 751
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -16253,7 +13285,7 @@ inst751: // string "1" -> 753
 	goto inst752
 inst752: // alt -> 751, 753
 	{
-		idx := i*773 + 752
+		idx := i*319 + 310
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16272,13 +13304,6 @@ inst752_alt:
 	goto unreachable
 	goto inst753
 inst753: // rune "09" -> 756
-	{
-		idx := i*773 + 753
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -16292,7 +13317,7 @@ inst753: // rune "09" -> 756
 	goto inst754
 inst754: // alt -> 749, 752
 	{
-		idx := i*773 + 754
+		idx := i*319 + 311
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16312,7 +13337,7 @@ inst754_alt:
 	goto inst755
 inst755: // alt -> 754, 756
 	{
-		idx := i*773 + 755
+		idx := i*319 + 312
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16331,13 +13356,6 @@ inst755_alt:
 	goto unreachable
 	goto inst756
 inst756: // rune "09" -> 758
-	{
-		idx := i*773 + 756
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -16350,13 +13368,6 @@ inst756: // rune "09" -> 758
 	goto unreachable
 	goto inst758
 inst758: // string "." -> 770
-	{
-		idx := i*773 + 758
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "." {
 			i += 1
@@ -16369,7 +13380,7 @@ inst758: // string "." -> 770
 	goto inst770
 inst770: // alt -> 759, 768
 	{
-		idx := i*773 + 770
+		idx := i*319 + 313
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16388,13 +13399,6 @@ inst770_alt:
 	goto unreachable
 	goto inst759
 inst759: // string "25" -> 761
-	{
-		idx := i*773 + 759
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "25" {
 			i += 2
@@ -16406,13 +13410,6 @@ inst759: // string "25" -> 761
 	goto unreachable
 	goto inst684
 inst684: // rune "09AFaf" -> 690
-	{
-		idx := i*773 + 684
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if cru := uint(cr); cru < 128 {
@@ -16432,13 +13429,6 @@ inst684: // rune "09AFaf" -> 690
 	goto unreachable
 	goto inst761
 inst761: // rune "05" -> 772
-	{
-		idx := i*773 + 761
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 53) {
@@ -16451,13 +13441,6 @@ inst761: // rune "05" -> 772
 	goto unreachable
 	goto inst762
 inst762: // string "2" -> 763
-	{
-		idx := i*773 + 762
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "2" {
 			i += 1
@@ -16469,13 +13452,6 @@ inst762: // string "2" -> 763
 	goto unreachable
 	goto inst763
 inst763: // rune "04" -> 769
-	{
-		idx := i*773 + 763
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 52) {
@@ -16488,13 +13464,6 @@ inst763: // rune "04" -> 769
 	goto unreachable
 	goto inst764
 inst764: // string "1" -> 766
-	{
-		idx := i*773 + 764
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "1" {
 			i += 1
@@ -16507,7 +13476,7 @@ inst764: // string "1" -> 766
 	goto inst765
 inst765: // alt -> 764, 766
 	{
-		idx := i*773 + 765
+		idx := i*319 + 314
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16526,13 +13495,6 @@ inst765_alt:
 	goto unreachable
 	goto inst766
 inst766: // rune "09" -> 769
-	{
-		idx := i*773 + 766
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -16546,7 +13508,7 @@ inst766: // rune "09" -> 769
 	goto inst767
 inst767: // alt -> 762, 765
 	{
-		idx := i*773 + 767
+		idx := i*319 + 315
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16566,7 +13528,7 @@ inst767_alt:
 	goto inst768
 inst768: // alt -> 767, 769
 	{
-		idx := i*773 + 768
+		idx := i*319 + 316
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16585,13 +13547,6 @@ inst768_alt:
 	goto unreachable
 	goto inst769
 inst769: // rune "09" -> 772
-	{
-		idx := i*773 + 769
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 48 && cr <= 57) {
@@ -16605,7 +13560,7 @@ inst769: // rune "09" -> 772
 	goto inst771
 inst771: // alt -> 683, 684
 	{
-		idx := i*773 + 771
+		idx := i*319 + 317
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -16627,7 +13582,7 @@ inst771_alt:
 	goto inst739
 inst739: // alt -> 738, 740
 	{
-		idx := i*773 + 739
+		idx := i*319 + 318
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}

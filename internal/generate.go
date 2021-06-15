@@ -29,7 +29,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 	optDeadInst(p)
 	order := optReorder(p)
 
-	numSt := 0
+	numSt, instAltCnt := 0, 0
 	for _, inst := range p.Inst {
 		if inst.Op == syntax.InstAlt {
 			numSt++
@@ -101,7 +101,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 
 	out("func do%s(r string, bt []state%s) ([%d]string, int, bool) {", fn, fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
-	out("  pi := make([]byte, ((len(r)+1)*%d+7)/8) \n _ = pi", len(p.Inst))
+	out("  pi := make([]byte, ((len(r)+1)*%d+7)/8) \n _ = pi", numSt)
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  bt = bt[:0] // fast reset dynamic backtracking state")
@@ -146,16 +146,16 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 		}
 		out("\n goto unreachable \n goto inst%d \n inst%d: // %s ", pc, pc, instname(inst))
 		// out("fmt.Println(i, %d, %q)", pc, inst.String())
-		// TODO: only add this check in states where it's needed (InstAlt?)
-		out(`{
-			idx := i * %d + %d
-			if pi[idx/8] & (byte(1)<<(idx%%8)) != 0 { 
-				goto fail 
-			}
-			pi[idx/8] |= byte(1)<<(idx%%8)
-		}`, len(p.Inst), pc)
 		switch inst.Op {
 		case syntax.InstAlt:
+			out(`{
+				idx := i * %d + %d
+				if pi[idx/8] & (byte(1)<<(idx%%8)) != 0 { 
+					goto fail 
+				}
+				pi[idx/8] |= byte(1)<<(idx%%8)
+			}`, numSt, instAltCnt)
+			instAltCnt++
 			// TODO: use a pool of state segments to avoid copying (by linking the segments into a stack)
 			// TODO: open-code backtracking by keeping track of the predecessors
 			// TODO: when we have a set of known alternative (e.g. `(yadda|foo|bar)`) instead of pairways alt nodes use direct multiway dispatch on the first character of each alternative

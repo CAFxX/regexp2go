@@ -29,7 +29,7 @@ func Match(r string) (matches [1]string, pos int, ok bool) {
 }
 func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
 	si := 0 // starting byte index
-	pi := make([]byte, ((len(r)+1)*5+7)/8)
+	pi := make([]byte, ((len(r)+1)*1+7)/8)
 	_ = pi
 restart:
 	bt = bt[:0]      // fast reset dynamic backtracking state
@@ -45,13 +45,6 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // rune "az" -> 2
-	{
-		idx := i*5 + 1
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
 		if false || (cr >= 97 && cr <= 122) {
@@ -65,7 +58,7 @@ inst1: // rune "az" -> 2
 	goto inst2
 inst2: // alt -> 1, 3
 	{
-		idx := i*5 + 2
+		idx := i*1 + 0
 		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
 			goto fail
 		}
@@ -101,13 +94,6 @@ inst2_alt:
 	goto inst3
 inst3: // empty 8 -> 4
 	{
-		idx := i*5 + 3
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
-	{
 		if i >= len(r) {
 			goto inst4
 		}
@@ -117,13 +103,6 @@ inst3: // empty 8 -> 4
 	goto unreachable
 	goto inst4
 inst4: // match
-	{
-		idx := i*5 + 4
-		if pi[idx/8]&(byte(1)<<(idx%8)) != 0 {
-			goto fail
-		}
-		pi[idx/8] |= byte(1) << (idx % 8)
-	}
 	c[1] = i // end of match
 	goto match
 

@@ -9,6 +9,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/ipv6"
 	"github.com/CAFxX/regexp2go/examples/log_parse"
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
+	"github.com/CAFxX/regexp2go/examples/pathological"
 	"github.com/CAFxX/regexp2go/examples/prefix"
 	"github.com/CAFxX/regexp2go/examples/quoted"
 	"github.com/CAFxX/regexp2go/examples/suffix"
@@ -155,6 +156,24 @@ func BenchmarkQuoted(b *testing.B) {
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
 			quoted.Match(s)
+		}
+	})
+	if testing.Short() {
+		return
+	}
+	b.Run("regexp", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			re.FindStringSubmatch(s)
+		}
+	})
+}
+
+func BenchmarkPathological(b *testing.B) {
+	re := regexp.MustCompile(pathological.MatchRegexp)
+	s := `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`
+	b.Run("regexp2go", func(b *testing.B) {
+		for i := 0; i < b.N; i++ {
+			pathological.Match(s)
 		}
 	})
 	if testing.Short() {
