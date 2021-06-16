@@ -52,9 +52,11 @@ restart:
 
 	// inst0 unreacheable
 
+	// inst8 unreacheable
+
 	goto unreachable
 	goto inst1
-inst1: //
+inst1: // string "私は" -> 3
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "私は" {
 			i += 6
@@ -66,8 +68,6 @@ inst1: //
 	goto inst1_fail
 inst1_fail:
 	goto fail
-
-	// inst2 unreacheable
 
 	goto unreachable
 	goto inst3
@@ -132,7 +132,7 @@ inst6: // cap 3 -> 7
 
 	goto unreachable
 	goto inst7
-inst7: //
+inst7: // string "です" -> 9
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "です" {
 			i += 6
@@ -145,13 +145,13 @@ inst7: //
 inst7_fail:
 	goto fail
 
-	// inst8 unreacheable
-
 	goto unreachable
 	goto inst9
 inst9: // match
 	c[1] = i // end of match
 	goto match
+
+	// inst2 unreacheable
 
 	goto unreachable
 	goto fail

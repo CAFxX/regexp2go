@@ -38,17 +38,23 @@ restart:
 	c[0] = i         // start of match
 	goto inst179     // initial instruction
 
-	// inst0 unreacheable
+	// inst23 unreacheable
 
-	goto unreachable
-	goto inst1
-inst1: // cap 2 -> 18
-	c[2] = i
-	goto inst18
+	// inst51 unreacheable
+
+	// inst4 unreacheable
+
+	// inst5 unreacheable
+
+	// inst176 unreacheable
+
+	// inst7 unreacheable
+
+	// inst145 unreacheable
 
 	goto unreachable
 	goto inst2
-inst2: //
+inst2: // string "agggtaaa" -> 19
 	if i >= 0 && i+8 <= len(r) {
 		if r[i:i+8] == "agggtaaa" {
 			i += 8
@@ -69,23 +75,22 @@ inst2_fail:
 	}
 	goto fail
 
-	// inst3 unreacheable
-
-	// inst4 unreacheable
-
-	// inst5 unreacheable
-
-	// inst6 unreacheable
-
-	// inst7 unreacheable
-
-	// inst8 unreacheable
-
-	// inst9 unreacheable
+	goto unreachable
+	goto inst18
+inst18: // alt -> 2, 10
+	bt = append(bt, stateMatch{c, i, 18, 0})
+	goto inst2
+inst18_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst10
+	}
 
 	goto unreachable
 	goto inst10
-inst10: //
+inst10: // string "tttaccct" -> 19
 	if i >= 0 && i+8 <= len(r) {
 		if r[i:i+8] == "tttaccct" {
 			i += 8
@@ -106,6 +111,12 @@ inst10_fail:
 	}
 	goto fail
 
+	goto unreachable
+	goto inst19
+inst19: // cap 3 -> 180
+	c[3] = i
+	goto inst180
+
 	// inst11 unreacheable
 
 	// inst12 unreacheable
@@ -118,32 +129,17 @@ inst10_fail:
 
 	// inst16 unreacheable
 
-	// inst17 unreacheable
+	// inst96 unreacheable
 
-	goto unreachable
-	goto inst18
-inst18: // alt -> 2, 10
-	bt = append(bt, stateMatch{c, i, 18, 0})
-	goto inst2
-inst18_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst10
-	}
+	// inst128 unreacheable
 
-	goto unreachable
-	goto inst19
-inst19: // cap 3 -> 180
-	c[3] = i
-	goto inst180
+	// inst88 unreacheable
 
-	goto unreachable
-	goto inst20
-inst20: // cap 4 -> 37
-	c[4] = i
-	goto inst37
+	// inst122 unreacheable
+
+	// inst135 unreacheable
+
+	// inst27 unreacheable
 
 	goto unreachable
 	goto inst21
@@ -177,8 +173,27 @@ inst21_fail:
 	goto fail
 
 	goto unreachable
+	goto inst37
+inst37: // alt -> 21, 29
+	bt = append(bt, stateMatch{c, i, 37, 0})
+	goto inst21
+inst37_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst29
+	}
+
+	goto unreachable
+	goto inst20
+inst20: // cap 4 -> 37
+	c[4] = i
+	goto inst37
+
+	goto unreachable
 	goto inst22
-inst22: //
+inst22: // string "gggtaaa" -> 38
 	if i >= 0 && i+7 <= len(r) {
 		if r[i:i+7] == "gggtaaa" {
 			i += 7
@@ -199,21 +214,11 @@ inst22_fail:
 	}
 	goto fail
 
-	// inst23 unreacheable
-
-	// inst24 unreacheable
-
-	// inst25 unreacheable
-
-	// inst26 unreacheable
-
-	// inst27 unreacheable
-
 	// inst28 unreacheable
 
 	goto unreachable
 	goto inst29
-inst29: //
+inst29: // string "tttaccc" -> 36
 	if i >= 0 && i+7 <= len(r) {
 		if r[i:i+7] == "tttaccc" {
 			i += 7
@@ -240,11 +245,28 @@ inst29_fail:
 
 	// inst32 unreacheable
 
-	// inst33 unreacheable
-
-	// inst34 unreacheable
+	// inst123 unreacheable
 
 	// inst35 unreacheable
+
+	goto unreachable
+	goto inst1
+inst1: // cap 2 -> 18
+	c[2] = i
+	goto inst18
+
+	goto unreachable
+	goto inst39
+inst39: // alt -> 1, 20
+	bt = append(bt, stateMatch{c, i, 39, 0})
+	goto inst1
+inst39_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst20
+	}
 
 	goto unreachable
 	goto inst36
@@ -278,35 +300,24 @@ inst36_fail:
 	goto fail
 
 	goto unreachable
-	goto inst37
-inst37: // alt -> 21, 29
-	bt = append(bt, stateMatch{c, i, 37, 0})
-	goto inst21
-inst37_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst29
-	}
-
-	goto unreachable
 	goto inst38
 inst38: // cap 5 -> 180
 	c[5] = i
 	goto inst180
 
+	// inst144 unreacheable
+
 	goto unreachable
+	goto inst59
+inst59: // alt -> 39, 40
+	bt = append(bt, stateMatch{c, i, 59, 0})
 	goto inst39
-inst39: // alt -> 1, 20
-	bt = append(bt, stateMatch{c, i, 39, 0})
-	goto inst1
-inst39_alt:
+inst59_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst20
+		goto inst40
 	}
 
 	goto unreachable
@@ -316,8 +327,21 @@ inst40: // cap 6 -> 57
 	goto inst57
 
 	goto unreachable
+	goto inst57
+inst57: // alt -> 41, 49
+	bt = append(bt, stateMatch{c, i, 57, 0})
 	goto inst41
-inst41: //
+inst57_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst49
+	}
+
+	goto unreachable
+	goto inst41
+inst41: // string "a" -> 42
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "a" {
 			i += 1
@@ -371,7 +395,7 @@ inst42_fail:
 
 	goto unreachable
 	goto inst43
-inst43: //
+inst43: // string "ggtaaa" -> 58
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "ggtaaa" {
 			i += 6
@@ -392,8 +416,6 @@ inst43_fail:
 	}
 	goto fail
 
-	// inst44 unreacheable
-
 	// inst45 unreacheable
 
 	// inst46 unreacheable
@@ -404,7 +426,7 @@ inst43_fail:
 
 	goto unreachable
 	goto inst49
-inst49: //
+inst49: // string "tttacc" -> 55
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "tttacc" {
 			i += 6
@@ -427,7 +449,7 @@ inst49_fail:
 
 	// inst50 unreacheable
 
-	// inst51 unreacheable
+	// inst166 unreacheable
 
 	// inst52 unreacheable
 
@@ -468,7 +490,7 @@ inst55_fail:
 
 	goto unreachable
 	goto inst56
-inst56: //
+inst56: // string "t" -> 58
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "t" {
 			i += 1
@@ -490,35 +512,22 @@ inst56_fail:
 	goto fail
 
 	goto unreachable
-	goto inst57
-inst57: // alt -> 41, 49
-	bt = append(bt, stateMatch{c, i, 57, 0})
-	goto inst41
-inst57_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst49
-	}
-
-	goto unreachable
 	goto inst58
 inst58: // cap 7 -> 180
 	c[7] = i
 	goto inst180
 
 	goto unreachable
+	goto inst79
+inst79: // alt -> 59, 60
+	bt = append(bt, stateMatch{c, i, 79, 0})
 	goto inst59
-inst59: // alt -> 39, 40
-	bt = append(bt, stateMatch{c, i, 59, 0})
-	goto inst39
-inst59_alt:
+inst79_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst40
+		goto inst60
 	}
 
 	goto unreachable
@@ -528,8 +537,21 @@ inst60: // cap 8 -> 77
 	goto inst77
 
 	goto unreachable
+	goto inst77
+inst77: // alt -> 61, 69
+	bt = append(bt, stateMatch{c, i, 77, 0})
 	goto inst61
-inst61: //
+inst77_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst69
+	}
+
+	goto unreachable
+	goto inst61
+inst61: // string "ag" -> 63
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "ag" {
 			i += 2
@@ -550,7 +572,7 @@ inst61_fail:
 	}
 	goto fail
 
-	// inst62 unreacheable
+	// inst25 unreacheable
 
 	goto unreachable
 	goto inst63
@@ -585,7 +607,7 @@ inst63_fail:
 
 	goto unreachable
 	goto inst64
-inst64: //
+inst64: // string "gtaaa" -> 78
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == "gtaaa" {
 			i += 5
@@ -608,15 +630,15 @@ inst64_fail:
 
 	// inst65 unreacheable
 
-	// inst66 unreacheable
+	// inst165 unreacheable
 
-	// inst67 unreacheable
+	// inst103 unreacheable
 
 	// inst68 unreacheable
 
 	goto unreachable
 	goto inst69
-inst69: //
+inst69: // string "tttac" -> 74
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == "tttac" {
 			i += 5
@@ -639,7 +661,7 @@ inst69_fail:
 
 	// inst70 unreacheable
 
-	// inst71 unreacheable
+	// inst142 unreacheable
 
 	// inst72 unreacheable
 
@@ -678,7 +700,7 @@ inst74_fail:
 
 	goto unreachable
 	goto inst75
-inst75: //
+inst75: // string "ct" -> 78
 	if i >= 0 && i+2 <= len(r) {
 		if r[i:i+2] == "ct" {
 			i += 2
@@ -699,38 +721,25 @@ inst75_fail:
 	}
 	goto fail
 
-	// inst76 unreacheable
-
-	goto unreachable
-	goto inst77
-inst77: // alt -> 61, 69
-	bt = append(bt, stateMatch{c, i, 77, 0})
-	goto inst61
-inst77_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst69
-	}
-
 	goto unreachable
 	goto inst78
 inst78: // cap 9 -> 180
 	c[9] = i
 	goto inst180
 
+	// inst114 unreacheable
+
 	goto unreachable
+	goto inst99
+inst99: // alt -> 79, 80
+	bt = append(bt, stateMatch{c, i, 99, 0})
 	goto inst79
-inst79: // alt -> 59, 60
-	bt = append(bt, stateMatch{c, i, 79, 0})
-	goto inst59
-inst79_alt:
+inst99_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst60
+		goto inst80
 	}
 
 	goto unreachable
@@ -740,8 +749,21 @@ inst80: // cap 10 -> 97
 	goto inst97
 
 	goto unreachable
+	goto inst97
+inst97: // alt -> 81, 89
+	bt = append(bt, stateMatch{c, i, 97, 0})
 	goto inst81
-inst81: //
+inst97_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst89
+	}
+
+	goto unreachable
+	goto inst81
+inst81: // string "agg" -> 84
 	if i >= 0 && i+3 <= len(r) {
 		if r[i:i+3] == "agg" {
 			i += 3
@@ -762,7 +784,7 @@ inst81_fail:
 	}
 	goto fail
 
-	// inst82 unreacheable
+	// inst71 unreacheable
 
 	// inst83 unreacheable
 
@@ -799,7 +821,7 @@ inst84_fail:
 
 	goto unreachable
 	goto inst85
-inst85: //
+inst85: // string "taaa" -> 98
 	if i >= 0 && i+4 <= len(r) {
 		if r[i:i+4] == "taaa" {
 			i += 4
@@ -824,11 +846,15 @@ inst85_fail:
 
 	// inst87 unreacheable
 
-	// inst88 unreacheable
+	goto unreachable
+	goto inst180
+inst180: // match
+	c[1] = i // end of match
+	goto match
 
 	goto unreachable
 	goto inst89
-inst89: //
+inst89: // string "ttta" -> 93
 	if i >= 0 && i+4 <= len(r) {
 		if r[i:i+4] == "ttta" {
 			i += 4
@@ -849,11 +875,36 @@ inst89_fail:
 	}
 	goto fail
 
-	// inst90 unreacheable
+	goto unreachable
+	goto inst98
+inst98: // cap 11 -> 180
+	c[11] = i
+	goto inst180
 
-	// inst91 unreacheable
+	goto unreachable
+	goto inst94
+inst94: // string "cct" -> 98
+	if i >= 0 && i+3 <= len(r) {
+		if r[i:i+3] == "cct" {
+			i += 3
+			goto inst98
+		}
+	}
+	goto inst94_fail
+	goto unreachable
+	goto inst94_fail
+inst94_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 119:
+			goto inst119_alt
+		}
+	}
+	goto fail
 
-	// inst92 unreacheable
+	// inst130 unreacheable
 
 	goto unreachable
 	goto inst93
@@ -886,63 +937,27 @@ inst93_fail:
 	}
 	goto fail
 
-	goto unreachable
-	goto inst94
-inst94: //
-	if i >= 0 && i+3 <= len(r) {
-		if r[i:i+3] == "cct" {
-			i += 3
-			goto inst98
-		}
-	}
-	goto inst94_fail
-	goto unreachable
-	goto inst94_fail
-inst94_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 119:
-			goto inst119_alt
-		}
-	}
-	goto fail
+	// inst24 unreacheable
 
 	// inst95 unreacheable
 
-	// inst96 unreacheable
+	// inst136 unreacheable
+
+	// inst17 unreacheable
+
+	// inst92 unreacheable
 
 	goto unreachable
-	goto inst97
-inst97: // alt -> 81, 89
-	bt = append(bt, stateMatch{c, i, 97, 0})
-	goto inst81
-inst97_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst89
-	}
-
-	goto unreachable
-	goto inst98
-inst98: // cap 11 -> 180
-	c[11] = i
-	goto inst180
-
-	goto unreachable
+	goto inst119
+inst119: // alt -> 99, 100
+	bt = append(bt, stateMatch{c, i, 119, 0})
 	goto inst99
-inst99: // alt -> 79, 80
-	bt = append(bt, stateMatch{c, i, 99, 0})
-	goto inst79
-inst99_alt:
+inst119_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst80
+		goto inst100
 	}
 
 	goto unreachable
@@ -951,9 +966,26 @@ inst100: // cap 12 -> 117
 	c[12] = i
 	goto inst117
 
+	// inst76 unreacheable
+
+	// inst102 unreacheable
+
+	goto unreachable
+	goto inst117
+inst117: // alt -> 101, 109
+	bt = append(bt, stateMatch{c, i, 117, 0})
+	goto inst101
+inst117_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst109
+	}
+
 	goto unreachable
 	goto inst101
-inst101: //
+inst101: // string "aggg" -> 105
 	if i >= 0 && i+4 <= len(r) {
 		if r[i:i+4] == "aggg" {
 			i += 4
@@ -973,12 +1005,6 @@ inst101_fail:
 		}
 	}
 	goto fail
-
-	// inst102 unreacheable
-
-	// inst103 unreacheable
-
-	// inst104 unreacheable
 
 	goto unreachable
 	goto inst105
@@ -1013,7 +1039,7 @@ inst105_fail:
 
 	goto unreachable
 	goto inst106
-inst106: //
+inst106: // string "aaa" -> 118
 	if i >= 0 && i+3 <= len(r) {
 		if r[i:i+3] == "aaa" {
 			i += 3
@@ -1034,13 +1060,38 @@ inst106_fail:
 	}
 	goto fail
 
-	// inst107 unreacheable
+	goto unreachable
+	goto inst118
+inst118: // cap 13 -> 180
+	c[13] = i
+	goto inst180
 
-	// inst108 unreacheable
+	goto unreachable
+	goto inst113
+inst113: // string "ccct" -> 118
+	if i >= 0 && i+4 <= len(r) {
+		if r[i:i+4] == "ccct" {
+			i += 4
+			goto inst118
+		}
+	}
+	goto inst113_fail
+	goto unreachable
+	goto inst113_fail
+inst113_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 139:
+			goto inst139_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst109
-inst109: //
+inst109: // string "ttt" -> 112
 	if i >= 0 && i+3 <= len(r) {
 		if r[i:i+3] == "ttt" {
 			i += 3
@@ -1096,65 +1147,27 @@ inst112_fail:
 	}
 	goto fail
 
-	goto unreachable
-	goto inst113
-inst113: //
-	if i >= 0 && i+4 <= len(r) {
-		if r[i:i+4] == "ccct" {
-			i += 4
-			goto inst118
-		}
-	}
-	goto inst113_fail
-	goto unreachable
-	goto inst113_fail
-inst113_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 139:
-			goto inst139_alt
-		}
-	}
-	goto fail
+	// inst67 unreacheable
 
-	// inst114 unreacheable
+	// inst162 unreacheable
 
-	// inst115 unreacheable
+	// inst163 unreacheable
 
-	// inst116 unreacheable
+	// inst156 unreacheable
+
+	// inst6 unreacheable
 
 	goto unreachable
-	goto inst117
-inst117: // alt -> 101, 109
-	bt = append(bt, stateMatch{c, i, 117, 0})
-	goto inst101
-inst117_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst109
-	}
-
-	goto unreachable
-	goto inst118
-inst118: // cap 13 -> 180
-	c[13] = i
-	goto inst180
-
-	goto unreachable
+	goto inst139
+inst139: // alt -> 119, 120
+	bt = append(bt, stateMatch{c, i, 139, 0})
 	goto inst119
-inst119: // alt -> 99, 100
-	bt = append(bt, stateMatch{c, i, 119, 0})
-	goto inst99
-inst119_alt:
+inst139_alt:
 	{
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
-		goto inst100
+		goto inst120
 	}
 
 	goto unreachable
@@ -1163,9 +1176,24 @@ inst120: // cap 14 -> 137
 	c[14] = i
 	goto inst137
 
+	// inst90 unreacheable
+
+	goto unreachable
+	goto inst137
+inst137: // alt -> 121, 129
+	bt = append(bt, stateMatch{c, i, 137, 0})
+	goto inst121
+inst137_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst129
+	}
+
 	goto unreachable
 	goto inst121
-inst121: //
+inst121: // string "agggt" -> 126
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == "agggt" {
 			i += 5
@@ -1186,13 +1214,57 @@ inst121_fail:
 	}
 	goto fail
 
-	// inst122 unreacheable
+	goto unreachable
+	goto inst127
+inst127: // string "aa" -> 138
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "aa" {
+			i += 2
+			goto inst138
+		}
+	}
+	goto inst127_fail
+	goto unreachable
+	goto inst127_fail
+inst127_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 137:
+			goto inst137_alt
+		}
+	}
+	goto fail
 
-	// inst123 unreacheable
+	goto unreachable
+	goto inst138
+inst138: // cap 15 -> 180
+	c[15] = i
+	goto inst180
 
-	// inst124 unreacheable
-
-	// inst125 unreacheable
+	goto unreachable
+	goto inst129
+inst129: // string "tt" -> 131
+	if i >= 0 && i+2 <= len(r) {
+		if r[i:i+2] == "tt" {
+			i += 2
+			goto inst131
+		}
+	}
+	goto inst129_fail
+	goto unreachable
+	goto inst129_fail
+inst129_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 159:
+			goto inst159_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst126
@@ -1226,43 +1298,18 @@ inst126_fail:
 	goto fail
 
 	goto unreachable
-	goto inst127
-inst127: //
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "aa" {
-			i += 2
+	goto inst132
+inst132: // string "accct" -> 138
+	if i >= 0 && i+5 <= len(r) {
+		if r[i:i+5] == "accct" {
+			i += 5
 			goto inst138
 		}
 	}
-	goto inst127_fail
+	goto inst132_fail
 	goto unreachable
-	goto inst127_fail
-inst127_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 137:
-			goto inst137_alt
-		}
-	}
-	goto fail
-
-	// inst128 unreacheable
-
-	goto unreachable
-	goto inst129
-inst129: //
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "tt" {
-			i += 2
-			goto inst131
-		}
-	}
-	goto inst129_fail
-	goto unreachable
-	goto inst129_fail
-inst129_fail:
+	goto inst132_fail
+inst132_fail:
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
@@ -1272,8 +1319,6 @@ inst129_fail:
 		}
 	}
 	goto fail
-
-	// inst130 unreacheable
 
 	goto unreachable
 	goto inst131
@@ -1306,175 +1351,29 @@ inst131_fail:
 	}
 	goto fail
 
-	goto unreachable
-	goto inst132
-inst132: //
-	if i >= 0 && i+5 <= len(r) {
-		if r[i:i+5] == "accct" {
-			i += 5
-			goto inst138
-		}
-	}
-	goto inst132_fail
-	goto unreachable
-	goto inst132_fail
-inst132_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 159:
-			goto inst159_alt
-		}
-	}
-	goto fail
+	// inst33 unreacheable
+
+	// inst125 unreacheable
+
+	// inst116 unreacheable
+
+	// inst155 unreacheable
 
 	// inst133 unreacheable
 
-	// inst134 unreacheable
-
-	// inst135 unreacheable
-
-	// inst136 unreacheable
-
 	goto unreachable
-	goto inst137
-inst137: // alt -> 121, 129
-	bt = append(bt, stateMatch{c, i, 137, 0})
-	goto inst121
-inst137_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst129
-	}
-
-	goto unreachable
-	goto inst138
-inst138: // cap 15 -> 180
-	c[15] = i
-	goto inst180
-
-	goto unreachable
-	goto inst139
-inst139: // alt -> 119, 120
-	bt = append(bt, stateMatch{c, i, 139, 0})
-	goto inst119
-inst139_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst120
-	}
-
-	goto unreachable
-	goto inst140
-inst140: // cap 16 -> 157
-	c[16] = i
-	goto inst157
-
-	goto unreachable
-	goto inst141
-inst141: //
+	goto inst151
+inst151: // string "taccct" -> 158
 	if i >= 0 && i+6 <= len(r) {
-		if r[i:i+6] == "agggta" {
+		if r[i:i+6] == "taccct" {
 			i += 6
-			goto inst147
-		}
-	}
-	goto inst141_fail
-	goto unreachable
-	goto inst141_fail
-inst141_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 157:
-			goto inst157_alt
-		}
-	}
-	goto fail
-
-	// inst142 unreacheable
-
-	// inst143 unreacheable
-
-	// inst144 unreacheable
-
-	// inst145 unreacheable
-
-	// inst146 unreacheable
-
-	goto unreachable
-	goto inst147
-inst147: // rune "ccggtt" -> 148
-	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst148
-			}
-			goto inst147_fail
-		} else if false {
-			i += sz
-			goto inst148
-		}
-	}
-	goto inst147_fail
-	goto unreachable
-	goto inst147_fail
-inst147_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 157:
-			goto inst157_alt
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst148
-inst148: //
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "a" {
-			i += 1
 			goto inst158
 		}
 	}
-	goto inst148_fail
+	goto inst151_fail
 	goto unreachable
-	goto inst148_fail
-inst148_fail:
-	if i <= len(r) && len(bt) > 0 {
-		switch bt[len(bt)-1].pc {
-		default:
-			goto unreachable
-		case 157:
-			goto inst157_alt
-		}
-	}
-	goto fail
-
-	goto unreachable
-	goto inst149
-inst149: //
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "t" {
-			i += 1
-			goto inst150
-		}
-	}
-	goto inst149_fail
-	goto unreachable
-	goto inst149_fail
-inst149_fail:
+	goto inst151_fail
+inst151_fail:
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
@@ -1484,6 +1383,14 @@ inst149_fail:
 		}
 	}
 	goto fail
+
+	goto unreachable
+	goto inst158
+inst158: // cap 17 -> 180
+	c[17] = i
+	goto inst180
+
+	// inst152 unreacheable
 
 	goto unreachable
 	goto inst150
@@ -1517,18 +1424,18 @@ inst150_fail:
 	goto fail
 
 	goto unreachable
-	goto inst151
-inst151: //
-	if i >= 0 && i+6 <= len(r) {
-		if r[i:i+6] == "taccct" {
-			i += 6
-			goto inst158
+	goto inst149
+inst149: // string "t" -> 150
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "t" {
+			i += 1
+			goto inst150
 		}
 	}
-	goto inst151_fail
+	goto inst149_fail
 	goto unreachable
-	goto inst151_fail
-inst151_fail:
+	goto inst149_fail
+inst149_fail:
 	if i <= len(r) && len(bt) > 0 {
 		switch bt[len(bt)-1].pc {
 		default:
@@ -1538,35 +1445,6 @@ inst151_fail:
 		}
 	}
 	goto fail
-
-	// inst152 unreacheable
-
-	// inst153 unreacheable
-
-	// inst154 unreacheable
-
-	// inst155 unreacheable
-
-	// inst156 unreacheable
-
-	goto unreachable
-	goto inst157
-inst157: // alt -> 141, 149
-	bt = append(bt, stateMatch{c, i, 157, 0})
-	goto inst141
-inst157_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst149
-	}
-
-	goto unreachable
-	goto inst158
-inst158: // cap 17 -> 180
-	c[17] = i
-	goto inst180
 
 	goto unreachable
 	goto inst159
@@ -1582,14 +1460,152 @@ inst159_alt:
 	}
 
 	goto unreachable
+	goto inst140
+inst140: // cap 16 -> 157
+	c[16] = i
+	goto inst157
+
+	goto unreachable
+	goto inst157
+inst157: // alt -> 141, 149
+	bt = append(bt, stateMatch{c, i, 157, 0})
+	goto inst141
+inst157_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst149
+	}
+
+	// inst9 unreacheable
+
+	goto unreachable
+	goto inst141
+inst141: // string "agggta" -> 147
+	if i >= 0 && i+6 <= len(r) {
+		if r[i:i+6] == "agggta" {
+			i += 6
+			goto inst147
+		}
+	}
+	goto inst141_fail
+	goto unreachable
+	goto inst141_fail
+inst141_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 157:
+			goto inst157_alt
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst148
+inst148: // string "a" -> 158
+	if i >= 0 && i+1 <= len(r) {
+		if r[i:i+1] == "a" {
+			i += 1
+			goto inst158
+		}
+	}
+	goto inst148_fail
+	goto unreachable
+	goto inst148_fail
+inst148_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 157:
+			goto inst157_alt
+		}
+	}
+	goto fail
+
+	goto unreachable
+	goto inst147
+inst147: // rune "ccggtt" -> 148
+	if i >= 0 && i < len(r) {
+		cr, sz := rune(r[i]), 1
+		if cru := uint(cr); cru < 128 {
+			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
+			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
+				i += sz
+				goto inst148
+			}
+			goto inst147_fail
+		} else if false {
+			i += sz
+			goto inst148
+		}
+	}
+	goto inst147_fail
+	goto unreachable
+	goto inst147_fail
+inst147_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 157:
+			goto inst157_alt
+		}
+	}
+	goto fail
+
+	// inst146 unreacheable
+
+	// inst26 unreacheable
+
+	// inst134 unreacheable
+
+	// inst173 unreacheable
+
+	// inst124 unreacheable
+
+	// inst91 unreacheable
+
+	goto unreachable
+	goto inst179
+inst179: // alt -> 159, 160
+	bt = append(bt, stateMatch{c, i, 179, 0})
+	goto inst159
+inst179_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst160
+	}
+
+	goto unreachable
 	goto inst160
 inst160: // cap 18 -> 177
 	c[18] = i
 	goto inst177
 
+	// inst154 unreacheable
+
+	goto unreachable
+	goto inst177
+inst177: // alt -> 161, 169
+	bt = append(bt, stateMatch{c, i, 177, 0})
+	goto inst161
+inst177_alt:
+	{
+		n := len(bt) - 1
+		c, i = bt[n].c, bt[n].i
+		bt = bt[:n]
+		goto inst169
+	}
+
 	goto unreachable
 	goto inst161
-inst161: //
+inst161: // string "agggtaa" -> 168
 	if i >= 0 && i+7 <= len(r) {
 		if r[i:i+7] == "agggtaa" {
 			i += 7
@@ -1609,18 +1625,6 @@ inst161_fail:
 		}
 	}
 	goto fail
-
-	// inst162 unreacheable
-
-	// inst163 unreacheable
-
-	// inst164 unreacheable
-
-	// inst165 unreacheable
-
-	// inst166 unreacheable
-
-	// inst167 unreacheable
 
 	goto unreachable
 	goto inst168
@@ -1654,6 +1658,27 @@ inst168_fail:
 	goto fail
 
 	goto unreachable
+	goto inst178
+inst178: // cap 19 -> 180
+	c[19] = i
+	goto inst180
+
+	goto unreachable
+	goto inst170
+inst170: // string "ttaccct" -> 178
+	if i >= 0 && i+7 <= len(r) {
+		if r[i:i+7] == "ttaccct" {
+			i += 7
+			goto inst178
+		}
+	}
+	goto inst170_fail
+	goto unreachable
+	goto inst170_fail
+inst170_fail:
+	goto fail
+
+	goto unreachable
 	goto inst169
 inst169: // rune "aaccgg" -> 170
 	if i >= 0 && i < len(r) {
@@ -1676,70 +1701,45 @@ inst169: // rune "aaccgg" -> 170
 inst169_fail:
 	goto fail
 
-	goto unreachable
-	goto inst170
-inst170: //
-	if i >= 0 && i+7 <= len(r) {
-		if r[i:i+7] == "ttaccct" {
-			i += 7
-			goto inst178
-		}
-	}
-	goto inst170_fail
-	goto unreachable
-	goto inst170_fail
-inst170_fail:
-	goto fail
+	// inst62 unreacheable
 
-	// inst171 unreacheable
+	// inst104 unreacheable
+
+	// inst8 unreacheable
+
+	// inst164 unreacheable
+
+	// inst3 unreacheable
+
+	// inst107 unreacheable
+
+	// inst167 unreacheable
+
+	// inst82 unreacheable
+
+	// inst66 unreacheable
+
+	// inst34 unreacheable
+
+	// inst44 unreacheable
 
 	// inst172 unreacheable
 
-	// inst173 unreacheable
+	// inst143 unreacheable
 
 	// inst174 unreacheable
 
 	// inst175 unreacheable
 
-	// inst176 unreacheable
+	// inst115 unreacheable
 
-	goto unreachable
-	goto inst177
-inst177: // alt -> 161, 169
-	bt = append(bt, stateMatch{c, i, 177, 0})
-	goto inst161
-inst177_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst169
-	}
+	// inst153 unreacheable
 
-	goto unreachable
-	goto inst178
-inst178: // cap 19 -> 180
-	c[19] = i
-	goto inst180
+	// inst108 unreacheable
 
-	goto unreachable
-	goto inst179
-inst179: // alt -> 159, 160
-	bt = append(bt, stateMatch{c, i, 179, 0})
-	goto inst159
-inst179_alt:
-	{
-		n := len(bt) - 1
-		c, i = bt[n].c, bt[n].i
-		bt = bt[:n]
-		goto inst160
-	}
+	// inst0 unreacheable
 
-	goto unreachable
-	goto inst180
-inst180: // match
-	c[1] = i // end of match
-	goto match
+	// inst171 unreacheable
 
 	goto unreachable
 	goto fail
@@ -1755,34 +1755,34 @@ fail:
 				goto inst37_alt
 			case 39:
 				goto inst39_alt
-			case 57:
-				goto inst57_alt
 			case 59:
 				goto inst59_alt
-			case 77:
-				goto inst77_alt
+			case 57:
+				goto inst57_alt
 			case 79:
 				goto inst79_alt
-			case 97:
-				goto inst97_alt
+			case 77:
+				goto inst77_alt
 			case 99:
 				goto inst99_alt
-			case 117:
-				goto inst117_alt
+			case 97:
+				goto inst97_alt
 			case 119:
 				goto inst119_alt
-			case 137:
-				goto inst137_alt
+			case 117:
+				goto inst117_alt
 			case 139:
 				goto inst139_alt
-			case 157:
-				goto inst157_alt
+			case 137:
+				goto inst137_alt
 			case 159:
 				goto inst159_alt
-			case 177:
-				goto inst177_alt
+			case 157:
+				goto inst157_alt
 			case 179:
 				goto inst179_alt
+			case 177:
+				goto inst177_alt
 			}
 		}
 		if matched {

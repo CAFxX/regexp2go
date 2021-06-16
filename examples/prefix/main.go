@@ -52,9 +52,17 @@ restart:
 
 	// inst0 unreacheable
 
+	// inst2 unreacheable
+
+	// inst3 unreacheable
+
+	// inst5 unreacheable
+
+	// inst6 unreacheable
+
 	goto unreachable
 	goto inst1
-inst1: //
+inst1: // string "Hello " -> 7
 	if i >= 0 && i+6 <= len(r) {
 		if r[i:i+6] == "Hello " {
 			i += 6
@@ -66,16 +74,6 @@ inst1: //
 	goto inst1_fail
 inst1_fail:
 	goto fail
-
-	// inst2 unreacheable
-
-	// inst3 unreacheable
-
-	// inst4 unreacheable
-
-	// inst5 unreacheable
-
-	// inst6 unreacheable
 
 	goto unreachable
 	goto inst7
@@ -140,7 +138,7 @@ inst10: // cap 3 -> 11
 
 	goto unreachable
 	goto inst11
-inst11: //
+inst11: // string "!" -> 12
 	if i >= 0 && i+1 <= len(r) {
 		if r[i:i+1] == "!" {
 			i += 1
@@ -158,6 +156,8 @@ inst11_fail:
 inst12: // match
 	c[1] = i // end of match
 	goto match
+
+	// inst4 unreacheable
 
 	goto unreachable
 	goto fail

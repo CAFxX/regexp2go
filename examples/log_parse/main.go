@@ -40,6 +40,8 @@ restart:
 
 	// inst0 unreacheable
 
+	// inst3 unreacheable
+
 	goto unreachable
 	goto inst1
 inst1: // empty 1 -> 2
@@ -64,7 +66,7 @@ inst1_fail:
 
 	goto unreachable
 	goto inst2
-inst2: //
+inst2: // string "INFO res=" -> 11
 	if i >= 0 && i+9 <= len(r) {
 		if r[i:i+9] == "INFO res=" {
 			i += 9
@@ -76,8 +78,6 @@ inst2: //
 	goto inst2_fail
 inst2_fail:
 	goto fail
-
-	// inst3 unreacheable
 
 	// inst4 unreacheable
 
@@ -152,7 +152,7 @@ inst14: // cap 3 -> 15
 
 	goto unreachable
 	goto inst15
-inst15: //
+inst15: // string " msg=" -> 20
 	if i >= 0 && i+5 <= len(r) {
 		if r[i:i+5] == " msg=" {
 			i += 5

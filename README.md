@@ -9,15 +9,15 @@ but aiming for compatibility with the Go `regexp` package.
 :warning: This is an experimental PoC that currently implements only a 
 subset of the functionalities and optimizations present in the full 
 `regexp` package.
-Rather importantly it does not yet offer the "run in time linear in the 
-size of the input" guarantee that is offered by the `regexp` package,
+Rather importantly **it does not yet offer the "run in time linear in the 
+size of the input" guarantee that is offered by the `regexp` package**,
 and it is extremely likely to contain correctness bugs since it's currently
 lacking any proper test. 
 Do not use for anything serious.
 
 ## Usage
 
-For a quick demo:
+For a quick demo you can use the [online demo](https://regexp2go-demo.herokuapp.com/), or run it locally:
 
 ```sh
 $ go get github.com/CAFxX/regexp2go
@@ -54,17 +54,13 @@ Examples of generated code are in [`examples/`](./examples).
 Each example contains the generated Go code, and the disassembly of the
 function that implements the regular expression.
 
+For demo purposes you can also use the [online demo](https://regexp2go-demo.herokuapp.com/)
+to compile a custom regular expression.
+
 ## Benchmarks
 
 :warning: These are preliminary results since not all features are implemented, and some edge cases are not handled yet. At the same time, there are many possible optimizations that haven't been implemented yet. See the TODOs in the code for details.
 
 ![Benchmark result](benchmark/chart.svg)
 
-In the chart above the results are normalized to the regexp time. Lower is better.
-
-| Benchmark   | regexp2go | regexp |
-| ----------- | --------: | -----: |
-| Prefix      |    0.70µs | 1.10µs |
-| Dna         |     427µs |  481µs |
-| MailCrawler |    1.51µs | 6.53µs |
-| LogParse    |    0.38µs | 1.68µs |
+regexp2go can be from slightly faster to over 5 times faster than the `regexp` package in the golang standard library, depending on the regexp and the input data.
