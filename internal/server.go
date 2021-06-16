@@ -31,7 +31,8 @@ func Server(addr string) error {
 								<form method=post action="/generate">
 									<div class="input-group">
 										<input type=text name=regex placeholder=Regexp required=required class=form-control>
-										<button type=submit class="btn btn-primary">Compile</button>
+										<button type=submit name=submit value=raw class="btn btn-primary">Compile</button>
+										<button type=submit name=submit value=ce class="btn btn-secondary">Open in Compiler Explorer</button>
 									</div>
 								</form>
 							</div>
@@ -83,6 +84,17 @@ func Server(addr string) error {
 			w.WriteHeader(http.StatusUnprocessableEntity)
 			fmt.Fprintf(w, "generate: %v\n", err)
 			return
+		}
+
+		if r.Form.Get("submit") == "ce" {
+			url, err := OpenInCompilerExplorer(string(res))
+			if err != nil {
+				w.WriteHeader(http.StatusUnprocessableEntity)
+				fmt.Fprintf(w, "open in compiler explorer: %v\n", err)
+				return
+			}
+			w.Header().Set("Location", url)
+			w.WriteHeader(http.StatusSeeOther)
 		}
 
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
