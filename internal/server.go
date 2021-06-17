@@ -95,6 +95,7 @@ func Server(addr string) error {
 			}
 			w.Header().Set("Location", url)
 			w.WriteHeader(http.StatusSeeOther)
+			return
 		}
 
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
