@@ -79,7 +79,7 @@ func Server(addr string) error {
 			return
 		}
 
-		res, err := Generate(regex, "regexp2go_demo", "Match", 212)
+		res, err := Generate(regex, "regexp2go_demo", "Match", 212, true)
 		if err != nil {
 			w.WriteHeader(http.StatusUnprocessableEntity)
 			fmt.Fprintf(w, "generate: %v\n", err)

@@ -20,6 +20,7 @@ func main() {
 		flags = flag.Uint("flags", 212, "Flags to apply for regex compilation")
 		pkg   = flag.String("pkg", "main", "The name of the package to use for the generated code")
 		fn    = flag.String("fn", "Match", "The name of the function to use for the generated code")
+		pool  = flag.Bool("pool", true, "Enable use of memory pools")
 		srv   = flag.String("http", "", "Start the HTTP server on the specified address and port")
 	)
 	flag.Parse()
@@ -38,7 +39,7 @@ func main() {
 		os.Exit(-1)
 	}
 
-	res, err := internal.Generate(flag.Arg(0), *pkg, *fn, *flags)
+	res, err := internal.Generate(flag.Arg(0), *pkg, *fn, *flags, *pool)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "generate: %v\n", err)
 		if res != nil {
