@@ -101,7 +101,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 	out("  matches, pos, ok = do%s(r, bt[:0])", fn)
 	out("  return")
 	out("}")
-
+	out("")
 	out("func do%s(r string, bt []state%s) ([%d]string, int, bool) {", fn, fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
 	// TODO: is this really needed every time we have an InstAlt? Can we skip it in some more cases?
