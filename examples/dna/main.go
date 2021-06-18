@@ -74,6 +74,18 @@ inst2: // string "agggtaaa" -> 19
 			goto inst19
 		}
 	}
+	goto inst2_fail
+	goto unreachable
+	goto inst2_fail
+inst2_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 18:
+			goto inst18_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -103,6 +115,18 @@ inst10: // string "tttaccct" -> 19
 		if r[i:i+8] == "tttaccct" {
 			i += 8
 			goto inst19
+		}
+	}
+	goto inst10_fail
+	goto unreachable
+	goto inst10_fail
+inst10_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 39:
+			goto inst39_alt
 		}
 	}
 	goto fail
@@ -148,10 +172,22 @@ inst21: // rune "ccggtt" -> 22
 				i += sz
 				goto inst22
 			}
-			goto fail
+			goto inst21_fail
 		} else if false {
 			i += sz
 			goto inst22
+		}
+	}
+	goto inst21_fail
+	goto unreachable
+	goto inst21_fail
+inst21_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 37:
+			goto inst37_alt
 		}
 	}
 	goto fail
@@ -191,6 +227,18 @@ inst22: // string "gggtaaa" -> 38
 			goto inst38
 		}
 	}
+	goto inst22_fail
+	goto unreachable
+	goto inst22_fail
+inst22_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 37:
+			goto inst37_alt
+		}
+	}
 	goto fail
 
 	// inst28 unreacheable
@@ -202,6 +250,18 @@ inst29: // string "tttaccc" -> 36
 		if r[i:i+7] == "tttaccc" {
 			i += 7
 			goto inst36
+		}
+	}
+	goto inst29_fail
+	goto unreachable
+	goto inst29_fail
+inst29_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 59:
+			goto inst59_alt
 		}
 	}
 	goto fail
@@ -253,10 +313,22 @@ inst36: // rune "aaccgg" -> 38
 				i += sz
 				goto inst38
 			}
-			goto fail
+			goto inst36_fail
 		} else if false {
 			i += sz
 			goto inst38
+		}
+	}
+	goto inst36_fail
+	goto unreachable
+	goto inst36_fail
+inst36_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 59:
+			goto inst59_alt
 		}
 	}
 	goto fail
@@ -324,6 +396,18 @@ inst41: // string "a" -> 42
 			goto inst42
 		}
 	}
+	goto inst41_fail
+	goto unreachable
+	goto inst41_fail
+inst41_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 57:
+			goto inst57_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -337,10 +421,22 @@ inst42: // rune "aacctt" -> 43
 				i += sz
 				goto inst43
 			}
-			goto fail
+			goto inst42_fail
 		} else if false {
 			i += sz
 			goto inst43
+		}
+	}
+	goto inst42_fail
+	goto unreachable
+	goto inst42_fail
+inst42_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 57:
+			goto inst57_alt
 		}
 	}
 	goto fail
@@ -352,6 +448,18 @@ inst43: // string "ggtaaa" -> 58
 		if r[i:i+6] == "ggtaaa" {
 			i += 6
 			goto inst58
+		}
+	}
+	goto inst43_fail
+	goto unreachable
+	goto inst43_fail
+inst43_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 57:
+			goto inst57_alt
 		}
 	}
 	goto fail
@@ -371,6 +479,18 @@ inst49: // string "tttacc" -> 55
 		if r[i:i+6] == "tttacc" {
 			i += 6
 			goto inst55
+		}
+	}
+	goto inst49_fail
+	goto unreachable
+	goto inst49_fail
+inst49_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 79:
+			goto inst79_alt
 		}
 	}
 	goto fail
@@ -396,10 +516,22 @@ inst55: // rune "aaggtt" -> 56
 				i += sz
 				goto inst56
 			}
-			goto fail
+			goto inst55_fail
 		} else if false {
 			i += sz
 			goto inst56
+		}
+	}
+	goto inst55_fail
+	goto unreachable
+	goto inst55_fail
+inst55_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 79:
+			goto inst79_alt
 		}
 	}
 	goto fail
@@ -411,6 +543,18 @@ inst56: // string "t" -> 58
 		if r[i:i+1] == "t" {
 			i += 1
 			goto inst58
+		}
+	}
+	goto inst56_fail
+	goto unreachable
+	goto inst56_fail
+inst56_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 79:
+			goto inst79_alt
 		}
 	}
 	goto fail
@@ -476,6 +620,18 @@ inst61: // string "ag" -> 63
 			goto inst63
 		}
 	}
+	goto inst61_fail
+	goto unreachable
+	goto inst61_fail
+inst61_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 77:
+			goto inst77_alt
+		}
+	}
 	goto fail
 
 	// inst25 unreacheable
@@ -491,10 +647,22 @@ inst63: // rune "aacctt" -> 64
 				i += sz
 				goto inst64
 			}
-			goto fail
+			goto inst63_fail
 		} else if false {
 			i += sz
 			goto inst64
+		}
+	}
+	goto inst63_fail
+	goto unreachable
+	goto inst63_fail
+inst63_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 77:
+			goto inst77_alt
 		}
 	}
 	goto fail
@@ -506,6 +674,18 @@ inst64: // string "gtaaa" -> 78
 		if r[i:i+5] == "gtaaa" {
 			i += 5
 			goto inst78
+		}
+	}
+	goto inst64_fail
+	goto unreachable
+	goto inst64_fail
+inst64_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 77:
+			goto inst77_alt
 		}
 	}
 	goto fail
@@ -525,6 +705,18 @@ inst69: // string "tttac" -> 74
 		if r[i:i+5] == "tttac" {
 			i += 5
 			goto inst74
+		}
+	}
+	goto inst69_fail
+	goto unreachable
+	goto inst69_fail
+inst69_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 99:
+			goto inst99_alt
 		}
 	}
 	goto fail
@@ -548,10 +740,22 @@ inst74: // rune "aaggtt" -> 75
 				i += sz
 				goto inst75
 			}
-			goto fail
+			goto inst74_fail
 		} else if false {
 			i += sz
 			goto inst75
+		}
+	}
+	goto inst74_fail
+	goto unreachable
+	goto inst74_fail
+inst74_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 99:
+			goto inst99_alt
 		}
 	}
 	goto fail
@@ -563,6 +767,18 @@ inst75: // string "ct" -> 78
 		if r[i:i+2] == "ct" {
 			i += 2
 			goto inst78
+		}
+	}
+	goto inst75_fail
+	goto unreachable
+	goto inst75_fail
+inst75_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 99:
+			goto inst99_alt
 		}
 	}
 	goto fail
@@ -630,6 +846,18 @@ inst81: // string "agg" -> 84
 			goto inst84
 		}
 	}
+	goto inst81_fail
+	goto unreachable
+	goto inst81_fail
+inst81_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 97:
+			goto inst97_alt
+		}
+	}
 	goto fail
 
 	// inst71 unreacheable
@@ -647,10 +875,22 @@ inst84: // rune "aacctt" -> 85
 				i += sz
 				goto inst85
 			}
-			goto fail
+			goto inst84_fail
 		} else if false {
 			i += sz
 			goto inst85
+		}
+	}
+	goto inst84_fail
+	goto unreachable
+	goto inst84_fail
+inst84_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 97:
+			goto inst97_alt
 		}
 	}
 	goto fail
@@ -662,6 +902,18 @@ inst85: // string "taaa" -> 98
 		if r[i:i+4] == "taaa" {
 			i += 4
 			goto inst98
+		}
+	}
+	goto inst85_fail
+	goto unreachable
+	goto inst85_fail
+inst85_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 97:
+			goto inst97_alt
 		}
 	}
 	goto fail
@@ -685,6 +937,18 @@ inst89: // string "ttta" -> 93
 			goto inst93
 		}
 	}
+	goto inst89_fail
+	goto unreachable
+	goto inst89_fail
+inst89_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 119:
+			goto inst119_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -702,6 +966,18 @@ inst94: // string "cct" -> 98
 			goto inst98
 		}
 	}
+	goto inst94_fail
+	goto unreachable
+	goto inst94_fail
+inst94_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 119:
+			goto inst119_alt
+		}
+	}
 	goto fail
 
 	// inst130 unreacheable
@@ -717,10 +993,22 @@ inst93: // rune "aaggtt" -> 94
 				i += sz
 				goto inst94
 			}
-			goto fail
+			goto inst93_fail
 		} else if false {
 			i += sz
 			goto inst94
+		}
+	}
+	goto inst93_fail
+	goto unreachable
+	goto inst93_fail
+inst93_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 119:
+			goto inst119_alt
 		}
 	}
 	goto fail
@@ -794,6 +1082,18 @@ inst101: // string "aggg" -> 105
 			goto inst105
 		}
 	}
+	goto inst101_fail
+	goto unreachable
+	goto inst101_fail
+inst101_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 117:
+			goto inst117_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -807,10 +1107,22 @@ inst105: // rune "aaccgg" -> 106
 				i += sz
 				goto inst106
 			}
-			goto fail
+			goto inst105_fail
 		} else if false {
 			i += sz
 			goto inst106
+		}
+	}
+	goto inst105_fail
+	goto unreachable
+	goto inst105_fail
+inst105_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 117:
+			goto inst117_alt
 		}
 	}
 	goto fail
@@ -822,6 +1134,18 @@ inst106: // string "aaa" -> 118
 		if r[i:i+3] == "aaa" {
 			i += 3
 			goto inst118
+		}
+	}
+	goto inst106_fail
+	goto unreachable
+	goto inst106_fail
+inst106_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 117:
+			goto inst117_alt
 		}
 	}
 	goto fail
@@ -841,6 +1165,18 @@ inst113: // string "ccct" -> 118
 			goto inst118
 		}
 	}
+	goto inst113_fail
+	goto unreachable
+	goto inst113_fail
+inst113_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 139:
+			goto inst139_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -850,6 +1186,18 @@ inst109: // string "ttt" -> 112
 		if r[i:i+3] == "ttt" {
 			i += 3
 			goto inst112
+		}
+	}
+	goto inst109_fail
+	goto unreachable
+	goto inst109_fail
+inst109_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 139:
+			goto inst139_alt
 		}
 	}
 	goto fail
@@ -869,10 +1217,22 @@ inst112: // rune "ccggtt" -> 113
 				i += sz
 				goto inst113
 			}
-			goto fail
+			goto inst112_fail
 		} else if false {
 			i += sz
 			goto inst113
+		}
+	}
+	goto inst112_fail
+	goto unreachable
+	goto inst112_fail
+inst112_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 139:
+			goto inst139_alt
 		}
 	}
 	goto fail
@@ -944,6 +1304,18 @@ inst121: // string "agggt" -> 126
 			goto inst126
 		}
 	}
+	goto inst121_fail
+	goto unreachable
+	goto inst121_fail
+inst121_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 137:
+			goto inst137_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -953,6 +1325,18 @@ inst127: // string "aa" -> 138
 		if r[i:i+2] == "aa" {
 			i += 2
 			goto inst138
+		}
+	}
+	goto inst127_fail
+	goto unreachable
+	goto inst127_fail
+inst127_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 137:
+			goto inst137_alt
 		}
 	}
 	goto fail
@@ -972,6 +1356,18 @@ inst129: // string "tt" -> 131
 			goto inst131
 		}
 	}
+	goto inst129_fail
+	goto unreachable
+	goto inst129_fail
+inst129_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 159:
+			goto inst159_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -985,10 +1381,22 @@ inst126: // rune "ccggtt" -> 127
 				i += sz
 				goto inst127
 			}
-			goto fail
+			goto inst126_fail
 		} else if false {
 			i += sz
 			goto inst127
+		}
+	}
+	goto inst126_fail
+	goto unreachable
+	goto inst126_fail
+inst126_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 137:
+			goto inst137_alt
 		}
 	}
 	goto fail
@@ -1000,6 +1408,18 @@ inst132: // string "accct" -> 138
 		if r[i:i+5] == "accct" {
 			i += 5
 			goto inst138
+		}
+	}
+	goto inst132_fail
+	goto unreachable
+	goto inst132_fail
+inst132_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 159:
+			goto inst159_alt
 		}
 	}
 	goto fail
@@ -1015,10 +1435,22 @@ inst131: // rune "aaccgg" -> 132
 				i += sz
 				goto inst132
 			}
-			goto fail
+			goto inst131_fail
 		} else if false {
 			i += sz
 			goto inst132
+		}
+	}
+	goto inst131_fail
+	goto unreachable
+	goto inst131_fail
+inst131_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 159:
+			goto inst159_alt
 		}
 	}
 	goto fail
@@ -1042,6 +1474,18 @@ inst151: // string "taccct" -> 158
 			goto inst158
 		}
 	}
+	goto inst151_fail
+	goto unreachable
+	goto inst151_fail
+inst151_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 179:
+			goto inst179_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -1063,10 +1507,22 @@ inst150: // rune "aaccgg" -> 151
 				i += sz
 				goto inst151
 			}
-			goto fail
+			goto inst150_fail
 		} else if false {
 			i += sz
 			goto inst151
+		}
+	}
+	goto inst150_fail
+	goto unreachable
+	goto inst150_fail
+inst150_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 179:
+			goto inst179_alt
 		}
 	}
 	goto fail
@@ -1078,6 +1534,18 @@ inst149: // string "t" -> 150
 		if r[i:i+1] == "t" {
 			i += 1
 			goto inst150
+		}
+	}
+	goto inst149_fail
+	goto unreachable
+	goto inst149_fail
+inst149_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 179:
+			goto inst179_alt
 		}
 	}
 	goto fail
@@ -1139,6 +1607,18 @@ inst141: // string "agggta" -> 147
 			goto inst147
 		}
 	}
+	goto inst141_fail
+	goto unreachable
+	goto inst141_fail
+inst141_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 157:
+			goto inst157_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -1148,6 +1628,18 @@ inst148: // string "a" -> 158
 		if r[i:i+1] == "a" {
 			i += 1
 			goto inst158
+		}
+	}
+	goto inst148_fail
+	goto unreachable
+	goto inst148_fail
+inst148_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 157:
+			goto inst157_alt
 		}
 	}
 	goto fail
@@ -1163,10 +1655,22 @@ inst147: // rune "ccggtt" -> 148
 				i += sz
 				goto inst148
 			}
-			goto fail
+			goto inst147_fail
 		} else if false {
 			i += sz
 			goto inst148
+		}
+	}
+	goto inst147_fail
+	goto unreachable
+	goto inst147_fail
+inst147_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 157:
+			goto inst157_alt
 		}
 	}
 	goto fail
@@ -1240,6 +1744,18 @@ inst161: // string "agggtaa" -> 168
 			goto inst168
 		}
 	}
+	goto inst161_fail
+	goto unreachable
+	goto inst161_fail
+inst161_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 177:
+			goto inst177_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -1253,10 +1769,22 @@ inst168: // rune "ccggtt" -> 178
 				i += sz
 				goto inst178
 			}
-			goto fail
+			goto inst168_fail
 		} else if false {
 			i += sz
 			goto inst178
+		}
+	}
+	goto inst168_fail
+	goto unreachable
+	goto inst168_fail
+inst168_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 177:
+			goto inst177_alt
 		}
 	}
 	goto fail
@@ -1276,6 +1804,10 @@ inst170: // string "ttaccct" -> 178
 			goto inst178
 		}
 	}
+	goto inst170_fail
+	goto unreachable
+	goto inst170_fail
+inst170_fail:
 	goto fail
 
 	goto unreachable
@@ -1289,12 +1821,16 @@ inst169: // rune "aaccgg" -> 170
 				i += sz
 				goto inst170
 			}
-			goto fail
+			goto inst169_fail
 		} else if false {
 			i += sz
 			goto inst170
 		}
 	}
+	goto inst169_fail
+	goto unreachable
+	goto inst169_fail
+inst169_fail:
 	goto fail
 
 	// inst62 unreacheable

@@ -70,8 +70,12 @@ inst1: // empty 1 -> 2
 		if before == '\n' || before == -1 {
 			goto inst2
 		}
-		goto fail
+		goto inst1_fail
 	}
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
+	goto fail
 
 	goto unreachable
 	goto inst2
@@ -82,6 +86,10 @@ inst2: // string "INFO res=" -> 11
 			goto inst11
 		}
 	}
+	goto inst2_fail
+	goto unreachable
+	goto inst2_fail
+inst2_fail:
 	goto fail
 
 	// inst4 unreacheable
@@ -114,6 +122,10 @@ inst12: // rune "09" -> 13
 			goto inst13
 		}
 	}
+	goto inst12_fail
+	goto unreachable
+	goto inst12_fail
+inst12_fail:
 	goto fail
 
 	goto unreachable
@@ -167,6 +179,10 @@ inst15: // string " msg=" -> 20
 			goto inst20
 		}
 	}
+	goto inst15_fail
+	goto unreachable
+	goto inst15_fail
+inst15_fail:
 	goto fail
 
 	// inst16 unreacheable
@@ -187,7 +203,7 @@ inst20: // cap 4 -> 22
 	goto inst21
 inst21: // anynotnl -> 22
 	if i < 0 || i >= len(r) {
-		goto fail
+		goto inst21_fail
 	}
 	{
 		cr, sz := rune(r[i]), 1
@@ -196,11 +212,23 @@ inst21: // anynotnl -> 22
 		}
 
 		if cr == rune('\n') {
-			goto fail
+			goto inst21_fail
 		}
 		i += sz
 		goto inst22
 	}
+	goto unreachable
+	goto inst21_fail
+inst21_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 22:
+			goto inst22_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst22
@@ -259,8 +287,12 @@ inst24: // empty 2 -> 25
 		if after == '\n' || after == -1 {
 			goto inst25
 		}
-		goto fail
+		goto inst24_fail
 	}
+	goto unreachable
+	goto inst24_fail
+inst24_fail:
+	goto fail
 
 	goto unreachable
 	goto inst25

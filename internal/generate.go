@@ -6,6 +6,7 @@ import (
 	"go/format"
 	"math/rand"
 	"regexp/syntax"
+	"sort"
 	"strings"
 	"unicode"
 	"unicode/utf8"
@@ -28,6 +29,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 	optString(p)
 	optDeadInst(p)
 	order := optReorder(p)
+	preds := optPreds(p)
 
 	numSt, instAltCnt := 0, 0
 	for _, inst := range p.Inst {
@@ -162,6 +164,7 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 		}
 		out("\n goto unreachable \n goto inst%d \n inst%d: // %s ", pc, pc, instname(inst))
 		// out("fmt.Println(i, %d, %q)", pc, inst.String())
+		failable := true
 		switch inst.Op {
 		case syntax.InstAlt:
 			// TODO: pick the optimal indexing scheme based on the number of states and the size of the input string
@@ -233,11 +236,13 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 				)
 			}
 			tgt = append(tgt, uint32(pc))
+			failable = false
 		case syntax.InstAltMatch:
 			// TODO: implement
 			panic("not implemented InstAltMatch")
 		case syntax.InstCapture:
 			out("c[%d] = i \n goto inst%d ", inst.Arg, inst.Out)
+			failable = false
 		case syntax.InstEmptyWidth:
 			out("{")
 			before := "before := rune(-1) \n if i := i-1; i >= 0 && i < len(r) { " + outcr + " before, _ = cr, sz } "
@@ -270,14 +275,16 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 				panic("not implemented InstEmptyWidth")
 			}
 			out(" { goto inst%d }", inst.Out)
-			out("goto fail")
+			out("goto inst%d_fail", pc)
 			out("}")
 		case syntax.InstMatch:
 			out("c[1] = i // end of match \n goto match")
+			failable = false
 		case syntax.InstFail:
-			out("goto fail ")
+			out("goto inst%d_fail", pc)
 		case syntax.InstNop:
 			out("goto inst%d ", inst.Out)
+			failable = false
 		case syntax.InstRune1:
 			fallthrough
 		case syntax.InstRune:
@@ -335,8 +342,8 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 							i+=sz
 							goto inst%d 
 						} 
-						goto fail 
-					} else `, max, runeMask, inst.Out)
+						goto inst%d_fail 
+					} else `, max, runeMask, inst.Out, pc)
 			}
 			// TODO: expand the ranges as lists of runes, and use a switch instead; see if the compiler is smart enough to build a search tree
 			outn("if false ")
@@ -356,20 +363,20 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 			}
 			out(" { i+=sz \n goto inst%d }", inst.Out)
 			out("}")
-			out("goto fail")
+			out("goto inst%d_fail", pc)
 		case syntax.InstRuneAny:
-			out("if i < 0 || i >= len(r) { goto fail }")
+			out("if i < 0 || i >= len(r) { goto inst%d_fail }", pc)
 			out(`{`)
 			// TODO: we don't need the parsed rune here, just the length
 			out(outcr)
 			out("  i+=sz \n _ = cr \n goto inst%d", inst.Out)
 			out(`}`)
 		case syntax.InstRuneAnyNotNL:
-			out("if i < 0 || i >= len(r) { goto fail }")
+			out("if i < 0 || i >= len(r) { goto inst%d_fail }", pc)
 			out(`{`)
 			// TODO: we don't need the parsed rune here, just the length (\n is a single byte)
 			out(outcr)
-			out(`  if cr == rune('\n') { goto fail }`)
+			out("  if cr == rune('\\n') { goto inst%d_fail }", pc)
 			out("  i+=sz \n goto inst%d", inst.Out)
 			out(`}`)
 		case instString:
@@ -379,13 +386,29 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 			out("    goto inst%d", inst.Out)
 			out("  }")
 			out("}")
-			out("goto fail")
+			out("goto inst%d_fail", pc)
 		default:
 			panic("unknown op")
 		}
+		// failure pad
+		if failable {
+			out(`goto unreachable`)
+			out(`goto inst%d_fail`, pc)
+			out(`inst%d_fail:`, pc)
+			if pcpreds := preds[uint32(pc)]; len(pcpreds) > 0 {
+				out(`if i <= len(r) && len(bt) > 0 {`)
+				out(`	switch bt[len(bt)-1].pc {`)
+				out(`	default: goto unreachable`)
+				for _, pred := range sortSet(pcpreds) {
+					out("   case %d: goto inst%d_alt", pred, pred) // computed goto would really help here
+				}
+				out(`   }`)
+				out(`}`)
+			}
+			out(`goto fail`)
+		}
 	}
 
-	// TODO: instead of embedding a single jump table here, embed a smaller jump table (or a direct jump) at every `goto fail` location that is known to only be able to jump to a subset of targets
 	out(`
 		goto unreachable
 		goto fail
@@ -442,6 +465,17 @@ func Generate(regex, pkg, fn string, flags uint) ([]byte, error) {
 		return b.Bytes(), fmt.Errorf("formatting generated code: %w", err)
 	}
 	return gen, nil
+}
+
+func sortSet(m map[uint32]struct{}) []uint32 {
+	var s []uint32
+	for k := range m {
+		s = append(s, k)
+	}
+	sort.Slice(s, func(i, j int) bool {
+		return s[i] < s[j]
+	})
+	return s
 }
 
 func isSimpleLoop(p *syntax.Prog, pc uint32) int {
@@ -645,4 +679,41 @@ func optReorder(p *syntax.Prog) []int {
 		order[insts[pc].pos] = pc
 	}
 	return order
+}
+
+func optPreds(p *syntax.Prog) map[uint32]map[uint32]struct{} {
+	const noPred = ^uint32(0)
+	var preds = map[uint32]map[uint32]struct{}{}
+	visited := map[uint32]struct{}{}
+	var visit func(uint32, uint32)
+	visit = func(pc, pred uint32) {
+		if _, ok := visited[pc]; ok {
+			return
+		}
+		visited[pc] = struct{}{}
+		defer delete(visited, pc)
+
+		if pred != noPred {
+			pcpreds := preds[pc]
+			if pcpreds == nil {
+				pcpreds = map[uint32]struct{}{}
+				preds[pc] = pcpreds
+			}
+			pcpreds[pred] = struct{}{}
+		}
+
+		switch p.Inst[pc].Op {
+		case syntax.InstMatch, syntax.InstFail:
+			return
+		case syntax.InstAltMatch:
+			panic("not implemented")
+		case syntax.InstAlt:
+			visit(p.Inst[pc].Arg, pred)
+			visit(p.Inst[pc].Out, pc)
+		default:
+			visit(p.Inst[pc].Out, pred)
+		}
+	}
+	visit(uint32(p.Start), noPred)
+	return preds
 }

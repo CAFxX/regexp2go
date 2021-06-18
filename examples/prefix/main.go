@@ -82,6 +82,10 @@ inst1: // string "Hello " -> 7
 			goto inst7
 		}
 	}
+	goto inst1_fail
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
 	goto fail
 
 	goto unreachable
@@ -104,6 +108,10 @@ inst8: // rune "\x00 \"\U0010ffff" -> 9
 			goto inst9
 		}
 	}
+	goto inst8_fail
+	goto unreachable
+	goto inst8_fail
+inst8_fail:
 	goto fail
 
 	goto unreachable
@@ -157,6 +165,10 @@ inst11: // string "!" -> 12
 			goto inst12
 		}
 	}
+	goto inst11_fail
+	goto unreachable
+	goto inst11_fail
+inst11_fail:
 	goto fail
 
 	goto unreachable

@@ -68,8 +68,12 @@ inst1: // empty 1 -> 2
 		if before == '\n' || before == -1 {
 			goto inst2
 		}
-		goto fail
+		goto inst1_fail
 	}
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
+	goto fail
 
 	goto unreachable
 	goto inst2
@@ -80,6 +84,10 @@ inst2: // string ">" -> 3
 			goto inst3
 		}
 	}
+	goto inst2_fail
+	goto unreachable
+	goto inst2_fail
+inst2_fail:
 	goto fail
 
 	goto unreachable
@@ -92,7 +100,7 @@ inst3: // cap 2 -> 5
 	goto inst4
 inst4: // anynotnl -> 5
 	if i < 0 || i >= len(r) {
-		goto fail
+		goto inst4_fail
 	}
 	{
 		cr, sz := rune(r[i]), 1
@@ -101,11 +109,23 @@ inst4: // anynotnl -> 5
 		}
 
 		if cr == rune('\n') {
-			goto fail
+			goto inst4_fail
 		}
 		i += sz
 		goto inst5
 	}
+	goto unreachable
+	goto inst4_fail
+inst4_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 5:
+			goto inst5_alt
+		}
+	}
+	goto fail
 
 	goto unreachable
 	goto inst5
@@ -164,8 +184,12 @@ inst7: // empty 2 -> 8
 		if after == '\n' || after == -1 {
 			goto inst8
 		}
-		goto fail
+		goto inst7_fail
 	}
+	goto unreachable
+	goto inst7_fail
+inst7_fail:
+	goto fail
 
 	goto unreachable
 	goto inst8

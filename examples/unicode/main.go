@@ -76,6 +76,10 @@ inst1: // string "私は" -> 3
 			goto inst3
 		}
 	}
+	goto inst1_fail
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
 	goto fail
 
 	goto unreachable
@@ -98,6 +102,10 @@ inst4: // rune "\u2e80\u2e99\u2e9b\u2ef3\u2f00\u2fd5\u3005\u3005\u3007\u3007\u30
 			goto inst5
 		}
 	}
+	goto inst4_fail
+	goto unreachable
+	goto inst4_fail
+inst4_fail:
 	goto fail
 
 	goto unreachable
@@ -151,6 +159,10 @@ inst7: // string "です" -> 9
 			goto inst9
 		}
 	}
+	goto inst7_fail
+	goto unreachable
+	goto inst7_fail
+inst7_fail:
 	goto fail
 
 	goto unreachable

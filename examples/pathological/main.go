@@ -68,6 +68,18 @@ inst2: // string "a" -> 3
 			goto inst3
 		}
 	}
+	goto inst2_fail
+	goto unreachable
+	goto inst2_fail
+inst2_fail:
+	if i <= len(r) && len(bt) > 0 {
+		switch bt[len(bt)-1].pc {
+		default:
+			goto unreachable
+		case 3:
+			goto inst3_alt
+		}
+	}
 	goto fail
 
 	goto unreachable
@@ -125,6 +137,10 @@ inst6: // string "b" -> 7
 			goto inst7
 		}
 	}
+	goto inst6_fail
+	goto unreachable
+	goto inst6_fail
+inst6_fail:
 	goto fail
 
 	goto unreachable

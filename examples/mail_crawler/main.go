@@ -76,8 +76,12 @@ inst1: // empty 16 -> 2
 		if syntax.IsWordChar(before) != syntax.IsWordChar(after) {
 			goto inst2
 		}
-		goto fail
+		goto inst1_fail
 	}
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
+	goto fail
 
 	goto unreachable
 	goto inst2
@@ -100,12 +104,16 @@ inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
 				i += sz
 				goto inst4
 			}
-			goto fail
+			goto inst3_fail
 		} else if false || cr == 383 || cr == 8490 {
 			i += sz
 			goto inst4
 		}
 	}
+	goto inst3_fail
+	goto unreachable
+	goto inst3_fail
+inst3_fail:
 	goto fail
 
 	goto unreachable
@@ -159,6 +167,10 @@ inst6: // string "@" -> 7
 			goto inst7
 		}
 	}
+	goto inst6_fail
+	goto unreachable
+	goto inst6_fail
+inst6_fail:
 	goto fail
 
 	goto unreachable
@@ -182,12 +194,16 @@ inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
 				i += sz
 				goto inst9
 			}
-			goto fail
+			goto inst8_fail
 		} else if false || cr == 383 || cr == 8490 {
 			i += sz
 			goto inst9
 		}
 	}
+	goto inst8_fail
+	goto unreachable
+	goto inst8_fail
+inst8_fail:
 	goto fail
 
 	goto unreachable
@@ -235,6 +251,10 @@ inst10: // string "." -> 11
 			goto inst11
 		}
 	}
+	goto inst10_fail
+	goto unreachable
+	goto inst10_fail
+inst10_fail:
 	goto fail
 
 	goto unreachable
@@ -252,12 +272,16 @@ inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 				i += sz
 				goto inst12
 			}
-			goto fail
+			goto inst11_fail
 		} else if false || cr == 383 || cr == 8490 {
 			i += sz
 			goto inst12
 		}
 	}
+	goto inst11_fail
+	goto unreachable
+	goto inst11_fail
+inst11_fail:
 	goto fail
 
 	goto unreachable
@@ -275,12 +299,16 @@ inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
 				i += sz
 				goto inst13
 			}
-			goto fail
+			goto inst12_fail
 		} else if false || cr == 383 || cr == 8490 {
 			i += sz
 			goto inst13
 		}
 	}
+	goto inst12_fail
+	goto unreachable
+	goto inst12_fail
+inst12_fail:
 	goto fail
 
 	goto unreachable
@@ -348,8 +376,12 @@ inst15: // empty 16 -> 16
 		if syntax.IsWordChar(before) != syntax.IsWordChar(after) {
 			goto inst16
 		}
-		goto fail
+		goto inst15_fail
 	}
+	goto unreachable
+	goto inst15_fail
+inst15_fail:
+	goto fail
 
 	goto unreachable
 	goto inst16

@@ -63,6 +63,10 @@ inst1: // rune "az" -> 2
 			goto inst2
 		}
 	}
+	goto inst1_fail
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
 	goto fail
 
 	goto unreachable
@@ -108,8 +112,12 @@ inst3: // empty 8 -> 4
 		if i >= len(r) {
 			goto inst4
 		}
-		goto fail
+		goto inst3_fail
 	}
+	goto unreachable
+	goto inst3_fail
+inst3_fail:
+	goto fail
 
 	goto unreachable
 	goto inst4

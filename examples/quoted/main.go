@@ -74,6 +74,10 @@ inst1: // string "\"" -> 2
 			goto inst2
 		}
 	}
+	goto inst1_fail
+	goto unreachable
+	goto inst1_fail
+inst1_fail:
 	goto fail
 
 	goto unreachable
@@ -97,12 +101,16 @@ inst3: // rune " !#&(*,.0;@Z^_az\u017f\u017f\u212a\u212a" -> 4
 				i += sz
 				goto inst4
 			}
-			goto fail
+			goto inst3_fail
 		} else if false || cr == 383 || cr == 8490 {
 			i += sz
 			goto inst4
 		}
 	}
+	goto inst3_fail
+	goto unreachable
+	goto inst3_fail
+inst3_fail:
 	goto fail
 
 	goto unreachable
@@ -156,6 +164,10 @@ inst6: // string "\"" -> 7
 			goto inst7
 		}
 	}
+	goto inst6_fail
+	goto unreachable
+	goto inst6_fail
+inst6_fail:
 	goto fail
 
 	goto unreachable
