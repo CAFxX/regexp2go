@@ -61,6 +61,6 @@ to compile a custom regular expression.
 
 :warning: These are preliminary results since not all features are implemented, and some edge cases are not handled yet. At the same time, there are many possible optimizations that haven't been implemented yet. See the TODOs in the code for details.
 
-![Benchmark result](benchmark/chart.svg)
+<p align=center><img alt="Benchmark results" src="benchmark/chart.svg"></p>
 
 regexp2go can be from slightly faster to over 5 times faster than the `regexp` package in the golang standard library, depending on the regexp and the input data.
