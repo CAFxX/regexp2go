@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"runtime/debug"
 
 	"github.com/CAFxX/regexp2go/internal"
 )
@@ -26,6 +27,7 @@ func main() {
 	flag.Parse()
 
 	if *srv != "" {
+		debug.SetMaxStack(4 * 1024 * 1024)
 		err := internal.Server(*srv)
 		if err != nil {
 			fmt.Fprintf(os.Stderr, "http server: %v\n", err)
