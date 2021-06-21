@@ -32,7 +32,7 @@ func Server(addr string) error {
 									<div class="input-group">
 										<input type=text name=regex placeholder=Regexp required=required class=form-control>
 										<button type=submit name=submit value=raw class="btn btn-primary">Compile</button>
-										<!--<button type=submit name=submit value=ce class="btn btn-secondary">Open in Compiler Explorer</button>-->
+										<button type=submit name=submit value=ce class="btn btn-secondary">Open in Compiler Explorer</button>
 									</div>
 								</form>
 							</div>
@@ -84,7 +84,9 @@ func Server(addr string) error {
 			return
 		}
 
-		res, err := Generate(regex, "regexp2go_demo", "Match", 212, true)
+		usePool := r.Form.Get("submit") != "ce"
+
+		res, err := Generate(regex, "regexp2go_demo", "Match", 212, usePool)
 		if err != nil {
 			w.WriteHeader(http.StatusUnprocessableEntity)
 			fmt.Fprintf(w, "generate: %v\n", err)

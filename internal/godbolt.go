@@ -1,9 +1,12 @@
 package internal
 
 import (
-	"encoding/base64"
+	"bytes"
 	"encoding/json"
 	"fmt"
+	"io"
+	"io/ioutil"
+	"net/http"
 )
 
 type CompilerExplorerClientState struct {
@@ -31,6 +34,10 @@ type Sessions struct {
 	Executors []Executors `json:"executors"`
 }
 
+type Response struct {
+	URL string `json:"url"`
+}
+
 func OpenInCompilerExplorer(source string) (url string, err error) {
 	cs := CompilerExplorerClientState{
 		Sessions: []Sessions{
@@ -47,8 +54,29 @@ func OpenInCompilerExplorer(source string) (url string, err error) {
 	}
 	csj, err := json.Marshal(cs)
 	if err != nil {
-		return "", err
+		return "", fmt.Errorf("marshal request: %w", err)
 	}
-	csjb64 := base64.URLEncoding.EncodeToString(csj)
-	return fmt.Sprintf("https://godbolt.org/clientstate/%s", csjb64), nil
+
+	res, err := http.Post("https://godbolt.org/api/shortener", "application/json", bytes.NewBuffer(csj))
+	if err != nil {
+		return "", fmt.Errorf("post request: %w", err)
+	}
+	defer res.Body.Close()
+	defer io.Copy(io.Discard, res.Body)
+	if res.StatusCode != http.StatusOK {
+		return "", fmt.Errorf("unexpected response code: %d", res.StatusCode)
+	}
+
+	resb, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return "", fmt.Errorf("read response: %w", err)
+	}
+
+	resm := Response{}
+	err = json.Unmarshal(resb, &resm)
+	if err != nil {
+		return "", fmt.Errorf("unmarshal response: %w", err)
+	}
+
+	return resm.URL, nil
 }
