@@ -398,8 +398,8 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 			out("  i+=sz \n goto inst%d", inst.Out)
 			out(`}`)
 		case instString:
-			out("if i >= 0 && i+%d <= len(r) {", len(string(inst.Rune)))
-			out("  if r[i:i+%d] == %q {", len(string(inst.Rune)), string(inst.Rune))
+			out("if i >= 0 && len(r) >= i {")
+			out("  if rs := r[i:]; len(rs) >= %d && rs[:%d] == %q {", len(string(inst.Rune)), len(string(inst.Rune)), string(inst.Rune))
 			out("    i += %d", len(string(inst.Rune)))
 			out("    goto inst%d", inst.Out)
 			out("  }")

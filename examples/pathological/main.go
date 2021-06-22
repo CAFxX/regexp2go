@@ -63,8 +63,8 @@ inst1: // cap 2 -> 3
 	goto unreachable
 	goto inst2
 inst2: // string "a" -> 3
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "a" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "a" {
 			i += 1
 			goto inst3
 		}
@@ -132,8 +132,8 @@ inst5_alt:
 	goto unreachable
 	goto inst6
 inst6: // string "b" -> 7
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "b" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "b" {
 			i += 1
 			goto inst7
 		}

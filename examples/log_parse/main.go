@@ -81,8 +81,8 @@ inst1_fail:
 	goto unreachable
 	goto inst2
 inst2: // string "INFO res=" -> 11
-	if i >= 0 && i+9 <= len(r) {
-		if r[i:i+9] == "INFO res=" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 9 && rs[:9] == "INFO res=" {
 			i += 9
 			goto inst11
 		}
@@ -174,8 +174,8 @@ inst14: // cap 3 -> 15
 	goto unreachable
 	goto inst15
 inst15: // string " msg=" -> 20
-	if i >= 0 && i+5 <= len(r) {
-		if r[i:i+5] == " msg=" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 5 && rs[:5] == " msg=" {
 			i += 5
 			goto inst20
 		}

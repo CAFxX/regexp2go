@@ -173,8 +173,8 @@ inst5_alt:
 	goto unreachable
 	goto inst8
 inst8: // string ":" -> 9
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst9
 		}
@@ -380,8 +380,8 @@ inst13_alt:
 	goto unreachable
 	goto inst16
 inst16: // string ":" -> 17
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst17
 		}
@@ -599,8 +599,8 @@ inst21_alt:
 	goto unreachable
 	goto inst24
 inst24: // string ":" -> 25
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst25
 		}
@@ -830,8 +830,8 @@ inst29_alt:
 	goto unreachable
 	goto inst32
 inst32: // string ":" -> 33
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst33
 		}
@@ -1073,8 +1073,8 @@ inst37_alt:
 	goto unreachable
 	goto inst40
 inst40: // string ":" -> 41
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst41
 		}
@@ -1328,8 +1328,8 @@ inst45_alt:
 	goto unreachable
 	goto inst48
 inst48: // string ":" -> 49
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst49
 		}
@@ -1595,8 +1595,8 @@ inst53_alt:
 	goto unreachable
 	goto inst56
 inst56: // string ":" -> 57
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst57
 		}
@@ -1958,8 +1958,8 @@ inst67_fail:
 	goto unreachable
 	goto inst71
 inst71: // string ":" -> 125
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst125
 		}
@@ -2199,8 +2199,8 @@ inst77_alt:
 	goto unreachable
 	goto inst79
 inst79: // string ":" -> 124
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst124
 		}
@@ -2420,8 +2420,8 @@ inst84_alt:
 	goto unreachable
 	goto inst87
 inst87: // string ":" -> 123
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst123
 		}
@@ -2593,8 +2593,8 @@ inst93_alt:
 	goto unreachable
 	goto inst95
 inst95: // string ":" -> 122
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst122
 		}
@@ -2746,8 +2746,8 @@ inst99_fail:
 	goto unreachable
 	goto inst103
 inst103: // string ":" -> 121
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst121
 		}
@@ -3007,8 +3007,8 @@ inst109_alt:
 	goto unreachable
 	goto inst111
 inst111: // string ":" -> 120
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst120
 		}
@@ -3160,8 +3160,8 @@ inst123_alt:
 	goto unreachable
 	goto inst126
 inst126: // string ":" -> 772
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst772
 		}
@@ -3421,8 +3421,8 @@ inst114_fail:
 	goto unreachable
 	goto inst119
 inst119: // string "::" -> 772
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst772
 		}
@@ -3574,8 +3574,8 @@ inst131_fail:
 	goto unreachable
 	goto inst135
 inst135: // string ":" -> 180
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst180
 		}
@@ -3815,8 +3815,8 @@ inst139_fail:
 	goto unreachable
 	goto inst143
 inst143: // string ":" -> 179
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst179
 		}
@@ -4036,8 +4036,8 @@ inst148_alt:
 	goto unreachable
 	goto inst151
 inst151: // string ":" -> 178
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst178
 		}
@@ -4209,8 +4209,8 @@ inst157_alt:
 	goto unreachable
 	goto inst159
 inst159: // string ":" -> 177
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst177
 		}
@@ -4458,8 +4458,8 @@ inst163_fail:
 	goto unreachable
 	goto inst167
 inst167: // string ":" -> 176
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst176
 		}
@@ -4555,8 +4555,8 @@ inst177_alt:
 	goto unreachable
 	goto inst181
 inst181: // string ":" -> 182
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst182
 		}
@@ -4806,8 +4806,8 @@ inst182_fail:
 	goto unreachable
 	goto inst175
 inst175: // string "::" -> 182
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst182
 		}
@@ -5151,8 +5151,8 @@ inst192_fail:
 	goto unreachable
 	goto inst197
 inst197: // string ":" -> 233
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst233
 		}
@@ -5372,8 +5372,8 @@ inst200_fail:
 	goto unreachable
 	goto inst205
 inst205: // string ":" -> 232
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst232
 		}
@@ -5525,8 +5525,8 @@ inst208_fail:
 	goto unreachable
 	goto inst213
 inst213: // string ":" -> 231
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst231
 		}
@@ -5766,8 +5766,8 @@ inst219_alt:
 	goto unreachable
 	goto inst221
 inst221: // string ":" -> 230
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst230
 		}
@@ -5815,8 +5815,8 @@ inst231_alt:
 	goto unreachable
 	goto inst234
 inst234: // string ":" -> 235
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst235
 		}
@@ -6126,8 +6126,8 @@ inst235_fail:
 	goto unreachable
 	goto inst229
 inst229: // string "::" -> 235
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst235
 		}
@@ -6395,8 +6395,8 @@ inst238_fail:
 	goto unreachable
 	goto inst242
 inst242: // string ":" -> 243
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst243
 		}
@@ -6688,8 +6688,8 @@ inst244_fail:
 	goto unreachable
 	goto inst259
 inst259: // string ":" -> 286
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst286
 		}
@@ -6861,8 +6861,8 @@ inst262_fail:
 	goto unreachable
 	goto inst267
 inst267: // string ":" -> 285
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst285
 		}
@@ -7082,8 +7082,8 @@ inst273_alt:
 	goto unreachable
 	goto inst275
 inst275: // string ":" -> 284
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst284
 		}
@@ -7255,8 +7255,8 @@ inst286_alt:
 	goto unreachable
 	goto inst287
 inst287: // string ":" -> 288
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst288
 		}
@@ -7426,8 +7426,8 @@ inst288_fail:
 	goto unreachable
 	goto inst283
 inst283: // string "::" -> 288
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst288
 		}
@@ -7743,8 +7743,8 @@ inst289_fail:
 	goto unreachable
 	goto inst295
 inst295: // string ":" -> 296
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst296
 		}
@@ -8006,8 +8006,8 @@ inst299_fail:
 	goto unreachable
 	goto inst303
 inst303: // string ":" -> 304
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst304
 		}
@@ -8317,8 +8317,8 @@ inst318_alt:
 	goto unreachable
 	goto inst321
 inst321: // string ":" -> 339
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst339
 		}
@@ -8518,8 +8518,8 @@ inst324_fail:
 	goto unreachable
 	goto inst329
 inst329: // string ":" -> 338
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst338
 		}
@@ -8719,8 +8719,8 @@ inst333_fail:
 	goto unreachable
 	goto inst337
 inst337: // string "::" -> 341
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst341
 		}
@@ -8768,8 +8768,8 @@ inst336_alt:
 	goto unreachable
 	goto inst340
 inst340: // string ":" -> 341
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst341
 		}
@@ -9067,8 +9067,8 @@ inst344_fail:
 	goto unreachable
 	goto inst348
 inst348: // string ":" -> 349
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst349
 		}
@@ -9282,8 +9282,8 @@ inst373_alt:
 	goto unreachable
 	goto inst356
 inst356: // string ":" -> 357
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst357
 		}
@@ -9497,8 +9497,8 @@ inst360_fail:
 	goto unreachable
 	goto inst364
 inst364: // string ":" -> 365
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst365
 		}
@@ -9616,8 +9616,8 @@ inst365_fail:
 	goto unreachable
 	goto inst401
 inst401: // string ":" -> 402
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst402
 		}
@@ -9803,8 +9803,8 @@ inst437_alt:
 	goto unreachable
 	goto inst383
 inst383: // string ":" -> 392
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst392
 		}
@@ -10052,8 +10052,8 @@ inst390_alt:
 	goto unreachable
 	goto inst391
 inst391: // string "::" -> 394
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst394
 		}
@@ -10101,8 +10101,8 @@ inst392_alt:
 	goto unreachable
 	goto inst393
 inst393: // string ":" -> 394
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst394
 		}
@@ -10584,8 +10584,8 @@ inst408_alt:
 	goto unreachable
 	goto inst409
 inst409: // string ":" -> 410
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst410
 		}
@@ -10779,8 +10779,8 @@ inst416_alt:
 	goto unreachable
 	goto inst417
 inst417: // string ":" -> 418
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst418
 		}
@@ -10974,8 +10974,8 @@ inst424_alt:
 	goto unreachable
 	goto inst425
 inst425: // string ":" -> 426
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst426
 		}
@@ -11237,8 +11237,8 @@ inst439_fail:
 	goto unreachable
 	goto inst445
 inst445: // string "::" -> 447
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst447
 		}
@@ -11962,8 +11962,8 @@ inst469_alt:
 	goto unreachable
 	goto inst470
 inst470: // string ":" -> 471
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst471
 		}
@@ -12081,8 +12081,8 @@ inst459_alt:
 	goto unreachable
 	goto inst478
 inst478: // string ":" -> 479
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst479
 		}
@@ -12236,8 +12236,8 @@ inst455_fail:
 	goto unreachable
 	goto inst486
 inst486: // string ":" -> 487
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst487
 		}
@@ -12519,8 +12519,8 @@ inst494_alt:
 	goto unreachable
 	goto inst454
 inst454: // string ":" -> 455
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst455
 		}
@@ -12590,8 +12590,8 @@ inst495_alt:
 	goto unreachable
 	goto inst462
 inst462: // string ":" -> 463
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst463
 		}
@@ -13121,8 +13121,8 @@ inst516_alt:
 	goto unreachable
 	goto inst517
 inst517: // string ":" -> 518
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst518
 		}
@@ -13308,8 +13308,8 @@ inst523_alt:
 	goto unreachable
 	goto inst525
 inst525: // string ":" -> 526
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst526
 		}
@@ -13551,8 +13551,8 @@ inst542_fail:
 	goto unreachable
 	goto inst533
 inst533: // string ":" -> 534
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst534
 		}
@@ -13738,8 +13738,8 @@ inst553_fail:
 	goto unreachable
 	goto inst541
 inst541: // string ":" -> 542
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst542
 		}
@@ -14057,8 +14057,8 @@ inst555_alt:
 	goto unreachable
 	goto inst549
 inst549: // string ":" -> 550
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst550
 		}
@@ -14216,8 +14216,8 @@ inst609_alt:
 	goto unreachable
 	goto inst563
 inst563: // string ":" -> 772
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst772
 		}
@@ -14279,8 +14279,8 @@ inst565_alt:
 	goto unreachable
 	goto inst500
 inst500: // string ":" -> 564
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst564
 		}
@@ -14334,8 +14334,8 @@ inst503_fail:
 	goto unreachable
 	goto inst509
 inst509: // string ":" -> 510
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst510
 		}
@@ -14357,8 +14357,8 @@ inst509_fail:
 	goto unreachable
 	goto inst571
 inst571: // string ":" -> 579
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst579
 		}
@@ -14572,8 +14572,8 @@ inst579_alt:
 	goto unreachable
 	goto inst580
 inst580: // string ":" -> 588
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst588
 		}
@@ -14815,8 +14815,8 @@ inst588_alt:
 	goto unreachable
 	goto inst589
 inst589: // string ":" -> 597
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst597
 		}
@@ -15012,8 +15012,8 @@ inst597_alt:
 	goto unreachable
 	goto inst598
 inst598: // string ":" -> 606
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst606
 		}
@@ -15083,8 +15083,8 @@ inst608_alt:
 	goto unreachable
 	goto inst501
 inst501: // string ":" -> 502
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst502
 		}
@@ -15274,8 +15274,8 @@ inst610_alt:
 	goto unreachable
 	goto inst611
 inst611: // string "%" -> 612
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "%" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "%" {
 			i += 1
 			goto inst612
 		}
@@ -15441,8 +15441,8 @@ inst613_alt:
 	goto unreachable
 	goto inst617
 inst617: // string "ffff" -> 629
-	if i >= 0 && i+4 <= len(r) {
-		if r[i:i+4] == "ffff" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 4 && rs[:4] == "ffff" {
 			i += 4
 			goto inst629
 		}
@@ -15464,8 +15464,8 @@ inst617_fail:
 	goto unreachable
 	goto inst637
 inst637: // string "1" -> 639
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst639
 		}
@@ -15507,8 +15507,8 @@ inst614_alt:
 	goto unreachable
 	goto inst615
 inst615: // string "::" -> 631
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst631
 		}
@@ -15530,8 +15530,8 @@ inst615_fail:
 	goto unreachable
 	goto inst624
 inst624: // string "0" -> 626
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "0" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "0" {
 			i += 1
 			goto inst626
 		}
@@ -15555,8 +15555,8 @@ inst624_fail:
 	goto unreachable
 	goto inst621
 inst621: // string ":0" -> 628
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == ":0" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == ":0" {
 			i += 2
 			goto inst628
 		}
@@ -15600,8 +15600,8 @@ inst643_alt:
 	goto unreachable
 	goto inst623
 inst623: // string "0" -> 627
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "0" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "0" {
 			i += 1
 			goto inst627
 		}
@@ -15623,8 +15623,8 @@ inst623_fail:
 	goto unreachable
 	goto inst625
 inst625: // string "0:" -> 643
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "0:" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "0:" {
 			i += 2
 			goto inst643
 		}
@@ -15648,8 +15648,8 @@ inst625_fail:
 	goto unreachable
 	goto inst630
 inst630: // string ":" -> 643
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst643
 		}
@@ -15777,8 +15777,8 @@ inst631_alt:
 	goto unreachable
 	goto inst632
 inst632: // string "25" -> 634
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst634
 		}
@@ -15802,8 +15802,8 @@ inst632_fail:
 	goto unreachable
 	goto inst635
 inst635: // string "2" -> 636
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst636
 		}
@@ -15825,8 +15825,8 @@ inst635_fail:
 	goto unreachable
 	goto inst566
 inst566: // string "fe80:" -> 610
-	if i >= 0 && i+5 <= len(r) {
-		if r[i:i+5] == "fe80:" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 5 && rs[:5] == "fe80:" {
 			i += 5
 			goto inst610
 		}
@@ -16052,8 +16052,8 @@ inst642_fail:
 	goto unreachable
 	goto inst645
 inst645: // string "25" -> 647
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst647
 		}
@@ -16075,8 +16075,8 @@ inst645_fail:
 	goto unreachable
 	goto inst644
 inst644: // string "." -> 656
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "." {
 			i += 1
 			goto inst656
 		}
@@ -16186,8 +16186,8 @@ inst649_fail:
 	goto unreachable
 	goto inst658
 inst658: // string "25" -> 660
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst660
 		}
@@ -16209,8 +16209,8 @@ inst658_fail:
 	goto unreachable
 	goto inst650
 inst650: // string "1" -> 652
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst652
 		}
@@ -16410,8 +16410,8 @@ inst656_alt:
 	goto unreachable
 	goto inst648
 inst648: // string "2" -> 649
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst649
 		}
@@ -16477,8 +16477,8 @@ inst660_fail:
 	goto unreachable
 	goto inst661
 inst661: // string "2" -> 662
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst662
 		}
@@ -16500,8 +16500,8 @@ inst661_fail:
 	goto unreachable
 	goto inst670
 inst670: // string "." -> 682
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "." {
 			i += 1
 			goto inst682
 		}
@@ -16581,8 +16581,8 @@ inst662_fail:
 	goto unreachable
 	goto inst663
 inst663: // string "1" -> 665
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst665
 		}
@@ -16766,8 +16766,8 @@ inst669_alt:
 	goto unreachable
 	goto inst671
 inst671: // string "25" -> 673
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst673
 		}
@@ -16811,8 +16811,8 @@ inst682_alt:
 	goto unreachable
 	goto inst674
 inst674: // string "2" -> 675
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst675
 		}
@@ -16886,8 +16886,8 @@ inst675_fail:
 	goto unreachable
 	goto inst676
 inst676: // string "1" -> 678
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst678
 		}
@@ -17061,8 +17061,8 @@ inst681_fail:
 	goto unreachable
 	goto inst657
 inst657: // string "." -> 669
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "." {
 			i += 1
 			goto inst669
 		}
@@ -17110,8 +17110,8 @@ inst657_fail:
 	goto unreachable
 	goto inst691
 inst691: // string ":" -> 718
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst718
 		}
@@ -17309,8 +17309,8 @@ inst692_fail:
 	goto unreachable
 	goto inst699
 inst699: // string ":" -> 717
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst717
 		}
@@ -17510,8 +17510,8 @@ inst703_fail:
 	goto unreachable
 	goto inst707
 inst707: // string ":" -> 716
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst716
 		}
@@ -17857,8 +17857,8 @@ inst713_alt:
 	goto unreachable
 	goto inst715
 inst715: // string "::" -> 731
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "::" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "::" {
 			i += 2
 			goto inst731
 		}
@@ -17946,8 +17946,8 @@ inst718_alt:
 	goto unreachable
 	goto inst719
 inst719: // string ":" -> 731
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ":" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ":" {
 			i += 1
 			goto inst731
 		}
@@ -18009,8 +18009,8 @@ inst731_alt:
 	goto unreachable
 	goto inst720
 inst720: // string "25" -> 722
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst722
 		}
@@ -18058,8 +18058,8 @@ inst722_fail:
 	goto unreachable
 	goto inst723
 inst723: // string "2" -> 724
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst724
 		}
@@ -18105,8 +18105,8 @@ inst724_fail:
 	goto unreachable
 	goto inst725
 inst725: // string "1" -> 727
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst727
 		}
@@ -18272,8 +18272,8 @@ inst730_fail:
 	goto unreachable
 	goto inst732
 inst732: // string "." -> 744
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "." {
 			i += 1
 			goto inst744
 		}
@@ -18351,8 +18351,8 @@ inst744_alt:
 	goto unreachable
 	goto inst733
 inst733: // string "25" -> 735
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst735
 		}
@@ -18400,8 +18400,8 @@ inst735_fail:
 	goto unreachable
 	goto inst736
 inst736: // string "2" -> 737
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst737
 		}
@@ -18447,8 +18447,8 @@ inst737_fail:
 	goto unreachable
 	goto inst738
 inst738: // string "1" -> 740
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst740
 		}
@@ -18604,8 +18604,8 @@ inst743_fail:
 	goto unreachable
 	goto inst745
 inst745: // string "." -> 757
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "." {
 			i += 1
 			goto inst757
 		}
@@ -18691,8 +18691,8 @@ inst757_alt:
 	goto unreachable
 	goto inst746
 inst746: // string "25" -> 748
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst748
 		}
@@ -18740,8 +18740,8 @@ inst748_fail:
 	goto unreachable
 	goto inst749
 inst749: // string "2" -> 750
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst750
 		}
@@ -18787,8 +18787,8 @@ inst750_fail:
 	goto unreachable
 	goto inst751
 inst751: // string "1" -> 753
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst753
 		}
@@ -18970,8 +18970,8 @@ inst756_fail:
 	goto unreachable
 	goto inst758
 inst758: // string "." -> 770
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "." {
 			i += 1
 			goto inst770
 		}
@@ -19065,8 +19065,8 @@ inst770_alt:
 	goto unreachable
 	goto inst759
 inst759: // string "25" -> 761
-	if i >= 0 && i+2 <= len(r) {
-		if r[i:i+2] == "25" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 2 && rs[:2] == "25" {
 			i += 2
 			goto inst761
 		}
@@ -19132,8 +19132,8 @@ inst761_fail:
 	goto unreachable
 	goto inst762
 inst762: // string "2" -> 763
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "2" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "2" {
 			i += 1
 			goto inst763
 		}
@@ -19179,8 +19179,8 @@ inst763_fail:
 	goto unreachable
 	goto inst764
 inst764: // string "1" -> 766
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "1" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "1" {
 			i += 1
 			goto inst766
 		}

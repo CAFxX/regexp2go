@@ -71,8 +71,8 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // string "私は" -> 3
-	if i >= 0 && i+6 <= len(r) {
-		if r[i:i+6] == "私は" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 6 && rs[:6] == "私は" {
 			i += 6
 			goto inst3
 		}
@@ -154,8 +154,8 @@ inst6: // cap 3 -> 7
 	goto unreachable
 	goto inst7
 inst7: // string "です" -> 9
-	if i >= 0 && i+6 <= len(r) {
-		if r[i:i+6] == "です" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 6 && rs[:6] == "です" {
 			i += 6
 			goto inst9
 		}

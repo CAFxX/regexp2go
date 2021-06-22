@@ -79,8 +79,8 @@ inst1_fail:
 	goto unreachable
 	goto inst2
 inst2: // string ">" -> 3
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == ">" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == ">" {
 			i += 1
 			goto inst3
 		}

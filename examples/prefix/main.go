@@ -77,8 +77,8 @@ restart:
 	goto unreachable
 	goto inst1
 inst1: // string "Hello " -> 7
-	if i >= 0 && i+6 <= len(r) {
-		if r[i:i+6] == "Hello " {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 6 && rs[:6] == "Hello " {
 			i += 6
 			goto inst7
 		}
@@ -160,8 +160,8 @@ inst10: // cap 3 -> 11
 	goto unreachable
 	goto inst11
 inst11: // string "!" -> 12
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "!" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "!" {
 			i += 1
 			goto inst12
 		}

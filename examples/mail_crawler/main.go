@@ -163,8 +163,8 @@ inst5: // cap 3 -> 6
 	goto unreachable
 	goto inst6
 inst6: // string "@" -> 7
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "@" {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "@" {
 			i += 1
 			goto inst7
 		}
@@ -248,8 +248,8 @@ inst9_alt:
 	goto unreachable
 	goto inst10
 inst10: // string "." -> 11
-	if i >= 0 && i+1 <= len(r) {
-		if r[i:i+1] == "." {
+	if i >= 0 && len(r) >= i {
+		if rs := r[i:]; len(rs) >= 1 && rs[:1] == "." {
 			i += 1
 			goto inst11
 		}
