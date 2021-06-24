@@ -118,7 +118,7 @@ inst11: // cap 2 -> 12
 inst12: // rune "09" -> 13
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
-		if false || (cr >= 48 && cr <= 57) {
+		if cr >= 48 && cr <= 57 {
 			i += sz
 			goto inst13
 		}

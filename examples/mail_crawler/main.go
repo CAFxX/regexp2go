@@ -106,7 +106,8 @@ inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
 				goto inst4
 			}
 			goto inst3_fail
-		} else if false || cr == 383 || cr == 8490 {
+		}
+		if cr == 383 || cr == 8490 {
 			i += sz
 			goto inst4
 		}
@@ -196,7 +197,8 @@ inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
 				goto inst9
 			}
 			goto inst8_fail
-		} else if false || cr == 383 || cr == 8490 {
+		}
+		if cr == 383 || cr == 8490 {
 			i += sz
 			goto inst9
 		}
@@ -274,7 +276,8 @@ inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 				goto inst12
 			}
 			goto inst11_fail
-		} else if false || cr == 383 || cr == 8490 {
+		}
+		if cr == 383 || cr == 8490 {
 			i += sz
 			goto inst12
 		}
@@ -301,7 +304,8 @@ inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
 				goto inst13
 			}
 			goto inst12_fail
-		} else if false || cr == 383 || cr == 8490 {
+		}
+		if cr == 383 || cr == 8490 {
 			i += sz
 			goto inst13
 		}

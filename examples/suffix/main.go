@@ -59,7 +59,7 @@ restart:
 inst1: // rune "az" -> 2
 	if i >= 0 && i < len(r) {
 		cr, sz := rune(r[i]), 1
-		if false || (cr >= 97 && cr <= 122) {
+		if cr >= 97 && cr <= 122 {
 			i += sz
 			goto inst2
 		}

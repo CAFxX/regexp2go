@@ -104,7 +104,7 @@ inst8: // rune "\x00 \"\U0010ffff" -> 9
 			cr, sz = utf8.DecodeRuneInString(r[i:])
 		}
 
-		if false || (cr >= 0 && cr <= 32) || (cr >= 34 && cr <= 1114111) {
+		if (cr >= 0 && cr <= 32) || (cr >= 34 && cr <= 1114111) {
 			i += sz
 			goto inst9
 		}

@@ -103,7 +103,8 @@ inst3: // rune " !#&(*,.0;@Z^_az\u017f\u017f\u212a\u212a" -> 4
 				goto inst4
 			}
 			goto inst3_fail
-		} else if false || cr == 383 || cr == 8490 {
+		}
+		if cr == 383 || cr == 8490 {
 			i += sz
 			goto inst4
 		}

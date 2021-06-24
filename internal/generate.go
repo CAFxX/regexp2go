@@ -346,32 +346,40 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 			// TODO: implement a succint encoding that allows fast O(1) set membership queries for the case of sparse non-ASCII rune ranges (e.g. roaring bitmaps)
 			if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
 				useRuneMask = true
-				outn(`if cru := uint(cr); cru < %d { 
+				out(`if cru := uint(cr); cru < %d { 
 						const runeMask = %q
 						if runeMask[cru/8] & (1<<(cru%%8)) != 0 { 
 							i+=sz
 							goto inst%d 
 						} 
 						goto inst%d_fail 
-					} else `, max, runeMask, inst.Out, pc)
+					}`, max, runeMask, inst.Out, pc)
 			}
 			// TODO: expand the ranges as lists of runes, and use a switch instead; see if the compiler is smart enough to build a search tree
-			outn("if false ")
+			ifConds := false
 			for i := 0; i < len(runes); i += 2 {
 				if useRuneMask && runes[i+1] < max {
 					continue
 				}
+				if !ifConds {
+					ifConds = true
+					outn("if ")
+				} else {
+					outn(" || ")
+				}
 				// TODO: if the runes are ASCII we don't need the outcr snippet and we can simply use the raw bytes and skip the if < RuneSelf
 				if runes[i] == runes[i+1] {
-					outn("|| cr == %d", runes[i])
+					outn("cr == %d", runes[i])
 				} else if runes[i] == runes[i+1]-1 {
 					// TODO: turn comparisons of maskable pairs into (cr & mask == %d)
-					outn("|| cr == %d || cr == %d", runes[i], runes[i+1])
+					outn("cr == %d || cr == %d", runes[i], runes[i+1])
 				} else {
-					outn("|| (cr >= %d && cr <= %d)", runes[i], runes[i+1])
+					outn("(cr >= %d && cr <= %d)", runes[i], runes[i+1])
 				}
 			}
-			out(" { i+=sz \n goto inst%d }", inst.Out)
+			if ifConds {
+				out(" { i+=sz \n goto inst%d }", inst.Out)
+			}
 			out("}")
 			out("goto inst%d_fail", pc)
 		case syntax.InstRuneAny:

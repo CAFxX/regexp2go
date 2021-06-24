@@ -174,9 +174,6 @@ inst21: // rune "ccggtt" -> 22
 				goto inst22
 			}
 			goto inst21_fail
-		} else if false {
-			i += sz
-			goto inst22
 		}
 	}
 	goto inst21_fail
@@ -315,9 +312,6 @@ inst36: // rune "aaccgg" -> 38
 				goto inst38
 			}
 			goto inst36_fail
-		} else if false {
-			i += sz
-			goto inst38
 		}
 	}
 	goto inst36_fail
@@ -423,9 +417,6 @@ inst42: // rune "aacctt" -> 43
 				goto inst43
 			}
 			goto inst42_fail
-		} else if false {
-			i += sz
-			goto inst43
 		}
 	}
 	goto inst42_fail
@@ -518,9 +509,6 @@ inst55: // rune "aaggtt" -> 56
 				goto inst56
 			}
 			goto inst55_fail
-		} else if false {
-			i += sz
-			goto inst56
 		}
 	}
 	goto inst55_fail
@@ -649,9 +637,6 @@ inst63: // rune "aacctt" -> 64
 				goto inst64
 			}
 			goto inst63_fail
-		} else if false {
-			i += sz
-			goto inst64
 		}
 	}
 	goto inst63_fail
@@ -742,9 +727,6 @@ inst74: // rune "aaggtt" -> 75
 				goto inst75
 			}
 			goto inst74_fail
-		} else if false {
-			i += sz
-			goto inst75
 		}
 	}
 	goto inst74_fail
@@ -877,9 +859,6 @@ inst84: // rune "aacctt" -> 85
 				goto inst85
 			}
 			goto inst84_fail
-		} else if false {
-			i += sz
-			goto inst85
 		}
 	}
 	goto inst84_fail
@@ -995,9 +974,6 @@ inst93: // rune "aaggtt" -> 94
 				goto inst94
 			}
 			goto inst93_fail
-		} else if false {
-			i += sz
-			goto inst94
 		}
 	}
 	goto inst93_fail
@@ -1109,9 +1085,6 @@ inst105: // rune "aaccgg" -> 106
 				goto inst106
 			}
 			goto inst105_fail
-		} else if false {
-			i += sz
-			goto inst106
 		}
 	}
 	goto inst105_fail
@@ -1219,9 +1192,6 @@ inst112: // rune "ccggtt" -> 113
 				goto inst113
 			}
 			goto inst112_fail
-		} else if false {
-			i += sz
-			goto inst113
 		}
 	}
 	goto inst112_fail
@@ -1383,9 +1353,6 @@ inst126: // rune "ccggtt" -> 127
 				goto inst127
 			}
 			goto inst126_fail
-		} else if false {
-			i += sz
-			goto inst127
 		}
 	}
 	goto inst126_fail
@@ -1437,9 +1404,6 @@ inst131: // rune "aaccgg" -> 132
 				goto inst132
 			}
 			goto inst131_fail
-		} else if false {
-			i += sz
-			goto inst132
 		}
 	}
 	goto inst131_fail
@@ -1509,9 +1473,6 @@ inst150: // rune "aaccgg" -> 151
 				goto inst151
 			}
 			goto inst150_fail
-		} else if false {
-			i += sz
-			goto inst151
 		}
 	}
 	goto inst150_fail
@@ -1657,9 +1618,6 @@ inst147: // rune "ccggtt" -> 148
 				goto inst148
 			}
 			goto inst147_fail
-		} else if false {
-			i += sz
-			goto inst148
 		}
 	}
 	goto inst147_fail
@@ -1771,9 +1729,6 @@ inst168: // rune "ccggtt" -> 178
 				goto inst178
 			}
 			goto inst168_fail
-		} else if false {
-			i += sz
-			goto inst178
 		}
 	}
 	goto inst168_fail
@@ -1823,9 +1778,6 @@ inst169: // rune "aaccgg" -> 170
 				goto inst170
 			}
 			goto inst169_fail
-		} else if false {
-			i += sz
-			goto inst170
 		}
 	}
 	goto inst169_fail
