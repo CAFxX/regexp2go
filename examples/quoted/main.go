@@ -196,7 +196,7 @@ fail:
 			m[1] = r[bc[2]:bc[3]]
 			return m, si, true
 		}
-		if len(r[si:]) != 0 {
+		if len(r) > si {
 			i = si
 			cr, sz := rune(r[i]), 1
 			if cr >= utf8.RuneSelf {

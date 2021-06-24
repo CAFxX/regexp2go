@@ -448,7 +448,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	}
 	out(`		return m, si, true
 			}
-			if len(r[si:]) != 0 {
+			if len(r) > si {
 				i = si
 				`+outcr+`
 				si+=sz
