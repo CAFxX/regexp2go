@@ -102,12 +102,13 @@ inst18: // alt -> 2, 10
 	bt = append(bt, stateMatch{c, i, 18, 0})
 	goto inst2
 inst18_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst10
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst10
@@ -203,12 +204,13 @@ inst37: // alt -> 21, 29
 	bt = append(bt, stateMatch{c, i, 37, 0})
 	goto inst21
 inst37_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst29
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst20
@@ -293,12 +295,13 @@ inst39: // alt -> 1, 20
 	bt = append(bt, stateMatch{c, i, 39, 0})
 	goto inst1
 inst39_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst20
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst36
@@ -349,12 +352,13 @@ inst59: // alt -> 39, 40
 	bt = append(bt, stateMatch{c, i, 59, 0})
 	goto inst39
 inst59_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst40
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst40
@@ -375,12 +379,13 @@ inst57: // alt -> 41, 49
 	bt = append(bt, stateMatch{c, i, 57, 0})
 	goto inst41
 inst57_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst49
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst41
@@ -567,12 +572,13 @@ inst79: // alt -> 59, 60
 	bt = append(bt, stateMatch{c, i, 79, 0})
 	goto inst59
 inst79_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst60
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst60
@@ -593,12 +599,13 @@ inst77: // alt -> 61, 69
 	bt = append(bt, stateMatch{c, i, 77, 0})
 	goto inst61
 inst77_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst69
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst61
@@ -787,12 +794,13 @@ inst99: // alt -> 79, 80
 	bt = append(bt, stateMatch{c, i, 99, 0})
 	goto inst79
 inst99_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst80
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst80
@@ -813,12 +821,13 @@ inst97: // alt -> 81, 89
 	bt = append(bt, stateMatch{c, i, 97, 0})
 	goto inst81
 inst97_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst89
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst81
@@ -1013,12 +1022,13 @@ inst119: // alt -> 99, 100
 	bt = append(bt, stateMatch{c, i, 119, 0})
 	goto inst99
 inst119_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst100
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst100
@@ -1043,12 +1053,13 @@ inst117: // alt -> 101, 109
 	bt = append(bt, stateMatch{c, i, 117, 0})
 	goto inst101
 inst117_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst109
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst101
@@ -1231,12 +1242,13 @@ inst139: // alt -> 119, 120
 	bt = append(bt, stateMatch{c, i, 139, 0})
 	goto inst119
 inst139_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst120
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst120
@@ -1259,12 +1271,13 @@ inst137: // alt -> 121, 129
 	bt = append(bt, stateMatch{c, i, 137, 0})
 	goto inst121
 inst137_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst129
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst121
@@ -1525,12 +1538,13 @@ inst159: // alt -> 139, 140
 	bt = append(bt, stateMatch{c, i, 159, 0})
 	goto inst139
 inst159_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst140
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst140
@@ -1551,12 +1565,13 @@ inst157: // alt -> 141, 149
 	bt = append(bt, stateMatch{c, i, 157, 0})
 	goto inst141
 inst157_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst149
 	}
+	goto unreachable
 
 	// inst9 unreacheable
 
@@ -1659,12 +1674,13 @@ inst179: // alt -> 159, 160
 	bt = append(bt, stateMatch{c, i, 179, 0})
 	goto inst159
 inst179_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst160
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst160
@@ -1687,12 +1703,13 @@ inst177: // alt -> 161, 169
 	bt = append(bt, stateMatch{c, i, 177, 0})
 	goto inst161
 inst177_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		c, i = bt[n].c, bt[n].i
 		bt = bt[:n]
 		goto inst169
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst161

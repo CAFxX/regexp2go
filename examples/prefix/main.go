@@ -137,7 +137,7 @@ inst9: // alt -> 8, 10
 	bt = append(bt, stateMatch{c, i, 9, 0})
 	goto inst8
 inst9_alt:
-	{
+	if len(bt) > 0 {
 		n := len(bt) - 1
 		ps := &bt[n]
 		c, i = ps.c, ps.i
@@ -150,6 +150,7 @@ inst9_alt:
 		}
 		goto inst10
 	}
+	goto unreachable
 
 	goto unreachable
 	goto inst10

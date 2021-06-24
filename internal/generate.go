@@ -209,7 +209,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 				)
 				out(
 					`inst%d_alt:
-					{
+					if len(bt) > 0 {
 						n := len(bt)-1
 						ps := &bt[n]
 						c, i = ps.c, ps.i
@@ -221,7 +221,8 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 							bt = bt[:n]
 						}
 						goto inst%d
-					}`,
+					}
+					goto unreachable`,
 					pc,
 					steps,
 					inst.Arg,
@@ -235,12 +236,13 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 				)
 				out(
 					`inst%d_alt:
-					{
+					if len(bt) > 0 {
 						n := len(bt)-1
 						c, i = bt[n].c, bt[n].i
 						bt = bt[:n]
 						goto inst%d
-					}`,
+					}
+					goto unreachable`,
 					pc,
 					inst.Arg,
 				)
