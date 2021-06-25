@@ -24,16 +24,47 @@ func TestRegexp2go(t *testing.T) {
 		fn interface{} // match function
 		in []string
 	}{
-		"dna":          {dna.MatchRegexp, dna.Match, []string{"cgtgctatcggcatccaatctatccaacttctaactaccggaggactgtttttcggcaagtgcctgacttcagctgaccacatccacaggataacctggtaaactctcctctgaacagcagacacacccgaccaactatatccaggaatcttcaggcgcgcctagacacagtgatagcagggtggttgccaccgtcgtgttaaagagaaatgacatccctacttgcattacggctgttttccagccagtacaaccaggctaggagctgcaggaccgatgagggactgatggatgggtgtagcagactttcccaattgtcgagcagcctccgaccaggaccccgcaaccgcagtcctcagagcaaggctaatttaggacgctgccaactatactacattaacattttatgaaaccacggctttggatctcgccgctcgactaacggtgctctcatcccttaaggcttggacacagcagattaagtctgagacttgtgaagtgtcgatttcccgagcgatgtaagatcgcaatagtcgggcagttgccattgagtctactcgcaggacccggcagccgtcttggaacaataccgatggtacgaacgcctctaggcctcccagaaggtagcttttctccgagctcgggacatgttaacgtaatctaagggcgatagtatacacctagtagagcgcagatttattgggtccttccagaaagtatccagcgtagtagatgccaattgcaactatatggaacaagcgccacgtagtattatcagtagtagatgcccgaactgatgcttaactcgctgttcggttcgccggctcccctcgctaccacgccctctagctcccgctgggactggactcttgctagggaagtggtcacccatgggactcagatcctgtctctgcaatgtgaaaatgtatgcttagaacgcaagttgacacacgcgacgctcgagatattgagttactaagacgtttacgacgcaccttccaacttcatatccgggagggaaaaa"}},
-		"ipv6":         {ipv6.MatchRegexp, ipv6.Match, []string{"This is an IPv4: 127.1, whereas this is an IPv6: ::1."}},
-		"prefix":       {prefix.MatchRegexp, prefix.Match, []string{"> Hello world!"}},
-		"suffix":       {suffix.MatchRegexp, suffix.Match, []string{"ohvrun cbab cek aifrba  afur483hf, wjfbhjrbr ej frjebhrbiebfr frebfrvej rekhbrsfr fbrkhvbrkesf rf rbjkefbhrhfbhbrhebbrbfr jgrhh"}},
-		"log_parse":    {log_parse.MatchRegexp, log_parse.Match, []string{"ERR x\nINFO msg=hello world\nINFO res=42 msg=oh crap\nERR yadda"}},
-		"unicode":      {unicode.MatchRegexp, unicode.Match, []string{"それはちょっと。。。私は忙しいです！"}},
-		"line_prefix":  {line_prefix.MatchRegexp, line_prefix.Match, []string{"example\n>hello\n>world!\nend\n"}},
-		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match, []string{" dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com"}},
-		"quoted":       {quoted.MatchRegexp, quoted.Match, []string{`code:0 pub:true msg:"Hello World!" t:452`}},
-		"pathological": {pathological.MatchRegexp, pathological.Match, []string{`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`, `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab`}},
+		"dna": {dna.MatchRegexp, dna.Match, []string{
+			"cgtgctatcggcatccaatctatccaacttctaactaccggaggactgtttttcggcaagtgcctgacttcagctgaccacatccacaggataacctggtaaactctcctctgaacagcagacacacccgaccaactatatccaggaatcttcaggcgcgcctagacacagtgatagcagggtggttgccaccgtcgtgttaaagagaaatgacatccctacttgcattacggctgttttccagccagtacaaccaggctaggagctgcaggaccgatgagggactgatggatgggtgtagcagactttcccaattgtcgagcagcctccgaccaggaccccgcaaccgcagtcctcagagcaaggctaatttaggacgctgccaactatactacattaacattttatgaaaccacggctttggatctcgccgctcgactaacggtgctctcatcccttaaggcttggacacagcagattaagtctgagacttgtgaagtgtcgatttcccgagcgatgtaagatcgcaatagtcgggcagttgccattgagtctactcgcaggacccggcagccgtcttggaacaataccgatggtacgaacgcctctaggcctcccagaaggtagcttttctccgagctcgggacatgttaacgtaatctaagggcgatagtatacacctagtagagcgcagatttattgggtccttccagaaagtatccagcgtagtagatgccaattgcaactatatggaacaagcgccacgtagtattatcagtagtagatgcccgaactgatgcttaactcgctgttcggttcgccggctcccctcgctaccacgccctctagctcccgctgggactggactcttgctagggaagtggtcacccatgggactcagatcctgtctctgcaatgtgaaaatgtatgcttagaacgcaagttgacacacgcgacgctcgagatattgagttactaagacgtttacgacgcaccttccaacttcatatccgggagggaaaaa",
+			"cgtgctatcggcatccaatctatccaacttctaactaccggaggactgtttttcggcaagtgcctgacttcagctgaccacatccacagg",
+		}},
+		"ipv6": {ipv6.MatchRegexp, ipv6.Match, []string{
+			"This is an IPv4: 127.1, whereas this is an IPv6: ::1.",
+			"FFFF::",
+			"<FFFF::>",
+			"127.0.0.1\n::FFFF\n",
+		}},
+		"prefix": {prefix.MatchRegexp, prefix.Match, []string{
+			"> Hello world!",
+			"xxx\n\n\n>>> yo\n> x\n\n",
+		}},
+		"suffix": {suffix.MatchRegexp, suffix.Match, []string{
+			"ohvrun cbab cek aifrba  afur483hf, wjfbhjrbr ej frjebhrbiebfr frebfrvej rekhbrsfr fbrkhvbrkesf rf rbjkefbhrhfbhbrhebbrbfr jgrhh",
+			";fjez 992",
+		}},
+		"log_parse": {log_parse.MatchRegexp, log_parse.Match, []string{
+			"ERR x\nINFO msg=hello world\nINFO res=42 msg=oh crap\nERR yadda",
+			"INFO res=0 msg=x",
+		}},
+		"unicode": {unicode.MatchRegexp, unicode.Match, []string{
+			"それはちょっと。。。私は忙しいです！",
+		}},
+		"line_prefix": {line_prefix.MatchRegexp, line_prefix.Match, []string{
+			"example\n>hello\n>world!\nend\n",
+		}},
+		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match, []string{
+			" dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com",
+			"aa@@@xxx.com\n---a@xxx.com\nsomeone@example.com\n",
+		}},
+		"quoted": {quoted.MatchRegexp, quoted.Match, []string{
+			`code:0 pub:true msg:"Hello World!" t:452`,
+			`xxx\n笑笑笑"this is not a test"`,
+			`"a"b"c"`,
+		}},
+		"pathological": {pathological.MatchRegexp, pathological.Match, []string{
+			`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`,
+			`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab`,
+		}},
 	}
 	for n, c := range cases {
 		c := c
