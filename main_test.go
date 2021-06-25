@@ -48,9 +48,12 @@ func TestRegexp2go(t *testing.T) {
 		}},
 		"unicode": {unicode.MatchRegexp, unicode.Match, []string{
 			"それはちょっと。。。私は忙しいです！",
+			"私は。。。です",
 		}},
 		"line_prefix": {line_prefix.MatchRegexp, line_prefix.Match, []string{
 			"example\n>hello\n>world!\nend\n",
+			">\n>>\n>>>",
+			" >a\nb\n>c",
 		}},
 		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match, []string{
 			" dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com",
