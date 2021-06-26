@@ -32,13 +32,16 @@ type stateMatch struct {
 
 // Match implements the regular expression
 // (?i)\b([a-z0-9._%+-]+)@([a-z0-9.-]+\.[a-z]{2,})\b
-// with flags 212
+// with flags 212 and returning the first leftmost match.
 func Match(r string) (matches [3]string, pos int, ok bool) {
 	var bt [3]stateMatch // static storage for backtracking state
 	matches, pos, ok = doMatch(r, MatchMatchFirst, bt[:0])
 	return
 }
 
+// MatchLongest implements the regular expression
+// (?i)\b([a-z0-9._%+-]+)@([a-z0-9.-]+\.[a-z]{2,})\b
+// with flags 212 and returning the leftmost-longest match.
 func MatchLongest(r string) (matches [3]string, pos int, ok bool) {
 	var bt [3]stateMatch // static storage for backtracking state
 	matches, pos, ok = doMatch(r, MatchMatchLongest, bt[:0])

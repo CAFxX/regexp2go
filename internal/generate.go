@@ -108,7 +108,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	// TODO: instead of saving all captures, determine statically which captures to save at each InstAlt
 	out("type state%s struct { c [%d]int; i int; pc int; cnt int }", fn, p.NumCap)
 
-	out("// %s implements the regular expression\n// %v\n// with flags %d", fn, regex, flags)
+	out("// %s implements the regular expression\n// %v\n// with flags %d and returning the first leftmost match.", fn, regex, flags)
 	// TODO: create multiple versions of the function, each using different types for tracking offsets
 	//       (e.g. uint{8,16,32} instead of int) and dynamically dispatch to the different versions
 	//       based on the size of the input string r.
@@ -120,6 +120,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("}")
 	out("")
 
+	out("// %sLongest implements the regular expression\n// %v\n// with flags %d and returning the leftmost-longest match.", fn, regex, flags)
 	out("func %sLongest(r string) (matches [%d]string, pos int, ok bool) {", fn, p.NumCap/2)
 	out("  var bt [%d]state%s // static storage for backtracking state", numSt, fn)
 	out("  matches, pos, ok = do%[1]s(r, %[1]sMatchLongest, bt[:0])", fn)

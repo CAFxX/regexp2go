@@ -32,13 +32,16 @@ type stateMatch struct {
 
 // Match implements the regular expression
 // (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
-// with flags 212
+// with flags 212 and returning the first leftmost match.
 func Match(r string) (matches [10]string, pos int, ok bool) {
 	var bt [17]stateMatch // static storage for backtracking state
 	matches, pos, ok = doMatch(r, MatchMatchFirst, bt[:0])
 	return
 }
 
+// MatchLongest implements the regular expression
+// (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
+// with flags 212 and returning the leftmost-longest match.
 func MatchLongest(r string) (matches [10]string, pos int, ok bool) {
 	var bt [17]stateMatch // static storage for backtracking state
 	matches, pos, ok = doMatch(r, MatchMatchLongest, bt[:0])
