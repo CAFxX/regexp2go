@@ -39,6 +39,12 @@ func Match(r string) (matches [10]string, pos int, ok bool) {
 	return
 }
 
+func MatchLongest(r string) (matches [10]string, pos int, ok bool) {
+	var bt [17]stateMatch // static storage for backtracking state
+	matches, pos, ok = doMatch(r, MatchMatchLongest, bt[:0])
+	return
+}
+
 func doMatch(r string, m MatchMode, bt []stateMatch) ([10]string, int, bool) {
 	si := 0 // starting byte index
 

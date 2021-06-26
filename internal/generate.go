@@ -120,6 +120,13 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("}")
 	out("")
 
+	out("func %sLongest(r string) (matches [%d]string, pos int, ok bool) {", fn, p.NumCap/2)
+	out("  var bt [%d]state%s // static storage for backtracking state", numSt, fn)
+	out("  matches, pos, ok = do%[1]s(r, %[1]sMatchLongest, bt[:0])", fn)
+	out("  return")
+	out("}")
+	out("")
+
 	out("func do%[1]s(r string, m %[1]sMode, bt []state%[1]s) ([%d]string, int, bool) {", fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
 	// TODO: is this really needed every time we have an InstAlt? Can we skip it in some more cases?
