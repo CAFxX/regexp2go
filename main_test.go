@@ -32,6 +32,7 @@ func TestRegexp2go(t *testing.T) {
 			"This is an IPv4: 127.1, whereas this is an IPv6: ::1.",
 			"FFFF::",
 			"<FFFF::>",
+			"FFFF::FFFF",
 			"127.0.0.1\n::FFFF\n",
 		}},
 		"prefix": {prefix.MatchRegexp, prefix.Match, []string{

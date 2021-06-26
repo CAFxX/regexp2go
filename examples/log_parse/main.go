@@ -10,8 +10,18 @@ import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?m)^INFO res=([0-9]+) msg=(.*)$"
 
-var _ = syntax.IsWordChar
-var _ = strings.Index
+var (
+	_ = syntax.IsWordChar
+	_ = strings.Index
+)
+
+type MatchMode uint8
+
+const (
+	MatchMatchOnly MatchMode = iota
+	MatchMatchFirst
+	MatchMatchLongest
+)
 
 type stateMatch struct {
 	c   [6]int
@@ -25,11 +35,11 @@ type stateMatch struct {
 // with flags 212
 func Match(r string) (matches [3]string, pos int, ok bool) {
 	var bt [2]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
+	matches, pos, ok = doMatch(r, MatchMatchFirst, bt[:0])
 	return
 }
 
-func doMatch(r string, bt []stateMatch) ([3]string, int, bool) {
+func doMatch(r string, m MatchMode, bt []stateMatch) ([3]string, int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*2 + 7) / 8)
@@ -317,6 +327,9 @@ fail:
 				goto inst22_alt
 			}
 		}
+	}
+matchreturn:
+	{
 		if matched {
 			var m [3]string
 			m[0] = r[bc[0]:bc[1]]
@@ -345,6 +358,9 @@ match:
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
 		bc = c
 		matched = true
+		if m == MatchMatchOnly || m == MatchMatchFirst {
+			goto matchreturn
+		}
 	}
 	goto fail
 

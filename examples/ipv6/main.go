@@ -10,8 +10,18 @@ import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?:(?:[0-9a-fA-F]{1,4}:){7,7}[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,7}:|(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}|(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}|(?:[0-9a-fA-F]{1,4}:){1,4}(?::[0-9a-fA-F]{1,4}){1,3}|(?:[0-9a-fA-F]{1,4}:){1,3}(?::[0-9a-fA-F]{1,4}){1,4}|(?:[0-9a-fA-F]{1,4}:){1,2}(?::[0-9a-fA-F]{1,4}){1,5}|[0-9a-fA-F]{1,4}:(?:(?::[0-9a-fA-F]{1,4}){1,6})|:(?:(?::[0-9a-fA-F]{1,4}){1,7}|:)|fe80:(?::[0-9a-fA-F]{0,4}){0,4}%[0-9a-zA-Z]{1,}|::(?:ffff(?::0{1,4}){0,1}:){0,1}(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])|(?:[0-9a-fA-F]{1,4}:){1,4}:(?:(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9])\\.){3,3}(?:25[0-5]|(?:2[0-4]|1{0,1}[0-9]){0,1}[0-9]))"
 
-var _ = syntax.IsWordChar
-var _ = strings.Index
+var (
+	_ = syntax.IsWordChar
+	_ = strings.Index
+)
+
+type MatchMode uint8
+
+const (
+	MatchMatchOnly MatchMode = iota
+	MatchMatchFirst
+	MatchMatchLongest
+)
 
 type stateMatch struct {
 	c   [2]int
@@ -25,11 +35,11 @@ type stateMatch struct {
 // with flags 212
 func Match(r string) (matches [1]string, pos int, ok bool) {
 	var bt [319]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
+	matches, pos, ok = doMatch(r, MatchMatchFirst, bt[:0])
 	return
 }
 
-func doMatch(r string, bt []stateMatch) ([1]string, int, bool) {
+func doMatch(r string, m MatchMode, bt []stateMatch) ([1]string, int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*319 + 7) / 8)
@@ -20376,6 +20386,9 @@ fail:
 				goto inst739_alt
 			}
 		}
+	}
+matchreturn:
+	{
 		if matched {
 			var m [1]string
 			m[0] = r[bc[0]:bc[1]]
@@ -20402,6 +20415,9 @@ match:
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
 		bc = c
 		matched = true
+		if m == MatchMatchOnly || m == MatchMatchFirst {
+			goto matchreturn
+		}
 	}
 	goto fail
 

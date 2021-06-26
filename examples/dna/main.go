@@ -10,8 +10,18 @@ import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "(?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))"
 
-var _ = syntax.IsWordChar
-var _ = strings.Index
+var (
+	_ = syntax.IsWordChar
+	_ = strings.Index
+)
+
+type MatchMode uint8
+
+const (
+	MatchMatchOnly MatchMode = iota
+	MatchMatchFirst
+	MatchMatchLongest
+)
 
 type stateMatch struct {
 	c   [20]int
@@ -25,11 +35,11 @@ type stateMatch struct {
 // with flags 212
 func Match(r string) (matches [10]string, pos int, ok bool) {
 	var bt [17]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, bt[:0])
+	matches, pos, ok = doMatch(r, MatchMatchFirst, bt[:0])
 	return
 }
 
-func doMatch(r string, bt []stateMatch) ([10]string, int, bool) {
+func doMatch(r string, m MatchMode, bt []stateMatch) ([10]string, int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*17 + 7) / 8)
@@ -1887,6 +1897,9 @@ fail:
 				goto inst177_alt
 			}
 		}
+	}
+matchreturn:
+	{
 		if matched {
 			var m [10]string
 			m[0] = r[bc[0]:bc[1]]
@@ -1922,6 +1935,9 @@ match:
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
 		bc = c
 		matched = true
+		if m == MatchMatchOnly || m == MatchMatchFirst {
+			goto matchreturn
+		}
 	}
 	goto fail
 

@@ -16,7 +16,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/unicode"
 )
 
-var ballast = strings.Repeat("#", 1<<24)
+var ballast = make([]byte, 1<<24)
 
 func BenchmarkPrefix(b *testing.B) {
 	re := regexp.MustCompile(prefix.MatchRegexp)

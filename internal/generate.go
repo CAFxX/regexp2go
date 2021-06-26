@@ -90,10 +90,24 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	} else {
 		out(`const %sRegexp = %q`, fn, regex)
 	}
-	out("var _ = syntax.IsWordChar")
-	out("var _ = strings.Index")
+	out(`var (
+		_ = syntax.IsWordChar
+		_ = strings.Index
+	)`)
+
+	out(`
+		type %[1]sMode uint8
+
+		const (
+			%[1]sMatchOnly %[1]sMode = iota
+			%[1]sMatchFirst
+			%[1]sMatchLongest
+		)
+	`, fn)
+
 	// TODO: instead of saving all captures, determine statically which captures to save at each InstAlt
 	out("type state%s struct { c [%d]int; i int; pc int; cnt int }", fn, p.NumCap)
+
 	out("// %s implements the regular expression\n// %v\n// with flags %d", fn, regex, flags)
 	// TODO: create multiple versions of the function, each using different types for tracking offsets
 	//       (e.g. uint{8,16,32} instead of int) and dynamically dispatch to the different versions
@@ -101,11 +115,12 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("func %s(r string) (matches [%d]string, pos int, ok bool) {", fn, p.NumCap/2)
 	// TODO: use static or dynamic backtracking based on whether we can bound the amount of visits to InstAlt states
 	out("  var bt [%d]state%s // static storage for backtracking state", numSt, fn)
-	out("  matches, pos, ok = do%s(r, bt[:0])", fn)
+	out("  matches, pos, ok = do%[1]s(r, %[1]sMatchFirst, bt[:0])", fn)
 	out("  return")
 	out("}")
 	out("")
-	out("func do%s(r string, bt []state%s) ([%d]string, int, bool) {", fn, fn, p.NumCap/2)
+
+	out("func do%[1]s(r string, m %[1]sMode, bt []state%[1]s) ([%d]string, int, bool) {", fn, p.NumCap/2)
 	out("  si := 0 // starting byte index ")
 	// TODO: is this really needed every time we have an InstAlt? Can we skip it in some more cases?
 	if numSt > 0 {
@@ -441,6 +456,8 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	}
 	out(`		}
 			}
+		}
+		matchreturn: {
 			if matched {
 				var m [%d]string`,
 		p.NumCap/2,
@@ -470,8 +487,12 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 			if !matched || c[1] - c[0] > bc[1] - bc[0] {
 				bc = c
 				matched = true
+				if m == %[1]sMatchOnly || m == %[1]sMatchFirst {
+					goto matchreturn
+				}
 			}
-			goto fail`)
+			goto fail
+	`, fn)
 
 	out(`
 	goto unreachable
