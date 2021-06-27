@@ -76,7 +76,9 @@ func doByteSliceMatch(s []byte, m MatchMode, bt []stateMatch) (matches [2][]byte
 	rhdr.Len = len(s)
 
 	var pmatches [2 * 2]int
-	pmatches, pos, ok = doMatch(r, m, bt)
+	pmatches, ok = doMatch(r, m, bt)
+	pos = pmatches[0]
+
 	for i := range matches {
 		if pmatches[i*2] < 0 {
 			continue
@@ -90,7 +92,8 @@ func doByteSliceMatch(s []byte, m MatchMode, bt []stateMatch) (matches [2][]byte
 
 func doStringMatch(s string, m MatchMode, bt []stateMatch) (matches [2]string, pos int, ok bool) {
 	var pmatches [2 * 2]int
-	pmatches, pos, ok = doMatch(s, m, bt)
+	pmatches, ok = doMatch(s, m, bt)
+	pos = pmatches[0]
 
 	for i := range matches {
 		if pmatches[i*2] < 0 {
@@ -102,7 +105,7 @@ func doStringMatch(s string, m MatchMode, bt []stateMatch) (matches [2]string, p
 	return
 }
 
-func doMatch(r string, m MatchMode, bt []stateMatch) ([4]int, int, bool) {
+func doMatch(r string, m MatchMode, bt []stateMatch) ([4]int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*1 + 7) / 8)
@@ -269,7 +272,7 @@ fail:
 			}
 		}
 		if matched {
-			return bc, si, true
+			return bc, true
 		}
 		if len(r) > si {
 			i = si
@@ -282,7 +285,7 @@ fail:
 			_ = cr
 			goto restart
 		}
-		return bc, len(r), false
+		return bc, false
 	}
 
 	goto unreachable
@@ -290,7 +293,7 @@ fail:
 match:
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
 		if m == MatchMatchOnly || m == MatchMatchFirst {
-			return c, si, true
+			return c, true
 		}
 		bc = c
 		matched = true

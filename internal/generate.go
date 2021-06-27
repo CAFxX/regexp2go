@@ -157,7 +157,9 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 			rhdr.Len = len(s)
 
 			var pmatches [%[2]d*2]int
-			pmatches, pos, ok = do%[1]s(r, m, bt)
+			pmatches, ok = do%[1]s(r, m, bt)
+			pos = pmatches[0]
+			
 			for i := range matches {
 				if pmatches[i*2] < 0 {
 					continue
@@ -171,7 +173,8 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 
 		func doString%[1]s(s string, m %[1]sMode, bt []state%[1]s) (matches [%[2]d]string, pos int, ok bool) {
 			var pmatches [%[2]d*2]int
-			pmatches, pos, ok = do%[1]s(s, m, bt)
+			pmatches, ok = do%[1]s(s, m, bt)
+			pos = pmatches[0]
 
 			for i := range matches {
 				if pmatches[i*2] < 0 {
@@ -184,7 +187,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 		}
 	`, fn, p.NumCap/2)
 
-	out("func do%[1]s(r string, m %[1]sMode, bt []state%[1]s) ([%[2]d]int, int, bool) {", fn, p.NumCap)
+	out("func do%[1]s(r string, m %[1]sMode, bt []state%[1]s) ([%[2]d]int, bool) {", fn, p.NumCap)
 	out("  si := 0 // starting byte index ")
 	// TODO: is this really needed every time we have an InstAlt? Can we skip it in some more cases?
 	if numSt > 0 {
@@ -521,7 +524,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out(`		}
 			}
 			if matched {
-				return bc, si, true
+				return bc, true
 			}
 			if len(r) > si {
 				i = si
@@ -530,7 +533,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 				_ = cr
 				goto restart
 			}
-			return bc, len(r), false
+			return bc, false
 		}`,
 	)
 
@@ -540,7 +543,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 		match:
 			if !matched || c[1] - c[0] > bc[1] - bc[0] {
 				if m == %[1]sMatchOnly || m == %[1]sMatchFirst {
-					return c, si, true
+					return c, true
 				}
 				bc = c
 				matched = true
