@@ -6,6 +6,9 @@ package suffix
 import "regexp/syntax"
 import "unicode/utf8"
 import "strings"
+import "reflect"
+import "unsafe"
+import "runtime"
 import "github.com/CAFxX/bytespool"
 
 const MatchRegexp = "[a-z]+$"
@@ -30,25 +33,76 @@ type stateMatch struct {
 	cnt int
 }
 
+// MatchString implements the regular expression
+// [a-z]+$
+// with flags 212 and returning the first leftmost match.
+func MatchString(r string) (matches [1]string, pos int, ok bool) {
+	var bt [1]stateMatch // static storage for backtracking state
+	matches, pos, ok = doStringMatch(r, MatchMatchFirst, bt[:0])
+	return
+}
+
+// MatchLongestString implements the regular expression
+// [a-z]+$
+// with flags 212 and returning the leftmost-longest match.
+func MatchLongestString(r string) (matches [1]string, pos int, ok bool) {
+	var bt [1]stateMatch // static storage for backtracking state
+	matches, pos, ok = doStringMatch(r, MatchMatchLongest, bt[:0])
+	return
+}
+
 // Match implements the regular expression
 // [a-z]+$
 // with flags 212 and returning the first leftmost match.
-func Match(r string) (matches [1]string, pos int, ok bool) {
+func Match(s []byte) (matches [1][]byte, pos int, ok bool) {
 	var bt [1]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, MatchMatchFirst, bt[:0])
+	matches, pos, ok = doByteSliceMatch(s, MatchMatchFirst, bt[:0])
 	return
 }
 
 // MatchLongest implements the regular expression
 // [a-z]+$
 // with flags 212 and returning the leftmost-longest match.
-func MatchLongest(r string) (matches [1]string, pos int, ok bool) {
+func MatchLongest(s []byte) (matches [1][]byte, pos int, ok bool) {
 	var bt [1]stateMatch // static storage for backtracking state
-	matches, pos, ok = doMatch(r, MatchMatchLongest, bt[:0])
+	matches, pos, ok = doByteSliceMatch(s, MatchMatchLongest, bt[:0])
 	return
 }
 
-func doMatch(r string, m MatchMode, bt []stateMatch) ([1]string, int, bool) {
+func doByteSliceMatch(s []byte, m MatchMode, bt []stateMatch) (matches [1][]byte, pos int, ok bool) {
+	var r string
+	rhdr := (*reflect.StringHeader)(unsafe.Pointer(&r))
+	rhdr.Data = uintptr(unsafe.Pointer(&s[0]))
+	rhdr.Len = len(s)
+
+	var pmatches [1 * 2]int
+	pmatches, pos, ok = doMatch(r, m, bt)
+	for i := range matches {
+		if pmatches[i*2] < 0 {
+			continue
+		}
+		matches[i] = s[pmatches[i*2]:pmatches[i*2+1]:pmatches[i*2+1]]
+	}
+
+	runtime.KeepAlive(s)
+	return
+}
+
+func doStringMatch(s string, m MatchMode, bt []stateMatch) (matches [1]string, pos int, ok bool) {
+	var pmatches [1 * 2]int
+	pmatches, pos, ok = doMatch(s, m, bt)
+
+	for i := range matches {
+		if pmatches[i*2] < 0 {
+			continue
+		}
+		matches[i] = s[pmatches[i*2]:pmatches[i*2+1]]
+	}
+
+	return
+}
+
+func doMatch(r string, m MatchMode, bt []stateMatch) ([2]int, int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*1 + 7) / 8)
@@ -63,8 +117,10 @@ func doMatch(r string, m MatchMode, bt []stateMatch) ([1]string, int, bool) {
 	_ = pi
 
 restart:
-	bt = bt[:0]      // fast reset dynamic backtracking state
-	var c [2]int     // captures
+	bt = bt[:0] // fast reset dynamic backtracking state
+	c := [2]int{-1,
+		-1,
+	} // captures
 	var bc [2]int    // captures for the longest match so far
 	matched := false // succesful match flag
 	i := si          // current byte index
@@ -158,13 +214,8 @@ fail:
 				goto inst2_alt
 			}
 		}
-	}
-matchreturn:
-	{
 		if matched {
-			var m [1]string
-			m[0] = r[bc[0]:bc[1]]
-			return m, si, true
+			return bc, si, true
 		}
 		if len(r) > si {
 			i = si
@@ -177,19 +228,18 @@ matchreturn:
 			_ = cr
 			goto restart
 		}
-		var m [1]string
-		return m, len(r), false
+		return bc, len(r), false
 	}
 
 	goto unreachable
 	goto match
 match:
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
+		if m == MatchMatchOnly || m == MatchMatchFirst {
+			return c, si, true
+		}
 		bc = c
 		matched = true
-		if m == MatchMatchOnly || m == MatchMatchFirst {
-			goto matchreturn
-		}
 	}
 	goto fail
 
