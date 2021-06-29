@@ -23,7 +23,7 @@ func BenchmarkPrefix(b *testing.B) {
 	s := strings.Repeat("Help", 1024) + "Hello world!"
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			prefix.MatchString(s)
+			prefix.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -41,7 +41,7 @@ func BenchmarkDna(b *testing.B) {
 	s := "cgtgctatcggcatccaatctatccaacttctaactaccggaggactgtttttcggcaagtgcctgacttcagctgaccacatccacaggataacctggtaaactctcctctgaacagcagacacacccgaccaactatatccaggaatcttcaggcgcgcctagacacagtgatagcagggtggttgccaccgtcgtgttaaagagaaatgacatccctacttgcattacggctgttttccagccagtacaaccaggctaggagctgcaggaccgatgagggactgatggatgggtgtagcagactttcccaattgtcgagcagcctccgaccaggaccccgcaaccgcagtcctcagagcaaggctaatttaggacgctgccaactatactacattaacattttatgaaaccacggctttggatctcgccgctcgactaacggtgctctcatcccttaaggcttggacacagcagattaagtctgagacttgtgaagtgtcgatttcccgagcgatgtaagatcgcaatagtcgggcagttgccattgagtctactcgcaggacccggcagccgtcttggaacaataccgatggtacgaacgcctctaggcctcccagaaggtagcttttctccgagctcgggacatgttaacgtaatctaagggcgatagtatacacctagtagagcgcagatttattgggtccttccagaaagtatccagcgtagtagatgccaattgcaactatatggaacaagcgccacgtagtattatcagtagtagatgcccgaactgatgcttaactcgctgttcggttcgccggctcccctcgctaccacgccctctagctcccgctgggactggactcttgctagggaagtggtcacccatgggactcagatcctgtctctgcaatgtgaaaatgtatgcttagaacgcaagttgacacacgcgacgctcgagatattgagttactaagacgtttacgacgcaccttccaacttcatatccgggagggaaaaa"
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			dna.MatchString(s)
+			dna.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -59,7 +59,7 @@ func BenchmarkMailCrawler(b *testing.B) {
 	s := "haogragra004kj afe;awnfea fahfouf9u[qjrr kjfkelfah;rn@@@arewruew09ruqjr, fewfnefoefe hello@example.com rroir"
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			mail_crawler.MatchString(s)
+			mail_crawler.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -83,7 +83,7 @@ ERR end
 `
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			log_parse.MatchString(s)
+			log_parse.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -101,7 +101,7 @@ func BenchmarkUnicode(b *testing.B) {
 	s := `それはちょっと。。。私は忙しいです！`
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			unicode.MatchString(s)
+			unicode.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -119,7 +119,7 @@ func BenchmarkSuffix(b *testing.B) {
 	s := `ohvrun cbab cek aifrba     afur483hf, wjfbhjrbr ej frjebhrbiebfr frebfrvej rekhbrsfr fbrkhvbrkesf rf rbjkefbhrhfbhbrhebbrbfr jgrhh`
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			suffix.MatchString(s)
+			suffix.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -137,7 +137,7 @@ func BenchmarkIPv6(b *testing.B) {
 	s := `This is an IPv4: 127.1, whereas this is an IPv6: ::1.`
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			ipv6.MatchString(s)
+			ipv6.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -155,7 +155,7 @@ func BenchmarkQuoted(b *testing.B) {
 	s := `code:0 pub:true msg:"Hello World!" t:452`
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			quoted.MatchString(s)
+			quoted.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {
@@ -173,7 +173,7 @@ func BenchmarkPathological(b *testing.B) {
 	s := `aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`
 	b.Run("regexp2go", func(b *testing.B) {
 		for i := 0; i < b.N; i++ {
-			pathological.MatchString(s)
+			pathological.Match{}.FindString(s)
 		}
 	})
 	if testing.Short() {

@@ -18,14 +18,18 @@ var (
 	_ = strings.Index
 )
 
-type MatchMode uint8
+type modeTypeMatch uint8
 
 const (
-	MatchMatchOnly MatchMode = iota
-	MatchMatchFirst
-	MatchMatchLongest
+	modeMatchMatch modeTypeMatch = iota
+	modeFirstMatch
+	modeLongestMatch
 )
 
+// Match implements the regular expression
+// (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
+// with flags 212.
+type Match struct{}
 type stateMatch struct {
 	c   [20]int
 	i   int
@@ -33,50 +37,42 @@ type stateMatch struct {
 	cnt int
 }
 
-// MatchString implements the regular expression
-// (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
-// with flags 212 and returning the first leftmost match.
-func MatchString(r string) (matches [10]string, pos int, ok bool) {
+// FindString returns the first leftmost match.
+func (e Match) FindString(r string) (matches [10]string, pos int, ok bool) {
 	var bt [17]stateMatch // static storage for backtracking state
-	matches, pos, ok = doStringMatch(r, MatchMatchFirst, bt[:0])
+	matches, pos, ok = e.doString(r, modeFirstMatch, bt[:0])
 	return
 }
 
-// MatchLongestString implements the regular expression
-// (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
-// with flags 212 and returning the leftmost-longest match.
-func MatchLongestString(r string) (matches [10]string, pos int, ok bool) {
+// FindLongestString returns the leftmost-longest match.
+func (e Match) FindLongestString(r string) (matches [10]string, pos int, ok bool) {
 	var bt [17]stateMatch // static storage for backtracking state
-	matches, pos, ok = doStringMatch(r, MatchMatchLongest, bt[:0])
+	matches, pos, ok = e.doString(r, modeLongestMatch, bt[:0])
 	return
 }
 
-// Match implements the regular expression
-// (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
-// with flags 212 and returning the first leftmost match.
-func Match(s []byte) (matches [10][]byte, pos int, ok bool) {
+// Find returns the first leftmost match.
+func (e Match) Find(s []byte) (matches [10][]byte, pos int, ok bool) {
 	var bt [17]stateMatch // static storage for backtracking state
-	matches, pos, ok = doByteSliceMatch(s, MatchMatchFirst, bt[:0])
+	matches, pos, ok = e.doByteSlice(s, modeFirstMatch, bt[:0])
 	return
 }
 
-// MatchLongest implements the regular expression
-// (?:(agggtaaa|tttaccct)|([cgt]gggtaaa|tttaccc[acg])|(a[act]ggtaaa|tttacc[agt]t)|(ag[act]gtaaa|tttac[agt]ct)|(agg[act]taaa|ttta[agt]cct)|(aggg[acg]aaa|ttt[cgt]ccct)|(agggt[cgt]aa|tt[acg]accct)|(agggta[cgt]a|t[acg]taccct)|(agggtaa[cgt]|[acg]ttaccct))
-// with flags 212 and returning the leftmost-longest match.
-func MatchLongest(s []byte) (matches [10][]byte, pos int, ok bool) {
+// FindLongest returns the leftmost-longest match.
+func (e Match) FindLongest(s []byte) (matches [10][]byte, pos int, ok bool) {
 	var bt [17]stateMatch // static storage for backtracking state
-	matches, pos, ok = doByteSliceMatch(s, MatchMatchLongest, bt[:0])
+	matches, pos, ok = e.doByteSlice(s, modeLongestMatch, bt[:0])
 	return
 }
 
-func doByteSliceMatch(s []byte, m MatchMode, bt []stateMatch) (matches [10][]byte, pos int, ok bool) {
+func (e Match) doByteSlice(s []byte, m modeTypeMatch, bt []stateMatch) (matches [10][]byte, pos int, ok bool) {
 	var r string
 	rhdr := (*reflect.StringHeader)(unsafe.Pointer(&r))
 	rhdr.Data = uintptr(unsafe.Pointer(&s[0]))
 	rhdr.Len = len(s)
 
 	var pmatches [10 * 2]int
-	pmatches, ok = doMatch(r, m, bt)
+	pmatches, ok = e.do(r, m, bt)
 	pos = pmatches[0]
 
 	for i := range matches {
@@ -90,9 +86,9 @@ func doByteSliceMatch(s []byte, m MatchMode, bt []stateMatch) (matches [10][]byt
 	return
 }
 
-func doStringMatch(s string, m MatchMode, bt []stateMatch) (matches [10]string, pos int, ok bool) {
+func (e Match) doString(s string, m modeTypeMatch, bt []stateMatch) (matches [10]string, pos int, ok bool) {
 	var pmatches [10 * 2]int
-	pmatches, ok = doMatch(s, m, bt)
+	pmatches, ok = e.do(s, m, bt)
 	pos = pmatches[0]
 
 	for i := range matches {
@@ -105,7 +101,7 @@ func doStringMatch(s string, m MatchMode, bt []stateMatch) (matches [10]string, 
 	return
 }
 
-func doMatch(r string, m MatchMode, bt []stateMatch) ([20]int, bool) {
+func (e Match) do(r string, m modeTypeMatch, bt []stateMatch) ([20]int, bool) {
 	si := 0 // starting byte index
 
 	ppi := bytespool.GetBytesSlicePtr(((len(r)+1)*17 + 7) / 8)
@@ -2004,7 +2000,7 @@ fail:
 	goto match
 match:
 	if !matched || c[1]-c[0] > bc[1]-bc[0] {
-		if m == MatchMatchOnly || m == MatchMatchFirst {
+		if m == modeMatchMatch || m == modeFirstMatch {
 			return c, true
 		}
 		bc = c

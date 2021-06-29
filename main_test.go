@@ -27,48 +27,48 @@ func TestRegexp2go(t *testing.T) {
 		fnls interface{} // match function - Longest, String
 		in   []string
 	}{
-		"dna": {dna.MatchRegexp, dna.Match, dna.MatchLongest, dna.MatchString, dna.MatchLongestString, []string{
+		"dna": {dna.MatchRegexp, dna.Match{}.Find, dna.Match{}.FindLongest, dna.Match{}.FindString, dna.Match{}.FindLongestString, []string{
 			"cgtgctatcggcatccaatctatccaacttctaactaccggaggactgtttttcggcaagtgcctgacttcagctgaccacatccacaggataacctggtaaactctcctctgaacagcagacacacccgaccaactatatccaggaatcttcaggcgcgcctagacacagtgatagcagggtggttgccaccgtcgtgttaaagagaaatgacatccctacttgcattacggctgttttccagccagtacaaccaggctaggagctgcaggaccgatgagggactgatggatgggtgtagcagactttcccaattgtcgagcagcctccgaccaggaccccgcaaccgcagtcctcagagcaaggctaatttaggacgctgccaactatactacattaacattttatgaaaccacggctttggatctcgccgctcgactaacggtgctctcatcccttaaggcttggacacagcagattaagtctgagacttgtgaagtgtcgatttcccgagcgatgtaagatcgcaatagtcgggcagttgccattgagtctactcgcaggacccggcagccgtcttggaacaataccgatggtacgaacgcctctaggcctcccagaaggtagcttttctccgagctcgggacatgttaacgtaatctaagggcgatagtatacacctagtagagcgcagatttattgggtccttccagaaagtatccagcgtagtagatgccaattgcaactatatggaacaagcgccacgtagtattatcagtagtagatgcccgaactgatgcttaactcgctgttcggttcgccggctcccctcgctaccacgccctctagctcccgctgggactggactcttgctagggaagtggtcacccatgggactcagatcctgtctctgcaatgtgaaaatgtatgcttagaacgcaagttgacacacgcgacgctcgagatattgagttactaagacgtttacgacgcaccttccaacttcatatccgggagggaaaaa",
 			"cgtgctatcggcatccaatctatccaacttctaactaccggaggactgtttttcggcaagtgcctgacttcagctgaccacatccacagg",
 		}},
-		"ipv6": {ipv6.MatchRegexp, ipv6.Match, ipv6.MatchLongest, ipv6.MatchString, ipv6.MatchLongestString, []string{
+		"ipv6": {ipv6.MatchRegexp, ipv6.Match{}.Find, ipv6.Match{}.FindLongest, ipv6.Match{}.FindString, ipv6.Match{}.FindLongestString, []string{
 			"This is an IPv4: 127.1, whereas this is an IPv6: ::1.",
 			"FFFF::",
 			"<FFFF::>",
 			"FFFF::FFFF",
 			"127.0.0.1\n::FFFF\n",
 		}},
-		"prefix": {prefix.MatchRegexp, prefix.Match, prefix.MatchLongest, prefix.MatchString, prefix.MatchLongestString, []string{
+		"prefix": {prefix.MatchRegexp, prefix.Match{}.Find, prefix.Match{}.FindLongest, prefix.Match{}.FindString, prefix.Match{}.FindLongestString, []string{
 			"> Hello world!",
 			"xxx\n\n\n>>> yo\n> x\n\n",
 		}},
-		"suffix": {suffix.MatchRegexp, suffix.Match, suffix.MatchLongest, suffix.MatchString, suffix.MatchLongestString, []string{
+		"suffix": {suffix.MatchRegexp, suffix.Match{}.Find, suffix.Match{}.FindLongest, suffix.Match{}.FindString, suffix.Match{}.FindLongestString, []string{
 			"ohvrun cbab cek aifrba  afur483hf, wjfbhjrbr ej frjebhrbiebfr frebfrvej rekhbrsfr fbrkhvbrkesf rf rbjkefbhrhfbhbrhebbrbfr jgrhh",
 			";fjez 992",
 		}},
-		"log_parse": {log_parse.MatchRegexp, log_parse.Match, log_parse.MatchLongest, log_parse.MatchString, log_parse.MatchLongestString, []string{
+		"log_parse": {log_parse.MatchRegexp, log_parse.Match{}.Find, log_parse.Match{}.FindLongest, log_parse.Match{}.FindString, log_parse.Match{}.FindLongestString, []string{
 			"ERR x\nINFO msg=hello world\nINFO res=42 msg=oh crap\nERR yadda",
 			"INFO res=0 msg=x",
 		}},
-		"unicode": {unicode.MatchRegexp, unicode.Match, unicode.MatchLongest, unicode.MatchString, unicode.MatchLongestString, []string{
+		"unicode": {unicode.MatchRegexp, unicode.Match{}.Find, unicode.Match{}.FindLongest, unicode.Match{}.FindString, unicode.Match{}.FindLongestString, []string{
 			"それはちょっと。。。私は忙しいです！",
 			"私は。。。です",
 		}},
-		"line_prefix": {line_prefix.MatchRegexp, line_prefix.Match, line_prefix.MatchLongest, line_prefix.MatchString, line_prefix.MatchLongestString, []string{
+		"line_prefix": {line_prefix.MatchRegexp, line_prefix.Match{}.Find, line_prefix.Match{}.FindLongest, line_prefix.Match{}.FindString, line_prefix.Match{}.FindLongestString, []string{
 			"example\n>hello\n>world!\nend\n",
 			">\n>>\n>>>",
 			" >a\nb\n>c",
 		}},
-		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match, mail_crawler.MatchLongest, mail_crawler.MatchString, mail_crawler.MatchLongestString, []string{
+		"mail_crawler": {mail_crawler.MatchRegexp, mail_crawler.Match{}.Find, mail_crawler.Match{}.FindLongest, mail_crawler.Match{}.FindString, mail_crawler.Match{}.FindLongestString, []string{
 			" dod oifoejf@fewj.coc eoj fepowk@kfoooooofsdfjdsfkdskf.com",
 			"aa@@@xxx.com\n---a@xxx.com\nsomeone@example.com\n",
 		}},
-		"quoted": {quoted.MatchRegexp, quoted.Match, quoted.MatchLongest, quoted.MatchString, quoted.MatchLongestString, []string{
+		"quoted": {quoted.MatchRegexp, quoted.Match{}.Find, quoted.Match{}.FindLongest, quoted.Match{}.FindString, quoted.Match{}.FindLongestString, []string{
 			`code:0 pub:true msg:"Hello World!" t:452`,
 			`xxx\n笑笑笑"this is not a test"`,
 			`"a"b"c"`,
 		}},
-		"pathological": {pathological.MatchRegexp, pathological.Match, pathological.MatchLongest, pathological.MatchString, pathological.MatchLongestString, []string{
+		"pathological": {pathological.MatchRegexp, pathological.Match{}.Find, pathological.Match{}.FindLongest, pathological.Match{}.FindString, pathological.Match{}.FindLongestString, []string{
 			`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`,
 			`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab`,
 		}},
