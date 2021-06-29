@@ -3,10 +3,13 @@ package internal
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/CAFxX/httpcompression"
 )
 
 func Server(addr string) error {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	compress, _ := httpcompression.DefaultAdapter()
+	http.Handle("/", compress(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		w.Write([]byte(`
 			<!DOCTYPE html>
 			<html lang=en>
@@ -58,8 +61,8 @@ func Server(addr string) error {
 				</body>
 			</html>
 		`))
-	})
-	http.HandleFunc("/generate", func(w http.ResponseWriter, r *http.Request) {
+	})))
+	http.Handle("/generate", compress(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != http.MethodPost {
 			w.WriteHeader(http.StatusMethodNotAllowed)
 			fmt.Fprintf(w, "method not allowed: %s\n", r.Method)
@@ -107,6 +110,6 @@ func Server(addr string) error {
 
 		w.Header().Set("Content-Type", "text/plain; charset=utf-8")
 		w.Write(res)
-	})
+	})))
 	return http.ListenAndServe(addr, nil)
 }
