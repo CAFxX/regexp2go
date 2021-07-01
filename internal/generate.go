@@ -158,7 +158,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("}")
 	out("")
 
-	out("// Match returns the leftmost-longest match.")
+	out("// Match returns whether the byte slice matches.")
 	out("func (e %s) Match(s []byte) (pos int, ok bool) {", fn)
 	out("  var bt [%d]state%s // static storage for backtracking state", numSt, fn)
 	out("  _, pos, ok = e.doByteSlice(s, modeMatch%[1]s, bt[:0])", fn)

@@ -72,7 +72,7 @@ func (e Match) FindLongest(s []byte) (matches [2][]byte, pos int, ok bool) {
 	return
 }
 
-// Match returns the leftmost-longest match.
+// Match returns whether the byte slice matches.
 func (e Match) Match(s []byte) (pos int, ok bool) {
 	var bt [2]stateMatch // static storage for backtracking state
 	_, pos, ok = e.doByteSlice(s, modeMatchMatch, bt[:0])
