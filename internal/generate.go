@@ -683,6 +683,7 @@ func optDeadInst(p *syntax.Prog) {
 	}
 }
 
+// TODO: consider also the preds in the _fail block of each inst
 func optReorder(p *syntax.Prog) []int {
 	type inst struct {
 		in  []int
