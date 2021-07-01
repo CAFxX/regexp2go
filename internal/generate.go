@@ -134,6 +134,14 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("}")
 	out("")
 
+	out("// MatchString returns whether the string matches.")
+	out("func (e %s) MatchString(r string) (pos int, ok bool) {", fn)
+	out("  var bt [%d]state%s // static storage for backtracking state", numSt, fn)
+	out("  _, pos, ok = e.doString(r, modeMatch%[1]s, bt[:0])", fn)
+	out("  return")
+	out("}")
+	out("")
+
 	out("// Find returns the first leftmost match.")
 	out("func (e %s) Find(s []byte) (matches [%d][]byte, pos int, ok bool) {", fn, p.NumCap/2)
 	out("  var bt [%d]state%s // static storage for backtracking state", numSt, fn)
@@ -150,6 +158,14 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("}")
 	out("")
 
+	out("// Match returns the leftmost-longest match.")
+	out("func (e %s) Match(s []byte) (pos int, ok bool) {", fn)
+	out("  var bt [%d]state%s // static storage for backtracking state", numSt, fn)
+	out("  _, pos, ok = e.doByteSlice(s, modeMatch%[1]s, bt[:0])", fn)
+	out("  return")
+	out("}")
+	out("")
+
 	// TODO: this is silly, we should not transmute strings into slices
 	out(`
 		func (e %[1]s) doByteSlice(s []byte, m modeType%[1]s, bt []state%[1]s) (matches [%[2]d][]byte, pos int, ok bool) {
@@ -161,6 +177,10 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 			var pmatches [%[2]d*2]int
 			pmatches, ok = e.do(r, m, bt)
 			pos = pmatches[0]
+
+			if m == modeMatch%[1]s {
+				return
+			}
 
 			for i := range matches {
 				if pmatches[i*2] < 0 {
@@ -177,6 +197,10 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 			var pmatches [%[2]d*2]int
 			pmatches, ok = e.do(s, m, bt)
 			pos = pmatches[0]
+
+			if m == modeMatch%[1]s {
+				return
+			}
 
 			for i := range matches {
 				if pmatches[i*2] < 0 {

@@ -51,6 +51,13 @@ func (e Match) FindLongestString(r string) (matches [3]string, pos int, ok bool)
 	return
 }
 
+// MatchString returns whether the string matches.
+func (e Match) MatchString(r string) (pos int, ok bool) {
+	var bt [2]stateMatch // static storage for backtracking state
+	_, pos, ok = e.doString(r, modeMatchMatch, bt[:0])
+	return
+}
+
 // Find returns the first leftmost match.
 func (e Match) Find(s []byte) (matches [3][]byte, pos int, ok bool) {
 	var bt [2]stateMatch // static storage for backtracking state
@@ -65,6 +72,13 @@ func (e Match) FindLongest(s []byte) (matches [3][]byte, pos int, ok bool) {
 	return
 }
 
+// Match returns the leftmost-longest match.
+func (e Match) Match(s []byte) (pos int, ok bool) {
+	var bt [2]stateMatch // static storage for backtracking state
+	_, pos, ok = e.doByteSlice(s, modeMatchMatch, bt[:0])
+	return
+}
+
 func (e Match) doByteSlice(s []byte, m modeTypeMatch, bt []stateMatch) (matches [3][]byte, pos int, ok bool) {
 	var r string
 	rhdr := (*reflect.StringHeader)(unsafe.Pointer(&r))
@@ -74,6 +88,10 @@ func (e Match) doByteSlice(s []byte, m modeTypeMatch, bt []stateMatch) (matches 
 	var pmatches [3 * 2]int
 	pmatches, ok = e.do(r, m, bt)
 	pos = pmatches[0]
+
+	if m == modeMatchMatch {
+		return
+	}
 
 	for i := range matches {
 		if pmatches[i*2] < 0 {
@@ -90,6 +108,10 @@ func (e Match) doString(s string, m modeTypeMatch, bt []stateMatch) (matches [3]
 	var pmatches [3 * 2]int
 	pmatches, ok = e.do(s, m, bt)
 	pos = pmatches[0]
+
+	if m == modeMatchMatch {
+		return
+	}
 
 	for i := range matches {
 		if pmatches[i*2] < 0 {
