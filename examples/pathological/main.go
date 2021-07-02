@@ -116,17 +116,13 @@ func (e Match) do(r string, m modeTypeMatch, bt []stateMatch) ([4]int, bool) {
 	_ = pi
 
 restart:
-	bt = bt[:0] // fast reset dynamic backtracking state
-	c := [4]int{-1,
-		-1,
-		-1,
-		-1,
-	} // captures
-	var bc [4]int    // captures for the longest match so far
-	matched := false // succesful match flag
-	i := si          // current byte index
-	c[0] = i         // start of match
-	goto inst5       // initial instruction
+	bt = bt[:0]                 // fast reset dynamic backtracking state
+	c := [4]int{-1, -1, -1, -1} // captures
+	var bc [4]int               // captures for the longest match so far
+	matched := false            // succesful match flag
+	i := si                     // current byte index
+	c[0] = i                    // start of match
+	goto inst5                  // initial instruction
 
 	// inst0 unreacheable
 

@@ -116,15 +116,11 @@ func (e Match) do(r string, m modeTypeMatch, bt []stateMatch) ([4]int, bool) {
 	_ = pi
 
 restart:
-	bt = bt[:0] // fast reset dynamic backtracking state
-	c := [4]int{-1,
-		-1,
-		-1,
-		-1,
-	} // captures
-	var bc [4]int    // captures for the longest match so far
-	matched := false // succesful match flag
-	i := si          // current byte index
+	bt = bt[:0]                 // fast reset dynamic backtracking state
+	c := [4]int{-1, -1, -1, -1} // captures
+	var bc [4]int               // captures for the longest match so far
+	matched := false            // succesful match flag
+	i := si                     // current byte index
 
 	// fast prefix search "私は"
 	if idx := strings.Index(r[si:], "私は"); idx >= 0 {

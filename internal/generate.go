@@ -216,7 +216,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("restart:")
 	// TODO: create a fast path that skips clearing _bt and c in case we restart before they have been modified (by InstAlt, InstCap, ...)
 	out("  bt = bt[:0] // fast reset dynamic backtracking state")
-	out("  c := [%d]int{%s} // captures ", p.NumCap, strings.Repeat("-1,\n", p.NumCap))
+	out("  c := [%d]int{%s} // captures ", p.NumCap, strings.Repeat("-1,", p.NumCap))
 	out("  var bc [%d]int // captures for the longest match so far", p.NumCap)
 	out("  matched := false // succesful match flag")
 	out("  i := si // current byte index ")
