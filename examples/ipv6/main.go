@@ -153,49 +153,7 @@ inst2: // rune "09AFaf" -> 6
 			default:
 				goto inst2_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -286,49 +244,7 @@ inst3: // rune "09AFaf" -> 5
 			default:
 				goto inst3_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -427,49 +343,7 @@ inst4: // rune "09AFaf" -> 8
 			default:
 				goto inst4_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -518,49 +392,7 @@ inst9: // rune "09AFaf" -> 15
 			default:
 				goto inst9_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -636,49 +468,7 @@ inst10: // rune "09AFaf" -> 14
 			default:
 				goto inst10_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -748,49 +538,7 @@ inst11: // rune "09AFaf" -> 13
 			default:
 				goto inst11_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -895,49 +643,7 @@ inst12: // rune "09AFaf" -> 16
 			default:
 				goto inst12_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -986,49 +692,7 @@ inst17: // rune "09AFaf" -> 23
 			default:
 				goto inst17_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1110,49 +774,7 @@ inst18: // rune "09AFaf" -> 22
 			default:
 				goto inst18_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1222,49 +844,7 @@ inst19: // rune "09AFaf" -> 21
 			default:
 				goto inst19_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1375,49 +955,7 @@ inst20: // rune "09AFaf" -> 24
 			default:
 				goto inst20_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1466,49 +1004,7 @@ inst25: // rune "09AFaf" -> 31
 			default:
 				goto inst25_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1596,49 +1092,7 @@ inst26: // rune "09AFaf" -> 30
 			default:
 				goto inst26_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1708,49 +1162,7 @@ inst27: // rune "09AFaf" -> 29
 			default:
 				goto inst27_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1867,49 +1279,7 @@ inst28: // rune "09AFaf" -> 32
 			default:
 				goto inst28_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1958,49 +1328,7 @@ inst33: // rune "09AFaf" -> 39
 			default:
 				goto inst33_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2094,49 +1422,7 @@ inst34: // rune "09AFaf" -> 38
 			default:
 				goto inst34_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2206,49 +1492,7 @@ inst35: // rune "09AFaf" -> 37
 			default:
 				goto inst35_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2371,49 +1615,7 @@ inst36: // rune "09AFaf" -> 40
 			default:
 				goto inst36_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2462,49 +1664,7 @@ inst41: // rune "09AFaf" -> 47
 			default:
 				goto inst41_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2604,49 +1764,7 @@ inst42: // rune "09AFaf" -> 46
 			default:
 				goto inst42_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2716,49 +1834,7 @@ inst43: // rune "09AFaf" -> 45
 			default:
 				goto inst43_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2887,49 +1963,7 @@ inst44: // rune "09AFaf" -> 48
 			default:
 				goto inst44_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2978,49 +2012,7 @@ inst49: // rune "09AFaf" -> 55
 			default:
 				goto inst49_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3126,49 +2118,7 @@ inst50: // rune "09AFaf" -> 54
 			default:
 				goto inst50_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3238,49 +2188,7 @@ inst51: // rune "09AFaf" -> 53
 			default:
 				goto inst51_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3415,49 +2323,7 @@ inst52: // rune "09AFaf" -> 56
 			default:
 				goto inst52_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3506,49 +2372,7 @@ inst57: // rune "09AFaf" -> 63
 			default:
 				goto inst57_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3660,49 +2484,7 @@ inst58: // rune "09AFaf" -> 62
 			default:
 				goto inst58_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3751,49 +2533,7 @@ inst1: // rune "09AFaf" -> 7
 			default:
 				goto inst1_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3863,49 +2603,7 @@ inst59: // rune "09AFaf" -> 61
 			default:
 				goto inst59_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -3954,49 +2652,7 @@ inst66: // rune "09AFaf" -> 68
 			default:
 				goto inst66_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4066,49 +2722,7 @@ inst67: // rune "09AFaf" -> 71
 			default:
 				goto inst67_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4207,49 +2821,7 @@ inst65: // rune "09AFaf" -> 69
 			default:
 				goto inst65_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4319,49 +2891,7 @@ inst64: // rune "09AFaf" -> 70
 			default:
 				goto inst64_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4431,49 +2961,7 @@ inst74: // rune "09AFaf" -> 76
 			default:
 				goto inst74_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4543,49 +3031,7 @@ inst75: // rune "09AFaf" -> 79
 			default:
 				goto inst75_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4684,49 +3130,7 @@ inst73: // rune "09AFaf" -> 77
 			default:
 				goto inst73_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4796,49 +3200,7 @@ inst80: // rune "09AFaf" -> 86
 			default:
 				goto inst80_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -4908,49 +3270,7 @@ inst81: // rune "09AFaf" -> 85
 			default:
 				goto inst81_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5020,49 +3340,7 @@ inst82: // rune "09AFaf" -> 84
 			default:
 				goto inst82_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5161,49 +3439,7 @@ inst83: // rune "09AFaf" -> 87
 			default:
 				goto inst83_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5273,49 +3509,7 @@ inst91: // rune "09AFaf" -> 95
 			default:
 				goto inst91_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5385,49 +3579,7 @@ inst90: // rune "09AFaf" -> 92
 			default:
 				goto inst90_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5526,49 +3678,7 @@ inst89: // rune "09AFaf" -> 93
 			default:
 				goto inst89_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5638,49 +3748,7 @@ inst98: // rune "09AFaf" -> 100
 			default:
 				goto inst98_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5750,49 +3818,7 @@ inst99: // rune "09AFaf" -> 103
 			default:
 				goto inst99_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -5891,49 +3917,7 @@ inst97: // rune "09AFaf" -> 101
 			default:
 				goto inst97_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6024,49 +4008,7 @@ inst104: // rune "09AFaf" -> 110
 			default:
 				goto inst104_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6136,49 +4078,7 @@ inst105: // rune "09AFaf" -> 109
 			default:
 				goto inst105_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6227,49 +4127,7 @@ inst72: // rune "09AFaf" -> 78
 			default:
 				goto inst72_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6389,49 +4247,7 @@ inst107: // rune "09AFaf" -> 111
 			default:
 				goto inst107_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6501,49 +4317,7 @@ inst106: // rune "09AFaf" -> 108
 			default:
 				goto inst106_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6592,49 +4366,7 @@ inst88: // rune "09AFaf" -> 94
 			default:
 				goto inst88_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6815,49 +4547,7 @@ inst96: // rune "09AFaf" -> 102
 			default:
 				goto inst96_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -6906,49 +4596,7 @@ inst112: // rune "09AFaf" -> 118
 			default:
 				goto inst112_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7018,49 +4666,7 @@ inst113: // rune "09AFaf" -> 117
 			default:
 				goto inst113_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7130,49 +4736,7 @@ inst114: // rune "09AFaf" -> 116
 			default:
 				goto inst114_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7271,49 +4835,7 @@ inst115: // rune "09AFaf" -> 119
 			default:
 				goto inst115_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7362,49 +4884,7 @@ inst130: // rune "09AFaf" -> 132
 			default:
 				goto inst130_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7474,49 +4954,7 @@ inst131: // rune "09AFaf" -> 135
 			default:
 				goto inst131_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7615,49 +5053,7 @@ inst129: // rune "09AFaf" -> 133
 			default:
 				goto inst129_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7727,49 +5123,7 @@ inst128: // rune "09AFaf" -> 134
 			default:
 				goto inst128_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7839,49 +5193,7 @@ inst138: // rune "09AFaf" -> 140
 			default:
 				goto inst138_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -7972,49 +5284,7 @@ inst139: // rune "09AFaf" -> 143
 			default:
 				goto inst139_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8092,49 +5362,7 @@ inst137: // rune "09AFaf" -> 141
 			default:
 				goto inst137_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8204,49 +5432,7 @@ inst144: // rune "09AFaf" -> 150
 			default:
 				goto inst144_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8316,49 +5502,7 @@ inst145: // rune "09AFaf" -> 149
 			default:
 				goto inst145_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8428,49 +5572,7 @@ inst146: // rune "09AFaf" -> 148
 			default:
 				goto inst146_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8569,49 +5671,7 @@ inst147: // rune "09AFaf" -> 151
 			default:
 				goto inst147_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8681,49 +5741,7 @@ inst155: // rune "09AFaf" -> 159
 			default:
 				goto inst155_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8793,49 +5811,7 @@ inst154: // rune "09AFaf" -> 156
 			default:
 				goto inst154_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -8934,49 +5910,7 @@ inst153: // rune "09AFaf" -> 157
 			default:
 				goto inst153_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9046,49 +5980,7 @@ inst136: // rune "09AFaf" -> 142
 			default:
 				goto inst136_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9158,49 +6050,7 @@ inst161: // rune "09AFaf" -> 165
 			default:
 				goto inst161_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9270,49 +6120,7 @@ inst162: // rune "09AFaf" -> 164
 			default:
 				goto inst162_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9382,49 +6190,7 @@ inst163: // rune "09AFaf" -> 167
 			default:
 				goto inst163_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9523,49 +6289,7 @@ inst160: // rune "09AFaf" -> 166
 			default:
 				goto inst160_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9717,49 +6441,7 @@ inst152: // rune "09AFaf" -> 158
 			default:
 				goto inst152_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9829,49 +6511,7 @@ inst168: // rune "09AFaf" -> 174
 			default:
 				goto inst168_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -9941,49 +6581,7 @@ inst182: // rune "09AFaf" -> 188
 			default:
 				goto inst182_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10107,49 +6705,7 @@ inst171: // rune "09AFaf" -> 175
 			default:
 				goto inst171_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10219,49 +6775,7 @@ inst170: // rune "09AFaf" -> 172
 			default:
 				goto inst170_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10331,49 +6845,7 @@ inst169: // rune "09AFaf" -> 173
 			default:
 				goto inst169_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10443,49 +6915,7 @@ inst190: // rune "09AFaf" -> 196
 			default:
 				goto inst190_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10555,49 +6985,7 @@ inst183: // rune "09AFaf" -> 187
 			default:
 				goto inst183_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10667,49 +7055,7 @@ inst191: // rune "09AFaf" -> 195
 			default:
 				goto inst191_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10779,49 +7125,7 @@ inst192: // rune "09AFaf" -> 194
 			default:
 				goto inst192_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -10920,49 +7224,7 @@ inst193: // rune "09AFaf" -> 197
 			default:
 				goto inst193_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11032,49 +7294,7 @@ inst198: // rune "09AFaf" -> 204
 			default:
 				goto inst198_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11144,49 +7364,7 @@ inst199: // rune "09AFaf" -> 203
 			default:
 				goto inst199_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11256,49 +7434,7 @@ inst200: // rune "09AFaf" -> 202
 			default:
 				goto inst200_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11397,49 +7533,7 @@ inst201: // rune "09AFaf" -> 205
 			default:
 				goto inst201_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11488,49 +7582,7 @@ inst209: // rune "09AFaf" -> 213
 			default:
 				goto inst209_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11600,49 +7652,7 @@ inst208: // rune "09AFaf" -> 210
 			default:
 				goto inst208_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11741,49 +7751,7 @@ inst207: // rune "09AFaf" -> 211
 			default:
 				goto inst207_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11853,49 +7821,7 @@ inst206: // rune "09AFaf" -> 212
 			default:
 				goto inst206_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -11965,49 +7891,7 @@ inst217: // rune "09AFaf" -> 221
 			default:
 				goto inst217_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -12077,49 +7961,7 @@ inst216: // rune "09AFaf" -> 218
 			default:
 				goto inst216_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -12292,49 +8134,7 @@ inst214: // rune "09AFaf" -> 220
 			default:
 				goto inst214_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -12404,49 +8204,7 @@ inst215: // rune "09AFaf" -> 219
 			default:
 				goto inst215_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -12516,49 +8274,7 @@ inst222: // rune "09AFaf" -> 228
 			default:
 				goto inst222_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -12628,49 +8344,7 @@ inst223: // rune "09AFaf" -> 227
 			default:
 				goto inst223_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -12740,49 +8414,7 @@ inst235: // rune "09AFaf" -> 241
 			default:
 				goto inst235_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -12898,49 +8530,7 @@ inst224: // rune "09AFaf" -> 226
 			default:
 				goto inst224_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13010,49 +8600,7 @@ inst225: // rune "09AFaf" -> 229
 			default:
 				goto inst225_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13122,49 +8670,7 @@ inst236: // rune "09AFaf" -> 240
 			default:
 				goto inst236_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13234,49 +8740,7 @@ inst237: // rune "09AFaf" -> 239
 			default:
 				goto inst237_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13367,49 +8831,7 @@ inst238: // rune "09AFaf" -> 250
 			default:
 				goto inst238_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13504,49 +8926,7 @@ inst252: // rune "09AFaf" -> 258
 			default:
 				goto inst252_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13595,49 +8975,7 @@ inst243: // rune "09AFaf" -> 249
 			default:
 				goto inst243_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13707,49 +9045,7 @@ inst184: // rune "09AFaf" -> 186
 			default:
 				goto inst184_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13819,49 +9115,7 @@ inst253: // rune "09AFaf" -> 257
 			default:
 				goto inst253_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -13931,49 +9185,7 @@ inst254: // rune "09AFaf" -> 256
 			default:
 				goto inst254_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14043,49 +9255,7 @@ inst244: // rune "09AFaf" -> 248
 			default:
 				goto inst244_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14184,49 +9354,7 @@ inst255: // rune "09AFaf" -> 259
 			default:
 				goto inst255_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14296,49 +9424,7 @@ inst263: // rune "09AFaf" -> 267
 			default:
 				goto inst263_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14408,49 +9494,7 @@ inst262: // rune "09AFaf" -> 264
 			default:
 				goto inst262_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14549,49 +9593,7 @@ inst245: // rune "09AFaf" -> 247
 			default:
 				goto inst245_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14640,49 +9642,7 @@ inst261: // rune "09AFaf" -> 265
 			default:
 				goto inst261_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14752,49 +9712,7 @@ inst270: // rune "09AFaf" -> 272
 			default:
 				goto inst270_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -14864,49 +9782,7 @@ inst271: // rune "09AFaf" -> 275
 			default:
 				goto inst271_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15005,49 +9881,7 @@ inst269: // rune "09AFaf" -> 273
 			default:
 				goto inst269_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15117,49 +9951,7 @@ inst268: // rune "09AFaf" -> 274
 			default:
 				goto inst268_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15229,49 +10021,7 @@ inst260: // rune "09AFaf" -> 266
 			default:
 				goto inst260_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15407,49 +10157,7 @@ inst276: // rune "09AFaf" -> 282
 			default:
 				goto inst276_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15519,49 +10227,7 @@ inst288: // rune "09AFaf" -> 294
 			default:
 				goto inst288_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15669,49 +10335,7 @@ inst279: // rune "09AFaf" -> 283
 			default:
 				goto inst279_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15781,49 +10405,7 @@ inst277: // rune "09AFaf" -> 281
 			default:
 				goto inst277_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15893,49 +10475,7 @@ inst278: // rune "09AFaf" -> 280
 			default:
 				goto inst278_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -15984,49 +10524,7 @@ inst291: // rune "09AFaf" -> 312
 			default:
 				goto inst291_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16096,49 +10594,7 @@ inst290: // rune "09AFaf" -> 292
 			default:
 				goto inst290_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16250,49 +10706,7 @@ inst289: // rune "09AFaf" -> 293
 			default:
 				goto inst289_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16364,49 +10778,7 @@ inst296: // rune "09AFaf" -> 302
 			default:
 				goto inst296_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16476,49 +10848,7 @@ inst246: // rune "09AFaf" -> 772
 			default:
 				goto inst246_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16588,49 +10918,7 @@ inst297: // rune "09AFaf" -> 301
 			default:
 				goto inst297_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16700,49 +10988,7 @@ inst298: // rune "09AFaf" -> 300
 			default:
 				goto inst298_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16833,49 +11079,7 @@ inst299: // rune "09AFaf" -> 311
 			default:
 				goto inst299_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -16947,49 +11151,7 @@ inst304: // rune "09AFaf" -> 310
 			default:
 				goto inst304_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17059,49 +11221,7 @@ inst305: // rune "09AFaf" -> 309
 			default:
 				goto inst305_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17171,49 +11291,7 @@ inst306: // rune "09AFaf" -> 308
 			default:
 				goto inst306_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17283,49 +11361,7 @@ inst314: // rune "09AFaf" -> 320
 			default:
 				goto inst314_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17395,49 +11431,7 @@ inst315: // rune "09AFaf" -> 319
 			default:
 				goto inst315_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17507,49 +11501,7 @@ inst316: // rune "09AFaf" -> 318
 			default:
 				goto inst316_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17648,49 +11600,7 @@ inst317: // rune "09AFaf" -> 321
 			default:
 				goto inst317_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17760,49 +11670,7 @@ inst322: // rune "09AFaf" -> 328
 			default:
 				goto inst322_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17872,49 +11740,7 @@ inst323: // rune "09AFaf" -> 327
 			default:
 				goto inst323_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -17984,49 +11810,7 @@ inst324: // rune "09AFaf" -> 326
 			default:
 				goto inst324_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18125,49 +11909,7 @@ inst325: // rune "09AFaf" -> 329
 			default:
 				goto inst325_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18216,49 +11958,7 @@ inst331: // rune "09AFaf" -> 335
 			default:
 				goto inst331_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18328,49 +12028,7 @@ inst332: // rune "09AFaf" -> 334
 			default:
 				goto inst332_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18440,49 +12098,7 @@ inst333: // rune "09AFaf" -> 337
 			default:
 				goto inst333_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18618,49 +12234,7 @@ inst341: // rune "09AFaf" -> 347
 			default:
 				goto inst341_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18752,49 +12326,7 @@ inst330: // rune "09AFaf" -> 336
 			default:
 				goto inst330_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18864,49 +12396,7 @@ inst342: // rune "09AFaf" -> 346
 			default:
 				goto inst342_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -18976,49 +12466,7 @@ inst343: // rune "09AFaf" -> 345
 			default:
 				goto inst343_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19109,49 +12557,7 @@ inst344: // rune "09AFaf" -> 374
 			default:
 				goto inst344_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19223,49 +12629,7 @@ inst349: // rune "09AFaf" -> 355
 			default:
 				goto inst349_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19314,49 +12678,7 @@ inst351: // rune "09AFaf" -> 353
 			default:
 				goto inst351_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19426,49 +12748,7 @@ inst352: // rune "09AFaf" -> 373
 			default:
 				goto inst352_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19538,49 +12818,7 @@ inst350: // rune "09AFaf" -> 354
 			default:
 				goto inst350_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19694,49 +12932,7 @@ inst357: // rune "09AFaf" -> 363
 			default:
 				goto inst357_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19806,49 +13002,7 @@ inst358: // rune "09AFaf" -> 362
 			default:
 				goto inst358_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -19918,49 +13072,7 @@ inst359: // rune "09AFaf" -> 361
 			default:
 				goto inst359_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20051,49 +13163,7 @@ inst360: // rune "09AFaf" -> 372
 			default:
 				goto inst360_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20165,49 +13235,7 @@ inst397: // rune "09AFaf" -> 436
 			default:
 				goto inst397_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20298,49 +13326,7 @@ inst365: // rune "09AFaf" -> 371
 			default:
 				goto inst365_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20433,49 +13419,7 @@ inst378: // rune "09AFaf" -> 380
 			default:
 				goto inst378_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20545,49 +13489,7 @@ inst377: // rune "09AFaf" -> 381
 			default:
 				goto inst377_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20657,49 +13559,7 @@ inst376: // rune "09AFaf" -> 382
 			default:
 				goto inst376_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20819,49 +13679,7 @@ inst379: // rune "09AFaf" -> 383
 			default:
 				goto inst379_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -20910,49 +13728,7 @@ inst386: // rune "09AFaf" -> 388
 			default:
 				goto inst386_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21022,49 +13798,7 @@ inst387: // rune "09AFaf" -> 391
 			default:
 				goto inst387_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21134,49 +13868,7 @@ inst385: // rune "09AFaf" -> 389
 			default:
 				goto inst385_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21225,49 +13917,7 @@ inst384: // rune "09AFaf" -> 390
 			default:
 				goto inst384_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21416,49 +14066,7 @@ inst394: // rune "09AFaf" -> 400
 			default:
 				goto inst394_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21521,49 +14129,7 @@ inst395: // rune "09AFaf" -> 399
 			default:
 				goto inst395_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21612,49 +14178,7 @@ inst402: // rune "09AFaf" -> 408
 			default:
 				goto inst402_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21703,49 +14227,7 @@ inst396: // rune "09AFaf" -> 398
 			default:
 				goto inst396_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21836,49 +14318,7 @@ inst366: // rune "09AFaf" -> 370
 			default:
 				goto inst366_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -21969,49 +14409,7 @@ inst367: // rune "09AFaf" -> 369
 			default:
 				goto inst367_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22081,49 +14479,7 @@ inst368: // rune "09AFaf" -> 772
 			default:
 				goto inst368_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22172,49 +14528,7 @@ inst404: // rune "09AFaf" -> 406
 			default:
 				goto inst404_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22263,49 +14577,7 @@ inst405: // rune "09AFaf" -> 435
 			default:
 				goto inst405_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22354,49 +14626,7 @@ inst403: // rune "09AFaf" -> 407
 			default:
 				goto inst403_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22531,49 +14761,7 @@ inst410: // rune "09AFaf" -> 416
 			default:
 				goto inst410_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22622,49 +14810,7 @@ inst411: // rune "09AFaf" -> 415
 			default:
 				goto inst411_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22713,49 +14859,7 @@ inst412: // rune "09AFaf" -> 414
 			default:
 				goto inst412_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22804,49 +14908,7 @@ inst413: // rune "09AFaf" -> 434
 			default:
 				goto inst413_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -22981,49 +15043,7 @@ inst418: // rune "09AFaf" -> 424
 			default:
 				goto inst418_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23072,49 +15092,7 @@ inst419: // rune "09AFaf" -> 423
 			default:
 				goto inst419_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23163,49 +15141,7 @@ inst420: // rune "09AFaf" -> 422
 			default:
 				goto inst420_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23254,49 +15190,7 @@ inst421: // rune "09AFaf" -> 433
 			default:
 				goto inst421_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23431,49 +15325,7 @@ inst426: // rune "09AFaf" -> 432
 			default:
 				goto inst426_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23522,49 +15374,7 @@ inst427: // rune "09AFaf" -> 431
 			default:
 				goto inst427_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23613,49 +15423,7 @@ inst428: // rune "09AFaf" -> 430
 			default:
 				goto inst428_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23809,49 +15577,7 @@ inst438: // rune "09AFaf" -> 444
 			default:
 				goto inst438_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -23900,49 +15626,7 @@ inst439: // rune "09AFaf" -> 443
 			default:
 				goto inst439_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24020,49 +15704,7 @@ inst440: // rune "09AFaf" -> 442
 			default:
 				goto inst440_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24132,49 +15774,7 @@ inst449: // rune "09AFaf" -> 451
 			default:
 				goto inst449_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24244,49 +15844,7 @@ inst441: // rune "09AFaf" -> 445
 			default:
 				goto inst441_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24398,49 +15956,7 @@ inst447: // rune "09AFaf" -> 453
 			default:
 				goto inst447_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24495,49 +16011,7 @@ inst448: // rune "09AFaf" -> 452
 			default:
 				goto inst448_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24607,49 +16081,7 @@ inst450: // rune "09AFaf" -> 498
 			default:
 				goto inst450_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24746,49 +16178,7 @@ inst307: // rune "09AFaf" -> 772
 			default:
 				goto inst307_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24858,49 +16248,7 @@ inst60: // rune "09AFaf" -> 772
 			default:
 				goto inst60_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -24970,49 +16318,7 @@ inst429: // rune "09AFaf" -> 772
 			default:
 				goto inst429_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25082,49 +16388,7 @@ inst185: // rune "09AFaf" -> 772
 			default:
 				goto inst185_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25173,49 +16437,7 @@ inst465: // rune "09AFaf" -> 467
 			default:
 				goto inst465_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25285,49 +16507,7 @@ inst464: // rune "09AFaf" -> 468
 			default:
 				goto inst464_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25376,49 +16556,7 @@ inst466: // rune "09AFaf" -> 496
 			default:
 				goto inst466_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25574,49 +16712,7 @@ inst472: // rune "09AFaf" -> 476
 			default:
 				goto inst472_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25665,49 +16761,7 @@ inst473: // rune "09AFaf" -> 475
 			default:
 				goto inst473_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25821,49 +16875,7 @@ inst479: // rune "09AFaf" -> 485
 			default:
 				goto inst479_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -25912,49 +16924,7 @@ inst457: // rune "09AFaf" -> 459
 			default:
 				goto inst457_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26003,49 +16973,7 @@ inst456: // rune "09AFaf" -> 460
 			default:
 				goto inst456_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26115,49 +17043,7 @@ inst455: // rune "09AFaf" -> 461
 			default:
 				goto inst455_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26271,49 +17157,7 @@ inst458: // rune "09AFaf" -> 497
 			default:
 				goto inst458_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26404,49 +17248,7 @@ inst487: // rune "09AFaf" -> 493
 			default:
 				goto inst487_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26495,49 +17297,7 @@ inst488: // rune "09AFaf" -> 492
 			default:
 				goto inst488_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26586,49 +17346,7 @@ inst489: // rune "09AFaf" -> 491
 			default:
 				goto inst489_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26677,49 +17395,7 @@ inst490: // rune "09AFaf" -> 772
 			default:
 				goto inst490_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -26833,49 +17509,7 @@ inst471: // rune "09AFaf" -> 477
 			default:
 				goto inst471_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27010,49 +17644,7 @@ inst463: // rune "09AFaf" -> 469
 			default:
 				goto inst463_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27122,49 +17714,7 @@ inst474: // rune "09AFaf" -> 495
 			default:
 				goto inst474_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27213,49 +17763,7 @@ inst504: // rune "09AFaf" -> 506
 			default:
 				goto inst504_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27367,49 +17875,7 @@ inst480: // rune "09AFaf" -> 484
 			default:
 				goto inst480_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27458,49 +17924,7 @@ inst505: // rune "09AFaf" -> 562
 			default:
 				goto inst505_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27549,49 +17973,7 @@ inst521: // rune "09AFaf" -> 560
 			default:
 				goto inst521_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27640,49 +18022,7 @@ inst482: // rune "09AFaf" -> 494
 			default:
 				goto inst482_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27752,49 +18092,7 @@ inst510: // rune "09AFaf" -> 516
 			default:
 				goto inst510_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27843,49 +18141,7 @@ inst511: // rune "09AFaf" -> 515
 			default:
 				goto inst511_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -27955,49 +18211,7 @@ inst512: // rune "09AFaf" -> 514
 			default:
 				goto inst512_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28046,49 +18260,7 @@ inst513: // rune "09AFaf" -> 561
 			default:
 				goto inst513_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28202,49 +18374,7 @@ inst518: // rune "09AFaf" -> 524
 			default:
 				goto inst518_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28293,49 +18423,7 @@ inst519: // rune "09AFaf" -> 523
 			default:
 				goto inst519_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28405,49 +18493,7 @@ inst520: // rune "09AFaf" -> 522
 			default:
 				goto inst520_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28603,49 +18649,7 @@ inst526: // rune "09AFaf" -> 532
 			default:
 				goto inst526_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28694,49 +18698,7 @@ inst527: // rune "09AFaf" -> 531
 			default:
 				goto inst527_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28806,49 +18768,7 @@ inst528: // rune "09AFaf" -> 530
 			default:
 				goto inst528_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -28897,49 +18817,7 @@ inst529: // rune "09AFaf" -> 559
 			default:
 				goto inst529_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29030,49 +18908,7 @@ inst542: // rune "09AFaf" -> 548
 			default:
 				goto inst542_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29144,49 +18980,7 @@ inst534: // rune "09AFaf" -> 540
 			default:
 				goto inst534_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29235,49 +19029,7 @@ inst536: // rune "09AFaf" -> 538
 			default:
 				goto inst536_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29410,49 +19162,7 @@ inst553: // rune "09AFaf" -> 772
 			default:
 				goto inst553_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29524,49 +19234,7 @@ inst543: // rune "09AFaf" -> 547
 			default:
 				goto inst543_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29615,49 +19283,7 @@ inst544: // rune "09AFaf" -> 546
 			default:
 				goto inst544_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29706,49 +19332,7 @@ inst545: // rune "09AFaf" -> 557
 			default:
 				goto inst545_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29881,49 +19465,7 @@ inst535: // rune "09AFaf" -> 539
 			default:
 				goto inst535_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -29972,49 +19514,7 @@ inst550: // rune "09AFaf" -> 556
 			default:
 				goto inst550_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30063,49 +19563,7 @@ inst551: // rune "09AFaf" -> 555
 			default:
 				goto inst551_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30154,49 +19612,7 @@ inst552: // rune "09AFaf" -> 554
 			default:
 				goto inst552_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30331,49 +19747,7 @@ inst537: // rune "09AFaf" -> 558
 			default:
 				goto inst537_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30443,49 +19817,7 @@ inst481: // rune "09AFaf" -> 483
 			default:
 				goto inst481_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30645,49 +19977,7 @@ inst503: // rune "09AFaf" -> 507
 			default:
 				goto inst503_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30784,49 +20074,7 @@ inst572: // rune "09AFaf" -> 578
 			default:
 				goto inst572_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30875,49 +20123,7 @@ inst573: // rune "09AFaf" -> 577
 			default:
 				goto inst573_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -30987,49 +20193,7 @@ inst574: // rune "09AFaf" -> 576
 			default:
 				goto inst574_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31078,49 +20242,7 @@ inst575: // rune "09AFaf" -> 609
 			default:
 				goto inst575_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31255,49 +20377,7 @@ inst581: // rune "09AFaf" -> 587
 			default:
 				goto inst581_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31346,49 +20426,7 @@ inst582: // rune "09AFaf" -> 586
 			default:
 				goto inst582_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31458,49 +20496,7 @@ inst590: // rune "09AFaf" -> 596
 			default:
 				goto inst590_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31549,49 +20545,7 @@ inst584: // rune "09AFaf" -> 608
 			default:
 				goto inst584_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31661,49 +20615,7 @@ inst583: // rune "09AFaf" -> 585
 			default:
 				goto inst583_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31817,49 +20729,7 @@ inst591: // rune "09AFaf" -> 595
 			default:
 				goto inst591_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31908,49 +20778,7 @@ inst600: // rune "09AFaf" -> 604
 			default:
 				goto inst600_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -31999,49 +20827,7 @@ inst592: // rune "09AFaf" -> 594
 			default:
 				goto inst592_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -32092,49 +20878,7 @@ inst601: // rune "09AFaf" -> 603
 			default:
 				goto inst601_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -32269,49 +21013,7 @@ inst599: // rune "09AFaf" -> 605
 			default:
 				goto inst599_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -32404,49 +21106,7 @@ inst602: // rune "09AFaf" -> 611
 			default:
 				goto inst602_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -32705,129 +21365,7 @@ inst612: // rune "09AZaz" -> 613
 			default:
 				goto inst612_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 71:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 72:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 73:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 74:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 75:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 76:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 77:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 78:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 79:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 80:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 81:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 82:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 83:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 84:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 85:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 86:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 87:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 88:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 89:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 90:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 104:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 105:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 106:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 107:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 108:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 109:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 110:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 111:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 112:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 113:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 114:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 115:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 117:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 118:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 119:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 120:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 121:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 122:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 71) || (b0 == 72) || (b0 == 73) || (b0 == 74) || (b0 == 75) || (b0 == 76) || (b0 == 77) || (b0 == 78) || (b0 == 79) || (b0 == 80) || (b0 == 81) || (b0 == 82) || (b0 == 83) || (b0 == 84) || (b0 == 85) || (b0 == 86) || (b0 == 87) || (b0 == 88) || (b0 == 89) || (b0 == 90) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || (b0 == 103) || (b0 == 104) || (b0 == 105) || (b0 == 106) || (b0 == 107) || (b0 == 108) || (b0 == 109) || (b0 == 110) || (b0 == 111) || (b0 == 112) || (b0 == 113) || (b0 == 114) || (b0 == 115) || (b0 == 116) || (b0 == 117) || (b0 == 118) || (b0 == 119) || (b0 == 120) || (b0 == 121) || (b0 == 122) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -33367,17 +21905,7 @@ inst634: // rune "05" -> 644
 			default:
 				goto inst634_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -33426,15 +21954,7 @@ inst636: // rune "04" -> 642
 			default:
 				goto inst636_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -33485,49 +22005,7 @@ inst502: // rune "09AFaf" -> 508
 			default:
 				goto inst502_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -33597,25 +22075,7 @@ inst639: // rune "09" -> 642
 			default:
 				goto inst639_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -33708,25 +22168,7 @@ inst642: // rune "09" -> 644
 			default:
 				goto inst642_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -33857,17 +22299,7 @@ inst673: // rune "05" -> 772
 			default:
 				goto inst673_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -33937,15 +22369,7 @@ inst649: // rune "04" -> 655
 			default:
 				goto inst649_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34040,17 +22464,7 @@ inst647: // rune "05" -> 657
 			default:
 				goto inst647_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34120,25 +22534,7 @@ inst652: // rune "09" -> 655
 			default:
 				goto inst652_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34231,25 +22627,7 @@ inst655: // rune "09" -> 657
 			default:
 				goto inst655_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34387,17 +22765,7 @@ inst660: // rune "05" -> 670
 			default:
 				goto inst660_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34526,15 +22894,7 @@ inst662: // rune "04" -> 668
 			default:
 				goto inst662_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34627,25 +22987,7 @@ inst665: // rune "09" -> 668
 			default:
 				goto inst665_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34738,25 +23080,7 @@ inst668: // rune "09" -> 670
 			default:
 				goto inst668_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -34927,49 +23251,7 @@ inst593: // rune "09AFaf" -> 607
 			default:
 				goto inst593_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35018,15 +23300,7 @@ inst675: // rune "04" -> 681
 			default:
 				goto inst675_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35119,25 +23393,7 @@ inst678: // rune "09" -> 681
 			default:
 				goto inst678_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35230,25 +23486,7 @@ inst681: // rune "09" -> 772
 			default:
 				goto inst681_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35415,49 +23653,7 @@ inst685: // rune "09AFaf" -> 689
 			default:
 				goto inst685_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35506,49 +23702,7 @@ inst686: // rune "09AFaf" -> 688
 			default:
 				goto inst686_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35597,49 +23751,7 @@ inst687: // rune "09AFaf" -> 691
 			default:
 				goto inst687_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35751,49 +23863,7 @@ inst692: // rune "09AFaf" -> 698
 			default:
 				goto inst692_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35871,49 +23941,7 @@ inst693: // rune "09AFaf" -> 697
 			default:
 				goto inst693_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -35962,49 +23990,7 @@ inst694: // rune "09AFaf" -> 696
 			default:
 				goto inst694_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36053,49 +24039,7 @@ inst695: // rune "09AFaf" -> 699
 			default:
 				goto inst695_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36207,49 +24151,7 @@ inst703: // rune "09AFaf" -> 707
 			default:
 				goto inst703_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36327,49 +24229,7 @@ inst701: // rune "09AFaf" -> 705
 			default:
 				goto inst701_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36418,49 +24278,7 @@ inst702: // rune "09AFaf" -> 704
 			default:
 				goto inst702_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36574,49 +24392,7 @@ inst708: // rune "09AFaf" -> 714
 			default:
 				goto inst708_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36686,49 +24462,7 @@ inst709: // rune "09AFaf" -> 713
 			default:
 				goto inst709_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36777,49 +24511,7 @@ inst710: // rune "09AFaf" -> 712
 			default:
 				goto inst710_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36868,49 +24560,7 @@ inst700: // rune "09AFaf" -> 706
 			default:
 				goto inst700_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -36959,49 +24609,7 @@ inst711: // rune "09AFaf" -> 715
 			default:
 				goto inst711_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -37273,17 +24881,7 @@ inst722: // rune "05" -> 732
 			default:
 				goto inst722_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -37355,15 +24953,7 @@ inst724: // rune "04" -> 730
 			default:
 				goto inst724_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -37456,25 +25046,7 @@ inst727: // rune "09" -> 730
 			default:
 				goto inst727_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -37567,25 +25139,7 @@ inst730: // rune "09" -> 732
 			default:
 				goto inst730_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -37773,17 +25327,7 @@ inst735: // rune "05" -> 745
 			default:
 				goto inst735_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -37855,15 +25399,7 @@ inst737: // rune "04" -> 743
 			default:
 				goto inst737_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -37937,25 +25473,7 @@ inst740: // rune "09" -> 743
 			default:
 				goto inst740_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38048,25 +25566,7 @@ inst743: // rune "09" -> 745
 			default:
 				goto inst743_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38270,17 +25770,7 @@ inst748: // rune "05" -> 758
 			default:
 				goto inst748_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38352,15 +25842,7 @@ inst750: // rune "04" -> 756
 			default:
 				goto inst750_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38453,25 +25935,7 @@ inst753: // rune "09" -> 756
 			default:
 				goto inst753_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38564,25 +26028,7 @@ inst756: // rune "09" -> 758
 			default:
 				goto inst756_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38800,49 +26246,7 @@ inst684: // rune "09AFaf" -> 690
 			default:
 				goto inst684_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 65:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 66:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 67:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 68:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 69:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 70:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 98:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 100:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 101:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 102:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || (b0 == 65) || (b0 == 66) || (b0 == 67) || (b0 == 68) || (b0 == 69) || (b0 == 70) || (b0 == 97) || (b0 == 98) || (b0 == 99) || (b0 == 100) || (b0 == 101) || (b0 == 102) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38883,17 +26287,7 @@ inst761: // rune "05" -> 772
 			default:
 				goto inst761_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -38965,15 +26359,7 @@ inst763: // rune "04" -> 769
 			default:
 				goto inst763_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -39066,25 +26452,7 @@ inst766: // rune "09" -> 769
 			default:
 				goto inst766_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -39177,25 +26545,7 @@ inst769: // rune "09" -> 772
 			default:
 				goto inst769_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}

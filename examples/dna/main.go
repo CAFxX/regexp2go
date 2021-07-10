@@ -262,11 +262,7 @@ inst21: // rune "ccggtt" -> 22
 			default:
 				goto inst21_fail
 
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 99) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -427,11 +423,7 @@ inst36: // rune "aaccgg" -> 38
 			default:
 				goto inst36_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 103) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -559,11 +551,7 @@ inst42: // rune "aacctt" -> 43
 			default:
 				goto inst42_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -676,11 +664,7 @@ inst55: // rune "aaggtt" -> 56
 			default:
 				goto inst55_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 97) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -831,11 +815,7 @@ inst63: // rune "aacctt" -> 64
 			default:
 				goto inst63_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -946,11 +926,7 @@ inst74: // rune "aaggtt" -> 75
 			default:
 				goto inst74_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 97) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1105,11 +1081,7 @@ inst84: // rune "aacctt" -> 85
 			default:
 				goto inst84_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1245,11 +1217,7 @@ inst93: // rune "aaggtt" -> 94
 			default:
 				goto inst93_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 97) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1383,11 +1351,7 @@ inst105: // rune "aaccgg" -> 106
 			default:
 				goto inst105_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 103) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1515,11 +1479,7 @@ inst112: // rune "ccggtt" -> 113
 			default:
 				goto inst112_fail
 
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 99) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1703,11 +1663,7 @@ inst126: // rune "ccggtt" -> 127
 			default:
 				goto inst126_fail
 
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 99) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1779,11 +1735,7 @@ inst131: // rune "aaccgg" -> 132
 			default:
 				goto inst131_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 103) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -1873,11 +1825,7 @@ inst150: // rune "aaccgg" -> 151
 			default:
 				goto inst150_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 103) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2045,11 +1993,7 @@ inst147: // rune "ccggtt" -> 148
 			default:
 				goto inst147_fail
 
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 99) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2183,11 +2127,7 @@ inst168: // rune "ccggtt" -> 178
 			default:
 				goto inst168_fail
 
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 116:
+			case ((b0 == 99) || (b0 == 103) || (b0 == 116) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
@@ -2257,11 +2197,7 @@ inst169: // rune "aaccgg" -> 170
 			default:
 				goto inst169_fail
 
-			case len(r[i:]) >= 1 && b0 == 97:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 99:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 103:
+			case ((b0 == 97) || (b0 == 99) || (b0 == 103) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}

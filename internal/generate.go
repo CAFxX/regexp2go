@@ -784,6 +784,23 @@ func runematcher(runes []rune, pc int, next uint32, out func(s string, args ...i
 		}
 		return len(encrunes[i]) < len(encrunes[j])
 	})
+
+	var c1, c2, c3, c4 strings.Builder
+	for _, encrune := range encrunes {
+		switch len(encrune) {
+		case 1:
+			fmt.Fprintf(&c1, `(b0 == %d) || `, encrune[0])
+		case 2:
+			fmt.Fprintf(&c2, `(b0 == %d && b1 == %d) || `, encrune[0], encrune[1])
+		case 3:
+			fmt.Fprintf(&c3, `(b0 == %d && b1 == %d && b2 == %d) || `, encrune[0], encrune[1], encrune[2])
+		case 4:
+			fmt.Fprintf(&c4, `(b0 == %d && b1 == %d && b2 == %d && b3 == %d) || `, encrune[0], encrune[1], encrune[2], encrune[3])
+		default:
+			panic(len(encrune))
+		}
+	}
+
 	out(`{
 	var b0, b1, b2, b3 byte
 	_, _, _, _ = b0, b1, b2, b3
@@ -806,19 +823,17 @@ func runematcher(runes []rune, pc int, next uint32, out func(s string, args ...i
 	switch {
 	default: goto inst%d_fail
 	`, pc)
-	for _, encrune := range encrunes {
-		switch len(encrune) {
-		case 1:
-			out(`case len(r[i:]) >= 1 && b0 == %d: n = 1`, encrune[0])
-		case 2:
-			out(`case len(r[i:]) >= 2 && b0 == %d && b1 == %d: n = 2`, encrune[0], encrune[1])
-		case 3:
-			out(`case len(r[i:]) >= 3 && b0 == %d && b1 == %d && b2 == %d: n = 3`, encrune[0], encrune[1], encrune[2])
-		case 4:
-			out(`case len(r[i:]) >= 4 && b0 == %d && b1 == %d && b2 == %d && b3 == %d: n = 4`, encrune[0], encrune[1], encrune[2], encrune[3])
-		default:
-			panic(len(encrune))
-		}
+	if c1.Len() > 0 {
+		out(`case (%s false) && len(r[i:]) >= 1: n = 1`, c1.String())
+	}
+	if c2.Len() > 0 {
+		out(`case (%s false) && len(r[i:]) >= 2: n = 2`, c2.String())
+	}
+	if c3.Len() > 0 {
+		out(`case (%s false) && len(r[i:]) >= 3: n = 3`, c3.String())
+	}
+	if c4.Len() > 0 {
+		out(`case (%s false) && len(r[i:]) >= 4: n = 4`, c4.String())
 	}
 	out(`
 	}

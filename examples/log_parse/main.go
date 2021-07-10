@@ -212,25 +212,7 @@ inst12: // rune "09" -> 13
 			default:
 				goto inst12_fail
 
-			case len(r[i:]) >= 1 && b0 == 48:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 49:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 50:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 51:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 52:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 53:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 54:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 55:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 56:
-				n = 1
-			case len(r[i:]) >= 1 && b0 == 57:
+			case ((b0 == 48) || (b0 == 49) || (b0 == 50) || (b0 == 51) || (b0 == 52) || (b0 == 53) || (b0 == 54) || (b0 == 55) || (b0 == 56) || (b0 == 57) || false) && len(r[i:]) >= 1:
 				n = 1
 
 			}
