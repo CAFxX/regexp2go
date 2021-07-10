@@ -239,14 +239,39 @@ inst19: // cap 3 -> 180
 	goto inst21
 inst21: // rune "ccggtt" -> 22
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst22
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst21_fail
+			var n int
+			switch {
+			default:
+				goto inst21_fail
+
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst22
 		}
 	}
 	goto inst21_fail
@@ -379,14 +404,39 @@ inst39_alt:
 	goto inst36
 inst36: // rune "aaccgg" -> 38
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst38
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst36_fail
+			var n int
+			switch {
+			default:
+				goto inst36_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+
+			}
+			i += n
+			goto inst38
 		}
 	}
 	goto inst36_fail
@@ -486,14 +536,39 @@ inst41_fail:
 	goto inst42
 inst42: // rune "aacctt" -> 43
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst43
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst42_fail
+			var n int
+			switch {
+			default:
+				goto inst42_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst43
 		}
 	}
 	goto inst42_fail
@@ -578,14 +653,39 @@ inst49_fail:
 	goto inst55
 inst55: // rune "aaggtt" -> 56
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst56
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst55_fail
+			var n int
+			switch {
+			default:
+				goto inst55_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst56
 		}
 	}
 	goto inst55_fail
@@ -708,14 +808,39 @@ inst61_fail:
 	goto inst63
 inst63: // rune "aacctt" -> 64
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst64
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst63_fail
+			var n int
+			switch {
+			default:
+				goto inst63_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst64
 		}
 	}
 	goto inst63_fail
@@ -798,14 +923,39 @@ inst69_fail:
 	goto inst74
 inst74: // rune "aaggtt" -> 75
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst75
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst74_fail
+			var n int
+			switch {
+			default:
+				goto inst74_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst75
 		}
 	}
 	goto inst74_fail
@@ -932,14 +1082,39 @@ inst81_fail:
 	goto inst84
 inst84: // rune "aacctt" -> 85
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\n\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst85
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst84_fail
+			var n int
+			switch {
+			default:
+				goto inst84_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst85
 		}
 	}
 	goto inst84_fail
@@ -1047,14 +1222,39 @@ inst94_fail:
 	goto inst93
 inst93: // rune "aaggtt" -> 94
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x82\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst94
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst93_fail
+			var n int
+			switch {
+			default:
+				goto inst93_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst94
 		}
 	}
 	goto inst93_fail
@@ -1160,14 +1360,39 @@ inst101_fail:
 	goto inst105
 inst105: // rune "aaccgg" -> 106
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst106
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst105_fail
+			var n int
+			switch {
+			default:
+				goto inst105_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+
+			}
+			i += n
+			goto inst106
 		}
 	}
 	goto inst105_fail
@@ -1267,14 +1492,39 @@ inst109_fail:
 	goto inst112
 inst112: // rune "ccggtt" -> 113
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst113
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst112_fail
+			var n int
+			switch {
+			default:
+				goto inst112_fail
+
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst113
 		}
 	}
 	goto inst112_fail
@@ -1430,14 +1680,39 @@ inst129_fail:
 	goto inst126
 inst126: // rune "ccggtt" -> 127
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst127
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst126_fail
+			var n int
+			switch {
+			default:
+				goto inst126_fail
+
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst127
 		}
 	}
 	goto inst126_fail
@@ -1481,14 +1756,39 @@ inst132_fail:
 	goto inst131
 inst131: // rune "aaccgg" -> 132
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst132
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst131_fail
+			var n int
+			switch {
+			default:
+				goto inst131_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+
+			}
+			i += n
+			goto inst132
 		}
 	}
 	goto inst131_fail
@@ -1550,14 +1850,39 @@ inst158: // cap 17 -> 180
 	goto inst150
 inst150: // rune "aaccgg" -> 151
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst151
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst150_fail
+			var n int
+			switch {
+			default:
+				goto inst150_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+
+			}
+			i += n
+			goto inst151
 		}
 	}
 	goto inst150_fail
@@ -1697,14 +2022,39 @@ inst148_fail:
 	goto inst147
 inst147: // rune "ccggtt" -> 148
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst148
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst147_fail
+			var n int
+			switch {
+			default:
+				goto inst147_fail
+
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst148
 		}
 	}
 	goto inst147_fail
@@ -1810,14 +2160,39 @@ inst161_fail:
 	goto inst168
 inst168: // rune "ccggtt" -> 178
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x88\x00\x10\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst178
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst168_fail
+			var n int
+			switch {
+			default:
+				goto inst168_fail
+
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+
+			}
+			i += n
+			goto inst178
 		}
 	}
 	goto inst168_fail
@@ -1859,14 +2234,39 @@ inst170_fail:
 	goto inst169
 inst169: // rune "aaccgg" -> 170
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x8a\x00\x00\x00"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst170
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst169_fail
+			var n int
+			switch {
+			default:
+				goto inst169_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+
+			}
+			i += n
+			goto inst170
 		}
 	}
 	goto inst169_fail

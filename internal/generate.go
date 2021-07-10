@@ -411,61 +411,8 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 				panic("odd runes")
 			}
 
-			allASCII := true
-			for _, r := range runes {
-				if r >= utf8.RuneSelf {
-					allASCII = false
-					break
-				}
-			}
-
-			out("if i >= 0 && i < len(r) { ")
-			if allASCII {
-				out(outcrASCII)
-			} else {
-				out(outcr)
-			}
-			const max = 128
-			runeMask := runeMask(runes, max)
-			useRuneMask := false
-			// TODO: use a threshold on the number of ranges actually covered by the runeMask
-			// TODO: implement a succint encoding that allows fast O(1) set membership queries for the case of sparse non-ASCII rune ranges (e.g. roaring bitmaps)
-			if len(runes) > 4 && runeMask != strings.Repeat("\000", len(runeMask)) {
-				useRuneMask = true
-				out(`if cru := uint(cr); cru < %d { 
-						const runeMask = %q
-						if runeMask[cru/8] & (1<<(cru%%8)) != 0 { 
-							i+=sz
-							goto inst%d 
-						} 
-						goto inst%d_fail 
-					}`, max, runeMask, inst.Out, pc)
-			}
-			// TODO: expand the ranges as lists of runes, and use a switch instead; see if the compiler is smart enough to build a search tree
-			ifConds := false
-			for i := 0; i < len(runes); i += 2 {
-				if useRuneMask && runes[i+1] < max {
-					continue
-				}
-				if !ifConds {
-					ifConds = true
-					outn("if ")
-				} else {
-					outn(" || ")
-				}
-				// TODO: if the runes are ASCII we don't need the outcr snippet and we can simply use the raw bytes and skip the if < RuneSelf
-				if runes[i] == runes[i+1] {
-					outn("cr == %d", runes[i])
-				} else if runes[i] == runes[i+1]-1 {
-					// TODO: turn comparisons of maskable pairs into (cr & mask == %d)
-					outn("cr == %d || cr == %d", runes[i], runes[i+1])
-				} else {
-					outn("(cr >= %d && cr <= %d)", runes[i], runes[i+1])
-				}
-			}
-			if ifConds {
-				out(" { i+=sz \n goto inst%d }", inst.Out)
-			}
+			out("if i >= 0 && i < len(r) {")
+			runematcher(runes, pc, inst.Out, out)
 			out("}")
 			out("goto inst%d_fail", pc)
 		case syntax.InstRuneAny:
@@ -817,4 +764,65 @@ func optPreds(p *syntax.Prog) map[uint32]map[uint32]struct{} {
 	}
 	visit(uint32(p.Start), noPred)
 	return preds
+}
+
+func runematcher(runes []rune, pc int, next uint32, out func(s string, args ...interface{})) {
+	var encrunes [][]byte
+	for i := 0; i < len(runes); i += 2 {
+		for r := runes[i]; r <= runes[i+1]; r++ {
+			encrune := make([]byte, 4)
+			n := utf8.EncodeRune(encrune, r)
+			encrune = encrune[:n]
+			encrunes = append(encrunes, encrune)
+		}
+	}
+	sort.Slice(encrunes, func(i, j int) bool {
+		for k := 0; k < len(encrunes[i]) && k < len(encrunes[j]); k++ {
+			if encrunes[i][k] != encrunes[j][k] {
+				return encrunes[i][k] < encrunes[j][k]
+			}
+		}
+		return len(encrunes[i]) < len(encrunes[j])
+	})
+	out(`{
+	var b0, b1, b2, b3 byte
+	_, _, _, _ = b0, b1, b2, b3
+	switch len(r[i:]) {
+	default:
+		b3 = r[i+3]
+		fallthrough
+	case 3:
+		b2 = r[i+2]
+		fallthrough
+	case 2:
+		b1 = r[i+1]
+		fallthrough
+	case 1:
+		b0 = r[i+0]
+	case 0:
+		goto unreachable
+	}
+	var n int
+	switch {
+	default: goto inst%d_fail
+	`, pc)
+	for _, encrune := range encrunes {
+		switch len(encrune) {
+		case 1:
+			out(`case len(r[i:]) >= 1 && b0 == %d: n = 1`, encrune[0])
+		case 2:
+			out(`case len(r[i:]) >= 2 && b0 == %d && b1 == %d: n = 2`, encrune[0], encrune[1])
+		case 3:
+			out(`case len(r[i:]) >= 3 && b0 == %d && b1 == %d && b2 == %d: n = 3`, encrune[0], encrune[1], encrune[2])
+		case 4:
+			out(`case len(r[i:]) >= 4 && b0 == %d && b1 == %d && b2 == %d && b3 == %d: n = 4`, encrune[0], encrune[1], encrune[2], encrune[3])
+		default:
+			panic(len(encrune))
+		}
+	}
+	out(`
+	}
+	i += n
+	goto inst%d
+	}`, next)
 }

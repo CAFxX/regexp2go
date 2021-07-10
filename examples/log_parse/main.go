@@ -189,9 +189,52 @@ inst11: // cap 2 -> 12
 	goto inst12
 inst12: // rune "09" -> 13
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cr >= 48 && cr <= 57 {
-			i += sz
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
+			}
+			var n int
+			switch {
+			default:
+				goto inst12_fail
+
+			case len(r[i:]) >= 1 && b0 == 48:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 49:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 50:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 51:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 52:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 53:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 54:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 55:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 56:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 57:
+				n = 1
+
+			}
+			i += n
 			goto inst13
 		}
 	}

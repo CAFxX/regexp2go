@@ -166,21 +166,170 @@ inst2: // cap 2 -> 3
 	goto inst3
 inst3: // rune "%%++-.09AZ__az\u017f\u017f\u212a\u212a" -> 4
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00 h\xff\x03\xfe\xff\xff\x87\xfe\xff\xff\a"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst4
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst3_fail
-		}
-		if cr == 383 || cr == 8490 {
-			i += sz
+			var n int
+			switch {
+			default:
+				goto inst3_fail
+
+			case len(r[i:]) >= 1 && b0 == 37:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 43:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 45:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 46:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 48:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 49:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 50:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 51:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 52:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 53:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 54:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 55:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 56:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 57:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 65:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 66:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 67:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 68:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 69:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 70:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 71:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 72:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 73:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 74:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 75:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 76:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 77:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 78:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 79:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 80:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 81:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 82:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 83:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 84:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 85:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 86:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 87:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 88:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 89:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 90:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 95:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 98:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 100:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 101:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 102:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 104:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 105:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 106:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 107:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 108:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 109:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 110:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 111:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 112:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 113:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 114:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 115:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 117:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 118:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 119:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 120:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 121:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 122:
+				n = 1
+			case len(r[i:]) >= 2 && b0 == 197 && b1 == 191:
+				n = 2
+			case len(r[i:]) >= 3 && b0 == 226 && b1 == 132 && b2 == 170:
+				n = 3
+
+			}
+			i += n
 			goto inst4
 		}
 	}
@@ -258,21 +407,164 @@ inst7: // cap 4 -> 8
 	goto inst8
 inst8: // rune "-.09AZaz\u017f\u017f\u212a\u212a" -> 9
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00`\xff\x03\xfe\xff\xff\a\xfe\xff\xff\a"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst9
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst8_fail
-		}
-		if cr == 383 || cr == 8490 {
-			i += sz
+			var n int
+			switch {
+			default:
+				goto inst8_fail
+
+			case len(r[i:]) >= 1 && b0 == 45:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 46:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 48:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 49:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 50:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 51:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 52:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 53:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 54:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 55:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 56:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 57:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 65:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 66:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 67:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 68:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 69:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 70:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 71:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 72:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 73:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 74:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 75:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 76:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 77:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 78:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 79:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 80:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 81:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 82:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 83:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 84:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 85:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 86:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 87:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 88:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 89:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 90:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 98:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 100:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 101:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 102:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 104:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 105:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 106:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 107:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 108:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 109:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 110:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 111:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 112:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 113:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 114:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 115:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 117:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 118:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 119:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 120:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 121:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 122:
+				n = 1
+			case len(r[i:]) >= 2 && b0 == 197 && b1 == 191:
+				n = 2
+			case len(r[i:]) >= 3 && b0 == 226 && b1 == 132 && b2 == 170:
+				n = 3
+
+			}
+			i += n
 			goto inst9
 		}
 	}
@@ -338,21 +630,140 @@ inst10_fail:
 	goto inst11
 inst11: // rune "AZaz\u017f\u017f\u212a\u212a" -> 12
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\a\xfe\xff\xff\a"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst12
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst11_fail
-		}
-		if cr == 383 || cr == 8490 {
-			i += sz
+			var n int
+			switch {
+			default:
+				goto inst11_fail
+
+			case len(r[i:]) >= 1 && b0 == 65:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 66:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 67:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 68:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 69:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 70:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 71:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 72:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 73:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 74:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 75:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 76:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 77:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 78:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 79:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 80:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 81:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 82:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 83:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 84:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 85:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 86:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 87:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 88:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 89:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 90:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 98:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 100:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 101:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 102:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 104:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 105:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 106:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 107:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 108:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 109:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 110:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 111:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 112:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 113:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 114:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 115:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 117:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 118:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 119:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 120:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 121:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 122:
+				n = 1
+			case len(r[i:]) >= 2 && b0 == 197 && b1 == 191:
+				n = 2
+			case len(r[i:]) >= 3 && b0 == 226 && b1 == 132 && b2 == 170:
+				n = 3
+
+			}
+			i += n
 			goto inst12
 		}
 	}
@@ -366,21 +777,140 @@ inst11_fail:
 	goto inst12
 inst12: // rune "AZaz\u017f\u017f\u212a\u212a" -> 13
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cr >= utf8.RuneSelf {
-			cr, sz = utf8.DecodeRuneInString(r[i:])
-		}
-
-		if cru := uint(cr); cru < 128 {
-			const runeMask = "\x00\x00\x00\x00\x00\x00\x00\x00\xfe\xff\xff\a\xfe\xff\xff\a"
-			if runeMask[cru/8]&(1<<(cru%8)) != 0 {
-				i += sz
-				goto inst13
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
 			}
-			goto inst12_fail
-		}
-		if cr == 383 || cr == 8490 {
-			i += sz
+			var n int
+			switch {
+			default:
+				goto inst12_fail
+
+			case len(r[i:]) >= 1 && b0 == 65:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 66:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 67:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 68:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 69:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 70:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 71:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 72:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 73:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 74:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 75:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 76:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 77:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 78:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 79:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 80:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 81:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 82:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 83:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 84:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 85:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 86:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 87:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 88:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 89:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 90:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 98:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 100:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 101:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 102:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 104:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 105:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 106:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 107:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 108:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 109:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 110:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 111:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 112:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 113:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 114:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 115:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 117:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 118:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 119:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 120:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 121:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 122:
+				n = 1
+			case len(r[i:]) >= 2 && b0 == 197 && b1 == 191:
+				n = 2
+			case len(r[i:]) >= 3 && b0 == 226 && b1 == 132 && b2 == 170:
+				n = 3
+
+			}
+			i += n
 			goto inst13
 		}
 	}

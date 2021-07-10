@@ -130,9 +130,84 @@ restart:
 	goto inst1
 inst1: // rune "az" -> 2
 	if i >= 0 && i < len(r) {
-		cr, sz := rune(r[i]), 1
-		if cr >= 97 && cr <= 122 {
-			i += sz
+		{
+			var b0, b1, b2, b3 byte
+			_, _, _, _ = b0, b1, b2, b3
+			switch len(r[i:]) {
+			default:
+				b3 = r[i+3]
+				fallthrough
+			case 3:
+				b2 = r[i+2]
+				fallthrough
+			case 2:
+				b1 = r[i+1]
+				fallthrough
+			case 1:
+				b0 = r[i+0]
+			case 0:
+				goto unreachable
+			}
+			var n int
+			switch {
+			default:
+				goto inst1_fail
+
+			case len(r[i:]) >= 1 && b0 == 97:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 98:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 99:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 100:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 101:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 102:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 103:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 104:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 105:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 106:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 107:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 108:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 109:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 110:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 111:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 112:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 113:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 114:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 115:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 116:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 117:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 118:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 119:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 120:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 121:
+				n = 1
+			case len(r[i:]) >= 1 && b0 == 122:
+				n = 1
+
+			}
+			i += n
 			goto inst2
 		}
 	}
