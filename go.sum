@@ -2,8 +2,12 @@ github.com/CAFxX/bytespool v0.0.0-20190418233243-01fb0b7e27a1 h1:31NUHZlRWqqVlIZ
 github.com/CAFxX/bytespool v0.0.0-20190418233243-01fb0b7e27a1/go.mod h1:UeJjDzzuJ8/iiOivEKVutUOD1HNiAnPBEgR6xnAoFqE=
 github.com/CAFxX/httpcompression v0.0.3 h1:R0IJmssoV7gUgW6/8lu9XZoW+pKuRLnx+SE7fodltjw=
 github.com/CAFxX/httpcompression v0.0.3/go.mod h1:2JckHb7m4xt47bN87F/nNXTcxx0ILpvJpVtC0dG/OV4=
+github.com/CAFxX/httpcompression v0.0.4 h1:Aa/R/ueopiHkKYORlbtT+FJTwYSqzHkTeA5JpUxUPB0=
+github.com/CAFxX/httpcompression v0.0.4/go.mod h1:4IZPzeXnEdqIMmBKqMRQby9CVcEX8mrTmUuaxdwsgQ4=
 github.com/andybalholm/brotli v1.0.1 h1:KqhlKozYbRtJvsPrrEeXcO+N2l6NYT5A2QAFmSULpEc=
 github.com/andybalholm/brotli v1.0.1/go.mod h1:loMXtMfwqflxFJPmdbJO0a3KNoPuLBgiu3qAvBg8x/Y=
+github.com/andybalholm/brotli v1.0.3 h1:fpcw+r1N1h0Poc1F/pHbW40cUm/lMEQslZtCkBQ0UnM=
+github.com/andybalholm/brotli v1.0.3/go.mod h1:fO7iG3H7G2nSZ7m0zPUDn85XEX2GTukHGRSepvi9Eig=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/klauspost/compress v1.11.7/go.mod h1:aoV0uJVorq1K+umq18yTdKaF57EivdYsUV+/s2qKfXs=
 github.com/klauspost/pgzip v1.2.5/go.mod h1:Ch1tH69qFZu15pkjo5kYi6mth2Zzwzt50oCQKQE9RUs=
