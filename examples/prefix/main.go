@@ -121,7 +121,6 @@ restart:
 	var bc [4]int               // captures for the longest match so far
 	matched := false            // succesful match flag
 	i := si                     // current byte index
-
 	// fast prefix search "Hello "
 	if idx := strings.Index(r[si:], "Hello "); idx >= 0 {
 		i += idx // prefix found, skip to it

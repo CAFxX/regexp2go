@@ -221,11 +221,13 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("  matched := false // succesful match flag")
 	out("  i := si // current byte index ")
 	if len(prefix) > 0 {
-		out(`
-		// fast prefix search %q
-		if idx := strings.Index(r[si:], %q); idx >= 0 {
-			i += idx // prefix found, skip to it`,
-			prefix, prefix)
+		out(`// fast prefix search %q`, prefix)
+		if len(prefix) == 1 {
+			out(`if idx := strings.IndexByte(r[si:], %q); idx >= 0 {`, prefix[0])
+		} else {
+			out(`if idx := strings.Index(r[si:], %q); idx >= 0 {`, prefix)
+		}
+		out(`i += idx // prefix found, skip to it`)
 		if p.Inst[p.Start].Op == instString && prefix == string(p.Inst[p.Start].Rune) {
 			// jump directly into the instruction at the end of the prefix
 			out("si = i") // if we skipped ahead, move also the start position
