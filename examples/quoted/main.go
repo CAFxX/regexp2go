@@ -121,9 +121,8 @@ restart:
 	var bc [4]int               // captures for the longest match so far
 	matched := false            // succesful match flag
 	i := si                     // current byte index
-
 	// fast prefix search "\""
-	if idx := strings.Index(r[si:], "\""); idx >= 0 {
+	if idx := strings.IndexByte(r[si:], '"'); idx >= 0 {
 		i += idx // prefix found, skip to it
 		si = i
 		c[0] = i   // start of match
