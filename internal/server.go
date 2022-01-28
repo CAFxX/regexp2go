@@ -17,7 +17,7 @@ func Server(addr string) error {
 	for k, v := range GetCommonRegex() {
 		examples += fmt.Sprintf(`
 			<li>
-				<a href='' onclick='document.querySelector("#regex").value = "%[2]s"'>
+				<a href='' onclick='document.querySelector("#regex").value = "%[2]s"; return false'>
 					%[1]s
 				</a>
 			</li>`,
