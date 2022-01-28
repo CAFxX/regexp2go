@@ -24,9 +24,7 @@ func Server(addr string) error {
 	var bodyExamples string
 	for _, name := range exampleNames {
 		bodyExamples += fmt.Sprintf(`
-			<a href='' onclick='document.querySelector("#regex").value = "%[2]s"; return false'>
-				%[1]s
-			</a>,`,
+			<a href='' onclick='document.querySelector("#regex").value = "%[2]s"; return false'>%[1]s</a>,`,
 			strings.TrimSuffix(name, "Pattern"),
 			html.EscapeString(examples[name]),
 		)
@@ -66,7 +64,7 @@ func Server(addr string) error {
 				<div class=row>
 					<div class="col py-3">
 						<h2>Examples</h2>
-						` + bodyExamples + `
+						<p>Regular expressions from <a href="https://github.com/mingrammer/commonregex">mingrammer/commonregex</a>: ` + bodyExamples + `</p>
 
 						<h2>Notes</h2>
 						<p>
