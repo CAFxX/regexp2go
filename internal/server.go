@@ -15,7 +15,15 @@ func Server(addr string) error {
 
 	var examples string
 	for k, v := range GetCommonRegex() {
-		examples += fmt.Sprintf(`<li><a href='' onclick='document.querySelector('input[name="regex"]').value = "%[2]s"'>%[1]s</a></li>`, strings.TrimSuffix(k, "Pattern"), html.EscapeString(v))
+		examples += fmt.Sprintf(`
+			<li>
+				<a href='' onclick='document.querySelector("#regex").value = "%[2]s"'>
+					%[1]s
+				</a>
+			</li>`,
+			strings.TrimSuffix(k, "Pattern"),
+			html.EscapeString(v),
+		)
 	}
 	body := `
 	<!DOCTYPE html>
@@ -40,7 +48,7 @@ func Server(addr string) error {
 					<div class="col py-3">
 						<form method=post action="/generate">
 							<div class="input-group">
-								<input type=text name=regex placeholder=Regexp required=required class=form-control>
+								<input type=text name=regex id=regex placeholder=Regexp required=required class=form-control>
 								<button type=submit name=submit value=raw class="btn btn-primary">Compile</button>
 								<button type=submit name=submit value=ce class="btn btn-secondary">Open in Compiler Explorer</button>
 							</div>
