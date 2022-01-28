@@ -67,6 +67,8 @@ func FuzzUnicode(f *testing.F) {
 
 	f.Add("私はばかです")
 	f.Add("私はCAFxXです")
+	f.Add("私は私は私はですですです")
+	f.Add("私は🤣です")
 
 	f.Fuzz(func(t *testing.T, str string) {
 		matches, index, found := unicode.Match{}.FindString(str)
