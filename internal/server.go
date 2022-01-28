@@ -14,13 +14,14 @@ import (
 func Server(addr string) error {
 	compress, _ := httpcompression.DefaultAdapter()
 
+	examples := GetCommonRegex()
+
 	var exampleNames []string
-	for k := range GetCommonRegex() {
+	for k := range examples {
 		exampleNames = append(exampleNames, k)
 	}
 	sort.Strings(exampleNames)
 
-	examples := GetCommonRegex()
 	var bodyExamples string
 	for _, name := range exampleNames {
 		bodyExamples += fmt.Sprintf(`
