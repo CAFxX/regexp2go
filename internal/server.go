@@ -2,10 +2,10 @@ package internal
 
 import (
 	"fmt"
-	"net/http"
 	"html"
-	"strings"
 	"io"
+	"net/http"
+	"strings"
 
 	"github.com/CAFxX/httpcompression"
 )
@@ -15,7 +15,7 @@ func Server(addr string) error {
 
 	var examples string
 	for k, v := range GetCommonRegex() {
-		examples += fmt.Sprintf(`<li><a href='' onclick='document.querySelector('input[name="regex"]').value = "%[2]s"'>%[1]s</a>/li>`, strings.TrimSuffix(k, "Pattern"), html.EscapeString(v))
+		examples += fmt.Sprintf(`<li><a href='' onclick='document.querySelector('input[name="regex"]').value = "%[2]s"'>%[1]s</a></li>`, strings.TrimSuffix(k, "Pattern"), html.EscapeString(v))
 	}
 	body := `
 	<!DOCTYPE html>
@@ -50,7 +50,7 @@ func Server(addr string) error {
 				<div class=row>
 					<div class="col py-3">
 						<h2>Examples</h2>
-						<ul>`+examples+`</ul>
+						<ul>` + examples + `</ul>
 
 						<h2>Notes</h2>
 						<p>
