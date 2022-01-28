@@ -5,6 +5,7 @@ import (
 	"html"
 	"io"
 	"net/http"
+	"sort"
 	"strings"
 
 	"github.com/CAFxX/httpcompression"
@@ -13,18 +14,25 @@ import (
 func Server(addr string) error {
 	compress, _ := httpcompression.DefaultAdapter()
 
-	var examples string
-	for k, v := range GetCommonRegex() {
-		examples += fmt.Sprintf(`
-			<li>
-				<a href='' onclick='document.querySelector("#regex").value = "%[2]s"; return false'>
-					%[1]s
-				</a>
-			</li>`,
-			strings.TrimSuffix(k, "Pattern"),
-			html.EscapeString(v),
+	var exampleNames []string
+	for k := range GetCommonRegex() {
+		exampleNames = append(exampleNames, k)
+	}
+	sort.Strings(exampleNames)
+
+	examples := GetCommonRegex()
+	var bodyExamples string
+	for _, name := range exampleNames {
+		bodyExamples += fmt.Sprintf(`
+			<a href='' onclick='document.querySelector("#regex").value = "%[2]s"; return false'>
+				%[1]s
+			</a>,`,
+			strings.TrimSuffix(name, "Pattern"),
+			html.EscapeString(examples[name]),
 		)
 	}
+	bodyExamples = bodyExamples[:len(bodyExamples)-1]
+
 	body := `
 	<!DOCTYPE html>
 	<html lang=en>
@@ -58,7 +66,7 @@ func Server(addr string) error {
 				<div class=row>
 					<div class="col py-3">
 						<h2>Examples</h2>
-						<ul>` + examples + `</ul>
+						` + bodyExamples + `
 
 						<h2>Notes</h2>
 						<p>
