@@ -14,7 +14,7 @@ func Server(addr string) error {
 
 	var examples string
 	for k, v := range GetCommonRegex() {
-		examples += fmt.Sprintf(`<li><a href='' onclick='document.querySelector('input[name=regex]').value = %q'>%s</a> <code>%s</code></li>`, strings.TrimSuffix(k, "Pattern"), v)
+		examples += fmt.Sprintf(`<li><a href='' onclick='document.querySelector('input[name=regex]').value = %q'>%s</a> <code>%s</code></li>`, v, strings.TrimSuffix(k, "Pattern"), v)
 	}
 	body := `
 	<!DOCTYPE html>
