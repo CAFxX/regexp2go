@@ -16,6 +16,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/quoted"
 	"github.com/CAFxX/regexp2go/examples/suffix"
 	"github.com/CAFxX/regexp2go/examples/unicode"
+	"github.com/CAFxX/regexp2go/internal"
 )
 
 func TestRegexp2go(t *testing.T) {
@@ -230,4 +231,8 @@ func TestRegexp2go(t *testing.T) {
 			}
 		})
 	}
+}
+
+func TestGenerateExamples(t *testing.T) {
+	internal.GenerateExamples()
 }
