@@ -10,6 +10,14 @@ import (
 func Server(addr string) error {
 	compress, _ := httpcompression.DefaultAdapter()
 	http.Handle("/", compress(http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if r.URL.Path != "/" {
+			w.WriteHeader(http.StatusNotFound)
+			return
+		}
+		if r.Method != http.MethodGet {
+			w.WriteHeader(http.StatusMethodNotAllowed)
+			return
+		}
 		w.Write([]byte(`
 			<!DOCTYPE html>
 			<html lang=en>
