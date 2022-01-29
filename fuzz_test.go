@@ -13,9 +13,10 @@ import (
 )
 
 func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index int, found bool) {
-	rematches := re.FindStringSubmatch(str)
-	reindex := re.FindStringIndex(str)
-	refound := re.MatchString(str)
+	res := re.FindStringSubmatchIndex(str)
+
+	// refound := re.MatchString(str)
+	refound := res != nil
 
 	if found != refound {
 		t.Errorf("found: %v/%v", found, refound)
@@ -23,15 +24,26 @@ func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index 
 	if !found {
 		return
 	}
+
+	// reindex := re.FindStringIndex(str)
+	reindex := res[0:2]
+
 	if index != reindex[0] {
 		t.Errorf("index start: %v/%v", index, reindex[0])
 	}
 	if index+len(matches[0]) != reindex[1] {
 		t.Errorf("index end: %v/%v", index+len(matches[0]), reindex[1])
 	}
+
+	// rematches := re.FindStringSubmatch(str)
+
 	for i := range matches {
-		if matches[i] != rematches[i] {
-			t.Errorf("match %d: %v/%v", i, matches[i], rematches[i])
+		var rematch string
+		if res[i*2] >= 0 {
+			rematch = str[res[i*2]:res[i*2+1]]
+		}
+		if matches[i] != rematch {
+			t.Errorf("match %d: %v/%v", i, matches[i], rematch)
 		}
 	}
 }
