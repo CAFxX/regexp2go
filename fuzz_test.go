@@ -28,7 +28,7 @@ func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index 
 	if found != refound {
 		t.Errorf("found: re2go=%v go=%v", found, refound)
 	}
-	if !refound {
+	if !found && !refound {
 		return
 	}
 
@@ -36,10 +36,10 @@ func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index 
 	reindex := res[0:2]
 
 	if index != reindex[0] {
-		t.Errorf("index start: re2go=%v go=%v", index, reindex[0])
+		t.Errorf("index start: re2go=%d go=%d", index, reindex[0])
 	}
 	if index+len(matches[0]) != reindex[1] {
-		t.Errorf("index end: re2go=%v go=%v", index+len(matches[0]), reindex[1])
+		t.Errorf("index end: re2go=%d go=%d", index+len(matches[0]), reindex[1])
 	}
 
 	// rematches := re.FindStringSubmatch(str)
@@ -50,7 +50,7 @@ func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index 
 			rematch = str[res[i*2]:res[i*2+1]]
 		}
 		if matches[i] != rematch {
-			t.Errorf("match %d: re2go=%v go=%v", i, matches[i], rematch)
+			t.Errorf("match %d: re2go=%q go=%q", i, matches[i], rematch)
 		}
 	}
 }
