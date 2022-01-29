@@ -13,6 +13,10 @@ import (
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
 	"github.com/CAFxX/regexp2go/examples/unicode"
 	"github.com/CAFxX/regexp2go/internal"
+
+	"github.com/traefik/yaegi/interp"
+	"github.com/traefik/yaegi/stdlib"
+	"github.com/traefik/yaegi/stdlib/unsafe"
 )
 
 func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index int, found bool) {
@@ -116,14 +120,44 @@ func FuzzLogParse(f *testing.F) {
 }
 
 func FuzzRegexp2Go(f *testing.F) {
-	f.Fuzz(func(t *testing.T, regex string) {
-		_, err := regexp.Compile(regex)
+	f.Fuzz(func(t *testing.T, str, regex string) {
+		re, err := regexp.Compile(regex)
 		if err != nil {
 			return
 		}
-		_, err = internal.Generate(regex, "fuzz", "Fuzz", 212, true)
+		src, err := internal.Generate(regex, "fuzz", "Fuzz", 212, false)
 		if err != nil {
 			t.Fatal(err)
 		}
+		t.Log(string(src))
+
+		i := interp.New(interp.Options{})
+		if err := i.Use(stdlib.Symbols); err != nil {
+			t.Fatal(err)
+		}
+		if err := i.Use(unsafe.Symbols); err != nil {
+			t.Fatal(err)
+		}
+		_, err = i.Eval(string(src))
+		if err != nil {
+			t.Fatal(err)
+		}
+		_, err = i.Eval(`
+			func FindString(s string) ([]string, int, bool) {
+				m, p, f := fuzz.Fuzz{}.FindString(s)
+				return m[:], p, f
+			}
+		`)
+		if err != nil {
+			t.Fatal(err)
+		}
+		v, err := i.Eval("FindString")
+		if err != nil {
+			t.Fatal(err)
+		}
+		FindString := v.Interface().(func(string) ([]string, int, bool))
+
+		matches, index, found := FindString(str)
+		check(t, str, re, matches, index, found)
 	})
 }
