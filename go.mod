@@ -8,6 +8,6 @@ require (
 	github.com/CAFxX/httpcompression v0.0.8
 	github.com/klauspost/compress v1.14.2 // indirect
 	github.com/mingrammer/commonregex v1.0.1
-	github.com/traefik/yaegi v0.11.2 // indirect
+	github.com/traefik/yaegi v0.11.2
 	github.com/valyala/zstd v1.3.0 // indirect
 )

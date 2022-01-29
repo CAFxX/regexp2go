@@ -26,9 +26,9 @@ func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index 
 	refound := res != nil
 
 	if found != refound {
-		t.Errorf("found: %v/%v", found, refound)
+		t.Errorf("found: re2go=%v go=%v", found, refound)
 	}
-	if !found {
+	if !refound {
 		return
 	}
 
@@ -36,10 +36,10 @@ func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index 
 	reindex := res[0:2]
 
 	if index != reindex[0] {
-		t.Errorf("index start: %v/%v", index, reindex[0])
+		t.Errorf("index start: re2go=%v go=%v", index, reindex[0])
 	}
 	if index+len(matches[0]) != reindex[1] {
-		t.Errorf("index end: %v/%v", index+len(matches[0]), reindex[1])
+		t.Errorf("index end: re2go=%v go=%v", index+len(matches[0]), reindex[1])
 	}
 
 	// rematches := re.FindStringSubmatch(str)
@@ -50,7 +50,7 @@ func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index 
 			rematch = str[res[i*2]:res[i*2+1]]
 		}
 		if matches[i] != rematch {
-			t.Errorf("match %d: %v/%v", i, matches[i], rematch)
+			t.Errorf("match %d: re2go=%v go=%v", i, matches[i], rematch)
 		}
 	}
 }
@@ -98,8 +98,8 @@ func FuzzUnicode(f *testing.F) {
 func FuzzMailCrawler(f *testing.F) {
 	re := regexp.MustCompile(mail_crawler.MatchRegexp)
 
-	f.Add("hello@example.com")
-	f.Add("my address is hello+world@example.com.")
+	f.Add("hello@c-a-f-x-x.co.jp")
+	f.Add("my em@il is hello+world@example.com.")
 
 	f.Fuzz(func(t *testing.T, str string) {
 		matches, index, found := mail_crawler.Match{}.FindString(str)
@@ -125,6 +125,7 @@ func FuzzRegexp2Go(f *testing.F) {
 		if err != nil {
 			return
 		}
+		t.Logf("regex: %q", regex)
 		src, err := internal.Generate(regex, "fuzz", "Fuzz", 212, false)
 		if err != nil {
 			t.Fatal(err)
@@ -157,6 +158,7 @@ func FuzzRegexp2Go(f *testing.F) {
 		}
 		FindString := v.Interface().(func(string) ([]string, int, bool))
 
+		t.Logf("str: %q", str)
 		matches, index, found := FindString(str)
 		check(t, str, re, matches, index, found)
 	})

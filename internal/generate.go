@@ -99,6 +99,9 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 		_ = syntax.IsWordChar
 		_ = strings.Index
 	)`)
+	if usePool {
+		out(`var _ = bytespool.GetBytesSlicePtr`)
+	}
 
 	out(`
 		type modeType%[1]s uint8

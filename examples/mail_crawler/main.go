@@ -17,6 +17,7 @@ var (
 	_ = syntax.IsWordChar
 	_ = strings.Index
 )
+var _ = bytespool.GetBytesSlicePtr
 
 type modeTypeMatch uint8
 
