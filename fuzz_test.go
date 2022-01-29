@@ -9,6 +9,8 @@ import (
 
 	"github.com/CAFxX/regexp2go/examples/dna"
 	"github.com/CAFxX/regexp2go/examples/ipv6"
+	"github.com/CAFxX/regexp2go/examples/log_parse"
+	"github.com/CAFxX/regexp2go/examples/mail_crawler"
 	"github.com/CAFxX/regexp2go/examples/unicode"
 )
 
@@ -84,6 +86,30 @@ func FuzzUnicode(f *testing.F) {
 
 	f.Fuzz(func(t *testing.T, str string) {
 		matches, index, found := unicode.Match{}.FindString(str)
+		check(t, str, re, matches[:], index, found)
+	})
+}
+
+func FuzzMailCrawler(f *testing.F) {
+	re := regexp.MustCompile(mail_crawler.MatchRegexp)
+
+	f.Add("hello@example.com")
+	f.Add("my address is hello+world@example.com.")
+
+	f.Fuzz(func(t *testing.T, str string) {
+		matches, index, found := mail_crawler.Match{}.FindString(str)
+		check(t, str, re, matches[:], index, found)
+	})
+}
+
+func FuzzLogParse(f *testing.F) {
+	re := regexp.MustCompile(log_parse.MatchRegexp)
+
+	f.Add("no match\nINFO res=7 msg=hello world\nINFO res=5 msg=oh noes\n")
+	f.Add("INFO res=0000 msg=xxx")
+
+	f.Fuzz(func(t *testing.T, str string) {
+		matches, index, found := log_parse.Match{}.FindString(str)
 		check(t, str, re, matches[:], index, found)
 	})
 }
