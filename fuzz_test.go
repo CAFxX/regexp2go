@@ -144,6 +144,7 @@ func FuzzRegexp2Go(f *testing.F) {
 			t.Fatal(err)
 		}
 		_, err = i.Eval(`
+			package fuzz
 			func FindString(s string) ([]string, int, bool) {
 				m, p, f := fuzz.Fuzz{}.FindString(s)
 				return m[:], p, f
@@ -152,7 +153,7 @@ func FuzzRegexp2Go(f *testing.F) {
 		if err != nil {
 			t.Fatal(err)
 		}
-		v, err := i.Eval("FindString")
+		v, err := i.Eval("fuzz.FindString")
 		if err != nil {
 			t.Fatal(err)
 		}
