@@ -23,7 +23,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 		return nil, fmt.Errorf("compiling regex: %w", err)
 	}
 
-	prefix, _ := p.Prefix()
+	prefix, complete := p.Prefix()
 
 	// optimization passes
 	optString(p)
@@ -70,14 +70,19 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 	out("")
 	out("package %s", pkg)
 	out(`import "regexp/syntax"`)
-	out(`import "unicode/utf8"`)
 	out(`import "strings"`)
-	out(`import "reflect"`)
-	out(`import "unsafe"`)
-	out(`import "runtime"`)
-	if usePool {
-		out(`import "github.com/CAFxX/bytespool"`)
+	if complete {
+		out(`import "bytes"`)
+	} else {
+		out(`import "unicode/utf8"`)
+		out(`import "reflect"`)
+		out(`import "unsafe"`)
+		out(`import "runtime"`)
+		if usePool {
+			out(`import "github.com/CAFxX/bytespool"`)
+		}
 	}
+
 	if pkg == "main" {
 		out(`
 			import "fmt"
@@ -112,6 +117,46 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 
 	out("// %s implements the regular expression\n// %q\n// with flags %d.", fn, regex, flags)
 	out("type %s struct{}", fn)
+
+	if complete {
+		out("// FindString returns the first leftmost match.")
+		out("func (e %s) FindString(r string) (matches [%d]string, pos int, ok bool) {", fn, p.NumCap/2)
+		if len(prefix) == 1 {
+			out("  pos = strings.IndexByte(r, %q)", prefix[0])
+		} else {
+			out("  pos = strings.Index(r, %q)", prefix)
+		}
+		out("  if pos >= 0 { matches[0], ok = r[pos:pos+%d], true } else { pos = 0 }", len(prefix))
+		out("  return")
+		out("}")
+		out("")
+
+		out("// FindLongestString returns the leftmost-longest match.")
+		out("func (e %s) FindLongestString(r string) (matches [%d]string, pos int, ok bool) {", fn, p.NumCap/2)
+		out("  return e.FindString(r)")
+		out("}")
+		out("")
+
+		out("// Find returns the first leftmost match.")
+		out("func (e %s) Find(s []byte) (matches [%d][]byte, pos int, ok bool) {", fn, p.NumCap/2)
+		if len(prefix) == 1 {
+			out("  pos = bytes.IndexByte(s, %q)", prefix[0])
+		} else {
+			out("  pos = bytes.Index(s, []byte(%q))", prefix)
+		}
+		out("  if pos >= 0 { matches[0], ok = s[pos:pos+%d], true } else { pos = 0 }", len(prefix))
+		out("  return")
+		out("}")
+		out("")
+
+		out("// FindLongest returns the leftmost-longest match.")
+		out("func (e %s) FindLongest(s []byte) (matches [%d][]byte, pos int, ok bool) {", fn, p.NumCap/2)
+		out("  return e.Find(s)")
+		out("}")
+		out("")
+
+		goto done
+	}
 
 	// TODO: instead of saving all captures, determine statically which captures to save at each InstAlt
 	out("type state%s struct { c [%d]int; i int; pc int; cnt int }", fn, p.NumCap)
@@ -564,6 +609,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 
 	out("}")
 
+done:
 	gen, err := format.Source(b.Bytes())
 	if err != nil {
 		return b.Bytes(), fmt.Errorf("formatting generated code: %w", err)

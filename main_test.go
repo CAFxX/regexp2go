@@ -12,6 +12,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/log_parse"
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
 	"github.com/CAFxX/regexp2go/examples/pathological"
+	"github.com/CAFxX/regexp2go/examples/plain"
 	"github.com/CAFxX/regexp2go/examples/prefix"
 	"github.com/CAFxX/regexp2go/examples/quoted"
 	"github.com/CAFxX/regexp2go/examples/suffix"
@@ -71,6 +72,10 @@ func TestRegexp2go(t *testing.T) {
 		"pathological": {pathological.MatchRegexp, pathological.Match{}.Find, pathological.Match{}.FindLongest, pathological.Match{}.FindString, pathological.Match{}.FindLongestString, []string{
 			`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa`,
 			`aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaab`,
+		}},
+		"plain": {plain.MatchRegexp, plain.Match{}.Find, plain.Match{}.FindLongest, plain.Match{}.FindString, plain.Match{}.FindLongestString, []string{
+			`---> plain <---`,
+			`no match`,
 		}},
 	}
 	for n, c := range cases {

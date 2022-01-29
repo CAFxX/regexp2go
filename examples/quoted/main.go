@@ -4,8 +4,8 @@
 package quoted
 
 import "regexp/syntax"
-import "unicode/utf8"
 import "strings"
+import "unicode/utf8"
 import "reflect"
 import "unsafe"
 import "runtime"
