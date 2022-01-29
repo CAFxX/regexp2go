@@ -110,7 +110,7 @@ func Generate(regex, pkg, fn string, flags uint, usePool bool) ([]byte, error) {
 		)
 	`, fn)
 
-	out("// %s implements the regular expression\n// %v\n// with flags %d.", fn, regex, flags)
+	out("// %s implements the regular expression\n// %q\n// with flags %d.", fn, regex, flags)
 	out("type %s struct{}", fn)
 
 	// TODO: instead of saving all captures, determine statically which captures to save at each InstAlt

@@ -27,7 +27,7 @@ const (
 )
 
 // Match implements the regular expression
-// (?i)\b([a-z0-9._%+-]+)@([a-z0-9.-]+\.[a-z]{2,})\b
+// "(?i)\\b([a-z0-9._%+-]+)@([a-z0-9.-]+\\.[a-z]{2,})\\b"
 // with flags 212.
 type Match struct{}
 type stateMatch struct {

@@ -27,7 +27,7 @@ const (
 )
 
 // Match implements the regular expression
-// (?m)^INFO res=([0-9]+) msg=(.*)$
+// "(?m)^INFO res=([0-9]+) msg=(.*)$"
 // with flags 212.
 type Match struct{}
 type stateMatch struct {

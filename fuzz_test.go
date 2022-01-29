@@ -12,6 +12,7 @@ import (
 	"github.com/CAFxX/regexp2go/examples/log_parse"
 	"github.com/CAFxX/regexp2go/examples/mail_crawler"
 	"github.com/CAFxX/regexp2go/examples/unicode"
+	"github.com/CAFxX/regexp2go/internal"
 )
 
 func check(t *testing.T, str string, re *regexp.Regexp, matches []string, index int, found bool) {
@@ -111,5 +112,18 @@ func FuzzLogParse(f *testing.F) {
 	f.Fuzz(func(t *testing.T, str string) {
 		matches, index, found := log_parse.Match{}.FindString(str)
 		check(t, str, re, matches[:], index, found)
+	})
+}
+
+func FuzzRegexp2Go(f *testing.F) {
+	f.Fuzz(func(t *testing.T, regex string) {
+		_, err := regexp.Compile(regex)
+		if err != nil {
+			return
+		}
+		_, err = internal.Generate(regex, "fuzz", "Fuzz", 212, true)
+		if err != nil {
+			t.Fatal(err)
+		}
 	})
 }

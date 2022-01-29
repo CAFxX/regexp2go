@@ -27,7 +27,7 @@ const (
 )
 
 // Match implements the regular expression
-// 私は((?:\p{Katakana}|\p{Hiragana}|\p{Han})+)です
+// "私は((?:\\p{Katakana}|\\p{Hiragana}|\\p{Han})+)です"
 // with flags 212.
 type Match struct{}
 type stateMatch struct {

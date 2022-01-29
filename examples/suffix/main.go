@@ -27,7 +27,7 @@ const (
 )
 
 // Match implements the regular expression
-// [a-z]+$
+// "[a-z]+$"
 // with flags 212.
 type Match struct{}
 type stateMatch struct {

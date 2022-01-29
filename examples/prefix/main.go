@@ -27,7 +27,7 @@ const (
 )
 
 // Match implements the regular expression
-// Hello ([^!]+)!
+// "Hello ([^!]+)!"
 // with flags 212.
 type Match struct{}
 type stateMatch struct {
