@@ -62,7 +62,7 @@ jobs:
       run: cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" public/
 
     - name: Copy demo files
-      run: cp -r "demo/*" public/
+      run: cp -r demo/index.html public/
 
     - name: Setup GitHub Pages
       uses: actions/configure-pages@v5
