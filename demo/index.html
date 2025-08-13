@@ -1,13 +1,85 @@
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8"/>
-        <script src="wasm_exec.js"></script>
-        <script>
-            const go = new Go();
-            WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject).then((result) => {
-                go.run(result.instance);
-            });
-        </script>
-    </head>
-    <body></body>
+<head>
+    <meta charset="utf-8"/>
+    <title>Regexp2Go WASM demo</title>
+    <script src="wasm_exec.js"></script>
+    <style>
+        body { font-family: sans-serif; }
+        #args { width: 300px; padding: 5px; }
+        button { padding: 5px 10px; }
+        #output {
+            margin-top: 15px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f5f5f5;
+            white-space: pre-wrap; /* Preserve whitespace and newlines */
+            font-family: monospace; /* Use a monospaced font for output */
+            min-height: 50px;
+        }
+    </style>
+    <script>
+        // Ensure the Go WASM loader is ready.
+        if (!WebAssembly.instantiateStreaming) {
+            // Polyfill for browsers that don't support instantiateStreaming
+            WebAssembly.instantiateStreaming = async (resp, importObject) => {
+                const source = await (await resp).arrayBuffer();
+                return await WebAssembly.instantiate(source, importObject);
+            };
+        }
+
+        async function runWasm() {
+            const commandInput = document.getElementById('args');
+            const outputDiv = document.getElementById('output');
+            const runButton = document.getElementById('runButton');
+
+            // Clear previous output and disable button during execution
+            outputDiv.innerHTML = '';
+            runButton.disabled = true;
+            runButton.textContent = 'Executing...';
+
+            // Store the original console.log function
+            const oldLog = console.log;
+            let capturedOutput = '';
+
+            // Override console.log to capture stdout
+            console.log = (...args) => {
+                // Convert all arguments to strings and join them
+                capturedOutput += args.map(String).join(' ') + '\n';
+                // Update the div with the captured output
+                outputDiv.textContent = capturedOutput;
+            };
+
+            try {
+                // Create a new Go instance for a clean environment
+                const go = new Go();
+
+                // Get arguments from the input field and structure them for Go
+                const args = commandInput.value.trim().split(' ').filter(arg => arg);
+                go.argv = ['main.wasm', ...args];
+
+                const wasmModule = await WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject);
+                await go.run(wasmModule.instance);
+            } catch (err) {
+                console.error("WASM execution failed:", err);
+                outputDiv.textContent = `An error occurred: ${err}`;
+            } finally {
+                // Restore the original console.log function
+                console.log = oldLog;
+                // Re-enable the button
+                runButton.disabled = false;
+                runButton.textContent = 'Execute';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1><a href="https://github.com/CAFxX/regexp2go">Regexp2Go</a> WASM Demo</h1>
+    <div>
+        <input type="text" id="args" placeholder="Enter command-line arguments..."/>
+        <button id="runButton" onclick="runWasm()">Execute</button>
+    </div>
+    <h2>Output</h2>
+    <div id="output"></div>
+</body>
 </html>
