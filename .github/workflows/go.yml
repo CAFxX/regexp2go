@@ -59,7 +59,7 @@ jobs:
       run: GOOS=js GOARCH=wasm go build -o public/main.wasm ./main.go
 
     - name: Copy Go WASM support file
-      run: cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" public/
+      run: cp "$(go env GOROOT)/lib/wasm/wasm_exec.js" public/
 
     - name: Copy demo files
       run: cp -r "demo/*" public/
