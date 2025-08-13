@@ -29,7 +29,7 @@
         }
 
         async function runWasm() {
-            const commandInput = document.getElementById('args');
+            const regexpInput = document.getElementById('regexp');
             const outputDiv = document.getElementById('output');
             const runButton = document.getElementById('runButton');
 
@@ -53,11 +53,7 @@
             try {
                 // Create a new Go instance for a clean environment
                 const go = new Go();
-
-                // Get arguments from the input field and structure them for Go
-                const args = commandInput.value.trim().split(' ').filter(arg => arg);
-                go.argv = ['main.wasm', ...args];
-
+                go.argv = ['main.wasm', regexpInput.value];
                 const wasmModule = await WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject);
                 await go.run(wasmModule.instance);
             } catch (err) {
@@ -76,7 +72,7 @@
 <body>
     <h1><a href="https://github.com/CAFxX/regexp2go">Regexp2Go</a> WASM Demo</h1>
     <div>
-        <input type="text" id="args" placeholder="Enter command-line arguments..."/>
+        <label for=regexp>Regular expression:</label><input type=text id=regexp name=regexp placeholder="Go regexp"/>
         <button id="runButton" onclick="runWasm()">Execute</button>
     </div>
     <h2>Output</h2>
