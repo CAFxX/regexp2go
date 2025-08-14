@@ -4,7 +4,6 @@ import (
 	"flag"
 	"fmt"
 	"os"
-	"runtime/debug"
 
 	"github.com/CAFxX/regexp2go/internal"
 )
@@ -22,19 +21,8 @@ func main() {
 		pkg   = flag.String("pkg", "main", "The name of the package to use for the generated code")
 		fn    = flag.String("fn", "Match", "The name of the function to use for the generated code")
 		pool  = flag.Bool("pool", true, "Enable use of memory pools")
-		srv   = flag.String("http", "", "Start the HTTP server on the specified address and port")
 	)
 	flag.Parse()
-
-	if *srv != "" {
-		debug.SetMaxStack(4 * 1024 * 1024)
-		err := internal.Server(*srv)
-		if err != nil {
-			fmt.Fprintf(os.Stderr, "http server: %v\n", err)
-			os.Exit(-1)
-		}
-		return
-	}
 
 	if nargs := len(flag.Args()); nargs != 1 {
 		fmt.Fprintf(os.Stderr, "expected 1 argument, got %d\n", nargs)
