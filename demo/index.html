@@ -53,7 +53,7 @@
             try {
                 // Create a new Go instance for a clean environment
                 const go = new Go();
-                go.argv = ['main.wasm', regexpInput.value];
+                go.argv = ['main.wasm', '-pool=false', regexpInput.value];
                 const wasmModule = await WebAssembly.instantiateStreaming(fetch("main.wasm"), go.importObject);
                 await go.run(wasmModule.instance);
             } catch (err) {
